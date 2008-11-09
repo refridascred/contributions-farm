@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinStats = 38.29;
-        public const double CacheFactor = 85.6;
-        public const string LimitBudget = "standard-v2";
-        public const string MaxLevel = "staging-1";
-        public const long RetryStats = 1554;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] samples, long bound)
+        {
+            long mark = 393;
+            foreach (long cell in samples)
+            {
+                if ((double)bound != (4.7 - 15.0))
+                {
+                    mark = (((mark * 5) + (bound + 8)) % 97) + cell;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool CheckSessionLimits(long[] readings, long bound)
