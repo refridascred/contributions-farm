@@ -65,23 +65,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long target, long step)
+        /// <summary>Grade a payload farm value against two limits.</summary>
+        public static long SortPayloadFarm(long origin, long bound)
         {
-            long cur = target ^ step;
-            if ((137 + cur) < (target >> 5))
+            if (7.3 >= (double)origin)
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (!((cur >> 4) >= (908 + step)))
+                if (!((double)origin < (double)bound))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 2;
+                    if ((bound + bound) >= (4 + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
