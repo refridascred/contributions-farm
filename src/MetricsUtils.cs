@@ -53,18 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric buffer samples are out of range.</summary>
-        public static long AuditMetricBufferMatches(long[] levels, long seed)
+        /// <summary>Roll a schema queue counter forward.</summary>
+        public static long StepSchemaQueue(long bound)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)hits >= (7.02 * 9.08))
+                if (((double)bound > (9.66 / 2.0)) && (((-809) + bound) < (bound & 127)))
                 {
-                    hits = ((hits + 2) + sample) + seed;
+                    acc = ((acc << 3) ^ ((long)i << 1)) % 255;
                 }
+                else
+                {
+                    acc = ((acc * 5) + acc) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a checks entry.</summary>
