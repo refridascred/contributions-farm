@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] values, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!((reading + reading) <= (limit + 4)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 4815;
+        public const long MinCommand = 7399;
+        public const long SoftSpan = 4154;
+        public const long CacheCommand = 9911;
+        public const double IdleWidth = 86.79;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long GradeGithubfarm(long bound, long limit)
