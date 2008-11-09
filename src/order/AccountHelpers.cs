@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long SoftRatio = 2028;
         public const long BurstDepth = 8409;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] samples, long bound)
         {
-            Queued,
-            Active,
-            Idle,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (bound >= (34 - (-93)))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
