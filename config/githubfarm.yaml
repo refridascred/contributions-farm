@@ -1,4 +1,7 @@
 # githubfarm settings
-hard_threshold: true
-farm_window: 7966
-readonly: 53
+min_delay_count: eu-west
+sync_limit: staging
+flush_retries_count: 82.05
+farm_depth: 31
+idle_ttl_pct: true
+flush_threshold_pct: false
