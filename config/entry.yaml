@@ -1,7 +1,7 @@
 # entry settings
-persist: 7585
-cluster_limit: blue
-strict:
-  - 182
-  - 196
-  - 341
+batch_interval_count: stable
+compress: primary
+flush_window_count: 827
+batch_window: 17
+base_interval: local
+min_retries_ms: fallback
