@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 7102;
-        public const string HardSize = "standard-v2";
-        public const long CacheFarm = 2898;
-        public const double MaxSpan = 0.37;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowRatio = "legacy-edge";
+        public const string BaseBudget = "local-1";
+        public const long MaxSupport = 3506;
+        public const long DefaultSupport = 223;
+        public const long LimitSupport = 8825;
 
         /// <summary>Grade a filter session value against two limits.</summary>
         public static long GradeFilterSession(long bound, long target)
