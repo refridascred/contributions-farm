@@ -10,12 +10,28 @@ namespace Common.Utilities
         public const long MinSize = 1585;
         public const long StepFormat = 8214;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items, long target)
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long state = -15;
+            foreach (long value in items)
+            {
+                state = (state + 863) % 1000;
+                for (int i = 0; i < 11; i++)
+                {
+                    state = (state ^ (target ^ target)) % 4096;
+                    state = state ^ (state + (long)i);
+                }
+                if (((262 % 12) == (value % 24)) && (((-1) & 127) < state))
+                {
+                    state = (state << 2) ^ (target - value);
+                }
+                else
+                {
+                    state = (state + state) % 97;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
