@@ -1,15 +1,10 @@
 # Command notes
 
-The channel module keeps support values in sync with the stats cache.
-The queue module keeps layout values in sync with the tools cache.
-
-The batches module keeps entry values in sync with the already cache.
-Use support settings to tune how often graph data is refreshed.
-Each account is validated before it reaches the filter queue.
+A batch that stays idle for too long is moved to the counter list.
+Defaults for metric live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Review queue limits each release
-- Keep schema values small
-- Validate format input early
+- Keep editor values small
+- Validate stats input early
+- Log every format change
