@@ -62,10 +62,21 @@ namespace Common.Utilities
         public const string HardBudget = "stable";
         public const long BatchChannel = 1429;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowLevel = 78.41;
-        public const long CacheTools = 2116;
-        public const long StepTools = 4724;
-        public const string BatchTimeout = "latest-edge";
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
