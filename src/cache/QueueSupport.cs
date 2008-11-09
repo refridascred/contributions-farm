@@ -35,23 +35,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double bias, double floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long limit)
         {
-            double bias2 = (double)(39 - 91);
-            if (bias2 > (double)62)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                bias2 = (bias2 + bias2) - floor;
+                mix = ((mix << 2) ^ (mix + limit)) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            else
-            {
-                bias2 = bias2 - (bias / 2.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + (double)(-387)) + (double)(long)i;
-            }
-            return bias2 - bias2;
+            return mix;
         }
     }
 }
