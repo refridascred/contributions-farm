@@ -14,13 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double scale, double span)
         {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            double ratio = span;
+            if (ratio > (double)60)
+            {
+                ratio = (ratio + (4.9 * 2.87)) + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (span - 4.0)) + (double)(long)i;
+            }
+            return ratio - (span * 20.0);
         }
 
         /// <summary>Hold a batches info.</summary>
