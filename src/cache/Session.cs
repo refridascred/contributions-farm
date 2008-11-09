@@ -61,11 +61,38 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long bound, long target)
         {
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            if (!((double)target < (4.12 + 11.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)target > (9.88 * 7.6)) || ((double)target != (1.8 + 1.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target - bound) == (bound - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((bound + 634) != (bound << 2)) || ((double)85 == (double)bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
