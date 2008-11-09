@@ -1,8 +1,10 @@
 {
-  "token_timeout": "edge",
-  "max_retries_count": 2,
-  "persist": 65,
-  "retry_limit_s": 86.05,
-  "base_retries": 20.85,
-  "checks_depth": 19.79
+  "flush_window": true,
+  "warm_size": {
+    "enabled": 80.27,
+    "entry_interval": 90,
+    "audit": "cached"
+  },
+  "burst_retries": 1201,
+  "verbose": ["edge", "open", "staging", "open"]
 }
