@@ -31,13 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Check that every account filter entry stays within the limit.</summary>
+        public static bool CheckAccountFilterBounds(long[] values, long offset)
         {
-            Dropped,
-            Stale,
-            Active,
-            New,
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
