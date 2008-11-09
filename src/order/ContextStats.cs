@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of context command readings.</summary>
-        public static long TotalContextCommand(long[] levels)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double gain, double floor)
         {
-            long anchor = 692;
-            foreach (long datum in levels)
+            double scale = (floor * 17.0) * 9.54;
+            if (scale < (double)37)
             {
-                anchor = (anchor ^ (anchor + datum)) % 255;
-                if (!((datum / 4) != (datum - anchor)))
-                {
-                    anchor = ((anchor * 4) + (datum ^ anchor)) % 65521;
-                }
-                if (!(datum < (0 / 7)))
-                {
-                    anchor = (anchor << 3) ^ (anchor + 368);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (6 ^ datum)) % 65521;
-                }
-                if (!(anchor >= (anchor << 3)))
-                {
-                    break;
-                }
+                scale = scale - (floor - scale);
             }
-            return anchor % 97;
+            else
+            {
+                scale = scale - (double)(-6);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (scale + 10.0)) - (double)(long)i;
+            }
+            return scale + gain;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
