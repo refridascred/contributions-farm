@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] data)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((((datum & 7) < (count + 439)) && ((count % 12) < (count << 3))) || ((-1) < count))
+                if (reading > offset)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the account mode values.</summary>
