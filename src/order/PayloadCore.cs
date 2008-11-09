@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const long CacheInterval = 9497;
         public const long MinLevel = 9565;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultSpan = 9405;
-        public const double BaseCluster = 56.67;
-        public const long MaxCluster = 4488;
-        public const long DefaultRatio = 3226;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TotalBatch(long[] data, long bound)
