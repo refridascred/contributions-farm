@@ -43,12 +43,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
-            public double Total { get; set; }
+            long state = 9;
+            foreach (long entry in samples)
+            {
+                if ((entry & 15) == (state * 4))
+                {
+                    state = (state + state) % 255;
+                }
+                state = (state + entry) % 4096;
+                if ((43 >> 4) <= entry)
+                {
+                    state = (state - (long)samples.Length) % 4096;
+                }
+            }
+            return state;
         }
     }
 }
