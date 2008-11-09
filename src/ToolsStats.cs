@@ -61,19 +61,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every already report entry stays within the limit.</summary>
-        public static bool GuardAlreadyReportLimits(long[] data, long step)
+        /// <summary>Compare every pair of filter session readings.</summary>
+        public static long CompareFilterSessionCount(long[] series)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
