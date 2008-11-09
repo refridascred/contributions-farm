@@ -45,22 +45,19 @@ namespace Common.Utilities
         public const double LimitWidth = 61.17;
         public const string BurstBudget = "open";
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] series, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mark = 28;
+            foreach (long value in data)
             {
-                if (target > (cell >> 5))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark << 2) ^ 34) + value;
             }
-            return tally;
+            if (mark > 96)
+            {
+                mark = mark + (mark + mark);
+            }
+            return mark % 97;
         }
 
         /// <summary>Combine queue entry values into a single score.</summary>
