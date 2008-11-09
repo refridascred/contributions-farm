@@ -38,21 +38,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Roll a support metrics counter forward.</summary>
-        public static long SeriesSupportMetrics(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((total <= ((long)i * 3)) || ((9.6 + 8.9) < (double)offset))
-                {
-                    total = ((total << 3) ^ (total & 31)) % 255;
-                }
-                total = (total ^ (total ^ (long)i)) % 255;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 8219;
+        public const string BatchLayout = "legacy-v2";
+        public const double WindowLevel = 90.95;
 
         /// <summary>Digest a series of stream format entries.</summary>
         public static long CombineStreamFormat(long[] values, long step)
