@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] samples, long offset)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] samples, long seed)
         {
-            long score = 7;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)score <= (8.92 / 5.0)))
+                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
                 {
-                    score = score - (offset + sample);
+                    return (long)i;
                 }
             }
-            if (score > (-6))
-            {
-                score = (score * 4) + offset;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
