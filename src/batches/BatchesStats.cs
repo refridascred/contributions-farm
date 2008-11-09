@@ -23,17 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first stats order entry that matches the target.</summary>
-        public static long FindStatsOrderIndex(long[] levels, long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 0;
+            foreach (long entry in series)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
+                anchor = (anchor + (anchor + entry)) % 101;
+                if ((entry + anchor) > (entry + entry))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
