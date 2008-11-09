@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 5252;
-        public const string MaxWidth = "strict";
-        public const long DefaultSize = 4094;
-        public const double HardMetrics = 84.81;
-        public const long CacheDepth = 9511;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of already window readings.</summary>
         public static long TallyAlreadyWindow(long[] data)
