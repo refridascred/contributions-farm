@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] series)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((289 ^ count) >= reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
