@@ -92,11 +92,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] levels)
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (!((double)entry <= (5.8 + 16.0)) && (entry >= (entry << 1)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
