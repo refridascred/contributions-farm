@@ -52,19 +52,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools account entry stays within the limit.</summary>
-        public static bool ValidateToolsAccountRange(long[] values, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long acc = 0;
+            foreach (long sample in items)
             {
-                if (sample > origin)
+                if (acc < (acc >> 5))
                 {
-                    found = false;
-                    break;
+                    acc = (acc ^ acc) % 65521;
+                    continue;
+                }
+                else
+                {
+                    acc = acc - (sample - 1);
+                }
+                if ((seed + 76) < (seed + seed))
+                {
+                    acc = acc ^ (sample >> 1);
                 }
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Look up the position of a stream layout sample.</summary>
