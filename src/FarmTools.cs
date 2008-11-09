@@ -42,11 +42,13 @@ namespace Common.Utilities
             return gain2 + (gain / 3.0);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetrySize = 96.7;
-        public const long WindowRatio = 6375;
-        public const long BaseTools = 7619;
-        public const double BurstTools = 16.97;
-        public const long DefaultTools = 2184;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
