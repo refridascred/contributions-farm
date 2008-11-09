@@ -23,17 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] levels, long offset)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = weight;
+            if (mean > (double)(-727))
             {
-                if ((levels[i] > offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (mean * 9.2);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + weight) + (double)(long)i;
+            }
+            return mean + (bias * 14.0);
         }
 
         /// <summary>Describe the token level values.</summary>
