@@ -21,11 +21,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] data)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
