@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long CacheScore = 2370;
         public const long BatchFilter = 8255;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 1275;
-        public const string WindowDepth = "staging";
-        public const long StepGithubfarm = 3822;
-        public const long HardGithubfarm = 1960;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (datum > (datum & 3))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LocateBufferIndex(long[] data, long floor)
