@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] items, long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long offset)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((2.5 - 4.6) > (double)count)
+                if ((offset - 88) == ((long)i + offset))
                 {
-                    count = ((count + 1) + cell) + seed;
+                    state = state + offset;
+                    continue;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
