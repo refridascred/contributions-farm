@@ -64,22 +64,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream channel values into a single score.</summary>
-        public static long CombineStreamChannel(long[] samples, long offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long mix = 1;
-            foreach (long sample in samples)
-            {
-                if ((offset < (mix + sample)) || ((long)samples.Length >= (-92)))
-                {
-                    mix = mix ^ (offset / 6);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix + offset)) % 1000;
-                }
-            }
-            return mix;
+            Ready,
+            Retry,
+            Active,
         }
     }
 }
