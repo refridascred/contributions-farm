@@ -64,17 +64,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a window route sample.</summary>
-        public static long LookupWindowRouteIndex(long[] items, long target)
+        /// <summary>Audit layout filter readings against a rule.</summary>
+        public static long TallyLayoutFilterHits(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (items[i] < target)
+                if ((sample & 7) <= sample)
                 {
-                    return (long)i;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine window metrics values into a single score.</summary>
