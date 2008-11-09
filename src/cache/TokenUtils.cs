@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleStream = 98.82;
-        public const long BaseStream = 8396;
-        public const string BurstStream = "staging-v2";
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long seed, long step)
+        {
+            if ((step >= (step >> 3)) && ((double)seed > (double)step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)step < (double)seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long MatchEditorCount(long[] data)
