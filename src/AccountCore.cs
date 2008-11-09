@@ -62,24 +62,17 @@ namespace Common.Utilities
         public const string HardChecks = "cached";
         public const long WindowDepth = 6757;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] values, long step)
         {
-            long state = 61;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state - (reading - reading)) % 97;
-                state = ((state * 3) + reading) % 65521;
-                if ((state ^ state) > (89 ^ reading))
+                if ((values[i] == step) && ((values[i] % 5) != 0))
                 {
-                    state = ((state << 3) ^ state) % 101;
-                }
-                else
-                {
-                    state = state ^ state;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
