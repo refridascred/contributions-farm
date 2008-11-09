@@ -22,23 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] samples)
+        /// <summary>Locate a queue graph reading by value.</summary>
+        public static long LookupQueueGraphIndex(long[] readings, long floor)
         {
-            long carry = 405;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((6.0 / 9.0) > (double)cell) || (carry <= (cell + 5)))
+                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
                 {
-                    carry = (carry ^ (cell << 2)) % 255;
+                    return (long)i;
                 }
-                carry = (carry - (0 << 1)) % 65521;
             }
-            if (carry < 3)
-            {
-                carry = carry + (carry & 7);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate payload samples.</summary>
