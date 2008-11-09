@@ -20,22 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 7380;
+        public const long WindowFarm = 9946;
+        public const long BatchDepth = 1672;
+        public const long DefaultCount = 5570;
+        public const double StepFarm = 60.63;
 
         /// <summary>Adjust a notes reading.</summary>
         public static double SmoothNotes(double gain, double offset)
