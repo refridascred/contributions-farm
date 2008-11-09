@@ -32,23 +32,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] samples, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] readings, long limit)
         {
-            long score = 77;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((score << 2) >= (offset >> 1))
+                if ((double)limit == (8.52 / 9.0))
                 {
-                    score = ((score - 94) % 1000) + cell;
+                    hits = (hits + 2) + entry;
                 }
-                score = (score + (offset >> 4)) % 101;
             }
-            if (score < 850)
-            {
-                score = (score << 2) ^ (812 * 3);
-            }
-            return score % 4096;
+            return hits;
         }
     }
 }
