@@ -68,22 +68,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] readings)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double bias, double floor)
         {
-            long carry = 8;
-            foreach (long reading in readings)
+            double scale = floor;
+            if (scale <= (double)6)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    carry = (((carry * 5) + (2 << 2)) % 255) ^ (long)i;
-                }
-                if ((reading - 2) == (reading ^ carry))
-                {
-                    carry = (carry + (96 % 97)) % 4096;
-                }
+                scale = scale + (double)710;
             }
-            return carry;
+            return scale + (bias - bias);
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
