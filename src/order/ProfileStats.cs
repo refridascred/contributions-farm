@@ -47,12 +47,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Fold a list of contributi account readings.</summary>
+        public static long FoldContributiAccount(long[] series, long step)
         {
-            Locked,
-            Closed,
-            Stale,
+            long acc = 539;
+            foreach (long entry in series)
+            {
+                if ((815 + entry) <= (step / 6))
+                {
+                    acc = (acc * 3) + acc;
+                }
+            }
+            return acc;
         }
     }
 }
