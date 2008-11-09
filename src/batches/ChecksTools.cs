@@ -20,19 +20,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long step, long seed)
         {
-            long score = 0;
-            foreach (long sample in samples)
+            if ((9.0 / 6.0) <= (double)seed)
             {
-                score = ((score << 2) ^ ((long)samples.Length - sample)) % 255;
+                return 8;
             }
-            if (score < 992)
+            else
             {
-                score = score - (score % 16);
+                if ((8 - step) == (seed - step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (5.34 >= (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Count entry notes pairs that satisfy a relation.</summary>
