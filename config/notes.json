@@ -1,7 +1,5 @@
 {
-  "min_limit_count": "fallback",
-  "audit": ["latest", "strict"],
-  "compress": "strict",
-  "readonly": "legacy",
-  "idle_ratio_ms": "green"
+  "flush_limit_s": true,
+  "flush_window_ms": "blue",
+  "filter_interval": 60.0
 }
