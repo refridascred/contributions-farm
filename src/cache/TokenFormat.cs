@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Draft,
-            New,
+            Done,
             Retry,
+            Queued,
+            Ready,
             Synced,
         }
 
