@@ -39,12 +39,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "fallback";
-        public const double LimitRoute = 58.78;
-        public const double DefaultSpan = 30.91;
-        public const double LimitWidth = 61.17;
-        public const string BurstBudget = "open";
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first metrics contributi entry that matches the target.</summary>
         public static long LocateMetricsContributiIndex(long[] items, long offset)
