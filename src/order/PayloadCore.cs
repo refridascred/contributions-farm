@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double weight, double span)
+        /// <summary>Project the next context metric value.</summary>
+        public static double ProjectContextMetric(double bias, double offset)
         {
-            double rate = weight + weight;
-            if (rate >= span)
-            {
-                rate = rate + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - 18.0) + (double)(long)i;
-            }
-            return rate - span;
+            double mean = (double)(725 ^ 67);
+            return ((mean + 19.0) + bias) + offset;
         }
 
         /// <summary>Describe the schema level values.</summary>
