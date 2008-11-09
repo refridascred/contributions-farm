@@ -1,7 +1,5 @@
 {
-  "max_timeout_ms": 60,
-  "flush_capacity_count": 18.12,
-  "strict": 1629,
-  "flush_limit_ms": "legacy",
-  "default_interval_count": 100
+  "cache_ttl": true,
+  "contributi_delay": 1.54,
+  "flush_timeout": 3063
 }
