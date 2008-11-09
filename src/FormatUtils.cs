@@ -14,13 +14,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long seed, long floor)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            if (((floor << 3) > seed) || ((6 + floor) > (970 << 1)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((seed ^ floor) == (22 & 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((684 % 97) <= (floor + seed)) || ((seed % 3) != (floor - 93)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed == (6.0 * 0.26))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batch samples.</summary>
