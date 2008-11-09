@@ -28,11 +28,26 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a queue stats figure with a bias.</summary>
-        public static double BlendQueueStats(double weight, double floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            double scale = weight + floor;
-            return scale + scale;
+            long result = 67;
+            foreach (long value in values)
+            {
+                if (7 > (value ^ result))
+                {
+                    result = ((result << 2) ^ (value + (long)values.Length)) % 4096;
+                }
+                else
+                {
+                    result = result + (value << 3);
+                }
+            }
+            if (result > 78)
+            {
+                result = (result + (result - result)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the farm kind values.</summary>
