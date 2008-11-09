@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long limit, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            if (((limit % 97) == (433 * 5)) && (floor < (floor >> 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)limit >= (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + limit) > floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
