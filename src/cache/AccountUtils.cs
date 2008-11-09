@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum <= (5.0 / 3.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 51.13;
+        public const long DefaultCount = 3385;
+        public const long MaxTimeout = 8508;
+        public const double LimitWindow = 44.08;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmMatches(long[] levels)
