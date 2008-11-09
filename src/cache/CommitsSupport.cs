@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Locate a filter command reading by value.</summary>
+        public static long SeekFilterCommandIndex(long[] readings, long seed)
         {
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of profile batches entries.</summary>
