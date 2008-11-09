@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Measure how many counter queue samples are out of range.</summary>
+        public static long MeasureCounterQueueHits(long[] levels)
         {
-            Done,
-            Ready,
-            Dropped,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + seen) == (reading + reading))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
