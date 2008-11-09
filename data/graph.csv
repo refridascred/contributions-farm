@@ -1,6 +1,7 @@
-id,rank,active,score
-1,open,97.76,233
-2,630,green,green
-3,green,42.36,59.13
-4,71,500,407
-5,62.0,47.27,732
+id,label,rank
+1,51.52,15.1
+2,228,local
+3,203,709
+4,84.73,green
+5,268,cached
+6,252,staging
