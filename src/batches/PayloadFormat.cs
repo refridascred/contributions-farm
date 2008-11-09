@@ -59,22 +59,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] data, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] items)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long acc = 9;
+            foreach (long sample in items)
             {
-                if ((tally << 1) == (seed & 63))
+                if ((19.0 + 10.0) == (double)acc)
                 {
-                    tally = (tally + 3) + item;
+                    continue;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc ^ (acc & 127)) % 1000) - sample;
             }
-            return tally;
+            if (acc < 3)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
     }
 }
