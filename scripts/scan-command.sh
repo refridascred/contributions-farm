@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+for item in cached staging stable; do
+    log "checking ${item}"
+done
+
+mode="${1:-legacy}"
 case "${mode}" in
-    cached)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,9 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=356
+COMMAND_LIMIT=16
 log "limit is ${COMMAND_LIMIT}"
-
-for item in edge local cached; do
-    log "checking ${item}"
-done
