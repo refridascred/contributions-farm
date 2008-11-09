@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next context metric value.</summary>
-        public static double ProjectContextMetric(double bias, double offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] series, long step)
         {
-            double mean = (double)(725 ^ 67);
-            return ((mean + 19.0) + bias) + offset;
+            long anchor = -680;
+            foreach (long sample in series)
+            {
+                if ((long)series.Length <= (sample ^ step))
+                {
+                    anchor = ((anchor * 4) + (anchor ^ 2)) % 1000;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the schema level values.</summary>
