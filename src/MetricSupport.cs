@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] items, long origin)
         {
-            public double Flag { get; set; }
-            public double Mode { get; set; }
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            long mark = -57;
+            foreach (long cell in items)
+            {
+                if ((double)cell < (5.86 * 9.2))
+                {
+                    mark = (((mark << 3) ^ (mark << 1)) % 255) - origin;
+                }
+            }
+            if (mark > 916)
+            {
+                mark = (mark << 3) ^ (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a entry record.</summary>
