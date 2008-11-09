@@ -40,38 +40,22 @@ namespace Common.Utilities
             return load - (double)58;
         }
 
-        /// <summary>Rank editor session input into a small class.</summary>
-        public static long RankEditorSession(long step, long step2)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] samples)
         {
-            if ((step2 / 4) != (32 & 127))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step ^ step2) < (step - 374))
+                if ((double)item == (9.8 / 2.0))
                 {
-                    return 2;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((step2 >> 2) != (12 << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step - step2) >= (step % 100))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
