@@ -20,17 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first batch session entry that matches the target.</summary>
-        public static long LookupBatchSessionIndex(long[] values, long origin)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
