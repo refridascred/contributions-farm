@@ -34,18 +34,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the stream batch entries that pass the check.</summary>
-        public static long MeasureStreamBatchOutliers(long[] values, long step)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!(((double)step >= (3.7 * 5.5)) || ((double)datum >= (1.8 - 2.5))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Ready,
+            Synced,
         }
     }
 }
