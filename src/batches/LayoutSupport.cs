@@ -33,31 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long seed, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] data)
         {
-            if (seed < (seed + floor))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor % 16) <= (floor ^ seed))
+                if ((1 - 964) > (value + value))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor / 7) > (seed * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
