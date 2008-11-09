@@ -41,19 +41,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell > (12.0 + 1.0))
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitTimeout = 4078;
+        public const long IdlePayload = 6296;
+        public const long IdleScore = 1928;
+        public const string DefaultPayload = "local";
+        public const double BatchPayload = 29.32;
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long FindEditorIndex(long[] readings, long bound)
