@@ -87,15 +87,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a notes githubfarm counter forward.</summary>
-        public static long DeriveNotesGithubfarm(long offset)
+        /// <summary>Measure how many record token samples are out of range.</summary>
+        public static long AuditRecordTokenOutliers(long[] levels, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if (count > offset)
+                {
+                    count = (count + 2) - cell;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a checks record.</summary>
