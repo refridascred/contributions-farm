@@ -75,21 +75,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of cluster payload readings.</summary>
-        public static long PairClusterPayloadCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 509;
+        public const string MinAccount = "primary-v2";
+        public const double DefaultBudget = 57.2;
+        public const double StepScore = 94.75;
     }
 }
