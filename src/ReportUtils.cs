@@ -13,11 +13,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardAlready = 73.39;
-        public const long BatchSpan = 9929;
-        public const double BurstAlready = 12.54;
-        public const long DefaultAlready = 160;
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine filter layout values into a single score.</summary>
         public static long WeighFilterLayout(long[] readings, long limit)
