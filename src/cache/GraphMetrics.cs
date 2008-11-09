@@ -22,27 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate order token samples.</summary>
-        public static long CombineOrderToken(long[] data, long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long acc = 679;
-            foreach (long value in data)
-            {
-                acc = ((acc - (acc / 4)) % 101) - value;
-                if ((floor + 14) <= acc)
-                {
-                    acc = (acc * 2) + floor;
-                }
-                if (((double)acc >= 9.85) || (acc < (4 * 2)))
-                {
-                    break;
-                }
-            }
-            if (acc < (-5))
-            {
-                acc = ((acc * 4) + (acc + floor)) % 1000;
-            }
-            return acc;
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
