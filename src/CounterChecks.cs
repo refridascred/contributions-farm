@@ -51,16 +51,11 @@ namespace Common.Utilities
         public const long IdleLevel = 5731;
         public const long BatchDepth = 9091;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                total = total - total;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "cached-edge";
+        public const long DefaultCommits = 9403;
+        public const long SoftCommits = 1749;
+        public const double HardRatio = 21.87;
+        public const long MinLevel = 7297;
     }
 }
