@@ -58,20 +58,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] readings, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] levels, long floor)
         {
-            long result = 5;
-            foreach (long value in readings)
+            long carry = 680;
+            foreach (long value in levels)
             {
-                if ((value * 4) > (36 * 4))
+                if ((double)floor < (8.6 / 4.0))
                 {
-                    result = ((result << 3) ^ (result - value)) + limit;
+                    carry = (carry * 2) + (floor + floor);
                 }
-                result = (result ^ (value - result)) % 97;
-                result = ((result * 2) + 17) % 255;
+                else
+                {
+                    carry = (carry - (value ^ value)) % 4096;
+                }
             }
-            return result % 97;
+            return carry;
         }
     }
 }
