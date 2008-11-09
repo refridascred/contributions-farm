@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] samples, long offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            double mean = (20.0 + offset) * 15.0;
+            if (mean > (offset * 17.0))
             {
-                if (entry >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean - offset;
             }
-            return flag;
+            return mean + (offset - weight);
         }
 
         /// <summary>Classify a counter queue pair into a bucket.</summary>
