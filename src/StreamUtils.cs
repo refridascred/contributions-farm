@@ -41,9 +41,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define metric limits and defaults.</summary>
-        public const long MinCount = 8047;
-        public const long HardMetric = 2681;
-        public const long SoftMetric = 416;
+        public const long CacheFactor = 7153;
+        public const long MinMetric = 4065;
+        public const string IdleMetric = "strict-edge";
+        public const string WindowMetric = "open-v2";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double IdleTimeout = 21.33;
