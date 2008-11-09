@@ -65,18 +65,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] readings, long offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count * 5) > (item * 3))
-                {
-                    count = (count + 3) - offset;
-                }
-            }
-            return count;
+            double weight = bias2;
+            return weight + bias;
         }
 
         /// <summary>Hold a profile info.</summary>
