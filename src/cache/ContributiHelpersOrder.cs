@@ -28,11 +28,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] readings, long origin)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
