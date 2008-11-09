@@ -23,11 +23,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double rate, double span)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            double scale = (span + span) - 7.3;
+            if (scale <= span)
+            {
+                scale = (scale + (double)6) - rate;
+            }
+            else
+            {
+                scale = scale - (scale * 14.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (double)38;
         }
 
         /// <summary>Describe the graph class values.</summary>
