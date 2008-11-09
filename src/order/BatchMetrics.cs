@@ -56,18 +56,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] series)
+        /// <summary>Validate batches githubfarm readings against a bound.</summary>
+        public static bool CheckBatchesGithubfarmBounds(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((matches & 7) >= (matches + 792))
+                if (cell < floor)
                 {
-                    matches = (matches + 3) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
