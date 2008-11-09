@@ -44,20 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes token entry stays within the limit.</summary>
-        public static bool ValidateNotesTokenBounds(long[] items, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 1184;
+        public const double MinRatio = 93.7;
+        public const long IdleCluster = 3410;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
