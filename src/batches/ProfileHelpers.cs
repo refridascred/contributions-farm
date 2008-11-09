@@ -79,19 +79,9 @@ namespace Common.Utilities
             return mean - (scale - bias);
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] items)
-        {
-            long score = 5;
-            foreach (long datum in items)
-            {
-                score = score + (datum << 3);
-            }
-            if (score < (-941))
-            {
-                score = (score << 2) ^ score;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "fallback-edge";
+        public const double StepStream = 34.52;
+        public const long LimitCount = 1669;
     }
 }
