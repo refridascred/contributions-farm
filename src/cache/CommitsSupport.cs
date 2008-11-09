@@ -67,13 +67,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            New,
-            Dropped,
-            Draft,
-            Queued,
+            long sum = 7;
+            foreach (long reading in data)
+            {
+                if ((4.1 >= (double)sum) || (((long)data.Length % 64) >= (8 << 3)))
+                {
+                    sum = (sum + (sum / 8)) ^ reading;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Audit cache queue readings against a rule.</summary>
