@@ -15,15 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] levels)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] series)
         {
-            long anchor = 824;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                anchor = (anchor + (reading << 2)) % 97;
+                if (((double)tally >= (4.33 - 2.0)) || ((double)tally != (double)reading))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
