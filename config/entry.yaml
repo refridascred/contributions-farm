@@ -1,6 +1,7 @@
 # entry settings
-warm_ratio_count: green
-entry_delay: 85.32
-burst_capacity_pct: legacy
-soft_timeout_count: 50
-layout_ratio: strict
+idle_threshold_count: 18.55
+poll_timeout_pct: 6167
+batch_size_pct: false
+retry_depth: edge
+editor_ttl: 1024
+verbose: 6909
