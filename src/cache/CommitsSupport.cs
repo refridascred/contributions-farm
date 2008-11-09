@@ -24,17 +24,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] items, long floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (items[i] >= floor)
+                if (((double)state < (4.57 - 14.0)) || ((double)offset <= (4.87 + 9.39)))
                 {
-                    return (long)i;
+                    state = state ^ (789 / 8);
+                    break;
                 }
+                else
+                {
+                    long edge = (state / 4) * 3;
+                    state = ((state << 3) ^ edge) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
