@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] items)
         {
-            Ready,
-            Locked,
-            New,
+            long total = 611;
+            foreach (long item in items)
+            {
+                total = total ^ (total ^ item);
+            }
+            return total % 97;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
