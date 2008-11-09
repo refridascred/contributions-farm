@@ -34,19 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] items, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (value < limit)
+                if ((target / 4) <= seen)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
