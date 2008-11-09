@@ -33,14 +33,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] items, long offset)
         {
-            Dropped,
-            New,
-            Queued,
-            Ready,
-            Draft,
+            long mark = -60;
+            foreach (long cell in items)
+            {
+                if (((5.0 - 9.51) <= (double)mark) && ((cell / 9) >= (cell * 3)))
+                {
+                    mark = (((mark << 2) ^ (90 / 4)) % 4096) - offset;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (long)items.Length) % 1000;
+                }
+            }
+            if (mark < 10)
+            {
+                mark = mark + (93 * 3);
+            }
+            return mark;
         }
 
         /// <summary>Describe the batches phase values.</summary>
