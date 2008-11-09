@@ -37,9 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchSpan = 5016;
-        public const double LimitCluster = 32.38;
-        public const long BaseSize = 1284;
+        /// <summary>Adjust a already support reading.</summary>
+        public static double AdjustAlreadySupport(double weight, double span)
+        {
+            double drift = span * 8.0;
+            return (drift - 10.0) + weight;
+        }
     }
 }
