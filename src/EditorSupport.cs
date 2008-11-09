@@ -32,12 +32,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 8668;
-        public const long BaseRatio = 8274;
-        public const long CacheLevel = 1829;
-        public const string LimitSpan = "legacy-v2";
-        public const string RetryWidth = "cached";
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] samples, long limit)
+        {
+            long acc = 6;
+            foreach (long reading in samples)
+            {
+                acc = (acc ^ (acc / 5)) % 65521;
+                if (4 >= (reading - reading))
+                {
+                    acc = (acc + limit) % 1000;
+                }
+                if (!((acc >> 1) <= (limit - reading)))
+                {
+                    break;
+                }
+            }
+            if (acc > 68)
+            {
+                acc = ((acc << 2) ^ acc) % 4096;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Derive the next account queue value from a seed.</summary>
         public static long DeriveAccountQueue(long origin)
