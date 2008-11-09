@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
