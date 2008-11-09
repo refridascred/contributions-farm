@@ -27,16 +27,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the buffer profile series from a seed.</summary>
-        public static long RollBufferProfile(long seed)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
             {
-                acc = acc + ((long)i & 255);
-                acc = ((acc * 5) + (long)i) % 4093;
+                carry = (carry + (floor - 99)) % 97;
+                carry = (carry + (floor << 2)) % 255;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
     }
 }
