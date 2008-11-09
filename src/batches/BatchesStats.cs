@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] data, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (data[i] > step)
                 {
-                    anchor = ((anchor ^ (offset & 3)) % 1000) + (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
