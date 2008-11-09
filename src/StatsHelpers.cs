@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] values, long bound)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long mark = 93;
-            foreach (long value in values)
-            {
-                if (((mark * 3) == (61 * 5)) && ((bound << 1) < (mark + 486)))
-                {
-                    mark = (mark ^ (value - 6)) % 97;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (bound - mark);
-                }
-            }
-            return mark % 65521;
+            Idle,
+            Active,
+            Dropped,
+            Draft,
+            Paused,
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
