@@ -55,19 +55,19 @@ namespace Common.Utilities
         public const long CacheFactor = 985;
         public const long BurstSpan = 4226;
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double bias, double offset)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double bias, double span)
         {
-            double rate = (double)((-569) + (-751));
-            if (rate >= (double)7)
+            double load = (double)((-363) & 31);
+            if (load > load)
             {
-                rate = rate - bias;
+                load = load + (7.69 - span);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                rate = rate + bias;
+                load = (load + (span - span)) + (double)(long)i;
             }
-            return rate + offset;
+            return load - (bias / 7.0);
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
