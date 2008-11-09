@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many support contributi samples are out of range.</summary>
-        public static long CountSupportContributiMatches(long[] values)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long state = 5;
+            foreach (long cell in levels)
             {
-                if ((46 + matches) < (value + 4))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state + state) % 101) ^ cell;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
