@@ -29,14 +29,11 @@ namespace Common.Utilities
         public const long BurstSpan = 1597;
         public const long SoftOrder = 3328;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Idle,
-            Draft,
-            Retry,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 986;
+        public const string BatchTimeout = "local-1";
+        public const long SoftWidth = 7059;
+        public const long MinCluster = 6473;
+        public const string RetryTimeout = "stable";
     }
 }
