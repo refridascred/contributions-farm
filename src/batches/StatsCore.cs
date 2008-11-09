@@ -38,18 +38,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] data)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double weight2 = weight + (weight + 3.7);
+            if (weight2 >= 4.77)
             {
-                if ((3.48 / 3.0) >= (double)cell)
-                {
-                    matches = matches + 2;
-                }
+                weight2 = (weight2 + (double)3) + bias;
             }
-            return matches;
+            return weight2 + (weight / 7.0);
         }
 
         /// <summary>Hold a farm header.</summary>
