@@ -23,11 +23,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double ratio, double span)
+        /// <summary>Find the first stats order entry that matches the target.</summary>
+        public static long FindStatsOrderIndex(long[] levels, long origin)
         {
-            double bias = span;
-            return (bias + bias) + ratio;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the buffer status values.</summary>
