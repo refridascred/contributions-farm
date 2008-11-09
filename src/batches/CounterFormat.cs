@@ -14,18 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] values, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (((double)bound < (double)cell) || ((0.31 <= (double)cell) && ((matches + bound) < (bound - (long)values.Length))))
+                if (value < step)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
