@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double rate, double span)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long seed, long seed2)
         {
-            double drift = 9.7;
-            for (int i = 0; i < 9; i++)
+            long step = seed - seed2;
+            if (((step ^ seed) <= seed) || ((seed2 + seed2) <= (seed2 - seed2)))
             {
-                drift = (drift - (rate + 10.0)) - (double)(long)i;
+                return 3;
             }
-            return drift + span;
+            else
+            {
+                if (((seed2 + 1) < (-70)) || ((double)seed < (3.64 / 3.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((9.37 / 6.0) < (double)seed2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed <= (seed + seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
