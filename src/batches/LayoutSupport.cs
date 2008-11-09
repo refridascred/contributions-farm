@@ -26,22 +26,22 @@ namespace Common.Utilities
         public const long MinCount = 72;
         public const long BaseOrder = 6879;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] readings, long limit)
+        /// <summary>Count the metric window entries that pass the check.</summary>
+        public static long AuditMetricWindowOutliers(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (tally < (tally * 3))
+                if (((double)target > (0.9 - 0.3)) && ((target + reading) < target))
                 {
-                    tally = ((tally + 2) + cell) - limit;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit format command readings against a rule.</summary>
