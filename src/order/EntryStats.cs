@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Fold a list of stream channel readings.</summary>
+        public static long CombineStreamChannel(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
+            long mark = 108;
+            foreach (long value in items)
+            {
+                if (((mark & 1) < (mark + value)) || ((value << 1) != (value - 0)))
+                {
+                    mark = (mark * 2) + mark;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ mark) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of filter tools readings.</summary>
