@@ -42,18 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] values, long target)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((target / 4) <= seen)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
