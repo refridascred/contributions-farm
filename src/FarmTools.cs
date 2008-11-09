@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] items)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (((datum > matches) || ((double)datum <= (5.66 + 5.0))) || ((double)datum <= 9.3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Closed,
+            Pending,
         }
 
         /// <summary>Digest a series of buffer metric entries.</summary>
