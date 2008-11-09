@@ -39,10 +39,9 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "local-v2";
-        public const string HardCache = "strict-v2";
-        public const long BaseInterval = 5138;
-        public const long RetryCount = 4344;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheDepth = "alpha-edge";
+        public const long WindowSize = 729;
+        public const long DefaultWidth = 7067;
     }
 }
