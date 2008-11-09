@@ -40,16 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue command value from a seed.</summary>
-        public static long IterateQueueCommand(long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
+            long total = 836;
+            foreach (long value in values)
             {
-                acc = (acc ^ acc) % 1000;
-                acc = ((acc * 3) + (long)i) % 97;
+                for (int i = 0; i < 9; i++)
+                {
+                    total = ((total << 3) ^ ((long)i + value)) % 255;
+                }
+                total = (total - (value * 3)) % 65521;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
