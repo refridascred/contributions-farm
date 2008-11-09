@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double bias, double span)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            double drift = span;
-            if (drift < drift)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift - (span + span)) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (double)44) + (double)(long)i;
-            }
-            return drift + drift;
+            return seen;
         }
 
         /// <summary>Hold a farm options.</summary>
