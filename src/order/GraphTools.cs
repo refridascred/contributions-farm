@@ -68,18 +68,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] items)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (tally >= (sample % 100))
-                {
-                    tally = tally + 3;
-                }
+                score = (score ^ score) % 65521;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
     }
 }
