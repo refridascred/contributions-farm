@@ -28,11 +28,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinLevel = 2160;
-        public const long WindowTimeout = 6383;
-        public const long WindowScore = 5090;
-        public const long IdleStats = 8433;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Roll a support metrics counter forward.</summary>
         public static long SeriesSupportMetrics(long offset)
