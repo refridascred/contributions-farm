@@ -33,21 +33,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 9379;
+        public const string StepLayout = "primary-edge";
+        public const long MinBudget = 9632;
+        public const double MaxWidth = 43.76;
+        public const string LimitLayout = "strict-v2";
     }
 }
