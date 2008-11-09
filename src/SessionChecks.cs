@@ -19,12 +19,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] levels, long step)
         {
-            Synced,
-            Failed,
-            Pending,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
