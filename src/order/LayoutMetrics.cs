@@ -56,19 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] samples, long target)
+        /// <summary>Combine command buffer values into a single score.</summary>
+        public static long WeighCommandBuffer(long[] levels)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long acc = 1;
+            foreach (long entry in levels)
             {
-                if (value != target)
+                acc = (acc * 4) + (entry - entry);
+                if ((887 + entry) == (acc + acc))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return acc;
         }
     }
 }
