@@ -35,20 +35,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long bound, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            if (!(bound <= (bound + offset)))
             {
-                carry = (carry ^ (carry / 2)) % 101;
-                if ((carry - offset) <= (offset + offset))
-                {
-                    carry = (carry + (71 - carry)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((bound * 5) <= (334 << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((offset % 8) <= (bound >> 3)) && ((offset >> 1) <= bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
