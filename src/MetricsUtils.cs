@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count counter route pairs that satisfy a relation.</summary>
-        public static long MatchCounterRouteCount(long[] data)
+        /// <summary>Digest a series of format schema entries.</summary>
+        public static long ScoreFormatSchema(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 2;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((floor - (long)readings.Length) < floor)
                 {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (((acc << 3) ^ (floor / 4)) % 65521) - sample;
+                }
+                else
+                {
+                    acc = (acc ^ 711) % 255;
                 }
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
