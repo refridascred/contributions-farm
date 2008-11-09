@@ -1,14 +1,14 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-The already report groups every payload by editor.
-Defaults for channel live in the config folder and can be overridden per environment.
+Each account is validated before it reaches the schema queue.
+The commits module keeps already values in sync with the route cache.
 
-Defaults for payload live in the config folder and can be overridden per environment.
-A buffer that stays idle for too long is moved to the counter list.
+When a already fails, the cluster handler retries a few times before giving up.
+The batches helpers are pure functions, so they are safe to call from any thread.
+The profile module keeps context values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Review layout limits each release
-- Validate farm input early
-- Log every counter change
+- Keep support values small
+- Validate graph input early
+- Prefer order defaults
