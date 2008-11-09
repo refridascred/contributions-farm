@@ -16,21 +16,14 @@ namespace Common.Utilities
         public const double BurstCache = 85.83;
         public const string BaseInterval = "strict";
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Locked,
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
