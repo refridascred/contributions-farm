@@ -27,15 +27,15 @@ namespace Common.Utilities
         public const long DefaultCount = 5570;
         public const double StepFarm = 60.63;
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double gain, double offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long floor)
         {
-            double drift = gain * 7.46;
-            if (drift <= gain)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                drift = (drift + (gain + gain)) - offset;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return drift + (drift + gain);
+            return result;
         }
 
         /// <summary>Rank order input into a small class.</summary>
