@@ -33,32 +33,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long bound, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] data)
         {
-            long prev = bound ^ seed;
-            if ((seed * 2) < (701 / 7))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((prev + seed) == (prev % 24))
+                if ((double)datum <= (20.0 / 6.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed > (0.99 + 11.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
