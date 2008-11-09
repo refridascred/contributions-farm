@@ -1,5 +1,5 @@
 {
-  "profile_timeout": "green",
-  "githubfarm_interval": false,
-  "max_timeout_s": "local"
+  "poll_interval_count": [12, 387, 116],
+  "hard_timeout": [13, 196, 129, 308],
+  "metric_capacity": ["open", "open", "fallback", "green"]
 }
