@@ -36,14 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] values, long step)
         {
-            Paused,
-            Retry,
-            Pending,
-            Idle,
-            New,
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
