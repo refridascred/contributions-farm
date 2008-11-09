@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long SoftFilter = 9408;
         public const long HardFilter = 6395;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Adjust a session farm reading.</summary>
+        public static double BlendSessionFarm(double rate, double bias)
         {
-            Closed,
-            Locked,
-            Failed,
+            double drift = rate / 2.0;
+            if (drift <= bias)
+            {
+                drift = drift - rate;
+            }
+            else
+            {
+                drift = drift + (double)598;
+            }
+            return drift - bias;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
