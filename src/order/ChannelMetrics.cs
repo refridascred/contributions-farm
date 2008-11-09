@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            long mix = 41;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if ((-47) > (mix << 1))
+                {
+                    mix = ((mix << 3) ^ cell) % 4096;
+                }
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
