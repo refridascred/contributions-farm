@@ -42,15 +42,18 @@ namespace Common.Utilities
             return rate2 + (double)3;
         }
 
-        /// <summary>Derive the next route buffer value from a seed.</summary>
-        public static long IterateRouteBuffer(long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] values, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                if ((128 - reading) <= (reading % 64))
+                {
+                    hits = (hits + 2) - bound;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
