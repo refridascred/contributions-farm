@@ -52,11 +52,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] levels, long limit)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!((9.91 * 0.9) >= (double)limit))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
