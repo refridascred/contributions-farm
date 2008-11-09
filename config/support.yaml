@@ -1,44 +1,15 @@
 # support settings
-burst_retries_pct:
-  cache_threshold_s:
-    readonly: true
-    support_threshold: fallback
-    sync_threshold: true
-  cache_threshold_count: latest
-  audit:
-    retry_retries: false
-    contributi_delay: 100
-    channel_limit: true
-    idle_ttl_s: cached
-    cache_timeout_count: fallback
-max_retries_s: 1024
-idle_delay_s:
-  batch_size_pct: true
-  verbose: fallback
-  cache_retries_s:
-    - cached
-    - cached
-  soft_limit: blue
-  persist: false
-  base_delay_s:
-    - 452
-    - 239
-enabled:
-  readonly:
-    - 40
-    - 22
-  idle_limit: fallback
-  stats_ratio:
-    payload_timeout: 5341
-    strict: 30
-    flush_limit_ms: true
-    poll_threshold_s:
-      - 26
-      - 179
-      - 317
-    soft_threshold_pct: 7752
-    flush_timeout_ms: 27.39
-readonly:
-  - 446
-  - 273
-  - 382
+base_window_ms:
+  cache_depth_pct: false
+  sync_size_count:
+    - edge
+    - strict
+  retry_delay:
+    metric_retries: 500
+    audit: open
+    buffer_retries: staging
+    report_window: true
+strict:
+  - staging
+  - stable
+verbose: false
