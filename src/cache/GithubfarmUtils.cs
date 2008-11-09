@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinSpan = "strict-edge";
-        public const string WindowProfile = "standard-v2";
-        public const long MinWidth = 5699;
-        public const long MinFactor = 6;
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double weight, double span)
+        {
+            double scale = (8.9 + 9.23) / 6.0;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (((scale + (double)22) + (double)(long)i) + weight) - span;
+            }
+            return scale - (double)5;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long origin, long seed)
