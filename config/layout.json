@@ -1,12 +1,6 @@
 {
-  "poll_delay": 46.53,
-  "dry_run": "staging",
-  "command_window": {
-    "default_threshold": "primary",
-    "readonly": 8992,
-    "verbose": "blue",
-    "soft_limit_ms": true,
-    "cache_threshold_pct": false,
-    "warm_capacity_s": 100
-  }
+  "compress": false,
+  "max_threshold": 5084,
+  "support_retries": false,
+  "dry_run": true
 }
