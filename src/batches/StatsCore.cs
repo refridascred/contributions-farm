@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first contributi command entry that matches the target.</summary>
-        public static long SeekContributiCommandIndex(long[] levels, long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
