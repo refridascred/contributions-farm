@@ -27,15 +27,24 @@ namespace Common.Utilities
             return mean + (double)66;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Classify a layout checks pair into a bucket.</summary>
+        public static long BucketLayoutChecks(long floor, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            if ((floor * 2) >= (floor + step))
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if (((double)step == (6.87 * 5.1)) && (floor < ((-95) + step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Match up order stream samples.</summary>
