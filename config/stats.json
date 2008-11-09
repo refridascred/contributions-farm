@@ -1,7 +1,5 @@
 {
-  "dry_run": 2573,
-  "max_ttl": false,
-  "enabled": 56,
-  "session_size": 25.99,
-  "flush_delay": 60
+  "default_window_ms": "legacy",
+  "strict": 24,
+  "flush_interval_ms": 67
 }
