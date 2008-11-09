@@ -38,15 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] series)
         {
-            long mark = 4;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                mark = ((mark + (mark & 255)) % 255) ^ datum;
+                if ((cell + 947) <= (cell + 3))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the graph stats entries that pass the check.</summary>
