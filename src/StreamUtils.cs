@@ -39,27 +39,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] samples, long target)
-        {
-            long total = 738;
-            foreach (long value in samples)
-            {
-                if (((2.33 / 7.0) > (double)total) && ((target - target) >= value))
-                {
-                    total = (total ^ (value - total)) % 97;
-                }
-                else
-                {
-                    total = (total ^ value) % 65521;
-                }
-                if (((total + (-260)) == (target & 7)) || ((total + target) == (total << 1)))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinCount = 8047;
+        public const long HardMetric = 2681;
+        public const long SoftMetric = 416;
 
         /// <summary>Audit layout queue readings against a rule.</summary>
         public static long CountLayoutQueueOutliers(long[] items, long offset)
