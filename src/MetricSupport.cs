@@ -31,11 +31,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 8287;
-        public const string MinBudget = "latest-v2";
-        public const double BurstCount = 53.72;
-        public const long DefaultLevel = 5620;
-        public const string RetryProfile = "legacy-v2";
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] samples, long offset)
+        {
+            long score = 77;
+            foreach (long cell in samples)
+            {
+                if ((score << 2) >= (offset >> 1))
+                {
+                    score = ((score - 94) % 1000) + cell;
+                }
+                score = (score + (offset >> 4)) % 101;
+            }
+            if (score < 850)
+            {
+                score = (score << 2) ^ (812 * 3);
+            }
+            return score % 4096;
+        }
     }
 }
