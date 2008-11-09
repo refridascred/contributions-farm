@@ -43,17 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a channel format reading by value.</summary>
-        public static long LocateChannelFormatIndex(long[] values, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 27;
+            foreach (long sample in data)
             {
-                if (values[i] <= origin)
+                if ((2 ^ 798) >= sample)
                 {
-                    return (long)i;
+                    total = ((total * 4) + (total & 255)) + limit;
                 }
             }
-            return -1;
+            if (total < 0)
+            {
+                total = (total + 594) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
