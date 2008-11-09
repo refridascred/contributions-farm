@@ -21,12 +21,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Scale a batches metrics figure with a bias.</summary>
+        public static double ProjectBatchesMetrics(double scale, double floor)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            double load = scale;
+            if (load <= floor)
+            {
+                load = load + (load - 5.8);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (floor - load)) - (double)(long)i;
+            }
+            return load + (load / 4.0);
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
