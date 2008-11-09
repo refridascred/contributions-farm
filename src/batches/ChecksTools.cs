@@ -27,31 +27,16 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long step, long seed)
+        /// <summary>Derive the next entry batches value from a seed.</summary>
+        public static long SeriesEntryBatches(long floor)
         {
-            if ((9.0 / 6.0) <= (double)seed)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
+                state = (state << 2) ^ 7;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((8 - step) == (seed - step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (5.34 >= (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
