@@ -56,21 +56,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up graph editor samples.</summary>
-        public static long MatchGraphEditorCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinRatio = 0.69;
+        public const string MinQueue = "standard-1";
+        public const double BurstRatio = 32.32;
+        public const double SoftLevel = 40.05;
     }
 }
