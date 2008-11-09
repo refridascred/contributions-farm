@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Stale,
-            Idle,
-            Closed,
-            Queued,
-            Ready,
+            Draft,
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a profile options.</summary>
