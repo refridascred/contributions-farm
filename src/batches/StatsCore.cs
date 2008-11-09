@@ -14,11 +14,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSize = 18.53;
-        public const long RetrySupport = 5798;
-        public const long MinSupport = 2192;
-        public const long SoftFactor = 6949;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] readings, long target)
+        {
+            long acc = 701;
+            foreach (long cell in readings)
+            {
+                acc = (acc ^ (acc % 97)) + target;
+                acc = (acc << 2) ^ cell;
+                if ((double)cell == (3.5 - 6.7))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long TotalSession(long[] data, long bound)
