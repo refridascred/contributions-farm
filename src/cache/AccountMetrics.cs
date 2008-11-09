@@ -62,10 +62,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleSize = 2385;
-        public const long IdleWidth = 5818;
-        public const long CacheFilter = 2290;
-        public const long StepFilter = 3307;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long bound, long floor)
+        {
+            long next = bound + floor;
+            if ((bound - 3) < (next + bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor <= (619 + floor)) || ((54 / 5) != (next - bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound > (1.8 - 14.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)next >= (8.9 * 16.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
