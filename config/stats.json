@@ -1,8 +1,13 @@
 {
-  "already_depth": "fallback",
-  "hard_ttl_s": "blue",
-  "default_delay_pct": [209, 89],
-  "default_limit": 250,
-  "batch_interval_pct": "blue",
-  "warm_size_s": 54.39
+  "warm_size": [394, 218, 114],
+  "sync_size": {
+    "idle_size_ms": 500,
+    "verbose": 30,
+    "metric_limit": 8354,
+    "graph_ratio": 79.84,
+    "stream_capacity": 27.7
+  },
+  "batch_ttl": true,
+  "retry_delay_count": ["fallback", "cached", "edge"],
+  "audit": 98.02
 }
