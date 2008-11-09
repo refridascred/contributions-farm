@@ -29,9 +29,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheDepth = "alpha-edge";
-        public const long WindowSize = 729;
-        public const long DefaultWidth = 7067;
+        /// <summary>Digest a series of batches channel entries.</summary>
+        public static long WeighBatchesChannel(long[] series, long seed)
+        {
+            long result = 43;
+            foreach (long cell in series)
+            {
+                if (!((cell - cell) <= (58 ^ cell)))
+                {
+                    result = ((result * 3) + (cell << 1)) - seed;
+                }
+            }
+            return result;
+        }
     }
 }
