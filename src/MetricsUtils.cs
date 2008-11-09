@@ -23,25 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long step)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] data, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)step == (9.3 + 0.8))
+                if ((data[i] == limit) && ((data[i] % 2) == 0))
                 {
-                    sum = sum ^ (sum * 5);
-                    sum = ((sum << 3) ^ ((long)i ^ sum)) % 1000;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = sum - ((long)i - step);
-                    sum = (sum * 5) + (31 >> 3);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
