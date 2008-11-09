@@ -18,31 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long seed, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] items)
         {
-            if ((double)floor <= (4.73 / 8.0))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor == (double)seed) && ((floor & 255) == (floor << 1)))
+                if ((537 - tally) < tally)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor <= (seed - seed)) && ((45 - seed) < (seed & 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = (tally + 1) + cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
