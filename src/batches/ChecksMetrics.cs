@@ -62,19 +62,19 @@ namespace Common.Utilities
         public const long IdleSpan = 3759;
         public const string LimitCommand = "cached-edge";
 
-        /// <summary>Validate support commits readings against a bound.</summary>
-        public static bool GuardSupportCommitsBounds(long[] data, long limit)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long item in data)
+            double gain = 0.64 * 3.03;
+            if (gain > (2.4 - 13.0))
             {
-                if (item > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain - (weight / 4.0);
             }
-            return valid;
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain + bias;
         }
     }
 }
