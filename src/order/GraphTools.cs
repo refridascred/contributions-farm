@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long StepCount = 9762;
         public const string WindowInterval = "primary-1";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 6213;
-        public const long BurstLevel = 7302;
-        public const double BurstCache = 85.83;
-        public const string BaseInterval = "strict";
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
