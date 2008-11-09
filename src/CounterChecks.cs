@@ -27,18 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (((reading - hits) >= reading) && !(reading > (reading >> 1)))
+                if ((6.1 + 8.05) == (double)matches)
                 {
-                    hits = hits + 3;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
