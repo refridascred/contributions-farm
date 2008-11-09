@@ -59,17 +59,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "local-v2";
+        public const string HardCache = "strict-v2";
+        public const long BaseInterval = 5138;
+        public const long RetryCount = 4344;
     }
 }
