@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const string HardBudget = "cached-v2";
         public const long IdleFarm = 5483;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Idle,
-            Done,
-            Failed,
-            Synced,
-            Locked,
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
