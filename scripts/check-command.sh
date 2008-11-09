@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in staging open; do
+for item in strict staging legacy open; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=308
+COMMAND_LIMIT=31
 log "limit is ${COMMAND_LIMIT}"
