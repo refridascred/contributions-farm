@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double scale, double span)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] values)
         {
-            double rate = span;
-            if (rate >= 6.39)
+            long mix = 12;
+            foreach (long sample in values)
             {
-                rate = rate - scale;
+                if (sample >= (sample + sample))
+                {
+                    mix = (mix << 2) ^ (mix % 60);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ sample;
+                }
+                if (((double)sample != (3.3 / 9.0)) || ((double)sample >= (0.7 * 19.0)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + span;
-            }
-            return rate + scale;
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
