@@ -71,19 +71,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi layout readings against a bound.</summary>
-        public static bool VerifyContributiLayoutBounds(long[] readings, long bound)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Active,
+            Pending,
+            New,
         }
 
         /// <summary>Audit cache queue readings against a rule.</summary>
