@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                state = (state + (55 >> 3)) % 65521;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the session status values.</summary>
