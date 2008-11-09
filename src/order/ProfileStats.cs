@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Active,
-            Draft,
-            Locked,
-            Dropped,
-            Pending,
+            public double Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a order options.</summary>
