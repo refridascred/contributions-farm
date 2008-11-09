@@ -41,19 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((1 - 964) > (value + value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftWidth = 683;
+        public const long MaxInterval = 3861;
+        public const long HardCluster = 326;
+        public const long LimitCluster = 2995;
+        public const long MaxWidth = 9616;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long ClassifyAlready(long seed, long floor)
