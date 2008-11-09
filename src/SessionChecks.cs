@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Draft,
-            Active,
-            Done,
-            Queued,
-            New,
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a command summary.</summary>
