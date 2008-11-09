@@ -57,37 +57,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long target, long offset)
+        /// <summary>Rank batches support input into a small class.</summary>
+        public static long SortBatchesSupport(long seed, long step)
         {
-            long cur = target ^ offset;
-            if ((5.0 * 5.74) <= (double)target)
+            if ((double)step < 4.7)
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if ((cur & 15) > target)
+                if (!((double)step <= (10.0 + 16.0)))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)offset > (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((cur / 5) != (offset ^ offset)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
