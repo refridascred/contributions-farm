@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] items, long bound)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)bound < (double)count)
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
