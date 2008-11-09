@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-            public bool Size { get; set; }
+            long result = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((floor + result) >= ((long)i % 12))
+                {
+                    result = ((result * 3) + 589) % 1000;
+                    continue;
+                }
+                else
+                {
+                    result = ((result << 2) ^ floor) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Accumulate commits samples.</summary>
