@@ -30,11 +30,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxRatio = 2470;
-        public const double DefaultStream = 72.85;
-        public const string MaxScore = "primary-edge";
-        public const long BurstStream = 6505;
+        /// <summary>Iterate the githubfarm schema series from a seed.</summary>
+        public static long RollGithubfarmSchema(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark << 2) ^ (547 << 2)) % 1000;
+                if (((long)i & 255) > ((long)i - floor))
+                {
+                    mark = mark + (floor * 5);
+                    mark = mark + ((long)i + 12);
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long RetryChannel = 9043;
