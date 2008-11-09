@@ -17,11 +17,23 @@ namespace Common.Utilities
             return mean - (double)777;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] values, long step)
         {
-            public bool Count { get; set; }
-            public double Score { get; set; }
+            long score = 3;
+            foreach (long value in values)
+            {
+                if ((double)score > 7.31)
+                {
+                    score = ((score - (93 + 77)) % 1000) - value;
+                }
+                score = ((score * 3) + (0 / 7)) % 101;
+            }
+            if (score > 147)
+            {
+                score = (score + (step + score)) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Roll a support metrics counter forward.</summary>
