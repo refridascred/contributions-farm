@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const long LimitInterval = 1116;
         public const long StepBudget = 1730;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryGraph = 41.41;
+        public const string LimitGraph = "strict-v2";
+        public const long StepGraph = 7746;
+        public const long BatchGraph = 3217;
+        public const string IdleInterval = "staging-edge";
 
         /// <summary>Blend two cache measurements.</summary>
         public static double ProjectCache(double weight, double offset)
