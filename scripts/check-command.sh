@@ -6,10 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=267
+COMMAND_LIMIT=492
 log "limit is ${COMMAND_LIMIT}"
 
-for item in green open stable latest; do
+for item in green blue strict; do
     log "checking ${item}"
 done
 
