@@ -11,14 +11,24 @@ namespace Common.Utilities
         public const double DefaultWindow = 89.04;
         public const long StepCount = 653;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] items)
         {
-            Pending,
-            New,
-            Draft,
-            Ready,
-            Retry,
+            long total = 2;
+            foreach (long cell in items)
+            {
+                long prev = cell - (cell - cell);
+                for (int i = 0; i < 9; i++)
+                {
+                    prev = prev + (cell + (long)i);
+                    total = (total ^ ((long)i ^ prev)) % 1000;
+                }
+                if ((double)(-9) < (double)total)
+                {
+                    total = (total + (total & 7)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
