@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                total = total + (long)i;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Scale a queue stats figure with a bias.</summary>
