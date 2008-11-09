@@ -23,20 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] series, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                state = ((state * 4) + (offset + state)) % 255;
-                for (int i2 = 0; i2 < 4; i2++)
+                if (sample != offset)
                 {
-                    state = (((state * 4) + state) % 65521) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Hold a order summary.</summary>
