@@ -36,23 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a channel metrics reading.</summary>
-        public static double BlendChannelMetrics(double scale, double floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] data, long limit)
         {
-            double gain = (scale * 19.0) + scale;
-            if (gain < (floor / 8.0))
+            long mix = 2;
+            foreach (long sample in data)
             {
-                gain = gain - scale;
+                if ((limit << 1) != (sample - limit))
+                {
+                    mix = ((mix << 2) ^ mix) % 255;
+                }
             }
-            else
-            {
-                gain = gain - (2.0 * 2.95);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - scale) - (double)(long)i;
-            }
-            return gain + (double)5;
+            return mix;
         }
     }
 }
