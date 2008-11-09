@@ -1,18 +1,16 @@
 # githubfarm settings
-base_interval_s: 30
-dry_run: latest
-strict: legacy
-context_interval: 8.65
-sync_limit_pct:
-  - 41
-  - 349
-burst_delay:
-  tools_retries: 500
-  channel_limit:
-    min_threshold_ms: eu-west
-    channel_threshold: staging
-    audit: latest
-    metric_interval: 100
-    retry_interval_s: 25.08
-  cache_depth: 60
-  buffer_threshold: 6866
+batch_timeout:
+  audit: 4374
+  hard_interval: 56.02
+  default_retries_pct: false
+  cache_interval_ms: legacy
+  commits_timeout: true
+  channel_interval:
+    flush_threshold_count: true
+    batch_interval:
+      - green
+      - standard
+      - stable
+    persist: strict
+default_interval_ms: true
+audit: cached
