@@ -34,15 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] series, long floor)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double bias, double offset)
         {
-            long sum = 206;
-            foreach (long cell in series)
+            double gain = offset;
+            if (gain < (bias + offset))
             {
-                sum = (((sum * 5) + (sum + sum)) + cell) + floor;
+                gain = gain - (gain - 14.0);
             }
-            return sum % 1000;
+            else
+            {
+                gain = gain - 8.0;
+            }
+            return gain + (15.0 * 8.4);
         }
     }
 }
