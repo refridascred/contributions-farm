@@ -44,12 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            Stale,
-            Retry,
-            New,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
