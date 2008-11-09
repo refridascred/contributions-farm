@@ -23,26 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long seed, long target)
-        {
-            long prev = seed - target;
-            if ((prev % 64) > target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)prev == (8.9 - 0.82))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 7318;
+        public const long WindowDepth = 28;
+        public const string LimitScore = "primary-edge";
+        public const double LimitQueue = 95.54;
+        public const long StepQueue = 6468;
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] items)
