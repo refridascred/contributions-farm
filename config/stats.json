@@ -1,6 +1,7 @@
 {
-  "flush_depth_ms": false,
-  "idle_ratio_pct": "legacy",
-  "profile_ratio": false,
-  "default_threshold": ["green", "fallback", "open"]
+  "session_ttl": true,
+  "cluster_threshold": 4.6,
+  "hard_capacity": "eu-west",
+  "soft_retries_s": "eu-west",
+  "min_depth_count": 1540
 }
