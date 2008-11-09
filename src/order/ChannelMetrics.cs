@@ -36,24 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Match up graph batch samples.</summary>
+        public static long OverlapGraphBatchCount(long[] values)
         {
-            long acc = 3;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long diff = cell % 100;
-                acc = (acc << 3) ^ (diff + diff);
-                if ((cell - cell) <= (acc + acc))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc ^ (acc ^ acc)) % 1000;
+                    if ((values[i] - values[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 3)
-            {
-                acc = ((acc * 3) + (acc + 604)) % 1000;
-            }
-            return acc % 97;
+            return count;
         }
     }
 }
