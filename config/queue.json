@@ -1,11 +1,7 @@
 {
-  "compress": 60,
-  "min_window": 100,
-  "enabled": {
-    "burst_capacity_count": "green",
-    "strict": ["blue", "stable"],
-    "soft_capacity_count": "eu-west",
-    "max_window": 15.62,
-    "hard_threshold_s": false
-  }
+  "hard_depth_s": 52.35,
+  "batch_capacity_s": "strict",
+  "min_depth": 78.95,
+  "strict": false,
+  "cache_size_ms": 78.6
 }
