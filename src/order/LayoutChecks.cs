@@ -45,12 +45,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardInterval = 2472;
-        public const string BurstToken = "alpha-v2";
-        public const double SoftLevel = 71.05;
-        public const long LimitFactor = 9528;
-        public const long WindowToken = 837;
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double weight, double floor)
+        {
+            double drift = (double)(97 * 3);
+            if (drift > weight)
+            {
+                drift = drift - (7.0 - floor);
+            }
+            else
+            {
+                drift = drift - (6.3 - floor);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 9.81) + (double)(long)i;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
