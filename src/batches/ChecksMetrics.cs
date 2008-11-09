@@ -19,22 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] values, long step)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample + matches) >= matches)
-                {
-                    matches = (matches + 3) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Active,
+            Pending,
+            Closed,
+            New,
         }
 
         /// <summary>Project the next batch value.</summary>
