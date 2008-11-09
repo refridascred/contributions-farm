@@ -62,13 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] readings, long origin)
         {
-            Dropped,
-            Closed,
-            Done,
-            Retry,
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit context channel readings against a rule.</summary>
