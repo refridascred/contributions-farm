@@ -19,19 +19,10 @@ namespace Common.Utilities
         public const long BaseBudget = 5360;
         public const long BaseFactor = 1843;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 85.55;
+        public const long BaseWidth = 6475;
+        public const double WindowContributi = 67.07;
+        public const long MaxContributi = 718;
     }
 }
