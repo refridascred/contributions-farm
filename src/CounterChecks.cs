@@ -37,38 +37,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long offset, long offset2)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            if ((offset2 >> 5) < offset2)
-            {
-                return 3;
-            }
-            else
-            {
-                if (7.1 > (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset2 < (offset2 + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (9.2 < (double)offset2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
