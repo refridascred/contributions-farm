@@ -14,12 +14,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardLevel = 7522;
-        public const string DefaultOrder = "stable-edge";
-        public const double HardOrder = 16.73;
-        public const long StepOrder = 4093;
-        public const long SoftSpan = 7503;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long target, long floor)
+        {
+            if ((target + 6) != (target & 255))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6.9 * 3.7) >= (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor > (3.4 * 5.4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a entry metric reading by value.</summary>
         public static long LocateEntryMetricIndex(long[] readings, long offset)
