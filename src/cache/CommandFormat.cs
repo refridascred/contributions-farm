@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] data, long limit)
         {
-            long anchor = -587;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                anchor = ((anchor * 4) + 458) ^ item;
+                if (((cell + limit) == (cell ^ cell)) && ((double)cell < (double)seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor > 67)
-            {
-                anchor = (anchor ^ ((long)levels.Length - anchor)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
