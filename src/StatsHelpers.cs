@@ -57,22 +57,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] series, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mix = 1;
+            foreach (long value in values)
             {
-                if ((sample << 2) >= sample)
+                if (!(((-44) + 5) >= value))
                 {
-                    matches = (matches + 2) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = mix + (mix ^ mix);
                 }
             }
-            return matches;
+            if (mix < (-4))
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix;
         }
     }
 }
