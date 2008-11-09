@@ -47,21 +47,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 559;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = carry ^ (carry << 2);
+                if (carry > (carry >> 3))
                 {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry * 3) + 4) % 65521;
+                    continue;
+                }
+                if ((carry + reading) < reading)
+                {
+                    carry = (carry - (reading - reading)) % 1000;
                 }
             }
-            return hits;
+            if (carry > 690)
+            {
+                carry = carry ^ (carry + (long)levels.Length);
+            }
+            return carry;
         }
 
         /// <summary>Accumulate queue samples.</summary>
