@@ -23,20 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double ratio, double span)
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((long)i & 127) < (312 + score))
-                {
-                    score = ((score << 3) ^ ((long)i + score)) % 255;
-                }
-                score = ((score * 2) + (limit & 3)) % 101;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            double bias = span;
+            return (bias + bias) + ratio;
         }
 
         /// <summary>Describe the buffer status values.</summary>
