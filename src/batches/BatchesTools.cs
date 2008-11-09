@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] series, long origin)
+        /// <summary>Rank stream editor input into a small class.</summary>
+        public static long GradeStreamEditor(long floor, long step)
         {
-            long total = 501;
-            foreach (long value in series)
+            if ((step ^ floor) != (293 ^ step))
             {
-                if ((double)value != (7.0 / 3.0))
+                return 1;
+            }
+            else
+            {
+                if (((6.91 / 2.0) > (double)step) || (floor < ((-64) - floor)))
                 {
-                    total = ((total << 2) ^ (value / 6)) % 65521;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (total < 89)
-            {
-                total = (total - (origin - total)) % 101;
-            }
-            return total;
         }
 
         /// <summary>Describe the route phase values.</summary>
