@@ -31,20 +31,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate notes metric readings against a bound.</summary>
-        public static bool VerifyNotesMetricRange(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheCount = 1517;
+        public const long StepReport = 9659;
+        public const string WindowInterval = "standard-1";
 
         /// <summary>Fold a list of contributi account readings.</summary>
         public static long FoldContributiAccount(long[] series, long step)
