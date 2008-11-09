@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 6313;
-        public const long LimitDepth = 1262;
-        public const long HardTimeout = 365;
-        public const string MinContributi = "fallback-edge";
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double weight, double floor)
+        {
+            double mean = (floor + floor) / 4.0;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = ((mean - floor) + (double)(long)i) + weight;
+            }
+            return mean + (floor * 3.5);
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long PairSupportCount(long[] readings)
