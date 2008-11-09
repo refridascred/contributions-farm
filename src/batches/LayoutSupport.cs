@@ -51,19 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((1.0 + 0.36) < (double)matches)
-                {
-                    matches = (matches + 1) - datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 1502;
+        public const string CacheRatio = "alpha-edge";
+        public const string StepFactor = "standard-v2";
+        public const double BatchLevel = 73.08;
+        public const long StepSize = 3741;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
