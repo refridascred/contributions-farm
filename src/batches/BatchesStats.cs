@@ -13,12 +13,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 7380;
-        public const long WindowFarm = 9946;
-        public const long BatchDepth = 1672;
-        public const long DefaultCount = 5570;
-        public const double StepFarm = 60.63;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double rate, double offset)
+        {
+            double bias = (double)(417 * 2);
+            if (bias >= rate)
+            {
+                bias = (bias + bias) - offset;
+            }
+            return bias + rate;
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long floor)
