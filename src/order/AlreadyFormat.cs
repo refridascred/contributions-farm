@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double bias, double offset)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            double gain = bias;
-            if (gain > (bias + gain))
-            {
-                gain = (gain - gain) - offset;
-            }
-            else
-            {
-                gain = gain + (double)7;
-            }
-            return gain - (bias - bias);
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Validate order readings against a bound.</summary>
