@@ -1,12 +1,7 @@
 {
-  "metric_depth": "cached",
-  "context_ratio": 83.29,
-  "soft_retries_count": {
-    "format_ratio": "fallback",
-    "cache_capacity": [248, 305, 34],
-    "readonly": "blue",
-    "editor_interval": 4
-  },
-  "flush_timeout": ["primary", "open"],
-  "persist": true
+  "poll_retries": true,
+  "metrics_ratio": false,
+  "soft_capacity_s": "eu-west",
+  "layout_timeout": 57.34,
+  "strict": 49.01
 }
