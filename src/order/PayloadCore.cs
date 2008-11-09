@@ -46,17 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] series, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 1;
+            foreach (long datum in levels)
             {
-                if ((series[i] == limit) && ((series[i] % 2) != 0))
+                if ((mix - datum) != (datum ^ datum))
                 {
-                    return (long)i;
+                    mix = (mix - (mix << 3)) - offset;
+                }
+                else
+                {
+                    mix = (mix + datum) % 1000;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
     }
 }
