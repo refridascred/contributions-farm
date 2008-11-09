@@ -1,6 +1,6 @@
 {
-  "dry_run": [260, 119],
-  "warm_capacity_pct": true,
-  "stats_depth": "primary",
-  "persist": 96.57
+  "max_size_pct": "primary",
+  "metric_delay": "cached",
+  "flush_threshold_ms": ["blue", "stable"],
+  "warm_interval": true
 }
