@@ -35,12 +35,11 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepInterval = 8.78;
-        public const long BaseReport = 8718;
-        public const long LimitSize = 7517;
-        public const string LimitReport = "strict-edge";
-        public const long BaseTimeout = 3872;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinTimeout = 7189;
+        public const long BatchChannel = 4099;
+        public const long BatchTimeout = 1679;
+        public const double SoftBudget = 68.9;
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
