@@ -29,15 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long total = 555;
-            foreach (long value in values)
-            {
-                total = total ^ (value + value);
-            }
-            return total % 4096;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
