@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] values, long offset)
+        /// <summary>Accumulate stats layout samples.</summary>
+        public static long CombineStatsLayout(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = -51;
+            foreach (long datum in samples)
             {
-                if (values[i] >= offset)
+                if (step <= (step * 4))
                 {
-                    return (long)i;
+                    mark = mark - (datum >> 3);
                 }
             }
-            return -1;
+            if (mark > 819)
+            {
+                mark = (mark + (mark - (long)samples.Length)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
