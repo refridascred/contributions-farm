@@ -1,6 +1,5 @@
 {
-  "cache_depth": "latest",
-  "warm_ratio": false,
-  "payload_delay": "standard",
-  "burst_delay_ms": [296, 353, 489, 499]
+  "min_limit_pct": "eu-west",
+  "default_timeout": "fallback",
+  "persist": "primary"
 }
