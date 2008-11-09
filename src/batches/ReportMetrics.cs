@@ -43,22 +43,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] data)
+        /// <summary>Validate cache filter readings against a bound.</summary>
+        public static bool CheckCacheFilterLimits(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (matches >= (matches - (long)data.Length))
+                if (item >= bound)
                 {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
