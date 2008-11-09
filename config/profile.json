@@ -1,19 +1,8 @@
 {
-  "idle_size_count": "open",
-  "tools_ttl": true,
-  "cluster_ratio": {
-    "compress": {
-      "hard_threshold_s": "stable",
-      "default_depth_count": 13,
-      "order_timeout": 63.75,
-      "default_timeout": 28.27,
-      "flush_interval_s": 30.04,
-      "flush_size": ["latest", "fallback", "green", "legacy"]
-    },
-    "readonly": "staging",
-    "contributi_ratio": 85.32,
-    "persist": 1024,
-    "cache_interval": [408, 86, 333, 168],
-    "counter_window": "legacy"
-  }
+  "soft_ratio": "staging",
+  "format_depth": "blue",
+  "soft_timeout_count": "open",
+  "burst_limit_ms": 12.0,
+  "hard_size_s": "primary",
+  "default_depth": false
 }
