@@ -24,11 +24,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 116;
-        public const double BatchPayload = 31.17;
-        public const long LimitBudget = 3905;
-        public const long DefaultPayload = 9403;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 5057;
+        public const double SoftLevel = 56.77;
+        public const string StepBudget = "strict-1";
+        public const double StepGithubfarm = 20.63;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxContext = "primary-edge";
