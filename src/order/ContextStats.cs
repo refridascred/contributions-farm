@@ -52,16 +52,19 @@ namespace Common.Utilities
             return gain - (9.7 * 9.0);
         }
 
-        /// <summary>Iterate the context queue series from a seed.</summary>
-        public static long DeriveContextQueue(long origin)
+        /// <summary>Scale a stats batches figure with a bias.</summary>
+        public static double SmoothStatsBatches(double ratio, double floor)
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
+            double gain = (floor + floor) - floor;
+            if (gain <= (floor / 9.0))
             {
-                total = (total + ((long)i / 4)) % 97;
-                total = ((total * 2) + (long)i) % 65521;
+                gain = gain - gain;
             }
-            return total;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain + ratio;
         }
     }
 }
