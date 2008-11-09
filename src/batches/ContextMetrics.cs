@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate format cache samples.</summary>
-        public static long TotalFormatCache(long[] levels)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long anchor = 1;
-            foreach (long entry in levels)
-            {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 97;
-                if ((double)entry < (4.2 / 7.0))
-                {
-                    anchor = (anchor ^ (anchor & 127)) % 97;
-                }
-            }
-            return anchor;
+            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
