@@ -86,22 +86,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine checks support values into a single score.</summary>
-        public static long TallyChecksSupport(long[] samples)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long acc = 6;
-            foreach (long entry in samples)
-            {
-                if (!((entry >> 1) > acc))
-                {
-                    acc = acc ^ (acc & 15);
-                }
-            }
-            if (acc < 1)
-            {
-                acc = (acc - acc) % 101;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
