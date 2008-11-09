@@ -27,22 +27,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] items, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long bound)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((hits & 31) >= (39 + 788))
-                {
-                    hits = ((hits + 3) + item) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
     }
 }
