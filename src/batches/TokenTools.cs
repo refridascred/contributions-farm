@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryCount = "legacy-1";
-        public const string BurstRoute = "local-1";
-        public const long SoftInterval = 1791;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long limit, long limit2)
+        {
+            if ((382 ^ limit2) >= limit2)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8 * 4) != (2 + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit2 * 3) > (69 + 4)) && (92 < (limit / 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)limit2 < 15.0) && ((double)limit2 < (16.0 * 6.4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
