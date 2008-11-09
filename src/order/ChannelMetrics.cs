@@ -27,18 +27,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] data, long target)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches * 5) <= (target ^ matches))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            Stale,
+            Closed,
+            Idle,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
