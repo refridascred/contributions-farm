@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultScore = 2774;
-        public const string BurstBudget = "open";
-        public const string MinTimeout = "stable-1";
-        public const double SoftCount = 72.47;
-        public const long MaxReport = 2923;
+        /// <summary>Fold a list of checks session readings.</summary>
+        public static long FoldChecksSession(long[] values, long step)
+        {
+            long total = 80;
+            foreach (long item in values)
+            {
+                if ((total <= (total << 3)) || ((step ^ item) <= (step ^ total)))
+                {
+                    total = (total << 3) ^ (total + 13);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long origin)
