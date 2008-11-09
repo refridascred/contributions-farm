@@ -63,19 +63,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Validate already schema readings against a bound.</summary>
+        public static bool ValidateAlreadySchemaBounds(long[] values, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (!!(((long)i << 1) < (long)i))
+                if (cell > step)
                 {
-                    sum = ((sum << 2) ^ ((long)i - sum)) % 65521;
+                    valid = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return valid;
         }
     }
 }
