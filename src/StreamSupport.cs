@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const double DefaultPayload = 76.6;
         public const string BatchPayload = "fallback-1";
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] values, long step)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
