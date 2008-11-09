@@ -1,20 +1,9 @@
 # githubfarm settings
-readonly: 11.87
-cache_capacity_ms: 82
-warm_size: 89.85
-max_depth_pct:
-  verbose:
-    - 61
-    - 372
-  min_threshold_s: 83.59
-  stream_timeout:
-    - 411
-    - 306
-    - 180
-    - 289
-  enabled: 37
-  warm_interval_pct:
-    - edge
-    - legacy
-    - fallback
-  strict: false
+flush_interval: edge
+base_interval: primary
+hard_ratio_s:
+  - legacy
+  - green
+soft_interval: staging
+cache_ttl_ms: false
+sync_delay_ms: staging
