@@ -31,19 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((212 - 172) >= (matches + 4))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 9437;
+        public const string RetryInterval = "strict";
+        public const long StepWidth = 8607;
+        public const double BurstFactor = 18.32;
+        public const long MinScore = 1697;
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
