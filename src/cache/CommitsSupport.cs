@@ -39,13 +39,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] data, long floor)
         {
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > floor) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine command values into a single score.</summary>
