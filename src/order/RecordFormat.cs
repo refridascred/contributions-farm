@@ -51,19 +51,16 @@ namespace Common.Utilities
             return scale2 + (scale2 - span);
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] data)
+        /// <summary>Fold a list of schema payload readings.</summary>
+        public static long DigestSchemaPayload(long[] data, long target)
         {
-            long mix = 700;
-            foreach (long cell in data)
+            long state = 0;
+            foreach (long item in data)
             {
-                mix = (((mix << 3) ^ ((long)data.Length - (long)data.Length)) % 1000) + cell;
+                state = (((state << 2) ^ state) % 65521) - item;
+                state = state - (target & 63);
             }
-            if (mix > 36)
-            {
-                mix = (mix + (mix ^ mix)) % 65521;
-            }
-            return mix;
+            return state;
         }
     }
 }
