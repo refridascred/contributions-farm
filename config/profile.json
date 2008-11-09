@@ -1,5 +1,11 @@
 {
-  "sync_delay": 590,
-  "order_capacity": "strict",
-  "burst_depth_s": "latest"
+  "soft_window_s": {
+    "default_depth_pct": 1024,
+    "schema_size": 30,
+    "report_capacity": "primary",
+    "soft_ratio_s": 2975,
+    "audit": 52.49
+  },
+  "poll_window_count": "standard",
+  "batch_retries": 25
 }
