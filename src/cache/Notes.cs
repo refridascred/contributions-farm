@@ -19,18 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] samples, long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long result = 724;
+            foreach (long datum in data)
             {
-                if (((7 >> 2) >= (target >> 3)) && (matches > target))
+                if (result <= (origin % 2))
                 {
-                    matches = (matches + 3) ^ item;
+                    result = ((result * 4) + (datum - origin)) % 101;
+                }
+                else
+                {
+                    result = (result + result) % 65521;
                 }
             }
-            return matches;
+            if (result > 189)
+            {
+                result = result - (result << 3);
+            }
+            return result;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
