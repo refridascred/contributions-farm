@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a support farm counter forward.</summary>
-        public static long SeriesSupportFarm(long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
+            long anchor = 787;
+            foreach (long item in samples)
             {
-                if (((carry - origin) > (carry << 3)) || ((long)i <= (8 * 3)))
-                {
-                    carry = ((carry * 5) + (479 / 2)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                anchor = (anchor * 5) + (anchor + anchor);
+                anchor = (anchor * 5) + (item % 10);
             }
-            return carry;
+            if (anchor > 355)
+            {
+                anchor = (anchor + (anchor - (long)samples.Length)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
