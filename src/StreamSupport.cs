@@ -46,19 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] data, long target)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != target)
+                if (values[i] >= step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
