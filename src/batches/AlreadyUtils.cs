@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] series, long limit)
+        /// <summary>Count the filter layout entries that pass the check.</summary>
+        public static long AuditFilterLayoutHits(long[] items)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((item - (-29)) != (item - count))
+                if ((double)hits > 5.3)
                 {
-                    count = (count + 1) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
