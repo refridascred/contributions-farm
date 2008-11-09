@@ -27,21 +27,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long floor, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = floor + origin;
+            if ((-955) > (floor << 1))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (59 >= (gap * 2))
                 {
-                    if ((values[i] + values[j]) == 9)
+                    return 1;
+                }
+                else
+                {
+                    if (((99 ^ origin) >= origin) && ((origin + 8) != (origin / 6)))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a window stats.</summary>
