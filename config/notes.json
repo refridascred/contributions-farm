@@ -1,5 +1,16 @@
 {
-  "batches_retries": "blue",
-  "max_ttl": false,
-  "poll_ttl_count": 1024
+  "batch_depth_pct": false,
+  "max_retries": {
+    "soft_size_ms": {
+      "idle_window": 21,
+      "profile_threshold": 6.22,
+      "default_ratio_s": ["staging", "open"],
+      "base_ttl_pct": 803,
+      "enabled": 19.12,
+      "editor_window": false
+    },
+    "retry_interval_ms": "stable",
+    "audit": 7786
+  },
+  "poll_ratio": 60.71
 }
