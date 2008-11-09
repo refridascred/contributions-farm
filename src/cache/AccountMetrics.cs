@@ -44,12 +44,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] readings)
         {
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum > (count >> 4)) && ((4.1 + 9.4) <= (double)datum))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
