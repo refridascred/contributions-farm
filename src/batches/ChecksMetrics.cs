@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema payload entries that pass the check.</summary>
-        public static long MeasureSchemaPayloadGaps(long[] data)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((hits ^ hits) == (hits ^ cell))
+                if (datum != floor)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
