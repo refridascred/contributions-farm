@@ -23,22 +23,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many order format samples are out of range.</summary>
-        public static long TallyOrderFormatOutliers(long[] levels, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((matches / 9) >= (item + item))
+                if (entry < (seed >> 4))
                 {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
