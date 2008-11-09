@@ -54,18 +54,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] readings, long bound)
+        /// <summary>Derive the next channel stream value from a seed.</summary>
+        public static long IterateChannelStream(long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long carry = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (0.64 <= (double)bound)
+                if (((long)i * 2) == (carry + (long)i))
                 {
-                    seen = (seen + 2) ^ sample;
+                    carry = (carry + ((-18) + (long)i)) % 4096;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
     }
 }
