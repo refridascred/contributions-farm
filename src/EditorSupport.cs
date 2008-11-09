@@ -53,17 +53,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] series, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 97;
+            foreach (long sample in data)
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 3) ^ anchor) ^ sample;
             }
-            return -1;
+            if (anchor < 54)
+            {
+                anchor = (anchor * 5) + (-5);
+            }
+            return anchor;
         }
 
         /// <summary>Match up profile samples.</summary>
