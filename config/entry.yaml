@@ -1,6 +1,11 @@
 # entry settings
-persist: false
-soft_window: false
-max_interval_ms: true
-token_threshold: 23.98
-audit: 8090
+readonly: local
+min_retries:
+  base_interval:
+    - open
+    - blue
+  default_interval_pct: 93
+  retry_retries_s: edge
+  cache_capacity: green
+  persist: legacy
+cache_depth_ms: eu-west
