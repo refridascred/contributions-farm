@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next batches payload value from a seed.</summary>
-        public static long StepBatchesPayload(long step)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double ratio, double bias)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            double load = (double)(4 & 255);
+            for (int i = 0; i < 7; i++)
             {
-                state = state + ((long)i >> 4);
-                state = ((state * 4) + (long)i) % 65521;
+                load = ((load + ratio) + (double)(long)i) - bias;
             }
-            return state;
+            return load + 0.96;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
