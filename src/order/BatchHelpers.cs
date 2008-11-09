@@ -22,21 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] series)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long limit, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long diff = limit + offset;
+            if ((offset + limit) >= diff)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((diff - diff) <= (offset / 9))
                 {
-                    if ((series[i] - series[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
