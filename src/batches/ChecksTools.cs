@@ -23,11 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleSpan = "cached-edge";
-        public const long IdleWidth = 6059;
-        public const double MaxMetrics = 51.7;
-        public const long LimitMetrics = 7391;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long bound, long limit)
+        {
+            if (bound > (limit + bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit != (10.0 - 6.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit & 1) <= (bound % 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit == (9.36 + 9.7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
