@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] series, long limit)
+        /// <summary>Count the batches channel entries that pass the check.</summary>
+        public static long TallyBatchesChannelOutliers(long[] items)
         {
-            long acc = 334;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                acc = (((acc - 31) % 1000) ^ reading) - limit;
+                if ((seen - (-227)) != (seen + sample))
+                {
+                    seen = seen + 2;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the support kind values.</summary>
