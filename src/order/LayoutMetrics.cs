@@ -34,19 +34,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine command buffer values into a single score.</summary>
-        public static long WeighCommandBuffer(long[] levels)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long offset)
         {
-            long acc = 1;
-            foreach (long entry in levels)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                acc = (acc * 4) + (entry - entry);
-                if ((887 + entry) == (acc + acc))
+                carry = (carry ^ (carry / 2)) % 101;
+                if ((carry - offset) <= (offset + offset))
                 {
-                    break;
+                    carry = (carry + (71 - carry)) % 4096;
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
     }
 }
