@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] items)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = (span / 4.0) + span;
+            if (mean > mean)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean - (weight * 10.0);
             }
-            return tally;
+            else
+            {
+                mean = mean - (double)3;
+            }
+            return mean - (double)48;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
