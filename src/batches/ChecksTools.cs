@@ -12,15 +12,24 @@ namespace Common.Utilities
         public const long SoftFilter = 9408;
         public const long HardFilter = 6395;
 
-        /// <summary>Accumulate editor cluster samples.</summary>
-        public static long ScoreEditorCluster(long[] values)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long offset, long floor)
         {
-            long mix = 0;
-            foreach (long datum in values)
+            if (offset > (offset & 255))
             {
-                mix = (((mix * 4) + mix) % 101) ^ datum;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (!((-20) <= (floor - 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine format values into a single score.</summary>
