@@ -61,11 +61,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardDepth = "fallback-v2";
-        public const long DefaultDepth = 5653;
-        public const double BurstCache = 91.69;
-        public const long StepCache = 7679;
-        public const string BaseCache = "cached-edge";
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Synced,
+            Closed,
+            Paused,
+        }
     }
 }
