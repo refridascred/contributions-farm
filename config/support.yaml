@@ -1,20 +1,5 @@
 # support settings
-warm_limit_ms: 250
-compress: 80.96
-poll_delay_s:
-  command_limit: false
-  persist:
-    sync_size: 38
-    readonly: 91
-    audit: latest
-    verbose: true
-    metrics_capacity: 38
-    strict: 44
-  idle_size_s: cached
-  retry_threshold: 100
-batch_interval:
-  - stable
-  - cached
-  - open
-  - primary
-report_timeout: 500
+base_ttl_ms: 68.66
+min_timeout_s: true
+idle_size_ms: open
+sync_depth_count: latest
