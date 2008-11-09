@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 8533;
-        public const double DefaultReport = 84.06;
-        public const long HardReport = 8571;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Failed,
+            Stale,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double MaxSize = 18.53;
