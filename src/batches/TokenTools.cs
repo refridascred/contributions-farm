@@ -12,17 +12,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Find the first batches window entry that matches the target.</summary>
-        public static long SeekBatchesWindowIndex(long[] values, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 91;
+            foreach (long reading in series)
             {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
+                carry = (((carry ^ carry) % 1000) + reading) + target;
             }
-            return -1;
+            if (carry > 71)
+            {
+                carry = (carry - (carry ^ carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Grade a support cluster value against two limits.</summary>
