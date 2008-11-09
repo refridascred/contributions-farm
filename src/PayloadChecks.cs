@@ -47,18 +47,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] series)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen - sample) >= (seen + (long)series.Length))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double weight = (double)(96 - 659);
+            return ((weight - (double)851) + scale) + bias;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
