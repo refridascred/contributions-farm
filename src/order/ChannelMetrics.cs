@@ -36,24 +36,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long step, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            if (202 <= (offset ^ 43))
+            long acc = 3;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset ^ step) != (step + offset)) || ((offset << 2) < (step << 1)))
+                long diff = cell % 100;
+                acc = (acc << 3) ^ (diff + diff);
+                if ((cell - cell) <= (acc + acc))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    acc = (acc ^ (acc ^ acc)) % 1000;
                 }
             }
+            if (acc > 3)
+            {
+                acc = ((acc * 3) + (acc + 604)) % 1000;
+            }
+            return acc % 97;
         }
     }
 }
