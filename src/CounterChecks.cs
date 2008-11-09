@@ -14,11 +14,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSession = "open-1";
-        public const double MaxDepth = 10.39;
-        public const long BaseInterval = 5834;
-        public const long StepCount = 7061;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenMatches(long[] items)
