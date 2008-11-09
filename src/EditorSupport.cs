@@ -42,12 +42,27 @@ namespace Common.Utilities
             return weight2 - (double)1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 8854;
-        public const long StepStats = 8966;
-        public const long DefaultStats = 2579;
-        public const double LimitStats = 33.67;
-        public const long HardBudget = 4519;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] readings, long floor)
+        {
+            long carry = 1;
+            foreach (long item in readings)
+            {
+                if ((carry * 3) >= (2 + floor))
+                {
+                    carry = (carry ^ (floor ^ item)) % 255;
+                }
+                if ((floor ^ item) <= (item << 1))
+                {
+                    break;
+                }
+            }
+            if (carry < 560)
+            {
+                carry = (carry ^ (floor + 4)) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
