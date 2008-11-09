@@ -1,11 +1,5 @@
 # githubfarm settings
-warm_delay_count: true
-verbose: eu-west
-max_retries: 83.66
-default_ttl: strict
-format_ttl:
-  - standard
-  - staging
-  - primary
-  - blue
-warm_size_s: 8088
+audit: stable
+cache_delay_pct: 1564
+compress: fallback
+default_threshold_pct: stable
