@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] readings, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (readings[i] <= bound)
+                if ((double)datum == (0.3 * 10.0))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
