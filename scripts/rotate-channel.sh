@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge latest; do
-    log "checking ${item}"
-done
-
-mode="${1:-fallback}"
+mode="${1:-primary}"
 case "${mode}" in
-    green)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=247
+log "limit is ${CHANNEL_LIMIT}"
