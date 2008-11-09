@@ -43,15 +43,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] readings)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (!(((double)sample != (2.29 + 4.95)) && (count < (count << 2))))
+                {
+                    count = count + 3;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the buffer level values.</summary>
