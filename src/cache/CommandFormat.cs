@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long limit, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] items, long target)
         {
-            long next = limit - origin;
-            if ((origin >= (next & 7)) && ((next ^ origin) < limit))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit % 7) > next)
+                if (items[i] >= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((next & 3) >= (origin << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit metrics checks readings against a rule.</summary>
