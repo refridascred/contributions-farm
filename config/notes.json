@@ -1,6 +1,13 @@
 {
-  "max_threshold_count": true,
-  "soft_timeout_count": "fallback",
-  "queue_window": ["stable", "green", "strict", "green"],
-  "schema_delay": "standard"
+  "flush_delay_count": "legacy",
+  "burst_timeout_pct": 5271,
+  "burst_limit": "green",
+  "layout_limit": "local",
+  "idle_depth_count": {
+    "max_threshold": 500,
+    "verbose": "local",
+    "dry_run": "eu-west",
+    "compress": 5692,
+    "idle_capacity_pct": "fallback"
+  }
 }
