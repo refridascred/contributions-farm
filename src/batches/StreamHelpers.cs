@@ -62,19 +62,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] readings, long origin)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            double drift = (double)179 + offset;
+            if (drift > (weight - 7.34))
             {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift - (weight * 4.16);
             }
-            return ok;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - 6.0) + (double)(long)i;
+            }
+            return drift + (12.0 - drift);
         }
 
         /// <summary>Audit context channel readings against a rule.</summary>
