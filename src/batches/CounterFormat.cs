@@ -24,19 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit filter command readings against a rule.</summary>
-        public static long CountFilterCommandHits(long[] values, long seed)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] readings)
         {
             long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((tally >> 2) < (tally + seed)) && ((seed - tally) != (seed ^ tally))) && ((seed & 63) <= seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
