@@ -22,12 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count cache batches pairs that satisfy a relation.</summary>
+        public static long PairCacheBatchesCount(long[] items)
         {
-            Paused,
-            Dropped,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
