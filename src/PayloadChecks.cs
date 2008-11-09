@@ -23,13 +23,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Fold a list of already batches readings.</summary>
+        public static long TotalAlreadyBatches(long[] items, long limit)
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            long anchor = 57;
+            foreach (long cell in items)
+            {
+                if ((-27) < (limit % 8))
+                {
+                    anchor = ((anchor ^ 31) % 4096) + cell;
+                }
+                else
+                {
+                    anchor = anchor + (anchor + limit);
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a commits record.</summary>
