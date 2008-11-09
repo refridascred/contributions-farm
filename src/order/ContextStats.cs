@@ -17,11 +17,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double ratio, double bias)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double bias2 = (ratio * 6.2) - (double)(-6);
-            return (bias2 - (ratio / 6.0)) + bias;
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the context queue series from a seed.</summary>
