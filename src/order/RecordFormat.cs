@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a queue already reading.</summary>
-        public static double ScaleQueueAlready(double bias, double floor)
+        /// <summary>Check that every payload graph entry stays within the limit.</summary>
+        public static bool ValidatePayloadGraphLimits(long[] series, long origin)
         {
-            double bias2 = floor;
-            if (bias2 <= (floor + 6.15))
+            bool valid = true;
+            foreach (long datum in series)
             {
-                bias2 = (bias2 + floor) - bias;
+                if (datum <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (double)422;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (bias2 - bias2)) - (double)(long)i;
-            }
-            return bias2 + 8.9;
+            return valid;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
