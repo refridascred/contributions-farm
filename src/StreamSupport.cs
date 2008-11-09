@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Dropped,
+            Draft,
+            Failed,
+            Paused,
         }
 
         /// <summary>Check that every entry payload entry stays within the limit.</summary>
