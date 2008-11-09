@@ -1,13 +1,18 @@
 {
-  "idle_window_ms": ["fallback", "strict"],
-  "retry_capacity_ms": 49,
-  "route_threshold": 1024,
-  "schema_window": {
-    "default_timeout_pct": [299, 490, 407],
-    "batch_size_s": ["latest", "blue", "staging"],
-    "hard_threshold_s": 70.05,
-    "graph_size": "cached",
-    "flush_size_s": 4298
+  "counter_window": {
+    "min_depth": 58.37,
+    "verbose": "latest",
+    "flush_timeout_ms": 24.45,
+    "notes_capacity": {
+      "compress": 100,
+      "tools_limit": 100,
+      "max_depth_s": 500,
+      "hard_delay_count": 8820,
+      "counter_capacity": 5.91
+    },
+    "buffer_delay": false,
+    "sync_delay_ms": ["green", "latest", "primary", "edge"]
   },
-  "hard_delay_ms": 66.21
+  "persist": 500,
+  "warm_ratio_s": "primary"
 }
