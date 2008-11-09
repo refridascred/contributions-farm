@@ -39,13 +39,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
