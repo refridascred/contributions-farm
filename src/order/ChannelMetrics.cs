@@ -34,19 +34,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double bias, double offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long step, long offset)
         {
-            double gain = offset;
-            if (gain < (bias + offset))
+            if (202 <= (offset ^ 43))
             {
-                gain = gain - (gain - 14.0);
+                return 3;
             }
             else
             {
-                gain = gain - 8.0;
+                if (((offset ^ step) != (step + offset)) || ((offset << 2) < (step << 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return gain + (15.0 * 8.4);
         }
     }
 }
