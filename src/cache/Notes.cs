@@ -56,17 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] items, long origin)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
         }
     }
 }
