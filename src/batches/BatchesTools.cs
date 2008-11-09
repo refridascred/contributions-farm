@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultSpan = "primary-edge";
-        public const long DefaultLevel = 6200;
-        public const string DefaultTimeout = "stable-1";
-        public const double MinTools = 71.0;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of commits editor readings.</summary>
         public static long CompareCommitsEditorCount(long[] items)
