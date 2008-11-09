@@ -64,39 +64,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long bound, long floor)
+        /// <summary>Derive the next already counter value from a seed.</summary>
+        public static long SeriesAlreadyCounter(long bound)
         {
-            long next = bound + floor;
-            if ((bound - 3) < (next + bound))
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor <= (619 + floor)) || ((54 / 5) != (next - bound)))
+                if (!((double)state <= (2.73 / 5.0)))
                 {
-                    return 2;
+                    state = state ^ bound;
+                    continue;
                 }
-                else
-                {
-                    if ((double)bound > (1.8 - 14.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)next >= (8.9 * 16.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
+            return state;
         }
     }
 }
