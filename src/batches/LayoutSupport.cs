@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] readings, long origin)
+        /// <summary>Measure how many account contributi samples are out of range.</summary>
+        public static long TallyAccountContributiHits(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (item < origin)
+                if (((bound >> 2) != (bound << 1)) || ((tally - value) == (217 >> 2)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a window info.</summary>
