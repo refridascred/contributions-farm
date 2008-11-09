@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftFactor = 66.92;
-        public const long StepScore = 9584;
-        public const long BurstScore = 2080;
-        public const long MaxCluster = 4325;
-        public const long BurstCount = 2250;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 7370;
+        public const long MinSize = 1585;
+        public const long StepFormat = 8214;
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
