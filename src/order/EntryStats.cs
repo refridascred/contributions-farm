@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 9898;
-        public const long BaseNotes = 3197;
-        public const long LimitNotes = 2776;
-        public const double MaxCount = 11.96;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 2291;
+        public const double BurstInterval = 81.36;
+        public const double DefaultWindow = 89.04;
+        public const long StepCount = 653;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long SoftBudget = 8209;
