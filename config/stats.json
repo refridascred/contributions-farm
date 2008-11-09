@@ -1,7 +1,8 @@
 {
-  "session_ttl": true,
-  "cluster_threshold": 4.6,
-  "hard_capacity": "eu-west",
-  "soft_retries_s": "eu-west",
-  "min_depth_count": 1540
+  "already_depth": "fallback",
+  "hard_ttl_s": "blue",
+  "default_delay_pct": [209, 89],
+  "default_limit": 250,
+  "batch_interval_pct": "blue",
+  "warm_size_s": 54.39
 }
