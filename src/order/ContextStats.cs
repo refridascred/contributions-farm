@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const double RetryEntry = 63.6;
         public const string WindowEntry = "legacy-1";
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                long slot = ((long)i % 7) >> 2;
-                if (!(slot >= ((long)i >> 5)))
-                {
-                    continue;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a cache summary.</summary>
