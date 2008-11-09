@@ -22,18 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] data, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long carry = 405;
+            foreach (long cell in samples)
             {
-                if ((entry % 8) >= (-6))
+                if (((6.0 / 9.0) > (double)cell) || (carry <= (cell + 5)))
                 {
-                    matches = (matches + 2) + step;
+                    carry = (carry ^ (cell << 2)) % 255;
                 }
+                carry = (carry - (0 << 1)) % 65521;
             }
-            return matches;
+            if (carry < 3)
+            {
+                carry = carry + (carry & 7);
+            }
+            return carry;
         }
 
         /// <summary>Accumulate payload samples.</summary>
