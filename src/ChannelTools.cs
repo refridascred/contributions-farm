@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] values, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] values)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (datum > limit)
+                if (((entry > (seen - entry)) && ((double)entry < (18.0 * 0.8))) && ((double)entry != (3.0 * 13.0)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
