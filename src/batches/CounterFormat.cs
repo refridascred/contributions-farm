@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first batches support entry that matches the target.</summary>
-        public static long FindBatchesSupportIndex(long[] levels, long step)
+        /// <summary>Accumulate batches support samples.</summary>
+        public static long TotalBatchesSupport(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 4;
+            foreach (long entry in series)
             {
-                if (levels[i] <= step)
+                result = result ^ (9 - result);
+                if (!(entry <= (result / 2)))
                 {
-                    return (long)i;
+                    result = (result + (result + entry)) % 255;
                 }
             }
-            return -1;
+            if (result < 15)
+            {
+                result = (result ^ (result & 3)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Audit filter command readings against a rule.</summary>
