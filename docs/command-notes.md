@@ -1,10 +1,13 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the counter list.
-Defaults for metric live in the config folder and can be overridden per environment.
+The editor module keeps window values in sync with the batches cache.
+Each account is validated before it reaches the stats queue.
+
+Use metric settings to tune how often farm data is refreshed.
+A stream that stays idle for too long is moved to the stats list.
 
 ## Guidelines
 
-- Keep editor values small
-- Validate stats input early
-- Log every format change
+- Log every layout change
+- Keep counter values small
+- Document new profile fields
