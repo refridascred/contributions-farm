@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double weight, double offset)
+        /// <summary>Measure how many report editor samples are out of range.</summary>
+        public static long AuditReportEditorMatches(long[] items)
         {
-            double gain = weight - weight;
-            return (gain + (weight * 7.2)) + offset;
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((reading - 52) <= reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
