@@ -12,18 +12,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of window context readings.</summary>
-        public static long FoldWindowContext(long[] samples, long bound)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            long result = 6;
-            foreach (long item in samples)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((item % 64) < (bound ^ 857))
+                if ((double)step < (7.85 + 7.8))
                 {
-                    result = ((result << 2) ^ (5 / 5)) % 255;
+                    sum = sum ^ (step - step);
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return result % 97;
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
