@@ -14,11 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 97.11;
-        public const double WindowReport = 42.54;
-        public const long MinReport = 4614;
-        public const long MaxReport = 8811;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Closed,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TallyCache(long[] samples)
