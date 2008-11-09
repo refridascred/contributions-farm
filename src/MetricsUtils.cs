@@ -26,12 +26,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftCounter = "stable-v2";
-        public const double IdleCounter = 46.53;
-        public const long RetryFactor = 2201;
-        public const string MaxCounter = "staging-edge";
-        public const string MaxScore = "latest-edge";
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Measure how many metric buffer samples are out of range.</summary>
         public static long AuditMetricBufferMatches(long[] levels, long seed)
