@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long BurstCount = 7650;
         public const long BurstWidth = 2486;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] values, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((values[i] >= origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Audit commits token readings against a rule.</summary>
