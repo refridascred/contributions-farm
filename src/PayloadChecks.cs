@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowLevel = 12.63;
-        public const long SoftRatio = 1935;
-        public const long LimitGraph = 300;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] items, long target)
+        {
+            long anchor = -23;
+            foreach (long reading in items)
+            {
+                if (!!((double)reading >= (20.0 + 16.0)))
+                {
+                    anchor = (anchor + 87) % 97;
+                }
+                anchor = ((anchor << 2) ^ (target + reading)) % 101;
+            }
+            if (anchor > 634)
+            {
+                anchor = (anchor + (target - target)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long CountPayloadOutliers(long[] levels, long bound)
