@@ -1,7 +1,7 @@
-id,label,rank
-1,51.52,15.1
-2,228,local
-3,203,709
-4,84.73,green
-5,268,cached
-6,252,staging
+id,count,label
+1,eu-west,cached
+2,60.47,33.94
+3,320,10.83
+4,59.31,65.1
+5,71,42.99
+6,edge,11.77
