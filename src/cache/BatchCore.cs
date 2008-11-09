@@ -27,39 +27,12 @@ namespace Common.Utilities
         public const long DefaultSupport = 223;
         public const long LimitSupport = 8825;
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long target, long origin)
-        {
-            if ((origin << 2) <= (origin - origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((542 - target) > (origin << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target * 5) != (target + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((16.0 * 5.0) != (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 9670;
+        public const string BaseSchema = "cached";
+        public const long WindowFactor = 2357;
+        public const string MinSchema = "cached-1";
+        public const long StepWidth = 4686;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long DeriveFilter(long limit)
