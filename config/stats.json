@@ -1,6 +1,13 @@
 {
-  "max_size_pct": "primary",
-  "metric_delay": "cached",
-  "flush_threshold_ms": ["blue", "stable"],
-  "warm_interval": true
+  "burst_size_count": "cached",
+  "readonly": 114,
+  "token_delay": {
+    "stats_interval": false,
+    "poll_delay": 85.09,
+    "burst_threshold": [77, 345],
+    "support_size": "open",
+    "checks_threshold": 60,
+    "readonly": ["green", "eu-west", "edge"]
+  },
+  "commits_depth": "local"
 }
