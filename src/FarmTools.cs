@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long BaseMetric = 926;
         public const long IdleLevel = 8564;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Queued,
-            Failed,
-            New,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardLevel = 7522;
+        public const string DefaultOrder = "stable-edge";
+        public const double HardOrder = 16.73;
+        public const long StepOrder = 4093;
+        public const long SoftSpan = 7503;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
