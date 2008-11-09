@@ -48,16 +48,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm channel value from a seed.</summary>
-        public static long SeriesGithubfarmChannel(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepWidth = 65.27;
+        public const double LimitBuffer = 12.61;
+        public const long DefaultBuffer = 4333;
+        public const string BurstDepth = "alpha-v2";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string LimitCache = "local-v2";
