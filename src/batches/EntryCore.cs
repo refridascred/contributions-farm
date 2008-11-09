@@ -63,39 +63,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long target, long floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long slot = target + floor;
-            if (((floor + slot) >= (target & 7)) || ((9.0 - 5.67) > (double)slot))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)slot <= 9.9) || ((target << 3) >= (floor * 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor - floor) < floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((floor + 154) > (slot + slot)) || ((slot % 60) > (63 + slot)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Active,
         }
     }
 }
