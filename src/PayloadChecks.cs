@@ -47,18 +47,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] data)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (!(((double)sample != (2.29 + 4.95)) && (count < (count << 2))))
+                if (!((matches - matches) >= (item ^ 96)))
                 {
-                    count = count + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the buffer level values.</summary>
