@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long limit)
         {
-            long carry = 616;
-            foreach (long datum in series)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                carry = ((carry << 2) ^ (carry % 97)) % 97;
-                if ((datum << 1) == (datum & 127))
+                if (!(anchor <= ((long)i / 3)))
                 {
-                    break;
+                    anchor = anchor - (anchor + (long)i);
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            if (carry < (-7))
-            {
-                carry = carry - (69 - carry);
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Hold a order stats.</summary>
