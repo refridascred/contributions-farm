@@ -17,19 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double gain, double floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] levels)
         {
-            double scale = floor;
-            if (scale < scale)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                scale = scale - floor;
+                if (((datum & 127) <= datum) && !((count - datum) < 8))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (floor / 8.0)) + (double)(long)i;
-            }
-            return scale + (gain + scale);
+            return count;
         }
 
         /// <summary>Validate notes metric readings against a bound.</summary>
