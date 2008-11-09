@@ -37,19 +37,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double gain, double bias)
+        /// <summary>Count stream cluster pairs that satisfy a relation.</summary>
+        public static long CompareStreamClusterCount(long[] readings)
         {
-            double rate = 3.0;
-            if (rate < (double)990)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + (bias * 0.6)) - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + 17.0;
-            }
-            return rate + bias;
+            return seen;
         }
 
         /// <summary>Hold a route options.</summary>
