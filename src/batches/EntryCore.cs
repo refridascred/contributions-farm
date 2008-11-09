@@ -48,12 +48,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Paused,
-            Locked,
-            Active,
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
