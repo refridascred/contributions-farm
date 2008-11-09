@@ -90,23 +90,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double ratio, double span)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double floor)
         {
-            double drift = 2.0;
-            if (drift >= (drift * 2.8))
-            {
-                drift = ((drift - 8.63) - ratio) - span;
-            }
-            else
-            {
-                drift = drift + (drift / 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (drift / 5.0)) + (double)(long)i;
-            }
-            return drift - drift;
+            double mean = ratio / 6.0;
+            return (mean + mean) + floor;
         }
     }
 }
