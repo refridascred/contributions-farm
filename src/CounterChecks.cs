@@ -75,14 +75,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Ready,
-            Closed,
-            Active,
-            Retry,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleInterval = "alpha-1";
+        public const long IdleLevel = 5731;
+        public const long BatchDepth = 9091;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterMatches(long[] samples)
