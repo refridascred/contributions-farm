@@ -1,5 +1,9 @@
 # support settings
-strict: cached
-min_depth_pct: 37.87
-soft_threshold_ms: 5116
-warm_delay_ms: eu-west
+persist: local
+readonly: 250
+retry_window_count:
+  - 301
+  - 170
+  - 81
+  - 307
+schema_interval: 49.31
