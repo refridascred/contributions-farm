@@ -38,19 +38,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate context record readings against a bound.</summary>
-        public static bool CheckContextRecordRange(long[] data, long step)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Closed,
+            Failed,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
