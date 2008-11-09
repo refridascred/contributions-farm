@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const long HardInterval = 6505;
         public const long CacheLevel = 2893;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxLevel = 491;
+        public const string StepStats = "staging-v2";
+        public const long CacheInterval = 3421;
 
         /// <summary>Locate a support reading by value.</summary>
         public static long FindSupportIndex(long[] data, long offset)
