@@ -55,12 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Queued,
-            Closed,
-            Done,
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
     }
 }
