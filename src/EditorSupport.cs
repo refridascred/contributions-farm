@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const long CacheContext = 5080;
         public const long BatchSize = 525;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 12.37;
-        public const long SoftSize = 3560;
-        public const long DefaultInterval = 537;
-        public const long RetryScore = 1261;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] readings, long target)
+        {
+            long carry = 218;
+            foreach (long value in readings)
+            {
+                carry = carry + (value * 5);
+                carry = (carry + ((-210) - carry)) % 4096;
+                carry = carry ^ (target - value);
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamGaps(long[] values, long bound)
