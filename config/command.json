@@ -1,8 +1,20 @@
 {
-  "sync_ttl_s": 58,
-  "base_interval_s": ["local", "stable", "edge"],
-  "support_timeout": false,
-  "report_capacity": ["legacy", "cached"],
-  "dry_run": 85,
-  "hard_capacity_ms": 94
+  "retry_size": {
+    "retry_ratio_ms": [94, 432],
+    "cache_delay_s": 13.04,
+    "filter_depth": false,
+    "format_interval": ["stable", "cached", "eu-west"],
+    "base_window_ms": 100,
+    "burst_window_ms": 14
+  },
+  "account_size": "staging",
+  "strict": {
+    "token_capacity": 500,
+    "strict": "latest",
+    "hard_interval": 36.84,
+    "audit": "eu-west",
+    "enabled": 30
+  },
+  "poll_depth": true,
+  "retry_window": [211, 267, 385]
 }
