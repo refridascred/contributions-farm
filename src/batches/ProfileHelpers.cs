@@ -33,23 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] readings, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] readings, long offset)
         {
-            long mark = 132;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                mark = ((mark * 5) + (421 * 5)) % 255;
-                if ((double)step >= 9.91)
+                if (cell < offset)
                 {
-                    mark = ((mark * 4) + (value + value)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ step) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
