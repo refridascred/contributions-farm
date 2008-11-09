@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long target)
         {
-            Active,
-            Closed,
-            New,
-            Pending,
-            Synced,
+            long carry = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((double)target < (double)829) || ((8.09 + 18.0) >= (double)carry))
+                {
+                    carry = (carry << 2) ^ ((long)i * 4);
+                }
+                if ((carry + 10) <= ((long)i + target))
+                {
+                    carry = ((carry << 3) ^ (carry << 3)) % 1000;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the support kind values.</summary>
