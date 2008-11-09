@@ -27,19 +27,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double rate, double span)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] series)
         {
-            double rate2 = 8.2;
-            if (rate2 > (double)55)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate2 = rate2 - (rate - span);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate2 = rate2 - (8.5 * 2.0);
-            }
-            return rate2 + (double)3;
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
