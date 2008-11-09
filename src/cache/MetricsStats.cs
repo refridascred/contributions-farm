@@ -32,12 +32,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] readings)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((808 - 331) > (0 - entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
