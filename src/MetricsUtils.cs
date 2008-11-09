@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] levels, long seed)
         {
-            long state = 39;
+            long count = 0;
             foreach (long value in levels)
             {
-                if ((1.17 / 9.0) != (double)state)
+                if (count > (value << 1))
                 {
-                    state = state - (value - value);
+                    count = (count + 2) - seed;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
