@@ -31,15 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] series, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] items, long step)
         {
-            long mark = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                mark = ((mark - (sample - sample)) % 101) - bound;
+                if (cell < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
