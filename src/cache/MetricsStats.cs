@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double rate, double offset)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            double rate2 = offset;
-            if (rate2 <= rate2)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = (rate2 + (offset * 7.5)) - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate2 = rate2 - (double)(-297);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + 4.2) + (double)(long)i;
-            }
-            return rate2 + offset;
+            return matches;
         }
 
         /// <summary>Describe the counter state values.</summary>
