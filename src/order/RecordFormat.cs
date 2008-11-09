@@ -23,19 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] data, long origin)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long limit)
         {
-            long state = 24;
-            foreach (long item in data)
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
             {
-                state = state + (item / 6);
-                if (item <= (origin ^ (long)data.Length))
+                acc = (acc + acc) % 101;
+                acc = ((acc << 3) ^ acc) % 4096;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    break;
+                    acc = ((acc << 3) ^ acc) ^ (long)i2;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Compare every pair of tools format readings.</summary>
