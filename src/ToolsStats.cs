@@ -59,11 +59,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardRatio = 5415;
-        public const long IdleWidth = 417;
-        public const string WindowFactor = "fallback";
-        public const long DefaultTimeout = 7344;
-        public const string RetryProfile = "latest-v2";
+        /// <summary>Check that every already report entry stays within the limit.</summary>
+        public static bool GuardAlreadyReportLimits(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
