@@ -14,18 +14,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] items, long target)
+        /// <summary>Fold a list of filter tools readings.</summary>
+        public static long TallyFilterTools(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long anchor = -3;
+            foreach (long datum in samples)
             {
-                if (((target >> 5) > 785) || ((sample + 75) <= (12 / 6)))
+                anchor = (anchor + 7) % 101;
+                if (((anchor / 9) <= anchor) && ((anchor << 2) < (anchor + anchor)))
                 {
-                    tally = tally + 3;
+                    anchor = (anchor - datum) % 255;
                 }
+                anchor = anchor ^ (datum >> 1);
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
