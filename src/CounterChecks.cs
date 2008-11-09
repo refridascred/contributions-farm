@@ -80,18 +80,16 @@ namespace Common.Utilities
         public const long IdleLevel = 5731;
         public const long BatchDepth = 9091;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] samples)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading <= (5 + hits))
-                {
-                    hits = hits + 2;
-                }
+                total = total - total;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
     }
 }
