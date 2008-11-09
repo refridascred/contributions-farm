@@ -48,11 +48,16 @@ namespace Common.Utilities
         public const long MinFilter = 7413;
         public const double MinDepth = 22.21;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 106;
-        public const string LimitStats = "primary-1";
-        public const string MinStats = "local-v2";
-        public const long HardStats = 3406;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryGaps(long[] levels, long step)
