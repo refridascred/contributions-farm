@@ -48,31 +48,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] data, long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long mix = 743;
-            foreach (long datum in data)
-            {
-                if ((18 * 3) == (mix % 60))
-                {
-                    mix = (mix << 3) ^ datum;
-                }
-                mix = ((mix * 2) + mix) % 65521;
-                if ((double)step >= (6.2 - 7.0))
-                {
-                    mix = mix - ((-9) - datum);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (step * 2)) % 65521;
-                }
-                if (((-81) ^ mix) >= (datum - step))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Closed,
+            Retry,
+            Paused,
+            Queued,
+            Synced,
         }
     }
 }
