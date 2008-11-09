@@ -29,17 +29,18 @@ namespace Common.Utilities
         public const long BurstSpan = 1597;
         public const long SoftOrder = 3328;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] samples, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (samples[i] > step)
+                if ((cell % 100) > (origin / 7))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
