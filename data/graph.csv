@@ -1,7 +1,9 @@
-id,region,label,state,ratio
-1,313,864,strict,48.52
-2,fallback,4.15,914,35.5
-3,41.55,563,75.21,537
-4,staging,fallback,75.76,blue
-5,46.16,615,8.13,open
-6,17.49,8.22,cached,25.81
+id,ratio,label,active
+1,legacy,574,715
+2,857,45,54.6
+3,16.49,482,752
+4,legacy,legacy,870
+5,840,stable,legacy
+6,93.14,stable,legacy
+7,5.0,legacy,51.81
+8,499,58.11,6.95
