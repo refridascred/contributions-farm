@@ -1,6 +1,8 @@
 {
-  "burst_depth_s": 43.03,
-  "default_depth_count": 2560,
-  "idle_depth_pct": true,
-  "dry_run": true
+  "enabled": "stable",
+  "min_ttl_pct": 72,
+  "sync_retries": 36.58,
+  "base_threshold_count": ["stable", "blue"],
+  "session_window": 13.72,
+  "soft_retries_ms": 60
 }
