@@ -52,22 +52,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] levels, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long step, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long cur = step + limit;
+            if (step >= (step * 4))
             {
-                if (!((9.91 * 0.9) >= (double)limit))
+                return 3;
+            }
+            else
+            {
+                if ((3.0 / 8.0) > (double)step)
                 {
-                    tally = (tally + 1) ^ cell;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!((cur << 2) < cur))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((cur - step) > cur) || ((540 + 0) >= (cur / 9)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
