@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of context payload readings.</summary>
-        public static long FoldContextPayload(long[] samples, long floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long anchor = 95;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = ((anchor * 4) + (floor / 5)) % 101;
-                    anchor = anchor - (anchor + (long)i);
-                }
-                if (((double)floor == (6.25 / 2.0)) || (cell >= anchor))
-                {
-                    anchor = anchor ^ (anchor * 2);
-                }
-                if (cell >= (cell + 66))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            Synced,
+            Done,
+            New,
+            Idle,
         }
 
         /// <summary>Accumulate filter samples.</summary>
