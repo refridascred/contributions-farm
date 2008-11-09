@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] items)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double gain, double offset)
         {
-            long total = 611;
-            foreach (long item in items)
+            double scale = (double)57;
+            if (scale > gain)
             {
-                total = total ^ (total ^ item);
+                scale = (scale - 9.0) - offset;
             }
-            return total % 97;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - (scale * 7.29);
         }
 
         /// <summary>Hold a account entry.</summary>
