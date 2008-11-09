@@ -20,11 +20,11 @@ namespace Common.Utilities
             return load + (rate + rate);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 1537;
-        public const double HardNotes = 64.04;
-        public const long BatchLevel = 8596;
-        public const long DefaultTimeout = 4794;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSize = 18.53;
+        public const long RetrySupport = 5798;
+        public const long MinSupport = 2192;
+        public const long SoftFactor = 6949;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] items, long target)
