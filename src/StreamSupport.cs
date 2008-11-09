@@ -14,38 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank contributi format input into a small class.</summary>
-        public static long RankContributiFormat(long limit, long target)
+        /// <summary>Check that every entry payload entry stays within the limit.</summary>
+        public static bool VerifyEntryPayloadRange(long[] values, long limit)
         {
-            if ((4.0 * 7.7) < (double)target)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)limit > 17.0) && ((5.2 + 4.0) == (double)limit))
+                if (reading < limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target > (target & 31))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit >= (target ^ 1)) || ((double)target >= (13.0 / 4.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Match up githubfarm profile samples.</summary>
