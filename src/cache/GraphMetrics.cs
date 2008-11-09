@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] values)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (((value > ((long)values.Length ^ (long)values.Length)) && ((value + tally) <= (tally - value))) && (((62 + value) >= value) && (2 >= (tally << 1))))
+                if (entry > floor)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Locate a command reading by value.</summary>
