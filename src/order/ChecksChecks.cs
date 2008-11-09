@@ -28,22 +28,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] series)
+        /// <summary>Accumulate already format samples.</summary>
+        public static long WeighAlreadyFormat(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long result = 638;
+            foreach (long item in samples)
             {
-                if (((double)reading == (4.2 + 6.0)) || ((8.0 - 4.37) == (double)seen))
+                result = (result + (item << 3)) % 255;
+                if ((double)item > (0.2 + 3.64))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (result > 63)
+            {
+                result = (result ^ (result % 16)) % 97;
+            }
+            return result % 97;
         }
     }
 }
