@@ -10,16 +10,12 @@ namespace Common.Utilities
         public const string BurstRoute = "local-1";
         public const long SoftInterval = 1791;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = anchor + (step ^ (long)i);
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Retry,
+            Locked,
+            Active,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
