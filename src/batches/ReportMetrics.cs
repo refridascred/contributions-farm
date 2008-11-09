@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
