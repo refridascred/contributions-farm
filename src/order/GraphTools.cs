@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCommand = "legacy-1";
+        public const long StepCount = 9762;
+        public const string WindowInterval = "primary-1";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepCache = 6213;
