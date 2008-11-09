@@ -1,7 +1,6 @@
 {
-  "sync_depth_pct": "strict",
-  "default_interval_pct": 74.12,
-  "batch_depth_s": 49.65,
-  "order_capacity": true,
-  "min_limit_s": "latest"
+  "flush_depth_ms": false,
+  "idle_ratio_pct": "legacy",
+  "profile_ratio": false,
+  "default_threshold": ["green", "fallback", "open"]
 }
