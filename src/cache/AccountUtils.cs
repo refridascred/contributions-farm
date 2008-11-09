@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] readings)
         {
-            Synced,
-            Queued,
-            Dropped,
-            Pending,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum <= (5.0 / 3.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
