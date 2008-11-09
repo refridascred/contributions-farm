@@ -29,21 +29,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] series)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] > target)
                 {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
