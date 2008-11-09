@@ -25,18 +25,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long target, long step)
         {
-            long acc = 693;
-            foreach (long item in items)
+            long delta = target ^ step;
+            if ((step + delta) > delta)
             {
-                if (((acc * 3) < (item + acc)) || ((item / 2) <= acc))
+                return 7;
+            }
+            else
+            {
+                if (step <= 2)
                 {
-                    acc = acc + (5 >> 2);
+                    return 3;
+                }
+                else
+                {
+                    if ((371 & 63) >= (delta - delta))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((92 << 3) >= (step ^ (-3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return acc;
         }
     }
 }
