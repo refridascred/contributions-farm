@@ -1,6 +1,16 @@
 {
-  "readonly": 28.45,
-  "batch_retries": 60,
-  "flush_interval_ms": "staging",
-  "githubfarm_capacity": 22.0
+  "min_limit": {
+    "schema_delay": "edge",
+    "idle_timeout": {
+      "compress": 8,
+      "retry_timeout": ["standard", "blue"],
+      "soft_timeout_count": 3,
+      "max_capacity_s": [175, 480, 62, 395],
+      "enabled": [124, 466, 34, 70]
+    },
+    "flush_size": 1024
+  },
+  "report_limit": 65,
+  "cache_depth": "legacy",
+  "notes_ttl": 1024
 }
