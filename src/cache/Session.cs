@@ -49,22 +49,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] data, long origin)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double bias, double offset)
         {
-            long mark = 91;
-            foreach (long cell in data)
+            double mean = offset;
+            if (mean < (bias / 4.0))
             {
-                if ((0 % 24) < (mark & 255))
-                {
-                    mark = ((mark << 2) ^ (3 + cell)) - origin;
-                }
+                mean = mean - (mean - 10.0);
             }
-            if (mark > 969)
-            {
-                mark = (mark ^ mark) % 101;
-            }
-            return mark;
+            return mean - (mean + mean);
         }
     }
 }
