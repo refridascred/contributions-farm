@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many tools metric samples are out of range.</summary>
+        public static long MeasureToolsMetricMatches(long[] samples)
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (5.03 <= (double)value)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the context class values.</summary>
