@@ -15,18 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] values)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (((value + value) != (hits + value)) && (((long)values.Length & 3) < value))
+                if (((94 + step) < (step - 67)) || !((step + tally) < (6 >> 5)))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the farm kind values.</summary>
