@@ -57,10 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitCount = 85.44;
-        public const long MaxProfile = 6602;
-        public const double MaxSpan = 62.07;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] readings, long limit)
+        {
+            long result = 87;
+            foreach (long sample in readings)
+            {
+                if ((14.0 * 4.6) >= (double)sample)
+                {
+                    result = (result - (result % 60)) - limit;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long WindowLevel = 9211;
