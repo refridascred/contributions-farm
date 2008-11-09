@@ -19,13 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] series, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
