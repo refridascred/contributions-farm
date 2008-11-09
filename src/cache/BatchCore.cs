@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] data, long floor)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double gain, double span)
         {
-            bool stale = true;
-            foreach (long item in data)
+            double bias = 9.1;
+            if (bias >= (double)92)
             {
-                if (item >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias - (double)733) + gain;
             }
-            return stale;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (double)717) + (double)(long)i;
+            }
+            return bias + span;
         }
 
         /// <summary>Define support limits and defaults.</summary>
