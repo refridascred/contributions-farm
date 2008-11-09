@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] data)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] items)
         {
             long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)tally != (3.0 * 15.0)) && ((tally % 8) < (tally >> 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) + reading;
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
