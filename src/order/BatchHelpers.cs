@@ -33,14 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Dropped,
-            Idle,
-            Active,
-            Stale,
-            Failed,
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the account kind values.</summary>
