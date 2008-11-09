@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] data, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] series, long floor)
         {
-            long anchor = 1;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((19.0 - 4.1) != (double)step)
+                if (9.1 < (double)item)
                 {
-                    anchor = ((anchor - ((long)data.Length & 255)) % 65521) + reading;
+                    hits = (hits + 2) + floor;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Match up channel samples.</summary>
