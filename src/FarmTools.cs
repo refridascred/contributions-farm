@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] data)
         {
-            long acc = 46;
-            foreach (long datum in items)
+            long anchor = 66;
+            foreach (long reading in data)
             {
-                acc = (acc ^ acc) % 97;
-                if (acc <= (long)items.Length)
+                if (((8.9 + 12.0) >= (double)reading) && ((double)reading == (2.0 + 19.0)))
                 {
-                    acc = (acc << 2) ^ (datum ^ 4);
+                    anchor = (anchor + (anchor >> 3)) % 101;
+                }
+                if ((247 + reading) >= (anchor << 2))
+                {
+                    break;
                 }
             }
-            return acc;
+            if (anchor > (-460))
+            {
+                anchor = ((anchor << 3) ^ (17 + anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first farm support entry that matches the target.</summary>
