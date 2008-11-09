@@ -37,11 +37,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitRatio = "alpha";
-        public const long DefaultSpan = 8493;
-        public const double CacheTimeout = 73.48;
-        public const long WindowSpan = 2957;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (1.3 <= (double)datum)
+                {
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a command channel figure with a bias.</summary>
         public static double BlendCommandChannel(double gain, double floor)
