@@ -27,12 +27,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] series)
         {
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + datum) != (datum & 3))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the queue payload series from a seed.</summary>
