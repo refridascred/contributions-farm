@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
