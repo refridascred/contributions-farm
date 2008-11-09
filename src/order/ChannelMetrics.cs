@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] readings, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long offset)
         {
-            long sum = 738;
-            foreach (long sample in readings)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((long)readings.Length / 6) >= (930 * 5)) && ((7.22 - 6.2) <= (double)floor))
-                {
-                    sum = ((sum ^ sum) % 4096) ^ sample;
-                }
-                else
-                {
-                    sum = sum + sum;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            if (sum < 865)
-            {
-                sum = ((sum << 2) ^ ((long)readings.Length & 31)) % 65521;
-            }
-            return sum % 97;
+            return sum;
         }
 
         /// <summary>Accumulate support samples.</summary>
