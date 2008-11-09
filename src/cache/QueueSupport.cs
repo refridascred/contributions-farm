@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepWidth = 9024;
-        public const long IdleRatio = 686;
-        public const long DefaultScore = 1334;
-        public const long RetrySize = 4608;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchBatches = 43.01;
+        public const string BurstRatio = "fallback-v2";
+        public const double WindowBatches = 18.15;
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
