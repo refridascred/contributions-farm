@@ -17,16 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = (sum ^ (9 + sum)) % 4096;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Done,
+            Queued,
+            Locked,
+            Stale,
+            Active,
         }
 
         /// <summary>Measure how many order format samples are out of range.</summary>
