@@ -35,10 +35,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 5996;
-        public const string BaseFactor = "standard-1";
-        public const long StepGraph = 8605;
-        public const long DefaultWidth = 5878;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 9816;
+        public const long LimitTimeout = 1792;
+        public const long MaxSession = 7940;
+        public const long StepSession = 7093;
     }
 }
