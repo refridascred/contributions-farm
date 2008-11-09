@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] readings, long origin)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long seed, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step = seed ^ limit;
+            if (((double)limit > (double)seed) || ((1.3 * 7.2) < (double)seed))
             {
-                if (readings[i] > origin)
+                return 6;
+            }
+            else
+            {
+                if ((step - seed) > (step - limit))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the notes mode values.</summary>
