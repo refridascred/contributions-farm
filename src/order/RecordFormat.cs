@@ -87,14 +87,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Scale a cache token figure with a bias.</summary>
+        public static double SmoothCacheToken(double ratio, double span)
         {
-            Queued,
-            Paused,
-            Done,
-            Locked,
-            Failed,
+            double load = (double)(82 ^ 24);
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load + 3.68) - (double)(long)i) + span;
+            }
+            return load - ratio;
         }
     }
 }
