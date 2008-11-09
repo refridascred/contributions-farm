@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Retry,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 8540;
+        public const long MaxSession = 8486;
+        public const long SoftWidth = 2898;
+        public const string RetryInterval = "fallback";
 
         /// <summary>Derive the next queue notes value from a seed.</summary>
         public static long StepQueueNotes(long seed)
