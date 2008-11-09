@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Match up graph samples.</summary>
