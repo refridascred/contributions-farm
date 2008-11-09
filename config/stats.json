@@ -1,7 +1,5 @@
 {
-  "base_limit_s": "green",
-  "tools_retries": 1024,
-  "enabled": false,
-  "soft_depth": "strict",
-  "flush_interval_s": "eu-west"
+  "min_threshold_s": "open",
+  "burst_threshold_pct": "stable",
+  "min_interval_ms": "edge"
 }
