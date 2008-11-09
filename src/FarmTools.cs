@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] values)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading > bound)
                 {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Describe the channel level values.</summary>
