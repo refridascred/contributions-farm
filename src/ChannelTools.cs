@@ -32,15 +32,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowLevel = "standard-v2";
+        public const long BurstMetric = 735;
+        public const long LimitInterval = 6218;
+        public const long SoftWidth = 6575;
+        public const long WindowScore = 8934;
     }
 }
