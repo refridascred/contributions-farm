@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double weight, double bias)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] values, long limit)
         {
-            double load = (double)(214 - 19);
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                load = (load + (bias - load)) + (double)(long)i;
+                if ((seen >> 1) > (seen % 2))
+                {
+                    seen = ((seen + 3) - reading) - limit;
+                }
             }
-            return load - (weight - load);
+            return seen;
         }
 
         /// <summary>Describe the format class values.</summary>
