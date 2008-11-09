@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of profile layout readings.</summary>
-        public static long TallyProfileLayout(long[] values, long floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long anchor = 59;
-            foreach (long reading in values)
-            {
-                anchor = (((anchor * 2) + floor) % 4096) - reading;
-            }
-            if (anchor < 9)
-            {
-                anchor = (anchor - (anchor - 548)) % 1000;
-            }
-            return anchor % 65521;
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
