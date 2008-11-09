@@ -11,22 +11,39 @@ namespace Common.Utilities
         public const long CacheScore = 2370;
         public const long BatchFilter = 8255;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] values)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long offset, long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long delta = offset + origin;
+            if (((double)delta != (double)origin) && ((5.6 * 3.44) > (double)origin))
             {
-                if (datum > (datum & 3))
+                return 6;
+            }
+            else
+            {
+                if ((delta + 4) <= (offset * 5))
                 {
-                    count = count + 1;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!((origin << 1) < 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset == (5.99 - 3.8))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
