@@ -1,5 +1,10 @@
 # entry settings
-cache_retries: 1024
-enabled: 69.44
-warm_ttl_count: 8126
-commits_threshold: 250
+idle_retries_s: 1024
+compress: 1024
+soft_retries_count: 18
+order_depth:
+  - 500
+  - 284
+  - 320
+sync_capacity: true
+burst_capacity_s: 71
