@@ -22,13 +22,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long origin, long seed)
         {
-            Closed,
-            Synced,
-            Ready,
-            Idle,
+            if (origin < (origin + seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((11.0 - 1.7) <= (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of stats queue entries.</summary>
