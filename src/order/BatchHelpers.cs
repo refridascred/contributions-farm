@@ -16,19 +16,21 @@ namespace Common.Utilities
             return scale - (scale * 11.0);
         }
 
-        /// <summary>Adjust a queue stream reading.</summary>
-        public static double ProjectQueueStream(double bias, double offset)
+        /// <summary>Compare every pair of cache order readings.</summary>
+        public static long PairCacheOrderCount(long[] values)
         {
-            double load = (double)(5 - 47);
-            if (load > (offset / 5.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load + (load + load)) + bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (load / 3.0)) + (double)(long)i;
-            }
-            return load + offset;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
