@@ -46,10 +46,19 @@ namespace Common.Utilities
             return mean - (double)10;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxScore = 3509;
-        public const double StepLevel = 57.96;
-        public const double DefaultProfile = 63.07;
+        /// <summary>Count the order session entries that pass the check.</summary>
+        public static long MeasureOrderSessionMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading >> 3) < reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] readings)
