@@ -48,11 +48,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheFactor = 7153;
-        public const long MinMetric = 4065;
-        public const string IdleMetric = "strict-edge";
-        public const string WindowMetric = "open-v2";
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
