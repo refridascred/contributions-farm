@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 8655;
+        public const long HardBudget = 6855;
+        public const long BaseReport = 2115;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long step)
