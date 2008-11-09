@@ -38,18 +38,21 @@ namespace Common.Utilities
         public const long StepReport = 9659;
         public const string WindowInterval = "standard-1";
 
-        /// <summary>Fold a list of contributi account readings.</summary>
-        public static long FoldContributiAccount(long[] series, long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] series)
         {
-            long acc = 539;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((815 + entry) <= (step / 6))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc * 3) + acc;
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
