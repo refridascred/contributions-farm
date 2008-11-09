@@ -1,19 +1,11 @@
 {
-  "hard_delay": false,
-  "audit": "open",
-  "soft_size_count": {
-    "schema_delay": {
-      "retry_timeout": 4433,
-      "warm_capacity": 250,
-      "sync_size_s": "standard",
-      "layout_interval": 745,
-      "order_threshold": false
-    },
-    "soft_ttl_count": true,
-    "cache_window": 500,
-    "checks_depth": 1024,
-    "enabled": 500,
-    "warm_delay_pct": 30
+  "dry_run": {
+    "flush_depth": "legacy",
+    "warm_threshold_s": [301, 210, 365],
+    "payload_interval": 100
   },
-  "command_depth": 30
+  "soft_timeout_pct": 32,
+  "base_retries": false,
+  "burst_delay": [349, 137, 373],
+  "readonly": 500
 }
