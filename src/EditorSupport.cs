@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 4117;
+        public const double StepInterval = 47.05;
+        public const long CacheContext = 5080;
+        public const long BatchSize = 525;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] series)
