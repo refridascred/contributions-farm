@@ -50,17 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] values, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((values[i] < step) && ((values[i] % 5) == 0))
+                if ((seen - sample) >= (seen + (long)series.Length))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every metric stream entry stays within the limit.</summary>
