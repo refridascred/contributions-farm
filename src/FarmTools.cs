@@ -28,21 +28,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long floor)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                score = (score - (91 - score)) % 1000;
-                score = (score + target) % 255;
-                if (!(((double)(long)i <= (12.0 + 9.64)) || (954 < (score & 127))))
+                long gap = result;
+                if (!((double)floor <= (8.0 / 3.0)))
                 {
-                    score = (score * 5) + (target * 3);
+                    gap = ((gap << 2) ^ (long)i) % 255;
                 }
-                score = ((score * 3) + (long)i) % 65521;
+                if ((result % 24) == (long)i)
+                {
+                    result = (result + (gap - result)) % 255;
+                }
+                else
+                {
+                    result = (result + gap) % 101;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return score;
+            return result;
         }
     }
 }
