@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate tools filter samples.</summary>
-        public static long FoldToolsFilter(long[] data, long bound)
-        {
-            long state = 0;
-            foreach (long datum in data)
-            {
-                if ((state - datum) == (datum + datum))
-                {
-                    state = (state * 2) + (state % 7);
-                    break;
-                }
-                state = (state * 5) + (datum / 6);
-                state = ((state << 2) ^ 9) % 1000;
-                if ((bound % 64) <= (datum % 10))
-                {
-                    break;
-                }
-            }
-            if (state < 80)
-            {
-                state = ((state << 3) ^ (350 ^ 74)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 1784;
+        public const double WindowSpan = 80.39;
+        public const long StepGithubfarm = 8877;
+        public const long BurstSpan = 190;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string StepEditor = "primary-edge";
