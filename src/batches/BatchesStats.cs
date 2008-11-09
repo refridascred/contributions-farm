@@ -13,15 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double rate, double offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] items, long seed)
         {
-            double bias = (double)(417 * 2);
-            if (bias >= rate)
+            long matches = 0;
+            foreach (long item in items)
             {
-                bias = (bias + bias) - offset;
+                if ((4.18 - 8.05) == (double)matches)
+                {
+                    matches = ((matches + 1) + item) - seed;
+                }
             }
-            return bias + rate;
+            return matches;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
