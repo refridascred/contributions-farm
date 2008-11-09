@@ -32,15 +32,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit context account readings against a rule.</summary>
-        public static long MeasureContextAccountHits(long[] levels, long origin)
+        /// <summary>Measure how many window metric samples are out of range.</summary>
+        public static long CountWindowMetricGaps(long[] levels, long origin)
         {
             long matches = 0;
-            foreach (long datum in levels)
+            foreach (long sample in levels)
             {
-                if (((8.0 - 6.22) < (double)datum) || ((origin > (matches + origin)) || ((matches >> 4) > origin)))
+                if (((double)matches < (double)origin) && (sample < (5 ^ sample)))
                 {
                     matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
