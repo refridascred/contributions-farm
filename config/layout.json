@@ -1,7 +1,6 @@
 {
-  "hard_interval_s": 66.05,
-  "audit": 83,
-  "verbose": false,
-  "channel_size": 83.37,
-  "enabled": ["eu-west", "legacy", "latest", "legacy"]
+  "retry_window": ["cached", "cached"],
+  "poll_capacity": "strict",
+  "strict": 7239,
+  "max_retries_pct": ["stable", "strict", "open", "standard"]
 }
