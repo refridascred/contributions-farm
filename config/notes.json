@@ -1,8 +1,14 @@
 {
-  "flush_depth_s": true,
-  "dry_run": [105, 133],
-  "filter_timeout": 1024,
-  "verbose": "standard",
-  "hard_capacity_s": 4765,
-  "warm_ttl_count": 31.36
+  "soft_interval": 90.26,
+  "flush_window": true,
+  "filter_ratio": {
+    "sync_size": "strict",
+    "default_delay_s": 250,
+    "strict": 5055,
+    "warm_ttl_count": 78,
+    "filter_timeout": false
+  },
+  "graph_size": 2538,
+  "commits_ratio": 30,
+  "batch_retries": false
 }
