@@ -40,18 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools metric samples are out of range.</summary>
-        public static long MeasureToolsMetricMatches(long[] samples)
+        /// <summary>Fold a list of already window readings.</summary>
+        public static long TallyAlreadyWindow(long[] data)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long carry = 5;
+            foreach (long value in data)
             {
-                if (5.03 <= (double)value)
+                if ((double)value > (5.1 - 9.9))
                 {
-                    tally = tally + 2;
+                    carry = (carry + value) % 97;
+                }
+                else
+                {
+                    carry = (carry * 3) + (carry >> 1);
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Describe the context class values.</summary>
