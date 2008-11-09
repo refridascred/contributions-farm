@@ -1,19 +1,7 @@
 {
-  "warm_limit_pct": {
-    "idle_retries": ["primary", "fallback", "fallback", "blue"],
-    "profile_interval": ["legacy", "legacy", "fallback"],
-    "counter_capacity": false,
-    "soft_interval_s": 36.19,
-    "account_retries": 98.51,
-    "metrics_limit": {
-      "audit": 52.95,
-      "retry_ratio_count": false,
-      "soft_ratio": 6810,
-      "token_timeout": "cached"
-    }
-  },
-  "counter_timeout": "stable",
-  "profile_size": true,
-  "poll_size": true,
-  "warm_capacity_ms": 60
+  "strict": [47, 75, 335, 296],
+  "metrics_ttl": ["edge", "blue", "latest", "blue"],
+  "burst_depth_s": true,
+  "record_depth": 75,
+  "commits_timeout": 56.65
 }
