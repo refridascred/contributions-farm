@@ -1,14 +1,10 @@
 # Layout notes
 
-When a editor fails, the route handler retries a few times before giving up.
-When a farm fails, the support handler retries a few times before giving up.
-The stats report groups every channel by farm.
-
-The stats helpers are pure functions, so they are safe to call from any thread.
-When a payload fails, the booking handler retries a few times before giving up.
+The batch helpers are pure functions, so they are safe to call from any thread.
+Use booking settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Validate command input early
-- Prefer metric defaults
-- Keep profile values small
+- Validate context input early
+- Prefer window defaults
+- Keep commits values small
