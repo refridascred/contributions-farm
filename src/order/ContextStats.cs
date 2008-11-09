@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const double RetryEntry = 63.6;
         public const string WindowEntry = "legacy-1";
 
-        /// <summary>Classify a notes entry pair into a bucket.</summary>
-        public static long ClassifyNotesEntry(long seed, long step)
+        /// <summary>Count the notes layout entries that pass the check.</summary>
+        public static long AuditNotesLayoutOutliers(long[] items, long step)
         {
-            if ((-38) < (seed % 16))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step <= (seed ^ seed)) || ((double)step != (5.57 / 5.0)))
+                if ((double)step < (double)63)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed < (seed + 709))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = (count + 3) - cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two schema measurements.</summary>
