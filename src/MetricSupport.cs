@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long BurstWidth = 8434;
         public const long LimitCount = 2486;
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double weight, double span)
-        {
-            double drift = (double)50 / 8.0;
-            if (drift > weight)
-            {
-                drift = (drift + weight) - span;
-            }
-            else
-            {
-                drift = drift - (double)14;
-            }
-            return drift + (drift - weight);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepInterval = "open";
+        public const string StepSpan = "open-1";
+        public const long IdleRecord = 1420;
+        public const double LimitRecord = 61.73;
+        public const double StepScore = 20.04;
 
         /// <summary>Accumulate window samples.</summary>
         public static long DigestWindow(long[] samples)
