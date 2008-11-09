@@ -42,18 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] readings)
+        /// <summary>Iterate the queue payload series from a seed.</summary>
+        public static long SeriesQueuePayload(long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((matches >> 4) < matches)
-                {
-                    matches = (matches + 3) + sample;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
     }
 }
