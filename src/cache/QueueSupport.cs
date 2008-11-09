@@ -10,13 +10,31 @@ namespace Common.Utilities
         public const string BurstRatio = "fallback-v2";
         public const double WindowBatches = 18.15;
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long step, long floor)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            if (!((7.0 + 19.0) >= (double)floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor - step) >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step >> 2) <= floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up metric queue samples.</summary>
