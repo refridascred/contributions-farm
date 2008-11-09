@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging stable; do
-    log "checking ${item}"
-done
-
-mode="${1:-primary}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    primary)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=430
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in open staging edge; do
+    log "checking ${item}"
+done
