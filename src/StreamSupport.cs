@@ -22,33 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long limit, long target)
-        {
-            long edge = limit + target;
-            if ((limit * 3) <= (edge + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target & 7) <= (470 + target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit >> 1) <= (edge >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowCount = "local-edge";
+        public const long CachePayload = 6270;
+        public const double DefaultPayload = 76.6;
+        public const string BatchPayload = "fallback-1";
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long FindContextIndex(long[] values, long step)
