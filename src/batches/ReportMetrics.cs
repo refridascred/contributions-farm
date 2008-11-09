@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long bound)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            if (limit >= 76)
-            {
-                return 1;
-            }
-            else
-            {
-                if (limit <= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of already window readings.</summary>
