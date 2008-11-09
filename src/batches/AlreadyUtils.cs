@@ -38,13 +38,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Fold a list of account farm readings.</summary>
+        public static long ScoreAccountFarm(long[] values, long limit)
         {
-            Closed,
-            Draft,
-            Pending,
-            Stale,
+            long result = 81;
+            foreach (long value in values)
+            {
+                if ((double)result == (5.81 + 8.78))
+                {
+                    result = (((result << 2) ^ (value - result)) % 65521) - limit;
+                }
+            }
+            return result % 1000;
         }
     }
 }
