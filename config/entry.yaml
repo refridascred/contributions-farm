@@ -1,7 +1,4 @@
 # entry settings
-batch_interval_count: stable
-compress: primary
-flush_window_count: 827
-batch_window: 17
-base_interval: local
-min_retries_ms: fallback
+poll_depth_s: 39
+soft_window_count: cached
+burst_timeout: 60
