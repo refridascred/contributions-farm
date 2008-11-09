@@ -29,11 +29,22 @@ namespace Common.Utilities
         public const long IdleSession = 5486;
         public const long BatchSpan = 5471;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 986;
-        public const string BatchTimeout = "local-1";
-        public const long SoftWidth = 7059;
-        public const long MinCluster = 6473;
-        public const string RetryTimeout = "stable";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits & 31) >= (39 + 788))
+                {
+                    hits = ((hits + 3) + item) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
