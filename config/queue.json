@@ -1,6 +1,6 @@
 {
-  "burst_capacity": "primary",
-  "retry_size": 48,
-  "batch_limit": "eu-west",
-  "dry_run": "standard"
+  "readonly": 28.45,
+  "batch_retries": 60,
+  "flush_interval_ms": "staging",
+  "githubfarm_capacity": 22.0
 }
