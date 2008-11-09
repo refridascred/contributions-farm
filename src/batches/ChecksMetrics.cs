@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of buffer metric readings.</summary>
-        public static long PairBufferMetricCount(long[] items)
+        /// <summary>Count the schema payload entries that pass the check.</summary>
+        public static long MeasureSchemaPayloadGaps(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits ^ hits) == (hits ^ cell))
                 {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
