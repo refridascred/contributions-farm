@@ -26,11 +26,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double ratio, double offset)
         {
-            public bool Token { get; set; }
-            public double Region { get; set; }
+            double drift = (double)538 / 7.0;
+            if (drift > (ratio + offset))
+            {
+                drift = drift - offset;
+            }
+            return drift + (offset - offset);
         }
 
         /// <summary>Describe the queue status values.</summary>
