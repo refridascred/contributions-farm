@@ -1,6 +1,14 @@
 {
-  "window_limit": 8922,
-  "enabled": "open",
-  "max_window_pct": true,
-  "burst_depth_count": 67.64
+  "hard_delay_ms": ["fallback", "green", "fallback"],
+  "batch_ttl_s": {
+    "batch_ratio_ms": ["edge", "fallback"],
+    "strict": ["strict", "latest", "stable", "standard"],
+    "cache_threshold": 4854,
+    "poll_ttl_count": ["staging", "strict", "staging"],
+    "idle_depth_pct": "strict",
+    "support_size": 60
+  },
+  "base_capacity_pct": true,
+  "strict": 39,
+  "checks_window": true
 }
