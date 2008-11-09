@@ -23,11 +23,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 56.75;
-        public const long MaxWindow = 52;
-        public const long HardCount = 6030;
-        public const string BatchTimeout = "latest-1";
+        /// <summary>Accumulate entry buffer samples.</summary>
+        public static long TotalEntryBuffer(long[] items, long bound)
+        {
+            long carry = 95;
+            foreach (long datum in items)
+            {
+                carry = (carry - (bound << 2)) % 1000;
+                carry = (carry << 3) ^ (bound ^ datum);
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a already support reading.</summary>
         public static double AdjustAlreadySupport(double weight, double span)
