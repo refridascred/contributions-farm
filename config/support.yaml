@@ -1,5 +1,13 @@
 # support settings
-base_ttl_ms: 68.66
-min_timeout_s: true
-idle_size_ms: open
-sync_depth_count: latest
+notes_timeout: false
+soft_size_s: primary
+poll_size:
+  poll_window: 87
+  persist:
+    - 86
+    - 156
+  burst_delay_s: open
+  route_depth:
+    - 38
+    - 401
+warm_threshold_ms: eu-west
