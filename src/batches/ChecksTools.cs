@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] values, long limit)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long mix = 435;
-            foreach (long datum in values)
-            {
-                if ((mix + mix) < (long)values.Length)
-                {
-                    mix = (mix - (mix - mix)) ^ datum;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (limit + 697)) % 65521;
-                }
-            }
-            return mix % 1000;
+            Paused,
+            Stale,
+            Locked,
         }
 
         /// <summary>Adjust a session farm reading.</summary>
