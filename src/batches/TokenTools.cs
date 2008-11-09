@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BasePayload = "alpha-edge";
-        public const long DefaultBudget = 9499;
-        public const long MinDepth = 9663;
+        /// <summary>Check that every metric window entry stays within the limit.</summary>
+        public static bool ValidateMetricWindowLimits(long[] data, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long ClassifyCounter(long floor, long seed)
