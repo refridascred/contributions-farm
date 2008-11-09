@@ -63,18 +63,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] levels)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long target, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long slot = target + floor;
+            if (((floor + slot) >= (target & 7)) || ((9.0 - 5.67) > (double)slot))
             {
-                if (49 <= (tally / 6))
+                return 4;
+            }
+            else
+            {
+                if (((double)slot <= 9.9) || ((target << 3) >= (floor * 5)))
                 {
-                    tally = (tally + 3) + sample;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor - floor) < floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((floor + 154) > (slot + slot)) || ((slot % 60) > (63 + slot)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
