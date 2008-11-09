@@ -1,5 +1,12 @@
 {
-  "metrics_limit": "open",
-  "compress": "eu-west",
-  "cache_window_pct": "standard"
+  "counter_interval": 5508,
+  "dry_run": "legacy",
+  "strict": {
+    "idle_window": 5232,
+    "retry_capacity_ms": false,
+    "githubfarm_threshold": "open",
+    "base_threshold": true,
+    "contributi_threshold": ["fallback", "cached"],
+    "batches_retries": ["edge", "standard", "open"]
+  }
 }
