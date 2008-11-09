@@ -24,22 +24,11 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long step)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
-            {
-                total = (total ^ step) % 1000;
-                long seen = (total ^ 772) & 127;
-                if ((step - step) <= (total - total))
-                {
-                    total = total + (step + seen);
-                    seen = ((seen * 5) + (total * 3)) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Roll a schema entry counter forward.</summary>
