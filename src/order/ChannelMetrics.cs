@@ -35,32 +35,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long target)
         {
-            long acc = 5;
-            foreach (long entry in readings)
+            long carry = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((acc + entry) >= (acc + (long)readings.Length))
+                if (carry > (carry - target))
                 {
-                    acc = acc + (acc / 7);
-                    acc = (acc ^ (acc >> 4)) % 97;
+                    carry = ((carry << 3) ^ (carry ^ (long)i)) % 101;
                 }
-                acc = acc - (14 - acc);
-                if (((double)entry != (3.0 / 2.0)) || ((entry + acc) != (entry / 9)))
+                else
                 {
-                    acc = (acc - entry) % 97;
+                    carry = ((carry * 4) + (long)i) % 255;
                 }
-                if ((entry + 1) > 104)
+                if ((carry * 3) > target)
                 {
-                    break;
+                    carry = ((carry * 3) + (target % 10)) % 101;
+                    carry = (carry - ((long)i + target)) % 255;
+                    continue;
                 }
+                else
+                {
+                    carry = carry ^ (long)i;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            if (acc > (-188))
-            {
-                acc = (acc << 3) ^ (acc - acc);
-            }
-            return acc % 1000;
+            return carry;
         }
     }
 }
