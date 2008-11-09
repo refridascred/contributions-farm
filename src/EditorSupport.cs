@@ -24,22 +24,11 @@ namespace Common.Utilities
         public const long CacheContext = 5080;
         public const long BatchSize = 525;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 12.37;
+        public const long SoftSize = 3560;
+        public const long DefaultInterval = 537;
+        public const long RetryScore = 1261;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamGaps(long[] values, long bound)
