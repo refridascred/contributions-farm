@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] values, long limit)
         {
-            Draft,
-            Locked,
-            Ready,
-            Synced,
-            Closed,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!((reading + reading) <= (limit + 4)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
