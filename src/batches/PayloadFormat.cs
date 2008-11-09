@@ -42,13 +42,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Combine order counter values into a single score.</summary>
+        public static long CombineOrderCounter(long[] series, long limit)
         {
-            Done,
-            Synced,
-            Stale,
-            New,
+            long mark = 533;
+            foreach (long sample in series)
+            {
+                mark = mark - (sample / 4);
+                if ((double)sample > (5.0 - 7.6))
+                {
+                    mark = mark ^ (mark + limit);
+                }
+                else
+                {
+                    mark = (mark * 2) + sample;
+                }
+                if (!((7.23 - 5.0) >= (double)sample))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
