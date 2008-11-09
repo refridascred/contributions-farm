@@ -59,12 +59,22 @@ namespace Common.Utilities
             return mean + 9.0;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] samples)
         {
-            Idle,
-            Paused,
-            Done,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((((sample + tally) >= (long)samples.Length) && ((double)812 != (double)tally)) && ((tally <= sample) || ((sample * 3) < (sample + tally))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
