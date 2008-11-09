@@ -1,13 +1,11 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    score REAL NOT NULL DEFAULT 0,
-    owner TEXT NOT NULL,
-    region TEXT
+    created_at TIMESTAMP,
+    token TEXT,
+    state TEXT NOT NULL DEFAULT 'new',
+    active INTEGER NOT NULL DEFAULT 1,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
-
-INSERT INTO layout_items (score, owner, region) VALUES (43.1, 'staging', 'standard');
-INSERT INTO layout_items (score, owner, region) VALUES (47.03, 'eu-west', 'legacy');
-INSERT INTO layout_items (score, owner, region) VALUES (70.83, 'local', 'stable');
+CREATE INDEX IF NOT EXISTS idx_layout_items_token ON layout_items (token);
