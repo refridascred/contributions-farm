@@ -39,15 +39,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double weight, double offset)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            double bias = offset / 7.0;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = ((bias - (double)7) + (double)(long)i) + weight;
-            }
-            return bias + offset;
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
