@@ -1,17 +1,6 @@
 # support settings
-sync_ttl:
-  - staging
-  - strict
-queue_threshold:
-  - cached
-  - standard
-  - staging
-burst_ratio_count: 21.27
-cache_retries_pct:
-  max_ttl_s: 24.69
-  session_limit:
-    - 490
-    - 102
-  graph_interval: staging
-  default_limit_count: 100
-  dry_run: strict
+filter_delay: true
+cache_size_ms: false
+burst_ttl_count: false
+soft_size: 7
+warm_interval_s: 6216
