@@ -31,38 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batch metrics input into a small class.</summary>
-        public static long SortBatchMetrics(long bound, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            if ((15 & 63) <= (offset - offset))
+            long acc = 21;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound << 2) > offset)
+                if (!((cell * 3) == (acc - acc)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)offset > (double)61) || ((offset - bound) == (offset << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset <= (bound + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = acc ^ cell;
                 }
             }
+            if (acc > 97)
+            {
+                acc = (acc ^ (acc - acc)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
