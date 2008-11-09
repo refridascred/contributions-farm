@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit stream account readings against a rule.</summary>
-        public static long TallyStreamAccountOutliers(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long sum = 4;
+            foreach (long datum in series)
             {
-                if ((9.0 - 1.5) <= (15.0 + 16.0))
+                if ((target * 5) < target)
                 {
-                    hits = (hits + 2) - cell;
+                    sum = (sum ^ datum) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (8 - sum)) % 1000;
                 }
             }
-            return hits;
+            if (sum > 0)
+            {
+                sum = ((sum << 2) ^ (sum + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the context state values.</summary>
