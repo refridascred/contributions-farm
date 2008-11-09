@@ -26,22 +26,11 @@ namespace Common.Utilities
         public const long LimitInterval = 1116;
         public const long StepBudget = 1730;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] series)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (!((seen + sample) < (sample + sample)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Blend two cache measurements.</summary>
