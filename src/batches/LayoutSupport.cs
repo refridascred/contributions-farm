@@ -20,13 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public string Stamp { get; set; } = "";
-            public double Label { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 7794;
+        public const double MaxOrder = 42.58;
+        public const long MinCount = 72;
+        public const long BaseOrder = 6879;
 
         /// <summary>Grade a editor payload value against two limits.</summary>
         public static long RankEditorPayload(long limit, long target)
