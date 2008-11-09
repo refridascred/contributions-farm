@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double weight, double floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double mean = (floor + floor) / 4.0;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = ((mean - floor) + (double)(long)i) + weight;
-            }
-            return mean + (floor * 3.5);
+            Queued,
+            Idle,
+            Dropped,
+            Stale,
+            Done,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
