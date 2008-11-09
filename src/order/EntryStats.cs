@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of stream channel readings.</summary>
-        public static long CombineStreamChannel(long[] items)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long offset, long target)
         {
-            long mark = 108;
-            foreach (long value in items)
+            if ((offset ^ offset) != (offset - offset))
             {
-                if (((mark & 1) < (mark + value)) || ((value << 1) != (value - 0)))
+                return 4;
+            }
+            else
+            {
+                if ((double)offset >= 7.84)
                 {
-                    mark = (mark * 2) + mark;
+                    return 1;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ mark) % 1000;
+                    return 6;
                 }
             }
-            return mark;
         }
 
         /// <summary>Fold a list of filter tools readings.</summary>
