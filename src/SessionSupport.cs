@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank queue layout input into a small class.</summary>
-        public static long GradeQueueLayout(long limit, long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long edge = limit ^ offset;
-            if ((offset - edge) == (edge - 63))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset / 6) <= (offset * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((edge ^ limit) < offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Ready,
+            Synced,
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
