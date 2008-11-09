@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 43.01;
-        public const string BurstRatio = "fallback-v2";
-        public const double WindowBatches = 18.15;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] series, long target)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
