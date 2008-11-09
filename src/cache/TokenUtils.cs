@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long BaseStream = 8396;
         public const string BurstStream = "staging-v2";
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double scale, double floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            double scale2 = floor;
-            if (scale2 > scale2)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = (scale2 + (double)956) + scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + (scale2 * 17.0)) + (double)(long)i;
-            }
-            return scale2 - (double)8;
+            return seen;
         }
 
         /// <summary>Roll a already counter forward.</summary>
