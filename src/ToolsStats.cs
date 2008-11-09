@@ -55,18 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data, long floor)
+        /// <summary>Count the farm githubfarm entries that pass the check.</summary>
+        public static long TallyFarmGithubfarmMatches(long[] values, long limit)
         {
-            long carry = -649;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (((carry + item) < (item ^ item)) && ((double)floor > (7.2 * 1.08)))
+                if ((cell * 4) <= (limit % 97))
                 {
-                    carry = carry ^ (carry ^ 538);
+                    matches = matches + 2;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Compare every pair of filter session readings.</summary>
