@@ -41,12 +41,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheCount = 56.7;
-        public const long StepRecord = 1216;
-        public const long WindowScore = 3438;
-        public const string CacheSize = "strict-1";
-        public const double IdleRecord = 7.65;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double scale, double floor)
+        {
+            double rate = floor;
+            if (rate >= (scale - 6.8))
+            {
+                rate = rate - floor;
+            }
+            else
+            {
+                rate = rate + (scale - 1.83);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate - rate;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamOutliers(long[] readings)
