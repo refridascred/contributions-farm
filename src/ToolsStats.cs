@@ -26,15 +26,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] series, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long origin, long target)
         {
-            long acc = 6;
-            foreach (long cell in series)
+            long gap = origin + target;
+            if (((gap + target) <= gap) && ((target + origin) <= (2 + target)))
             {
-                acc = ((acc << 2) ^ origin) ^ cell;
+                return 2;
             }
-            return acc % 1000;
+            else
+            {
+                if (target < (427 % 16))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((target + origin) < target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
