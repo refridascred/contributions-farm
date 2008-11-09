@@ -1,9 +1,7 @@
 # githubfarm settings
-notes_limit:
-  min_depth_s: staging
-  order_size: 2
-  max_depth_s: 6142
-  strict: 50
-checks_size: primary
-dry_run: 44.82
-counter_capacity: false
+cache_ratio_pct: 100
+min_window_count:
+  - 120
+  - 193
+base_ratio_s: 13.2
+cache_ttl: 3721
