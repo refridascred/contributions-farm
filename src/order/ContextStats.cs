@@ -31,22 +31,21 @@ namespace Common.Utilities
         public const long BaseBuffer = 3840;
         public const string IdleBuffer = "strict-v2";
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] samples, long offset)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum == (19.0 * 4.86))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 2) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
