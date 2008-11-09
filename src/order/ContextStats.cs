@@ -38,19 +38,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stats batches figure with a bias.</summary>
-        public static double SmoothStatsBatches(double ratio, double floor)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double rate, double bias)
         {
-            double gain = (floor + floor) - floor;
-            if (gain <= (floor / 9.0))
+            double mean = rate;
+            if (mean < bias)
             {
-                gain = gain - gain;
+                mean = mean + bias;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                gain = (gain - gain) - (double)(long)i;
+                mean = mean - (double)4;
             }
-            return gain + ratio;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (bias * 2.4)) + (double)(long)i;
+            }
+            return mean - rate;
         }
     }
 }
