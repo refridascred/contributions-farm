@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] items)
         {
-            long carry = 8;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                carry = ((carry << 3) ^ ((-93) / 7)) % 97;
-                if ((carry + carry) == (carry + item))
+                if (((-91) << 3) == (entry % 64))
                 {
-                    carry = carry ^ (carry - item);
-                }
-                if ((item >> 2) >= (item + carry))
-                {
-                    carry = ((carry * 5) + (item & 7)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry % 24)) % 255;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
