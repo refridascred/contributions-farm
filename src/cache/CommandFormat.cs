@@ -40,19 +40,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double bias, double floor)
-        {
-            double load = (double)(12 - 9);
-            if (load >= (load / 5.0))
-            {
-                load = (load + (4.0 - load)) + bias;
-            }
-            else
-            {
-                load = load - (floor / 5.0);
-            }
-            return load + 9.0;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleSize = 72.4;
+        public const long SoftCount = 948;
+        public const double StepFactor = 30.76;
     }
 }
