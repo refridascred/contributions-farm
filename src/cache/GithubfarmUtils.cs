@@ -53,19 +53,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double rate, double span)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long offset)
         {
-            double load = rate;
-            if (load < span)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                load = load + load;
+                mix = (mix ^ (mix % 10)) % 255;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (rate - rate)) + (double)(long)i;
-            }
-            return load + (double)(-69);
+            return mix;
         }
     }
 }
