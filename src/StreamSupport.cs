@@ -22,15 +22,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] samples)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long anchor = 89;
-            foreach (long reading in samples)
-            {
-                anchor = ((anchor + anchor) % 4096) + reading;
-            }
-            return anchor;
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
