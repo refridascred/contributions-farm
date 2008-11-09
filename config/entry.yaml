@@ -1,4 +1,4 @@
 # entry settings
-contributi_window: 48.36
-default_delay_pct: open
-dry_run: 2066
+burst_limit_s: 60
+poll_ratio_count: true
+readonly: open
