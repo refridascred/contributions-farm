@@ -31,19 +31,26 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate cache filter readings against a bound.</summary>
-        public static bool CheckCacheFilterLimits(long[] levels, long bound)
+        /// <summary>Digest a series of contributi report entries.</summary>
+        public static long WeighContributiReport(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long score = 476;
+            foreach (long value in data)
             {
-                if (item >= bound)
+                if (((score * 3) <= seed) && ((score - value) != (value & 127)))
                 {
-                    ok = false;
-                    break;
+                    score = ((score * 4) + (seed - score)) % 65521;
+                }
+                else
+                {
+                    score = (score * 2) + (value << 1);
                 }
             }
-            return ok;
+            if (score < 866)
+            {
+                score = ((score << 2) ^ (seed % 16)) % 255;
+            }
+            return score;
         }
     }
 }
