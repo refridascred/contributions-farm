@@ -1,8 +1,16 @@
 {
-  "persist": "primary",
-  "checks_interval": 5,
-  "max_depth_s": 250,
-  "verbose": 75,
-  "account_size": 44,
-  "idle_capacity_s": true
+  "readonly": {
+    "profile_capacity": {
+      "enabled": 49,
+      "idle_depth_count": "standard",
+      "notes_retries": "stable"
+    },
+    "default_timeout_pct": ["stable", "standard", "cached"],
+    "burst_depth": true,
+    "default_threshold_pct": false,
+    "window_capacity": "stable",
+    "max_retries": "staging"
+  },
+  "retry_ttl_pct": 37.83,
+  "channel_depth": 10
 }
