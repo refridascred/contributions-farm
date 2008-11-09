@@ -1,5 +1,6 @@
 {
-  "retry_ratio_s": 40.05,
-  "audit": "fallback",
-  "metric_capacity": 17.22
+  "max_capacity": [384, 234, 260, 31],
+  "session_threshold": ["eu-west", "strict", "stable"],
+  "readonly": 60.49,
+  "record_threshold": false
 }
