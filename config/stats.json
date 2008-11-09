@@ -1,5 +1,5 @@
 {
-  "default_window_ms": "legacy",
-  "strict": 24,
-  "flush_interval_ms": 67
+  "retry_ratio_s": 40.05,
+  "audit": "fallback",
+  "metric_capacity": 17.22
 }
