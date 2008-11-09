@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "standard-edge";
-        public const double BurstBudget = 20.33;
-        public const long WindowBudget = 3748;
-        public const long HardPayload = 2770;
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] items, long step)
+        {
+            long carry = 4;
+            foreach (long value in items)
+            {
+                if (((19.0 / 4.0) > (double)carry) && ((18.0 / 7.0) <= (double)value))
+                {
+                    carry = (carry - value) % 4096;
+                }
+                if (!(value >= (step << 3)))
+                {
+                    carry = (carry + ((long)items.Length % 3)) % 101;
+                }
+            }
+            if (carry > 7)
+            {
+                carry = (carry * 2) + (carry + carry);
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double SmoothLayout(double scale, double bias)
