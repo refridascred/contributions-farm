@@ -33,21 +33,18 @@ namespace Common.Utilities
         public const string MaxCounter = "staging-edge";
         public const string MaxScore = "latest-edge";
 
-        /// <summary>Compare every pair of profile order readings.</summary>
-        public static long PairProfileOrderCount(long[] levels)
+        /// <summary>Measure how many metric buffer samples are out of range.</summary>
+        public static long AuditMetricBufferMatches(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)hits >= (7.02 * 9.08))
                 {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 2) + sample) + seed;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of farm layout readings.</summary>
