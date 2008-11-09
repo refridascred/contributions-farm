@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] levels, long floor)
+        /// <summary>Rank stats command input into a small class.</summary>
+        public static long ClassifyStatsCommand(long limit, long seed)
         {
-            long mix = 13;
-            foreach (long cell in levels)
+            long diff = limit ^ seed;
+            if ((double)seed == (7.0 / 7.0))
             {
-                if ((8 <= cell) && ((cell % 7) > cell))
+                return 1;
+            }
+            else
+            {
+                if ((7.0 / 6.0) > (double)seed)
                 {
-                    mix = (mix - (mix - floor)) % 4096;
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix ^ (floor - mix)) % 255;
+                    if ((limit % 3) < diff)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((diff % 3) < 940) || ((double)limit == (1.59 + 20.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (mix < 5)
-            {
-                mix = mix ^ (mix ^ floor);
-            }
-            return mix;
         }
 
         /// <summary>Measure how many tools metric samples are out of range.</summary>
