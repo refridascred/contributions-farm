@@ -1,15 +1,8 @@
 {
-  "burst_ttl_s": {
-    "idle_interval": ["local", "blue"],
-    "contributi_limit": "eu-west",
-    "compress": true,
-    "persist": 4197,
-    "warm_timeout": true,
-    "dry_run": 7789
-  },
-  "warm_retries": 45,
-  "compress": "eu-west",
-  "idle_limit": "standard",
-  "enabled": 250,
-  "profile_interval": "stable"
+  "min_capacity_count": 16,
+  "idle_timeout": true,
+  "compress": ["legacy", "eu-west"],
+  "burst_timeout_s": false,
+  "flush_retries": 57,
+  "counter_capacity": "green"
 }
