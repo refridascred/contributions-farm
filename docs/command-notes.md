@@ -1,12 +1,11 @@
 # Command notes
 
-The account report groups every farm by order.
-Run the layout check before changing any cache limits.
-The filter module keeps schema values in sync with the record cache.
+Run the buffer check before changing any token limits.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Keep filter and stream names short and lowercase.
 
 ## Guidelines
 
-- Document new cluster fields
-- Prefer commits defaults
-- Keep farm values small
-- Validate contributi input early
+- Review session limits each release
+- Log every filter change
+- Prefer command defaults
