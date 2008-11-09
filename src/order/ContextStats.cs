@@ -42,23 +42,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double rate, double bias)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double mean = rate;
-            if (mean < bias)
-            {
-                mean = mean + bias;
-            }
-            else
-            {
-                mean = mean - (double)4;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (bias * 2.4)) + (double)(long)i;
-            }
-            return mean - rate;
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
