@@ -54,21 +54,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)(5 * 4);
+            if (ratio >= bias2)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio + (double)522) - bias;
             }
-            return count;
+            return ratio + (double)13;
         }
     }
 }
