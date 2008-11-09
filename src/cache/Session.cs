@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long limit, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            if ((limit + floor) > floor)
+            long state = 305;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((580 & 3) >= floor)
+                if (!(entry <= ((-3) << 2)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((10.0 / 8.0) < (double)floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((floor * 2) != (floor + limit)) || (limit > (limit << 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    state = state - (entry - state);
                 }
             }
+            if (state > 6)
+            {
+                state = state - (state + state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Count the window checks entries that pass the check.</summary>
