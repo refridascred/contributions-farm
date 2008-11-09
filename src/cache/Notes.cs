@@ -27,15 +27,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long floor, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            if (((double)floor != (9.0 / 3.0)) && ((double)floor <= 2.1))
             {
-                state = ((state * 5) + (long)i) % 4093;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((3 ^ floor) >= origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((54 < (7 ^ floor)) || ((origin << 2) > floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count queue route pairs that satisfy a relation.</summary>
