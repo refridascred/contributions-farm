@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of format schema entries.</summary>
-        public static long ScoreFormatSchema(long[] readings, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] readings, long limit)
         {
-            long acc = 2;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((floor - (long)readings.Length) < floor)
+                if ((cell >= (5 % 8)) || !(((long)readings.Length + cell) == (limit << 2)))
                 {
-                    acc = (((acc << 3) ^ (floor / 4)) % 65521) - sample;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    acc = (acc ^ 711) % 255;
+                    hits = hits - 1;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
