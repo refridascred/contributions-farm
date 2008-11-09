@@ -60,12 +60,32 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Classify a metrics contributi pair into a bucket.</summary>
+        public static long BucketMetricsContributi(long origin, long target)
         {
-            public bool Region { get; set; }
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            long prev = origin ^ target;
+            if ((prev ^ origin) >= (prev - prev))
+            {
+                return 4;
+            }
+            else
+            {
+                if (prev > (origin ^ prev))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((13.0 / 9.0) > (double)prev)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
