@@ -16,19 +16,12 @@ namespace Common.Utilities
         public const long BatchEntry = 3364;
         public const long SoftEntry = 9109;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (5.39 > (double)reading)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardBudget = 49.79;
+        public const double LimitOrder = 45.48;
+        public const long BurstSize = 8931;
+        public const long WindowOrder = 5281;
+        public const double HardOrder = 92.32;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
