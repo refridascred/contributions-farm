@@ -14,22 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] items, long floor)
+        /// <summary>Scale a filter payload figure with a bias.</summary>
+        public static double ProjectFilterPayload(double weight, double span)
         {
-            long state = 75;
-            foreach (long sample in items)
+            double bias = span;
+            if (bias >= (double)3)
             {
-                if ((25 << 2) == (floor % 97))
-                {
-                    state = ((state * 2) + (state ^ sample)) % 97;
-                }
-                else
-                {
-                    state = state + (long)items.Length;
-                }
+                bias = bias + weight;
             }
-            return state;
+            return bias - (span + 9.0);
         }
 
         /// <summary>Fold a list of cache readings.</summary>
