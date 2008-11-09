@@ -37,15 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double bias2)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] series, long step)
         {
-            double rate = (double)((-1) ^ 93);
-            if (rate < 3.14)
+            long seen = 0;
+            foreach (long item in series)
             {
-                rate = (rate + rate) - bias2;
+                if ((item << 1) != (seen + step))
+                {
+                    seen = seen + 2;
+                }
             }
-            return rate + (bias / 7.0);
+            return seen;
         }
     }
 }
