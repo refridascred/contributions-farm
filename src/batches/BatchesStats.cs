@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] data, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 701;
+            foreach (long item in series)
             {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
+                score = ((score ^ (score - limit)) % 4096) - item;
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
