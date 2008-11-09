@@ -30,25 +30,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a metric stream pair into a bucket.</summary>
-        public static long BucketMetricStream(long origin, long origin2)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long span = origin - origin2;
-            if ((6.7 > (double)span) && (span <= (origin - origin2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin2 == (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
