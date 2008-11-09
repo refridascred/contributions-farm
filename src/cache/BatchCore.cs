@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double gain, double span)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] data, long target)
         {
-            double bias = 9.1;
-            if (bias >= (double)92)
+            long count = 0;
+            foreach (long entry in data)
             {
-                bias = (bias - (double)733) + gain;
+                if ((entry > (count & 7)) || ((target ^ count) != (target + entry)))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (double)717) + (double)(long)i;
-            }
-            return bias + span;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
