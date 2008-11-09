@@ -15,20 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double gain, double span)
-        {
-            double weight = gain;
-            if (weight > (7.3 - weight))
-            {
-                weight = weight + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (span - 13.0)) - (double)(long)i;
-            }
-            return weight - (span - weight);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 7073;
+        public const double BaseTimeout = 68.62;
+        public const double SoftAlready = 49.46;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportGaps(long[] values, long target)
