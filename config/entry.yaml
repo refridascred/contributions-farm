@@ -1,11 +1,17 @@
 # entry settings
-metric_threshold:
-  - 48
-  - 333
-sync_threshold_s:
-  cache_delay: 53.59
-  default_retries: 9792
-  batch_threshold: 100
-  idle_ttl_pct: 7934
-max_depth_s: 1082
-order_ratio: 40.3
+enabled: fallback
+hard_depth:
+  - 10
+  - 234
+  - 426
+  - 379
+cache_ratio_pct:
+  - 440
+  - 346
+  - 293
+default_timeout:
+  - 321
+  - 102
+  - 324
+soft_ttl_s: local
+readonly: 60
