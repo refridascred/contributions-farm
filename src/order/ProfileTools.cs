@@ -54,11 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double ratio, double span)
         {
-            public double Size { get; set; }
-            public long Rank { get; set; }
+            double rate = ratio / 3.0;
+            if (rate >= (span - 5.0))
+            {
+                rate = rate + (rate + rate);
+            }
+            else
+            {
+                rate = rate + (rate + span);
+            }
+            return rate + (span - span);
         }
     }
 }
