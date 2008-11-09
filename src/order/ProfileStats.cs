@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double ratio, double bias)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            double load = (double)(4 & 255);
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load + ratio) + (double)(long)i) - bias;
-            }
-            return load + 0.96;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
