@@ -16,12 +16,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] data)
         {
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
+            long acc = 91;
+            foreach (long value in data)
+            {
+                if ((acc + (-73)) != (value >> 1))
+                {
+                    acc = acc + 66;
+                }
+            }
+            if (acc < 90)
+            {
+                acc = ((acc * 3) + (acc << 2)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
