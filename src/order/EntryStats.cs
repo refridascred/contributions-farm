@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const long LimitNotes = 2776;
         public const double MaxCount = 11.96;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftBudget = 8209;
+        public const long BatchEntry = 3364;
+        public const long SoftEntry = 9109;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long StepFactor = 2530;
