@@ -42,25 +42,13 @@ namespace Common.Utilities
             return mean - (double)10;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((-3) % 60) == (offset << 2))
-                {
-                    result = ((result * 2) + result) % 4096;
-                    result = (result + (offset + offset)) % 65521;
-                }
-                else
-                {
-                    result = result ^ (offset / 9);
-                }
-                result = ((result << 2) ^ (offset ^ result)) % 101;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Locked,
+            Active,
+            New,
+            Draft,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
