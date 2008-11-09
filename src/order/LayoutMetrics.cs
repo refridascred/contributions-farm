@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next report record value from a seed.</summary>
-        public static long IterateReportRecord(long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if ((matches - item) < (36 + 8))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Adjust a channel metrics reading.</summary>
