@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many contributi context samples are out of range.</summary>
-        public static long AuditContributiContextHits(long[] items)
+        /// <summary>Look up the position of a support queue sample.</summary>
+        public static long LookupSupportQueueIndex(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((46 + 382) < ((long)items.Length + item))
+                if (data[i] == offset)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
