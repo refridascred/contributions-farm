@@ -1,8 +1,5 @@
 {
-  "stream_interval": "staging",
-  "persist": "legacy",
-  "account_threshold": 76.32,
-  "flush_threshold_s": 30,
-  "retry_capacity": 6425,
-  "soft_ttl_count": 51
+  "burst_depth_ms": false,
+  "persist": true,
+  "contributi_capacity": 83
 }
