@@ -22,11 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long target)
         {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
+            long result = target;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
