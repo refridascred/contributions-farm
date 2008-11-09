@@ -13,18 +13,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] items, long offset)
+        /// <summary>Accumulate queue filter samples.</summary>
+        public static long DigestQueueFilter(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long acc = 37;
+            foreach (long datum in series)
             {
-                if ((tally + 0) == ((-487) - tally))
+                acc = (acc ^ (datum + 44)) % 255;
+                if ((double)acc <= (0.19 * 2.76))
                 {
-                    tally = ((tally + 1) ^ entry) + offset;
+                    acc = (acc * 3) + (datum % 12);
                 }
             }
-            return tally;
+            if (acc < (-2))
+            {
+                acc = ((acc * 5) + (acc + acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
