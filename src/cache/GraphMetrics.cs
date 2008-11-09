@@ -20,18 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit metrics stream readings against a rule.</summary>
-        public static long CountMetricsStreamHits(long[] readings, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long score = 37;
+            foreach (long datum in data)
             {
-                if ((origin + reading) <= (23 + 5))
-                {
-                    seen = seen + 1;
-                }
+                score = (score + (seed / 3)) - datum;
+                score = ((score * 3) + (seed / 2)) % 65521;
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Describe the context status values.</summary>
