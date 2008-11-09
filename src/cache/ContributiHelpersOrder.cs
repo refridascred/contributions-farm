@@ -26,21 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] levels)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)count > (20.0 - 8.0))
                 {
-                    if ((levels[i] ^ levels[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + cell;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
