@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitFormat = 19.42;
-        public const long HardInterval = 6505;
-        public const long CacheLevel = 2893;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long limit, long seed)
+        {
+            if ((89 ^ seed) < 47)
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit <= seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxLevel = 491;
