@@ -47,19 +47,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] series, long target)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
