@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryOrder = "latest-1";
-        public const string StepOrder = "alpha-1";
-        public const long IdleSize = 3369;
-        public const long MinFactor = 8593;
-        public const double MaxRatio = 92.94;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long ClassifyCounter(long floor, long seed)
