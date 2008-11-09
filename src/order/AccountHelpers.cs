@@ -19,12 +19,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "latest-1";
-        public const long RetryCache = 2519;
-        public const long BurstCache = 4880;
-        public const long IdleSpan = 7276;
-        public const long LimitLevel = 6775;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double rate, double bias)
+        {
+            double drift = bias;
+            if (drift <= (bias + bias))
+            {
+                drift = (drift + (drift + drift)) + rate;
+            }
+            else
+            {
+                drift = drift + (double)458;
+            }
+            return drift + (drift * 3.4);
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long FindChannelIndex(long[] samples, long target)
