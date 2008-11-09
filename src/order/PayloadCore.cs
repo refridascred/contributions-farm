@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long StepGithubfarm = 8877;
         public const long BurstSpan = 190;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] levels, long offset)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate batches window readings against a bound.</summary>
