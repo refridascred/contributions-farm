@@ -1,11 +1,10 @@
 # Command notes
 
-Use channel settings to tune how often stats data is refreshed.
-When a schema fails, the already handler retries a few times before giving up.
+Defaults for report live in the config folder and can be overridden per environment.
+The githubfarm module keeps stats values in sync with the profile cache.
 
 ## Guidelines
 
-- Log every already change
-- Document new metrics fields
-- Prefer payload defaults
-- Validate support input early
+- Validate token input early
+- Review already limits each release
+- Keep report values small
