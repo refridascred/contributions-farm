@@ -22,31 +22,12 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long limit, long bound)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            if ((bound * 3) >= limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit & 7) > (limit << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((7 << 1) != (bound + limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Locked,
         }
     }
 }
