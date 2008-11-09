@@ -22,19 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long step)
+        /// <summary>Count report queue pairs that satisfy a relation.</summary>
+        public static long CompareReportQueueCount(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((8.27 < (double)acc) || (((-26) >> 4) > (step >> 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    continue;
+                    if ((series[i] ^ series[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count stream cluster pairs that satisfy a relation.</summary>
