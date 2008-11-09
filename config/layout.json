@@ -1,12 +1,5 @@
 {
-  "format_delay": false,
-  "idle_interval_pct": "eu-west",
-  "metric_capacity": {
-    "buffer_retries": ["open", "strict"],
-    "stream_depth": false,
-    "max_delay_count": [197, 479],
-    "poll_capacity": true
-  },
-  "retry_delay": "eu-west",
-  "batch_retries_pct": "open"
+  "retry_capacity": "stable",
+  "base_interval_pct": "fallback",
+  "window_ttl": "latest"
 }
