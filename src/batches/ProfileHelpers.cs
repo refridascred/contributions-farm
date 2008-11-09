@@ -65,21 +65,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long target)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long target, long step)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            long cur = target ^ step;
+            if ((137 + cur) < (target >> 5))
             {
-                double rate = (7.5 / 8.0) / 9.0;
-                if ((rate * 9.8) >= 5.0)
-                {
-                    result = (result ^ (target >> 1)) % 255;
-                    result = result + ((long)i - result);
-                }
-                result = ((result * 3) + (long)i) % 101;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (!((cur >> 4) >= (908 + step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a profile info.</summary>
