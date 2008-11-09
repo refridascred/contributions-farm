@@ -47,18 +47,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout batches samples are out of range.</summary>
-        public static long CountLayoutBatchesHits(long[] readings, long step)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long bound, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long delta = bound - target;
+            if (!(target < (delta >> 1)))
             {
-                if ((step >> 4) > ((long)readings.Length + step))
+                return 1;
+            }
+            else
+            {
+                if (68 >= (bound ^ 711))
                 {
-                    count = (count + 1) - sample;
+                    return 8;
+                }
+                else
+                {
+                    if ((84 / 5) <= (target % 24))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target * 4) <= delta)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
