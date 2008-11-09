@@ -1,9 +1,8 @@
-id,rank,active,weight
-1,16.09,local,441
-2,232,58.06,468
-3,42.1,45.46,98
-4,fallback,primary,161
-5,66.42,847,568
-6,251,green,83.01
-7,staging,legacy,536
-8,399,740,757
+id,score,state,region,rank
+1,open,72.75,886,803
+2,67,81.98,232,491
+3,primary,legacy,243,70.77
+4,657,925,staging,70.75
+5,green,858,220,51.05
+6,843,74.5,993,0.58
+7,31.83,strict,75.04,94.39
