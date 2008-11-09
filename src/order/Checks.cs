@@ -37,12 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] series)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
