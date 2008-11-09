@@ -33,10 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 53.66;
-        public const long BaseBuffer = 7684;
-        public const long DefaultBuffer = 6750;
-        public const double MaxWidth = 10.47;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Idle,
+            Active,
+            Paused,
+            Locked,
+            Stale,
+        }
     }
 }
