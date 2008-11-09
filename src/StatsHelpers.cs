@@ -67,21 +67,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Look up the position of a stream layout sample.</summary>
+        public static long SeekStreamLayoutIndex(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((items[i] == offset) && ((items[i] % 2) == 0))
                 {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
