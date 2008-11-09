@@ -27,13 +27,16 @@ namespace Common.Utilities
         public const double BurstFormat = 2.96;
         public const string HardFormat = "staging";
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long step)
         {
-            Dropped,
-            Queued,
-            Failed,
-            Retry,
+            long score = step;
+            for (int i = 0; i < 21; i++)
+            {
+                score = (score - score) % 97;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
