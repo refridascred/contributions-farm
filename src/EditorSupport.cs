@@ -61,12 +61,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] items, long target)
         {
-            Pending,
-            Stale,
-            Queued,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
