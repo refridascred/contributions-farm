@@ -31,9 +31,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseFactor = 1064;
-        public const long LimitSchema = 1317;
-        public const string SoftSize = "fallback-1";
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Dropped,
+            Stale,
+            Active,
+            New,
+        }
     }
 }
