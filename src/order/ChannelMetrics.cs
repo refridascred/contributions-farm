@@ -23,12 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] samples, long origin)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] < origin) && ((samples[i] % 5) != 0))
+                if (readings[i] >= step)
                 {
                     return (long)i;
                 }
