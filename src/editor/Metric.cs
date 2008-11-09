@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] readings, long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (!((item - 517) >= (24 << 1)))
+                if (item < bound)
                 {
-                    seen = (seen + 1) + origin;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
