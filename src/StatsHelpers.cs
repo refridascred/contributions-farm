@@ -84,11 +84,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 5650;
-        public const string RetryLevel = "strict-v2";
-        public const double IdleNotes = 79.14;
-        public const long WindowNotes = 3762;
-        public const long HardNotes = 2674;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = anchor - seed;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
