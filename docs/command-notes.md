@@ -1,12 +1,11 @@
 # Command notes
 
-Run the contributi check before changing any cache limits.
-Use tools settings to tune how often commits data is refreshed.
-The report report groups every cache by commits.
+Defaults for graph live in the config folder and can be overridden per environment.
+Each payload is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Document new stats fields
-- Validate stream input early
-- Keep metrics values small
-- Log every stream change
+- Document new account fields
+- Review checks limits each release
+- Prefer cluster defaults
+- Validate batches input early
