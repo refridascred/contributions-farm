@@ -19,16 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double ratio, double bias)
-        {
-            double mean = (double)(641 * 5);
-            if (mean <= (double)82)
-            {
-                mean = mean - ratio;
-            }
-            return mean + (bias / 7.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepEditor = "primary-edge";
+        public const long StepSize = 2623;
+        public const long SoftEditor = 1060;
+        public const long CacheInterval = 9497;
+        public const long MinLevel = 9565;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
