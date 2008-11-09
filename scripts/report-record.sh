@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=238
+log "limit is ${RECORD_LIMIT}"
 
-for item in fallback standard staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-standard}"
+mode="${1:-latest}"
 case "${mode}" in
-    edge)
+    local)
         log "fast path"
         ;;
     *)
