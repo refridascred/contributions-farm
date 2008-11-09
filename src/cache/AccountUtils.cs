@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const string HardBudget = "cached-v2";
         public const long IdleFarm = 5483;
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] levels, long bound)
         {
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
