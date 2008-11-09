@@ -24,21 +24,16 @@ namespace Common.Utilities
             return (bias2 - (ratio / 6.0)) + bias;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Iterate the context queue series from a seed.</summary>
+        public static long DeriveContextQueue(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (total + ((long)i / 4)) % 97;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
     }
 }
