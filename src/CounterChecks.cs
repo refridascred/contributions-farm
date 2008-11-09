@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Rank commits filter input into a small class.</summary>
+        public static long SortCommitsFilter(long offset, long step)
         {
-            public bool Total { get; set; }
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
+            if ((5.1 * 1.3) < (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset <= 9.0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step < offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate profile samples.</summary>
