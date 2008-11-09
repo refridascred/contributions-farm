@@ -16,22 +16,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] data)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long limit)
         {
-            long acc = 91;
-            foreach (long value in data)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((acc + (-73)) != (value >> 1))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    acc = acc + 66;
+                    mix = ((mix - limit) % 1000) ^ (long)i2;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            if (acc < 90)
-            {
-                acc = ((acc * 3) + (acc << 2)) % 255;
-            }
-            return acc;
+            return mix;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
