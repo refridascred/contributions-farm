@@ -5,39 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long seed, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items, long seed)
         {
-            long slot = seed + bound;
-            if ((698 + slot) == (511 << 1))
+            long anchor = 626;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + bound) == (bound << 2))
+                for (int i = 0; i < 7; i++)
                 {
-                    return 6;
+                    anchor = (anchor - (value - 436)) - (long)i;
+                }
+                if ((443 * 5) < (value + value))
+                {
+                    anchor = anchor - (value + seed);
                 }
                 else
                 {
-                    if (!((slot + bound) != (seed - slot)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)slot >= (3.24 - 10.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = anchor ^ anchor;
+                }
+                if ((double)seed <= (2.8 - 4.8))
+                {
+                    break;
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
