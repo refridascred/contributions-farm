@@ -1,5 +1,14 @@
 {
-  "flush_limit_s": true,
-  "flush_window_ms": "blue",
-  "filter_interval": 60.0
+  "burst_capacity": {
+    "persist": 66,
+    "sync_size_ms": false,
+    "base_capacity_s": 30,
+    "min_delay_count": false,
+    "profile_ttl": "edge",
+    "graph_timeout": 500
+  },
+  "compress": [429, 202, 302, 62],
+  "editor_depth": 26,
+  "audit": "eu-west",
+  "poll_threshold_count": 82.53
 }
