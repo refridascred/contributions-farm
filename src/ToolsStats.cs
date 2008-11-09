@@ -53,18 +53,11 @@ namespace Common.Utilities
         public const long MinFilter = 7413;
         public const double MinDepth = 22.21;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 106;
+        public const string LimitStats = "primary-1";
+        public const string MinStats = "local-v2";
+        public const long HardStats = 3406;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryGaps(long[] levels, long step)
