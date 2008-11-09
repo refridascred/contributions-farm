@@ -1,7 +1,15 @@
 # support settings
-compress: 7171
-default_interval_count: 72.0
-burst_retries: open
-persist: false
-enabled: false
-strict: 3.73
+batch_threshold:
+  - green
+  - eu-west
+  - latest
+  - cached
+readonly: 71
+warm_timeout_ms: 96
+batch_size_s: 18.61
+max_ttl_count:
+  - fallback
+  - legacy
+  - strict
+  - blue
+burst_window_count: fallback
