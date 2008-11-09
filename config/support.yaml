@@ -1,15 +1,15 @@
 # support settings
-base_window_ms:
-  cache_depth_pct: false
-  sync_size_count:
-    - edge
-    - strict
-  retry_delay:
-    metric_retries: 500
-    audit: open
-    buffer_retries: staging
-    report_window: true
-strict:
-  - staging
-  - stable
-verbose: false
+sync_timeout:
+  flush_interval: stable
+  hard_capacity_s: false
+  strict: 67.17
+  batch_depth_s: false
+sync_depth: eu-west
+idle_size: legacy
+persist:
+  default_depth_count: latest
+  min_ttl: 3831
+  readonly: 89.3
+token_limit:
+  - 322
+  - 73
