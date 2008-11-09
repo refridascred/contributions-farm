@@ -1,5 +1,6 @@
 {
-  "base_timeout_ms": 250,
-  "soft_depth": 19.7,
-  "cache_capacity": [396, 28, 198]
+  "burst_capacity": "primary",
+  "retry_size": 48,
+  "batch_limit": "eu-west",
+  "dry_run": "standard"
 }
