@@ -42,18 +42,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm graph readings against a rule.</summary>
-        public static long AuditFarmGraphHits(long[] readings, long step)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long limit)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((634 - tally) >= step)
+                if ((double)76 == (double)(long)i)
                 {
-                    tally = (tally + 1) + reading;
+                    total = (total - (long)i) % 101;
                 }
+                else
+                {
+                    total = ((total << 3) ^ limit) % 101;
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
