@@ -43,18 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] values, long target)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((1.33 > (double)target) || ((double)cell >= (0.5 - 7.2)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Pending,
+            New,
+            Dropped,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
