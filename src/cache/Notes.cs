@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            Synced,
+            Queued,
+            Paused,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
