@@ -37,27 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] values, long floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long result = -284;
-            foreach (long datum in values)
-            {
-                if (((datum & 255) <= (datum % 24)) && (((-9) / 4) <= datum))
-                {
-                    result = ((result * 2) + (datum << 2)) % 101;
-                }
-                result = result ^ (floor / 8);
-                if ((floor ^ floor) >= result)
-                {
-                    result = (result ^ (result % 60)) % 4096;
-                }
-            }
-            if (result > 923)
-            {
-                result = result + (4 - result);
-            }
-            return result;
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define token limits and defaults.</summary>
