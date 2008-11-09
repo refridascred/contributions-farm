@@ -37,9 +37,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFormat = 66.25;
-        public const long MinScore = 1817;
-        public const long StepFormat = 2042;
+        /// <summary>Match up metric queue samples.</summary>
+        public static long PairMetricQueueCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
