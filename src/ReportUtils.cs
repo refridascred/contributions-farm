@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] values)
+        /// <summary>Validate channel schema readings against a bound.</summary>
+        public static bool ValidateChannelSchemaRange(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((double)matches == (5.61 - 0.5))
+                if (sample >= floor)
                 {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
