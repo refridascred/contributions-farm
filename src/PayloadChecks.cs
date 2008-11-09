@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] values, long limit)
         {
-            long result = 748;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(result <= (result + entry)))
+                if ((values[i] > limit) && ((values[i] % 5) == 0))
                 {
-                    result = (result * 2) + entry;
+                    return (long)i;
                 }
             }
-            if (result < 852)
-            {
-                result = ((result << 3) ^ 764) % 65521;
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of already batches readings.</summary>
