@@ -56,11 +56,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long bound)
         {
-            double mean = ratio / 6.0;
-            return (mean + mean) + floor;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
