@@ -1,10 +1,20 @@
 # githubfarm settings
-soft_capacity:
-  - edge
-  - blue
-  - latest
-schema_limit: 30
-verbose: open
-soft_ratio_count:
-  - 491
-  - 485
+idle_threshold_s: latest
+retry_size_pct:
+  compress:
+    cache_size: blue
+    hard_interval: 57
+    warm_capacity: strict
+    audit: eu-west
+  session_threshold: strict
+  base_retries: 8339
+  sync_ratio_count: false
+  filter_limit: edge
+  verbose:
+    - 456
+    - 51
+    - 121
+    - 368
+dry_run: 23
+poll_size_s: 23
+retry_ratio_count: true
