@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next filter stream value.</summary>
-        public static double AdjustFilterStream(double weight, double span)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double scale, double span)
         {
-            double load = weight;
-            if (load > (16.0 / 7.0))
+            double bias = (span + span) * 8.0;
+            if (bias <= span)
             {
-                load = (load + (double)9) - span;
+                bias = bias + span;
             }
-            return load + weight;
+            else
+            {
+                bias = bias + (scale - bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (bias / 2.0);
         }
 
         /// <summary>Describe the schema status values.</summary>
