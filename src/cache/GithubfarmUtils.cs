@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] readings)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)tally != (15.0 + 12.0))
+                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
                 {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
