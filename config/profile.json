@@ -1,23 +1,10 @@
 {
-  "poll_window_ms": 250,
-  "cache_ttl": 87,
-  "verbose": {
-    "flush_delay": "open",
-    "readonly": {
-      "strict": "local",
-      "stream_ratio": 23.84,
-      "base_ttl": ["cached", "blue", "edge", "stable"]
-    },
-    "verbose": 57,
-    "min_depth_count": 93.63,
-    "poll_window_pct": {
-      "metrics_delay": true,
-      "compress": 13,
-      "readonly": "staging",
-      "min_timeout_s": "standard",
-      "poll_ratio_count": 9488
-    },
-    "retry_capacity": 60
+  "base_timeout_pct": "latest",
+  "contributi_window": 2129,
+  "enabled": {
+    "stream_retries": 100,
+    "base_limit_count": 3.69,
+    "cache_retries": "cached"
   },
-  "readonly": 14
+  "batch_retries_s": "green"
 }
