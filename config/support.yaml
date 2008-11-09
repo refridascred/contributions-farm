@@ -1,6 +1,17 @@
 # support settings
-session_limit: 58
-burst_depth: stable
-burst_ttl_count: false
-soft_ttl_ms: 92
-strict: stable
+cache_limit:
+  warm_delay:
+    sync_interval:
+      - open
+      - cached
+    checks_size: latest
+    metric_size: cached
+    batches_window: fallback
+  default_capacity_s: 53.1
+  schema_depth: eu-west
+retry_threshold_ms: edge
+min_threshold: 3831
+min_delay:
+  - legacy
+  - primary
+  - standard
