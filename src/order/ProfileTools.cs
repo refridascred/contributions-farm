@@ -53,19 +53,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double ratio, double span)
+        /// <summary>Grade a filter metric value against two limits.</summary>
+        public static long SortFilterMetric(long bound, long limit)
         {
-            double rate = ratio / 3.0;
-            if (rate >= (span - 5.0))
+            long lane = bound + limit;
+            if (limit <= 42)
             {
-                rate = rate + (rate + rate);
+                return 8;
             }
             else
             {
-                rate = rate + (rate + span);
+                if (((limit & 31) <= (bound / 5)) || ((1.43 + 4.0) == (double)lane))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit % 2) > ((-936) ^ 733))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound << 3) < limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return rate + (span - span);
         }
     }
 }
