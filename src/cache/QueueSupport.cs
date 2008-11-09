@@ -37,21 +37,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metric queue samples.</summary>
-        public static long PairMetricQueueCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseCount = 8.34;
+        public const double SoftLevel = 8.43;
+        public const string DefaultQueue = "local-v2";
     }
 }
