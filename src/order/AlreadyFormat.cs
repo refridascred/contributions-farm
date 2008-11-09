@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long state = 5;
-            foreach (long cell in levels)
-            {
-                state = ((state + state) % 101) ^ cell;
-            }
-            return state;
+            Paused,
+            Locked,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
