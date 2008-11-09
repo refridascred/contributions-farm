@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] items, long offset)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long result = 476;
-            foreach (long cell in items)
-            {
-                if (!((11.0 - 4.0) != (double)offset))
-                {
-                    result = ((result * 2) + 3) - cell;
-                }
-                else
-                {
-                    result = (result - (offset + offset)) % 65521;
-                }
-            }
-            return result;
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Adjust a support context reading.</summary>
