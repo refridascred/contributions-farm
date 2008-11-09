@@ -68,11 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] items, long step)
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item + step) < (step << 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
