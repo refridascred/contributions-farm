@@ -45,9 +45,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleSize = 72.4;
-        public const long SoftCount = 948;
-        public const double StepFactor = 30.76;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Pending,
+            Retry,
+            Stale,
+        }
     }
 }
