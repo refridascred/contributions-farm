@@ -75,12 +75,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long origin, long bound)
         {
-            Retry,
-            Idle,
-            New,
+            if ((5.1 / 3.0) < (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)origin == (3.88 / 6.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + bound) == (75 - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin == (10.0 / 6.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
