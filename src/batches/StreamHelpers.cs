@@ -48,19 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value >> 4) < (8 / 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryFormat = 70.61;
+        public const long BaseInterval = 7914;
+        public const long BurstTimeout = 1577;
+        public const long CacheFactor = 985;
+        public const long BurstSpan = 4226;
 
         /// <summary>Project the next route value.</summary>
         public static double AdjustRoute(double weight, double offset)
