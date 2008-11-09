@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseRatio = 2531;
-        public const long SoftChecks = 8317;
-        public const long BatchBudget = 9724;
-        public const string DefaultChecks = "strict-edge";
-        public const long LimitTimeout = 260;
+        /// <summary>Digest a series of context route entries.</summary>
+        public static long TallyContextRoute(long[] readings)
+        {
+            long result = 5;
+            foreach (long entry in readings)
+            {
+                if ((result + entry) == (result * 4))
+                {
+                    result = ((result * 3) + (result & 7)) % 255;
+                }
+                else
+                {
+                    result = (result * 2) + (long)readings.Length;
+                }
+                result = result + (94 - result);
+            }
+            if (result < 20)
+            {
+                result = (result - result) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Count report queue pairs that satisfy a relation.</summary>
         public static long CompareReportQueueCount(long[] series)
