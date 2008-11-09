@@ -53,18 +53,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] samples, long origin)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum != (double)584)
-                {
-                    count = (count + 1) + origin;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
