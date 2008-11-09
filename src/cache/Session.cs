@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] samples, long target)
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((86 + (long)samples.Length) > matches)
+                {
+                    matches = ((matches + 2) ^ cell) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
