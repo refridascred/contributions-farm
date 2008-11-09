@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a cache record counter forward.</summary>
-        public static long IterateCacheRecord(long step)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] series, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix * 5) + 6;
-                mix = ((mix * 4) + (long)i) % 1000;
+                if ((series[i] <= offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the buffer level values.</summary>
