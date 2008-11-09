@@ -1,7 +1,7 @@
 {
-  "max_depth": 44.4,
-  "hard_ttl_pct": 4538,
-  "flush_interval_s": "eu-west",
-  "base_timeout": "green",
-  "base_depth": "open"
+  "max_timeout_ms": 60,
+  "flush_capacity_count": 18.12,
+  "strict": 1629,
+  "flush_limit_ms": "legacy",
+  "default_interval_count": 100
 }
