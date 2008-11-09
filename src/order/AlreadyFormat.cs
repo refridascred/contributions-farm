@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a profile cluster pair into a bucket.</summary>
-        public static long BucketProfileCluster(long step, long seed)
+        /// <summary>Measure how many support contributi samples are out of range.</summary>
+        public static long CountSupportContributiMatches(long[] values)
         {
-            if ((step + seed) <= seed)
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((0.98 * 0.83) < (double)seed)
+                if ((46 + matches) < (value + 4))
                 {
-                    return 7;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((27 * 3) > (seed - 524))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
