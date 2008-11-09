@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] items)
         {
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading <= (9.71 * 16.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate queue filter samples.</summary>
