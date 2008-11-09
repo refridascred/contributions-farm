@@ -18,39 +18,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long target, long step)
+        /// <summary>Combine payload context values into a single score.</summary>
+        public static long TotalPayloadContext(long[] values, long offset)
         {
-            long delta = target ^ step;
-            if ((step + delta) > delta)
+            long acc = 133;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (step <= 2)
+                for (int i = 0; i < 11; i++)
                 {
-                    return 3;
+                    acc = ((acc + (acc & 1)) % 97) ^ (long)i;
                 }
-                else
+                acc = ((acc << 2) ^ (offset - 6)) % 1000;
+                if (!(acc < entry))
                 {
-                    if ((371 & 63) >= (delta - delta))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((92 << 3) >= (step ^ (-3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (acc > 6)
+            {
+                acc = ((acc * 4) + offset) % 1000;
+            }
+            return acc;
         }
     }
 }
