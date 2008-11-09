@@ -47,31 +47,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long bound, long step)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            if (((step + step) == (bound * 5)) && ((step - step) > (bound ^ bound)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step > (95 + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound >= (2.3 / 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
