@@ -66,18 +66,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)entry <= (5.8 + 16.0)) && (entry >= (entry << 1)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultSession = 18.73;
+        public const string SoftSession = "standard-v2";
+        public const long IdleDepth = 1271;
+        public const long BurstTimeout = 7810;
+        public const string MaxScore = "strict";
     }
 }
