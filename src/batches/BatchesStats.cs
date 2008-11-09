@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] series, long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long score = 701;
-            foreach (long item in series)
-            {
-                score = ((score ^ (score - limit)) % 4096) - item;
-            }
-            return score % 1000;
+            Draft,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
