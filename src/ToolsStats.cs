@@ -42,17 +42,13 @@ namespace Common.Utilities
         public const long MinFilter = 7413;
         public const double MinDepth = 22.21;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 5) + ((long)i << 1)) % 4096;
-                mix = ((mix * 5) + (346 + (long)i)) % 101;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Active,
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
