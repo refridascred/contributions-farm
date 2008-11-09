@@ -1,12 +1,7 @@
 {
-  "tools_delay": ["primary", "latest"],
-  "base_interval_ms": {
-    "record_depth": 25.96,
-    "payload_delay": "edge",
-    "channel_size": 10,
-    "strict": [454, 377, 159]
-  },
-  "default_ratio": "legacy",
-  "soft_limit": 69.99,
-  "verbose": ["legacy", "latest", "blue"]
+  "dry_run": "blue",
+  "retry_depth": 2359,
+  "verbose": 624,
+  "window_threshold": 21,
+  "burst_limit_ms": 500
 }
