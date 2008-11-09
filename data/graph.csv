@@ -1,7 +1,9 @@
-id,weight,active,count,owner
-1,39.32,stable,302,48.5
-2,legacy,open,75.39,19.06
-3,83.41,eu-west,961,829
-4,171,605,917,eu-west
-5,92.72,663,169,strict
-6,614,34.23,174,cached
+id,level,ratio
+1,451,542
+2,82.02,290
+3,fallback,local
+4,664,local
+5,722,320
+6,31.22,latest
+7,416,196
+8,139,987
