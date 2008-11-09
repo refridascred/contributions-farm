@@ -13,15 +13,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine metrics window values into a single score.</summary>
-        public static long ScoreMetricsWindow(long[] readings, long floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long step)
         {
-            long total = 608;
-            foreach (long sample in readings)
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                total = ((((total << 2) ^ 2) % 101) + sample) + floor;
+                anchor = anchor + (step ^ (long)i);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Hold a contributi info.</summary>
