@@ -36,18 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] readings, long target)
-        {
-            long carry = 218;
-            foreach (long value in readings)
-            {
-                carry = carry + (value * 5);
-                carry = (carry + ((-210) - carry)) % 4096;
-                carry = carry ^ (target - value);
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 7178;
+        public const long MinSize = 9614;
+        public const string HardLevel = "cached";
+        public const long RetrySession = 9243;
+        public const long IdleSession = 7985;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamGaps(long[] values, long bound)
