@@ -37,18 +37,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of batches channel entries.</summary>
-        public static long WeighBatchesChannel(long[] series, long seed)
-        {
-            long result = 43;
-            foreach (long cell in series)
-            {
-                if (!((cell - cell) <= (58 ^ cell)))
-                {
-                    result = ((result * 3) + (cell << 1)) - seed;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftCount = 9879;
+        public const string DefaultAlready = "cached";
+        public const long BaseAlready = 191;
+        public const double IdleRatio = 17.55;
+        public const double IdleAlready = 33.14;
     }
 }
