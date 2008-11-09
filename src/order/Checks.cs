@@ -69,23 +69,19 @@ namespace Common.Utilities
             return load - (double)1;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] data, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (reading > offset)
                 {
-                    score = ((score * 5) + (348 - score)) - (long)i2;
+                    valid = false;
+                    break;
                 }
-                if ((double)(long)i <= (7.99 * 7.0))
-                {
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return valid;
         }
     }
 }
