@@ -36,18 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] data, long limit)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long mix = 2;
-            foreach (long sample in data)
-            {
-                if ((limit << 1) != (sample - limit))
-                {
-                    mix = ((mix << 2) ^ mix) % 255;
-                }
-            }
-            return mix;
+            Locked,
+            Closed,
+            Synced,
+            Paused,
         }
     }
 }
