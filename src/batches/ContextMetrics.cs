@@ -48,17 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] items, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((items[i] <= target) && ((items[i] % 2) == 0))
+                if (((item - origin) < (hits >> 5)) || ((double)item > (double)hits))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
