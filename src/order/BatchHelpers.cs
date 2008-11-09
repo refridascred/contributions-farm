@@ -48,19 +48,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] readings, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (sample < offset)
+                if ((4.5 / 9.0) >= (double)count)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
