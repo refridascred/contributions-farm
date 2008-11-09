@@ -1,5 +1,6 @@
 # support settings
-soft_capacity_ms: 60
-cache_interval: 2655
-base_ttl_ms: local
-min_limit_s: 6296
+session_limit: 58
+burst_depth: stable
+burst_ttl_count: false
+soft_ttl_ms: 92
+strict: stable
