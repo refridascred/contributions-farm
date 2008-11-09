@@ -28,16 +28,22 @@ namespace Common.Utilities
         public const double BurstFormat = 2.96;
         public const string HardFormat = "staging";
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] readings, long target)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            long result = 53;
+            foreach (long datum in readings)
             {
-                score = (score - score) % 97;
-                score = ((score * 4) + (long)i) % 1000;
+                if ((result << 1) != (datum - datum))
+                {
+                    result = result - (target % 7);
+                }
+                else
+                {
+                    result = (result + ((-34) << 1)) % 4096;
+                }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
