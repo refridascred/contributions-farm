@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] readings, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long origin)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum != bound)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix + mix) % 255) - (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
