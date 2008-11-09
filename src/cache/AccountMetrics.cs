@@ -33,13 +33,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double weight, double offset)
         {
-            Draft,
-            Retry,
-            Stale,
-            Synced,
+            double bias = offset / 7.0;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = ((bias - (double)7) + (double)(long)i) + weight;
+            }
+            return bias + offset;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
