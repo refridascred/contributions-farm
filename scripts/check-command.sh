@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict staging legacy open; do
+for item in strict latest primary; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=31
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
