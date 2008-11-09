@@ -59,18 +59,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long origin)
+        /// <summary>Audit record window readings against a rule.</summary>
+        public static long MeasureRecordWindowHits(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                score = (score - (score % 16)) % 65521;
-                score = score ^ ((long)i >> 5);
-                score = (score - score) % 1000;
-                score = ((score * 3) + (long)i) % 97;
+                if ((7.47 - 8.35) <= (double)matches)
+                {
+                    matches = (matches + 1) ^ cell;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
