@@ -34,10 +34,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardSpan = "strict";
-        public const double StepFactor = 47.07;
-        public const long LimitOrder = 1379;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((entry % 12) < 804) && ((entry % 16) < ((long)series.Length - count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long MeasureWindowGaps(long[] items)
