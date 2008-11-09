@@ -1,7 +1,11 @@
 # entry settings
-retry_retries: true
-idle_delay_ms: primary
-entry_depth: 29
-tools_timeout: true
-farm_depth: legacy
-stream_size: 31.83
+payload_timeout:
+  - 446
+  - 167
+  - 233
+  - 34
+flush_interval_s: 12.07
+verbose: 60
+readonly: 79.48
+persist: 98
+profile_interval: 31.03
