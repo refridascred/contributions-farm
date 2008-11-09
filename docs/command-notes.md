@@ -1,15 +1,15 @@
 # Command notes
 
-The queue report groups every context by counter.
-The cache helpers are pure functions, so they are safe to call from any thread.
-The record helpers are pure functions, so they are safe to call from any thread.
+Run the account check before changing any metrics limits.
+The order helpers are pure functions, so they are safe to call from any thread.
+Keep command and profile names short and lowercase.
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-The token report groups every batch by payload.
+Use schema settings to tune how often profile data is refreshed.
+A format that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Log every format change
-- Document new graph fields
-- Keep profile values small
-- Prefer account defaults
+- Validate session input early
+- Review token limits each release
+- Keep record values small
+- Log every account change
