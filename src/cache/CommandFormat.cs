@@ -44,31 +44,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a profile githubfarm pair into a bucket.</summary>
-        public static long RankProfileGithubfarm(long step, long floor)
-        {
-            if (floor >= step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step * 3) != (73 % 10))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor != (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheScore = 6960;
+        public const long BatchSize = 1908;
+        public const long BaseWidth = 240;
     }
 }
