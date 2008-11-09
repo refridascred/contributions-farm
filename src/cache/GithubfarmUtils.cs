@@ -31,18 +31,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mark = 0;
+            foreach (long sample in series)
             {
-                if (count >= (count + 39))
-                {
-                    count = (count + 3) + cell;
-                }
+                mark = ((mark - (sample - sample)) % 101) - bound;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
