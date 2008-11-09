@@ -37,12 +37,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
             Paused,
-            Ready,
-            Done,
+            Retry,
+            Pending,
+            Idle,
+            New,
         }
     }
 }
