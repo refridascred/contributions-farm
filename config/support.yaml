@@ -1,6 +1,12 @@
 # support settings
-base_window_pct: green
-tools_delay: false
-readonly: strict
-retry_window: 71.53
-soft_capacity_count: staging
+audit: 54
+compress: 250
+window_ttl: eu-west
+dry_run: stable
+cache_ratio_count:
+  batch_delay_count: 30
+  idle_depth: standard
+  hard_limit_pct: 35.84
+  dry_run: false
+  max_retries_count: false
+  warm_capacity: 49.1
