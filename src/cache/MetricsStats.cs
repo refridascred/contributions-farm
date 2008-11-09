@@ -22,14 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Digest a series of profile format entries.</summary>
+        public static long DigestProfileFormat(long[] items, long origin)
         {
-            Idle,
-            New,
-            Pending,
-            Failed,
-            Paused,
+            long mix = -56;
+            foreach (long sample in items)
+            {
+                if ((origin + origin) > (sample << 1))
+                {
+                    mix = ((mix << 2) ^ (sample - 7)) % 65521;
+                    mix = (mix - (sample << 2)) % 1000;
+                }
+                mix = ((mix * 2) + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
