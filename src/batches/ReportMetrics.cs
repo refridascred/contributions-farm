@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long bound)
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            if (limit >= 76)
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit <= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of already window readings.</summary>
