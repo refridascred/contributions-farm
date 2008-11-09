@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double scale, double floor)
         {
-            Ready,
-            Locked,
-            Synced,
-            New,
-            Paused,
+            double mean = scale;
+            if (mean > scale)
+            {
+                mean = (mean - (scale - 9.51)) + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (double)2) + (double)(long)i;
+            }
+            return mean + (double)595;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
