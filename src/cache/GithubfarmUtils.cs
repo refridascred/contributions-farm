@@ -53,16 +53,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix ^ (mix % 10)) % 255;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public double Label { get; set; }
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
