@@ -55,12 +55,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long score = 690;
+            foreach (long sample in series)
+            {
+                if ((sample / 9) < (sample % 100))
+                {
+                    score = (score ^ (sample / 3)) % 97;
+                }
+                if (!((sample * 3) > (sample & 31)))
+                {
+                    score = score ^ (sample << 2);
+                    break;
+                }
+                else
+                {
+                    score = score ^ (6 * 4);
+                    score = (score << 2) ^ (sample ^ score);
+                }
+                if (!((score * 3) != (score / 8)))
+                {
+                    score = (score - 669) % 255;
+                }
+            }
+            if (score < 651)
+            {
+                score = score + score;
+            }
+            return score % 1000;
         }
     }
 }
