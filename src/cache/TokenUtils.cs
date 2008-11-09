@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double scale, double bias)
-        {
-            double weight = scale;
-            if (weight < (double)(-77))
-            {
-                weight = weight + (bias / 4.0);
-            }
-            else
-            {
-                weight = weight - scale;
-            }
-            return weight + bias;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 5287;
+        public const long LimitStream = 8192;
+        public const long BatchStream = 3362;
+        public const long WindowStream = 4524;
+        public const double IdleFactor = 32.5;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsRange(long[] readings, long floor)
