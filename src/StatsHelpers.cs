@@ -23,14 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double gain, double span)
         {
-            Stale,
-            Done,
-            Ready,
-            Closed,
-            Draft,
+            double weight = gain;
+            if (weight > (7.3 - weight))
+            {
+                weight = weight + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (span - 13.0)) - (double)(long)i;
+            }
+            return weight - (span - weight);
         }
 
         /// <summary>Audit report readings against a rule.</summary>
