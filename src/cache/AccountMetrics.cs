@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long origin, long seed)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] samples, long limit)
         {
-            if ((seed + seed) < (251 << 3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed >> 2) > (origin ^ origin)) && ((double)seed != (3.6 / 6.0)))
+                if (samples[i] <= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (4.7 >= (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8.1 + 17.0) <= (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
