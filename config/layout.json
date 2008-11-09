@@ -1,5 +1,29 @@
 {
-  "cache_window_s": true,
-  "base_ratio_pct": "cached",
-  "schema_delay": "standard"
+  "flush_threshold": 500,
+  "min_retries": {
+    "idle_retries": 8439,
+    "burst_size_ms": "staging",
+    "verbose": {
+      "readonly": [156, 334],
+      "max_interval_s": "primary",
+      "cache_size_pct": 1024,
+      "sync_capacity_s": "open"
+    },
+    "session_size": false,
+    "already_retries": {
+      "default_depth": 28,
+      "dry_run": 35,
+      "batch_threshold": "latest",
+      "route_ttl": true,
+      "idle_retries": 60
+    },
+    "min_size": {
+      "idle_delay_pct": 94.81,
+      "burst_timeout_ms": 83.38,
+      "metrics_timeout": [55, 446, 225],
+      "cluster_window": 97,
+      "hard_window": 46.38
+    }
+  },
+  "token_interval": [318, 193, 102, 250]
 }
