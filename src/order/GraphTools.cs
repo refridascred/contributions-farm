@@ -36,25 +36,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Find the first context buffer entry that matches the target.</summary>
+        public static long FindContextBufferIndex(long[] readings, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                double ratio = (double)(anchor << 2);
-                if ((ratio + ratio) > 4.5)
+                if (readings[i] < bound)
                 {
-                    ratio = ratio + ratio;
+                    return (long)i;
                 }
-                else
-                {
-                    ratio = ratio - ratio;
-                    anchor = ((anchor << 2) ^ (seed - (-419))) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate editor samples.</summary>
