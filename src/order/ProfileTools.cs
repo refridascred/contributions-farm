@@ -24,15 +24,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double scale, double offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] series)
         {
-            double drift = scale - (offset * 5.96);
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - offset) + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - 3.8;
+            return hits;
         }
 
         /// <summary>Hold a metric info.</summary>
