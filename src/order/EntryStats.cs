@@ -30,18 +30,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] data)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell / 9) > (count >> 1))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Derive the next githubfarm channel value from a seed.</summary>
