@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 5255;
-        public const long RetryWindow = 5291;
-        public const long MinWindow = 3246;
-        public const long LimitLevel = 2991;
-        public const long BaseWindow = 6823;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Ready,
+            Done,
+            Paused,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double ScaleMetrics(double bias, double offset)
