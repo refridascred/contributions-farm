@@ -42,12 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] readings, long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] < offset)
+                if (data[i] >= limit)
                 {
                     return (long)i;
                 }
