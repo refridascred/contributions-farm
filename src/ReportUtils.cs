@@ -19,11 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitSize = 6461;
-        public const long DefaultOrder = 9285;
-        public const long BurstOrder = 7416;
-        public const string BaseOrder = "fallback";
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] readings)
+        {
+            long carry = -686;
+            foreach (long cell in readings)
+            {
+                carry = carry + (carry - cell);
+                if ((double)carry > (double)4)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
