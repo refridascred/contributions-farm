@@ -55,12 +55,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] items, long offset)
         {
-            Synced,
-            Idle,
-            New,
+            long result = 0;
+            foreach (long value in items)
+            {
+                if (offset > (8 + value))
+                {
+                    result = (result + (49 + 61)) % 255;
+                }
+                if (((offset * 4) > (result + offset)) || ((value & 255) == (result % 97)))
+                {
+                    break;
+                }
+            }
+            if (result < 5)
+            {
+                result = ((result * 3) + result) % 65521;
+            }
+            return result % 4096;
         }
     }
 }
