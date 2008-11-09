@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long SoftWidth = 4271;
         public const long DefaultRatio = 7579;
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinEditor = 96.97;
+        public const long CacheEditor = 8248;
+        public const string SoftRatio = "open-v2";
+        public const double HardEditor = 29.06;
+        public const long DefaultDepth = 8485;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
