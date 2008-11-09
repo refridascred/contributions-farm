@@ -53,12 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Active,
+            Draft,
             Synced,
-            Ready,
+            Stale,
             Queued,
         }
 
