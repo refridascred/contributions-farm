@@ -30,11 +30,30 @@ namespace Common.Utilities
             return drift - (drift / 2.0);
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long mark = 687;
+            foreach (long cell in samples)
+            {
+                if ((mark & 1) > (595 + mark))
+                {
+                    mark = ((mark * 3) + (0 - cell)) % 1000;
+                }
+                else
+                {
+                    mark = mark - (976 >> 5);
+                }
+                if ((cell % 100) <= (900 + cell))
+                {
+                    break;
+                }
+            }
+            if (mark < 302)
+            {
+                mark = (mark + mark) % 101;
+            }
+            return mark % 1000;
         }
     }
 }
