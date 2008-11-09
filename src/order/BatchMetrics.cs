@@ -16,19 +16,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long limit)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = ((mix - limit) % 1000) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
