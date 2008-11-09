@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const double LimitRecord = 61.73;
         public const double StepScore = 20.04;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Validate order entry readings against a bound.</summary>
+        public static bool CheckOrderEntryBounds(long[] samples, long bound)
         {
-            long anchor = 564;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((2.8 <= (double)value) && ((2 >> 5) >= anchor))
+                if (entry != bound)
                 {
-                    anchor = anchor - (value & 3);
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
     }
 }
