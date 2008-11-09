@@ -32,23 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] levels, long target)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double scale, double span)
         {
-            long total = 9;
-            foreach (long cell in levels)
+            double weight = scale;
+            if (weight <= span)
             {
-                total = total ^ total;
-                if (285 >= cell)
-                {
-                    total = (total + (68 - total)) % 1000;
-                }
+                weight = weight - scale;
             }
-            if (total < 24)
+            else
             {
-                total = ((total << 3) ^ (374 + target)) % 65521;
+                weight = weight - (scale * 7.93);
             }
-            return total % 97;
+            return weight - (span / 6.0);
         }
 
         /// <summary>Validate order readings against a bound.</summary>
