@@ -16,21 +16,21 @@ namespace Common.Utilities
             return load + 0.96;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 14)
+                    if ((items[i] ^ items[j]) != 19)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
