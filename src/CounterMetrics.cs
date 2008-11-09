@@ -23,10 +23,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstDepth = 3331;
-        public const double BurstFormat = 2.96;
-        public const string HardFormat = "staging";
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = carry + carry;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long DeriveEditor(long floor)
