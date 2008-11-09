@@ -24,11 +24,14 @@ namespace Common.Utilities
             return rate2 + offset;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
+            Idle,
+            New,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Hold a command info.</summary>
