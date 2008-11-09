@@ -20,17 +20,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Locate a batches stats reading by value.</summary>
-        public static long LocateBatchesStatsIndex(long[] values, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((values[i] >= step) && ((values[i] % 2) == 0))
+                if (((double)reading == (4.2 + 6.0)) || ((8.0 - 4.37) == (double)seen))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
