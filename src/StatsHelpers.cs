@@ -15,32 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long offset, long step)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] values, long origin)
         {
-            long next = offset - step;
-            if ((step % 60) > (step ^ next))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((next / 6) > offset) && ((double)step == (1.09 + 6.62)))
+                if (values[i] > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((9 - next) > (next * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
