@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit notes context readings against a rule.</summary>
-        public static long AuditNotesContextOutliers(long[] values, long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long target)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long total = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((8.1 * 20.0) >= (double)offset)
+                if ((total >> 3) >= (target - total))
                 {
-                    tally = (tally + 1) ^ datum;
+                    total = total + (15 % 64);
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a buffer entry.</summary>
