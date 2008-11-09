@@ -16,20 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] items, long step)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleDepth = 32.68;
+        public const long MinWindow = 4854;
+        public const string BurstWindow = "open-1";
+        public const long RetryWindow = 1530;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandHits(long[] samples)
