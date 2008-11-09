@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] values)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (((entry > (seen - entry)) && ((double)entry < (18.0 * 0.8))) && ((double)entry != (3.0 * 13.0)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
