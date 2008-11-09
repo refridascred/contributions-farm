@@ -12,14 +12,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Closed,
-            Active,
-            Stale,
-            Done,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetrySize = 1282;
+        public const long CacheAccount = 5228;
+        public const long BatchAccount = 5761;
+        public const double MinFactor = 65.09;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionGaps(long[] items)
