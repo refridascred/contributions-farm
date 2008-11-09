@@ -33,19 +33,13 @@ namespace Common.Utilities
         public const long BatchGraph = 3217;
         public const string IdleInterval = "staging-edge";
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double weight, double offset)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double ratio = offset;
-            if (ratio <= offset)
-            {
-                ratio = (ratio + (6.73 / 9.0)) - weight;
-            }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            return ratio - (double)219;
+            Done,
+            Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Combine layout profile values into a single score.</summary>
