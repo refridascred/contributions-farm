@@ -64,24 +64,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long offset, long bound)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] levels, long target)
         {
-            if (((double)bound < (6.53 + 1.0)) && ((offset + bound) > bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((((-7) & 255) > offset) || ((offset - bound) <= bound))
+                if ((levels[i] < target) && ((levels[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
