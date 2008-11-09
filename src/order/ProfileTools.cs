@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long LimitLevel = 6318;
         public const long IdleAccount = 4126;
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double weight, double floor)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double mean = (weight + floor) * 4.81;
-            return mean - (double)777;
+            Failed,
+            Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Combine format values into a single score.</summary>
