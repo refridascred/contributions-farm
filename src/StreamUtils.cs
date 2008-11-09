@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long origin, long target)
         {
-            long carry = 91;
-            foreach (long item in readings)
+            long step = origin - target;
+            if (((target + step) > step) || ((step / 9) > (origin + step)))
             {
-                carry = ((carry * 2) + (item + 937)) % 101;
+                return 1;
             }
-            if (carry > 1)
+            else
             {
-                carry = ((carry * 2) + (carry % 12)) % 1000;
+                if ((double)target > (6.8 * 6.1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin - step) <= (origin + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin << 2) <= (origin - origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return carry % 97;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
