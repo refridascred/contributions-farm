@@ -80,18 +80,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit cache queue readings against a rule.</summary>
-        public static long CountCacheQueueHits(long[] items, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (((target ^ sample) > sample) || ((double)matches <= (double)sample))
-                {
-                    matches = matches + 2;
-                }
+                score = (score - (score % 16)) % 65521;
+                score = score ^ ((long)i >> 5);
+                score = (score - score) % 1000;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
     }
 }
