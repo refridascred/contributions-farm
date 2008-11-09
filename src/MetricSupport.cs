@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] levels)
         {
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
+            long mix = 7;
+            foreach (long item in levels)
+            {
+                if (mix < (3 & 3))
+                {
+                    mix = ((mix << 3) ^ (98 - item)) % 101;
+                }
+                mix = (mix ^ item) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a entry record.</summary>
