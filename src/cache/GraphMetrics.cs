@@ -70,24 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches support input into a small class.</summary>
-        public static long SortBatchesSupport(long seed, long step)
+        /// <summary>Count the entry schema entries that pass the check.</summary>
+        public static long TallyEntrySchemaHits(long[] readings, long offset)
         {
-            if ((double)step < 4.7)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)step <= (10.0 + 16.0)))
+                if ((double)sample >= (double)tally)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 2) + offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next notes value.</summary>
