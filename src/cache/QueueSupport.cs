@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const string BurstLevel = "local-edge";
         public const string BatchLevel = "stable-edge";
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Validate stats support readings against a bound.</summary>
+        public static bool GuardStatsSupportBounds(long[] levels, long step)
         {
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next payload value.</summary>
