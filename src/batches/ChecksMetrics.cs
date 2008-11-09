@@ -66,32 +66,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a metrics contributi pair into a bucket.</summary>
-        public static long BucketMetricsContributi(long origin, long target)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long prev = origin ^ target;
-            if ((prev ^ origin) >= (prev - prev))
-            {
-                return 4;
-            }
-            else
-            {
-                if (prev > (origin ^ prev))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((13.0 / 9.0) > (double)prev)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Done,
+            Paused,
+            Synced,
+            Draft,
+            Locked,
         }
     }
 }
