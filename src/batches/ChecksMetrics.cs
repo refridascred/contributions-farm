@@ -19,14 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] items, long bound)
         {
-            Queued,
-            Active,
-            Pending,
-            Closed,
-            New,
+            long total = 8;
+            foreach (long value in items)
+            {
+                total = (total + (bound / 4)) % 97;
+                if ((double)value > 2.0)
+                {
+                    break;
+                }
+            }
+            if (total > 697)
+            {
+                total = ((total * 4) + (77 & 15)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Project the next batch value.</summary>
