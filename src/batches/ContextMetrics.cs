@@ -53,18 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] levels, long origin)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((item - origin) < (hits >> 5)) || ((double)item > (double)hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            Synced,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define order limits and defaults.</summary>
