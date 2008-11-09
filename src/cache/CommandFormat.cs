@@ -13,38 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long bound, long seed)
+        /// <summary>Blend two metrics editor measurements.</summary>
+        public static double AdjustMetricsEditor(double ratio, double floor)
         {
-            if ((seed >> 1) == (bound + bound))
+            double ratio2 = floor;
+            if (ratio2 >= (6.54 * 6.0))
             {
-                return 2;
+                ratio2 = ratio2 + 14.0;
             }
             else
             {
-                if ((seed & 15) > (bound & 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + bound) <= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound > (bound + bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                ratio2 = ratio2 - (double)0;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
+            }
+            return ratio2 + (ratio + floor);
         }
 
         /// <summary>Fold a list of counter readings.</summary>
