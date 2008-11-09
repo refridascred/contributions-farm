@@ -20,32 +20,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long origin, long limit)
-        {
-            if ((double)origin != (7.3 + 11.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((origin << 3) >= (origin + origin)) && (800 <= (origin - origin)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((20.0 + 9.13) == (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxInterval = 52.03;
+        public const long BatchLevel = 8038;
+        public const long BurstLevel = 6999;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double RetryReport = 39.26;
