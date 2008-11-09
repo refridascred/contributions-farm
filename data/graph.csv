@@ -1,11 +1,6 @@
-id,token,state,label,owner
-1,932,127,stable,71.74
-2,58.02,staging,25.9,51.18
-3,12.99,564,91.0,833
-4,457,468,edge,13.0
-5,stable,blue,fallback,strict
-6,2.24,894,941,green
-7,46.19,51.59,43.74,eu-west
-8,edge,eu-west,859,54.23
-9,edge,blue,latest,standard
-10,348,local,green,edge
+id,weight,token,level
+1,stable,latest,3.02
+2,826,36.78,blue
+3,stable,eu-west,796
+4,437,733,11.91
+5,88.54,97.46,open
