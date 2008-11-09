@@ -60,18 +60,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] samples)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (!((matches - matches) == (matches << 3)))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            Dropped,
+            Idle,
+            Stale,
+            Ready,
+            Pending,
         }
     }
 }
