@@ -40,12 +40,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Adjust a channel metrics reading.</summary>
+        public static double BlendChannelMetrics(double scale, double floor)
         {
-            Idle,
-            Active,
-            Retry,
+            double gain = (scale * 19.0) + scale;
+            if (gain < (floor / 8.0))
+            {
+                gain = gain - scale;
+            }
+            else
+            {
+                gain = gain - (2.0 * 2.95);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - scale) - (double)(long)i;
+            }
+            return gain + (double)5;
         }
     }
 }
