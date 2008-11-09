@@ -1,19 +1,6 @@
 {
-  "sync_depth": 60,
-  "hard_depth_pct": 12.79,
-  "burst_delay": {
-    "stats_limit": [368, 124, 133, 219],
-    "verbose": true,
-    "retry_size_pct": {
-      "min_interval_s": ["open", "open", "cached", "staging"],
-      "compress": 5313,
-      "max_depth": true,
-      "sync_window": 7107,
-      "stats_timeout": 10.47,
-      "readonly": ["fallback", "blue", "legacy", "stable"]
-    }
-  },
-  "payload_window": "staging",
-  "sync_size": 74.4,
-  "poll_timeout_ms": "eu-west"
+  "dry_run": [260, 119],
+  "warm_capacity_pct": true,
+  "stats_depth": "primary",
+  "persist": 96.57
 }
