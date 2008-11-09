@@ -13,20 +13,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double weight, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            double ratio = (double)(798 & 7);
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc + (acc + limit)) % 65521;
-                if ((acc % 60) >= ((-4) - acc))
-                {
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
+                ratio = (ratio + (offset - offset)) - (double)(long)i;
             }
-            return acc;
+            return ratio + weight;
         }
 
         /// <summary>Validate route commits readings against a bound.</summary>
