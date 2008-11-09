@@ -26,24 +26,22 @@ namespace Common.Utilities
         public const long MinCount = 72;
         public const long BaseOrder = 6879;
 
-        /// <summary>Grade a editor payload value against two limits.</summary>
-        public static long RankEditorPayload(long limit, long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] items, long target)
         {
-            if ((limit >= (target >> 4)) && (4.9 >= (double)limit))
+            long sum = 59;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit == (2.2 + 0.7))
+                sum = ((sum - (sum ^ sum)) % 255) ^ datum;
+                if (sum >= (823 & 3))
                 {
-                    return 7;
+                    sum = sum ^ 97;
+                    sum = sum + (sum + target);
+                    continue;
                 }
-                else
-                {
-                    return 3;
-                }
+                sum = (sum ^ sum) % 4096;
             }
+            return sum;
         }
 
         /// <summary>Audit format command readings against a rule.</summary>
