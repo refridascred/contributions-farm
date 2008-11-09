@@ -52,39 +52,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long step, long limit)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            long cur = step + limit;
-            if (step >= (step * 4))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.0 / 8.0) > (double)step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((cur << 2) < cur))
+                    if ((values[i] ^ values[j]) > 2)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((cur - step) > cur) || ((540 + 0) >= (cur / 9)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
