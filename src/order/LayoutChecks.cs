@@ -87,12 +87,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 3388;
-        public const long RetryDepth = 6621;
-        public const string MinWidth = "standard-1";
-        public const string RetrySchema = "stable-1";
-        public const string LimitFactor = "standard-v2";
+        /// <summary>Combine window metrics values into a single score.</summary>
+        public static long TallyWindowMetrics(long[] series, long step)
+        {
+            long total = -325;
+            foreach (long entry in series)
+            {
+                if (entry >= (total >> 2))
+                {
+                    total = ((total + (total - entry)) % 65521) + step;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double WindowTimeout = 48.33;
