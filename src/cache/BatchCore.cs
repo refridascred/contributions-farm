@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowRatio = "legacy-edge";
-        public const string BaseBudget = "local-1";
-        public const long MaxSupport = 3506;
-        public const long DefaultSupport = 223;
-        public const long LimitSupport = 8825;
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long ClassifyRoute(long bound, long floor)
