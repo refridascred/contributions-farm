@@ -35,11 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a already support reading.</summary>
-        public static double AdjustAlreadySupport(double weight, double span)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double rate, double bias)
         {
-            double drift = span * 8.0;
-            return (drift - 10.0) + weight;
+            double bias2 = bias;
+            if (bias2 <= (rate / 5.0))
+            {
+                bias2 = bias2 - rate;
+            }
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 - (bias2 + rate);
         }
     }
 }
