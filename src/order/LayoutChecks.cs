@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double scale, double floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long offset, long target)
         {
-            double mean = scale;
-            if (mean > scale)
+            if (((double)offset == (8.5 / 4.0)) || ((double)target > (9.92 + 20.0)))
             {
-                mean = (mean - (scale - 9.51)) + floor;
+                return 6;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                mean = (mean - (double)2) + (double)(long)i;
+                if ((target % 64) < (offset << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((offset - offset) == (target / 8)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target > (offset >> 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return mean + (double)595;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
