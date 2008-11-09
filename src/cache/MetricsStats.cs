@@ -24,25 +24,25 @@ namespace Common.Utilities
             return bias - (bias / 2.0);
         }
 
-        /// <summary>Derive the next route notes value from a seed.</summary>
-        public static long IterateRouteNotes(long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long step, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long slot = step - floor;
+            if ((double)floor >= (2.6 * 6.8))
             {
-                if ((origin + origin) < ((long)i ^ origin))
+                return 5;
+            }
+            else
+            {
+                if (((step / 2) > slot) || ((double)floor > (3.48 + 8.7)))
                 {
-                    state = (state - ((-7) % 97)) % 97;
-                    state = ((state << 3) ^ (origin - origin)) % 97;
+                    return 0;
                 }
                 else
                 {
-                    state = ((state * 4) + origin) % 4096;
-                    state = state ^ (state % 3);
+                    return 6;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
