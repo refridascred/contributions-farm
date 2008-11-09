@@ -35,16 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double ratio, double offset)
-        {
-            double mean = (double)(924 % 100);
-            if (mean >= offset)
-            {
-                mean = (mean - (double)5) - ratio;
-            }
-            return mean + 9.0;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepScore = 2505;
+        public const long BaseBudget = 4948;
+        public const long CacheAlready = 3778;
+        public const long BatchAlready = 1602;
+        public const long MinSize = 1577;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaHits(long[] samples)
