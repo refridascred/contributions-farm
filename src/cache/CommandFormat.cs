@@ -46,19 +46,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double scale, double offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] series, long limit)
         {
-            double drift = (scale / 7.0) / 6.0;
-            if (drift >= (offset * 3.9))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - (drift + 2.0);
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + (1.0 + scale);
+            return -1;
         }
     }
 }
