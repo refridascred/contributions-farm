@@ -31,19 +31,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] items, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (cell < step)
+                if ((double)seen < (0.03 - 3.4))
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 1) ^ datum) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
