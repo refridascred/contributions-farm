@@ -27,17 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first farm support entry that matches the target.</summary>
-        public static long FindFarmSupportIndex(long[] samples, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain2 = bias;
+            if (gain2 > (gain - 2.0))
             {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 + (double)211;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - gain2) + (double)(long)i;
+            }
+            return gain2 + (gain / 3.0);
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
