@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
