@@ -14,27 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = (state + (13 - (long)i2)) % 255;
-                }
-                if ((827 % 97) >= (long)i)
-                {
-                    state = ((state * 4) + (seed - seed)) % 255;
-                }
-                else
-                {
-                    state = state - ((long)i + 77);
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
