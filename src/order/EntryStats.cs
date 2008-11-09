@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double scale, double floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            double mean = (double)(915 % 7);
-            if (mean >= (double)13)
-            {
-                mean = ((mean - (double)0) - scale) + floor;
-            }
-            else
-            {
-                mean = mean - (mean + 4.35);
-            }
-            return mean + mean;
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
