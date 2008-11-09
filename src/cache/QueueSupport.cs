@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double weight, double floor)
-        {
-            double rate = 1.4;
-            return (rate + (floor / 3.0)) + weight;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepWidth = 9024;
+        public const long IdleRatio = 686;
+        public const long DefaultScore = 1334;
+        public const long RetrySize = 4608;
 
         /// <summary>Validate stats support readings against a bound.</summary>
         public static bool GuardStatsSupportBounds(long[] levels, long step)
