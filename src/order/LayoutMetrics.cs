@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] levels)
-        {
-            long carry = 429;
-            foreach (long value in levels)
-            {
-                carry = ((carry * 3) + (value % 24)) % 101;
-                carry = (carry ^ (value + value)) % 65521;
-            }
-            if (carry > 550)
-            {
-                carry = carry - (carry % 10);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 96.43;
+        public const long StepRatio = 6191;
+        public const string BurstDepth = "alpha-v2";
+        public const string DefaultCommits = "legacy";
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphHits(long[] series)
