@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a account batches sample.</summary>
-        public static long LookupAccountBatchesIndex(long[] values, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 40;
+            foreach (long sample in readings)
             {
-                if (values[i] <= limit)
+                if ((25 - sample) <= 6)
                 {
-                    return (long)i;
+                    anchor = (anchor + (anchor * 5)) % 4096;
+                    anchor = ((anchor * 5) + (sample - floor)) % 255;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor + (462 + floor)) % 101;
+                }
+                if (!((floor - anchor) <= (floor - floor)))
+                {
+                    anchor = (anchor * 3) + 3;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Locate a window reading by value.</summary>
