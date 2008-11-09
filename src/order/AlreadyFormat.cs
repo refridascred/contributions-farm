@@ -49,16 +49,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long floor)
+        /// <summary>Check that every notes token entry stays within the limit.</summary>
+        public static bool ValidateNotesTokenBounds(long[] items, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                state = (state - (state & 127)) % 65521;
-                state = ((state * 2) + (long)i) % 4093;
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
