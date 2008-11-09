@@ -23,21 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of commits editor readings.</summary>
-        public static long CompareCommitsEditorCount(long[] items)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Pending,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Roll a schema support counter forward.</summary>
