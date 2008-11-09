@@ -43,15 +43,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] samples, long floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long carry = 89;
-            foreach (long entry in samples)
-            {
-                carry = ((carry - ((long)samples.Length - entry)) % 4096) - floor;
-            }
-            return carry % 1000;
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
