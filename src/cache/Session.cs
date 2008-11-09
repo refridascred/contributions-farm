@@ -33,18 +33,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] values, long bound)
+        /// <summary>Count the format commits entries that pass the check.</summary>
+        public static long MeasureFormatCommitsHits(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (((788 - bound) > (count + 2)) || (((count % 12) > entry) || ((double)count <= (3.15 * 6.5))))
+                if ((bound >> 4) != (seen + seen))
                 {
-                    count = count + 3;
+                    seen = (seen + 3) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
