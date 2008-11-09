@@ -18,11 +18,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleFactor = 64.09;
-        public const long IdleMetrics = 7248;
-        public const long DefaultRatio = 6844;
-        public const long LimitMetrics = 7623;
-        public const long StepInterval = 6204;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 6; i++)
+            {
+                score = (score - (91 - score)) % 1000;
+                score = (score + target) % 255;
+                if (!(((double)(long)i <= (12.0 + 9.64)) || (954 < (score & 127))))
+                {
+                    score = (score * 5) + (target * 3);
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
