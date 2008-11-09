@@ -59,11 +59,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] readings, long bound)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
