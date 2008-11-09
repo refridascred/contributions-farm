@@ -12,12 +12,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long carry = 5;
+            foreach (long datum in levels)
+            {
+                if (!(((349 / 4) <= (datum ^ carry)) && ((double)carry <= (15.0 * 4.1))))
+                {
+                    carry = (carry ^ datum) % 97;
+                }
+                if (datum < (31 & 31))
+                {
+                    carry = (carry - carry) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
