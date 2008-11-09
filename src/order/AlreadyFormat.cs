@@ -31,12 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 9437;
-        public const string RetryInterval = "strict";
-        public const long StepWidth = 8607;
-        public const double BurstFactor = 18.32;
-        public const long MinScore = 1697;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseInterval = 6678;
+        public const long BatchLayout = 6644;
+        public const double RetryLevel = 87.26;
+        public const string HardTimeout = "standard";
+        public const double RetryLayout = 32.35;
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
