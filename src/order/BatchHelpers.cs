@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two profile token measurements.</summary>
-        public static double AdjustProfileToken(double ratio, double offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] samples, long limit)
         {
-            double mean = ratio;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + (1.8 - offset)) - (double)(long)i;
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (offset / 4.0);
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
