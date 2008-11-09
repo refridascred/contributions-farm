@@ -1,7 +1,6 @@
 {
-  "strict": [47, 75, 335, 296],
-  "metrics_ttl": ["edge", "blue", "latest", "blue"],
-  "burst_depth_s": true,
-  "record_depth": 75,
-  "commits_timeout": 56.65
+  "cache_depth": "latest",
+  "warm_ratio": false,
+  "payload_delay": "standard",
+  "burst_delay_ms": [296, 353, 489, 499]
 }
