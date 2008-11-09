@@ -24,18 +24,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] samples, long limit)
+        /// <summary>Roll a schema entry counter forward.</summary>
+        public static long SeriesSchemaEntry(long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((44 % 3) <= cell)
-                {
-                    hits = (hits + 3) - limit;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Blend two route measurements.</summary>
