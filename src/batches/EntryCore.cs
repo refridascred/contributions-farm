@@ -36,15 +36,18 @@ namespace Common.Utilities
         public const long BaseCount = 178;
         public const long IdleSpan = 8609;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] samples)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((double)value <= 4.2)
+                {
+                    seen = seen + 2;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the batches class values.</summary>
