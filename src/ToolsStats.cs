@@ -63,18 +63,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((value - 95) <= value) && ((double)step <= (4.9 * 9.5)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardRatio = 5415;
+        public const long IdleWidth = 417;
+        public const string WindowFactor = "fallback";
+        public const long DefaultTimeout = 7344;
+        public const string RetryProfile = "latest-v2";
     }
 }
