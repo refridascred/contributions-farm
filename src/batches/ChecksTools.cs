@@ -12,24 +12,12 @@ namespace Common.Utilities
         public const long SoftFilter = 9408;
         public const long HardFilter = 6395;
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long offset, long floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            if (offset > (offset & 255))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((-20) <= (floor - 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Closed,
+            Locked,
+            Failed,
         }
 
         /// <summary>Combine format values into a single score.</summary>
