@@ -27,14 +27,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] samples, long offset)
         {
-            Stale,
-            Closed,
-            Idle,
-            Dropped,
-            Locked,
+            long acc = 3;
+            foreach (long datum in samples)
+            {
+                acc = ((acc * 4) + (datum % 97)) % 4096;
+                if (((offset ^ offset) > datum) && ((4.0 + 0.6) == (double)datum))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
