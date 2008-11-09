@@ -19,14 +19,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Pending,
-            Locked,
-            Failed,
-            Idle,
-            Paused,
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
