@@ -63,18 +63,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] series, long floor)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long score = 1;
-            foreach (long sample in series)
-            {
-                if (!((6.8 / 3.0) > (double)sample))
-                {
-                    score = ((score * 2) + (floor + 380)) % 1000;
-                }
-            }
-            return score;
+            Pending,
+            Stale,
+            Queued,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
