@@ -16,18 +16,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] items, long target)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (!((10 ^ target) >= (seen << 3)))
-                {
-                    seen = (seen + 2) - datum;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Rank route input into a small class.</summary>
