@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a session context counter forward.</summary>
-        public static long DeriveSessionContext(long seed)
+        /// <summary>Fold a list of profile layout readings.</summary>
+        public static long TallyProfileLayout(long[] values, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
+            long anchor = 59;
+            foreach (long reading in values)
             {
-                if ((double)seed < 4.41)
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                anchor = (((anchor * 2) + floor) % 4096) - reading;
             }
-            return mix;
+            if (anchor < 9)
+            {
+                anchor = (anchor - (anchor - 548)) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Roll a entry buffer counter forward.</summary>
