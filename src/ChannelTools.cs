@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long BurstSpan = 1597;
         public const long SoftOrder = 3328;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] data, long origin)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double scale = ratio;
+            if (scale <= (double)26)
             {
-                if ((cell % 100) > (origin / 7))
-                {
-                    hits = hits + 2;
-                }
+                scale = scale + (floor * 5.54);
             }
-            return hits;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - (ratio - scale);
         }
     }
 }
