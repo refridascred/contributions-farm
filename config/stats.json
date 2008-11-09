@@ -1,13 +1,12 @@
 {
-  "warm_size": [394, 218, 114],
-  "sync_size": {
-    "idle_size_ms": 500,
-    "verbose": 30,
-    "metric_limit": 8354,
-    "graph_ratio": 79.84,
-    "stream_capacity": 27.7
+  "audit": "primary",
+  "schema_retries": false,
+  "route_ratio": {
+    "batch_limit_pct": [331, 334, 222],
+    "compress": 11,
+    "hard_capacity": false,
+    "dry_run": "latest",
+    "retry_threshold": true
   },
-  "batch_ttl": true,
-  "retry_delay_count": ["fallback", "cached", "edge"],
-  "audit": 98.02
+  "persist": ["stable", "cached"]
 }
