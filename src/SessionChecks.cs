@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] levels, long step)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long carry = 92;
+            foreach (long value in levels)
+            {
+                if ((1 < (carry & 255)) || ((carry + carry) >= (carry + step)))
+                {
+                    carry = ((carry - (step + 21)) % 65521) - value;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
