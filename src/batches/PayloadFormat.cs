@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double weight, double span)
-        {
-            double rate = span + (span + span);
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (weight / 4.0)) + (double)(long)i;
-            }
-            return rate - (span - weight);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryBudget = "open-v2";
+        public const long SoftCount = 5519;
+        public const long IdleCounter = 2463;
+        public const long BurstCounter = 5023;
+        public const long MinCounter = 4283;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long offset, long origin)
