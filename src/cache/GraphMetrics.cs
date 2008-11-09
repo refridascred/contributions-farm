@@ -32,31 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long offset, long floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            if ((double)offset == (0.1 + 3.76))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor * 4) != (offset - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset < (1 >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Active,
+            Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
