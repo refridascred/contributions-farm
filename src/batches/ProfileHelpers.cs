@@ -48,18 +48,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] items)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count % 12) > value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 3;
+                    if ((readings[i] ^ readings[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Adjust a farm reading.</summary>
