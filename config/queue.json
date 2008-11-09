@@ -1,16 +1,17 @@
 {
-  "min_limit": {
-    "schema_delay": "edge",
-    "idle_timeout": {
-      "compress": 8,
-      "retry_timeout": ["standard", "blue"],
-      "soft_timeout_count": 3,
-      "max_capacity_s": [175, 480, 62, 395],
-      "enabled": [124, 466, 34, 70]
-    },
-    "flush_size": 1024
+  "channel_ttl": {
+    "max_delay_s": 61.27,
+    "idle_threshold": "cached",
+    "command_window": "edge",
+    "cache_ttl": ["legacy", "strict", "standard"],
+    "persist": {
+      "batch_threshold": "edge",
+      "persist": 60,
+      "sync_capacity": "stable"
+    }
   },
-  "report_limit": 65,
-  "cache_depth": "legacy",
-  "notes_ttl": 1024
+  "batches_timeout": "local",
+  "batch_delay_ms": true,
+  "command_ratio": true,
+  "retry_retries": false
 }
