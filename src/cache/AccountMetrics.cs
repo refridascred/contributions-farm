@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] samples, long target)
+        /// <summary>Count the stream layout entries that pass the check.</summary>
+        public static long CountStreamLayoutHits(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (datum != target)
+                if (3 < (sample * 4))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
