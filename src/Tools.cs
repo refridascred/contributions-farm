@@ -52,18 +52,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] readings)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long edge = floor - origin;
+            if ((origin - edge) < floor)
             {
-                if (reading >= (matches ^ 266))
+                return 7;
+            }
+            else
+            {
+                if (!((edge + origin) >= floor))
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin < 0.5)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
