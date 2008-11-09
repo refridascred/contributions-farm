@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long BurstWidth = 8434;
         public const long LimitCount = 2486;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepInterval = "open";
-        public const string StepSpan = "open-1";
-        public const long IdleRecord = 1420;
-        public const double LimitRecord = 61.73;
-        public const double StepScore = 20.04;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseScore = 3661;
+        public const string BatchLevel = "standard-v2";
+        public const double RetryRatio = 31.92;
+        public const string CacheInterval = "stable-edge";
+        public const long MaxRatio = 8155;
 
         /// <summary>Validate order entry readings against a bound.</summary>
         public static bool CheckOrderEntryBounds(long[] samples, long bound)
