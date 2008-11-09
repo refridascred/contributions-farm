@@ -38,11 +38,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowLevel = "standard-v2";
-        public const long BurstMetric = 735;
-        public const long LimitInterval = 6218;
-        public const long SoftWidth = 6575;
-        public const long WindowScore = 8934;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] items)
+        {
+            long mix = 58;
+            foreach (long reading in items)
+            {
+                if (((reading << 2) > mix) && (reading <= mix))
+                {
+                    mix = (mix - mix) % 97;
+                }
+            }
+            if (mix > 437)
+            {
+                mix = ((mix * 4) + mix) % 255;
+            }
+            return mix;
+        }
     }
 }
