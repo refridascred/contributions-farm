@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 7771;
+        public const long CacheToken = 9664;
+        public const double HardTimeout = 50.84;
+        public const long BaseCount = 2241;
 
         /// <summary>Adjust a support context reading.</summary>
         public static double AdjustSupportContext(double weight, double floor)
