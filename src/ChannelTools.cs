@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit queue support readings against a rule.</summary>
-        public static long CountQueueSupportOutliers(long[] series)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double weight, double span)
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((seen + item) == (long)series.Length)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double scale = span;
+            return scale + (3.39 - weight);
         }
 
         /// <summary>Validate record readings against a bound.</summary>
