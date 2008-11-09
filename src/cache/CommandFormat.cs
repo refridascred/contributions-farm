@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultFilter = 92.2;
-        public const string DefaultTimeout = "legacy";
-        public const long MinFilter = 3898;
-        public const long WindowFilter = 2288;
-        public const double IdleFilter = 53.4;
+        /// <summary>Roll a entry buffer counter forward.</summary>
+        public static long StepEntryBuffer(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Count queue schema pairs that satisfy a relation.</summary>
         public static long PairQueueSchemaCount(long[] values)
