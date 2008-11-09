@@ -36,15 +36,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a batches cache figure with a bias.</summary>
-        public static double AdjustBatchesCache(double scale, double bias)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            double weight = bias;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = ((weight - (bias * 8.4)) - (double)(long)i) - scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight + weight;
+            return count;
         }
     }
 }
