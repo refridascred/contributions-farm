@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound / 8) > (long)i)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = total ^ (long)i;
+                    if ((levels[i] ^ levels[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Validate stats support readings against a bound.</summary>
