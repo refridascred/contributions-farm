@@ -36,10 +36,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseLevel = 9972;
-        public const long BaseBuffer = 3840;
-        public const string IdleBuffer = "strict-v2";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 1528;
+        public const double StepQueue = 60.15;
+        public const long HardWidth = 4141;
+        public const long CacheFactor = 1100;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long MatchSchemaCount(long[] items)
