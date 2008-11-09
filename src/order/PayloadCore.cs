@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long StepGithubfarm = 8877;
         public const long BurstSpan = 190;
 
-        /// <summary>Look up the position of a session graph sample.</summary>
-        public static long LocateSessionGraphIndex(long[] items, long offset)
+        /// <summary>Check that every counter profile entry stays within the limit.</summary>
+        public static bool ValidateCounterProfileRange(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (items[i] == offset)
+                if (cell >= limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
