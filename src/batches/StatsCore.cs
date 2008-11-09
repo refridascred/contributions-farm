@@ -49,13 +49,10 @@ namespace Common.Utilities
             return weight2 + (weight / 7.0);
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitTimeout = 56.28;
+        public const double LimitStats = 97.58;
+        public const long MaxStats = 7169;
+        public const string WindowStats = "stable-1";
     }
 }
