@@ -20,17 +20,18 @@ namespace Common.Utilities
         public const long MinSupport = 2192;
         public const long SoftFactor = 6949;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] items, long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 3;
+            foreach (long value in data)
             {
-                if (items[i] < target)
+                if ((sum + sum) > (sum & 1))
                 {
-                    return (long)i;
+                    sum = (((sum * 3) + (38 << 2)) - value) - bound;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a stats entry.</summary>
