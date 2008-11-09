@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public bool Level { get; set; }
+            public double Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
