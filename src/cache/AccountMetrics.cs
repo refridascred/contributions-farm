@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] data, long bound)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long origin, long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            if ((seed + seed) < (251 << 3))
             {
-                if ((((double)entry == (6.1 / 2.0)) || ((5 + hits) >= ((-74) << 3))) && (entry <= 946))
+                return 8;
+            }
+            else
+            {
+                if (((seed >> 2) > (origin ^ origin)) && ((double)seed != (3.6 / 6.0)))
                 {
-                    hits = (hits + 2) + bound;
+                    return 3;
+                }
+                else
+                {
+                    if (4.7 >= (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8.1 + 17.0) <= (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the format state values.</summary>
