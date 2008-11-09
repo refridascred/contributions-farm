@@ -83,36 +83,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long origin, long step)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long offset, long bound)
         {
-            if ((origin << 3) < origin)
+            if (((double)bound < (6.53 + 1.0)) && ((offset + bound) > bound))
             {
                 return 4;
             }
             else
             {
-                if (origin < (step + step))
+                if ((((-7) & 255) > offset) || ((offset - bound) <= bound))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)origin < (16.0 + 5.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((2.0 < (double)step) && ((step % 16) == (step ^ origin)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
