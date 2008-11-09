@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long RetrySize = 2424;
         public const string BurstSize = "local-v2";
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] readings, long offset)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((offset - 54) <= (offset + offset))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a checks batch reading.</summary>
