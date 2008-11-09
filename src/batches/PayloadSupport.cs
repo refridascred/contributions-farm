@@ -26,10 +26,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxContext = 53.46;
-        public const long MaxDepth = 7216;
-        public const long RetryContext = 1732;
-        public const long MinSpan = 8157;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 9217;
+        public const string MinFactor = "strict-v2";
+        public const long SoftWidth = 5948;
+        public const long BaseBudget = 6135;
+        public const string CacheStream = "cached-1";
     }
 }
