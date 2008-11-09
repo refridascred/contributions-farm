@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Fold a list of context payload readings.</summary>
+        public static long FoldContextPayload(long[] samples, long floor)
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            long anchor = 95;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = ((anchor * 4) + (floor / 5)) % 101;
+                    anchor = anchor - (anchor + (long)i);
+                }
+                if (((double)floor == (6.25 / 2.0)) || (cell >= anchor))
+                {
+                    anchor = anchor ^ (anchor * 2);
+                }
+                if (cell >= (cell + 66))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Scale a queue stats figure with a bias.</summary>
