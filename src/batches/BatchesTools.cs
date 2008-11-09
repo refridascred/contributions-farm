@@ -23,11 +23,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 1140;
-        public const double BurstCache = 78.99;
-        public const double MaxBudget = 45.49;
-        public const long StepCache = 4318;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long seed, long target)
+        {
+            long prev = seed - target;
+            if ((prev % 64) > target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)prev == (8.9 - 0.82))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] items)
