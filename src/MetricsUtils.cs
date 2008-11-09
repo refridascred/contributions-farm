@@ -44,17 +44,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] values, long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((values[i] <= seed) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 3) ^ mix) % 4096;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
