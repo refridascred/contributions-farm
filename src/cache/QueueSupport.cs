@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long DefaultScore = 1334;
         public const long RetrySize = 4608;
 
-        /// <summary>Validate stats support readings against a bound.</summary>
-        public static bool GuardStatsSupportBounds(long[] levels, long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Match up metric queue samples.</summary>
