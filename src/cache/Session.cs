@@ -52,11 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double ratio, double span)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] items)
         {
-            double scale = span;
-            return (scale + span) + ratio;
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((double)seen > (double)reading)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every window order entry stays within the limit.</summary>
