@@ -70,22 +70,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long anchor = 135;
-            foreach (long value in samples)
-            {
-                if (!((anchor - anchor) > (anchor + value)))
-                {
-                    anchor = ((anchor * 4) + (value + value)) % 1000;
-                }
-            }
-            if (anchor > 98)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 97;
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
