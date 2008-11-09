@@ -1,8 +1,13 @@
 {
-  "strict": 7518,
-  "dry_run": [408, 310, 53],
-  "notes_ratio": ["cached", "cached"],
-  "warm_timeout_pct": "latest",
-  "burst_limit_s": 36.89,
-  "base_depth": false
+  "buffer_limit": "legacy",
+  "default_threshold_ms": {
+    "min_capacity": ["staging", "strict", "edge"],
+    "poll_interval_count": false,
+    "window_timeout": false,
+    "flush_limit_count": 21.08
+  },
+  "context_ratio": [221, 295],
+  "persist": false,
+  "batch_delay_pct": ["primary", "stable", "eu-west"],
+  "account_capacity": false
 }
