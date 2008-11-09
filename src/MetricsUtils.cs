@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] values, long target)
         {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
