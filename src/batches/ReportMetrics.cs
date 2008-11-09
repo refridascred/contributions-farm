@@ -43,9 +43,9 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 7066;
-        public const long DefaultBatch = 2188;
-        public const long IdleBatch = 8270;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstDepth = 660;
+        public const double WindowRecord = 90.95;
+        public const long StepRecord = 8505;
     }
 }
