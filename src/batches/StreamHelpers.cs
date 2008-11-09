@@ -16,16 +16,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long target)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark - (mark * 4)) % 97;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Stale,
+            New,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
