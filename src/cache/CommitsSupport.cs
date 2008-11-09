@@ -42,15 +42,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine layout profile values into a single score.</summary>
-        public static long TotalLayoutProfile(long[] samples, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] readings, long seed)
         {
-            long mix = 60;
-            foreach (long entry in samples)
+            long acc = 0;
+            foreach (long datum in readings)
             {
-                mix = ((mix + (entry * 3)) % 4096) + step;
+                acc = ((((acc << 2) ^ 7) % 65521) ^ datum) + seed;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Audit record window readings against a rule.</summary>
