@@ -47,22 +47,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((5.7 / 8.0) >= (double)target)
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowSpan = 71.42;
+        public const long DefaultDepth = 8782;
+        public const string CacheEntry = "legacy-edge";
+        public const long RetryEntry = 2223;
     }
 }
