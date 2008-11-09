@@ -43,26 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats queue entries.</summary>
-        public static long TallyStatsQueue(long[] samples, long target)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] levels, long origin)
         {
-            long score = 79;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if ((levels[i] <= origin) && ((levels[i] % 5) == 0))
                 {
-                    score = ((score * 2) + ((long)i ^ value)) % 4096;
-                }
-                if (!((390 + 185) != (score - target)))
-                {
-                    score = (score - (target & 3)) % 97;
-                }
-                else
-                {
-                    score = (score ^ 15) % 65521;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
