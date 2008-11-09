@@ -26,19 +26,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] data, long bound)
+        /// <summary>Match up githubfarm profile samples.</summary>
+        public static long PairGithubfarmProfileCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
