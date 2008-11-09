@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((-29) % 12) == (count + sample))
                 {
-                    if ((items[i] + items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) + target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every payload graph entry stays within the limit.</summary>
