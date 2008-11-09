@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long origin, long step)
-        {
-            if ((0.4 > (double)origin) || (364 <= (977 + origin)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin >> 5) >= (origin * 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((step / 6) > (step >> 2)) && ((9.33 / 4.0) < (double)origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstLevel = "legacy-1";
+        public const long DefaultTools = 4078;
+        public const string RetryTools = "alpha";
+        public const double StepFactor = 61.9;
+        public const long LimitTools = 8761;
 
         /// <summary>Measure how many command filter samples are out of range.</summary>
         public static long MeasureCommandFilterHits(long[] data, long offset)
