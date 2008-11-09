@@ -1,8 +1,8 @@
 {
-  "cache_size_ms": 86,
-  "base_window": "legacy",
-  "format_interval": "blue",
-  "sync_window_ms": "stable",
-  "enabled": 3331,
-  "editor_threshold": 99
+  "readonly": false,
+  "warm_delay_s": 35,
+  "batch_capacity": 1089,
+  "max_ttl": [316, 104, 81],
+  "account_depth": [44, 155, 402],
+  "dry_run": 3.95
 }
