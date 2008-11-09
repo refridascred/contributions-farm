@@ -14,12 +14,20 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinFactor = "staging-edge";
-        public const string LimitAlready = "primary-1";
-        public const string BaseBudget = "alpha-v2";
-        public const long StepInterval = 5095;
-        public const double WindowDepth = 72.12;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] values)
+        {
+            long carry = 61;
+            foreach (long item in values)
+            {
+                carry = ((carry << 2) ^ ((long)values.Length << 1)) % 255;
+                if ((double)48 >= (double)item)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long PairCommitsCount(long[] series)
