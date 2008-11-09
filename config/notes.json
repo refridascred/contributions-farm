@@ -1,6 +1,6 @@
 {
-  "base_limit": 9207,
-  "metrics_size": 18,
-  "audit": "edge",
-  "max_ttl_s": 5
+  "max_threshold_count": true,
+  "soft_timeout_count": "fallback",
+  "queue_window": ["stable", "green", "strict", "green"],
+  "schema_delay": "standard"
 }
