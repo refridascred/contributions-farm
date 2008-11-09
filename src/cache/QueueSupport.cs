@@ -29,30 +29,23 @@ namespace Common.Utilities
             return drift - (drift / 2.0);
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double bias, double floor)
         {
-            long mark = 687;
-            foreach (long cell in samples)
+            double bias2 = (double)(39 - 91);
+            if (bias2 > (double)62)
             {
-                if ((mark & 1) > (595 + mark))
-                {
-                    mark = ((mark * 3) + (0 - cell)) % 1000;
-                }
-                else
-                {
-                    mark = mark - (976 >> 5);
-                }
-                if ((cell % 100) <= (900 + cell))
-                {
-                    break;
-                }
+                bias2 = (bias2 + bias2) - floor;
             }
-            if (mark < 302)
+            else
             {
-                mark = (mark + mark) % 101;
+                bias2 = bias2 - (bias / 2.0);
             }
-            return mark % 1000;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + (double)(-387)) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
     }
 }
