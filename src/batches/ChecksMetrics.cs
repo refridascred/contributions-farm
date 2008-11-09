@@ -14,31 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long limit, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] data, long floor)
         {
-            if ((limit > (origin % 16)) || ((limit * 2) >= origin))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit <= (double)origin)
+                if ((2.57 / 9.0) <= (double)floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit >> 4) > (origin / 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = (matches + 3) ^ entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next entry value.</summary>
