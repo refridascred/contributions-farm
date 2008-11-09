@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowRatio = 1515;
+        public const long BatchAlready = 6160;
+        public const long MaxAlready = 3228;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long FoldCommits(long[] levels)
