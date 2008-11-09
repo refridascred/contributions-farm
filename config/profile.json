@@ -1,5 +1,24 @@
 {
-  "sync_ttl_count": "fallback",
-  "soft_size": true,
-  "warm_limit": "eu-west"
+  "sync_interval_ms": "primary",
+  "default_ttl_count": "open",
+  "soft_ttl_ms": 5.24,
+  "strict": false,
+  "batch_timeout_s": ["latest", "primary"],
+  "stream_ratio": {
+    "retry_depth": [216, 227],
+    "base_threshold_s": {
+      "burst_capacity_ms": 1024,
+      "min_size_s": ["blue", "open", "open", "open"],
+      "batch_retries": "open"
+    },
+    "batch_size_s": {
+      "stats_timeout": 9070,
+      "default_interval_pct": [205, 449, 71, 40],
+      "burst_ttl_count": 77,
+      "warm_threshold_count": 2.99
+    },
+    "cache_timeout_count": 250,
+    "dry_run": 4038,
+    "flush_window_ms": 16.2
+  }
 }
