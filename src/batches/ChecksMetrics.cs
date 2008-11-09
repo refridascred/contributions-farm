@@ -44,12 +44,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] samples, long target)
         {
-            Active,
-            Dropped,
-            Closed,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (17.0 >= (double)value)
+                {
+                    matches = (matches + 1) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a context stats.</summary>
