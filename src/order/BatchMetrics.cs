@@ -42,21 +42,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] samples)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
