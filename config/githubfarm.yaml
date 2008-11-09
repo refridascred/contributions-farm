@@ -1,11 +1,9 @@
 # githubfarm settings
-report_limit:
-  - blue
-  - standard
-  - blue
-  - local
-flush_window: false
-counter_capacity:
-  - open
-  - strict
-  - open
+readonly: 16.79
+layout_size: cached
+enabled: 36
+batches_timeout:
+  - 284
+  - 224
+  - 155
+  - 242
