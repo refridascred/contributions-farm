@@ -27,19 +27,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] readings, long origin)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
