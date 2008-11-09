@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public double Size { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 7263;
+        public const long HardScore = 9621;
+        public const long MinScore = 4113;
+        public const double DefaultFactor = 91.92;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] levels)
