@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging open; do
+for item in stable latest cached; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=280
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
