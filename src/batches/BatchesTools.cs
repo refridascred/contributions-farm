@@ -32,20 +32,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a schema support counter forward.</summary>
-        public static long IterateSchemaSupport(long seed)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] items)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state - (seed / 6)) + (long)i2;
-                    state = ((state << 2) ^ state) % 255;
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return matches;
         }
     }
 }
