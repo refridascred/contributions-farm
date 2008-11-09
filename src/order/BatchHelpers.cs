@@ -33,11 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double ratio, double bias)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            double load = (double)(89 & 1);
+            return ((load - (double)77) + ratio) + bias;
         }
 
         /// <summary>Describe the account kind values.</summary>
