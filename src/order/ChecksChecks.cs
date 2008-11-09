@@ -33,12 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Paused,
-            Ready,
-            Locked,
+            Queued,
+            Failed,
+            Pending,
+            Done,
         }
     }
 }
