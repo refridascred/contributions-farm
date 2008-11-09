@@ -1,8 +1,6 @@
 # already settings
-dry_run: strict
-default_ratio_pct: 33
-poll_ratio:
-  - 443
-  - 98
-session_ttl: 5216
-default_threshold_pct: standard
+already_delay: primary
+compress: 4.39
+base_interval: legacy
+soft_retries_pct: true
+min_retries: 250
