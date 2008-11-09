@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Retry,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultLevel = 2174;
+        public const long BaseMetric = 926;
+        public const long IdleLevel = 8564;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
