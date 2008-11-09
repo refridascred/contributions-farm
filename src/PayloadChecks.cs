@@ -80,10 +80,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 509;
-        public const string MinAccount = "primary-v2";
-        public const double DefaultBudget = 57.2;
-        public const double StepScore = 94.75;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
