@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double ratio, double offset)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= ratio)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio2 = (ratio2 + 2.0) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio2 - (ratio2 - 5.07);
+            return matches;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
