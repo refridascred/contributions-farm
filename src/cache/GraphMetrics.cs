@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] data)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((4.56 + 5.37) <= (double)(long)i))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    continue;
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((double)sum <= (9.0 * 3.0))
-                {
-                    sum = (sum ^ (seed + (long)i)) % 255;
-                    sum = sum + (seed >> 5);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Accumulate order token samples.</summary>
