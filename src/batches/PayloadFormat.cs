@@ -14,39 +14,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long offset, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] items, long offset)
         {
-            long delta = offset + origin;
-            if (((double)delta != (double)origin) && ((5.6 * 3.44) > (double)origin))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((delta + 4) <= (offset * 5))
+                if ((22 + offset) < ((long)items.Length / 6))
                 {
-                    return 1;
+                    tally = (tally + 2) ^ cell;
                 }
                 else
                 {
-                    if (!((origin << 1) < 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset == (5.99 - 3.8))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
