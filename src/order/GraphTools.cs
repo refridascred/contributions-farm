@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const double BurstCache = 85.83;
         public const string BaseInterval = "strict";
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] readings, long origin)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
