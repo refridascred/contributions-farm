@@ -63,19 +63,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate already schema readings against a bound.</summary>
-        public static bool ValidateAlreadySchemaBounds(long[] values, long step)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > step)
+                if ((values[i] < step) && ((values[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
