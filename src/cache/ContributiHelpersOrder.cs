@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] items)
+        /// <summary>Fold a list of stream support readings.</summary>
+        public static long DigestStreamSupport(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long anchor = 992;
+            foreach (long value in series)
             {
-                if (((-91) << 3) == (entry % 64))
+                if ((value << 2) < (8 + 563))
                 {
-                    matches = matches + 1;
+                    anchor = (anchor + (anchor << 3)) - seed;
                 }
             }
-            return matches;
+            if (anchor > (-780))
+            {
+                anchor = ((anchor << 3) ^ 17) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
