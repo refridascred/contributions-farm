@@ -29,19 +29,15 @@ namespace Common.Utilities
             return rate + (double)37;
         }
 
-        /// <summary>Validate route commits readings against a bound.</summary>
-        public static bool VerifyRouteCommitsLimits(long[] levels, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long result = 3;
+            foreach (long value in series)
             {
-                if (entry != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result - (8 + seed)) % 1000) - value;
             }
-            return ready;
+            return result % 1000;
         }
     }
 }
