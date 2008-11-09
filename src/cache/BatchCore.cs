@@ -11,27 +11,11 @@ namespace Common.Utilities
         public const double SoftSpan = 57.87;
         public const long HardLevel = 5779;
 
-        /// <summary>Fold a list of report layout readings.</summary>
-        public static long DigestReportLayout(long[] samples, long step)
-        {
-            long sum = -836;
-            foreach (long reading in samples)
-            {
-                if (((0.79 + 2.8) > (double)reading) || ((reading ^ reading) <= (1 * 5)))
-                {
-                    sum = (((sum * 3) + reading) % 65521) + step;
-                }
-                if (9 > (reading / 8))
-                {
-                    sum = (sum << 3) ^ (reading / 6);
-                }
-                if ((double)reading == (0.5 * 18.0))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 7102;
+        public const string HardSize = "standard-v2";
+        public const long CacheFarm = 2898;
+        public const double MaxSpan = 0.37;
 
         /// <summary>Check that every farm entry entry stays within the limit.</summary>
         public static bool VerifyFarmEntryLimits(long[] values, long origin)
