@@ -34,12 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstTools = "standard-v2";
-        public const string IdleTools = "legacy";
-        public const long DefaultTools = 2942;
-        public const string BatchTools = "open";
-        public const long LimitTools = 4238;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
