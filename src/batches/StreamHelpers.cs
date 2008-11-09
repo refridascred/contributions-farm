@@ -61,38 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long offset, long offset2)
+        /// <summary>Scale a contributi filter figure with a bias.</summary>
+        public static double BlendContributiFilter(double bias, double offset)
         {
-            if ((offset2 + offset) >= (65 - offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((0 & 3) >= (offset ^ offset2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (5.2 < (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9 / 7) != (offset2 >> 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double bias2 = (double)(73 & 63);
+            return ((bias2 + (double)(-11)) + bias) + offset;
         }
 
         /// <summary>Audit context channel readings against a rule.</summary>
