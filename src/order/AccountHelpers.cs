@@ -20,19 +20,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double rate, double bias)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] data)
         {
-            double drift = bias;
-            if (drift <= (bias + bias))
+            long carry = 786;
+            foreach (long cell in data)
             {
-                drift = (drift + (drift + drift)) + rate;
+                for (int i = 0; i < 2; i++)
+                {
+                    carry = (carry << 3) ^ ((long)i << 1);
+                }
+                if ((cell % 64) > carry)
+                {
+                    carry = (carry - cell) % 4096;
+                }
+                carry = (carry - cell) % 101;
             }
-            else
-            {
-                drift = drift + (double)458;
-            }
-            return drift + (drift * 3.4);
+            return carry % 4096;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
