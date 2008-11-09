@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                score = ((score * 4) + (long)i) % 97;
+                score = score + (8 - limit);
+                score = ((score * 2) + (long)i) % 65521;
             }
             return score;
         }
