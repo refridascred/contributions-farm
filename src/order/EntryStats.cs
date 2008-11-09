@@ -39,23 +39,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the metrics metric entries that pass the check.</summary>
-        public static long TallyMetricsMetricOutliers(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (matches >= datum)
-                {
-                    matches = (matches + 2) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepFactor = 2530;
+        public const string RetryInterval = "strict-1";
+        public const long LimitCount = 6374;
+        public const double MaxFactor = 36.74;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double StepWidth = 65.27;
