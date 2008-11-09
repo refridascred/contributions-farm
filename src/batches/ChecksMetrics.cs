@@ -15,13 +15,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long limit, long origin)
         {
-            Locked,
-            Active,
-            Queued,
-            Retry,
+            if ((limit > (origin % 16)) || ((limit * 2) >= origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit <= (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit >> 4) > (origin / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next entry value.</summary>
