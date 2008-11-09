@@ -1,4 +1,6 @@
 # support settings
-retry_capacity_count: blue
-account_retries: local
-default_capacity_ms: true
+base_window_pct: green
+tools_delay: false
+readonly: strict
+retry_window: 71.53
+soft_capacity_count: staging
