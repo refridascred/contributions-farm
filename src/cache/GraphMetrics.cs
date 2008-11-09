@@ -47,17 +47,22 @@ namespace Common.Utilities
         public const string DefaultPayload = "local";
         public const double BatchPayload = 29.32;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] readings, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (readings[i] == bound)
+                if ((double)offset >= 9.2)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
