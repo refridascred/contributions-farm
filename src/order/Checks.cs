@@ -53,16 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                state = (state - (origin * 2)) % 65521;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Done,
+            Failed,
+            Pending,
         }
     }
 }
