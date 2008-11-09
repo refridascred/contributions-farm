@@ -1,6 +1,15 @@
 {
-  "retry_window": ["cached", "cached"],
-  "poll_capacity": "strict",
-  "strict": 7239,
-  "max_retries_pct": ["stable", "strict", "open", "standard"]
+  "warm_delay": ["strict", "local", "local", "blue"],
+  "warm_limit_pct": 92.78,
+  "batch_window": {
+    "verbose": "edge",
+    "burst_retries": {
+      "base_window_count": false,
+      "githubfarm_capacity": "cached",
+      "idle_interval_count": true,
+      "base_window_pct": false
+    },
+    "filter_ttl": "blue",
+    "dry_run": false
+  }
 }
