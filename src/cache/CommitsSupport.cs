@@ -18,27 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile batches entries.</summary>
-        public static long FoldProfileBatches(long[] readings)
-        {
-            long sum = 23;
-            foreach (long entry in readings)
-            {
-                if ((entry + entry) < (entry + sum))
-                {
-                    sum = ((sum * 5) + (entry * 5)) % 255;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (entry ^ sum);
-                }
-            }
-            if (sum > 869)
-            {
-                sum = (sum - (long)readings.Length) % 4096;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepSize = "fallback";
+        public const double BatchTools = 52.77;
+        public const long LimitInterval = 1116;
+        public const long StepBudget = 1730;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryGaps(long[] series)
