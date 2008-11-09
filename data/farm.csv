@@ -1,6 +1,6 @@
-id,count,ratio,level,score
-1,15,primary,green,46.09
-2,45.06,cached,legacy,549
-3,local,80.78,123,blue
-4,96.21,139,legacy,76.45
-5,468,526,66.12,73
+id,token,count
+1,698,61.84
+2,842,fallback
+3,502,edge
+4,541,349
+5,eu-west,64.31
