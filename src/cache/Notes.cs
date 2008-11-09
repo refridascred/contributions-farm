@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Audit stream account readings against a rule.</summary>
+        public static long TallyStreamAccountOutliers(long[] items)
         {
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((9.0 - 1.5) <= (15.0 + 16.0))
+                {
+                    hits = (hits + 2) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
