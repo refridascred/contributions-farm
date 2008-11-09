@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for command live in the config folder and can be overridden per environment.
-Keep metrics and support names short and lowercase.
-Use payload settings to tune how often payload data is refreshed.
+The counter helpers are pure functions, so they are safe to call from any thread.
+The already report groups every payload by editor.
+Defaults for channel live in the config folder and can be overridden per environment.
+
+Defaults for payload live in the config folder and can be overridden per environment.
+A buffer that stays idle for too long is moved to the counter list.
 
 ## Guidelines
 
-- Keep entry values small
-- Log every entry change
-- Prefer channel defaults
+- Review layout limits each release
+- Validate farm input early
+- Log every counter change
