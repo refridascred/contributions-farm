@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count account commits pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCommitsCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseRatio = 2531;
+        public const long SoftChecks = 8317;
+        public const long BatchBudget = 9724;
+        public const string DefaultChecks = "strict-edge";
+        public const long LimitTimeout = 260;
 
         /// <summary>Count report queue pairs that satisfy a relation.</summary>
         public static long CompareReportQueueCount(long[] series)
