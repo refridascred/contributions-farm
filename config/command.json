@@ -1,7 +1,8 @@
 {
-  "strict": "standard",
-  "entry_capacity": "latest",
-  "idle_depth_count": "blue",
-  "batch_capacity_s": 73.73,
-  "base_capacity_ms": "staging"
+  "sync_ttl_s": 58,
+  "base_interval_s": ["local", "stable", "edge"],
+  "support_timeout": false,
+  "report_capacity": ["legacy", "cached"],
+  "dry_run": 85,
+  "hard_capacity_ms": 94
 }
