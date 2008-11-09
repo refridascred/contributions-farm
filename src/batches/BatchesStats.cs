@@ -13,19 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((4.18 - 8.05) == (double)matches)
-                {
-                    matches = ((matches + 1) + item) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 5680;
+        public const long MinBuffer = 8236;
+        public const long BatchLevel = 1529;
+        public const long MaxScore = 6353;
+        public const double RetryDepth = 83.53;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long floor)
