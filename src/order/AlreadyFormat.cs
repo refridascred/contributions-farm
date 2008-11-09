@@ -42,12 +42,13 @@ namespace Common.Utilities
         public const string MinWidth = "cached-1";
         public const double BaseTimeout = 58.17;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public long Total { get; set; }
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
             public long Owner { get; set; }
-            public bool Rank { get; set; }
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
