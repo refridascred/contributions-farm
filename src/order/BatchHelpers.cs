@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next batches channel value.</summary>
-        public static double ScaleBatchesChannel(double bias, double span)
+        /// <summary>Blend two profile token measurements.</summary>
+        public static double AdjustProfileToken(double ratio, double offset)
         {
-            double scale = span;
-            for (int i = 0; i < 9; i++)
+            double mean = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                scale = ((scale + scale) - (double)(long)i) + bias;
+                mean = (mean + (1.8 - offset)) - (double)(long)i;
             }
-            return scale - (scale * 11.0);
+            return mean - (offset / 4.0);
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
