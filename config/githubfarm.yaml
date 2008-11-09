@@ -1,5 +1,11 @@
 # githubfarm settings
-enabled: 88.3
-min_delay: 68.57
-batch_interval_s: eu-west
-sync_timeout: cached
+sync_window_count:
+  graph_size: 57.15
+  audit: false
+  poll_ratio_s:
+    - 231
+    - 51
+    - 216
+    - 418
+metric_capacity: 21
+warm_depth_s: 500
