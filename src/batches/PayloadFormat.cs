@@ -38,14 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            Locked,
-            Paused,
-            Failed,
-            Dropped,
-            Idle,
+            Done,
+            Synced,
+            Stale,
+            New,
         }
     }
 }
