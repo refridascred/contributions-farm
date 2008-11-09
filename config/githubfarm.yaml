@@ -1,6 +1,11 @@
 # githubfarm settings
-burst_capacity: 7288
-enabled: 60
-sync_window_pct: 60
-verbose: 100
-cache_limit_pct: 45.24
+warm_delay_count: true
+verbose: eu-west
+max_retries: 83.66
+default_ttl: strict
+format_ttl:
+  - standard
+  - staging
+  - primary
+  - blue
+warm_size_s: 8088
