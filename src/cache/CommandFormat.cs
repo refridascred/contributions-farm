@@ -23,13 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Match up route counter samples.</summary>
+        public static long CompareRouteCounterCount(long[] values)
         {
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
-            public double Size { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the queue mode values.</summary>
