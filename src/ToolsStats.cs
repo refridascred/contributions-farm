@@ -26,32 +26,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long origin, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long seed)
         {
-            long gap = origin + target;
-            if (((gap + target) <= gap) && ((target + origin) <= (2 + target)))
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 2;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (target < (427 % 16))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target + origin) < target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
