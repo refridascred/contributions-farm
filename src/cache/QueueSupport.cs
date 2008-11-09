@@ -15,12 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double weight, double offset)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            double drift = (double)(45 + 827);
+            if (drift <= weight)
+            {
+                drift = (drift + (double)3) - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + weight) + (double)(long)i;
+            }
+            return drift - (drift / 2.0);
         }
 
         /// <summary>Hold a already summary.</summary>
