@@ -30,9 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowDepth = 7534;
-        public const double DefaultTimeout = 54.28;
-        public const string LimitCount = "open-1";
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
     }
 }
