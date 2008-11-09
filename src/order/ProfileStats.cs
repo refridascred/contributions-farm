@@ -23,10 +23,32 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheSpan = 9403;
-        public const double RetryCache = 6.41;
-        public const string LimitSpan = "latest-edge";
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long floor, long origin)
+        {
+            if (!((origin + 0) >= 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin >= (origin & 15))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + floor) != (floor * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextLimits(long[] readings, long target)
