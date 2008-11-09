@@ -24,19 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double bias, double floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] samples, long limit)
         {
-            double gain = (bias + bias) / 4.0;
-            if (gain >= floor)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                gain = gain - (gain * 7.0);
+                if ((44 % 3) <= cell)
+                {
+                    hits = (hits + 3) - limit;
+                }
             }
-            else
-            {
-                gain = gain - (double)81;
-            }
-            return gain - (9.7 * 9.0);
+            return hits;
         }
 
         /// <summary>Scale a stats batches figure with a bias.</summary>
