@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] samples, long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            if ((limit + floor) > floor)
             {
-                if ((86 + (long)samples.Length) > matches)
+                return 3;
+            }
+            else
+            {
+                if ((580 & 3) >= floor)
                 {
-                    matches = ((matches + 2) ^ cell) - target;
+                    return 1;
+                }
+                else
+                {
+                    if (!((10.0 / 8.0) < (double)floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((floor * 2) != (floor + limit)) || (limit > (limit << 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
