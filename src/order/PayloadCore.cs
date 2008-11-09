@@ -39,13 +39,17 @@ namespace Common.Utilities
         public const long CacheInterval = 9497;
         public const long MinLevel = 9565;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] data, long bound)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
