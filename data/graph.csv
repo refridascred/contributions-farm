@@ -1,6 +1,7 @@
-id,level,active,state,token
-1,stable,29.82,38.42,109
-2,standard,992,51.75,81.9
-3,blue,720,open,627
-4,696,66.35,537,402
-5,93.27,39.21,24.09,846
+id,weight,active,count,owner
+1,39.32,stable,302,48.5
+2,legacy,open,75.39,19.06
+3,83.41,eu-west,961,829
+4,171,605,917,eu-west
+5,92.72,663,169,strict
+6,614,34.23,174,cached
