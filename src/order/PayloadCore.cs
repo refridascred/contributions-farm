@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] items, long floor)
         {
-            long mark = 4;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((double)cell > 7.0)
+                if ((value & 127) > (floor & 1))
                 {
-                    mark = mark + (mark + mark);
+                    seen = seen + 3;
                 }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
