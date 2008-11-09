@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank stats command input into a small class.</summary>
-        public static long ClassifyStatsCommand(long limit, long seed)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long diff = limit ^ seed;
-            if ((double)seed == (7.0 / 7.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((7.0 / 6.0) > (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit % 3) < diff)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((diff % 3) < 940) || ((double)limit == (1.59 + 20.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of already window readings.</summary>
