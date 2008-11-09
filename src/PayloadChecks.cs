@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] series)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long sum = 128;
-            foreach (long datum in series)
-            {
-                sum = sum ^ (datum & 15);
-            }
-            if (sum < 2)
-            {
-                sum = ((sum << 3) ^ (sum - sum)) % 1000;
-            }
-            return sum % 65521;
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a commits record.</summary>
