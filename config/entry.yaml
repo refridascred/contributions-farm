@@ -1,4 +1,11 @@
 # entry settings
-hard_interval_ms: true
-readonly: 22
-flush_retries_ms: true
+metric_threshold:
+  - 48
+  - 333
+sync_threshold_s:
+  cache_delay: 53.59
+  default_retries: 9792
+  batch_threshold: 100
+  idle_ttl_pct: 7934
+max_depth_s: 1082
+order_ratio: 40.3
