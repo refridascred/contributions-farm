@@ -60,21 +60,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches / 5) != (matches - 261))
                 {
-                    if ((values[i] ^ values[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
