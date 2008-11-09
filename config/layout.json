@@ -1,7 +1,21 @@
 {
-  "githubfarm_limit": "staging",
-  "default_ratio": "latest",
-  "warm_window": 52.23,
-  "base_depth": 30,
-  "counter_delay": "blue"
+  "warm_ratio_count": {
+    "base_depth": false,
+    "poll_limit_count": ["open", "staging", "eu-west"],
+    "warm_delay_ms": "local",
+    "flush_capacity": true
+  },
+  "order_ratio": {
+    "compress": "fallback",
+    "cache_ttl": true,
+    "poll_interval_s": {
+      "cluster_delay": 6185,
+      "batch_ttl": 3.04,
+      "metric_window": 100,
+      "metric_threshold": true,
+      "verbose": 60,
+      "max_threshold_s": true
+    }
+  },
+  "poll_window_pct": "edge"
 }
