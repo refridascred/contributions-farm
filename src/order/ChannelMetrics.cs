@@ -31,19 +31,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next window token value.</summary>
-        public static double BlendWindowToken(double weight, double bias)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] samples)
         {
-            double weight2 = weight;
-            if (weight2 >= (double)(-8))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                weight2 = (weight2 - weight2) - bias;
+                if ((0.77 * 9.21) == (double)count)
+                {
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (double)586;
-            }
-            return weight2 - weight2;
+            return count;
         }
     }
 }
