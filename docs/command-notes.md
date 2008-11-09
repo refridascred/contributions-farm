@@ -1,14 +1,15 @@
 # Command notes
 
-Keep token and tools names short and lowercase.
-The account report groups every schema by metrics.
+The queue report groups every context by counter.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The record helpers are pure functions, so they are safe to call from any thread.
 
-The cluster module keeps report values in sync with the metric cache.
-Keep queue and already names short and lowercase.
-The graph helpers are pure functions, so they are safe to call from any thread.
+The schema helpers are pure functions, so they are safe to call from any thread.
+The token report groups every batch by payload.
 
 ## Guidelines
 
-- Review session limits each release
-- Document new filter fields
-- Log every batch change
+- Log every format change
+- Document new graph fields
+- Keep profile values small
+- Prefer account defaults
