@@ -12,13 +12,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] values)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            long result = 32;
+            foreach (long cell in values)
+            {
+                result = (result * 4) + (result - 7);
+                result = (result * 5) + (1 >> 5);
+                if ((result & 63) <= (cell - result))
+                {
+                    break;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
