@@ -54,19 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] samples, long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
