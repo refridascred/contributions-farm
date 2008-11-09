@@ -65,10 +65,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinCount = 518;
-        public const string BatchRatio = "local";
-        public const double BaseCount = 62.47;
-        public const long StepOrder = 9315;
+        /// <summary>Classify a metric cluster pair into a bucket.</summary>
+        public static long GradeMetricCluster(long step, long bound)
+        {
+            long cur = step + bound;
+            if ((10.0 - 0.06) <= (double)cur)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((step + step) >= (bound + 125)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
