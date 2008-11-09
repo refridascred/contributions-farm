@@ -34,12 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Locked,
-            Draft,
+            Synced,
             Done,
+            Stale,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
