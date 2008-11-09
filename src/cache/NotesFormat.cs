@@ -35,17 +35,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] levels, long step)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
+            long matches = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] > step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
