@@ -28,19 +28,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstRecord = 81.07;
+        public const long MinTimeout = 9781;
+        public const double StepLevel = 73.45;
+        public const string BaseScore = "fallback-v2";
     }
 }
