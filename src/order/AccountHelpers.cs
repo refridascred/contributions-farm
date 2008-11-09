@@ -26,19 +26,17 @@ namespace Common.Utilities
         public const long IdleSpan = 7276;
         public const long LimitLevel = 6775;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] values, long limit)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= limit)
+                if (samples[i] <= target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
