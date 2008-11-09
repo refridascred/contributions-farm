@@ -1,11 +1,6 @@
 {
-  "idle_timeout_pct": {
-    "idle_ttl": 2097,
-    "hard_depth": ["open", "eu-west"],
-    "context_threshold": 36.8,
-    "batch_threshold_pct": "staging"
-  },
-  "poll_ttl_pct": "edge",
-  "strict": 100,
-  "idle_interval_ms": 57.42
+  "token_depth": "blue",
+  "default_limit": "cached",
+  "default_retries": 588,
+  "enabled": 92
 }
