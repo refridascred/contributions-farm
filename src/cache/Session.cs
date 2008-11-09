@@ -41,9 +41,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 5011;
-        public const long CacheCount = 4877;
-        public const long BaseCommits = 3834;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+        }
     }
 }
