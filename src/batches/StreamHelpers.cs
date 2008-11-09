@@ -34,18 +34,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] readings, long offset)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long bound, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long prev = bound ^ seed;
+            if ((seed * 2) < (701 / 7))
             {
-                if ((double)hits > (5.8 * 1.1))
+                return 2;
+            }
+            else
+            {
+                if ((prev + seed) == (prev % 24))
                 {
-                    hits = ((hits + 2) + value) - offset;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed > (0.99 + 11.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
