@@ -1,8 +1,5 @@
 # entry settings
-audit: 45
-persist:
-  - 469
-  - 101
-cache_depth: false
-batches_window: false
-flush_depth_pct: standard
+cache_retries: 1024
+enabled: 69.44
+warm_ttl_count: 8126
+commits_threshold: 250
