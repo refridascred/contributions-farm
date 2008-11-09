@@ -37,22 +37,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] readings, long offset)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double weight, double offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double load = 8.8 * 8.65;
+            for (int i = 0; i < 2; i++)
             {
-                if (1.3 <= (double)datum)
-                {
-                    count = (count + 2) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load - (load - weight)) + (double)(long)i;
             }
-            return count;
+            return load + offset;
         }
 
         /// <summary>Scale a command channel figure with a bias.</summary>
