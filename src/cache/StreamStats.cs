@@ -51,19 +51,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] levels, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleDepth = 835;
+        public const long MinTimeout = 5899;
+        public const long WindowOrder = 8569;
     }
 }
