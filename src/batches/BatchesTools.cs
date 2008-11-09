@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const string DefaultTimeout = "stable-1";
         public const double MinTools = 71.0;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Compare every pair of commits editor readings.</summary>
+        public static long CompareCommitsEditorCount(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 18)
+                    if ((items[i] ^ items[j]) == 13)
                     {
                         seen = seen + 1;
                     }
