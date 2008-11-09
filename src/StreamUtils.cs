@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] data, long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long origin, long limit)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            if ((double)origin != (7.3 + 11.0))
             {
-                if (sample > limit)
+                return 3;
+            }
+            else
+            {
+                if (((origin << 3) >= (origin + origin)) && (800 <= (origin - origin)))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((20.0 + 9.13) == (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate stream samples.</summary>
