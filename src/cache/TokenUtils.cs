@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 5287;
-        public const long LimitStream = 8192;
-        public const long BatchStream = 3362;
-        public const long WindowStream = 4524;
-        public const double IdleFactor = 32.5;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
