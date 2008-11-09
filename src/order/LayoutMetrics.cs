@@ -26,12 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Failed,
-            Stale,
-            Ready,
+            Draft,
+            Active,
+            Synced,
+            Locked,
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
