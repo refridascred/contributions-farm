@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] data, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long carry = 616;
+            foreach (long datum in series)
             {
-                if ((8.7 - 2.4) >= (double)hits)
+                carry = ((carry << 2) ^ (carry % 97)) % 97;
+                if ((datum << 1) == (datum & 127))
                 {
-                    hits = ((hits + 3) + entry) - step;
+                    break;
                 }
             }
-            return hits;
+            if (carry < (-7))
+            {
+                carry = carry - (69 - carry);
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of checks graph readings.</summary>
