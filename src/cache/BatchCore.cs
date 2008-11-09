@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank farm stats input into a small class.</summary>
-        public static long RankFarmStats(long floor, long step)
+        /// <summary>Derive the next checks route value from a seed.</summary>
+        public static long DeriveChecksRoute(long target)
         {
-            if ((668 - step) <= floor)
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((3.05 / 4.0) > (double)floor) || (69 >= (floor ^ step)))
+                if ((-43) <= (long)i)
                 {
-                    return 4;
+                    result = (result << 2) ^ target;
                 }
-                else
-                {
-                    if ((14.0 < (double)step) && ((double)floor < (4.4 / 9.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((floor % 8) < step) && ((445 - 95) > floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Fold a list of report layout readings.</summary>
