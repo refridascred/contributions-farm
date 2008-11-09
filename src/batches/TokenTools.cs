@@ -25,11 +25,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items)
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long acc = 693;
+            foreach (long item in items)
+            {
+                if (((acc * 3) < (item + acc)) || ((item / 2) <= acc))
+                {
+                    acc = acc + (5 >> 2);
+                }
+            }
+            return acc;
         }
     }
 }
