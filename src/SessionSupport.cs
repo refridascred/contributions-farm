@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Accumulate context farm samples.</summary>
+        public static long ScoreContextFarm(long[] samples, long origin)
         {
-            Ready,
-            Synced,
-            Paused,
-            Retry,
-            Pending,
+            long sum = 44;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = sum + ((long)i + (long)samples.Length);
+                }
+                sum = ((sum * 3) + (reading / 3)) % 1000;
+                sum = ((sum * 3) + (sum + reading)) % 97;
+                if ((origin > (reading & 7)) && ((double)reading >= (10.0 * 12.0)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of order entries.</summary>
