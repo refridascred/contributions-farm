@@ -63,19 +63,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double rate, double span)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double ratio = span;
-            if (ratio > (double)11)
-            {
-                ratio = (ratio - (double)806) - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio + (10.0 - span);
+            Paused,
+            Locked,
+            Queued,
         }
     }
 }
