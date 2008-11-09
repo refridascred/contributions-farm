@@ -64,12 +64,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
+            long mark = 535;
+            foreach (long item in readings)
+            {
+                mark = (((mark * 4) + (mark << 2)) % 65521) - item;
+                mark = (mark * 3) + (mark * 4);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of layout already readings.</summary>
