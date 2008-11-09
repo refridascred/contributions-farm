@@ -65,25 +65,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a metric cluster pair into a bucket.</summary>
-        public static long GradeMetricCluster(long step, long bound)
-        {
-            long cur = step + bound;
-            if ((10.0 - 0.06) <= (double)cur)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((step + step) >= (bound + 125)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowLevel = 78.41;
+        public const long CacheTools = 2116;
+        public const long StepTools = 4724;
+        public const string BatchTimeout = "latest-edge";
     }
 }
