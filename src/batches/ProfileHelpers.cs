@@ -92,9 +92,19 @@ namespace Common.Utilities
             return mean - (scale - bias);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "fallback-edge";
-        public const double StepStream = 34.52;
-        public const long LimitCount = 1669;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
