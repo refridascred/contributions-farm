@@ -23,19 +23,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (entry < (seed >> 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 56.75;
+        public const long MaxWindow = 52;
+        public const long HardCount = 6030;
+        public const string BatchTimeout = "latest-1";
 
         /// <summary>Adjust a already support reading.</summary>
         public static double AdjustAlreadySupport(double weight, double span)
