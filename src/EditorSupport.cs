@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 4117;
-        public const double StepInterval = 47.05;
-        public const long CacheContext = 5080;
-        public const long BatchSize = 525;
+        /// <summary>Count the format profile entries that pass the check.</summary>
+        public static long TallyFormatProfileOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((seen + seen) > item)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long FoldNotes(long[] readings, long target)
