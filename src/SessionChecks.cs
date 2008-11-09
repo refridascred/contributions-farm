@@ -34,22 +34,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many window metric samples are out of range.</summary>
-        public static long CountWindowMetricGaps(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)matches < (double)origin) && (sample < (5 ^ sample)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 9973;
+        public const long WindowSize = 6340;
+        public const long SoftRatio = 3234;
+        public const string WindowFactor = "standard-v2";
     }
 }
