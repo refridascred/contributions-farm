@@ -47,21 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of farm layout readings.</summary>
-        public static long PairFarmLayoutCount(long[] readings)
+        /// <summary>Measure how many layout batches samples are out of range.</summary>
+        public static long CountLayoutBatchesHits(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((step >> 4) > ((long)readings.Length + step))
                 {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) - sample;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
