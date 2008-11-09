@@ -1,11 +1,14 @@
 # githubfarm settings
-max_size: latest
-graph_timeout: eu-west
-enabled:
-  - green
-  - fallback
-  - cached
-  - latest
-batch_capacity_count: 14.63
-record_capacity: staging
-retry_ttl_s: 85.36
+flush_ttl: 1216
+warm_size_s:
+  - primary
+  - edge
+  - strict
+cache_delay_ms: 6127
+retry_limit_s: false
+flush_ttl_count:
+  - 151
+  - 304
+  - 194
+  - 26
+soft_window_pct: 945
