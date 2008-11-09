@@ -23,11 +23,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseFactor = 491;
-        public const double MaxSpan = 20.71;
-        public const string MinWidth = "cached-1";
-        public const double BaseTimeout = 58.17;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((212 - 172) >= (matches + 4))
+                {
+                    matches = (matches + 2) + sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
