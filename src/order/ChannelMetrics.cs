@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] values, long floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            long sum = 95;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = sum ^ (datum + 9);
-                if ((sum >> 4) <= (sum ^ datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = sum + (floor + (long)values.Length);
+                    if ((data[i] - data[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
