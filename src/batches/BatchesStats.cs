@@ -36,13 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
+            Closed,
             Synced,
-            Queued,
-            Paused,
-            Retry,
+            Stale,
         }
 
         /// <summary>Blend two batch tools measurements.</summary>
