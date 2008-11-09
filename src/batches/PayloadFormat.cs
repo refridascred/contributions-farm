@@ -32,28 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] levels)
+        /// <summary>Look up the position of a support channel sample.</summary>
+        public static long LocateSupportChannelIndex(long[] items, long target)
         {
-            long carry = 559;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry ^ (carry << 2);
-                if (carry > (carry >> 3))
+                if ((items[i] <= target) && ((items[i] % 2) == 0))
                 {
-                    carry = ((carry * 3) + 4) % 65521;
-                    continue;
-                }
-                if ((carry + reading) < reading)
-                {
-                    carry = (carry - (reading - reading)) % 1000;
+                    return (long)i;
                 }
             }
-            if (carry > 690)
-            {
-                carry = carry ^ (carry + (long)levels.Length);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the layout phase values.</summary>
