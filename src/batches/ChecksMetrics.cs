@@ -53,15 +53,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double scale, double span)
+        /// <summary>Validate support commits readings against a bound.</summary>
+        public static bool GuardSupportCommitsBounds(long[] data, long limit)
         {
-            double bias = scale;
-            for (int i = 0; i < 3; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                bias = ((bias + 19.0) + (double)(long)i) + span;
+                if (item > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias - 19.0;
+            return valid;
         }
     }
 }
