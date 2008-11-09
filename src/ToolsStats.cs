@@ -43,10 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepFilter = 68.08;
-        public const long MinFilter = 7413;
-        public const double MinDepth = 22.21;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = mark + mark;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long IterateFilter(long step)
