@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] readings)
-        {
-            long acc = 920;
-            foreach (long value in readings)
-            {
-                if ((double)value < (1.9 + 7.64))
-                {
-                    acc = (acc - (42 % 60)) % 97;
-                }
-                else
-                {
-                    acc = acc ^ (value + acc);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowLevel = 12.63;
+        public const long SoftRatio = 1935;
+        public const long LimitGraph = 300;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] values, long floor)
