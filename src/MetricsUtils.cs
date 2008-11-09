@@ -67,39 +67,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long bound, long target)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long delta = bound - target;
-            if (!(target < (delta >> 1)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (68 >= (bound ^ 711))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((84 / 5) <= (target % 24))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target * 4) <= delta)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
