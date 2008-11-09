@@ -21,19 +21,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] data, long step)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long step, long bound)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            if (((bound << 1) > (bound << 3)) || ((double)step <= 1.43))
             {
-                if (entry > step)
+                return 1;
+            }
+            else
+            {
+                if ((185 - 2) > (step % 10))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((step - step) >= (82 + bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)step != (7.0 / 9.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the checks kind values.</summary>
