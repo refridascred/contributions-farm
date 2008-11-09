@@ -26,12 +26,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] data, long bound)
         {
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
