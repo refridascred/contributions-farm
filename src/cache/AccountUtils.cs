@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 51.13;
-        public const long DefaultCount = 3385;
-        public const long MaxTimeout = 8508;
-        public const double LimitWindow = 44.08;
+        /// <summary>Adjust a report notes reading.</summary>
+        public static double ProjectReportNotes(double scale, double bias)
+        {
+            double rate = scale * 17.0;
+            if (rate >= 12.0)
+            {
+                rate = (rate - scale) - bias;
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - (7.87 / 7.0);
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmMatches(long[] levels)
