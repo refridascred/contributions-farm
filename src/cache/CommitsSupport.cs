@@ -67,12 +67,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            New,
+            Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Audit cache queue readings against a rule.</summary>
