@@ -15,12 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 4987;
-        public const long IdleFilter = 8464;
-        public const double BaseWidth = 77.17;
-        public const double MinFilter = 68.16;
-        public const long DefaultScore = 9223;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] readings, long floor)
+        {
+            long carry = 5;
+            foreach (long value in readings)
+            {
+                if ((floor - value) >= (value ^ value))
+                {
+                    carry = (carry - (floor << 3)) % 97;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long BucketCommand(long floor, long step)
