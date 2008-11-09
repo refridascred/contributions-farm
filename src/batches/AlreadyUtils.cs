@@ -40,18 +40,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of account farm readings.</summary>
-        public static long ScoreAccountFarm(long[] values, long limit)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long bound)
         {
-            long result = 81;
-            foreach (long value in values)
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)result == (5.81 + 8.78))
-                {
-                    result = (((result << 2) ^ (value - result)) % 65521) - limit;
-                }
+                carry = (carry - (14 >> 2)) % 1000;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return result % 1000;
+            return carry;
         }
     }
 }
