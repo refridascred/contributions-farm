@@ -15,22 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] series)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((double)tally >= (4.33 - 2.0)) || ((double)tally != (double)reading))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count metric layout pairs that satisfy a relation.</summary>
