@@ -40,10 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxInterval = 52.03;
-        public const long BatchLevel = 8038;
-        public const long BurstLevel = 6999;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!(reading <= count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double RetryReport = 39.26;
