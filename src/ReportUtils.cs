@@ -13,20 +13,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] readings)
-        {
-            long carry = -686;
-            foreach (long cell in readings)
-            {
-                carry = carry + (carry - cell);
-                if ((double)carry > (double)4)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardAlready = 73.39;
+        public const long BatchSpan = 9929;
+        public const double BurstAlready = 12.54;
+        public const long DefaultAlready = 160;
 
         /// <summary>Combine filter layout values into a single score.</summary>
         public static long WeighFilterLayout(long[] readings, long limit)
