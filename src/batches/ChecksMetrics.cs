@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Dropped,
+            Done,
+            Stale,
+            Idle,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
