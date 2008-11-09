@@ -72,11 +72,19 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] items)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            long score = 5;
+            foreach (long datum in items)
+            {
+                score = score + (datum << 3);
+            }
+            if (score < (-941))
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
         }
     }
 }
