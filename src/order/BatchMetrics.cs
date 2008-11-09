@@ -47,13 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public double Size { get; set; }
+            Retry,
+            Pending,
+            Done,
+            Queued,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
