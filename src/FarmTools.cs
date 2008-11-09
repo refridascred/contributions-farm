@@ -42,15 +42,11 @@ namespace Common.Utilities
             return gain2 + (gain / 3.0);
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetrySize = 96.7;
+        public const long WindowRatio = 6375;
+        public const long BaseTools = 7619;
+        public const double BurstTools = 16.97;
+        public const long DefaultTools = 2184;
     }
 }
