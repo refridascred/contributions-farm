@@ -27,12 +27,25 @@ namespace Common.Utilities
         public const long DefaultSupport = 223;
         public const long LimitSupport = 8825;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 9670;
-        public const string BaseSchema = "cached";
-        public const long WindowFactor = 2357;
-        public const string MinSchema = "cached-1";
-        public const long StepWidth = 4686;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long bound, long floor)
+        {
+            if (((87 >> 3) <= floor) && ((bound - 879) <= (floor >> 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor - bound) >= (floor + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long DeriveFilter(long limit)
