@@ -75,11 +75,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] data, long origin)
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate context cluster samples.</summary>
