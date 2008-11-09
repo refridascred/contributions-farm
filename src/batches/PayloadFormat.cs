@@ -18,17 +18,18 @@ namespace Common.Utilities
             return (scale + (double)459) + weight;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] levels, long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -58;
+            foreach (long item in series)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 3) != 0))
+                if (!((5 * 4) <= (item - item)))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (item << 2)) % 4096;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
