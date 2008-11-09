@@ -62,11 +62,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a contributi filter figure with a bias.</summary>
-        public static double BlendContributiFilter(double bias, double offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double bias2 = (double)(73 & 63);
-            return ((bias2 + (double)(-11)) + bias) + offset;
+            Dropped,
+            Closed,
+            Done,
+            Retry,
         }
 
         /// <summary>Audit context channel readings against a rule.</summary>
