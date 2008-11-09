@@ -26,14 +26,17 @@ namespace Common.Utilities
         public const long BatchTimeout = 8200;
         public const long SoftLevel = 8954;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] series, long offset)
         {
-            Synced,
-            Locked,
-            Failed,
-            Closed,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
