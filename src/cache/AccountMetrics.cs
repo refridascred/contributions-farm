@@ -66,12 +66,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Pending,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleSize = 2385;
+        public const long IdleWidth = 5818;
+        public const long CacheFilter = 2290;
+        public const long StepFilter = 3307;
     }
 }
