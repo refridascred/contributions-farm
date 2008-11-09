@@ -17,20 +17,14 @@ namespace Common.Utilities
         public const double BurstFormat = 2.96;
         public const string HardFormat = "staging";
 
-        /// <summary>Fold a list of support schema readings.</summary>
-        public static long CombineSupportSchema(long[] values)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long score = 690;
-            foreach (long item in values)
-            {
-                score = (score * 3) + (item + 831);
-                score = ((score << 2) ^ (item + score)) % 65521;
-            }
-            if (score > 0)
-            {
-                score = (score * 5) + (score + score);
-            }
-            return score;
+            Paused,
+            Pending,
+            Idle,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
