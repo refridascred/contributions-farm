@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            double rate = (double)(54 - 80);
-            if (rate <= ratio)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                rate = (rate + (rate - rate)) + offset;
+                if (cell >= (cell + cell))
+                {
+                    tally = tally + 1;
+                }
             }
-            return rate + (double)37;
+            return tally;
         }
 
         /// <summary>Accumulate session samples.</summary>
