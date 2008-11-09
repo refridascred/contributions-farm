@@ -1,7 +1,8 @@
 {
-  "tools_window": "eu-west",
-  "buffer_ttl": 261,
-  "flush_limit_count": true,
-  "soft_depth_count": [368, 412, 480],
-  "soft_size_count": 60.34
+  "filter_ratio": ["edge", "blue"],
+  "buffer_interval": true,
+  "queue_ratio": ["latest", "edge", "blue"],
+  "default_capacity_count": 30,
+  "batch_delay_s": true,
+  "order_capacity": "latest"
 }
