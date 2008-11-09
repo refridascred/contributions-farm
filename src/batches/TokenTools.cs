@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account filter entry stays within the limit.</summary>
-        public static bool CheckAccountFilterBounds(long[] values, long offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
