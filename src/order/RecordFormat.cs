@@ -90,11 +90,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next window format value.</summary>
-        public static double ProjectWindowFormat(double bias, double floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            double rate = (double)7 * 6.0;
-            return ((rate + (double)578) + bias) + floor;
+            Queued,
+            Paused,
+            Done,
+            Locked,
+            Failed,
         }
     }
 }
