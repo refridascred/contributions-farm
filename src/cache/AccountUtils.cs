@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const string HardBudget = "cached-v2";
         public const long IdleFarm = 5483;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] values, long limit)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < limit) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Done,
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define record limits and defaults.</summary>
