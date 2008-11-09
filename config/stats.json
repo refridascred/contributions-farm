@@ -1,8 +1,11 @@
 {
-  "sync_depth_count": "stable",
-  "channel_capacity": 3999,
-  "notes_size": 24.97,
-  "sync_limit_ms": "green",
-  "enabled": "green",
-  "strict": false
+  "cache_window_ms": "latest",
+  "checks_window": true,
+  "sync_depth_s": {
+    "entry_limit": true,
+    "default_window_s": ["fallback", "stable", "fallback", "latest"],
+    "strict": 92,
+    "idle_depth": 4718,
+    "default_interval_ms": false
+  }
 }
