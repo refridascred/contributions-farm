@@ -13,24 +13,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] data, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((double)limit == (2.89 * 9.04))
+                if (entry <= seed)
                 {
+                    flag = false;
                     break;
                 }
-                if (((long)i == (limit & 255)) && (((long)i / 2) <= (sum % 2)))
-                {
-                    sum = ((sum * 5) + limit) % 101;
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Describe the queue mode values.</summary>
