@@ -57,38 +57,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long target, long bound)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long target)
         {
-            if ((double)bound >= 17.0)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (target < (target << 3))
+                double rate = (7.5 / 8.0) / 9.0;
+                if ((rate * 9.8) >= 5.0)
                 {
-                    return 7;
+                    result = (result ^ (target >> 1)) % 255;
+                    result = result + ((long)i - result);
                 }
-                else
-                {
-                    if (((9.37 - 19.0) >= (double)bound) && ((target % 2) > bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target + (-3)) <= bound) && (78 >= (bound / 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Hold a profile info.</summary>
