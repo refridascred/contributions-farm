@@ -69,21 +69,24 @@ namespace Common.Utilities
         public const long CacheFactor = 985;
         public const long BurstSpan = 4226;
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 485;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = ((mark * 2) + (mark >> 1)) % 97;
+                if (!(mark >= (75 + 90)))
                 {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark << 3) ^ (long)values.Length) % 4096;
+                }
+                mark = (mark * 3) + (mark + entry);
+                if (((mark / 5) < (-64)) && (entry > (mark - entry)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count the channel entry entries that pass the check.</summary>
