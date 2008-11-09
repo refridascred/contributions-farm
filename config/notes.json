@@ -1,5 +1,5 @@
 {
-  "verbose": "primary",
-  "batch_capacity": false,
-  "idle_limit_ms": "eu-west"
+  "flush_delay_pct": false,
+  "warm_timeout": false,
+  "buffer_threshold": 30
 }
