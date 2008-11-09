@@ -22,13 +22,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
