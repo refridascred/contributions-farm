@@ -43,23 +43,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] samples, long floor)
         {
-            long state = 9;
+            long carry = 89;
             foreach (long entry in samples)
             {
-                if ((entry & 15) == (state * 4))
-                {
-                    state = (state + state) % 255;
-                }
-                state = (state + entry) % 4096;
-                if ((43 >> 4) <= entry)
-                {
-                    state = (state - (long)samples.Length) % 4096;
-                }
+                carry = ((carry - ((long)samples.Length - entry)) % 4096) - floor;
             }
-            return state;
+            return carry % 1000;
         }
     }
 }
