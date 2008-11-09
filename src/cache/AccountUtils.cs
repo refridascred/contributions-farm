@@ -29,18 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] series, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((item << 1) != (seen + step))
+                if (reading < origin)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
