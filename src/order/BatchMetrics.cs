@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double gain, double offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] levels)
         {
-            double scale = (double)57;
-            if (scale > gain)
+            long count = 0;
+            foreach (long value in levels)
             {
-                scale = (scale - 9.0) - offset;
+                if ((count * 5) < count)
+                {
+                    count = (count + 2) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - (scale * 7.29);
+            return count;
         }
 
         /// <summary>Hold a account entry.</summary>
