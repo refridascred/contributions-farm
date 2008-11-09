@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const string BurstRoute = "local-1";
         public const long SoftInterval = 1791;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Retry,
-            Locked,
-            Active,
+            Paused,
+            New,
+            Draft,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
