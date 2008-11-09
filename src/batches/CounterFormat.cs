@@ -29,17 +29,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] samples, long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
