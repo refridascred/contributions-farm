@@ -25,12 +25,38 @@ namespace Common.Utilities
         public const double MaxSize = 68.73;
         public const double RetryFarm = 39.11;
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long limit, long origin)
         {
-            public double Total { get; set; }
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
+            if ((double)origin > (1.93 * 12.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((origin - limit) >= (origin ^ origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit < (origin * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit << 2) <= (14 + limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account phase values.</summary>
