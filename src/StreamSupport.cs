@@ -12,39 +12,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long origin, long floor)
-        {
-            if ((2.49 + 1.0) >= (double)origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin << 3) > (origin - origin)) && ((origin * 4) > (271 + floor)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((5 - origin) > (floor + (-921))) && (floor < (floor & 31)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (floor > (origin - 803))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BatchBudget = "alpha-edge";
+        public const long BaseBatch = 3816;
+        public const double CacheInterval = 18.75;
+        public const long BurstCount = 390;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long FindContextIndex(long[] values, long step)
