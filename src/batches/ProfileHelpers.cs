@@ -72,11 +72,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double bias, double bias2)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double scale, double bias)
         {
-            double weight = bias2;
-            return weight + bias;
+            double mean = scale;
+            if (mean < (scale + bias))
+            {
+                mean = mean + (mean + bias);
+            }
+            else
+            {
+                mean = mean + bias;
+            }
+            return mean - (scale - bias);
         }
 
         /// <summary>Fold a list of command readings.</summary>
