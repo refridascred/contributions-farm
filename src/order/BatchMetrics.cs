@@ -32,22 +32,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] samples, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mix = 6;
+            foreach (long reading in samples)
             {
-                if ((entry - seen) < seen)
+                if ((double)reading >= (double)mix)
                 {
-                    seen = (seen + 2) + limit;
+                    mix = (mix ^ (406 % 16)) % 1000;
                 }
-                else
+                if ((reading % 16) > (origin - reading))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
