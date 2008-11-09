@@ -26,21 +26,9 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 5011;
+        public const long CacheCount = 4877;
+        public const long BaseCommits = 3834;
     }
 }
