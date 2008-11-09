@@ -1,8 +1,7 @@
-id,token,region,weight,label
-1,55.08,678,775,812
-2,cached,12.43,737,green
-3,17.23,692,689,green
-4,85.83,71.04,fallback,81.1
-5,193,201,87,edge
-6,892,539,196,35.74
-7,green,28.23,strict,78.89
+id,rank,level,weight,active
+1,fallback,65.61,blue,3.81
+2,343,927,418,64.07
+3,358,local,3.89,standard
+4,78.91,746,21.69,eu-west
+5,969,strict,blue,fallback
+6,853,10.11,884,82.11
