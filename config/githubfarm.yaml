@@ -1,20 +1,7 @@
 # githubfarm settings
-idle_threshold_s: latest
-retry_size_pct:
-  compress:
-    cache_size: blue
-    hard_interval: 57
-    warm_capacity: strict
-    audit: eu-west
-  session_threshold: strict
-  base_retries: 8339
-  sync_ratio_count: false
-  filter_limit: edge
-  verbose:
-    - 456
-    - 51
-    - 121
-    - 368
-dry_run: 23
-poll_size_s: 23
-retry_ratio_count: true
+context_timeout: stable
+poll_window_ms:
+  - 353
+  - 217
+  - 56
+burst_limit_count: 9.73
