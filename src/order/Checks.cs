@@ -59,19 +59,13 @@ namespace Common.Utilities
             return load - (double)1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] data, long offset)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
         }
     }
 }
