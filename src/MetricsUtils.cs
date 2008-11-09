@@ -53,23 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema queue counter forward.</summary>
-        public static long StepSchemaQueue(long bound)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] values, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)bound > (9.66 / 2.0)) && (((-809) + bound) < (bound & 127)))
+                if ((values[i] <= seed) && ((values[i] % 3) == 0))
                 {
-                    acc = ((acc << 3) ^ ((long)i << 1)) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = ((acc * 5) + acc) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a checks entry.</summary>
