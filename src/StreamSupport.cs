@@ -14,12 +14,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Rank contributi format input into a small class.</summary>
+        public static long RankContributiFormat(long limit, long target)
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            if ((4.0 * 7.7) < (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)limit > 17.0) && ((5.2 + 4.0) == (double)limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target > (target & 31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit >= (target ^ 1)) || ((double)target >= (13.0 / 4.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up githubfarm profile samples.</summary>
