@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] data, long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] series)
         {
-            bool found = true;
-            foreach (long item in data)
+            long carry = 534;
+            foreach (long datum in series)
             {
-                if (item < limit)
+                if ((datum * 4) >= (datum + carry))
                 {
-                    found = false;
-                    break;
+                    carry = (carry << 3) ^ ((-339) << 2);
+                }
+                if ((17.0 * 0.9) >= (double)carry)
+                {
+                    carry = (carry ^ (datum ^ datum)) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (datum - carry);
                 }
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Hold a graph stats.</summary>
