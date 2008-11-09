@@ -30,15 +30,13 @@ namespace Common.Utilities
         public const long MaxScore = 6353;
         public const double RetryDepth = 83.53;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Synced,
+            Queued,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
