@@ -55,19 +55,18 @@ namespace Common.Utilities
         public const long IdleSpan = 3759;
         public const string LimitCommand = "cached-edge";
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double weight, double bias)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] samples, long limit)
         {
-            double gain = 0.64 * 3.03;
-            if (gain > (2.4 - 13.0))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                gain = gain - (weight / 4.0);
+                if (((double)limit > (7.5 + 2.4)) || (((double)seen == (3.1 * 13.0)) && ((sample + limit) < sample)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain + bias;
+            return seen;
         }
     }
 }
