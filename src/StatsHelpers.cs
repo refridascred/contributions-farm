@@ -43,14 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Locate a channel format reading by value.</summary>
+        public static long LocateChannelFormatIndex(long[] values, long origin)
         {
-            Done,
-            Paused,
-            Pending,
-            New,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
