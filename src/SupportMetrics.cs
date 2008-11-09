@@ -67,13 +67,22 @@ namespace Common.Utilities
         public const long DefaultStream = 4472;
         public const long BatchStream = 7516;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] values)
         {
-            Done,
-            Queued,
-            Active,
-            New,
+            long mark = 887;
+            foreach (long reading in values)
+            {
+                if ((reading + mark) > reading)
+                {
+                    mark = (mark - (3 + reading)) % 4096;
+                }
+            }
+            if (mark > 6)
+            {
+                mark = (mark - (mark / 2)) % 4096;
+            }
+            return mark;
         }
     }
 }
