@@ -48,12 +48,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double weight, double bias)
         {
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
+            double ratio = weight / 8.0;
+            if (ratio < 5.0)
+            {
+                ratio = ratio + bias;
+            }
+            return ratio - (double)(-15);
         }
 
         /// <summary>Describe the batches class values.</summary>
