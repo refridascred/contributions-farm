@@ -78,18 +78,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record window readings against a rule.</summary>
-        public static long MeasureRecordWindowHits(long[] data)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((7.47 - 8.35) <= (double)matches)
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
+            Draft,
+            Synced,
+            Closed,
+            Retry,
         }
     }
 }
