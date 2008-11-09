@@ -14,11 +14,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepTimeout = 8955;
-        public const long HardCommits = 2339;
-        public const string SoftInterval = "legacy-edge";
-        public const long MinCommits = 9721;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long FindRecordIndex(long[] series, long offset)
