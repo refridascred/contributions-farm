@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the format editor entries that pass the check.</summary>
+        public static long AuditFormatEditorGaps(long[] samples, long origin)
         {
-            public bool Level { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((7.11 - 3.73) > (double)count)
+                {
+                    count = ((count + 3) ^ reading) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
