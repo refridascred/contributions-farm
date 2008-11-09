@@ -42,12 +42,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            Idle,
+            Queued,
+            Ready,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a metrics record.</summary>
