@@ -33,19 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] levels, long offset)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Idle,
+            Active,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the account kind values.</summary>
