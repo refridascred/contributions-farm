@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] values, long offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] samples, long target)
         {
-            long mix = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((double)offset >= (2.6 - 20.0))
+                if (datum != target)
                 {
-                    mix = mix + (offset - datum);
+                    valid = false;
+                    break;
                 }
             }
-            if (mix > 2)
-            {
-                mix = (mix + (offset + mix)) % 4096;
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Project the next tools value.</summary>
