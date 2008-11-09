@@ -70,18 +70,22 @@ namespace Common.Utilities
             return load - (bias / 7.0);
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] samples, long floor)
+        /// <summary>Count the channel entry entries that pass the check.</summary>
+        public static long MeasureChannelEntryMatches(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((double)sample >= (4.4 - 4.0))
+                if ((17 + seed) > (cell >> 4))
                 {
-                    count = (count + 3) + floor;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
