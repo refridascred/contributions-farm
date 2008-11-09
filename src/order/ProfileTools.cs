@@ -54,39 +54,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a filter metric value against two limits.</summary>
-        public static long SortFilterMetric(long bound, long limit)
+        /// <summary>Digest a series of stream format entries.</summary>
+        public static long CombineStreamFormat(long[] values, long step)
         {
-            long lane = bound + limit;
-            if (limit <= 42)
+            long acc = 576;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit & 31) <= (bound / 5)) || ((1.43 + 4.0) == (double)lane))
+                if (!((acc + 2) < (step & 1)))
                 {
-                    return 7;
+                    acc = (acc ^ (item << 2)) % 4096;
                 }
-                else
-                {
-                    if ((limit % 2) > ((-936) ^ 733))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound << 3) < limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                acc = (acc << 2) ^ (acc / 3);
             }
+            return acc % 97;
         }
     }
 }
