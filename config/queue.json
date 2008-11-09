@@ -1,8 +1,5 @@
 {
-  "command_ratio": true,
-  "hard_size": 34,
-  "retry_retries_pct": true,
-  "poll_delay_pct": 7962,
-  "soft_window_s": 60,
-  "route_depth": 9501
+  "base_timeout_ms": 250,
+  "soft_depth": 19.7,
+  "cache_capacity": [396, 28, 198]
 }
