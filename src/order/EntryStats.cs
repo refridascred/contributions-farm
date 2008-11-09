@@ -11,20 +11,19 @@ namespace Common.Utilities
         public const long LimitNotes = 2776;
         public const double MaxCount = 11.96;
 
-        /// <summary>Fold a list of filter tools readings.</summary>
-        public static long TallyFilterTools(long[] samples)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] levels, long target)
         {
-            long anchor = -3;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                anchor = (anchor + 7) % 101;
-                if (((anchor / 9) <= anchor) && ((anchor << 2) < (anchor + anchor)))
+                if (reading <= target)
                 {
-                    anchor = (anchor - datum) % 255;
+                    ready = false;
+                    break;
                 }
-                anchor = anchor ^ (datum >> 1);
             }
-            return anchor % 97;
+            return ready;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
