@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record token sample.</summary>
-        public static long FindRecordTokenIndex(long[] data, long target)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] > target)
+                if (readings[i] < offset)
                 {
                     return (long)i;
                 }
