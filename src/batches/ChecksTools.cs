@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 4815;
-        public const long MinCommand = 7399;
-        public const long SoftSpan = 4154;
-        public const long CacheCommand = 9911;
-        public const double IdleWidth = 86.79;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long GradeGithubfarm(long bound, long limit)
