@@ -25,10 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxLevel = 491;
-        public const string StepStats = "staging-v2";
-        public const long CacheInterval = 3421;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] values, long origin)
+        {
+            long acc = 59;
+            foreach (long item in values)
+            {
+                acc = (((acc ^ acc) % 1000) ^ item) + origin;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Locate a support reading by value.</summary>
         public static long FindSupportIndex(long[] data, long offset)
