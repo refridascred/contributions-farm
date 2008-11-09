@@ -27,32 +27,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long floor, long origin)
+        /// <summary>Derive the next queue notes value from a seed.</summary>
+        public static long StepQueueNotes(long seed)
         {
-            long gap = floor + origin;
-            if ((-955) > (floor << 1))
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
+                mix = (mix - (seed >> 2)) % 1000;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (59 >= (gap * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((99 ^ origin) >= origin) && ((origin + 8) != (origin / 6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a window stats.</summary>
