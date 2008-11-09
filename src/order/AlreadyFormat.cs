@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Paused,
-            Locked,
-            Idle,
-            Dropped,
+            Draft,
+            Queued,
+            Active,
+            Closed,
         }
 
         /// <summary>Match up stream samples.</summary>
