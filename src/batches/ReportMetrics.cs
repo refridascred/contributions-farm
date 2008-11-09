@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 5252;
+        public const string MaxWidth = "strict";
+        public const long DefaultSize = 4094;
+        public const double HardMetrics = 84.81;
+        public const long CacheDepth = 9511;
 
         /// <summary>Fold a list of already window readings.</summary>
         public static long TallyAlreadyWindow(long[] data)
