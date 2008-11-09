@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] data, long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (5.0 < (double)step)
+                if (value <= floor)
                 {
-                    tally = (tally + 3) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a layout info.</summary>
