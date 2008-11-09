@@ -55,18 +55,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((tally - value) != (step - 45))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryWidth = 789;
+        public const string RetrySize = "standard-1";
+        public const long HardLevel = 9179;
+        public const double BatchChannel = 54.02;
     }
 }
