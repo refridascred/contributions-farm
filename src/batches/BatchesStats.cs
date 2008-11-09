@@ -16,18 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheBudget = 9015;
+        public const long CacheCounter = 2476;
+        public const long WindowCounter = 2629;
 
         /// <summary>Adjust a notes reading.</summary>
         public static double SmoothNotes(double gain, double offset)
