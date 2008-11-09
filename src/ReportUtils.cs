@@ -50,31 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a graph checks value against two limits.</summary>
-        public static long GradeGraphChecks(long target, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] samples, long step)
         {
-            if ((target * 2) < (target << 1))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin & 3) <= origin)
+                if ((tally - value) != (step - 45))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((8 - target) != (target / 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
