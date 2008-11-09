@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] levels)
+        /// <summary>Measure how many tools cluster samples are out of range.</summary>
+        public static long CountToolsClusterGaps(long[] values)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((count * 5) < count)
+                if ((double)entry == (4.53 + 4.0))
                 {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a account entry.</summary>
