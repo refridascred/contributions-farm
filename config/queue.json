@@ -1,7 +1,6 @@
 {
-  "hard_delay_s": "standard",
-  "payload_window": 78,
-  "flush_threshold_ms": "green",
-  "strict": 1973,
-  "compress": 67
+  "tools_size": 57.82,
+  "default_ttl_ms": 1030,
+  "cache_size": 35.17,
+  "farm_timeout": "standard"
 }
