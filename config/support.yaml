@@ -1,14 +1,5 @@
 # support settings
-burst_depth: primary
-persist: 29
-record_ttl:
-  burst_size: blue
-  retry_size:
-    sync_limit: 61
-    soft_depth_pct: eu-west
-    burst_ttl_pct: stable
-    enabled: 71.26
-  flush_interval_s: edge
-  warm_threshold: 37.55
-  hard_retries_pct: primary
-audit: true
+strict: cached
+min_depth_pct: 37.87
+soft_threshold_ms: 5116
+warm_delay_ms: eu-west
