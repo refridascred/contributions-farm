@@ -1,11 +1,9 @@
 # entry settings
-readonly: local
-min_retries:
-  base_interval:
-    - open
-    - blue
-  default_interval_pct: 93
-  retry_retries_s: edge
-  cache_capacity: green
-  persist: legacy
-cache_depth_ms: eu-west
+idle_size: 60
+hard_capacity_s: true
+context_limit: local
+default_depth: 48.13
+hard_window_count:
+  base_retries_pct: open
+  flush_threshold: true
+  warm_limit: 76
