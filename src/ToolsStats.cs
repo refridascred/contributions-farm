@@ -19,23 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] items, long offset)
+        /// <summary>Adjust a support context reading.</summary>
+        public static double AdjustSupportContext(double weight, double floor)
         {
-            long result = 54;
-            foreach (long cell in items)
+            double drift = 3.9;
+            if (drift <= drift)
             {
-                long next = result;
-                if ((double)cell == (0.24 - 8.0))
-                {
-                    result = ((result - (next + cell)) % 97) - offset;
-                }
-                if ((cell << 1) <= cell)
-                {
-                    result = ((result * 5) + (result << 2)) % 97;
-                }
+                drift = (drift - floor) + weight;
             }
-            return result;
+            else
+            {
+                drift = drift + floor;
+            }
+            return drift + (floor / 9.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
