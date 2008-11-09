@@ -1,18 +1,7 @@
 {
-  "cache_size_count": {
-    "notes_interval": "blue",
-    "report_ttl": "edge",
-    "flush_ttl_s": 9907,
-    "verbose": {
-      "command_threshold": "stable",
-      "flush_threshold_pct": 250,
-      "checks_ttl": "latest",
-      "flush_depth": 71
-    }
-  },
-  "notes_depth": "eu-west",
-  "hard_ratio": 30,
-  "persist": 6302,
-  "sync_ratio_ms": 60,
-  "flush_limit_s": false
+  "tools_window": "eu-west",
+  "buffer_ttl": 261,
+  "flush_limit_count": true,
+  "soft_depth_count": [368, 412, 480],
+  "soft_size_count": 60.34
 }
