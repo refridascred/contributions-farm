@@ -16,19 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] samples, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] items, long step)
         {
-            long acc = 3;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                acc = ((acc * 4) + (datum % 97)) % 4096;
-                if (((offset ^ offset) > datum) && ((4.0 + 0.6) == (double)datum))
+                if (reading <= step)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return acc % 97;
+            return ready;
         }
 
         /// <summary>Project the next window token value.</summary>
