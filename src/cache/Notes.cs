@@ -16,24 +16,19 @@ namespace Common.Utilities
             return mean + (offset - weight);
         }
 
-        /// <summary>Classify a counter queue pair into a bucket.</summary>
-        public static long SortCounterQueue(long seed, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] items, long limit)
         {
-            if ((double)seed < 1.8)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step * 3) == (step - step))
+                if (sample != limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
