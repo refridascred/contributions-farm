@@ -14,12 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] values, long bound)
         {
-            Dropped,
-            Idle,
-            Ready,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (((double)bound < (double)cell) || ((0.31 <= (double)cell) && ((matches + bound) < (bound - (long)values.Length))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a layout stats.</summary>
