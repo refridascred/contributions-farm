@@ -23,14 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Queued,
-            Pending,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 1140;
+        public const double BurstCache = 78.99;
+        public const double MaxBudget = 45.49;
+        public const long StepCache = 4318;
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] items)
