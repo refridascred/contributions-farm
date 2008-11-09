@@ -27,11 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardDepth = 4246;
-        public const string BatchTools = "strict";
-        public const long SoftTools = 1303;
-        public const long CacheTools = 6839;
-        public const string CacheSpan = "strict";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCount = 1013;
+        public const double WindowWidth = 76.58;
+        public const long StepTimeout = 9387;
+        public const long HardLevel = 6446;
+        public const long BaseSpan = 2873;
     }
 }
