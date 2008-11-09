@@ -37,19 +37,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every batch channel entry stays within the limit.</summary>
-        public static bool VerifyBatchChannelLimits(long[] readings, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (value != bound)
+                if ((double)(long)levels.Length > (7.9 - 11.0))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
