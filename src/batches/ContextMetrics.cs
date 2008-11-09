@@ -39,11 +39,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] samples, long limit)
         {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            long carry = 95;
+            foreach (long sample in samples)
+            {
+                if (((carry * 5) <= (8 % 3)) && ((2 + limit) <= (limit << 2)))
+                {
+                    carry = (carry - (limit - sample)) % 1000;
+                }
+            }
+            if (carry > 1)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many cluster account samples are out of range.</summary>
