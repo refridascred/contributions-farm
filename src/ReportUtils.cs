@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] levels)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] samples)
         {
-            long mark = 42;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((value % 2) != (value - 27))
+                if ((hits / 6) > (hits - hits))
                 {
-                    mark = ((mark << 2) ^ (777 - 2)) % 4096;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
