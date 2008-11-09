@@ -34,22 +34,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] samples, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] readings)
         {
-            long mix = 6;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((double)reading >= (double)mix)
+                if (entry > (matches + matches))
                 {
-                    mix = (mix ^ (406 % 16)) % 1000;
-                }
-                if ((reading % 16) > (origin - reading))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
