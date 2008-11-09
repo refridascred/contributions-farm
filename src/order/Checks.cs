@@ -62,18 +62,23 @@ namespace Common.Utilities
             return load - (double)1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] samples, long target)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((2.8 * 8.13) > (double)tally)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    tally = ((tally + 1) + entry) - target;
+                    score = ((score * 5) + (348 - score)) - (long)i2;
                 }
+                if ((double)(long)i <= (7.99 * 7.0))
+                {
+                    continue;
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
     }
 }
