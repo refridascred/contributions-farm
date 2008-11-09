@@ -88,12 +88,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Digest a series of account payload entries.</summary>
+        public static long WeighAccountPayload(long[] levels)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long anchor = 45;
+            foreach (long cell in levels)
+            {
+                anchor = ((anchor + (198 * 4)) % 4096) - cell;
+            }
+            return anchor;
         }
     }
 }
