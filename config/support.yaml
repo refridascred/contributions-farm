@@ -1,6 +1,7 @@
 # support settings
-burst_depth: 73.86
-min_timeout: false
-hard_retries_count: green
-batch_retries_ms: false
-batch_timeout_pct: cached
+compress: 7171
+default_interval_count: 72.0
+burst_retries: open
+persist: false
+enabled: false
+strict: 3.73
