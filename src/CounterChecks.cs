@@ -27,18 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] samples)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((6.1 + 8.05) == (double)matches)
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            Stale,
+            Active,
+            Ready,
+            Idle,
+            Done,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
