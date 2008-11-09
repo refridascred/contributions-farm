@@ -30,9 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheLevel = 9338;
-        public const long IdleTools = 8688;
-        public const long HardWidth = 6534;
+        /// <summary>Digest a series of buffer metric entries.</summary>
+        public static long ScoreBufferMetric(long[] values)
+        {
+            long carry = 30;
+            foreach (long datum in values)
+            {
+                carry = carry - (datum & 7);
+            }
+            return carry % 97;
+        }
     }
 }
