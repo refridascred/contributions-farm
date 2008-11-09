@@ -1,11 +1,10 @@
 # Command notes
 
-The profile report groups every tools by metrics.
-A metric that stays idle for too long is moved to the session list.
+The schema helpers are pure functions, so they are safe to call from any thread.
+When a record fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate profile input early
-- Document new cluster fields
-- Prefer token defaults
-- Review order limits each release
+- Keep order values small
+- Document new layout fields
+- Log every profile change
