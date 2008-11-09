@@ -29,17 +29,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] data, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 132;
+            foreach (long value in readings)
             {
-                if (data[i] <= offset)
+                mark = ((mark * 5) + (421 * 5)) % 255;
+                if ((double)step >= 9.91)
                 {
-                    return (long)i;
+                    mark = ((mark * 4) + (value + value)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ step) % 255;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
