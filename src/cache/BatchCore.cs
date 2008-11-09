@@ -60,12 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] data, long origin)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] < origin) && ((data[i] % 2) == 0))
+                if (levels[i] >= target)
                 {
                     return (long)i;
                 }
