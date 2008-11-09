@@ -1,17 +1,15 @@
 # githubfarm settings
-burst_ttl_ms: 1024
-persist:
-  cache_window_pct: strict
-  support_ratio:
-    - 130
-    - 226
-  max_ttl_count:
-    - eu-west
-    - green
-    - cached
-default_limit_s: local
-idle_interval_pct:
-  - 473
-  - 2
-cache_retries: 21
-warm_delay_pct: 68.25
+poll_ttl:
+  - open
+  - latest
+  - staging
+  - cached
+flush_limit:
+  - 162
+  - 296
+  - 200
+dry_run:
+  poll_depth: false
+  poll_depth_pct: true
+  idle_window_count: 500
+  batch_size: 27
