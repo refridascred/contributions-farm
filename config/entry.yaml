@@ -1,4 +1,6 @@
 # entry settings
-report_capacity: 6.09
-flush_delay_ms: 28
-strict: 3586
+route_ratio: 9099
+sync_delay_ms: 1024
+hard_depth: open
+cache_window_s: legacy
+account_limit: legacy
