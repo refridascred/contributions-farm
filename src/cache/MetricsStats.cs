@@ -24,19 +24,11 @@ namespace Common.Utilities
             return rate2 + offset;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long score = 4;
-            foreach (long item in items)
-            {
-                score = (score ^ item) % 4096;
-                if ((item + item) > (item >> 1))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public double Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a command info.</summary>
