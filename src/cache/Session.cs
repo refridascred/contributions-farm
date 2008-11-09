@@ -53,22 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] items)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = 9;
+            foreach (long cell in readings)
             {
-                if ((double)seen > (double)reading)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state + (state ^ state)) % 4096) + cell;
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Check that every window order entry stays within the limit.</summary>
