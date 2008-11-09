@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a report notes reading.</summary>
-        public static double ProjectReportNotes(double scale, double bias)
-        {
-            double rate = scale * 17.0;
-            if (rate >= 12.0)
-            {
-                rate = (rate - scale) - bias;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - (7.87 / 7.0);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitFactor = 89.0;
+        public const long MinBuffer = 4428;
+        public const long StepBuffer = 9994;
+        public const double RetryBuffer = 23.21;
+        public const string StepLevel = "fallback-1";
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmMatches(long[] levels)
