@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] samples, long limit)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] samples, long seed)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= limit)
+                if ((samples[i] >= seed) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
