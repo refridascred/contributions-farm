@@ -27,12 +27,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long floor, long bound)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            long slot = floor - bound;
+            if ((bound << 3) != (bound ^ bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (slot < (floor ^ floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
