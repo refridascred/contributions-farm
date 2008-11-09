@@ -61,38 +61,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long bound, long target)
+        /// <summary>Check that every window order entry stays within the limit.</summary>
+        public static bool VerifyWindowOrderRange(long[] values, long limit)
         {
-            if (!((double)target < (4.12 + 11.0)))
+            bool found = true;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target > (9.88 * 7.6)) || ((double)target != (1.8 + 1.0)))
+                if (cell <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - bound) == (bound - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((bound + 634) != (bound << 2)) || ((double)85 == (double)bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
