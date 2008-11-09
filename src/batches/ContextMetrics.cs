@@ -21,25 +21,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long floor, long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] values, long offset)
         {
-            long next = floor + seed;
-            if ((double)floor > (double)next)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed * 5) <= (seed + floor)) && ((double)floor < (double)next))
+                if (values[i] < offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
