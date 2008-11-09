@@ -60,19 +60,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double gain, double offset)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double weight, double offset)
         {
-            double ratio = (double)39 + (offset * 1.39);
-            if (ratio > (double)70)
-            {
-                ratio = (ratio + ratio) - gain;
-            }
-            else
-            {
-                ratio = ratio + offset;
-            }
-            return ratio - offset;
+            double weight2 = offset;
+            return (weight2 - offset) + weight;
         }
     }
 }
