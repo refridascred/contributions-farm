@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account contributi samples are out of range.</summary>
-        public static long TallyAccountContributiHits(long[] samples, long bound)
+        /// <summary>Compare every pair of checks graph readings.</summary>
+        public static long CompareChecksGraphCount(long[] values)
         {
             long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((bound >> 2) != (bound << 1)) || ((tally - value) == (217 >> 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
