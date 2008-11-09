@@ -45,18 +45,22 @@ namespace Common.Utilities
         public const double LimitWidth = 61.17;
         public const string BurstBudget = "open";
 
-        /// <summary>Count the graph stats entries that pass the check.</summary>
-        public static long TallyGraphStatsGaps(long[] series)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (((double)value != (double)seen) && ((double)seen <= (double)16))
+                if (target > (cell >> 5))
                 {
-                    seen = seen + 2;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of buffer queue readings.</summary>
