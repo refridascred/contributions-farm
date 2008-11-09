@@ -59,16 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] series, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                anchor = anchor - seed;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (item <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
     }
 }
