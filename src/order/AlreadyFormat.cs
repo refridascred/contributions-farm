@@ -30,21 +30,19 @@ namespace Common.Utilities
             return gain - (bias - bias);
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell > seed)
                 {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Accumulate metric profile samples.</summary>
