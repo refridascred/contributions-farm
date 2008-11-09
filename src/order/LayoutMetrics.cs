@@ -23,18 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] levels)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            long mix = 5;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mix & 127) <= (mix << 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (mix ^ mix)) + reading;
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the metric kind values.</summary>
