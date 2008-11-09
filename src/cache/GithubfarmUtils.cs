@@ -16,24 +16,22 @@ namespace Common.Utilities
             return scale - (double)5;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long origin, long seed)
+        /// <summary>Digest a series of metrics window entries.</summary>
+        public static long DigestMetricsWindow(long[] samples, long seed)
         {
-            if (origin < (origin + seed))
+            long anchor = -84;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((11.0 - 1.7) <= (double)seed)
+                if ((588 - anchor) > (seed - seed))
                 {
-                    return 8;
+                    anchor = (anchor + seed) % 65521;
                 }
                 else
                 {
-                    return 6;
+                    anchor = (anchor - (datum ^ datum)) % 65521;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
