@@ -28,22 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] data, long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double rate, double floor)
         {
-            long total = 27;
-            foreach (long sample in data)
+            double rate2 = floor + floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((2 ^ 798) >= sample)
-                {
-                    total = ((total * 4) + (total & 255)) + limit;
-                }
+                rate2 = ((rate2 - (rate2 * 12.0)) - (double)(long)i) - rate;
             }
-            if (total < 0)
-            {
-                total = (total + 594) % 65521;
-            }
-            return total;
+            return rate2 - (floor / 5.0);
         }
 
         /// <summary>Look up the position of a context sample.</summary>
