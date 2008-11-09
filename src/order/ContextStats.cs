@@ -17,12 +17,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] values, long floor)
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
