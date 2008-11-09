@@ -75,19 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi queue value from a seed.</summary>
-        public static long RollContributiQueue(long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] samples, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (((mark << 3) >= (floor << 2)) || ((floor / 2) == (long)i))
+                if ((double)cell > (12.0 + 1.0))
                 {
-                    mark = ((mark * 4) + (mark / 9)) % 4096;
+                    seen = (seen + 3) + offset;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Project the next notes value.</summary>
