@@ -45,16 +45,19 @@ namespace Common.Utilities
         public const long SoftWidth = 2898;
         public const string RetryInterval = "fallback";
 
-        /// <summary>Derive the next queue notes value from a seed.</summary>
-        public static long StepQueueNotes(long seed)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double weight, double floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            double drift = weight;
+            if (drift < 8.96)
             {
-                mix = (mix - (seed >> 2)) % 1000;
-                mix = ((mix * 5) + (long)i) % 65521;
+                drift = drift + (floor - drift);
             }
-            return mix;
+            else
+            {
+                drift = drift + (7.0 * 12.0);
+            }
+            return drift + (7.08 + drift);
         }
 
         /// <summary>Describe the queue level values.</summary>
