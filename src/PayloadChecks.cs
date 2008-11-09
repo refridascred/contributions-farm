@@ -80,19 +80,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleCount = 5775;
+        public const long RetryBudget = 6994;
+        public const long BurstLevel = 818;
+        public const string HardAccount = "cached-1";
     }
 }
