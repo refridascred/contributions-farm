@@ -33,38 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long floor, long target)
-        {
-            if ((floor + target) == (floor >> 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target <= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor % 2) != (floor % 8)) && ((floor - target) != (floor % 97)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (6 < (target + target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 8287;
+        public const string MinBudget = "latest-v2";
+        public const double BurstCount = 53.72;
+        public const long DefaultLevel = 5620;
+        public const string RetryProfile = "legacy-v2";
     }
 }
