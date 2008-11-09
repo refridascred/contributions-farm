@@ -25,19 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] readings, long limit)
         {
-            long score = 72;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                score = (score + (entry + entry)) % 97;
-                if ((8.0 - 16.0) <= (double)score)
+                if ((double)24 == (double)limit)
                 {
-                    break;
+                    matches = (matches + 2) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Grade a batches filter value against two limits.</summary>
