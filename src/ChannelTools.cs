@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long BurstSpan = 1597;
         public const long SoftOrder = 3328;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double ratio, double floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] levels, long seed)
         {
-            double scale = ratio;
-            if (scale <= (double)26)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                scale = scale + (floor * 5.54);
+                if (reading < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - (ratio - scale);
+            return stale;
         }
     }
 }
