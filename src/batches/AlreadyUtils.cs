@@ -19,21 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count cache batches pairs that satisfy a relation.</summary>
-        public static long PairCacheBatchesCount(long[] items)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
