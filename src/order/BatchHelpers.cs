@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count batches metrics pairs that satisfy a relation.</summary>
-        public static long CompareBatchesMetricsCount(long[] samples)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long seed, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long slot = seed + bound;
+            if ((698 + slot) == (511 << 1))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((seed + bound) == (bound << 2))
                 {
-                    if ((samples[i] + samples[j]) > 9)
+                    return 6;
+                }
+                else
+                {
+                    if (!((slot + bound) != (seed - slot)))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)slot >= (3.24 - 10.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
