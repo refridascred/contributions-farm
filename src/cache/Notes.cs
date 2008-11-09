@@ -48,21 +48,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count metric stats pairs that satisfy a relation.</summary>
-        public static long MatchMetricStatsCount(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((3.5 / 6.0) < (10.0 + 16.0))
                 {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 1) + sample) + seed;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
