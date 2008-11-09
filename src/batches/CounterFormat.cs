@@ -15,16 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state ^ (long)i;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the queue payload series from a seed.</summary>
