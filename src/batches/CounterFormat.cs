@@ -15,12 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Iterate the queue payload series from a seed.</summary>
