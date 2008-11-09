@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long score = 976;
-            foreach (long entry in readings)
-            {
-                if ((entry << 3) <= (entry + score))
-                {
-                    score = (score - (score << 3)) % 65521;
-                }
-            }
-            return score;
+            Locked,
+            Done,
+            Idle,
         }
 
         /// <summary>Match up githubfarm profile samples.</summary>
