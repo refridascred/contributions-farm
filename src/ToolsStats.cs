@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const double HardTimeout = 50.84;
         public const long BaseCount = 2241;
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Locate a token route reading by value.</summary>
+        public static long FindTokenRouteIndex(long[] data, long floor)
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many schema token samples are out of range.</summary>
