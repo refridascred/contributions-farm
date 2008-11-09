@@ -33,19 +33,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate order entry readings against a bound.</summary>
-        public static bool CheckOrderEntryBounds(long[] samples, long bound)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long floor, long target)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            if ((floor + target) == (floor >> 2))
             {
-                if (entry != bound)
+                return 8;
+            }
+            else
+            {
+                if (target <= floor)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((floor % 2) != (floor % 8)) && ((floor - target) != (floor % 97)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (6 < (target + target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
