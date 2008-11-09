@@ -1,6 +1,8 @@
 {
-  "payload_limit": 64.49,
-  "stats_size": 29.54,
-  "soft_size_pct": "fallback",
-  "idle_window_pct": 25.91
+  "default_limit": 1024,
+  "retry_size_count": "latest",
+  "min_ratio": 36,
+  "max_depth_ms": 7.59,
+  "persist": 30,
+  "max_depth_s": "eu-west"
 }
