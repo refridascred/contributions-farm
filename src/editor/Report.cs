@@ -23,22 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long anchor = 731;
-            foreach (long item in data)
-            {
-                if ((item * 5) != (item * 3))
-                {
-                    anchor = (anchor + (anchor - (-237))) % 255;
-                }
-            }
-            if (anchor > 3)
-            {
-                anchor = ((anchor << 2) ^ (anchor / 4)) % 255;
-            }
-            return anchor % 4096;
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a filter entry.</summary>
