@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (((double)target < (double)829) || ((8.09 + 18.0) >= (double)carry))
+                if ((seen >> 3) >= 3)
                 {
-                    carry = (carry << 2) ^ ((long)i * 4);
+                    seen = (seen + 2) + datum;
                 }
-                if ((carry + 10) <= ((long)i + target))
+                else
                 {
-                    carry = ((carry << 3) ^ (carry << 3)) % 1000;
+                    seen = seen - 1;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the support kind values.</summary>
