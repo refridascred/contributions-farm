@@ -60,11 +60,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "primary-edge";
-        public const double CacheCount = 46.72;
-        public const long CacheContext = 8792;
-        public const string RetrySize = "primary-1";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardInterval = 2472;
+        public const string BurstToken = "alpha-v2";
+        public const double SoftLevel = 71.05;
+        public const long LimitFactor = 9528;
+        public const long WindowToken = 837;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
