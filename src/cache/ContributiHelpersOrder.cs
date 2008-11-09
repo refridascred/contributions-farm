@@ -28,25 +28,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long origin, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] items, long target)
         {
-            long step = origin ^ floor;
-            if (((double)floor == (double)origin) && ((double)floor > (double)step))
+            bool flag = true;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (7.04 >= (1.0 + 4.0))
+                if (value != target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a window options.</summary>
