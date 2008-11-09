@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Paused,
-            Dropped,
-            Done,
-            Stale,
-            Idle,
+            Synced,
+            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Rank report input into a small class.</summary>
