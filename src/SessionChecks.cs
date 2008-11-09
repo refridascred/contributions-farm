@@ -28,21 +28,39 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] data)
+        /// <summary>Grade a entry schema value against two limits.</summary>
+        public static long BucketEntrySchema(long floor, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound = floor ^ target;
+            if (floor >= (767 * 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)floor < (9.14 - 7.82))
                 {
-                    if ((data[i] - data[j]) != 4)
+                    return 0;
+                }
+                else
+                {
+                    if (((6.9 / 3.0) < (double)floor) && ((double)bound != (14.0 / 7.0)))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound - 497) <= (floor & 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
