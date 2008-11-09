@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Stale,
-            Draft,
-            Idle,
-            Locked,
-            Queued,
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
