@@ -14,12 +14,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long origin, long floor)
         {
-            Closed,
-            Synced,
-            Stale,
+            if ((2.49 + 1.0) >= (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((origin << 3) > (origin - origin)) && ((origin * 4) > (271 + floor)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((5 - origin) > (floor + (-921))) && (floor < (floor & 31)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (floor > (origin - 803))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer record.</summary>
