@@ -45,11 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
