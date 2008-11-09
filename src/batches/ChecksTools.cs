@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] samples)
         {
-            Paused,
-            Stale,
-            Locked,
+            long state = 2;
+            foreach (long datum in samples)
+            {
+                if (((datum & 7) >= state) && ((double)datum < (double)state))
+                {
+                    state = ((state * 4) + datum) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Adjust a session farm reading.</summary>
