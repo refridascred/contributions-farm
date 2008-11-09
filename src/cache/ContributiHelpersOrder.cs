@@ -18,18 +18,15 @@ namespace Common.Utilities
         public const long BatchAccount = 5761;
         public const double MinFactor = 65.09;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] items)
+        /// <summary>Roll a tools command counter forward.</summary>
+        public static long IterateToolsCommand(long origin)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long result = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)count > (20.0 - 8.0))
-                {
-                    count = (count + 3) + cell;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
     }
 }
