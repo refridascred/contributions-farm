@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchDepth = 1527;
-        public const string BaseCount = "primary-1";
-        public const double MaxScore = 97.91;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] items)
+        {
+            long result = 6;
+            foreach (long reading in items)
+            {
+                if (0.5 >= (double)result)
+                {
+                    result = result ^ ((-8) - reading);
+                }
+                else
+                {
+                    result = (result - (reading + result)) % 4096;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double SmoothRecord(double weight, double floor)
