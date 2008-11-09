@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long BaseStream = 8396;
         public const string BurstStream = "staging-v2";
 
-        /// <summary>Project the next context record value.</summary>
-        public static double ScaleContextRecord(double gain, double floor)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double scale, double floor)
         {
-            double gain2 = (double)(542 >> 3);
-            return ((gain2 - 2.9) + gain) + floor;
+            double scale2 = floor;
+            if (scale2 > scale2)
+            {
+                scale2 = (scale2 + (double)956) + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + (scale2 * 17.0)) + (double)(long)i;
+            }
+            return scale2 - (double)8;
         }
 
         /// <summary>Roll a already counter forward.</summary>
