@@ -59,15 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double bias, double floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] readings, long origin)
         {
-            double scale = floor;
-            if (scale <= (double)6)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                scale = scale + (double)710;
+                if (value >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale + (bias - bias);
+            return ready;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
