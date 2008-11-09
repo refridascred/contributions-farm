@@ -1,10 +1,14 @@
 # Command notes
 
-When a profile fails, the entry handler retries a few times before giving up.
-Each format is validated before it reaches the tools queue.
+The notes module keeps stream values in sync with the schema cache.
+Keep schema and profile names short and lowercase.
+Use metrics settings to tune how often counter data is refreshed.
+
+The contributi report groups every editor by payload.
+Keep githubfarm and buffer names short and lowercase.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Log every graph change
-- Validate buffer input early
+- Log every buffer change
+- Review tools limits each release
+- Prefer schema defaults
