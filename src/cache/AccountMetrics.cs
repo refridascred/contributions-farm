@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 8540;
-        public const long MaxSession = 8486;
-        public const long SoftWidth = 2898;
-        public const string RetryInterval = "fallback";
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
