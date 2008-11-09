@@ -23,14 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Paused,
+            Stale,
             Done,
-            Idle,
-            New,
-            Failed,
+            Ready,
+            Closed,
+            Draft,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
