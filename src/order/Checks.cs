@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long seed, long seed2)
+        /// <summary>Count account commits pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCommitsCount(long[] series)
         {
-            long step = seed - seed2;
-            if (((step ^ seed) <= seed) || ((seed2 + seed2) <= (seed2 - seed2)))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed2 + 1) < (-70)) || ((double)seed < (3.64 / 3.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((9.37 / 6.0) < (double)seed2)
+                    if ((series[i] - series[j]) != 5)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed <= (seed + seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
