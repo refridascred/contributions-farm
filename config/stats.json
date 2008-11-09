@@ -1,11 +1,7 @@
 {
-  "cache_window_ms": "latest",
-  "checks_window": true,
-  "sync_depth_s": {
-    "entry_limit": true,
-    "default_window_s": ["fallback", "stable", "fallback", "latest"],
-    "strict": 92,
-    "idle_depth": 4718,
-    "default_interval_ms": false
-  }
+  "base_limit_s": "green",
+  "tools_retries": 1024,
+  "enabled": false,
+  "soft_depth": "strict",
+  "flush_interval_s": "eu-west"
 }
