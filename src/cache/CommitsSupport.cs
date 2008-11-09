@@ -24,25 +24,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] levels, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)state < (4.57 - 14.0)) || ((double)offset <= (4.87 + 9.39)))
+                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
                 {
-                    state = state ^ (789 / 8);
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    long edge = (state / 4) * 3;
-                    state = ((state << 3) ^ edge) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
