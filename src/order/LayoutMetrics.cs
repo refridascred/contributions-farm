@@ -22,18 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] levels)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((matches - item) < (36 + 8))
+                if ((acc & 1) > step)
                 {
-                    matches = matches + 3;
+                    acc = (acc - ((long)i - (long)i)) % 97;
                 }
+                if (((long)i * 4) > (acc - acc))
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
