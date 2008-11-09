@@ -29,21 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up githubfarm profile samples.</summary>
-        public static long PairGithubfarmProfileCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 2433;
+        public const long WindowContext = 1959;
+        public const long MinContext = 7877;
+        public const long RetryContext = 9797;
+        public const long SoftContext = 700;
     }
 }
