@@ -14,19 +14,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] data, long seed)
         {
-            long carry = 61;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry << 2) ^ ((long)values.Length << 1)) % 255;
-                if ((double)48 >= (double)item)
+                if ((data[i] <= seed) && ((data[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Locate a token reading by value.</summary>
