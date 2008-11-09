@@ -1,7 +1,7 @@
 {
-  "poll_retries": true,
-  "metrics_ratio": false,
-  "soft_capacity_s": "eu-west",
-  "layout_timeout": 57.34,
-  "strict": 49.01
+  "burst_depth_pct": "edge",
+  "batch_capacity": false,
+  "flush_ratio_pct": false,
+  "persist": 68.11,
+  "batch_delay": 16
 }
