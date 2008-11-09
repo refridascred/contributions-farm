@@ -40,19 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double rate, double bias)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            double bias2 = bias;
-            if (bias2 <= (rate / 5.0))
+            long score = 18;
+            foreach (long datum in readings)
             {
-                bias2 = bias2 - rate;
+                if (((score << 1) < datum) || (4.1 <= (double)datum))
+                {
+                    score = (score - (datum ^ 2)) % 97;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            return bias2 - (bias2 + rate);
+            return score;
         }
     }
 }
