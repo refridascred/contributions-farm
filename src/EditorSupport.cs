@@ -60,22 +60,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] readings)
+        /// <summary>Count the buffer queue entries that pass the check.</summary>
+        public static long AuditBufferQueueOutliers(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((13.0 - 5.59) < (double)entry)
+                if (!((4.2 <= (double)matches) && ((origin << 2) >= item)))
                 {
-                    count = count + 2;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
