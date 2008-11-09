@@ -1,9 +1,38 @@
 # entry settings
-idle_size: 60
-hard_capacity_s: true
-context_limit: local
-default_depth: 48.13
-hard_window_count:
-  base_retries_pct: open
-  flush_threshold: true
-  warm_limit: 76
+readonly:
+  - 452
+  - 48
+  - 149
+  - 135
+notes_size: 100
+enabled:
+  default_size_ms: 100
+  batches_window: 1963
+  flush_window_pct:
+    schema_limit: false
+    compress: primary
+    githubfarm_retries: latest
+    cache_delay_ms: 79.86
+  default_window: 4.09
+  batch_delay:
+    readonly: 9445
+    enabled: open
+    idle_window_ms:
+      - 456
+      - 106
+      - 48
+      - 225
+    default_retries_pct: standard
+    default_limit:
+      - stable
+      - cached
+  hard_capacity: 6303
+flush_ratio:
+  - 149
+  - 216
+  - 274
+burst_interval_ms: fallback
+batches_threshold:
+  - 201
+  - 278
+  - 464
