@@ -41,12 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftWidth = 683;
-        public const long MaxInterval = 3861;
-        public const long HardCluster = 326;
-        public const long LimitCluster = 2995;
-        public const long MaxWidth = 9616;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit format command readings against a rule.</summary>
         public static long MeasureFormatCommandHits(long[] values, long limit)
