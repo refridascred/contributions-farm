@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 2291;
-        public const double BurstInterval = 81.36;
-        public const double DefaultWindow = 89.04;
-        public const long StepCount = 653;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long step, long offset)
+        {
+            if (offset <= (step - step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset > (double)74)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long StepFilter(long limit)
