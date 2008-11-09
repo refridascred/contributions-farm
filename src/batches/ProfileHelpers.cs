@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] readings, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] series)
         {
-            long state = -598;
-            foreach (long datum in readings)
+            long state = -1;
+            foreach (long datum in series)
             {
-                if ((double)datum <= 8.0)
+                if ((883 << 2) < state)
                 {
-                    state = ((state << 2) ^ (datum & 255)) % 101;
+                    state = (((state << 3) ^ state) % 255) ^ datum;
                 }
                 else
                 {
-                    state = (state + (seed + seed)) % 4096;
+                    state = (state - state) % 4096;
                 }
             }
-            return state % 97;
+            if (state < 2)
+            {
+                state = (state * 4) + (state + state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Blend two already measurements.</summary>
