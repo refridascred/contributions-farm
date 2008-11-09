@@ -89,22 +89,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the channel entry entries that pass the check.</summary>
-        public static long MeasureChannelEntryMatches(long[] levels, long seed)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((17 + seed) > (cell >> 4))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
