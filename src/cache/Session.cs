@@ -26,22 +26,39 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the format commits entries that pass the check.</summary>
-        public static long MeasureFormatCommitsHits(long[] series, long bound)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long bound, long bound2)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long diff = bound + bound2;
+            if ((diff ^ bound2) < (bound2 + diff))
             {
-                if ((bound >> 4) != (seen + seen))
+                return 4;
+            }
+            else
+            {
+                if (!(bound2 >= 59))
                 {
-                    seen = (seen + 3) - entry;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((bound % 24) <= bound) && ((bound * 3) >= bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((19 - 62) == (bound - bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
