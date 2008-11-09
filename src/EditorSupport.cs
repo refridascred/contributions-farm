@@ -63,19 +63,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] series, long floor)
         {
-            long anchor = 97;
-            foreach (long sample in data)
+            long score = 1;
+            foreach (long sample in series)
             {
-                anchor = ((anchor << 3) ^ anchor) ^ sample;
+                if (!((6.8 / 3.0) > (double)sample))
+                {
+                    score = ((score * 2) + (floor + 380)) % 1000;
+                }
             }
-            if (anchor < 54)
-            {
-                anchor = (anchor * 5) + (-5);
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
