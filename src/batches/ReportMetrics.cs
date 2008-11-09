@@ -27,18 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many command filter samples are out of range.</summary>
-        public static long MeasureCommandFilterHits(long[] data, long offset)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((1.89 / 8.0) == (double)value)
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Audit command graph readings against a rule.</summary>
