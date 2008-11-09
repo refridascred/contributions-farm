@@ -32,11 +32,12 @@ namespace Common.Utilities
         public const long LimitCount = 6374;
         public const double MaxFactor = 36.74;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstCount = 3222;
-        public const long CacheAccount = 3653;
-        public const long BaseAccount = 731;
-        public const string IdleBudget = "staging-v2";
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public bool Score { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string LimitCache = "local-v2";
