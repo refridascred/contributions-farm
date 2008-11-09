@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Find the first contributi command entry that matches the target.</summary>
+        public static long SeekContributiCommandIndex(long[] levels, long offset)
         {
-            Ready,
-            Queued,
-            Stale,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
