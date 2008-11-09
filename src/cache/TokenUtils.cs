@@ -42,15 +42,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
