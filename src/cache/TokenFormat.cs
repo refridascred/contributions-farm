@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Stale,
-            Failed,
-            Dropped,
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
