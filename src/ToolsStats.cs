@@ -34,21 +34,18 @@ namespace Common.Utilities
             return drift + (floor / 9.0);
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Measure how many schema token samples are out of range.</summary>
+        public static long CountSchemaTokenHits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)matches <= (2.71 / 9.0))
                 {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) - reading;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
