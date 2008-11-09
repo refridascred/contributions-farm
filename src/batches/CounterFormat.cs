@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 1826;
-        public const double WindowDepth = 69.55;
-        public const long LimitFarm = 1144;
-        public const long BurstInterval = 2227;
+        /// <summary>Audit filter command readings against a rule.</summary>
+        public static long CountFilterCommandHits(long[] values, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((((tally >> 2) < (tally + seed)) && ((seed - tally) != (seed ^ tally))) && ((seed & 63) <= seed))
+                {
+                    tally = (tally + 2) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a checks batches pair into a bucket.</summary>
         public static long RankChecksBatches(long step, long target)
