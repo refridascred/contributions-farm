@@ -39,11 +39,12 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinTimeout = 7189;
-        public const long BatchChannel = 4099;
-        public const long BatchTimeout = 1679;
-        public const double SoftBudget = 68.9;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowDepth = "primary";
+        public const long MaxRecord = 5785;
+        public const long BurstBudget = 7286;
+        public const string HardTimeout = "latest-1";
+        public const long MaxRatio = 417;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
