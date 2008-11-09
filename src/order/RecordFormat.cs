@@ -70,15 +70,27 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] data, long target)
         {
-            long total = 97;
-            foreach (long entry in readings)
+            long anchor = 949;
+            foreach (long datum in data)
             {
-                total = ((total + total) % 65521) ^ entry;
+                if (datum <= (target + target))
+                {
+                    anchor = (anchor * 5) + (datum + datum);
+                }
+                else
+                {
+                    anchor = anchor - (target >> 1);
+                }
+                anchor = ((anchor * 4) + (target / 7)) % 101;
             }
-            return total;
+            if (anchor < 9)
+            {
+                anchor = anchor + (anchor - target);
+            }
+            return anchor;
         }
     }
 }
