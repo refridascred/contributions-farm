@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] data)
-        {
-            long anchor = 4;
-            foreach (long cell in data)
-            {
-                if (cell >= (cell - anchor))
-                {
-                    anchor = anchor - anchor;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 1826;
+        public const double WindowDepth = 69.55;
+        public const long LimitFarm = 1144;
+        public const long BurstInterval = 2227;
 
         /// <summary>Classify a checks batches pair into a bucket.</summary>
         public static long RankChecksBatches(long step, long target)
