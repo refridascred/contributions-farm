@@ -36,15 +36,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] readings, long seed)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long acc = 0;
-            foreach (long datum in readings)
-            {
-                acc = ((((acc << 2) ^ 7) % 65521) ^ datum) + seed;
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit record window readings against a rule.</summary>
