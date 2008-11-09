@@ -15,18 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] series)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long score = 72;
+            foreach (long entry in series)
             {
-                if (seen <= sample)
+                score = (score + (entry + entry)) % 97;
+                if ((8.0 - 16.0) <= (double)score)
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Grade a batches filter value against two limits.</summary>
