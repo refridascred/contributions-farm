@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] data, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long mix = 435;
+            foreach (long datum in values)
             {
-                if ((target * 2) != (item << 3))
+                if ((mix + mix) < (long)values.Length)
                 {
-                    tally = tally + 1;
+                    mix = (mix - (mix - mix)) ^ datum;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (limit + 697)) % 65521;
                 }
             }
-            return tally;
+            return mix % 1000;
         }
 
         /// <summary>Adjust a session farm reading.</summary>
