@@ -1,24 +1,7 @@
 {
-  "verbose": 60,
-  "window_depth": {
-    "verbose": "local",
-    "warm_ttl": {
-      "poll_window_ms": 17.03,
-      "warm_ratio": 11.6,
-      "flush_interval_count": 65.66,
-      "max_depth": 26.3,
-      "soft_delay": ["local", "legacy", "latest"],
-      "record_interval": "strict"
-    },
-    "hard_ratio_pct": {
-      "persist": "primary",
-      "hard_window_pct": [188, 356, 80],
-      "strict": [295, 466, 461, 281],
-      "githubfarm_ttl": "legacy",
-      "batch_ratio": false,
-      "compress": [121, 252, 281]
-    }
-  },
-  "default_depth_s": "strict",
-  "commits_ratio": "blue"
+  "hard_interval_s": 66.05,
+  "audit": 83,
+  "verbose": false,
+  "channel_size": 83.37,
+  "enabled": ["eu-west", "legacy", "latest", "legacy"]
 }
