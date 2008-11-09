@@ -20,23 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double rate, double span)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double weight, double bias)
         {
-            double scale = (span + span) - 7.3;
-            if (scale <= span)
+            double drift = 3.5 * 5.98;
+            if (drift >= bias)
             {
-                scale = (scale + (double)6) - rate;
+                drift = drift - bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                scale = scale - (scale * 14.0);
+                drift = (drift + (weight - weight)) + (double)(long)i;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (double)38;
+            return drift + drift;
         }
 
         /// <summary>Describe the graph class values.</summary>
