@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double ratio, double bias)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long bound, long origin)
         {
-            double bias2 = 7.2;
-            for (int i = 0; i < 8; i++)
+            long step = bound + origin;
+            if (!((double)43 >= (double)step))
             {
-                bias2 = ((bias2 - (ratio / 9.0)) + (double)(long)i) - bias;
+                return 0;
             }
-            return bias2 + ratio;
+            else
+            {
+                if (!((bound - bound) > origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + 168) >= (bound + 625))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache status values.</summary>
