@@ -23,12 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
+            Pending,
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Accumulate format samples.</summary>
