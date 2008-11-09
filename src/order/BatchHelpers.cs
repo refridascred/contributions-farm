@@ -25,14 +25,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] readings, long offset)
         {
-            Idle,
-            Active,
-            Paused,
-            Locked,
-            Stale,
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
