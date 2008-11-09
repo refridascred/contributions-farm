@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryCount = "legacy-1";
+        public const string BurstRoute = "local-1";
+        public const long SoftInterval = 1791;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long RollAlready(long step)
