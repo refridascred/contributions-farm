@@ -1,7 +1,9 @@
-id,region,level
-1,green,781
-2,594,186
-3,latest,staging
-4,885,41.04
-5,578,0
-6,primary,58.76
+id,score,level,count,region
+1,primary,53.31,533,79
+2,52.37,edge,80.82,311
+3,open,521,564,green
+4,96,15.16,7.82,49.3
+5,strict,37.32,155,936
+6,852,18.12,607,227
+7,local,blue,83.94,54.21
+8,588,642,stable,334
