@@ -41,26 +41,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] items, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] levels)
         {
-            long mark = -60;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (((5.0 - 9.51) <= (double)mark) && ((cell / 9) >= (cell * 3)))
+                if ((1.0 + 0.36) < (double)matches)
                 {
-                    mark = (((mark << 2) ^ (90 / 4)) % 4096) - offset;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (long)items.Length) % 1000;
+                    matches = (matches + 1) - datum;
                 }
             }
-            if (mark < 10)
-            {
-                mark = mark + (93 * 3);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the batches phase values.</summary>
