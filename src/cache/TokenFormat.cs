@@ -19,17 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] series, long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the editor mode values.</summary>
