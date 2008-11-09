@@ -45,12 +45,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Classify a profile githubfarm pair into a bucket.</summary>
+        public static long RankProfileGithubfarm(long step, long floor)
         {
-            Pending,
-            Retry,
-            Stale,
+            if (floor >= step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step * 3) != (73 % 10))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor != (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
