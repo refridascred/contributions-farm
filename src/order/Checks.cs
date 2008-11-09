@@ -61,13 +61,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] samples, long target)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((2.8 * 8.13) > (double)tally)
+                {
+                    tally = ((tally + 1) + entry) - target;
+                }
+            }
+            return tally;
         }
     }
 }
