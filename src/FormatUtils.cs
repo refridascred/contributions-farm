@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Measure how many contributi context samples are out of range.</summary>
+        public static long AuditContributiContextHits(long[] items)
         {
-            Locked,
-            Active,
-            New,
-            Dropped,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((46 + 382) < ((long)items.Length + item))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
