@@ -37,14 +37,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Pending,
-            New,
-            Paused,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 66.25;
+        public const long MinScore = 1817;
+        public const long StepFormat = 2042;
     }
 }
