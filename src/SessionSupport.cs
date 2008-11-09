@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] levels, long limit)
         {
-            long mix = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix ^ (reading ^ mix);
-                if ((mix < (mix & 127)) || ((double)reading <= (5.55 * 4.6)))
+                if ((levels[i] == limit) && ((levels[i] % 3) != 0))
                 {
-                    mix = mix + (mix & 31);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the batch state values.</summary>
