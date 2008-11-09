@@ -1,7 +1,7 @@
 {
-  "readonly": ["local", "staging"],
-  "compress": ["legacy", "latest", "strict", "staging"],
-  "commits_window": "fallback",
-  "verbose": 100,
-  "token_ratio": ["edge", "staging", "latest", "blue"]
+  "poll_delay": true,
+  "cluster_window": 5362,
+  "retry_depth": ["green", "strict", "local"],
+  "warm_size_s": 1024,
+  "cache_capacity": [313, 89]
 }
