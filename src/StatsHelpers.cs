@@ -15,12 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] values, long origin)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] values, long limit)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] > origin)
+                if ((values[i] == limit) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
