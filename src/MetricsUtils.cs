@@ -26,14 +26,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                result = result ^ (result * 5);
-                result = ((result * 4) + (long)i) % 97;
+                result = ((result * 2) + (long)i) % 1000;
             }
             return result;
         }
