@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] values, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long result = 476;
+            foreach (long cell in items)
             {
-                if ((seen >> 1) > (seen % 2))
+                if (!((11.0 - 4.0) != (double)offset))
                 {
-                    seen = ((seen + 3) - reading) - limit;
+                    result = ((result * 2) + 3) - cell;
+                }
+                else
+                {
+                    result = (result - (offset + offset)) % 65521;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Adjust a support context reading.</summary>
