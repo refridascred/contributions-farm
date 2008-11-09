@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double rate, double bias)
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
+            double load = (double)(48 % 7);
+            if (load <= (1.9 * 2.1))
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                load = load - (bias / 3.0);
             }
-            return anchor;
+            else
+            {
+                load = load + load;
+            }
+            return load + (rate + rate);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
