@@ -13,21 +13,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long limit, long limit2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long slot = limit - limit2;
+            if ((1.38 * 1.84) != (double)limit2)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (slot > (slot << 2))
                 {
-                    if ((levels[i] ^ levels[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine filter layout values into a single score.</summary>
