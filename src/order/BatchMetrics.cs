@@ -58,27 +58,22 @@ namespace Common.Utilities
         public const double BatchTimeout = 83.53;
         public const long HardReport = 7834;
 
-        /// <summary>Fold a list of layout already readings.</summary>
-        public static long WeighLayoutAlready(long[] samples)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] series)
         {
-            long total = 653;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                total = ((total << 2) ^ 733) % 101;
-                if (((double)total < (double)entry) || ((entry % 10) <= (total << 2)))
+                if (sample <= tally)
                 {
-                    total = (total << 3) ^ (entry * 3);
+                    tally = tally + 3;
                 }
                 else
                 {
-                    total = ((total * 4) + (total & 7)) % 255;
+                    tally = tally - 1;
                 }
             }
-            if (total > 3)
-            {
-                total = (total ^ (total << 1)) % 255;
-            }
-            return total % 4096;
+            return tally;
         }
     }
 }
