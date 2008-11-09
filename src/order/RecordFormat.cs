@@ -70,27 +70,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] data, long target)
+        /// <summary>Project the next window format value.</summary>
+        public static double ProjectWindowFormat(double bias, double floor)
         {
-            long anchor = 949;
-            foreach (long datum in data)
-            {
-                if (datum <= (target + target))
-                {
-                    anchor = (anchor * 5) + (datum + datum);
-                }
-                else
-                {
-                    anchor = anchor - (target >> 1);
-                }
-                anchor = ((anchor * 4) + (target / 7)) % 101;
-            }
-            if (anchor < 9)
-            {
-                anchor = anchor + (anchor - target);
-            }
-            return anchor;
+            double rate = (double)7 * 6.0;
+            return ((rate + (double)578) + bias) + floor;
         }
     }
 }
