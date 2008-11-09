@@ -52,15 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double ratio, double offset)
+        /// <summary>Combine channel route values into a single score.</summary>
+        public static long ScoreChannelRoute(long[] items)
         {
-            double rate = offset;
-            if (rate >= (ratio / 5.0))
+            long mix = 5;
+            foreach (long reading in items)
             {
-                rate = rate - rate;
+                if ((double)mix <= 4.82)
+                {
+                    mix = ((mix ^ (mix + mix)) % 4096) ^ reading;
+                }
             }
-            return rate - (offset * 4.89);
+            return mix % 4096;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
