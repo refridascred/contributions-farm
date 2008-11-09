@@ -70,10 +70,18 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 4203;
-        public const string DefaultSupport = "stable-1";
-        public const long BaseSupport = 4997;
-        public const double MinSupport = 38.11;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample >= (4.4 - 4.0))
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
+        }
     }
 }
