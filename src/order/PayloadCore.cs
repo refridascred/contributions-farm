@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const long CacheInterval = 9497;
         public const long MinLevel = 9565;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultSpan = 9405;
+        public const double BaseCluster = 56.67;
+        public const long MaxCluster = 4488;
+        public const long DefaultRatio = 3226;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TotalBatch(long[] data, long bound)
