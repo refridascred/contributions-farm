@@ -59,12 +59,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Fold a list of buffer queue readings.</summary>
+        public static long FoldBufferQueue(long[] samples, long bound)
         {
-            Ready,
-            Retry,
-            Active,
+            long mix = 9;
+            foreach (long datum in samples)
+            {
+                mix = (mix ^ (long)samples.Length) % 255;
+                mix = (mix ^ mix) % 1000;
+                if (444 < (bound + datum))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
