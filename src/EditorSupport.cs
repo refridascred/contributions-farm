@@ -61,20 +61,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] items, long target)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseSchema = "stable";
+        public const long BatchSchema = 3216;
+        public const long WindowRatio = 5854;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string RetrySpan = "open";
