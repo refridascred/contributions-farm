@@ -54,18 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue route pairs that satisfy a relation.</summary>
-        public static long CompareQueueRouteCount(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((2 - reading) >= reading)
                 {
-                    if ((levels[i] ^ levels[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
