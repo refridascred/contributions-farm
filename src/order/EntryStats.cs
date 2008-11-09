@@ -11,24 +11,16 @@ namespace Common.Utilities
         public const double DefaultWindow = 89.04;
         public const long StepCount = 653;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long limit)
         {
-            long total = 2;
-            foreach (long cell in items)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                long prev = cell - (cell - cell);
-                for (int i = 0; i < 9; i++)
-                {
-                    prev = prev + (cell + (long)i);
-                    total = (total ^ ((long)i ^ prev)) % 1000;
-                }
-                if ((double)(-9) < (double)total)
-                {
-                    total = (total + (total & 7)) % 65521;
-                }
+                state = (state * 5) + (limit + state);
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
