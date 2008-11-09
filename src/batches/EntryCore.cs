@@ -5,28 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long target)
+        /// <summary>Grade a editor order value against two limits.</summary>
+        public static long BucketEditorOrder(long target, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
+            if (2 >= (origin % 24))
             {
-                if (29 >= (result << 3))
+                return 8;
+            }
+            else
+            {
+                if (target <= origin)
                 {
-                    result = result ^ target;
-                }
-                if ((target * 5) <= (result - (long)i))
-                {
-                    result = ((result * 3) + ((long)i << 3)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    result = (result + (target + 271)) % 4096;
-                    result = (result + (result % 3)) % 65521;
+                    if ((origin >> 5) != (origin - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(4.1 >= (double)target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
