@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] samples, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
+                if ((double)entry == (6.0 / 2.0))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
