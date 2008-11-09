@@ -42,14 +42,10 @@ namespace Common.Utilities
             return mean - (double)10;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Locked,
-            Active,
-            New,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxScore = 3509;
+        public const double StepLevel = 57.96;
+        public const double DefaultProfile = 63.07;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] readings)
