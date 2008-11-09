@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] series, long limit)
         {
-            public double Label { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((item - (-29)) != (item - count))
+                {
+                    count = (count + 1) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
