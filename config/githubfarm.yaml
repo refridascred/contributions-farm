@@ -1,24 +1,10 @@
 # githubfarm settings
-warm_window_count:
-  - stable
-  - strict
-  - local
-  - primary
-min_window_s: 7370
-format_window: 1024
-warm_limit: legacy
-batches_interval: open
-session_ttl:
-  strict: true
-  burst_retries_ms: false
-  buffer_limit: blue
-  max_timeout_s:
-    - 4
-    - 176
-    - 209
-    - 101
-  entry_depth:
-    - 409
-    - 64
-    - 294
-    - 313
+min_timeout: local
+default_delay: 71
+hard_ratio: open
+payload_retries: 73.54
+context_delay: 5223
+base_depth_s:
+  - standard
+  - eu-west
+  - latest
