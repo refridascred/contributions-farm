@@ -24,19 +24,13 @@ namespace Common.Utilities
         public const long SoftWidth = 2898;
         public const string RetryInterval = "fallback";
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double weight, double floor)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double drift = weight;
-            if (drift < 8.96)
-            {
-                drift = drift + (floor - drift);
-            }
-            else
-            {
-                drift = drift + (7.0 * 12.0);
-            }
-            return drift + (7.08 + drift);
+            Done,
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the queue level values.</summary>
