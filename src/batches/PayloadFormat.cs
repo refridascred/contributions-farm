@@ -20,12 +20,12 @@ namespace Common.Utilities
         public const string SoftInterval = "legacy-edge";
         public const long MinCommits = 9721;
 
-        /// <summary>Look up the position of a support channel sample.</summary>
-        public static long LocateSupportChannelIndex(long[] items, long target)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] <= target) && ((items[i] % 2) == 0))
+                if ((series[i] < offset) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
