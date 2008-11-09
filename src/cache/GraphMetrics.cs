@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 3328;
-        public const long DefaultScore = 4228;
-        public const long HardWidth = 6293;
-        public const long RetryRatio = 5327;
-        public const string IdleQueue = "standard";
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate order token samples.</summary>
         public static long CombineOrderToken(long[] data, long floor)
