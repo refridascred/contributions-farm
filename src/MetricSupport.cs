@@ -14,12 +14,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 9658;
-        public const string RetryTimeout = "primary-edge";
-        public const long IdleLevel = 6022;
-        public const long MinEditor = 6236;
-        public const long IdleSpan = 9931;
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double weight, double span)
+        {
+            double drift = (double)50 / 8.0;
+            if (drift > weight)
+            {
+                drift = (drift + weight) - span;
+            }
+            else
+            {
+                drift = drift - (double)14;
+            }
+            return drift + (drift - weight);
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long DigestWindow(long[] samples)
