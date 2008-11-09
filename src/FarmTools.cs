@@ -20,31 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long target, long floor)
+        /// <summary>Find the first farm support entry that matches the target.</summary>
+        public static long FindFarmSupportIndex(long[] samples, long floor)
         {
-            if ((target + 6) != (target & 255))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6.9 * 3.7) >= (double)floor)
+                if (samples[i] <= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor > (3.4 * 5.4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the notes class values.</summary>
