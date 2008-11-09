@@ -1,15 +1,8 @@
 {
-  "warm_delay": ["strict", "local", "local", "blue"],
-  "warm_limit_pct": 92.78,
-  "batch_window": {
-    "verbose": "edge",
-    "burst_retries": {
-      "base_window_count": false,
-      "githubfarm_capacity": "cached",
-      "idle_interval_count": true,
-      "base_window_pct": false
-    },
-    "filter_ttl": "blue",
-    "dry_run": false
-  }
+  "context_window": 22,
+  "checks_delay": 2.94,
+  "queue_window": true,
+  "schema_ttl": 9455,
+  "enabled": [141, 2, 37],
+  "base_retries": 19.5
 }
