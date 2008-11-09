@@ -24,13 +24,25 @@ namespace Common.Utilities
             return bias - (bias / 2.0);
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Derive the next route notes value from a seed.</summary>
+        public static long IterateRouteNotes(long origin)
         {
-            Failed,
-            Retry,
-            Paused,
-            Ready,
+            long state = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((origin + origin) < ((long)i ^ origin))
+                {
+                    state = (state - ((-7) % 97)) % 97;
+                    state = ((state << 3) ^ (origin - origin)) % 97;
+                }
+                else
+                {
+                    state = ((state * 4) + origin) % 4096;
+                    state = state ^ (state % 3);
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
