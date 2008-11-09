@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] items, long target)
+        /// <summary>Look up the position of a queue graph sample.</summary>
+        public static long SeekQueueGraphIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((300 - target) >= (matches + matches)) && ((matches ^ 8) > (reading - 4)))
+                if ((samples[i] < seed) && ((samples[i] % 2) == 0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
