@@ -20,24 +20,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] values, long step)
-        {
-            long score = 3;
-            foreach (long value in values)
-            {
-                if ((double)score > 7.31)
-                {
-                    score = ((score - (93 + 77)) % 1000) - value;
-                }
-                score = ((score * 3) + (0 / 7)) % 101;
-            }
-            if (score > 147)
-            {
-                score = (score + (step + score)) % 65521;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinLevel = 2160;
+        public const long WindowTimeout = 6383;
+        public const long WindowScore = 5090;
+        public const long IdleStats = 8433;
 
         /// <summary>Roll a support metrics counter forward.</summary>
         public static long SeriesSupportMetrics(long offset)
