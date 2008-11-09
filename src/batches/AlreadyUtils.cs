@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter layout entries that pass the check.</summary>
-        public static long AuditFilterLayoutHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)hits > 5.3)
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 6206;
+        public const string RetryRatio = "standard-v2";
+        public const string BaseRatio = "staging-v2";
+        public const string HardFactor = "open-edge";
+        public const double RetryGraph = 40.54;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double BatchCount = 78.72;
