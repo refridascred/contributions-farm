@@ -48,24 +48,11 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Scale a command channel figure with a bias.</summary>
-        public static double BlendCommandChannel(double gain, double floor)
-        {
-            double ratio = gain;
-            if (ratio > (floor + ratio))
-            {
-                ratio = ratio + (double)(-2);
-            }
-            else
-            {
-                ratio = ratio + (ratio / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (floor + ratio)) - (double)(long)i;
-            }
-            return ratio + gain;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchLayout = "local-edge";
+        public const long DefaultBudget = 3762;
+        public const string LimitLayout = "cached-v2";
+        public const long CacheLayout = 8063;
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
