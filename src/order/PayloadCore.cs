@@ -29,22 +29,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] levels, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] data, long offset)
         {
-            long mix = 1;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((mix - datum) != (datum ^ datum))
+                if ((count - count) < (offset + count))
                 {
-                    mix = (mix - (mix << 3)) - offset;
+                    count = (count + 1) + sample;
                 }
                 else
                 {
-                    mix = (mix + datum) % 1000;
+                    count = count - 1;
                 }
             }
-            return mix % 65521;
+            return count;
         }
     }
 }
