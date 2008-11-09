@@ -28,18 +28,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of window already entries.</summary>
-        public static long TotalWindowAlready(long[] samples, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long origin, long floor)
         {
-            long total = 2;
-            foreach (long sample in samples)
+            long step = origin ^ floor;
+            if (((double)floor == (double)origin) && ((double)floor > (double)step))
             {
-                if (offset < (467 - total))
+                return 0;
+            }
+            else
+            {
+                if (7.04 >= (1.0 + 4.0))
                 {
-                    total = ((total ^ 119) % 65521) + sample;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return total;
         }
 
         /// <summary>Hold a window options.</summary>
