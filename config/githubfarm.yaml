@@ -1,31 +1,18 @@
 # githubfarm settings
-cache_limit:
-  - green
-  - strict
-batch_window:
-  farm_ratio:
-    strict:
-      - 110
-      - 448
-      - 105
-    max_ttl_pct: 100
-    batch_interval_ms: blue
-    max_capacity_count: legacy
-  record_retries: false
-  batches_retries: 1231
-  record_capacity: false
-  counter_timeout: 250
-  dry_run: fallback
-burst_size:
-  editor_window: 96.7
-  verbose: 8277
-  soft_interval_ms: edge
-  batch_size_count:
-    - local
-    - local
-audit: 100
-counter_ttl:
-  - green
-  - legacy
-  - primary
-  - fallback
+base_interval_s: 30
+dry_run: latest
+strict: legacy
+context_interval: 8.65
+sync_limit_pct:
+  - 41
+  - 349
+burst_delay:
+  tools_retries: 500
+  channel_limit:
+    min_threshold_ms: eu-west
+    channel_threshold: staging
+    audit: latest
+    metric_interval: 100
+    retry_interval_s: 25.08
+  cache_depth: 60
+  buffer_threshold: 6866
