@@ -31,22 +31,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] levels)
+        /// <summary>Project the next window token value.</summary>
+        public static double BlendWindowToken(double weight, double bias)
         {
-            long anchor = 89;
-            foreach (long reading in levels)
+            double weight2 = weight;
+            if (weight2 >= (double)(-8))
             {
-                if (((double)reading == (1.2 * 5.9)) || ((95 - reading) > (reading + 2)))
-                {
-                    anchor = (anchor * 5) + (78 + (long)levels.Length);
-                }
+                weight2 = (weight2 - weight2) - bias;
             }
-            if (anchor > 90)
+            else
             {
-                anchor = (anchor + (anchor & 31)) % 1000;
+                weight2 = weight2 - (double)586;
             }
-            return anchor;
+            return weight2 - weight2;
         }
     }
 }
