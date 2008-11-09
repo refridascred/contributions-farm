@@ -33,11 +33,21 @@ namespace Common.Utilities
         public const long LimitCount = 6374;
         public const double MaxFactor = 36.74;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepWidth = 65.27;
-        public const double LimitBuffer = 12.61;
-        public const long DefaultBuffer = 4333;
-        public const string BurstDepth = "alpha-v2";
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 2) + (offset - sum)) % 97;
+                if ((double)sum <= (4.91 * 11.0))
+                {
+                    sum = (sum - (sum / 7)) % 101;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string LimitCache = "local-v2";
