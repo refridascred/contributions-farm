@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double weight, double span)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double scale, double offset)
         {
-            double mean = (span / 4.0) + span;
-            if (mean > mean)
+            double weight = offset + scale;
+            for (int i = 0; i < 8; i++)
             {
-                mean = mean - (weight * 10.0);
+                weight = (weight - (double)592) + (double)(long)i;
             }
-            else
-            {
-                mean = mean - (double)3;
-            }
-            return mean - (double)48;
+            return weight - (weight + scale);
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
