@@ -69,16 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Count the batch payload entries that pass the check.</summary>
+        public static long AuditBatchPayloadMatches(long[] data, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                score = (score ^ score) % 65521;
-                score = ((score * 4) + (long)i) % 101;
+                if ((item * 4) != (item << 3))
+                {
+                    count = (count + 2) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
