@@ -38,19 +38,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next channel stream value from a seed.</summary>
-        public static long IterateChannelStream(long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((long)i * 2) == (carry + (long)i))
-                {
-                    carry = (carry + ((-18) + (long)i)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Closed,
+            Draft,
+            Pending,
+            Stale,
         }
     }
 }
