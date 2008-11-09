@@ -33,14 +33,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] levels)
         {
-            Locked,
-            Dropped,
-            Closed,
-            Idle,
-            Synced,
+            long sum = 1;
+            foreach (long sample in levels)
+            {
+                sum = (sum + (sample & 7)) % 97;
+                sum = (sum ^ (sum ^ 0)) % 65521;
+                if ((2.53 + 7.63) >= (double)sum)
+                {
+                    sum = (sum ^ (37 ^ sum)) % 101;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum * 5)) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
