@@ -47,17 +47,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Roll a record channel counter forward.</summary>
+        public static long SeriesRecordChannel(long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                long step = limit;
-                mark = mark - step;
-                mark = ((mark * 2) + (long)i) % 97;
+                if (((long)i + (-3)) >= floor)
+                {
+                    carry = (carry * 3) + (carry & 127);
+                    carry = (carry * 2) + ((long)i + carry);
+                }
+                else
+                {
+                    carry = (carry ^ (carry + carry)) % 255;
+                    carry = (carry + (carry * 3)) % 97;
+                }
+                if (!((carry & 7) >= (floor << 2)))
+                {
+                    carry = (carry + (carry / 5)) % 4096;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return mark;
+            return carry;
         }
     }
 }
