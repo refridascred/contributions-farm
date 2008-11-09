@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every metric window entry stays within the limit.</summary>
-        public static bool ValidateMetricWindowLimits(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryOrder = "latest-1";
+        public const string StepOrder = "alpha-1";
+        public const long IdleSize = 3369;
+        public const long MinFactor = 8593;
+        public const double MaxRatio = 92.94;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long ClassifyCounter(long floor, long seed)
