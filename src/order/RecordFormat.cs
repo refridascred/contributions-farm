@@ -66,18 +66,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] series, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long total = 97;
+            foreach (long entry in readings)
             {
-                if (!((double)seen <= (6.9 * 2.5)))
-                {
-                    seen = ((seen + 2) + entry) + bound;
-                }
+                total = ((total + total) % 65521) ^ entry;
             }
-            return seen;
+            return total;
         }
     }
 }
