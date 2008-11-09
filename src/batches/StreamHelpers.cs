@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the batches channel entries that pass the check.</summary>
-        public static long TallyBatchesChannelOutliers(long[] items)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen - (-227)) != (seen + sample))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Active,
+            Closed,
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the support kind values.</summary>
