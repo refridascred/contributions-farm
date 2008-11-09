@@ -38,22 +38,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Roll a schema support counter forward.</summary>
+        public static long IterateSchemaSupport(long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)floor == (10.0 * 6.9))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    anchor = (anchor + ((long)i << 3)) % 97;
-                    anchor = (anchor + (floor + (-98))) % 1000;
-                    break;
+                    state = (state - (seed / 6)) + (long)i2;
+                    state = ((state << 2) ^ state) % 255;
                 }
-                anchor = (anchor ^ (92 - 32)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
     }
 }
