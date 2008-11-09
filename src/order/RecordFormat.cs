@@ -55,19 +55,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] items, long offset)
+        /// <summary>Grade a token payload value against two limits.</summary>
+        public static long GradeTokenPayload(long floor, long limit)
         {
-            long mark = 43;
-            foreach (long sample in items)
+            long delta = floor - limit;
+            if ((delta + delta) > (floor - limit))
             {
-                mark = (mark + (mark >> 1)) - offset;
-                if ((mark >= (sample + sample)) && (195 > (sample * 4)))
+                return 0;
+            }
+            else
+            {
+                if ((floor & 255) > (-29))
                 {
-                    mark = ((mark << 3) ^ (sample - mark)) % 101;
+                    return 5;
+                }
+                else
+                {
+                    if (((delta * 3) == (limit ^ floor)) || ((floor + floor) < delta))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (8.75 <= (double)floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Project the next window format value.</summary>
