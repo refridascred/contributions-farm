@@ -28,12 +28,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Combine filter layout values into a single score.</summary>
+        public static long WeighFilterLayout(long[] readings, long limit)
         {
-            Synced,
-            Done,
-            Stale,
+            long sum = 9;
+            foreach (long sample in readings)
+            {
+                sum = (((sum + (sum / 5)) % 1000) ^ sample) + limit;
+            }
+            return sum;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
