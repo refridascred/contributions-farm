@@ -35,10 +35,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 9816;
-        public const long LimitTimeout = 1792;
-        public const long MaxSession = 7940;
-        public const long StepSession = 7093;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
