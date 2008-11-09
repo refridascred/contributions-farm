@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double RetryBuffer = 23.21;
         public const string StepLevel = "fallback-1";
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 45.84;
+        public const long MaxRatio = 905;
+        public const string BurstFactor = "legacy-v2";
+        public const long BaseBudget = 5360;
+        public const long BaseFactor = 1843;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryBounds(long[] items, long origin)
