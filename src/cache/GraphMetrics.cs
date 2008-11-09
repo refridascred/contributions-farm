@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] samples, long target)
+        /// <summary>Audit metrics stream readings against a rule.</summary>
+        public static long CountMetricsStreamHits(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((samples[i] > target) && ((samples[i] % 5) != 0))
+                if ((origin + reading) <= (23 + 5))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the context status values.</summary>
