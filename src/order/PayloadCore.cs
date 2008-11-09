@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] items, long floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            if ((seed - seed) != (offset - seed))
             {
-                if ((value & 127) > (floor & 1))
+                return 3;
+            }
+            else
+            {
+                if (!((seed ^ seed) <= seed))
                 {
-                    seen = seen + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - seed) > offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
