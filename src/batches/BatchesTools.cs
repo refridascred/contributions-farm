@@ -33,16 +33,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the record farm series from a seed.</summary>
-        public static long StepRecordFarm(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchFactor = 6422;
+        public const long MaxFactor = 235;
+        public const long BatchWidth = 9555;
+        public const long CacheChecks = 4979;
+        public const string IdleInterval = "strict-v2";
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandLimits(long[] data, long floor)
