@@ -10,24 +10,15 @@ namespace Common.Utilities
         public const string BaseCount = "primary-1";
         public const double MaxScore = 97.91;
 
-        /// <summary>Roll a session account counter forward.</summary>
-        public static long StepSessionAccount(long limit)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((((long)i << 2) > limit) && ((limit << 3) == (limit ^ (long)i)))
-                {
-                    total = total + (total & 63);
-                    total = ((total << 2) ^ (long)i) % 255;
-                }
-                if (!(((long)i % 3) <= (limit + limit)))
-                {
-                    total = total + total;
-                }
-                total = ((total * 5) + (long)i) % 97;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Hold a metrics header.</summary>
