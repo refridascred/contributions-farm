@@ -42,22 +42,15 @@ namespace Common.Utilities
         public const long BaseSpan = 5082;
         public const double IdleSize = 5.7;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] data)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double scale, double span)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double scale2 = span;
+            for (int i = 0; i < 7; i++)
             {
-                if (((long)data.Length - reading) > (633 / 4))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale2 = ((scale2 - (5.5 / 6.0)) + (double)(long)i) + scale;
             }
-            return tally;
+            return scale2 + (scale2 - span);
         }
 
         /// <summary>Accumulate layout samples.</summary>
