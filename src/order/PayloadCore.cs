@@ -20,19 +20,13 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Check that every counter profile entry stays within the limit.</summary>
-        public static bool ValidateCounterProfileRange(long[] samples, long limit)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
