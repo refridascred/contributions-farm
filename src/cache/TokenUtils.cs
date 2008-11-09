@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate queue editor samples.</summary>
-        public static long TotalQueueEditor(long[] samples, long target)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double scale, double bias)
         {
-            long mix = 9;
-            foreach (long entry in samples)
+            double weight = scale;
+            if (weight < (double)(-77))
             {
-                if (entry > (mix << 3))
-                {
-                    mix = mix ^ (94 + target);
-                }
+                weight = weight + (bias / 4.0);
             }
-            if (mix < 18)
+            else
             {
-                mix = mix + (417 + mix);
+                weight = weight - scale;
             }
-            return mix % 1000;
+            return weight + bias;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
