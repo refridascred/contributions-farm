@@ -14,22 +14,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] items, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long sum = 53;
+            foreach (long value in data)
             {
-                if ((22 + offset) < ((long)items.Length / 6))
+                if (value >= (sum + value))
                 {
-                    tally = (tally + 2) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = sum + (value + value);
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Look up the position of a support channel sample.</summary>
