@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge green fallback legacy; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=478
+log "limit is ${COMMAND_LIMIT}"
 
 mode="${1:-latest}"
 case "${mode}" in
-    staging)
+    open)
         log "fast path"
         ;;
     *)
