@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] samples, long step)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 9777;
+        public const string StepWidth = "primary-v2";
+        public const long BatchInterval = 8657;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long TallyGraphHits(long[] levels, long target)
