@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] data, long bound)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] > bound) && ((data[i] % 2) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
