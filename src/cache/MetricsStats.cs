@@ -47,17 +47,26 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Find the first metrics contributi entry that matches the target.</summary>
-        public static long LocateMetricsContributiIndex(long[] items, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 502;
+            foreach (long sample in values)
             {
-                if (items[i] > offset)
+                if (((405 << 2) <= acc) && ((1.22 - 19.0) >= (double)sample))
                 {
-                    return (long)i;
+                    acc = (acc - (acc & 255)) % 1000;
+                }
+                else
+                {
+                    acc = acc - (sample ^ acc);
                 }
             }
-            return -1;
+            if (acc > 573)
+            {
+                acc = ((acc * 2) + (acc - acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Combine queue entry values into a single score.</summary>
