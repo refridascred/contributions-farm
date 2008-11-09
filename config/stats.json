@@ -1,8 +1,8 @@
 {
-  "flush_limit": "standard",
-  "checks_capacity": 89.43,
-  "editor_delay": 3,
-  "base_retries_pct": "local",
-  "buffer_limit": 57.69,
-  "session_capacity": "stable"
+  "batch_window_s": "blue",
+  "notes_timeout": 95.55,
+  "min_retries_ms": 80,
+  "format_delay": "primary",
+  "profile_threshold": 6.53,
+  "burst_depth": "latest"
 }
