@@ -37,25 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank queue checks input into a small class.</summary>
-        public static long RankQueueChecks(long origin, long target)
-        {
-            if ((target - origin) == (origin << 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (5.49 >= (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitRatio = "alpha";
+        public const long DefaultSpan = 8493;
+        public const double CacheTimeout = 73.48;
+        public const long WindowSpan = 2957;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountBounds(long[] samples, long bound)
