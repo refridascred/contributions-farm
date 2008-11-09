@@ -31,21 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count queue schema pairs that satisfy a relation.</summary>
-        public static long PairQueueSchemaCount(long[] values)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 2;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (((mark + mark) % 255) + cell) + origin;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
