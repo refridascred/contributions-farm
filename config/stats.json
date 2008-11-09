@@ -1,20 +1,7 @@
 {
-  "record_threshold": {
-    "base_timeout_count": false,
-    "payload_delay": true,
-    "idle_threshold_ms": false
-  },
-  "strict": "local",
-  "window_window": 16.33,
-  "batch_interval_s": {
-    "window_ttl": 35.08,
-    "buffer_capacity": {
-      "audit": ["stable", "stable", "primary"],
-      "verbose": 81,
-      "warm_timeout_s": 250,
-      "buffer_depth": false
-    },
-    "persist": 49,
-    "dry_run": "edge"
-  }
+  "dry_run": 2573,
+  "max_ttl": false,
+  "enabled": 56,
+  "session_size": 25.99,
+  "flush_delay": 60
 }
