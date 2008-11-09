@@ -69,22 +69,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch payload entries that pass the check.</summary>
-        public static long AuditBatchPayloadMatches(long[] data, long target)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long origin, long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            if ((origin << 3) < origin)
             {
-                if ((item * 4) != (item << 3))
+                return 4;
+            }
+            else
+            {
+                if (origin < (step + step))
                 {
-                    count = (count + 2) - target;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)origin < (16.0 + 5.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((2.0 < (double)step) && ((step % 16) == (step ^ origin)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
