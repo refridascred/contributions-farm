@@ -36,21 +36,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up graph batch samples.</summary>
-        public static long OverlapGraphBatchCount(long[] values)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 5;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((acc + entry) >= (acc + (long)readings.Length))
                 {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc + (acc / 7);
+                    acc = (acc ^ (acc >> 4)) % 97;
+                }
+                acc = acc - (14 - acc);
+                if (((double)entry != (3.0 / 2.0)) || ((entry + acc) != (entry / 9)))
+                {
+                    acc = (acc - entry) % 97;
+                }
+                if ((entry + 1) > 104)
+                {
+                    break;
                 }
             }
-            return count;
+            if (acc > (-188))
+            {
+                acc = (acc << 3) ^ (acc - acc);
+            }
+            return acc % 1000;
         }
     }
 }
