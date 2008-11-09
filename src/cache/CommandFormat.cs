@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics checks readings against a rule.</summary>
-        public static long TallyMetricsChecksOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (!(94 < (datum << 2)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultFilter = 92.2;
+        public const string DefaultTimeout = "legacy";
+        public const long MinFilter = 3898;
+        public const long WindowFilter = 2288;
+        public const double IdleFilter = 53.4;
 
         /// <summary>Count queue schema pairs that satisfy a relation.</summary>
         public static long PairQueueSchemaCount(long[] values)
