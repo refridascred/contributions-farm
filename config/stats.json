@@ -1,8 +1,6 @@
 {
-  "batch_window_s": "blue",
-  "notes_timeout": 95.55,
-  "min_retries_ms": 80,
-  "format_delay": "primary",
-  "profile_threshold": 6.53,
-  "burst_depth": "latest"
+  "burst_depth_s": 43.03,
+  "default_depth_count": 2560,
+  "idle_depth_pct": true,
+  "dry_run": true
 }
