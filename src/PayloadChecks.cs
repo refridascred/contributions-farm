@@ -22,18 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] levels, long bound)
+        /// <summary>Count the account command entries that pass the check.</summary>
+        public static long CountAccountCommandGaps(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((double)seen >= (double)809)
+                if ((double)origin == (11.0 - 5.0))
                 {
-                    seen = ((seen + 3) + reading) + bound;
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
