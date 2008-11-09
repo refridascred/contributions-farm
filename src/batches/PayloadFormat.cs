@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double weight, double span)
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            double bias = (weight / 8.0) + (0.9 + weight);
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (bias * 9.2)) + (double)(long)i;
+            }
+            return bias - (span + weight);
         }
 
         /// <summary>Hold a cluster info.</summary>
