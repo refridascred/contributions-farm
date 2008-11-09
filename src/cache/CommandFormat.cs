@@ -23,21 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up route counter samples.</summary>
-        public static long CompareRouteCounterCount(long[] values)
+        /// <summary>Validate channel support readings against a bound.</summary>
+        public static bool GuardChannelSupportLimits(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell < limit)
                 {
-                    if ((values[i] ^ values[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the queue mode values.</summary>
