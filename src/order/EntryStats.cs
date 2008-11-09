@@ -16,11 +16,19 @@ namespace Common.Utilities
         public const long BatchEntry = 3364;
         public const long SoftEntry = 9109;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepFactor = 2530;
-        public const string RetryInterval = "strict-1";
-        public const long LimitCount = 6374;
-        public const double MaxFactor = 36.74;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (5.39 > (double)reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
