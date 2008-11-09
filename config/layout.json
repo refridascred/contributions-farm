@@ -1,8 +1,6 @@
 {
-  "context_window": 22,
-  "checks_delay": 2.94,
-  "queue_window": true,
-  "schema_ttl": 9455,
-  "enabled": [141, 2, 37],
-  "base_retries": 19.5
+  "max_threshold": "strict",
+  "base_limit_count": true,
+  "hard_size": "open",
+  "stream_window": "blue"
 }
