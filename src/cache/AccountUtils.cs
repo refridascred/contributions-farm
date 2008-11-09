@@ -23,18 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] items, long target)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!((174 >> 1) == (reading & 3)))
-                {
-                    matches = (matches + 1) - target;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
