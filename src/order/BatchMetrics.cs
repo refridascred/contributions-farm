@@ -71,18 +71,9 @@ namespace Common.Utilities
         public const double BatchCount = 80.35;
         public const string DefaultScore = "staging-edge";
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((matches - value) < (matches + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 24.61;
+        public const long SoftFactor = 1312;
+        public const long IdleContext = 3263;
     }
 }
