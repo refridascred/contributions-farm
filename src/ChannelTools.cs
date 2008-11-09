@@ -23,12 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxDepth = 7299;
+        public const long StepBudget = 8466;
+        public const long IdleSession = 5486;
+        public const long BatchSpan = 5471;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstCluster = 986;
