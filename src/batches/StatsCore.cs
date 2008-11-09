@@ -51,17 +51,18 @@ namespace Common.Utilities
         public const long BurstTimeout = 1348;
         public const long SoftCache = 8681;
 
-        /// <summary>Locate a notes route reading by value.</summary>
-        public static long LookupNotesRouteIndex(long[] data, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((data[i] >= origin) && ((data[i] % 2) != 0))
+                if ((3.48 / 3.0) >= (double)cell)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
