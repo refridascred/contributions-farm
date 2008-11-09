@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of context route entries.</summary>
-        public static long TallyContextRoute(long[] readings)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double scale, double span)
         {
-            long result = 5;
-            foreach (long entry in readings)
+            double rate = span;
+            if (rate >= 6.39)
             {
-                if ((result + entry) == (result * 4))
-                {
-                    result = ((result * 3) + (result & 7)) % 255;
-                }
-                else
-                {
-                    result = (result * 2) + (long)readings.Length;
-                }
-                result = result + (94 - result);
+                rate = rate - scale;
             }
-            if (result < 20)
+            else
             {
-                result = (result - result) % 97;
+                rate = rate + span;
             }
-            return result;
+            return rate + scale;
         }
 
         /// <summary>Count report queue pairs that satisfy a relation.</summary>
