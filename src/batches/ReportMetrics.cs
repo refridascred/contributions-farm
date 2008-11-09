@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 49;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((score - score) > (datum - datum))
                 {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score << 2) ^ score;
+                }
+                if (!((score / 3) <= (datum - datum)))
+                {
+                    score = (score + (5 - score)) % 4096;
                 }
             }
-            return count;
+            if (score > 20)
+            {
+                score = ((score << 2) ^ (518 * 4)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Measure how many command filter samples are out of range.</summary>
