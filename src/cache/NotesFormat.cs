@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a session token reading.</summary>
-        public static double BlendSessionToken(double scale, double bias)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double mean = bias / 9.0;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + scale) - (double)(long)i;
-            }
-            return mean + (double)(-8);
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of window context readings.</summary>
