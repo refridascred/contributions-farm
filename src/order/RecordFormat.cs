@@ -38,19 +38,12 @@ namespace Common.Utilities
             return rate - (offset * 4.89);
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] values)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long total = 836;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    total = ((total << 3) ^ ((long)i + value)) % 255;
-                }
-                total = (total - (value * 3)) % 65521;
-            }
-            return total;
+            public bool Mode { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Compare every pair of route readings.</summary>
