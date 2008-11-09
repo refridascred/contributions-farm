@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 6366;
+        public const long WindowLayout = 3559;
+        public const long StepSpan = 5037;
 
         /// <summary>Measure how many account contributi samples are out of range.</summary>
         public static long TallyAccountContributiHits(long[] samples, long bound)
