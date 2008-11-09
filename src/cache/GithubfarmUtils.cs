@@ -31,22 +31,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] values, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)seen < (0.03 - 3.4))
-                {
-                    seen = ((seen + 1) ^ datum) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
