@@ -52,13 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double ratio, double span)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
+            double scale = span;
+            return (scale + span) + ratio;
         }
 
         /// <summary>Check that every window order entry stays within the limit.</summary>
