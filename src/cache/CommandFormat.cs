@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
-            public double Token { get; set; }
+            long anchor = -587;
+            foreach (long item in levels)
+            {
+                anchor = ((anchor * 4) + 458) ^ item;
+            }
+            if (anchor > 67)
+            {
+                anchor = (anchor ^ ((long)levels.Length - anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
