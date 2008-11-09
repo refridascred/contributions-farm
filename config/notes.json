@@ -1,14 +1,6 @@
 {
-  "soft_interval": 90.26,
-  "flush_window": true,
-  "filter_ratio": {
-    "sync_size": "strict",
-    "default_delay_s": 250,
-    "strict": 5055,
-    "warm_ttl_count": 78,
-    "filter_timeout": false
-  },
-  "graph_size": 2538,
-  "commits_ratio": 30,
-  "batch_retries": false
+  "base_limit": 9207,
+  "metrics_size": 18,
+  "audit": "edge",
+  "max_ttl_s": 5
 }
