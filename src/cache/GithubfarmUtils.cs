@@ -45,13 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public long Flag { get; set; }
-            public double Label { get; set; }
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
+            Active,
+            Done,
+            Retry,
         }
     }
 }
