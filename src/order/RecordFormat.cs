@@ -63,21 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 700;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (((mix << 3) ^ ((long)data.Length - (long)data.Length)) % 1000) + cell;
             }
-            return tally;
+            if (mix > 36)
+            {
+                mix = (mix + (mix ^ mix)) % 65521;
+            }
+            return mix;
         }
     }
 }
