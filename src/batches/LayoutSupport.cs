@@ -19,13 +19,12 @@ namespace Common.Utilities
         public const double HardEditor = 29.06;
         public const long DefaultDepth = 8485;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Ready,
-            Locked,
-            Idle,
-            Closed,
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first schema command entry that matches the target.</summary>
