@@ -5,37 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next counter cluster value from a seed.</summary>
-        public static long DeriveCounterCluster(long floor)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] series)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (floor > total)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    total = (total << 2) ^ (622 / 9);
-                }
-                if ((double)(long)i < (double)floor)
-                {
-                    total = (total << 3) ^ total;
-                    total = ((total << 2) ^ (floor - 285)) % 97;
-                }
-                else
-                {
-                    total = (total - total) % 65521;
-                }
-                if ((total >> 2) != ((long)i << 1))
-                {
-                    total = (total ^ (floor ^ 642)) % 97;
-                    total = (total - ((long)i - floor)) % 65521;
-                }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
