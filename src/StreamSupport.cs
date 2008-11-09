@@ -31,11 +31,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 2433;
-        public const long WindowContext = 1959;
-        public const long MinContext = 7877;
-        public const long RetryContext = 9797;
-        public const long SoftContext = 700;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] samples)
+        {
+            long anchor = 89;
+            foreach (long reading in samples)
+            {
+                anchor = ((anchor + anchor) % 4096) + reading;
+            }
+            return anchor;
+        }
     }
 }
