@@ -27,18 +27,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks filter entries that pass the check.</summary>
-        public static long AuditChecksFilterMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)465 == (double)hits)
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheLevel = 9338;
+        public const long IdleTools = 8688;
+        public const long HardWidth = 6534;
     }
 }
