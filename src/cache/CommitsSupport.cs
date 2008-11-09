@@ -53,16 +53,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the metrics session series from a seed.</summary>
-        public static long DeriveMetricsSession(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinWidth = 5574;
+        public const long IdleFactor = 1488;
+        public const long StepScore = 1220;
+        public const long CacheRatio = 2139;
+        public const long StepOrder = 7676;
 
         /// <summary>Audit record window readings against a rule.</summary>
         public static long MeasureRecordWindowHits(long[] data)
