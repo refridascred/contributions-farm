@@ -33,10 +33,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinStats = 32.68;
-        public const long BaseSpan = 5082;
-        public const double IdleSize = 5.7;
+        /// <summary>Blend two metrics notes measurements.</summary>
+        public static double BlendMetricsNotes(double gain, double floor)
+        {
+            double bias = floor;
+            return (bias + (double)831) + gain;
+        }
 
         /// <summary>Blend two route measurements.</summary>
         public static double BlendRoute(double scale, double span)
