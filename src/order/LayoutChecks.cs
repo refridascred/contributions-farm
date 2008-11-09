@@ -64,12 +64,12 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 3388;
+        public const long RetryDepth = 6621;
+        public const string MinWidth = "standard-1";
+        public const string RetrySchema = "stable-1";
+        public const string LimitFactor = "standard-v2";
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
