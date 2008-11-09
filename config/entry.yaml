@@ -1,16 +1,6 @@
 # entry settings
-base_delay:
-  - open
-  - edge
-  - primary
-  - green
-burst_retries:
-  compress: 7250
-  batch_ttl_s:
-    - 498
-    - 241
-    - 111
-  audit: true
-  flush_ratio_pct: 3073
-  strict: standard
-warm_delay: 100
+soft_threshold_pct: false
+sync_ttl: edge
+schema_ratio: false
+stream_interval: open
+warm_ttl: false
