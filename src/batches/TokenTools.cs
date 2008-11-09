@@ -15,23 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double ratio, double span)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] data, long step)
         {
-            double weight = (double)9 * 6.0;
-            if (weight <= (15.0 - span))
+            long count = 0;
+            foreach (long cell in data)
             {
-                weight = (weight + span) + ratio;
+                if ((count << 3) != (count * 2))
+                {
+                    count = ((count + 2) + cell) - step;
+                }
             }
-            else
-            {
-                weight = weight + 16.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight + 6.1;
+            return count;
         }
 
         /// <summary>Combine payload context values into a single score.</summary>
