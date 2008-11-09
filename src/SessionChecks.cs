@@ -27,40 +27,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a entry schema value against two limits.</summary>
-        public static long BucketEntrySchema(long floor, long target)
-        {
-            long bound = floor ^ target;
-            if (floor >= (767 * 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor < (9.14 - 7.82))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((6.9 / 3.0) < (double)floor) && ((double)bound != (14.0 / 7.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound - 497) <= (floor & 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstDepth = 9213;
+        public const string WindowScore = "legacy-v2";
+        public const long HardLevel = 4286;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long StepCounter = 9973;
