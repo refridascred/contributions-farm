@@ -21,21 +21,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] levels)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Combine notes values into a single score.</summary>
