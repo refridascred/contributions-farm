@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] data)
+        /// <summary>Classify a support cluster pair into a bucket.</summary>
+        public static long SortSupportCluster(long target, long offset)
         {
-            long anchor = 66;
-            foreach (long reading in data)
+            if (((6.54 - 6.0) <= (double)offset) || ((target + offset) >= target))
             {
-                if (((8.9 + 12.0) >= (double)reading) && ((double)reading == (2.0 + 19.0)))
+                return 4;
+            }
+            else
+            {
+                if ((9.0 / 3.0) > (double)offset)
                 {
-                    anchor = (anchor + (anchor >> 3)) % 101;
+                    return 7;
                 }
-                if ((247 + reading) >= (anchor << 2))
+                else
                 {
-                    break;
+                    if ((offset + target) > target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target << 3) < target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (anchor > (-460))
-            {
-                anchor = ((anchor << 3) ^ (17 + anchor)) % 255;
-            }
-            return anchor;
         }
 
         /// <summary>Project the next already value.</summary>
