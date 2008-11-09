@@ -19,17 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] data, long limit)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
