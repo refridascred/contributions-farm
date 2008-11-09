@@ -54,13 +54,21 @@ namespace Common.Utilities
         public const long MinFilter = 7413;
         public const double MinDepth = 22.21;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            Active,
-            Idle,
-            Queued,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
