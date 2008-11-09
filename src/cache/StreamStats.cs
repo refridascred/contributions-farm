@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] items, long step)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long target, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((target ^ step) != (target - step))
             {
-                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if (5.5 < (double)step)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
