@@ -23,17 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] readings, long origin)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
+            public double Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the queue mode values.</summary>
