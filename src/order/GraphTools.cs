@@ -53,24 +53,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] samples)
         {
-            long acc = 76;
+            long matches = 0;
             foreach (long reading in samples)
             {
-                acc = acc + (acc - reading);
-                if ((double)reading >= (7.83 / 4.0))
+                if (!((matches - matches) == (matches << 3)))
                 {
-                    acc = ((acc * 3) + (long)samples.Length) % 101;
-                }
-                acc = acc + (acc & 255);
-                if ((reading + acc) <= (reading << 3))
-                {
-                    break;
+                    matches = (matches + 1) - reading;
                 }
             }
-            return acc % 97;
+            return matches;
         }
     }
 }
