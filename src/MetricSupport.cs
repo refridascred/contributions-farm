@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 7324;
+        public const long BatchBatches = 1756;
+        public const long DefaultBatches = 2861;
+        public const long BurstWidth = 8434;
+        public const long LimitCount = 2486;
 
         /// <summary>Blend two account measurements.</summary>
         public static double AdjustAccount(double weight, double span)
