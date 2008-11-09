@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 7324;
-        public const long BatchBatches = 1756;
-        public const long DefaultBatches = 2861;
-        public const long BurstWidth = 8434;
-        public const long LimitCount = 2486;
+        /// <summary>Combine tools contributi values into a single score.</summary>
+        public static long TotalToolsContributi(long[] levels)
+        {
+            long carry = 6;
+            foreach (long entry in levels)
+            {
+                carry = (carry + entry) % 4096;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseScore = 3661;
