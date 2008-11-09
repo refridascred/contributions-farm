@@ -28,22 +28,17 @@ namespace Common.Utilities
         public const double BurstFormat = 2.96;
         public const string HardFormat = "staging";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] readings, long target)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long floor)
         {
-            long result = 53;
-            foreach (long datum in readings)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((result << 1) != (datum - datum))
-                {
-                    result = result - (target % 7);
-                }
-                else
-                {
-                    result = (result + ((-34) << 1)) % 4096;
-                }
+                total = ((total * 3) + (total & 255)) % 101;
+                total = (total * 4) + (floor % 16);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
