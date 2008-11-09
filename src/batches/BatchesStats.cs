@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = ((anchor ^ (offset & 3)) % 1000) + (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
