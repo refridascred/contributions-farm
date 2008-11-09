@@ -55,19 +55,21 @@ namespace Common.Utilities
         public const long CacheFactor = 985;
         public const long BurstSpan = 4226;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double bias, double span)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            double load = (double)((-363) & 31);
-            if (load > load)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + (7.69 - span);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (span - span)) + (double)(long)i;
-            }
-            return load - (bias / 7.0);
+            return hits;
         }
 
         /// <summary>Count the channel entry entries that pass the check.</summary>
