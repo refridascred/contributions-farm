@@ -1,32 +1,4 @@
 # support settings
-layout_window: open
-soft_timeout_ms: 100
-warm_interval:
-  base_window_pct: 93.56
-  default_interval_pct: open
-  entry_timeout: legacy
-  batch_capacity_s: legacy
-  retry_retries: 71
-burst_ratio_count:
-  default_capacity: false
-  readonly: 82.47
-  burst_depth_pct:
-    - 495
-    - 55
-    - 255
-    - 281
-  compress: 9662
-  hard_depth:
-    max_size: 5018
-    warm_interval: 68.29
-    commits_limit:
-      - stable
-      - eu-west
-      - cached
-      - local
-    queue_ttl: 42.24
-    max_limit:
-      - cached
-      - open
-    enabled: 48.63
-  context_interval: legacy
+payload_interval: true
+batch_timeout: legacy
+layout_size: 250
