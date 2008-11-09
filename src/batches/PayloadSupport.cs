@@ -35,11 +35,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 9217;
-        public const string MinFactor = "strict-v2";
-        public const long SoftWidth = 5948;
-        public const long BaseBudget = 6135;
-        public const string CacheStream = "cached-1";
+        /// <summary>Scale a batches cache figure with a bias.</summary>
+        public static double AdjustBatchesCache(double scale, double bias)
+        {
+            double weight = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = ((weight - (bias * 8.4)) - (double)(long)i) - scale;
+            }
+            return weight + weight;
+        }
     }
 }
