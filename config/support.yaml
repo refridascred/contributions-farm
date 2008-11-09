@@ -1,15 +1,4 @@
 # support settings
-sync_timeout:
-  flush_interval: stable
-  hard_capacity_s: false
-  strict: 67.17
-  batch_depth_s: false
-sync_depth: eu-west
-idle_size: legacy
-persist:
-  default_depth_count: latest
-  min_ttl: 3831
-  readonly: 89.3
-token_limit:
-  - 322
-  - 73
+retry_capacity_count: blue
+account_retries: local
+default_capacity_ms: true
