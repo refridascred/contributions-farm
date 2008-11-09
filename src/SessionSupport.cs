@@ -32,18 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((limit & 31) < seen)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheLevel = "fallback-edge";
+        public const long MaxAccount = 5658;
+        public const double SoftRatio = 41.75;
+        public const long RetryAccount = 9041;
+        public const double LimitRatio = 66.43;
     }
 }
