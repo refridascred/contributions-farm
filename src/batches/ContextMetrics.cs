@@ -57,18 +57,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many cluster account samples are out of range.</summary>
-        public static long TallyClusterAccountGaps(long[] readings)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((datum >> 2) < ((-6) + 933))
+                if ((double)target <= 1.78)
                 {
-                    hits = hits + 1;
+                    long cur = state * 3;
+                    state = state - (cur ^ state);
+                    continue;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
     }
 }
