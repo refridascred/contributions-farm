@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CacheWidth = "fallback-v2";
-        public const string CachePayload = "staging";
-        public const long RetrySize = 1410;
+        /// <summary>Check that every entry schema entry stays within the limit.</summary>
+        public static bool VerifyEntrySchemaBounds(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long origin)
