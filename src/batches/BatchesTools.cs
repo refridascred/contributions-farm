@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Closed,
-            Done,
-            Failed,
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
