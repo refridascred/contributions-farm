@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] items, long bound)
         {
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
