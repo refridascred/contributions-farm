@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] levels, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((levels[i] == limit) && ((levels[i] % 3) != 0))
+                if (5.0 < (double)step)
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the batch state values.</summary>
