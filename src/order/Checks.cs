@@ -20,22 +20,12 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Count report queue pairs that satisfy a relation.</summary>
-        public static long CompareReportQueueCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinFactor = "staging-edge";
+        public const string LimitAlready = "primary-1";
+        public const string BaseBudget = "alpha-v2";
+        public const long StepInterval = 5095;
+        public const double WindowDepth = 72.12;
 
         /// <summary>Match up commits samples.</summary>
         public static long PairCommitsCount(long[] series)
