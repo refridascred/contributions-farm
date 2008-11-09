@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] values, long limit)
         {
-            Dropped,
-            Pending,
-            Ready,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
