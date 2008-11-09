@@ -73,23 +73,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] items)
-        {
-            long acc = 9;
-            foreach (long sample in items)
-            {
-                if ((19.0 + 10.0) == (double)acc)
-                {
-                    continue;
-                }
-                acc = ((acc ^ (acc & 127)) % 1000) - sample;
-            }
-            if (acc < 3)
-            {
-                acc = acc - acc;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 7025;
+        public const string MaxFactor = "legacy";
+        public const long IdleTimeout = 4482;
+        public const long MaxPayload = 369;
+        public const long BurstPayload = 3292;
     }
 }
