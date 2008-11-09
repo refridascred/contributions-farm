@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchGithubfarm = 46.13;
-        public const long MinCount = 1670;
-        public const string CacheGithubfarm = "legacy";
-        public const string RetryCount = "standard-1";
-        public const long MinInterval = 6168;
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double ratio, double offset)
+        {
+            double gain = (double)(75 / 2);
+            return ((gain + 2.7) + ratio) + offset;
+        }
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
