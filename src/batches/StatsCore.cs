@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double rate, double bias)
-        {
-            double load = (double)(48 % 7);
-            if (load <= (1.9 * 2.1))
-            {
-                load = load - (bias / 3.0);
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load + (rate + rate);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 8533;
+        public const double DefaultReport = 84.06;
+        public const long HardReport = 8571;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double MaxSize = 18.53;
