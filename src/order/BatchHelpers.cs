@@ -16,24 +16,13 @@ namespace Common.Utilities
             return scale - (scale * 11.0);
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long offset, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            if (126 >= (offset >> 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset ^ 9) > target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Synced,
+            Active,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the profile level values.</summary>
