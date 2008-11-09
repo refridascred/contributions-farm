@@ -22,24 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long limit)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!(acc <= (521 ^ (-6))))
-                {
-                    acc = (acc + (limit + 483)) % 101;
-                }
-                else
-                {
-                    long step = acc;
-                    acc = (acc * 4) + step;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine command buffer values into a single score.</summary>
