@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long limit, long floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            if (((limit % 97) == (433 * 5)) && (floor < (floor >> 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + limit) > floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Active,
+            Draft,
+            Locked,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
