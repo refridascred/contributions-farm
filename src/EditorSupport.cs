@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format profile entries that pass the check.</summary>
-        public static long TallyFormatProfileOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen + seen) > item)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinLevel = 2105;
+        public const double MaxLevel = 77.84;
+        public const long LimitBudget = 6758;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepSession = 7178;
