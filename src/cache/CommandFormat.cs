@@ -42,17 +42,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] series, long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 113;
+            foreach (long item in series)
             {
-                if (series[i] == limit)
+                total = total - (22 & 7);
+                if ((double)total < (19.0 - 6.31))
                 {
-                    return (long)i;
+                    total = total ^ (item % 10);
                 }
             }
-            return -1;
+            if (total < 683)
+            {
+                total = ((total << 3) ^ total) % 97;
+            }
+            return total;
         }
     }
 }
