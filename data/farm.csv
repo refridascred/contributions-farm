@@ -1,7 +1,7 @@
-id,rank,ratio,owner,level
-1,12.72,local,blue,401
-2,638,63.64,647,54.37
-3,90.1,10.1,917,35.25
-4,latest,65.62,552,67.8
-5,814,26.76,14.01,cached
-6,339,26.55,primary,latest
+id,score,level,label,count
+1,377,929,618,875
+2,324,4.35,fallback,68.14
+3,standard,11,967,51.91
+4,77.58,latest,stable,20.17
+5,legacy,56.84,777,920
+6,21.44,910,44.31,primary
