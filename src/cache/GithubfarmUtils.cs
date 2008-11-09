@@ -49,21 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up order stream samples.</summary>
-        public static long CompareOrderStreamCount(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 276;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (((score * 4) + cell) % 1000) + origin;
             }
-            return count;
+            return score;
         }
     }
 }
