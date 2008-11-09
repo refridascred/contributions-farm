@@ -15,11 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a already summary.</summary>
