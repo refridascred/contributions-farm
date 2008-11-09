@@ -60,13 +60,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] samples)
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (reading <= (5 + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
