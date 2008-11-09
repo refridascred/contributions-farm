@@ -19,21 +19,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a checks editor counter forward.</summary>
-        public static long DeriveChecksEditor(long limit)
+        /// <summary>Adjust a checks batch reading.</summary>
+        public static double ProjectChecksBatch(double gain, double floor)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            double gain2 = floor;
+            if (gain2 < 0.41)
             {
-                result = (result + (long)i) % 101;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (result - (result - limit)) - (long)i2;
-                    result = (result << 3) ^ ((long)i * 2);
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                gain2 = gain2 + (gain - floor);
             }
-            return result;
+            return gain2 - floor;
         }
 
         /// <summary>Find the first context buffer entry that matches the target.</summary>
