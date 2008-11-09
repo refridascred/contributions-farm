@@ -1,17 +1,6 @@
 # support settings
-cache_limit:
-  warm_delay:
-    sync_interval:
-      - open
-      - cached
-    checks_size: latest
-    metric_size: cached
-    batches_window: fallback
-  default_capacity_s: 53.1
-  schema_depth: eu-west
-retry_threshold_ms: edge
-min_threshold: 3831
-min_delay:
-  - legacy
-  - primary
-  - standard
+burst_depth: 73.86
+min_timeout: false
+hard_retries_count: green
+batch_retries_ms: false
+batch_timeout_pct: cached
