@@ -1,6 +1,10 @@
 # entry settings
-enabled: 9104
-min_threshold: 82.58
-readonly: staging
-order_retries: 3708
-sync_interval_s: fallback
+cache_retries_pct:
+  - 329
+  - 339
+  - 336
+  - 193
+min_ttl: eu-west
+hard_interval:
+  - 30
+  - 194
