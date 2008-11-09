@@ -13,15 +13,20 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double ratio, double bias)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            double scale = (ratio / 4.0) + (double)632;
-            for (int i = 0; i < 6; i++)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                scale = (scale + 7.0) + (double)(long)i;
+                acc = (acc + (acc + limit)) % 65521;
+                if ((acc % 60) >= ((-4) - acc))
+                {
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return scale + bias;
+            return acc;
         }
 
         /// <summary>Validate route commits readings against a bound.</summary>
