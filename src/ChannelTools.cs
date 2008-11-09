@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] series)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (cell >= (cell + cell))
+                if (entry > step)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a record snapshot.</summary>
