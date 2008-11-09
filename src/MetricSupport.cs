@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] samples, long step)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
+                if ((samples[i] >= step) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
