@@ -31,12 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardBudget = 49.79;
-        public const double LimitOrder = 45.48;
-        public const long BurstSize = 8931;
-        public const long WindowOrder = 5281;
-        public const double HardOrder = 92.32;
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
