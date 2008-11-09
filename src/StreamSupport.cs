@@ -14,16 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a filter payload figure with a bias.</summary>
-        public static double ProjectFilterPayload(double weight, double span)
-        {
-            double bias = span;
-            if (bias >= (double)3)
-            {
-                bias = bias + weight;
-            }
-            return bias - (span + 9.0);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 97.11;
+        public const double WindowReport = 42.54;
+        public const long MinReport = 4614;
+        public const long MaxReport = 8811;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TallyCache(long[] samples)
