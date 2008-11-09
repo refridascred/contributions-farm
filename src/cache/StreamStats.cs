@@ -54,15 +54,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double bias, double bias2)
-        {
-            double ratio = (double)(5 * 4);
-            if (ratio >= bias2)
-            {
-                ratio = (ratio + (double)522) - bias;
-            }
-            return ratio + (double)13;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstInterval = 6399;
+        public const long BurstGraph = 3408;
+        public const long MinLevel = 6298;
+        public const string MinWidth = "fallback-v2";
+        public const long BurstTimeout = 1137;
     }
 }
