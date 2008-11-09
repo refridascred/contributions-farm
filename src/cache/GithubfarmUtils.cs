@@ -29,17 +29,19 @@ namespace Common.Utilities
             return mean + (double)66;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] series, long bound)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] <= bound)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    carry = ((carry - (seed >> 5)) % 65521) - (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Digest a series of format entries.</summary>
