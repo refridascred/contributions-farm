@@ -23,19 +23,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double rate, double offset)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            double scale = rate;
-            if (scale >= offset)
-            {
-                scale = scale + (scale * 9.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (scale / 6.0)) + (double)(long)i;
-            }
-            return scale + scale;
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the report state values.</summary>
