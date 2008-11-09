@@ -1,11 +1,10 @@
 # Command notes
 
-The notes report groups every order by channel.
-The account report groups every stream by graph.
-Use metrics settings to tune how often token data is refreshed.
+Run the token check before changing any support limits.
+Keep cluster and stream names short and lowercase.
 
 ## Guidelines
 
-- Review channel limits each release
-- Prefer report defaults
-- Keep command values small
+- Review format limits each release
+- Prefer session defaults
+- Log every contributi change
