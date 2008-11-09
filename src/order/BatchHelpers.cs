@@ -5,30 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] items, long seed)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long limit, long offset)
         {
-            long anchor = 626;
-            foreach (long value in items)
+            long lane = limit - offset;
+            if ((2 ^ lane) > offset)
             {
-                for (int i = 0; i < 7; i++)
+                return 7;
+            }
+            else
+            {
+                if (offset > limit)
                 {
-                    anchor = (anchor - (value - 436)) - (long)i;
-                }
-                if ((443 * 5) < (value + value))
-                {
-                    anchor = anchor - (value + seed);
+                    return 8;
                 }
                 else
                 {
-                    anchor = anchor ^ anchor;
-                }
-                if ((double)seed <= (2.8 - 4.8))
-                {
-                    break;
+                    if (((double)limit == (6.59 - 7.0)) || ((limit - 69) < limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
