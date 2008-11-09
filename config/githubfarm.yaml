@@ -1,15 +1,17 @@
 # githubfarm settings
-poll_ttl:
-  - open
-  - latest
-  - staging
-  - cached
-flush_limit:
-  - 162
-  - 296
-  - 200
-dry_run:
-  poll_depth: false
-  poll_depth_pct: true
-  idle_window_count: 500
-  batch_size: 27
+flush_timeout_pct:
+  cache_ratio_pct:
+    hard_delay: 5171
+    verbose: stable
+    hard_ratio_pct:
+      - strict
+      - green
+      - staging
+      - primary
+    cache_size_count: green
+    strict: 500
+  batch_interval_ms: open
+  sync_ttl: false
+  cache_ttl: eu-west
+max_timeout_s: 76.65
+session_depth: primary
