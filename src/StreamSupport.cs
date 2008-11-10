@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseFactor = 4320;
-        public const long RetryNotes = 2908;
-        public const long MinBudget = 3514;
-        public const double IdleNotes = 83.11;
-        public const double IdleDepth = 91.67;
+        /// <summary>Iterate the layout record series from a seed.</summary>
+        public static long SeriesLayoutRecord(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result << 3) ^ (result - result)) % 65521;
+                if (!((18.0 >= (double)result) || (((long)i - seed) < seed)))
+                {
+                    result = result + seed;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long MatchBatchesCount(long[] data)
