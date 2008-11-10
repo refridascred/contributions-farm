@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const double RetryFarm = 8.46;
         public const long LimitInterval = 4359;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] series, long origin)
         {
-            Idle,
-            Queued,
-            Draft,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((((hits % 64) > origin) && ((9 << 3) <= reading)) || ((origin - hits) >= origin))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
