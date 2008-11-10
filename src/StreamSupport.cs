@@ -23,22 +23,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] data, long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((10.0 > (double)entry) || (step <= (matches - matches)))
+                if (reading >= origin)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Audit stats tools readings against a rule.</summary>
