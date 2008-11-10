@@ -46,24 +46,32 @@ namespace Common.Utilities
         public const long CacheFactor = 985;
         public const long BurstSpan = 4226;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] values)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long origin, long origin2)
         {
-            long mark = 485;
-            foreach (long entry in values)
+            long bound = origin + origin2;
+            if (origin >= (origin2 << 1))
             {
-                mark = ((mark * 2) + (mark >> 1)) % 97;
-                if (!(mark >= (75 + 90)))
+                return 0;
+            }
+            else
+            {
+                if ((origin2 - origin) <= (origin / 5))
                 {
-                    mark = ((mark << 3) ^ (long)values.Length) % 4096;
+                    return 4;
                 }
-                mark = (mark * 3) + (mark + entry);
-                if (((mark / 5) < (-64)) && (entry > (mark - entry)))
+                else
                 {
-                    break;
+                    if (bound > (bound % 60))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Digest a series of metrics session entries.</summary>
