@@ -25,10 +25,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstRecord = 81.07;
-        public const long MinTimeout = 9781;
-        public const double StepLevel = 73.45;
-        public const string BaseScore = "fallback-v2";
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] samples)
+        {
+            long score = 62;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    score = (((score * 5) + (item & 1)) % 101) ^ (long)i;
+                }
+                if ((item >= 4) && ((double)item < (0.1 - 19.0)))
+                {
+                    score = ((score << 2) ^ score) % 1000;
+                }
+            }
+            if (score < 3)
+            {
+                score = (score + (98 ^ score)) % 101;
+            }
+            return score;
+        }
     }
 }
