@@ -42,17 +42,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] readings, long target)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Failed,
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a metrics record.</summary>
