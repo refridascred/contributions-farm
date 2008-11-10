@@ -22,19 +22,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Check that every account token entry stays within the limit.</summary>
+        public static bool VerifyAccountTokenRange(long[] levels, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((((long)i / 4) < 0) || ((long)i >= (mix - 26)))
+                if (sample >= origin)
                 {
+                    found = false;
                     break;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return found;
         }
     }
 }
