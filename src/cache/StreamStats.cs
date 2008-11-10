@@ -36,16 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry buffer samples.</summary>
-        public static long TotalEntryBuffer(long[] items, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] items, long offset)
         {
-            long carry = 95;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in items)
             {
-                carry = (carry - (bound << 2)) % 1000;
-                carry = (carry << 3) ^ (bound ^ datum);
+                if ((((offset ^ 509) >= tally) || ((5.37 / 8.0) != (double)item)) && ((tally - tally) >= (item >> 2)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Match up command samples.</summary>
