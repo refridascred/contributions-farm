@@ -44,11 +44,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinRatio = 4953;
-        public const long BurstStats = 237;
-        public const long MaxSize = 6797;
-        public const long MaxStats = 3366;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long OverlapCommitsCount(long[] values)
