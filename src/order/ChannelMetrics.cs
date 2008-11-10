@@ -31,18 +31,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] series, long offset)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((16.0 * 0.8) > (double)hits)
-                {
-                    hits = ((hits + 1) ^ sample) + offset;
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            Retry,
+            Ready,
         }
     }
 }
