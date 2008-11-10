@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Classify a channel editor pair into a bucket.</summary>
+        public static long SortChannelEditor(long floor, long seed)
         {
-            Closed,
-            Draft,
-            Retry,
+            if ((double)seed < (6.9 * 1.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (3 > (seed - floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((5.0 * 11.0) <= (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((3.11 / 5.0) > (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits stats.</summary>
