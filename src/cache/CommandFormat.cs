@@ -51,39 +51,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long bound, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] items)
         {
-            long cur = bound + limit;
-            if ((limit & 7) != (cur + limit))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((cur & 31) <= (limit * 5)) || ((8 + cur) > cur))
+                if ((tally << 1) >= tally)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((cur & 15) < (cur + limit)) || ((limit / 5) > 831))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((bound ^ limit) != (cur ^ bound)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = (tally + 2) + item;
                 }
             }
+            return tally;
         }
     }
 }
