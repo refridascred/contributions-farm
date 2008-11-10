@@ -28,22 +28,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] samples, long floor)
         {
-            long acc = 5;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (((acc * 4) >= (value + 9)) && ((acc - value) == (acc + value)))
+                if (datum > floor)
                 {
-                    acc = (acc + (value * 2)) % 65521;
-                }
-                if ((4.7 + 15.0) <= (double)value)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Hold a schema record.</summary>
