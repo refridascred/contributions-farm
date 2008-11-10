@@ -50,11 +50,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchSpan = 6732;
-        public const long LimitWidth = 464;
-        public const long WindowSize = 5617;
-        public const long MaxAccount = 8145;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheBudget = 9183;
+        public const long StepCount = 423;
+        public const long HardSpan = 3969;
+        public const long DefaultDepth = 4328;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseScore = 8699;
