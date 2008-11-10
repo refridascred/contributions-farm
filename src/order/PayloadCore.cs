@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items, long seed)
         {
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((((datum - datum) <= (matches + 6)) || ((matches >> 2) < 10)) && !((datum + (long)items.Length) > (97 + 53)))
+                {
+                    matches = (matches + 3) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
