@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            long carry = 87;
+            foreach (long reading in levels)
+            {
+                carry = ((carry ^ ((-85) * 2)) % 65521) + reading;
+            }
+            if (carry > 81)
+            {
+                carry = (carry + (carry - carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a report info.</summary>
