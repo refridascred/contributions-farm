@@ -1,4 +1,22 @@
 # support settings
-contributi_threshold: 8.62
-hard_timeout: green
-strict: false
+entry_delay: 86.44
+notes_limit: fallback
+default_window_ms: 5213
+burst_threshold:
+  audit: 45
+  cluster_limit:
+    batch_delay_count: blue
+    cache_delay_count:
+      - primary
+      - fallback
+      - eu-west
+      - staging
+    max_ttl: blue
+    max_ratio_pct: standard
+    warm_capacity_ms: true
+  batch_ttl_pct: local
+  default_timeout_count: 30
+  base_threshold: 27.61
+  compress: false
+metrics_retries: legacy
+warm_retries: false
