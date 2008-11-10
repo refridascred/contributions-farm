@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double weight, double span)
+        /// <summary>Find the first format report entry that matches the target.</summary>
+        public static long SeekFormatReportIndex(long[] levels, long origin)
         {
-            double bias = (double)(-39) / 5.0;
-            if (bias > (span + bias))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias - 6.8) - weight;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return bias - (bias - 5.1);
+            return -1;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
