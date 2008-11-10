@@ -1,5 +1,7 @@
 {
-  "base_interval_s": 56.15,
-  "batch_size": "local",
-  "sync_limit_count": 40.76
+  "flush_depth": 85.05,
+  "max_limit": 16.86,
+  "readonly": 64.7,
+  "batch_size_count": "cached",
+  "soft_limit_ms": 5717
 }
