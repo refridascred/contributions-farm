@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of graph cache readings.</summary>
-        public static long CompareGraphCacheCount(long[] items)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
