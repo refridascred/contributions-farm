@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long bound)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((293 ^ floor) >= mix)
+                {
+                    mix = (mix - (mix & 255)) % 101;
+                    mix = (mix - (mix + floor)) % 97;
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
             return mix;
         }
