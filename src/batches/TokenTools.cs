@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Check that every metric stats entry stays within the limit.</summary>
+        public static bool GuardMetricStatsRange(long[] series, long step)
         {
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
