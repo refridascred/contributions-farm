@@ -1,4 +1,8 @@
 # entry settings
-sync_timeout_count: 98
-batch_size_count: 5784
-batch_ratio_ms: false
+audit: primary
+format_timeout: green
+cache_threshold_s:
+  - open
+  - primary
+  - stable
+  - legacy
