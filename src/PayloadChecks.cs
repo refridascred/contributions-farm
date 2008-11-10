@@ -48,22 +48,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] data)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (!((matches - matches) >= (item ^ 96)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            New,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the buffer level values.</summary>
