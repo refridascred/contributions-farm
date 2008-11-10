@@ -1,8 +1,9 @@
-id,count
-1,419
-2,84.56
-3,56.69
-4,91
-5,204
-6,cached
-7,270
+id,active,label,level
+1,509,940,961
+2,green,cached,local
+3,995,4.05,standard
+4,57.27,64.22,latest
+5,local,206,319
+6,17.83,63.65,primary
+7,953,262,cached
+8,82.5,open,27.23
