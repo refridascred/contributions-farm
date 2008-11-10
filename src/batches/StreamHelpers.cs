@@ -46,30 +46,23 @@ namespace Common.Utilities
         public const long CacheFactor = 985;
         public const long BurstSpan = 4226;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long origin, long origin2)
+        /// <summary>Grade a entry graph value against two limits.</summary>
+        public static long GradeEntryGraph(long limit, long bound)
         {
-            long bound = origin + origin2;
-            if (origin >= (origin2 << 1))
+            long span = limit - bound;
+            if (span < (span / 7))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((origin2 - origin) <= (origin / 5))
+                if ((bound % 7) == (bound ^ 6))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (bound > (bound % 60))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 4;
                 }
             }
         }
