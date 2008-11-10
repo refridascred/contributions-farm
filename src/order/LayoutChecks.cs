@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 7829;
-        public const long HardRatio = 1756;
-        public const double CacheBudget = 82.83;
-        public const long MaxWidth = 5311;
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many farm route samples are out of range.</summary>
         public static long TallyFarmRouteOutliers(long[] samples, long target)
