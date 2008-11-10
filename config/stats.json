@@ -1,8 +1,15 @@
 {
-  "flush_delay": ["legacy", "local", "staging"],
-  "account_ttl": "edge",
-  "soft_interval_s": 59.05,
-  "compress": 87.11,
-  "default_interval": 44.49,
-  "readonly": "fallback"
+  "idle_retries_pct": 60,
+  "stream_interval": [495, 334, 461],
+  "burst_interval": {
+    "compress": 250,
+    "hard_capacity_pct": "green",
+    "default_retries_s": 250,
+    "graph_threshold": 27.91,
+    "readonly": ["green", "edge", "green", "cached"],
+    "schema_delay": 21.05
+  },
+  "route_retries": "standard",
+  "flush_depth_ms": "primary",
+  "checks_interval": false
 }
