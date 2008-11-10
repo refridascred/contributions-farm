@@ -68,22 +68,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] samples, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            long carry = 95;
-            foreach (long sample in samples)
+            long mix = 72;
+            foreach (long cell in readings)
             {
-                if (((carry * 5) <= (8 % 3)) && ((2 + limit) <= (limit << 2)))
+                if ((double)cell < (0.29 * 4.0))
                 {
-                    carry = (carry - (limit - sample)) % 1000;
+                    mix = ((mix << 2) ^ cell) % 255;
+                    mix = mix - (mix & 1);
+                }
+                if ((cell + cell) >= 81)
+                {
+                    mix = (mix << 2) ^ (mix - mix);
                 }
             }
-            if (carry > 1)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Measure how many cluster editor samples are out of range.</summary>
