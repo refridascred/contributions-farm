@@ -49,21 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] samples)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
