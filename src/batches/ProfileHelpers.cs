@@ -44,19 +44,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support format entry stays within the limit.</summary>
-        public static bool CheckSupportFormatLimits(long[] levels, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long mark = 209;
+            foreach (long reading in readings)
             {
-                if (datum != offset)
+                if (((3.1 / 7.0) <= (double)mark) || (reading >= (294 - mark)))
                 {
-                    ok = false;
+                    mark = mark + ((long)readings.Length - (long)readings.Length);
+                }
+                if ((reading % 16) <= (mark / 5))
+                {
                     break;
                 }
             }
-            return ok;
+            if (mark < (-84))
+            {
+                mark = (mark ^ (mark + (-5))) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a format stats.</summary>
