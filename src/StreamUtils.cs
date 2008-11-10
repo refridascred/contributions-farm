@@ -85,13 +85,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] values)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public bool Total { get; set; }
+            long mark = 729;
+            foreach (long item in values)
+            {
+                if ((double)item == (8.26 + 12.0))
+                {
+                    mark = (mark - (item ^ mark)) % 97;
+                }
+            }
+            if (mark > 463)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 1000;
+            }
+            return mark;
         }
     }
 }
