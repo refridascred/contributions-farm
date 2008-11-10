@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the checks batch entries that pass the check.</summary>
-        public static long CountChecksBatchHits(long[] data, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long carry = 8;
+            foreach (long sample in samples)
             {
-                if ((origin + 711) >= (seen - sample))
+                if ((carry + sample) < (carry * 5))
                 {
-                    seen = seen + 2;
+                    carry = (carry * 5) + ((-29) - 7);
+                }
+                if (812 <= carry)
+                {
+                    carry = (carry + (sample + carry)) % 1000;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
