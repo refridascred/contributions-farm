@@ -60,38 +60,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long floor, long origin)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            if (origin < (floor << 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin > (5.67 * 9.73))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor & 63) < 70)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin & 31) == (origin + origin)) && ((origin >> 2) < floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Locked,
+            Stale,
+            Ready,
         }
     }
 }
