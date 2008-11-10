@@ -15,19 +15,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every batch format entry stays within the limit.</summary>
-        public static bool CheckBatchFormatRange(long[] readings, long step)
+        /// <summary>Grade a order profile value against two limits.</summary>
+        public static long RankOrderProfile(long floor, long limit)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long offset = floor + limit;
+            if ((offset > (64 + floor)) && ((floor ^ limit) <= 406))
             {
-                if (cell <= step)
+                return 7;
+            }
+            else
+            {
+                if ((13.0 - 20.0) == (double)offset)
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ready;
         }
 
         /// <summary>Blend two layout measurements.</summary>
