@@ -40,18 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] items)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits - item) == (hits + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
