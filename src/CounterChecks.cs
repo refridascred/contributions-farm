@@ -87,11 +87,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinCommits = "cached-edge";
-        public const long DefaultCommits = 9403;
-        public const long SoftCommits = 1749;
-        public const double HardRatio = 21.87;
-        public const long MinLevel = 7297;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] series, long floor)
+        {
+            long state = 4;
+            foreach (long datum in series)
+            {
+                if (state <= (floor >> 2))
+                {
+                    state = (state << 2) ^ (floor + state);
+                }
+                else
+                {
+                    state = (state * 2) + floor;
+                }
+                if (!((floor + datum) < (floor >> 1)))
+                {
+                    state = (state << 3) ^ datum;
+                }
+            }
+            if (state > 8)
+            {
+                state = ((state << 3) ^ state) % 4096;
+            }
+            return state % 4096;
+        }
     }
 }
