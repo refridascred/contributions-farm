@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] series)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((item << 2) <= item)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
