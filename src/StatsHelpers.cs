@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a channel editor pair into a bucket.</summary>
-        public static long SortChannelEditor(long floor, long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] levels, long bound)
         {
-            if ((double)seed < (6.9 * 1.0))
+            long acc = -31;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (3 > (seed - floor))
+                if ((4.5 - 9.0) != (double)reading)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((5.0 * 11.0) <= (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((3.11 / 5.0) > (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    acc = (acc - (acc % 5)) - bound;
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Hold a commits stats.</summary>
