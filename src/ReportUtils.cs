@@ -36,14 +36,15 @@ namespace Common.Utilities
             return mean - (double)48;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long origin)
         {
-            Done,
-            Draft,
-            Failed,
-            Ready,
-            Paused,
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
