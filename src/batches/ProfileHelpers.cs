@@ -92,19 +92,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] samples, long target)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
