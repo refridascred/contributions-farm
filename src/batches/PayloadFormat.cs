@@ -23,18 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] values, long origin)
+        /// <summary>Combine contributi record values into a single score.</summary>
+        public static long TotalContributiRecord(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long carry = 43;
+            foreach (long datum in samples)
             {
-                if ((((double)origin < (6.81 / 9.0)) && (item >= (hits + 8))) || ((((-4) + origin) <= (origin / 4)) && (item > origin)))
+                if ((datum - datum) >= (7 ^ carry))
                 {
-                    hits = hits + 2;
+                    carry = carry - (origin - carry);
                 }
+                carry = ((carry << 3) ^ origin) % 97;
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Adjust a record reading.</summary>
