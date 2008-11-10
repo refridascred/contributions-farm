@@ -50,13 +50,19 @@ namespace Common.Utilities
         public const double MinRatio = 93.7;
         public const long IdleCluster = 3410;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double scale, double bias)
         {
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            double scale2 = (scale + bias) * 4.0;
+            if (scale2 < 7.0)
+            {
+                scale2 = scale2 + (double)954;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - bias) + (double)(long)i;
+            }
+            return scale2 + scale2;
         }
     }
 }
