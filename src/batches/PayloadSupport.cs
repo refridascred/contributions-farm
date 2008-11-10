@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] values, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((values[i] <= origin) && ((values[i] % 3) == 0))
+                if ((floor >> 2) >= tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) - datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a route account counter forward.</summary>
