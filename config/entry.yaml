@@ -1,21 +1,25 @@
 # entry settings
-profile_timeout:
+batch_timeout_count:
+  warm_timeout:
+    min_size_s: 71.1
+    buffer_ratio: 73.34
+    format_window: 11
+    retry_ttl_count: 22.25
+    persist: false
+  layout_window: true
+  soft_ttl_count:
+    - 302
+    - 96
+    - 234
+  warm_ttl: primary
+warm_capacity_count:
+  - 382
+  - 425
+  - 229
+  - 322
+dry_run: 500
+payload_capacity: staging
+batch_window_pct: cached
+default_interval:
+  - latest
   - fallback
-  - fallback
-route_retries: 61.97
-idle_timeout_count:
-  - 143
-  - 339
-  - 393
-  - 255
-soft_limit:
-  flush_ttl: 96
-  flush_depth_ms: 500
-  burst_retries_pct: 47.93
-  max_capacity_pct: legacy
-  burst_ttl:
-    - 4
-    - 482
-  base_limit: 68
-profile_threshold: 1024
-base_depth_pct: strict
