@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 298;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total + (cell - 25)) + step;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the order level values.</summary>
