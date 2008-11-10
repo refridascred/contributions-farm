@@ -1,17 +1,5 @@
 {
-  "hard_size_pct": 71.0,
-  "persist": 81,
-  "readonly": [388, 7, 230, 89],
-  "tools_retries": false,
-  "tools_capacity": {
-    "format_capacity": 500,
-    "soft_timeout_pct": true,
-    "sync_delay_pct": {
-      "tools_interval": 3230,
-      "format_depth": "local",
-      "burst_delay_count": "cached"
-    },
-    "readonly": "legacy"
-  },
-  "base_size_count": "stable"
+  "base_interval_s": 56.15,
+  "batch_size": "local",
+  "sync_limit_count": 40.76
 }
