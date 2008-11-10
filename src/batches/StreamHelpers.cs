@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            Pending,
+            Stale,
+            Draft,
+            Retry,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
