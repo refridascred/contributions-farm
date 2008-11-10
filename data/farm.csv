@@ -1,6 +1,11 @@
-id,label,owner,ratio
-1,18.82,731,green
-2,585,standard,561
-3,685,225,97.89
-4,595,435,48.73
-5,335,standard,standard
+id,state,token
+1,74.89,blue
+2,803,162
+3,stable,775
+4,edge,12.25
+5,blue,532
+6,latest,956
+7,cached,280
+8,57.46,15.16
+9,9.48,279
+10,edge,30.94
