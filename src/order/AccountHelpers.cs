@@ -46,15 +46,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] readings, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
