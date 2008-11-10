@@ -34,19 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] items, long offset)
+        /// <summary>Validate format commits readings against a bound.</summary>
+        public static bool ValidateFormatCommitsBounds(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (entry < offset)
+                if (entry < floor)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Describe the channel mode values.</summary>
