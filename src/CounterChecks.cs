@@ -74,10 +74,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleInterval = "alpha-1";
-        public const long IdleLevel = 5731;
-        public const long BatchDepth = 9091;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string MinCommits = "cached-edge";
