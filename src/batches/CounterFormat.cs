@@ -13,13 +13,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
             Idle,
-            Paused,
+            Ready,
+            Retry,
             Queued,
-            Closed,
         }
 
         /// <summary>Roll a report counter forward.</summary>
