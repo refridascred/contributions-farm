@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            Pending,
+            Locked,
+            Stale,
+            Done,
+            Queued,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
