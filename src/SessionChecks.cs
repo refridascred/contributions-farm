@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up buffer record samples.</summary>
-        public static long PairBufferRecordCount(long[] samples)
+        /// <summary>Digest a series of editor buffer entries.</summary>
+        public static long ScoreEditorBuffer(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 77;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(mark >= (datum - 8)))
                 {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark << 3) ^ (534 / 3)) % 101;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ mark;
                 }
             }
-            return hits;
+            if (mark < 6)
+            {
+                mark = ((mark * 2) + (mark & 3)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
