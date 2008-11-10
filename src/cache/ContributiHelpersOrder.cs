@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const double BaseDepth = 1.99;
         public const string HardFactor = "open";
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many account editor samples are out of range.</summary>
+        public static long MeasureAccountEditorGaps(long[] readings, long step)
         {
-            Pending,
-            Ready,
-            Paused,
-            Done,
-            Idle,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!((double)step < (double)2) || ((79 + step) == ((-149) * 3)))
+                {
+                    tally = (tally + 3) - reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batches header.</summary>
