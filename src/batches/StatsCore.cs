@@ -34,23 +34,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Adjust a stats payload reading.</summary>
-        public static double ScaleStatsPayload(double rate, double floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] samples, long floor)
         {
-            double weight = (double)85 - rate;
-            if (weight < (floor - 15.0))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                weight = weight + floor;
+                if (((-425) << 2) > (seen / 6))
+                {
+                    seen = ((seen + 3) + reading) - floor;
+                }
             }
-            else
-            {
-                weight = weight + (14.0 * 3.16);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + 9.5;
+            return seen;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
