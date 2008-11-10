@@ -37,17 +37,25 @@ namespace Common.Utilities
             return rate2 - (floor / 5.0);
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] levels, long origin)
+        /// <summary>Fold a list of account githubfarm readings.</summary>
+        public static long FoldAccountGithubfarm(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 2;
+            foreach (long datum in items)
             {
-                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
+                if ((mark >> 3) == (datum + mark))
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ mark;
+                    break;
                 }
+                mark = mark ^ (mark << 3);
+                mark = mark - (origin - origin);
             }
-            return -1;
+            if (mark < 835)
+            {
+                mark = (mark ^ (mark - origin)) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
