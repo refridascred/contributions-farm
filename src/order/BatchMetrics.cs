@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] items, long origin)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Paused,
+            Idle,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a entry options.</summary>
