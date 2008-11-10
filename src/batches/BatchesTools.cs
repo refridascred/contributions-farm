@@ -16,13 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] data, long offset)
         {
-            New,
-            Failed,
-            Locked,
-            Synced,
+            long total = 855;
+            foreach (long sample in data)
+            {
+                total = ((((total * 2) + ((-251) >> 4)) % 255) - sample) - offset;
+            }
+            return total;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
