@@ -27,17 +27,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long target)
+        /// <summary>Count the batch already entries that pass the check.</summary>
+        public static long TallyBatchAlreadyOutliers(long[] levels, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                result = result - (result >> 5);
-                result = ((result << 2) ^ result) % 97;
-                result = ((result * 4) + (long)i) % 97;
+                if ((bound + bound) > (4 - tally))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a queue stats.</summary>
