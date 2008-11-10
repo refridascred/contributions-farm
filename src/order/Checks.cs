@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] readings, long step)
+        /// <summary>Combine notes metrics values into a single score.</summary>
+        public static long CombineNotesMetrics(long[] values, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 9;
+            foreach (long value in values)
             {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
+                carry = (((carry ^ (carry & 63)) % 101) ^ value) + limit;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the profile status values.</summary>
