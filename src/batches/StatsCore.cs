@@ -27,18 +27,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] data, long bound)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long step)
         {
-            long sum = 3;
-            foreach (long value in data)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((sum + sum) > (sum & 1))
+                if ((mix / 9) < (-19))
                 {
-                    sum = (((sum * 3) + (38 << 2)) - value) - bound;
+                    mix = (mix - (step / 8)) % 4096;
+                    mix = ((mix * 4) + (mix & 3)) % 101;
                 }
+                else
+                {
+                    mix = (mix ^ (step % 60)) % 1000;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Adjust a session reading.</summary>
