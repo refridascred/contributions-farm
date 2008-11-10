@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 7327;
-        public const string StepCount = "fallback-edge";
-        public const long StepSchema = 2403;
-        public const long MinSchema = 5845;
-        public const long DefaultSchema = 6839;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
