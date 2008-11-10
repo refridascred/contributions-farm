@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Queued,
-            Done,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinBudget = "strict-v2";
+        public const long MinInterval = 2484;
+        public const long BatchCount = 6362;
+        public const string BaseGraph = "strict-v2";
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelHits(long[] samples)
