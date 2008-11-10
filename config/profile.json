@@ -1,24 +1,5 @@
 {
-  "record_limit": "fallback",
-  "flush_delay_count": 36.76,
-  "soft_window_pct": "cached",
-  "channel_threshold": {
-    "readonly": ["primary", "edge", "staging"],
-    "layout_ratio": {
-      "hard_ttl_count": "latest",
-      "session_ratio": "local",
-      "editor_size": 672,
-      "compress": [278, 383]
-    },
-    "persist": ["local", "legacy", "latest"],
-    "audit": "legacy",
-    "session_window": {
-      "record_window": 61.14,
-      "flush_ratio_pct": ["primary", "standard"],
-      "metrics_capacity": 1024
-    },
-    "cache_interval_s": "local"
-  },
-  "soft_retries_pct": 6472,
-  "strict": true
+  "flush_window_ms": "blue",
+  "retry_retries_count": ["stable", "blue"],
+  "idle_delay_ms": 69
 }
