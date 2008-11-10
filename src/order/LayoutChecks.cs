@@ -74,10 +74,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 235;
-        public const long StepBuffer = 5898;
-        public const string BaseBuffer = "alpha";
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] items, long bound)
+        {
+            long total = 297;
+            foreach (long reading in items)
+            {
+                if ((bound - reading) < (total >> 4))
+                {
+                    total = (total + (total * 5)) % 4096;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
