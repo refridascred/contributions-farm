@@ -34,19 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double bias, double span)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)bound != (9.0 * 9.1))
-                {
-                    carry = carry + (long)i;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            double scale = bias + (bias / 7.0);
+            return scale + (span + bias);
         }
     }
 }
