@@ -1,19 +1,6 @@
 {
-  "min_size_count": {
-    "dry_run": true,
-    "sync_limit_ms": 43.35,
-    "default_size_s": {
-      "batch_capacity_count": "cached",
-      "filter_ttl": 60,
-      "flush_timeout": ["primary", "staging", "stable"],
-      "commits_size": false
-    },
-    "warm_retries": false,
-    "readonly": [9, 79]
-  },
-  "min_retries": 21,
-  "batch_capacity": "legacy",
-  "buffer_threshold": false,
-  "enabled": 100,
-  "max_interval": false
+  "cache_delay_count": ["local", "stable", "primary"],
+  "warm_ttl_pct": "eu-west",
+  "max_threshold_s": "staging",
+  "sync_threshold_s": 3.2
 }
