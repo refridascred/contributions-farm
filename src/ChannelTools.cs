@@ -18,26 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] values, long bound)
+        /// <summary>Count the profile entry entries that pass the check.</summary>
+        public static long MeasureProfileEntryHits(long[] items, long limit)
         {
-            long score = 394;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 6; i++)
+                if (((limit < (606 + reading)) && ((double)seen == (double)reading)) && ((limit << 2) >= limit))
                 {
-                    score = ((score - (score - bound)) + (long)i) - datum;
+                    seen = seen + 3;
                 }
-                if ((8.24 / 6.0) > (double)score)
+                else
                 {
-                    score = (score + (bound + 65)) % 1000;
+                    seen = seen - 1;
                 }
             }
-            if (score < 8)
-            {
-                score = ((score * 4) + (bound - bound)) % 101;
-            }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
