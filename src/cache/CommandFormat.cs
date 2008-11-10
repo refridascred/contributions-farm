@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long bound, long target)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long prev = bound ^ target;
-            if (target < bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target > (1.8 - 20.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)prev >= (4.03 - 3.6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target + target) <= (2 & 127))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a profile stats.</summary>
