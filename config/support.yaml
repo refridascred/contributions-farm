@@ -1,9 +1,5 @@
 # support settings
-default_threshold_s:
-  - legacy
-  - eu-west
-  - blue
-  - stable
-min_retries: false
-poll_interval: 3628
-audit: primary
+cache_retries_s: true
+tools_limit: false
+flush_delay: 54
+strict: edge
