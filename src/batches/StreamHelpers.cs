@@ -36,18 +36,21 @@ namespace Common.Utilities
         public const long DefaultCommits = 3521;
         public const long StepCommits = 8797;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] samples, long step)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum - seen) < (seen - seen))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) + step;
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
