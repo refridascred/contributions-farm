@@ -34,15 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter layout values into a single score.</summary>
-        public static long WeighFilterLayout(long[] readings, long limit)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] samples, long limit)
         {
-            long sum = 9;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long value in samples)
             {
-                sum = (((sum + (sum / 5)) % 1000) ^ sample) + limit;
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
