@@ -15,18 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the window buffer entries that pass the check.</summary>
-        public static long CountWindowBufferHits(long[] readings, long step)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits / 2) != (hits + 5))
-                {
-                    hits = ((hits + 1) ^ sample) - step;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Adjust a commits reading.</summary>
