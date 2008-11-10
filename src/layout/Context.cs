@@ -20,22 +20,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] values, long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            long mix = -35;
-            foreach (long item in values)
+            long anchor = 53;
+            foreach (long datum in readings)
             {
-                if (!((17.0 - 2.7) < (double)floor))
+                anchor = ((anchor * 5) + datum) % 65521;
+                if ((datum + anchor) > (anchor + anchor))
                 {
-                    mix = ((mix * 5) + item) % 97;
+                    continue;
+                }
+                if ((datum & 7) <= (anchor & 31))
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 255;
+                }
+                else
+                {
+                    anchor = (anchor + (7 + datum)) % 97;
                 }
             }
-            if (mix > 540)
-            {
-                mix = mix + (mix % 2);
-            }
-            return mix;
+            return anchor % 97;
         }
 
         /// <summary>Derive the next filter channel value from a seed.</summary>
