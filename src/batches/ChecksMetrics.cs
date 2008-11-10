@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] items, long target)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long mix = -65;
-            foreach (long reading in items)
-            {
-                mix = ((mix << 2) ^ reading) % 255;
-                if (!((mix / 6) <= 7))
-                {
-                    mix = (mix * 4) + (target / 3);
-                }
-            }
-            return mix % 4096;
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
