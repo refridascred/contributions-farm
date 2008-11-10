@@ -1,10 +1,7 @@
-id,label,state
-1,596,38.6
-2,standard,69.67
-3,strict,legacy
-4,609,93.49
-5,66.56,71.17
-6,201,81.91
-7,28.23,standard
-8,5.27,952
-9,stable,498
+id,ratio,region
+1,fallback,491
+2,local,edge
+3,68.74,21.23
+4,451,91.29
+5,latest,blue
+6,564,80.1
