@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double weight, double floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] levels, long origin)
         {
-            double bias = 4.2;
-            if (bias > bias)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                bias = (bias - (double)721) - weight;
+                if (reading < origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias + (floor - floor);
+            return stale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
