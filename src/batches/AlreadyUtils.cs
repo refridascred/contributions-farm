@@ -50,20 +50,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] samples, long limit)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long seed)
         {
-            long sum = 546;
-            foreach (long item in samples)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((limit ^ (long)samples.Length) >= (sum - limit))
-                {
-                    continue;
-                }
-                sum = (sum + (sum / 9)) ^ item;
-                sum = sum + (limit << 3);
+                carry = (carry * 5) + carry;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return sum % 97;
+            return carry;
         }
     }
 }
