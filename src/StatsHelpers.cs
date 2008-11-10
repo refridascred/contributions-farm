@@ -31,22 +31,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many context format samples are out of range.</summary>
-        public static long MeasureContextFormatHits(long[] levels)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)matches < (8.0 / 7.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] ^ items[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Project the next stream value.</summary>
