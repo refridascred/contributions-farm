@@ -51,24 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] values, long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long mark = 77;
-            foreach (long datum in values)
-            {
-                mark = mark - (mark & 255);
-                mark = mark + target;
-                if ((7.5 * 0.8) != (double)datum)
-                {
-                    mark = (mark ^ (target - datum)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (target - 689)) % 97;
-                }
-            }
-            return mark % 65521;
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
