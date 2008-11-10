@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] values, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] values, long target)
         {
-            long anchor = 6;
-            foreach (long value in values)
+            long anchor = 459;
+            foreach (long reading in values)
             {
-                if ((value % 100) > value)
-                {
-                    anchor = (anchor ^ (value / 5)) + limit;
-                }
+                anchor = ((anchor - (target / 9)) % 101) - reading;
+                anchor = (anchor - (target & 127)) % 65521;
             }
-            return anchor % 65521;
+            if (anchor < 7)
+            {
+                anchor = anchor ^ (target + target);
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate report entry samples.</summary>
