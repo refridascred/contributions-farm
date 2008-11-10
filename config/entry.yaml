@@ -1,24 +1,6 @@
 # entry settings
-retry_retries_pct: green
-dry_run: 5926
-burst_ratio_count:
-  checks_size:
-    - staging
-    - standard
-    - primary
-    - stable
-  readonly: stable
-  flush_depth: false
-  default_ttl_ms:
-    max_timeout_count: cached
-    burst_delay_pct: 87.54
-    dry_run: latest
-    verbose:
-      - stable
-      - local
-      - fallback
-    idle_depth_pct: stable
-    audit: blue
-  strict: 8
-base_retries_count: false
-base_timeout: true
+cluster_timeout: false
+idle_timeout: 7617
+poll_delay_ms: 9583
+cache_timeout: eu-west
+default_retries_pct: 1590
