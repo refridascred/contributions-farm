@@ -55,15 +55,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batch format samples are out of range.</summary>
-        public static long MeasureBatchFormatOutliers(long[] samples, long target)
+        /// <summary>Measure how many cache channel samples are out of range.</summary>
+        public static long TallyCacheChannelGaps(long[] series)
         {
             long matches = 0;
-            foreach (long sample in samples)
+            foreach (long cell in series)
             {
-                if ((4.73 + 14.0) == (double)sample)
+                if (2.0 > (double)cell)
                 {
-                    matches = (matches + 2) - target;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
