@@ -1,5 +1,6 @@
 {
-  "readonly": "staging",
-  "strict": ["blue", "standard", "strict", "blue"],
-  "flush_ttl": 89
+  "default_threshold": "cached",
+  "record_retries": 2867,
+  "order_threshold": 100,
+  "sync_delay_s": "cached"
 }
