@@ -1,9 +1,6 @@
 # entry settings
-flush_delay_s: false
-verbose: 68.73
-base_limit_pct: eu-west
-min_delay_count: eu-west
-checks_delay:
-  - stable
-  - primary
-  - standard
+command_retries: true
+readonly: true
+enabled: staging
+persist: true
+command_ratio: 25.77
