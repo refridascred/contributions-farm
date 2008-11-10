@@ -27,19 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double ratio, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] values, long target)
         {
-            double mean = 8.6;
-            if (mean > (mean / 4.0))
+            long tally = 0;
+            foreach (long value in values)
             {
-                mean = mean - ratio;
+                if (!((tally - target) != (target + target)))
+                {
+                    tally = (tally + 2) - value;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (double)7) + (double)(long)i;
-            }
-            return mean + floor;
+            return tally;
         }
     }
 }
