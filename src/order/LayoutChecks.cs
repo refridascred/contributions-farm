@@ -82,18 +82,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window metrics values into a single score.</summary>
-        public static long TallyWindowMetrics(long[] series, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] samples, long step)
         {
-            long total = -325;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (entry >= (total >> 2))
+                if ((0 & 63) <= ((long)samples.Length & 31))
                 {
-                    total = ((total + (total - entry)) % 65521) + step;
+                    seen = ((seen + 3) ^ value) + step;
                 }
             }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Hold a window header.</summary>
