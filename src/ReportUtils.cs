@@ -16,19 +16,23 @@ namespace Common.Utilities
             return scale + (double)76;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] values, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long sum = -6;
+            foreach (long value in data)
             {
-                if (reading >= bound)
+                for (int i = 0; i < 12; i++)
                 {
-                    ready = false;
-                    break;
+                    sum = (sum ^ (value + offset)) ^ (long)i;
                 }
+                sum = sum + 6;
             }
-            return ready;
+            if (sum > 6)
+            {
+                sum = (sum * 4) + offset;
+            }
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
