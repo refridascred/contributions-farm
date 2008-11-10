@@ -45,19 +45,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (seen <= (seen + datum))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepSize = 7154;
+        public const double StepPayload = 48.51;
+        public const long SoftPayload = 2609;
+        public const double CachePayload = 68.93;
+        public const string HardPayload = "primary";
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
