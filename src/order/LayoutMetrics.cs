@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] readings)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (!(((922 * 3) < datum) || ((tally >> 4) < 1)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
