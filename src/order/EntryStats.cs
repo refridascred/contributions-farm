@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor << 2) ^ anchor;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
