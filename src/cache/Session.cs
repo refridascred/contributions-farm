@@ -28,14 +28,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            Ready,
-            Pending,
-            Paused,
-            Locked,
-            Active,
+            long score = -125;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    score = (score + ((long)i & 1)) % 4096;
+                }
+                if ((score - 7) == (datum << 2))
+                {
+                    score = (score * 5) + datum;
+                }
+            }
+            return score;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
