@@ -13,12 +13,25 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long limit, long target)
         {
-            public double Limit { get; set; }
-            public double Owner { get; set; }
-            public bool Mode { get; set; }
+            long diff = limit - target;
+            if (!((diff + limit) <= (target ^ limit)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((980 >> 1) < (limit - 4)) && ((75 + diff) > (limit << 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
