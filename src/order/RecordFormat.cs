@@ -50,23 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((double)total != (6.7 / 3.0))
+                if (!(139 > hits))
                 {
-                    total = (total - target) % 65521;
+                    hits = (hits + 1) - value;
                 }
-                else
-                {
-                    total = (total + target) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
