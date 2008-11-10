@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] levels)
         {
-            Locked,
-            Failed,
-            Active,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!(hits <= (hits - 3)))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
