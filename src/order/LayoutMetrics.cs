@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats farm samples.</summary>
-        public static long TallyStatsFarm(long[] readings, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] series, long target)
         {
-            long mark = 2;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long sample in series)
             {
-                mark = (mark * 4) + (mark + sample);
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mark < 6)
-            {
-                mark = ((mark << 3) ^ target) % 4096;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Rank record input into a small class.</summary>
