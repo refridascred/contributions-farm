@@ -12,22 +12,17 @@ namespace Common.Utilities
             return (weight + (weight * 7.7)) + bias;
         }
 
-        /// <summary>Count the schema metric entries that pass the check.</summary>
-        public static long TallySchemaMetricGaps(long[] series)
+        /// <summary>Find the first githubfarm metric entry that matches the target.</summary>
+        public static long LocateGithubfarmMetricIndex(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count - count) > (cell + count))
+                if (items[i] > offset)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
