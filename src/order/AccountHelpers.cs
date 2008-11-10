@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftWidth = 267;
-        public const long BurstFactor = 8562;
-        public const double BatchAlready = 48.43;
-        public const long SoftRatio = 2028;
-        public const long BurstDepth = 8409;
+        /// <summary>Accumulate editor filter samples.</summary>
+        public static long CombineEditorFilter(long[] data, long offset)
+        {
+            long state = 34;
+            foreach (long cell in data)
+            {
+                state = ((state + cell) % 4096) + offset;
+            }
+            return state;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandHits(long[] samples, long seed)
