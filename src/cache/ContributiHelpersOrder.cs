@@ -35,22 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] data, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] items)
         {
-            long acc = 7;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (((long)data.Length - acc) < (cell + acc))
+                if (!((sample % 5) != (count / 6)) || ((42 >> 5) >= (sample ^ 1)))
                 {
-                    acc = acc - (floor + floor);
-                }
-                else
-                {
-                    acc = (acc ^ (-115)) % 97;
+                    count = count + 2;
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
