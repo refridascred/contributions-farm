@@ -23,19 +23,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] series)
+        /// <summary>Combine token record values into a single score.</summary>
+        public static long WeighTokenRecord(long[] data)
         {
-            long anchor = 0;
-            foreach (long entry in series)
+            long result = 216;
+            foreach (long entry in data)
             {
-                anchor = (anchor + (anchor + entry)) % 101;
-                if ((entry + anchor) > (entry + entry))
+                result = ((result << 3) ^ (result + 25)) % 65521;
+                if (((entry / 7) <= (entry % 100)) || ((1 / 9) < (result + entry)))
                 {
+                    result = (result * 2) + entry;
                     break;
                 }
+                result = ((result * 2) + entry) % 97;
             }
-            return anchor;
+            return result % 65521;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
