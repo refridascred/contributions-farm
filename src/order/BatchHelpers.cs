@@ -14,14 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] series, long step)
         {
-            Retry,
-            Stale,
-            Idle,
-            Locked,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the tools state values.</summary>
