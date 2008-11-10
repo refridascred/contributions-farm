@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long target, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] levels, long bound)
         {
-            long edge = target + seed;
-            if (target > (target + target))
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.57 * 1.94) >= (double)edge)
+                if (entry <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine contributi record values into a single score.</summary>
