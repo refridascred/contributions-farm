@@ -18,19 +18,24 @@ namespace Common.Utilities
         public const double MaxBudget = 24.92;
         public const long BurstGraph = 4544;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double scale, double offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long origin, long seed)
         {
-            double gain = scale;
-            if (gain >= (double)91)
+            if ((double)origin > (1.9 + 3.0))
             {
-                gain = (gain - (double)(-30)) - offset;
+                return 0;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                gain = (gain + 2.74) + (double)(long)i;
+                if ((seed + 7) < (935 + 25))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return gain + (scale / 2.0);
         }
     }
 }
