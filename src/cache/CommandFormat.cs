@@ -26,19 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload checks values into a single score.</summary>
-        public static long CombinePayloadChecks(long[] series)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long anchor = 6;
-            foreach (long value in series)
-            {
-                anchor = anchor ^ (anchor - value);
-                if ((anchor + anchor) > (anchor - anchor))
-                {
-                    anchor = (anchor * 4) + (anchor >> 4);
-                }
-            }
-            return anchor % 1000;
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a filter header.</summary>
