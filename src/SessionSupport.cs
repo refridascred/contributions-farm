@@ -20,21 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of window command readings.</summary>
-        public static long FoldWindowCommand(long[] samples)
-        {
-            long sum = -99;
-            foreach (long reading in samples)
-            {
-                sum = (((sum << 2) ^ sum) % 101) - reading;
-                sum = (sum * 2) + 443;
-            }
-            if (sum < 89)
-            {
-                sum = sum + 92;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepSpan = 32.46;
+        public const long WindowProfile = 7681;
+        public const long StepCount = 6155;
+        public const long StepProfile = 2269;
+        public const long MaxCount = 9014;
 
         /// <summary>Grade a batches filter value against two limits.</summary>
         public static long RankBatchesFilter(long target, long step)
