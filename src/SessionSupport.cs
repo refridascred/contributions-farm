@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double gain, double span)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] readings, long offset)
         {
-            double drift = gain;
-            if (drift > (double)874)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                drift = (drift - gain) - span;
+                if (cell >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift - drift;
+            return ok;
         }
 
         /// <summary>Grade a batches filter value against two limits.</summary>
