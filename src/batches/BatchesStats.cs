@@ -57,31 +57,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a buffer command value against two limits.</summary>
-        public static long ClassifyBufferCommand(long offset, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] data)
         {
-            if (floor > (6 + offset))
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)floor != (0.1 * 4.6)))
+                if ((matches + item) > (matches - matches))
                 {
-                    return 8;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((floor - floor) < (offset * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
