@@ -1,4 +1,23 @@
 # entry settings
-hard_interval: 2365
-flush_size: 4869
-poll_delay: true
+token_depth: 78
+compress: legacy
+base_threshold:
+  - 45
+  - 178
+batch_threshold_count: 82.88
+flush_interval_ms:
+  verbose: 30
+  flush_depth_ms: 1230
+  strict: latest
+  poll_ratio_pct:
+    retry_interval_pct: 19
+    entry_size: latest
+    context_depth: true
+    command_ttl:
+      - 224
+      - 95
+      - 484
+      - 56
+    base_threshold_pct: 7103
+    flush_depth: 2997
+  base_interval_s: 2183
