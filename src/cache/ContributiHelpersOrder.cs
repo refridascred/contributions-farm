@@ -22,15 +22,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] levels, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if (item != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
     }
 }
