@@ -38,17 +38,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Locate a format commits reading by value.</summary>
-        public static long LocateFormatCommitsIndex(long[] samples, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -22;
+            foreach (long item in samples)
             {
-                if (samples[i] >= limit)
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (result * 4)) ^ (long)i;
+                }
+                if (item > (result + item))
+                {
+                    result = ((result * 5) + (28 + 27)) % 4096;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Roll a report metric counter forward.</summary>
