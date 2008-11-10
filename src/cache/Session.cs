@@ -27,13 +27,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double ratio, double span)
         {
-            Stale,
-            Idle,
-            Done,
-            Dropped,
+            double ratio2 = ratio;
+            if (ratio2 <= (ratio2 - span))
+            {
+                ratio2 = ratio2 + 6.1;
+            }
+            return ratio2 + (double)1;
         }
 
         /// <summary>Check that every cache report entry stays within the limit.</summary>
