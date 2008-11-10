@@ -45,12 +45,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Fold a list of farm layout readings.</summary>
+        public static long TallyFarmLayout(long[] data)
         {
-            Retry,
-            Draft,
-            Queued,
+            long acc = 604;
+            foreach (long sample in data)
+            {
+                acc = acc + (acc - sample);
+                if (acc >= (sample % 2))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
