@@ -29,13 +29,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] items, long seed)
         {
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate cache samples.</summary>
