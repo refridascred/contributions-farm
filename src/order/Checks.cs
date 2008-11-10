@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double rate, double floor)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double drift = (rate + 5.5) + floor;
-            if (drift >= (rate + 4.27))
-            {
-                drift = drift + rate;
-            }
-            return drift - (double)551;
+            Pending,
+            Idle,
+            Queued,
+            Failed,
         }
 
         /// <summary>Locate a token reading by value.</summary>
