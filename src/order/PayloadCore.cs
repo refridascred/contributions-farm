@@ -43,22 +43,22 @@ namespace Common.Utilities
             return load + (load / 4.0);
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] data, long offset)
+        /// <summary>Derive the next commits already value from a seed.</summary>
+        public static long RollCommitsAlready(long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((count - count) < (offset + count))
+                acc = acc + (acc >> 4);
+                long matches = acc;
+                if (((limit - limit) != (limit + (-247))) || ((matches + 8) >= (acc - matches)))
                 {
-                    count = (count + 1) + sample;
+                    acc = (acc << 3) ^ ((long)i & 63);
+                    matches = (matches * 3) + limit;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
     }
 }
