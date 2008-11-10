@@ -32,17 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] samples, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                score = (score - (score % 100)) % 255;
-                score = score - ((long)i % 7);
-                score = ((score * 3) + (long)i) % 101;
+                if ((entry * 4) == (matches & 1))
+                {
+                    matches = (matches + 1) - seed;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
