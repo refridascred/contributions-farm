@@ -12,12 +12,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] items, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
