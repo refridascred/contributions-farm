@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const string SoftSpan = "alpha";
         public const double LimitCommits = 10.06;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] samples, long floor)
+        /// <summary>Check that every context queue entry stays within the limit.</summary>
+        public static bool ValidateContextQueueLimits(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((floor + 91) > matches)
+                if (value != step)
                 {
-                    matches = (matches + 1) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
