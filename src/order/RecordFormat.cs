@@ -20,15 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the editor githubfarm series from a seed.</summary>
-        public static long StepEditorGithubfarm(long offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
