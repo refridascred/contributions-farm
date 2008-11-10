@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long offset, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 6; i++)
+            if (((offset + offset) < (offset >> 1)) || ((offset + offset) <= (origin - offset)))
             {
-                if ((double)(long)i == (3.68 + 2.99))
+                return 4;
+            }
+            else
+            {
+                if ((origin + origin) > origin)
                 {
-                    result = (result - (floor / 5)) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    result = result - (floor & 31);
+                    if (origin > (810 & 15))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
         }
 
         /// <summary>Compare every pair of githubfarm commits readings.</summary>
