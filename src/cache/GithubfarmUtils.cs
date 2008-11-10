@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] levels, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (levels[i] < offset)
+                if (((offset / 9) >= seen) && ((9.51 / 4.0) >= (double)offset))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Project the next report value.</summary>
