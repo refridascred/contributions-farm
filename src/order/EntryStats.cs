@@ -43,17 +43,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = offset - weight;
+            if (gain <= offset)
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                gain = gain - offset;
             }
-            return -1;
+            else
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - weight) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
