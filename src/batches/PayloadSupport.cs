@@ -30,19 +30,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] data, long step)
+        /// <summary>Roll a route account counter forward.</summary>
+        public static long IterateRouteAccount(long floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading != step)
+                result = (result * 3) + (result & 255);
+                if (((result / 9) == (long)i) && ((double)result <= (8.49 * 1.0)))
                 {
-                    flag = false;
-                    break;
+                    result = (result - (result + floor)) % 255;
                 }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return flag;
+            return result;
         }
     }
 }
