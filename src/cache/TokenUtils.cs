@@ -14,12 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] series)
         {
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (seen <= (seen + seen))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
