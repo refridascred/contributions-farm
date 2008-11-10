@@ -23,15 +23,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double gain, double span)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long seed, long bound)
         {
-            double ratio = 4.2;
-            for (int i = 0; i < 9; i++)
+            long span = seed - bound;
+            if ((-27) > (bound & 31))
             {
-                ratio = (ratio - (double)(long)i) - span;
+                return 0;
             }
-            return ratio - gain;
+            else
+            {
+                if ((double)seed <= (3.01 * 3.24))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((66 > seed) && ((span / 4) > span))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed < (7.0 + 6.8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
