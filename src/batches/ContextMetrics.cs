@@ -43,19 +43,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] levels, long bound)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Locked,
+            Synced,
+            Pending,
+            Paused,
         }
 
         /// <summary>Measure how many cluster editor samples are out of range.</summary>
