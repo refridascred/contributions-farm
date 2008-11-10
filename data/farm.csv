@@ -1,9 +1,7 @@
-id,owner,count
-1,fallback,831
-2,785,317
-3,52.97,89.99
-4,471,legacy
-5,763,122
-6,280,open
-7,233,standard
-8,5.8,17
+id,active,token,rank
+1,399,906,19.74
+2,edge,338,primary
+3,77.35,fallback,open
+4,690,377,308
+5,524,latest,15.05
+6,standard,eu-west,63.62
