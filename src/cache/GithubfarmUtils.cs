@@ -44,20 +44,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the order session series from a seed.</summary>
-        public static long SeriesOrderSession(long limit)
+        /// <summary>Check that every entry contributi entry stays within the limit.</summary>
+        public static bool VerifyEntryContributiRange(long[] series, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                mix = ((mix * 4) + (mix << 3)) % 4096;
-                for (int i2 = 0; i2 < 2; i2++)
+                if (value > step)
                 {
-                    mix = (mix + 675) ^ (long)i2;
+                    flag = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return flag;
         }
     }
 }
