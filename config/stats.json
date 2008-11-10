@@ -1,8 +1,7 @@
 {
-  "poll_capacity_pct": [401, 290, 6, 404],
-  "filter_window": "open",
-  "audit": [187, 396],
-  "verbose": 986,
-  "burst_depth": 14.53,
-  "batch_ratio": 83.44
+  "compress": 33,
+  "batch_ratio_ms": "open",
+  "sync_interval_count": 18.88,
+  "retry_ratio_count": 8323,
+  "enabled": ["standard", "legacy", "eu-west"]
 }
