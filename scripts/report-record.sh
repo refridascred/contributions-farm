@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict fallback standard open; do
+for item in edge stable local eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+RECORD_LIMIT=234
+log "limit is ${RECORD_LIMIT}"
