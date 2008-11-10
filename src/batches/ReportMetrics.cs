@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double bias, double floor)
         {
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
+            double mean = floor;
+            if (mean >= bias)
+            {
+                mean = mean + bias;
+            }
+            else
+            {
+                mean = mean - (2.0 / 3.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (double)226) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the stats status values.</summary>
