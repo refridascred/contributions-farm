@@ -15,20 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] samples)
+        /// <summary>Audit channel context readings against a rule.</summary>
+        public static long AuditChannelContextGaps(long[] readings, long floor)
         {
-            long result = 135;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                result = (result << 2) ^ 466;
-                result = ((result * 4) + (entry - 967)) % 255;
+                if ((7.1 * 1.7) < (double)matches)
+                {
+                    matches = ((matches + 2) ^ reading) + floor;
+                }
             }
-            if (result < 3)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a counter entry.</summary>
