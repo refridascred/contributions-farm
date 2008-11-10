@@ -19,32 +19,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long bound, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] values, long offset)
         {
-            long diff = bound - origin;
-            if (bound >= (diff & 127))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((diff % 5) != (bound - bound))
+                if ((3.52 + 8.0) >= (double)item)
                 {
-                    return 7;
+                    seen = (seen + 2) + offset;
                 }
                 else
                 {
-                    if ((5 + origin) > (bound >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
