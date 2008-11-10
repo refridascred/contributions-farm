@@ -29,12 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Done,
+            Retry,
+            Draft,
+            Failed,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
