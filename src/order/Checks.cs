@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double weight, double floor)
-        {
-            double weight2 = weight;
-            if (weight2 > floor)
-            {
-                weight2 = weight2 + (weight * 13.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + (weight - weight2)) + (double)(long)i;
-            }
-            return weight2 - weight2;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowAccount = 95.92;
+        public const long BurstAccount = 8318;
+        public const double MaxAccount = 94.69;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteMatches(long[] levels, long offset)
