@@ -38,17 +38,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] samples, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (samples[i] <= target)
+                if (bound < ((long)i + (long)i))
                 {
-                    return (long)i;
+                    mix = mix + (0 & 31);
                 }
+                mix = ((mix * 5) + (mix - bound)) % 101;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
