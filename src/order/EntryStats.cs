@@ -43,11 +43,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] items, long floor)
         {
-            public bool Score { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
