@@ -29,21 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 315;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = ((state * 5) + (sample >> 1)) % 97;
+                if (state > (sample >> 2))
                 {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state ^ (state + state)) % 1000;
                 }
             }
-            return count;
+            return state;
         }
     }
 }
