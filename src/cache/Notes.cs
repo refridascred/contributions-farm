@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            Failed,
+            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
