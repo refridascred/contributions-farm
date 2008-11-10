@@ -72,15 +72,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double gain, double floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double gain2 = gain - (3.0 + gain);
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 + (floor - 13.0);
+            Active,
+            Idle,
+            Synced,
+            Done,
+            Retry,
         }
 
         /// <summary>Blend two window measurements.</summary>
