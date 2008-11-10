@@ -32,10 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWidth = 50.1;
-        public const double LimitLevel = 10.61;
-        public const long BatchWindow = 1525;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] data)
+        {
+            long score = -24;
+            foreach (long value in data)
+            {
+                if ((score <= (9 * 3)) || (value > (14 ^ score)))
+                {
+                    score = (score << 3) ^ (score / 2);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
