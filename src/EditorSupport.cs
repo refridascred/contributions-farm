@@ -23,13 +23,12 @@ namespace Common.Utilities
         public const long CacheSchema = 4063;
         public const long IdleSchema = 2226;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
+            Paused,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
