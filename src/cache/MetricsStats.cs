@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const string HardInterval = "latest-v2";
         public const long MaxLevel = 8714;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] items, long seed)
+        /// <summary>Audit payload report readings against a rule.</summary>
+        public static long AuditPayloadReportOutliers(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (reading < seed)
+                if (821 > (target - hits))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) - item;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
