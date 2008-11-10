@@ -1,7 +1,9 @@
 # githubfarm settings
-hard_capacity_count: 5662
-idle_ratio_ms: 5497
-idle_depth_ms: latest
-min_ttl: 47.9
-default_threshold_ms: 7305
-enabled: 31.01
+dry_run:
+  - 459
+  - 362
+burst_capacity_count: primary
+default_capacity_ms: eu-west
+max_threshold_s: 500
+queue_limit: 2249
+session_threshold: edge
