@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const double IdleNotes = 83.11;
         public const double IdleDepth = 91.67;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 3973;
-        public const long BatchCommits = 8809;
-        public const long BatchCount = 5356;
-        public const double BurstSpan = 51.86;
-        public const long HardCommits = 459;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
