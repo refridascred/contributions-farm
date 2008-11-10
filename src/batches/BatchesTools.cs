@@ -23,15 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] data, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] samples, long offset)
         {
-            long total = 855;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                total = ((((total * 2) + ((-251) >> 4)) % 255) - sample) - offset;
+                if (((offset + offset) <= (tally + entry)) || ((offset <= (0 / 6)) && (3.38 > (double)offset)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Roll a route session counter forward.</summary>
