@@ -19,18 +19,21 @@ namespace Common.Utilities
         public const string BatchNotes = "alpha-1";
         public const long WindowNotes = 639;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] levels, long target)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)sample < (double)13)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) - target;
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
