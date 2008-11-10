@@ -29,11 +29,18 @@ namespace Common.Utilities
         public const long MaxCounter = 7554;
         public const long StepCounter = 9249;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowSize = 89.18;
-        public const long BurstTimeout = 3119;
-        public const long SoftScore = 5036;
-        public const long CacheSpan = 2513;
-        public const string MinBuffer = "alpha-v2";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!((tally >> 3) == (sample ^ 783)) && ((50 & 255) == (sample & 7)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
