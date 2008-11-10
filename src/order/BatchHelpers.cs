@@ -14,22 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of tools queue entries.</summary>
-        public static long CombineToolsQueue(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] values, long limit)
         {
-            long total = 949;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (((-67) * 3) < (total / 9))
+                if ((double)item < (16.0 * 20.0))
                 {
-                    total = ((total ^ (98 % 7)) % 65521) - datum;
+                    seen = (seen + 2) + limit;
                 }
             }
-            if (total < 11)
-            {
-                total = ((total << 2) ^ ((long)series.Length ^ total)) % 4096;
-            }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
