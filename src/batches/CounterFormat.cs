@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] values, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((9.0 - 7.7) <= (double)target)
+                if (cell != limit)
                 {
-                    seen = (seen + 3) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
