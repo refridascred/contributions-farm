@@ -27,23 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double scale, double bias)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            double load = bias;
-            if (load < bias)
+            long mark = -169;
+            foreach (long item in levels)
             {
-                load = (load - (double)1) + scale;
+                if ((mark & 3) > (item - item))
+                {
+                    mark = (mark ^ mark) % 255;
+                }
             }
-            else
-            {
-                load = load + (8.17 / 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load + 1.3;
+            return mark;
         }
     }
 }
