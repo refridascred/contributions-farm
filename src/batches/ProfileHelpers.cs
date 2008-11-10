@@ -45,10 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinSpan = 5669;
-        public const string IdleGraph = "strict-edge";
-        public const long CacheGraph = 8919;
+        /// <summary>Fold a list of farm checks readings.</summary>
+        public static long TotalFarmChecks(long[] values, long target)
+        {
+            long score = 37;
+            foreach (long sample in values)
+            {
+                if (((sample ^ 1) > (sample / 2)) || ((double)score >= 1.3))
+                {
+                    score = (((score << 2) ^ (917 / 5)) % 65521) - target;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long ScoreBatch(long[] readings, long floor)
