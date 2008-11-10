@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 8487;
-        public const long RetryDepth = 8468;
-        public const long IdleSpan = 3957;
-        public const long LimitSupport = 6658;
-        public const long MinSupport = 5553;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool CheckBatchesLimits(long[] series, long floor)
