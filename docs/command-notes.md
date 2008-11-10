@@ -1,12 +1,10 @@
 # Command notes
 
-The checks module keeps schema values in sync with the entry cache.
-Run the notes check before changing any layout limits.
-The cache report groups every metric by order.
+Keep batches and farm names short and lowercase.
+When a profile fails, the checks handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer session defaults
-- Review report limits each release
-- Document new contributi fields
-- Validate account input early
+- Log every route change
+- Document new entry fields
+- Validate payload input early
