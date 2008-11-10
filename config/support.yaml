@@ -1,10 +1,16 @@
 # support settings
-cache_threshold: 1647
-min_depth_ms: latest
-cache_depth_s: 100
-cache_retries: blue
-buffer_window:
-  - standard
-  - edge
-  - green
-  - standard
+checks_window:
+  - 411
+  - 92
+  - 198
+token_depth: staging
+already_ratio:
+  cache_limit_count:
+    - latest
+    - strict
+  compress: false
+  audit: 85.61
+  profile_retries: false
+  hard_limit: cached
+  warm_delay: false
+min_ttl: 30
