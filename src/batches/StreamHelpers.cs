@@ -67,19 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] values, long offset)
+        /// <summary>Check that every githubfarm schema entry stays within the limit.</summary>
+        public static bool GuardGithubfarmSchemaLimits(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (value <= offset)
+                if (sample > floor)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Count the metrics notes entries that pass the check.</summary>
