@@ -1,6 +1,15 @@
 {
-  "idle_limit_count": "eu-west",
-  "hard_interval_s": "legacy",
-  "commits_capacity": "green",
-  "compress": ["latest", "cached"]
+  "strict": "cached",
+  "base_size": 3310,
+  "stats_timeout": "blue",
+  "base_delay": {
+    "readonly": {
+      "cache_size_s": "legacy",
+      "strict": "primary",
+      "flush_ratio": [170, 146, 498, 175]
+    },
+    "warm_ttl_ms": false,
+    "token_threshold": "blue"
+  },
+  "default_ttl_count": 7289
 }
