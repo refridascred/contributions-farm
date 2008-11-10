@@ -59,26 +59,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] readings, long floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long acc = 976;
-            foreach (long sample in readings)
-            {
-                if ((8 - 4) < floor)
-                {
-                    acc = (acc ^ (floor - acc)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ ((-1) + sample)) % 101;
-                }
-            }
-            if (acc > 78)
-            {
-                acc = (acc * 2) + (acc + floor);
-            }
-            return acc % 4096;
+            Idle,
+            Draft,
+            Active,
         }
 
         /// <summary>Locate a schema reading by value.</summary>
