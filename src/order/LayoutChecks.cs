@@ -70,12 +70,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleCount = "staging";
+        public const string MaxWidth = "legacy";
+        public const long RetryRatio = 1359;
+        public const long MinStream = 7311;
     }
 }
