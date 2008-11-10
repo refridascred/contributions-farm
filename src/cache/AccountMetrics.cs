@@ -60,15 +60,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double ratio, double offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double scale = (offset / 7.0) * 19.0;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (offset * 7.5)) + (double)(long)i;
-            }
-            return scale + ratio;
+            Failed,
+            Paused,
+            Stale,
+            Active,
+            Ready,
         }
     }
 }
