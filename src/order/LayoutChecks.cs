@@ -82,19 +82,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((0 & 63) <= ((long)samples.Length & 31))
-                {
-                    seen = ((seen + 3) ^ value) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 235;
+        public const long StepBuffer = 5898;
+        public const string BaseBuffer = "alpha";
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
