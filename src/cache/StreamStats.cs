@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long target)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long score = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!(target > (score - score)))
+                {
+                    score = (score << 3) ^ (target / 4);
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
