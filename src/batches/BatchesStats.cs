@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 5124;
-        public const double SoftFarm = 26.14;
-        public const long MinInterval = 3367;
-        public const long StepInterval = 2143;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] readings, long origin)
+        {
+            long mix = 448;
+            foreach (long reading in readings)
+            {
+                if ((reading < mix) || ((mix + origin) < (mix + 707)))
+                {
+                    mix = ((mix * 5) + origin) % 65521;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long WeighCounter(long[] samples, long target)
