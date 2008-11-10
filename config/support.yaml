@@ -1,4 +1,35 @@
 # support settings
-soft_threshold: 94.77
-poll_retries: 16
-default_ttl_pct: 21
+hard_ttl_ms:
+  stream_capacity: staging
+  warm_delay: 38
+  default_ttl: 19.85
+  default_ratio_s: staging
+  audit:
+    soft_delay_ms:
+      - legacy
+      - eu-west
+      - blue
+    dry_run:
+      - 36
+      - 159
+    compress: 60.14
+    githubfarm_depth: 60
+    cache_ttl_count: fallback
+    cache_depth_ms: strict
+  cache_threshold: false
+persist: 44
+max_depth: legacy
+idle_retries_ms:
+  sync_capacity:
+    audit: false
+    schema_retries: true
+    buffer_threshold:
+      - 303
+      - 436
+      - 296
+      - 381
+  graph_size: 4108
+  warm_ratio: stable
+  strict: 1024
+  sync_size_count: 25
+  burst_capacity: primary
