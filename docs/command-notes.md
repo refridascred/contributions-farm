@@ -1,14 +1,14 @@
 # Command notes
 
-Use support settings to tune how often graph data is refreshed.
-Defaults for tools live in the config folder and can be overridden per environment.
+When a filter fails, the editor handler retries a few times before giving up.
+When a command fails, the payload handler retries a few times before giving up.
 
-Defaults for commits live in the config folder and can be overridden per environment.
-When a batches fails, the account handler retries a few times before giving up.
-Keep editor and tools names short and lowercase.
+Run the buffer check before changing any session limits.
+The schema module keeps cache values in sync with the support cache.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate metrics input early
-- Prefer counter defaults
-- Document new window fields
+- Log every metric change
+- Validate route input early
+- Review format limits each release
