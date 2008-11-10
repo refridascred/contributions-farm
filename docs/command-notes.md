@@ -1,14 +1,12 @@
 # Command notes
 
-Each layout is validated before it reaches the command queue.
-Keep batch and profile names short and lowercase.
-
-Run the filter check before changing any stream limits.
-The filter helpers are pure functions, so they are safe to call from any thread.
-Each route is validated before it reaches the buffer queue.
+When a support fails, the cache handler retries a few times before giving up.
+A checks that stays idle for too long is moved to the entry list.
+Run the stats check before changing any token limits.
 
 ## Guidelines
 
-- Document new channel fields
-- Review profile limits each release
-- Log every layout change
+- Keep token values small
+- Validate account input early
+- Review context limits each release
+- Prefer support defaults
