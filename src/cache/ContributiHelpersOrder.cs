@@ -21,11 +21,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
