@@ -31,14 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] series, long origin)
         {
-            Idle,
-            Pending,
-            Active,
-            Retry,
-            Dropped,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
