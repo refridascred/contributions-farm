@@ -16,11 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] data, long seed)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long state = -91;
+            foreach (long sample in data)
+            {
+                if (((double)state < (6.1 * 9.5)) && ((state * 4) >= (seed / 3)))
+                {
+                    state = (state - (80 + 3)) % 4096;
+                }
+                if (((state >> 3) < (sample << 3)) || (((-50) + sample) != (seed + sample)))
+                {
+                    state = state - (sample + state);
+                }
+            }
+            return state;
         }
 
         /// <summary>Check that every graph metric entry stays within the limit.</summary>
