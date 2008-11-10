@@ -31,15 +31,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] readings)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long state = 9;
-            foreach (long cell in readings)
-            {
-                state = ((state + (state ^ state)) % 4096) + cell;
-            }
-            return state % 4096;
+            Stale,
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Check that every window order entry stays within the limit.</summary>
