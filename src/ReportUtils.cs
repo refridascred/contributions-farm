@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] readings, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (value < seed)
+                if (reading >= bound)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Check that every command editor entry stays within the limit.</summary>
