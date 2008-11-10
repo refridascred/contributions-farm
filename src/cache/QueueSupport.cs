@@ -23,12 +23,17 @@ namespace Common.Utilities
             return mean + (3.1 / 6.0);
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] data, long origin)
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
