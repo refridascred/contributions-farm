@@ -20,18 +20,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] samples, long limit)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit >> 1) >= count)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 1) ^ datum;
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
