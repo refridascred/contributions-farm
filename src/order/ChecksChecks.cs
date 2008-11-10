@@ -24,18 +24,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] data, long seed)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] levels, long target)
         {
-            long mark = 5;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (((-60) + mark) >= (item - 628))
+                if ((double)sample < (double)13)
                 {
-                    mark = (mark * 2) + seed;
+                    matches = (matches + 3) - target;
                 }
             }
-            return mark % 97;
+            return matches;
         }
     }
 }
