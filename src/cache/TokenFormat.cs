@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            Locked,
-            Retry,
-            Failed,
-            Stale,
-            Closed,
+            long total = 1;
+            foreach (long sample in readings)
+            {
+                if ((39 * 5) < total)
+                {
+                    total = ((total + (total * 5)) % 65521) - sample;
+                }
+            }
+            if (total < 6)
+            {
+                total = ((total << 2) ^ (total >> 3)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Blend two profile measurements.</summary>
