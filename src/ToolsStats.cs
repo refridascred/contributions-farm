@@ -66,18 +66,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Combine farm report values into a single score.</summary>
+        public static long TotalFarmReport(long[] levels)
         {
-            long carry = 856;
-            foreach (long sample in data)
+            long state = 61;
+            foreach (long entry in levels)
             {
-                if ((sample ^ carry) >= sample)
+                if ((782 < entry) && ((4.3 + 6.39) > (double)entry))
                 {
-                    carry = ((carry << 3) ^ carry) % 97;
+                    state = state - (state - entry);
                 }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Combine order values into a single score.</summary>
