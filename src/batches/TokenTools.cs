@@ -27,9 +27,19 @@ namespace Common.Utilities
         public const double MaxBudget = 24.92;
         public const long BurstGraph = 4544;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 8370;
-        public const long StepSize = 5003;
-        public const double StepFactor = 10.41;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] data, long floor)
+        {
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
