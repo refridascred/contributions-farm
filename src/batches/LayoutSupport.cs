@@ -42,19 +42,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] samples, long floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a schema record.</summary>
