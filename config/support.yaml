@@ -1,17 +1,8 @@
 # support settings
-support_window: staging
-base_limit_pct: true
-retry_limit_ms:
-  warm_ratio_ms: 55
-  soft_retries: false
-  editor_ttl: 76.9
-  persist: 1.01
-  min_ratio: 4511
-  verbose: 4
-layout_window: 69.8
-order_depth:
-  - 426
-  - 331
-  - 264
-  - 435
-persist: eu-west
+enabled:
+  - strict
+  - primary
+  - fallback
+  - eu-west
+hard_interval_count: 4.16
+hard_threshold_pct: 250
