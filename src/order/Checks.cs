@@ -23,18 +23,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] levels)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (76 <= (datum / 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] + items[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Adjust a channel reading.</summary>
