@@ -1,9 +1,4 @@
 # support settings
-warm_threshold_count: 4151
-persist: 30
-dry_run: green
-hard_ratio_pct:
-  - strict
-  - edge
-  - fallback
-  - stable
+sync_window_ms: 9547
+cache_interval_ms: standard
+max_delay_count: fallback
