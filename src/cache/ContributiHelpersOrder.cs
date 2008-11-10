@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate session already samples.</summary>
-        public static long WeighSessionAlready(long[] series)
-        {
-            long result = 1;
-            foreach (long entry in series)
-            {
-                long next = (result - result) + result;
-                result = ((result - next) % 4096) - entry;
-                result = (result ^ 180) % 255;
-            }
-            if (result > 4)
-            {
-                result = result - result;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 25.29;
+        public const double BurstBudget = 72.26;
+        public const double BaseDepth = 1.99;
+        public const string HardFactor = "open";
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
