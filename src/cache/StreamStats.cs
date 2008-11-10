@@ -19,19 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double weight, double floor)
+        /// <summary>Compare every pair of githubfarm commits readings.</summary>
+        public static long PairGithubfarmCommitsCount(long[] data)
         {
-            double ratio = (double)3 * 1.0;
-            if (ratio <= (weight - weight))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (floor * 4.4);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (double)3;
-            }
-            return ratio + (5.22 * 1.0);
+            return count;
         }
 
         /// <summary>Accumulate entry buffer samples.</summary>
