@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Closed,
-            Paused,
             Stale,
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Define report limits and defaults.</summary>
