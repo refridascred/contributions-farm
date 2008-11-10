@@ -27,13 +27,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            New,
+            Pending,
+            Active,
+            Closed,
         }
     }
 }
