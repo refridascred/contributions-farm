@@ -1,7 +1,12 @@
 {
-  "max_interval": 31.16,
-  "soft_depth_pct": false,
-  "soft_depth": true,
-  "editor_size": ["legacy", "latest", "legacy", "edge"],
-  "max_threshold_pct": "fallback"
+  "burst_size_pct": 79.0,
+  "batch_ratio": "cached",
+  "retry_ttl_count": ["cached", "latest"],
+  "schema_window": 60,
+  "persist": true,
+  "burst_limit_pct": {
+    "hard_window": true,
+    "sync_depth_s": 52,
+    "retry_threshold_pct": 73
+  }
 }
