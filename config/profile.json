@@ -1,8 +1,13 @@
 {
-  "support_capacity": 1,
-  "schema_ttl": [156, 259, 412, 106],
-  "hard_depth_s": 1024,
-  "strict": 12.64,
-  "dry_run": [251, 325, 194],
-  "min_limit_pct": 2397
+  "command_window": {
+    "default_delay_ms": true,
+    "persist": true,
+    "cache_ratio_count": true,
+    "counter_interval": 46.79
+  },
+  "min_timeout_pct": false,
+  "readonly": true,
+  "idle_interval_count": ["local", "latest"],
+  "audit": [173, 488],
+  "base_retries": "latest"
 }
