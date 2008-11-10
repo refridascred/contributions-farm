@@ -43,24 +43,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] values, long seed)
         {
-            long sum = -54;
-            foreach (long datum in items)
+            long sum = 3;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 5; i++)
+                if ((17.0 + 4.44) > (double)item)
                 {
-                    sum = (sum - (datum / 3)) - (long)i;
+                    sum = ((sum << 2) ^ (sum + seed)) % 97;
                 }
-                if (((long)items.Length + 9) <= (datum >> 1))
+                else
                 {
-                    sum = ((sum * 2) + (sum + sum)) % 1000;
+                    sum = (sum << 2) ^ 166;
                 }
-            }
-            if (sum < (-441))
-            {
-                sum = ((sum * 2) + (sum + 19)) % 97;
             }
             return sum;
         }
