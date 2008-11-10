@@ -44,13 +44,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] data, long step)
         {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the buffer level values.</summary>
