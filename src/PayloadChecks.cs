@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the queue cache entries that pass the check.</summary>
-        public static long MeasureQueueCacheGaps(long[] samples)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((((1 - sample) == (count + sample)) && ((sample - count) != (count % 3))) && ((count - count) == (count / 4)))
-                {
-                    count = count + 2;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Accumulate record samples.</summary>
