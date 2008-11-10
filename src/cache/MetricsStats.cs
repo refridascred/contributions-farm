@@ -63,11 +63,22 @@ namespace Common.Utilities
             return bias + (floor + floor);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseScore = 8699;
-        public const long SoftAccount = 106;
-        public const long IdleDepth = 7387;
-        public const long IdleAccount = 9531;
-        public const string BurstCount = "open-edge";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((((422 - offset) <= (offset & 31)) || ((count ^ value) > (offset + value))) || ((double)offset < 8.0))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
