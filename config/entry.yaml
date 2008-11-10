@@ -1,20 +1,8 @@
 # entry settings
-max_ratio_pct:
-  hard_limit: primary
-  payload_size: 64.05
-  retry_ratio_ms: 1206
-  compress:
-    verbose: 97
-    batch_threshold_s: cached
-    token_limit: 23
-  max_delay_count: 60
-counter_interval: 5634
-batch_ttl_count:
-  cluster_timeout: true
-  audit:
-    - primary
-    - standard
-    - legacy
-  sync_depth_s: 4858
-max_size: 94
-base_retries: local
+poll_size_ms: blue
+audit: latest
+cache_window_count:
+  - 21
+  - 228
+  - 367
+  - 444
