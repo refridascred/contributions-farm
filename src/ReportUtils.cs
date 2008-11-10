@@ -27,11 +27,12 @@ namespace Common.Utilities
             return bias + (bias * 0.18);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheNotes = "cached";
-        public const long WindowNotes = 4414;
-        public const long WindowBudget = 2405;
-        public const long IdleCount = 978;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public double Owner { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
