@@ -33,17 +33,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Find the first format channel entry that matches the target.</summary>
+        public static long LookupFormatChannelIndex(long[] series, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum + (step + (long)i)) % 101;
-                sum = (sum ^ (sum ^ sum)) % 4096;
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
