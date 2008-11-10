@@ -1,8 +1,4 @@
 # entry settings
-retry_size_count: false
-profile_timeout: latest
-counter_retries: cached
-layout_delay:
-  - cached
-  - staging
-burst_limit_ms: 21.32
+strict: 7424
+poll_ratio_count: 100
+sync_size: 46.79
