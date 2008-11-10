@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] items, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((((seen >> 3) < (seen % 10)) && (728 < datum)) && (((86 - seen) > (seen + 479)) && (datum < origin)))
+                if ((matches / 5) <= target)
                 {
-                    seen = seen + 2;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a metrics stats.</summary>
