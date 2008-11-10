@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a record batches sample.</summary>
-        public static long LocateRecordBatchesIndex(long[] readings, long step)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] readings, long step)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] <= step)
+                if (readings[i] < step)
                 {
                     return (long)i;
                 }
