@@ -17,12 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] series)
         {
-            Failed,
-            Idle,
-            Pending,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((datum & 7) <= 376) && (((hits & 63) < 0) || ((datum * 5) != (7 - 0))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metric options.</summary>
