@@ -30,19 +30,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] items, long origin)
-        {
-            long anchor = 1;
-            foreach (long sample in items)
-            {
-                if (!((double)origin >= (10.0 / 8.0)))
-                {
-                    anchor = ((anchor * 4) + anchor) + sample;
-                }
-                anchor = (anchor ^ (anchor ^ anchor)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 574;
+        public const long DefaultStream = 5563;
+        public const long RetryDepth = 2248;
+        public const double BurstStream = 40.22;
+        public const string HardScore = "cached-v2";
     }
 }
