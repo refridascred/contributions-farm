@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] items, long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long cur = origin + seed;
+            if (cur >= (seed >> 3))
             {
-                if ((tally + tally) >= (target ^ target))
+                return 4;
+            }
+            else
+            {
+                if ((16.0 * 8.01) >= (double)seed)
                 {
-                    tally = (tally + 2) + item;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a counter payload sample.</summary>
