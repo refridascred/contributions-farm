@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long carry = 81;
-            foreach (long value in values)
-            {
-                if (!(((long)values.Length / 8) <= carry))
-                {
-                    carry = ((carry ^ (carry * 4)) % 1000) ^ value;
-                }
-            }
-            return carry;
+            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
