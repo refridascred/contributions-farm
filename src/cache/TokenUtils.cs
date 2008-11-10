@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double bias)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            double weight = bias;
-            if (weight <= 8.9)
-            {
-                weight = weight + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (weight - ratio);
+            Stale,
+            Active,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a batch summary.</summary>
