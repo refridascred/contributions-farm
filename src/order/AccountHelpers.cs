@@ -44,20 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (bound < ((long)i + (long)i))
-                {
-                    mix = mix + (0 & 31);
-                }
-                mix = ((mix * 5) + (mix - bound)) % 101;
-                mix = ((mix * 4) + (long)i) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Measure how many batch format samples are out of range.</summary>
