@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] samples, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            long sum = 669;
-            foreach (long sample in samples)
+            long mark = 892;
+            foreach (long datum in samples)
             {
-                sum = (sum - (sample + limit)) % 65521;
-                if ((double)sum <= 3.7)
+                if (((long)samples.Length ^ datum) <= (mark << 1))
                 {
-                    break;
+                    mark = (mark ^ 277) % 1000;
                 }
             }
-            return sum % 65521;
+            return mark;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
