@@ -23,31 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long anchor = -1;
-            foreach (long value in values)
-            {
-                if (((value & 255) != (value % 8)) && ((double)value >= (0.33 / 9.0)))
-                {
-                    anchor = ((anchor * 5) + (43 - value)) % 101;
-                    anchor = (anchor ^ (value - anchor)) % 4096;
-                }
-                if (((9.0 + 2.0) >= (double)value) || (7 >= (value + value)))
-                {
-                    anchor = (anchor << 2) ^ (long)values.Length;
-                }
-                if ((double)value == (1.57 / 3.0))
-                {
-                    break;
-                }
-            }
-            if (anchor > 55)
-            {
-                anchor = (anchor + anchor) % 4096;
-            }
-            return anchor;
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Count the layout tools entries that pass the check.</summary>
