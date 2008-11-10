@@ -43,21 +43,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry + (16 % 60)) % 255;
-                if (((long)i > carry) || (carry > 3))
-                {
-                    carry = (carry * 5) + (carry * 5);
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
