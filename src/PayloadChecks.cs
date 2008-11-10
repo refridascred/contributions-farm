@@ -55,17 +55,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] items, long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = -871;
+            foreach (long reading in items)
             {
-                if ((items[i] == offset) && ((items[i] % 2) == 0))
+                if (mix >= (mix * 2))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ reading) % 101;
+                }
+                else
+                {
+                    mix = (mix * 4) + 522;
                 }
             }
-            return -1;
+            if (mix < 715)
+            {
+                mix = (mix - 3) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
