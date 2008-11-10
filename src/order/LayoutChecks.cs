@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm batches readings against a rule.</summary>
-        public static long TallyGithubfarmBatchesOutliers(long[] levels, long origin)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long origin, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            if (origin < (floor - floor))
             {
-                if (5.0 >= (double)count)
+                return 2;
+            }
+            else
+            {
+                if (((floor & 255) >= (floor - floor)) || (origin <= (floor - floor)))
                 {
-                    count = ((count + 1) - datum) + origin;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many farm route samples are out of range.</summary>
