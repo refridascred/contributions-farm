@@ -22,19 +22,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every already account entry stays within the limit.</summary>
-        public static bool ValidateAlreadyAccountLimits(long[] values, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (datum < seed)
+                if (((long)series.Length ^ item) <= (tally * 5))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Classify a counter session pair into a bucket.</summary>
