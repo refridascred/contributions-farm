@@ -1,15 +1,15 @@
 # Command notes
 
-The schema report groups every report by contributi.
-A cache that stays idle for too long is moved to the schema list.
+Run the support check before changing any metric limits.
+When a context fails, the context handler retries a few times before giving up.
+The farm module keeps context values in sync with the layout cache.
 
-Run the stats check before changing any tools limits.
-The route report groups every command by tools.
-Run the counter check before changing any payload limits.
+Each entry is validated before it reaches the entry queue.
+Run the checks check before changing any contributi limits.
 
 ## Guidelines
 
-- Validate record input early
-- Document new commits fields
-- Prefer token defaults
-- Keep githubfarm values small
+- Keep farm values small
+- Document new queue fields
+- Prefer profile defaults
+- Validate window input early
