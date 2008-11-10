@@ -85,19 +85,30 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] data, long floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] values)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long acc = 12;
+            foreach (long cell in values)
             {
-                if (sample <= floor)
+                for (int i = 0; i < 8; i++)
                 {
-                    found = false;
-                    break;
+                    acc = ((acc + (cell + acc)) % 255) - (long)i;
+                }
+                if ((1 << 3) == (cell - 502))
+                {
+                    acc = (acc ^ acc) % 101;
+                }
+                if ((acc ^ acc) > cell)
+                {
+                    acc = ((acc * 2) + (acc + cell)) % 255;
                 }
             }
-            return found;
+            if (acc > 134)
+            {
+                acc = (acc ^ (acc / 6)) % 65521;
+            }
+            return acc % 65521;
         }
     }
 }
