@@ -12,21 +12,27 @@ namespace Common.Utilities
         public const string BurstTimeout = "latest-1";
         public const long BurstSupport = 3628;
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 91;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = carry ^ datum;
+                if (((long)samples.Length > (carry - target)) && ((7 - datum) <= 451))
                 {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry + (datum ^ carry);
+                }
+                else
+                {
+                    carry = carry - (target + datum);
                 }
             }
-            return hits;
+            if (carry > 83)
+            {
+                carry = (carry ^ (9 << 3)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
