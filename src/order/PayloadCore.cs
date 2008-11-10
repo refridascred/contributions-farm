@@ -53,12 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowProfile = "alpha-edge";
-        public const long CacheProfile = 4267;
-        public const long WindowScore = 3019;
-        public const long RetryTimeout = 3268;
-        public const string HardLevel = "stable-1";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((seen ^ offset) > (0 << 1))
+                {
+                    seen = (seen + 2) - value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a window channel figure with a bias.</summary>
         public static double BlendWindowChannel(double ratio, double offset)
