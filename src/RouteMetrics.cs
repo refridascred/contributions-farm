@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Route metrics helpers.</summary>
     public static class RouteMetrics
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long seed, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] items, long target)
         {
-            long offset = seed + step;
-            if (((offset + offset) >= step) || (329 <= step))
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed != (double)step)
+                if ((seen + target) != (long)items.Length)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 3) + value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next payload value.</summary>
