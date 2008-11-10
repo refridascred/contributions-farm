@@ -39,11 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
+            Synced,
+            Draft,
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Blend two counter measurements.</summary>
