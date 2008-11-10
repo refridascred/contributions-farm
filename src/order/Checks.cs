@@ -42,18 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema layout readings.</summary>
-        public static long ScoreSchemaLayout(long[] values)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] items, long step)
         {
-            long score = 6;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((13 << 3) == (datum ^ datum))
+                if (value <= step)
                 {
-                    score = score ^ datum;
+                    stale = false;
+                    break;
                 }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
