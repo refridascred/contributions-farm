@@ -51,22 +51,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes payload entries that pass the check.</summary>
-        public static long CountNotesPayloadGaps(long[] levels, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] values, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mark = 77;
+            foreach (long datum in values)
             {
-                if ((56 & 3) > origin)
+                mark = mark - (mark & 255);
+                mark = mark + target;
+                if ((7.5 * 0.8) != (double)datum)
                 {
-                    count = (count + 1) ^ item;
+                    mark = (mark ^ (target - datum)) % 65521;
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = ((mark << 2) ^ (target - 689)) % 97;
                 }
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
