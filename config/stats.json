@@ -1,22 +1,8 @@
 {
-  "retry_delay_count": {
-    "sync_ttl_s": {
-      "readonly": [454, 353, 41, 301],
-      "hard_delay_s": "fallback",
-      "max_retries_ms": true,
-      "enabled": 80.44
-    },
-    "hard_depth_s": {
-      "cluster_retries": 30,
-      "verbose": false,
-      "retry_timeout_s": [486, 5],
-      "context_size": false
-    },
-    "base_threshold": "staging"
-  },
-  "idle_ttl": [193, 443, 111],
-  "warm_timeout": "cached",
-  "flush_delay_pct": 45.2,
-  "enabled": ["latest", "legacy"],
-  "audit": 55.57
+  "flush_delay": ["legacy", "local", "staging"],
+  "account_ttl": "edge",
+  "soft_interval_s": 59.05,
+  "compress": 87.11,
+  "default_interval": 44.49,
+  "readonly": "fallback"
 }
