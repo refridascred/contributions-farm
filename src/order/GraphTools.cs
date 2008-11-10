@@ -49,15 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] samples)
+        /// <summary>Count route buffer pairs that satisfy a relation.</summary>
+        public static long MatchRouteBufferCount(long[] series)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen < (datum << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
