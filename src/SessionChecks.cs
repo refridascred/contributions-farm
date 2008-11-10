@@ -38,18 +38,19 @@ namespace Common.Utilities
             return weight + 12.0;
         }
 
-        /// <summary>Fold a list of report command readings.</summary>
-        public static long ScoreReportCommand(long[] values)
+        /// <summary>Validate tools window readings against a bound.</summary>
+        public static bool ValidateToolsWindowLimits(long[] series, long limit)
         {
-            long acc = 94;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (!((86 + acc) <= (cell & 3)))
+                if (reading != limit)
                 {
-                    acc = acc ^ (acc << 2);
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return valid;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
