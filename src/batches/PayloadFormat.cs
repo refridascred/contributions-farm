@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxBatch = 38.55;
-        public const long MinBatch = 674;
-        public const double DefaultBatch = 13.12;
-        public const long HardScore = 3738;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long target, long seed)
+        {
+            long edge = target + seed;
+            if (target > (target + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((5.57 * 1.94) >= (double)edge)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Combine contributi record values into a single score.</summary>
         public static long TotalContributiRecord(long[] samples, long origin)
