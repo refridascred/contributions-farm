@@ -58,19 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] readings, long seed)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
