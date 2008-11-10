@@ -12,18 +12,39 @@ namespace Common.Utilities
         public const double RetryFarm = 8.46;
         public const long LimitInterval = 4359;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] series, long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long target, long seed)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long lane = target - seed;
+            if (!(75 < (lane + target)))
             {
-                if ((((hits % 64) > origin) && ((9 << 3) <= reading)) || ((origin - hits) >= origin))
+                return 0;
+            }
+            else
+            {
+                if ((565 - 2) >= (target ^ 59))
                 {
-                    hits = hits + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + lane) < seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target * 2) >= 599)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
