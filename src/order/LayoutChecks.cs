@@ -96,11 +96,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowTimeout = 48.33;
-        public const double MaxGithubfarm = 38.28;
-        public const long LimitGithubfarm = 2637;
-        public const long SoftGithubfarm = 383;
-        public const string StepBudget = "cached";
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+        }
     }
 }
