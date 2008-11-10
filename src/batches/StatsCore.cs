@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Failed,
-            Stale,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepSize = "strict-1";
+        public const long RetryMetric = 7419;
+        public const long LimitSize = 7262;
+        public const string BurstDepth = "alpha-1";
+        public const double BaseMetric = 25.42;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmRange(long[] samples, long limit)
