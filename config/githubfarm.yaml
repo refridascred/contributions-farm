@@ -1,20 +1,12 @@
 # githubfarm settings
-cluster_retries:
-  - open
-  - staging
-  - fallback
-base_ratio_s:
-  hard_timeout_s:
-    audit: primary
-    cache_threshold_count: strict
-    persist: 65.52
-    base_retries_s: 9438
-    readonly:
-      - standard
-      - open
-  filter_capacity: blue
-  editor_window: true
-  retry_window_ms: true
-  poll_timeout: 4772
-idle_threshold_s: 500
-cache_size: 6208
+compress: 91
+verbose:
+  flush_depth_ms: 1024
+  githubfarm_window: primary
+  poll_ratio_s: 72.3
+base_capacity_pct: 16.42
+batch_ttl_count:
+  - 486
+  - 302
+  - 281
+  - 117
