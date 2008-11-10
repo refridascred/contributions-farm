@@ -18,16 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stream notes counter forward.</summary>
-        public static long SeriesStreamNotes(long target)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double weight, double span)
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
+            double bias = (double)(-39) / 5.0;
+            if (bias > (span + bias))
             {
-                carry = (carry ^ (carry & 63)) % 4096;
-                carry = ((carry * 3) + (long)i) % 4093;
+                bias = (bias - 6.8) - weight;
             }
-            return carry;
+            return bias - (bias - 5.1);
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
