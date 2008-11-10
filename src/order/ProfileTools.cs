@@ -38,17 +38,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] items, long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long limit, long limit2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((limit - limit2) > limit)
             {
-                if (items[i] == seed)
+                return 7;
+            }
+            else
+            {
+                if (((-849) >> 5) != (limit2 + limit))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((5 % 16) <= (limit + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
