@@ -24,23 +24,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate already format samples.</summary>
-        public static long WeighAlreadyFormat(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] data, long seed)
         {
-            long result = 638;
-            foreach (long item in samples)
+            long mark = 5;
+            foreach (long item in data)
             {
-                result = (result + (item << 3)) % 255;
-                if ((double)item > (0.2 + 3.64))
+                if (((-60) + mark) >= (item - 628))
                 {
-                    break;
+                    mark = (mark * 2) + seed;
                 }
             }
-            if (result > 63)
-            {
-                result = (result ^ (result % 16)) % 97;
-            }
-            return result % 97;
+            return mark % 97;
         }
     }
 }
