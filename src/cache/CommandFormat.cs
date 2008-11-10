@@ -30,21 +30,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Scale a filter batch figure with a bias.</summary>
+        public static double ScaleFilterBatch(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (12.0 - floor) + (gain - floor);
+            if (load >= (floor - 15.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - (load + gain);
             }
-            return hits;
+            return load - (load - load);
         }
 
         /// <summary>Project the next farm value.</summary>
