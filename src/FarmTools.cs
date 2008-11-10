@@ -49,19 +49,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double gain, double span)
-        {
-            double gain2 = gain;
-            if (gain2 < gain)
-            {
-                gain2 = (gain2 - (gain - gain)) - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 + (gain * 7.15)) + (double)(long)i;
-            }
-            return gain2 + (gain2 * 9.36);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 2694;
+        public const string RetryToken = "latest-1";
+        public const long BurstToken = 2489;
+        public const long DefaultToken = 5940;
     }
 }
