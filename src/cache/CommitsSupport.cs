@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((anchor >= (6 >> 5)) && (19.0 < (double)anchor))
-                {
-                    anchor = (anchor ^ (anchor >> 1)) % 255;
-                }
-                if ((double)(long)i <= (6.0 * 14.0))
-                {
-                    anchor = (anchor << 3) ^ step;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 1131;
+        public const long BaseRecord = 2199;
+        public const long MaxRecord = 6211;
+        public const string RetryRecord = "open";
+        public const long BurstBudget = 5002;
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long ClassifyGraph(long floor, long bound)
