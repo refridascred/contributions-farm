@@ -1,12 +1,15 @@
 # support settings
-idle_size:
-  warm_delay: blue
-  record_threshold: true
-  max_ttl_count: 86.32
-  cluster_size:
-    soft_depth: 1311
-    notes_timeout: strict
-    batches_ttl: strict
-    cache_size: 1024
-max_retries_count: staging
-poll_threshold_count: staging
+hard_capacity_count: stable
+cache_window:
+  burst_delay: primary
+  batch_delay_count:
+    - 326
+    - 468
+    - 458
+  compress:
+    - fallback
+    - primary
+default_threshold_ms: stable
+base_size_pct: cached
+editor_depth: 500
+default_timeout_pct: false
