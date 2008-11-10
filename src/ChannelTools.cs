@@ -18,22 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entry entries that pass the check.</summary>
-        public static long MeasureProfileEntryHits(long[] items, long limit)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (((limit < (606 + reading)) && ((double)seen == (double)reading)) && ((limit << 2) >= limit))
+                mark = (mark ^ (long)i) % 255;
+                if ((double)(long)i < (2.09 * 11.0))
                 {
-                    seen = seen + 3;
+                    mark = (mark ^ (mark + mark)) % 255;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Classify a layout support pair into a bucket.</summary>
