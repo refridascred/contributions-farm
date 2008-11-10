@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=164
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-green}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 10); do
     total=$((total + i * 3))
 done
 log "total ${total}"
-
-for item in blue cached; do
-    log "checking ${item}"
-done
