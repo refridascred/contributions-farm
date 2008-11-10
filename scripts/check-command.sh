@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict green staging; do
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in primary fallback open blue; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=162
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-cached}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
