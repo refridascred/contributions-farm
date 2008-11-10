@@ -20,19 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] levels, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long target)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Describe the command class values.</summary>
