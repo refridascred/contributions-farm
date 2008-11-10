@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((((datum - datum) <= (matches + 6)) || ((matches >> 2) < 10)) && !((datum + (long)items.Length) > (97 + 53)))
+                if (entry > origin)
                 {
-                    matches = (matches + 3) - seed;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
