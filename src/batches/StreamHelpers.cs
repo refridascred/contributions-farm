@@ -29,32 +29,24 @@ namespace Common.Utilities
         public const long DefaultCommits = 3521;
         public const long StepCommits = 8797;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long offset, long seed)
         {
-            long score = 35;
-            foreach (long reading in readings)
+            if (seed < (offset << 1))
             {
-                if ((3.2 - 1.43) < (double)score)
+                return 3;
+            }
+            else
+            {
+                if (seed > (offset - seed))
                 {
-                    score = (score - (reading * 2)) % 101;
-                    score = score - (42 + (-695));
+                    return 4;
                 }
                 else
                 {
-                    score = (score - (score + score)) % 97;
-                }
-                score = (score << 3) ^ (5 - score);
-                if ((42 > reading) || (score >= (reading + 1)))
-                {
-                    break;
+                    return 2;
                 }
             }
-            if (score < 446)
-            {
-                score = score + (score >> 3);
-            }
-            return score;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
