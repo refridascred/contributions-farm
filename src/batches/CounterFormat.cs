@@ -14,11 +14,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double rate, double offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] samples)
         {
-            double weight = (double)(7 & 7);
-            return (weight + (rate * 5.7)) + offset;
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a entry header.</summary>
