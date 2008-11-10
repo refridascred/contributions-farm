@@ -1,24 +1,40 @@
 # githubfarm settings
-filter_interval: 91.25
-retry_depth:
-  default_capacity_ms: blue
-  profile_retries:
-    max_interval_s: 8144
-    cache_limit: 500
-    strict: 94.64
-  batch_size: true
-  verbose: 70
-  strict: 4564
-  session_interval:
-    base_ttl_pct: strict
-    max_capacity_s:
-      - 428
-      - 98
-      - 220
-    session_size: staging
-    batch_retries_count: 71
-enabled:
-  - 455
-  - 298
-  - 123
-order_capacity: 52.35
+githubfarm_threshold:
+  - fallback
+  - standard
+  - fallback
+hard_ratio_s: latest
+stats_delay: 30
+soft_capacity_s:
+  default_threshold_ms:
+    default_timeout: 39
+    dry_run:
+      - local
+      - standard
+    base_size_ms: 30
+    route_capacity: staging
+    batch_window:
+      - eu-west
+      - primary
+      - fallback
+  hard_ratio:
+    - latest
+    - strict
+  window_retries:
+    persist: 92
+    compress:
+      - 399
+      - 25
+      - 466
+    dry_run: 100
+    sync_capacity: false
+    min_timeout: edge
+  format_retries:
+    - 266
+    - 284
+    - 428
+    - 229
+  compress: false
+  poll_capacity: 93
+flush_window_pct: false
+channel_delay: fallback
