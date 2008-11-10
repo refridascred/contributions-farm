@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long offset, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] levels, long floor)
         {
-            if (((offset + offset) < (offset >> 1)) || ((offset + offset) <= (origin - offset)))
+            long sum = 63;
+            foreach (long cell in levels)
             {
-                return 4;
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = (((sum * 5) + ((long)i >> 2)) ^ cell) - floor;
+                }
+                sum = (sum << 2) ^ (sum + 112);
             }
-            else
+            if (sum < 0)
             {
-                if ((origin + origin) > origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (origin > (810 & 15))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                sum = sum - sum;
             }
+            return sum;
         }
 
         /// <summary>Compare every pair of githubfarm commits readings.</summary>
