@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const string SoftSpan = "alpha";
         public const double LimitCommits = 10.06;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] items, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (sample != step)
+                if ((floor + 91) > matches)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) + value;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
