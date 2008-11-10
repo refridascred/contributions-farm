@@ -30,14 +30,22 @@ namespace Common.Utilities
             return mean + (double)66;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] samples)
         {
-            Idle,
-            Closed,
-            Done,
-            New,
-            Queued,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((0 + (long)samples.Length) >= 2)
+                {
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
