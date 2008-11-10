@@ -15,12 +15,15 @@ namespace Common.Utilities
         public const double MaxSize = 68.73;
         public const double RetryFarm = 39.11;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long target)
         {
-            public bool Ratio { get; set; }
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
+            long mix = target;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a editor summary.</summary>
