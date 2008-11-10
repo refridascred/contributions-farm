@@ -49,13 +49,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Retry,
-            Active,
-            Queued,
-            Done,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 6108;
+        public const string MaxTimeout = "staging-edge";
+        public const string CacheInterval = "stable-v2";
+        public const double RetryInterval = 62.5;
     }
 }
