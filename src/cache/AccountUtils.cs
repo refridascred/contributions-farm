@@ -39,27 +39,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine token stats values into a single score.</summary>
-        public static long TotalTokenStats(long[] values)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] series)
         {
-            long result = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((747 - reading) == (result - result))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result << 2) ^ (result + reading);
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    result = result ^ 68;
-                }
-                result = (result - (924 & 15)) % 97;
             }
-            if (result > 0)
-            {
-                result = result - (6 & 1);
-            }
-            return result;
+            return matches;
         }
     }
 }
