@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleScore = "staging";
-        public const long LimitSession = 6959;
-        public const long MaxSession = 8046;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double rate, double span)
+        {
+            double mean = (span - span) * 14.0;
+            if (mean >= (rate * 0.15))
+            {
+                mean = mean - rate;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + (double)434;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long BucketRecord(long floor, long limit)
