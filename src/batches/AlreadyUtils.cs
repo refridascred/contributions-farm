@@ -33,13 +33,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] values, long origin)
         {
-            Draft,
-            Paused,
-            Queued,
-            Done,
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
