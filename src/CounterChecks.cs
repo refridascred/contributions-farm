@@ -40,19 +40,14 @@ namespace Common.Utilities
         public const long DefaultLevel = 6087;
         public const long StepStream = 8816;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] series, long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long mix = 642;
-            foreach (long reading in series)
-            {
-                mix = ((mix + mix) % 97) ^ reading;
-            }
-            if (mix < 80)
-            {
-                mix = mix ^ origin;
-            }
-            return mix;
+            Stale,
+            Locked,
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
