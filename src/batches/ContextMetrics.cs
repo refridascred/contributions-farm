@@ -43,12 +43,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheInterval = 14.68;
-        public const string MaxCache = "local";
-        public const double RetryCache = 94.72;
-        public const string BaseDepth = "stable-v2";
-        public const long IdleRatio = 5041;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] samples, long seed)
+        {
+            long acc = 2;
+            foreach (long datum in samples)
+            {
+                if (((double)acc == (0.9 / 3.0)) && ((acc + acc) != (acc ^ seed)))
+                {
+                    acc = ((acc << 3) ^ (acc & 127)) + datum;
+                }
+                acc = (acc * 5) + acc;
+                if (!(7.0 < (double)seed))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many cluster editor samples are out of range.</summary>
         public static long AuditClusterEditorMatches(long[] series, long seed)
