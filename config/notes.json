@@ -1,33 +1,31 @@
 {
-  "persist": 63.15,
-  "sync_retries_pct": ["primary", "staging", "stable", "standard"],
-  "retry_window_count": [121, 85],
-  "burst_retries_ms": {
-    "max_capacity": {
-      "persist": ["standard", "strict"],
-      "batch_capacity": "legacy",
-      "metric_window": 12.42
+  "verbose": {
+    "retry_ratio": {
+      "format_ttl": 1024,
+      "compress": "latest",
+      "idle_window": 74,
+      "batch_size_s": 32.98
     },
-    "burst_depth_s": 7080,
-    "audit": {
-      "persist": 73,
-      "contributi_limit": [184, 362, 200],
-      "verbose": "edge"
-    },
-    "warm_ratio_pct": {
-      "command_ttl": 30.37,
-      "default_threshold": 24.49,
-      "audit": "cached",
-      "default_ttl_ms": 1201,
-      "tools_depth": true
-    },
-    "verbose": {
-      "metric_limit": 25,
-      "max_ratio_count": 37,
-      "default_depth": false,
-      "editor_interval": [367, 177, 451]
+    "stats_limit": "edge",
+    "flush_ttl_s": {
+      "warm_threshold_count": 60,
+      "min_interval": "legacy",
+      "context_retries": "blue",
+      "base_threshold": ["fallback", "blue", "blue"],
+      "default_delay_ms": 11.57,
+      "commits_retries": "edge"
     }
   },
-  "filter_limit": 32.18,
-  "order_ttl": 41.99
+  "persist": 22.15,
+  "poll_ttl": {
+    "default_delay_s": 984,
+    "base_interval_count": {
+      "record_depth": [418, 370],
+      "metrics_capacity": true,
+      "max_capacity": 93,
+      "retry_window": "standard"
+    },
+    "counter_ratio": false,
+    "cluster_depth": 29.12
+  }
 }
