@@ -24,14 +24,19 @@ namespace Common.Utilities
             return drift - (bias - drift);
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] samples, long step)
         {
-            Failed,
-            Closed,
-            Stale,
-            Ready,
-            Queued,
+            long anchor = 63;
+            foreach (long item in samples)
+            {
+                anchor = (((anchor ^ (anchor / 7)) % 255) - item) - step;
+            }
+            if (anchor < 37)
+            {
+                anchor = anchor - (long)samples.Length;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a commits stats.</summary>
