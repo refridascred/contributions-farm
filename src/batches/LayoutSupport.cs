@@ -28,18 +28,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] readings, long limit)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits - datum) <= hits)
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
+            Synced,
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
