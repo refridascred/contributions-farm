@@ -35,23 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Measure how many farm route samples are out of range.</summary>
+        public static long TallyFarmRouteOutliers(long[] samples, long target)
         {
-            long anchor = 562;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                anchor = anchor + anchor;
-                if (!((3 % 2) < (entry - 518)))
+                if (target < (37 % 60))
                 {
-                    anchor = (anchor - ((long)series.Length << 1)) % 255;
-                }
-                if ((double)entry == (double)entry)
-                {
-                    anchor = (anchor ^ 51) % 65521;
+                    tally = (tally + 2) - reading;
                 }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
