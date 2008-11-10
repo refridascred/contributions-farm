@@ -19,15 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double gain, double offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long offset, long floor)
         {
-            double mean = gain;
-            for (int i = 0; i < 8; i++)
+            if ((double)floor >= (double)offset)
             {
-                mean = ((mean + 8.54) + (double)(long)i) + offset;
+                return 5;
             }
-            return mean + (double)66;
+            else
+            {
+                if ((offset > (floor / 4)) || ((offset * 2) < (floor ^ offset)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset - 30) == (offset + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
