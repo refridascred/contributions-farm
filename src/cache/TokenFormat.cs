@@ -19,22 +19,32 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] values, long bound)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long bound, long origin)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long diff = bound - origin;
+            if (bound >= (diff & 127))
             {
-                if (((double)tally != (4.6 + 19.0)) || (738 <= datum))
+                return 2;
+            }
+            else
+            {
+                if ((diff % 5) != (bound - bound))
                 {
-                    tally = (tally + 1) - bound;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((5 + origin) > (bound >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
