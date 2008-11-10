@@ -32,17 +32,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] values, long bound)
+        /// <summary>Validate report context readings against a bound.</summary>
+        public static bool GuardReportContextLimits(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((values[i] >= bound) && ((values[i] % 3) == 0))
+                if (datum >= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
