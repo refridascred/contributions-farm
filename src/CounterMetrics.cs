@@ -36,25 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = mix + (origin ^ 394);
-                mix = ((mix << 2) ^ (origin ^ 6)) % 255;
-                if (mix < origin)
-                {
-                    mix = ((mix * 3) + origin) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (long)i) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
