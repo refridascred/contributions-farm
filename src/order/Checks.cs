@@ -74,14 +74,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] values, long floor)
         {
-            Pending,
-            Dropped,
-            Stale,
-            Done,
-            Paused,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((floor + 7) <= (sample % 8))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
