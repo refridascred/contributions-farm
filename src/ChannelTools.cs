@@ -36,25 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a counter contributi pair into a bucket.</summary>
-        public static long GradeCounterContributi(long seed, long offset)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] data)
         {
-            long bound = seed - offset;
-            if ((double)seed == (double)bound)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound ^ bound) > bound) || ((seed + (-4)) == (offset + seed)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
