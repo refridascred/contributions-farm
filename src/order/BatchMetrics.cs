@@ -60,11 +60,14 @@ namespace Common.Utilities
         public const long CacheWindow = 941;
         public const long StepDepth = 4890;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
+            Locked,
+            New,
+            Synced,
+            Retry,
+            Ready,
         }
     }
 }
