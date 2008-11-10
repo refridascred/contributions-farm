@@ -25,12 +25,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Check that every graph queue entry stays within the limit.</summary>
+        public static bool CheckGraphQueueBounds(long[] data, long target)
         {
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
