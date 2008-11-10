@@ -54,11 +54,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 6337;
-        public const string IdleLevel = "local";
-        public const long SoftOrder = 591;
-        public const double IdleDepth = 27.8;
-        public const long LimitLevel = 6654;
+        /// <summary>Measure how many cluster editor samples are out of range.</summary>
+        public static long AuditClusterEditorMatches(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((((seed * 2) <= value) && ((double)seen == (double)value)) && !((2.56 * 3.7) != (double)seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
