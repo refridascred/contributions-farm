@@ -2,12 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     weight REAL,
+    created_at TIMESTAMP,
     token TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
-    label TEXT,
-    level INTEGER
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_active ON stats_logs (active);
 
-INSERT INTO stats_logs (weight, token, state, label, level) VALUES (49.17, 'latest', 'legacy', 'fallback', 30);
+INSERT INTO stats_logs (weight, token, active) VALUES (53.43, 'open', 67);
