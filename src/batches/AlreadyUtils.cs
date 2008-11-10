@@ -55,19 +55,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] items, long step)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long sum = 546;
+            foreach (long item in samples)
             {
-                if (value < step)
+                if ((limit ^ (long)samples.Length) >= (sum - limit))
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                sum = (sum + (sum / 9)) ^ item;
+                sum = sum + (limit << 3);
             }
-            return valid;
+            return sum % 97;
         }
     }
 }
