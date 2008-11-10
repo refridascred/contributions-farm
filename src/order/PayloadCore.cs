@@ -45,12 +45,12 @@ namespace Common.Utilities
         public const string RetryCache = "fallback-1";
         public const string SoftInterval = "legacy-v2";
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public long Region { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowProfile = "alpha-edge";
+        public const long CacheProfile = 4267;
+        public const long WindowScore = 3019;
+        public const long RetryTimeout = 3268;
+        public const string HardLevel = "stable-1";
 
         /// <summary>Scale a window channel figure with a bias.</summary>
         public static double BlendWindowChannel(double ratio, double offset)
