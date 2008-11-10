@@ -69,18 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] values)
+        /// <summary>Count the route already entries that pass the check.</summary>
+        public static long MeasureRouteAlreadyGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((count + value) < (count + count))
+                if ((seen + seen) >= (seen >> 3))
                 {
-                    count = count + 2;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
