@@ -59,12 +59,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] items)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            long anchor = 938;
+            foreach (long sample in items)
+            {
+                anchor = anchor + sample;
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = ((anchor ^ ((-351) * 4)) % 4096) ^ (long)i;
+                }
+                if ((double)anchor >= (double)sample)
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+            }
+            return anchor;
         }
     }
 }
