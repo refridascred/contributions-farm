@@ -37,15 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] data)
         {
             long tally = 0;
-            foreach (long reading in values)
+            foreach (long value in data)
             {
-                if ((2 - reading) >= reading)
+                if ((tally + value) > (value + tally))
                 {
-                    tally = tally + 2;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
