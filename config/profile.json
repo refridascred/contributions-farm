@@ -1,5 +1,6 @@
 {
-  "format_window": 30,
-  "idle_interval": "edge",
-  "buffer_timeout": "green"
+  "flush_threshold_s": 100,
+  "flush_window_pct": [439, 64, 77, 183],
+  "base_ttl_pct": 55,
+  "poll_window_s": 500
 }
