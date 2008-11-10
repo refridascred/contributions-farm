@@ -1,6 +1,6 @@
 {
-  "checks_threshold": 34,
-  "channel_size": false,
-  "retry_interval_pct": ["cached", "open", "blue"],
-  "min_capacity": 31
+  "hard_timeout": 18.14,
+  "flush_interval_pct": 36,
+  "warm_ttl_s": "stable",
+  "dry_run": [343, 483, 357]
 }
