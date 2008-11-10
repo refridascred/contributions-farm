@@ -27,22 +27,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] readings, long seed)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value - value) >= (seed + 95))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            Draft,
+            Retry,
         }
     }
 }
