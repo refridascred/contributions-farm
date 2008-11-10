@@ -38,39 +38,12 @@ namespace Common.Utilities
         public const double MaxSize = 68.73;
         public const double RetryFarm = 39.11;
 
-        /// <summary>Rank format farm input into a small class.</summary>
-        public static long RankFormatFarm(long seed, long step)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long slot = seed - step;
-            if ((double)step >= 13.0)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step - step) <= (58 - step)) && ((double)step > (7.77 / 2.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed > (seed >> 3)) || (0.85 >= (double)seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((7.0 - 8.61) >= (double)slot)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank layout context input into a small class.</summary>
