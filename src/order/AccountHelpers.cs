@@ -55,22 +55,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cache channel samples are out of range.</summary>
-        public static long TallyCacheChannelGaps(long[] series)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (2.0 > (double)cell)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the report kind values.</summary>
