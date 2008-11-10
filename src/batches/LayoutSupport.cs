@@ -35,17 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 5) + (result - (long)i)) % 1000;
-                result = (result - (long)i) % 65521;
-                result = ((result * 5) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the payload status values.</summary>
