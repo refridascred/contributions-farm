@@ -31,10 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchInterval = "strict";
-        public const long DefaultSpan = 2103;
-        public const long StepCount = 6323;
-        public const long BurstDepth = 5532;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Idle,
+            Stale,
+            Queued,
+            Active,
+        }
     }
 }
