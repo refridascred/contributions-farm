@@ -65,18 +65,13 @@ namespace Common.Utilities
             return ratio - 3.59;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] values)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((-659) <= ((long)values.Length / 4))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            Ready,
+            New,
+            Retry,
+            Queued,
         }
     }
 }
