@@ -14,18 +14,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] values, long limit)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((double)item < (16.0 * 20.0))
-                {
-                    seen = (seen + 2) + limit;
-                }
-            }
-            return seen;
+            Retry,
+            Stale,
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the tools state values.</summary>
