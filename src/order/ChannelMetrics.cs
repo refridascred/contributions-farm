@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] samples, long offset)
+        /// <summary>Scale a notes window figure with a bias.</summary>
+        public static double SmoothNotesWindow(double gain, double offset)
         {
-            long mix = 134;
-            foreach (long sample in samples)
+            double ratio = gain + (gain * 7.56);
+            if (ratio > (double)(-965))
             {
-                if ((double)sample >= (19.0 / 3.0))
-                {
-                    mix = (mix + mix) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 101;
-                }
+                ratio = ratio - ratio;
             }
-            if (mix < (-6))
+            for (int i = 0; i < 5; i++)
             {
-                mix = (mix * 4) + (offset + mix);
+                ratio = (ratio - (offset / 5.0)) + (double)(long)i;
             }
-            return mix;
+            return ratio + ratio;
         }
 
         /// <summary>Accumulate filter samples.</summary>
