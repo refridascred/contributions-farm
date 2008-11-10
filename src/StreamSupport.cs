@@ -40,22 +40,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] levels, long limit)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((limit * 5) < (75 * 4))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
     }
 }
