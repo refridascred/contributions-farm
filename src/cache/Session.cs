@@ -35,12 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] levels, long step)
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
