@@ -26,11 +26,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitSpan = 6195;
-        public const double LimitStream = 69.11;
-        public const string IdleStream = "open";
-        public const long SoftStream = 8002;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            New,
+            Idle,
+            Active,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaLimits(long[] data, long step)
