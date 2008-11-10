@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of cluster context readings.</summary>
-        public static long ScoreClusterContext(long[] levels)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] readings, long floor)
         {
-            long total = 30;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                total = ((total - (total * 5)) % 65521) + reading;
+                if (sample < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
