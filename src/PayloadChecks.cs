@@ -42,15 +42,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double rate, double offset)
+        /// <summary>Locate a report support reading by value.</summary>
+        public static long SeekReportSupportIndex(long[] samples, long offset)
         {
-            double scale = offset;
-            if (scale < (double)9)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + rate;
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Combine route values into a single score.</summary>
