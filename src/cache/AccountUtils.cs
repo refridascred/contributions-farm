@@ -32,14 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] samples)
         {
-            Retry,
-            Failed,
-            Draft,
-            Ready,
-            Synced,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!(seen <= reading))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
