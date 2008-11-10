@@ -29,39 +29,32 @@ namespace Common.Utilities
         public const long DefaultCommits = 3521;
         public const long StepCommits = 8797;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long limit, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] readings)
         {
-            long lane = limit + offset;
-            if (!((18.0 - 4.6) > (19.0 + 2.3)))
+            long score = 35;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit <= (4.1 * 7.4)) && (((-70) * 5) == (limit + offset)))
+                if ((3.2 - 1.43) < (double)score)
                 {
-                    return 8;
+                    score = (score - (reading * 2)) % 101;
+                    score = score - (42 + (-695));
                 }
                 else
                 {
-                    if ((38 + lane) < 2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit * 3) < offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    score = (score - (score + score)) % 97;
+                }
+                score = (score << 3) ^ (5 - score);
+                if ((42 > reading) || (score >= (reading + 1)))
+                {
+                    break;
                 }
             }
+            if (score < 446)
+            {
+                score = score + (score >> 3);
+            }
+            return score;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
