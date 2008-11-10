@@ -65,18 +65,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] readings, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long carry = -8;
+            foreach (long value in data)
             {
-                if (((6.3 / 6.0) < (double)seen) && (((origin - seen) > (seen >> 2)) || ((long)readings.Length > (609 - seen))))
+                if ((target * 4) <= carry)
                 {
-                    seen = (seen + 1) - cell;
+                    carry = carry - carry;
+                }
+                carry = (carry - (carry << 2)) % 1000;
+                if (value > (target + carry))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry < 356)
+            {
+                carry = carry ^ (target - carry);
+            }
+            return carry;
         }
 
         /// <summary>Combine order values into a single score.</summary>
