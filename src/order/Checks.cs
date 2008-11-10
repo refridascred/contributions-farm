@@ -74,20 +74,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema githubfarm value from a seed.</summary>
-        public static long SeriesSchemaGithubfarm(long step)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] items, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (items[i] == target)
                 {
-                    carry = ((carry * 5) + step) - (long)i2;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (step ^ 6)) % 255;
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
     }
 }
