@@ -1,25 +1,6 @@
 {
-  "compress": {
-    "min_threshold_s": false,
-    "warm_retries": ["green", "green"],
-    "channel_delay": {
-      "enabled": [467, 433],
-      "default_limit": 30,
-      "buffer_ratio": true,
-      "warm_depth": 3576,
-      "stats_retries": 95.26
-    },
-    "graph_size": 13,
-    "burst_depth_ms": 500
-  },
-  "hard_ttl": {
-    "default_size_s": "standard",
-    "audit": "eu-west",
-    "soft_window_pct": false,
-    "base_retries_count": 96,
-    "sync_delay_s": "legacy"
-  },
-  "commits_ratio": 40.72,
-  "poll_ttl": "green",
-  "batch_ratio_pct": 91.69
+  "retry_size_s": true,
+  "hard_limit_pct": true,
+  "poll_depth": "open",
+  "flush_ratio": ["open", "green", "blue"]
 }
