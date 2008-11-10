@@ -56,19 +56,18 @@ namespace Common.Utilities
         public const string CacheOrder = "staging-1";
         public const long MaxInterval = 3438;
 
-        /// <summary>Validate channel account readings against a bound.</summary>
-        public static bool GuardChannelAccountLimits(long[] levels, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] values)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (value > limit)
+                if ((value + value) < (tally >> 3))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
