@@ -37,22 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] data)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((tally + value) > (value + tally))
+                if (item != seed)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Fold a list of editor tools readings.</summary>
