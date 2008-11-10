@@ -24,11 +24,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public bool Score { get; set; }
-            public double Level { get; set; }
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
