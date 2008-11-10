@@ -48,24 +48,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long offset, long offset2)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double ratio, double bias)
         {
-            if (((offset + offset2) > (offset - 849)) || ((double)offset2 >= (7.0 / 6.0)))
+            double bias2 = 5.0;
+            if (bias2 > ratio)
             {
-                return 5;
+                bias2 = bias2 + (bias * 0.7);
             }
             else
             {
-                if ((double)offset2 < 7.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
+                bias2 = bias2 - bias2;
             }
+            return bias2 - ratio;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
