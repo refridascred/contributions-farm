@@ -1,21 +1,24 @@
 # entry settings
-idle_retries_ms: 8936
-soft_window_pct:
-  - 348
-  - 23
-  - 341
-cache_delay:
-  - eu-west
-  - strict
-  - standard
-  - primary
-warm_capacity:
-  notes_ttl: 68.47
-  soft_ratio_pct: 27.97
-  cache_window: false
-  poll_capacity: 45.22
-  soft_ratio:
-    - legacy
-    - cached
-    - green
-hard_retries_ms: 43.79
+retry_retries_pct: green
+dry_run: 5926
+burst_ratio_count:
+  checks_size:
+    - staging
+    - standard
+    - primary
+    - stable
+  readonly: stable
+  flush_depth: false
+  default_ttl_ms:
+    max_timeout_count: cached
+    burst_delay_pct: 87.54
+    dry_run: latest
+    verbose:
+      - stable
+      - local
+      - fallback
+    idle_depth_pct: stable
+    audit: blue
+  strict: 8
+base_retries_count: false
+base_timeout: true
