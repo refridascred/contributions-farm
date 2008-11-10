@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] items, long bound)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!((matches >> 2) > (bound % 8)) || ((matches / 6) <= bound))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            Idle,
+            Locked,
+            Closed,
+            Active,
+            Draft,
         }
 
         /// <summary>Fold a list of report readings.</summary>
