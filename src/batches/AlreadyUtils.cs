@@ -26,12 +26,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public double Total { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitSpan = 6195;
+        public const double LimitStream = 69.11;
+        public const string IdleStream = "open";
+        public const long SoftStream = 8002;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricRange(long[] values, long origin)
