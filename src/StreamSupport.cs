@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] series)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public double Mode { get; set; }
+            long mark = 2;
+            foreach (long datum in series)
+            {
+                if ((14.0 - 8.0) < (double)datum)
+                {
+                    mark = (mark * 4) + mark;
+                }
+                if (75 < datum)
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
