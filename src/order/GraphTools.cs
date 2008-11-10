@@ -59,17 +59,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] data, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
