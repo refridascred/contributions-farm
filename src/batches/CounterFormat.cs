@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long LimitSession = 7250;
         public const string BatchDepth = "cached-1";
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] levels, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (((long)levels.Length + floor) > 462)
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCounter = "standard";
+        public const long MaxCounter = 7554;
+        public const long StepCounter = 9249;
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
