@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] items, long floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long offset, long bound)
         {
-            long mark = -51;
-            foreach (long datum in items)
+            long lane = offset - bound;
+            if (!(lane <= (bound % 24)))
             {
-                if ((91 - mark) != (mark + floor))
+                return 2;
+            }
+            else
+            {
+                if (offset >= lane)
                 {
-                    mark = ((mark ^ (floor << 1)) % 65521) ^ datum;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset <= 7.2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (31 >= (bound * 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (mark > 319)
-            {
-                mark = mark - (mark ^ mark);
-            }
-            return mark % 4096;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
