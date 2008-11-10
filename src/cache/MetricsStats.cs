@@ -52,15 +52,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two payload command measurements.</summary>
-        public static double ProjectPayloadCommand(double ratio, double floor)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            double bias = ratio / 9.0;
-            if (bias >= (double)7)
-            {
-                bias = bias + (double)7;
-            }
-            return bias + (floor + floor);
+            Locked,
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
