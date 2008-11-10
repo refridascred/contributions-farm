@@ -17,19 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] levels, long floor)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
