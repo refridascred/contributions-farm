@@ -60,14 +60,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Failed,
-            Paused,
-            Stale,
-            Active,
-            Ready,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 2143;
+        public const double IdleQueue = 78.35;
+        public const long BatchQueue = 518;
     }
 }
