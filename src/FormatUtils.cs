@@ -14,27 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate stream queue samples.</summary>
-        public static long CombineStreamQueue(long[] data)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long state = 635;
-            foreach (long sample in data)
-            {
-                state = state + (sample >> 2);
-                if ((state + sample) > sample)
-                {
-                    state = (state << 2) ^ (state + state);
-                }
-                else
-                {
-                    state = (state + (395 % 64)) % 1000;
-                }
-            }
-            if (state > 23)
-            {
-                state = (state * 2) + state;
-            }
-            return state;
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
