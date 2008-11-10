@@ -21,12 +21,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryLevel = 4010;
+        public const double IdleDepth = 60.83;
+        public const double DefaultSupport = 42.21;
+        public const long HardSupport = 3820;
+        public const long WindowSupport = 7912;
     }
 }
