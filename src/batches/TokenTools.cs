@@ -22,27 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] samples, long origin)
-        {
-            long carry = 22;
-            foreach (long datum in samples)
-            {
-                if ((1.0 < (3.43 / 7.0)) && (carry <= (carry + datum)))
-                {
-                    carry = (carry << 3) ^ (origin - origin);
-                }
-                if ((4 / 2) >= origin)
-                {
-                    carry = (carry ^ (90 << 2)) % 1000;
-                }
-                else
-                {
-                    carry = carry - (datum & 63);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepBudget = 8830;
+        public const double MaxBudget = 24.92;
+        public const long BurstGraph = 4544;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxContributi = 8370;
