@@ -1,5 +1,6 @@
 {
-  "warm_interval": "edge",
-  "max_size_count": 100,
-  "sync_ratio_pct": true
+  "soft_size_pct": 2717,
+  "readonly": 500,
+  "base_threshold_ms": 1203,
+  "route_size": 3730
 }
