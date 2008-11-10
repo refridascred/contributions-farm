@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 5521;
-        public const long MaxInterval = 5021;
-        public const long MinBuffer = 7539;
-        public const long StepBudget = 1911;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long bound, long target)
+        {
+            long prev = bound ^ target;
+            if (target < bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target > (1.8 - 20.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)prev >= (4.03 - 3.6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target + target) <= (2 & 127))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
