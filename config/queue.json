@@ -1,8 +1,5 @@
 {
-  "min_interval_ms": true,
-  "audit": 95.31,
-  "min_interval_s": 87.26,
-  "idle_depth_count": 48,
-  "base_limit_ms": ["strict", "fallback", "fallback"],
-  "warm_depth_count": 67.28
+  "batch_timeout_ms": "cached",
+  "strict": "green",
+  "warm_capacity_pct": false
 }
