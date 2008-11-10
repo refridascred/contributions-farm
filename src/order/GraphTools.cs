@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long limit)
+        /// <summary>Validate report buffer readings against a bound.</summary>
+        public static bool CheckReportBufferRange(long[] data, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if (reading > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
