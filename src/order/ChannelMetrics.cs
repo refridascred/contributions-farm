@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] levels)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double drift = bias;
+            if (drift >= 4.56)
             {
-                if (!((sample * 2) >= ((-608) << 3)) || (((sample >> 5) != (matches + sample)) || ((sample - sample) >= sample)))
-                {
-                    matches = matches + 2;
-                }
+                drift = (drift + 9.9) - gain;
             }
-            return matches;
+            else
+            {
+                drift = drift + (0.4 - 7.35);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (drift / 9.0)) - (double)(long)i;
+            }
+            return drift - (bias - drift);
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
