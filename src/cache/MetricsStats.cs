@@ -37,12 +37,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] values, long bound)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            long sum = 691;
+            foreach (long item in values)
+            {
+                if (!((double)item >= (11.0 - 6.55)))
+                {
+                    sum = (sum + (item ^ item)) - bound;
+                }
+                else
+                {
+                    sum = sum - (item + sum);
+                }
+            }
+            if (sum > (-6))
+            {
+                sum = (sum * 5) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
