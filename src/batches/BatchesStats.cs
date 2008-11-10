@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            long total = 8;
+            foreach (long item in readings)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if ((double)total <= (6.5 - 1.2))
+                {
+                    total = total - 6;
+                }
+                total = ((total << 2) ^ (item + total)) % 1000;
+                if (item >= (item & 127))
+                {
+                    total = total - ((-444) + 3);
+                }
+                else
+                {
+                    total = ((total << 2) ^ total) % 4096;
+                }
             }
-            return result;
+            if (total > 25)
+            {
+                total = (total << 2) ^ (28 + 43);
+            }
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
