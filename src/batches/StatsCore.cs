@@ -27,12 +27,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Done,
-            Queued,
-            Active,
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine cache values into a single score.</summary>
