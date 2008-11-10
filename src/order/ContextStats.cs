@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double gain, double floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double scale = (floor * 17.0) * 9.54;
-            if (scale < (double)37)
-            {
-                scale = scale - (floor - scale);
-            }
-            else
-            {
-                scale = scale - (double)(-6);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (scale + 10.0)) - (double)(long)i;
-            }
-            return scale + gain;
+            Failed,
+            Ready,
+            Idle,
+            Stale,
+            Paused,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
