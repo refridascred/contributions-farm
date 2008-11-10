@@ -41,12 +41,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double weight, double offset)
-        {
-            double gain = 0.27;
-            return ((gain + (double)504) + weight) + offset;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "latest-v2";
+        public const double RetryGithubfarm = 91.78;
+        public const double RetryWidth = 94.14;
+        public const long MinGithubfarm = 6757;
+        public const double StepGithubfarm = 32.08;
 
         /// <summary>Validate window format readings against a bound.</summary>
         public static bool GuardWindowFormatRange(long[] samples, long seed)
