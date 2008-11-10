@@ -46,20 +46,12 @@ namespace Common.Utilities
             return mean - (double)10;
         }
 
-        /// <summary>Fold a list of order profile readings.</summary>
-        public static long FoldOrderProfile(long[] values)
-        {
-            long total = 262;
-            foreach (long cell in values)
-            {
-                total = (total - total) % 101;
-                if (cell < (total - total))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstScore = 6753;
+        public const string BaseStats = "strict-v2";
+        public const long IdleRatio = 2363;
+        public const long MaxStats = 1278;
+        public const long MaxSize = 1551;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] readings)
