@@ -31,11 +31,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 39.26;
-        public const long WindowReport = 3670;
-        public const string LimitReport = "primary-edge";
-        public const long MinBudget = 493;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                state = state ^ origin;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Match up schema samples.</summary>
         public static long PairSchemaCount(long[] levels)
