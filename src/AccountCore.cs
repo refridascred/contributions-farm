@@ -62,17 +62,32 @@ namespace Common.Utilities
         public const string HardChecks = "cached";
         public const long WindowDepth = 6757;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] values, long step)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((values[i] == step) && ((values[i] % 5) != 0))
+                if ((result * 5) >= (result + result))
                 {
-                    return (long)i;
+                    result = (result - (9 + result)) % 4096;
+                    result = (result << 3) ^ (result + (-9));
                 }
+                if (((double)result != (3.0 * 4.5)) && ((target >> 3) < (target + result)))
+                {
+                    result = (result * 2) + (result / 9);
+                }
+                else
+                {
+                    result = result ^ target;
+                }
+                if (((target / 4) <= (result & 255)) && ((double)(long)i <= (double)result))
+                {
+                    result = (result ^ ((long)i + (long)i)) % 65521;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a metrics info.</summary>
