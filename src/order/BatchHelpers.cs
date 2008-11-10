@@ -37,19 +37,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstScore = 69.1;
+        public const string LimitFarm = "stable-1";
+        public const long RetryFarm = 2242;
+        public const double MinFarm = 2.46;
     }
 }
