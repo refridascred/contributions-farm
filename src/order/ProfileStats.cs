@@ -10,11 +10,39 @@ namespace Common.Utilities
         public const long LimitSession = 6959;
         public const long MaxSession = 8046;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 7325;
-        public const string CacheFactor = "staging-1";
-        public const long SoftInterval = 8266;
-        public const double DefaultAlready = 6.16;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long floor, long limit)
+        {
+            if (((8.0 * 16.0) < (double)floor) && ((floor << 2) >= (limit & 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((0.8 / 8.0) > (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - floor) > (limit + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (11.0 + 19.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionOutliers(long[] series, long bound)
