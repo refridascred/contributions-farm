@@ -1,7 +1,7 @@
 {
-  "commits_depth": "latest",
-  "strict": [119, 399, 129, 69],
-  "dry_run": "local",
-  "enabled": true,
-  "readonly": [342, 124]
+  "strict": false,
+  "verbose": 60,
+  "command_ratio": 29.69,
+  "soft_delay": "stable",
+  "audit": "strict"
 }
