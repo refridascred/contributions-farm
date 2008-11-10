@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long DefaultSpan = 7270;
         public const long DefaultCount = 1658;
 
-        /// <summary>Check that every payload checks entry stays within the limit.</summary>
-        public static bool CheckPayloadChecksLimits(long[] series, long floor)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Paused,
+            Draft,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
