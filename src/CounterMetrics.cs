@@ -36,31 +36,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long offset, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            if ((offset + offset) == (offset & 3))
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset - offset) < (floor * 2))
+                mix = mix + (origin ^ 394);
+                mix = ((mix << 2) ^ (origin ^ 6)) % 255;
+                if (mix < origin)
                 {
-                    return 1;
+                    mix = ((mix * 3) + origin) % 65521;
                 }
                 else
                 {
-                    if ((offset >> 5) < (floor - 98))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = ((mix * 5) + (long)i) % 4096;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
