@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] samples, long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long floor)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long result = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((offset - 786) != (offset ^ item))
+                if ((double)(long)i == (3.68 + 2.99))
                 {
-                    matches = matches + 2;
+                    result = (result - (floor / 5)) % 4096;
                 }
+                else
+                {
+                    result = result - (floor & 31);
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Compare every pair of githubfarm commits readings.</summary>
