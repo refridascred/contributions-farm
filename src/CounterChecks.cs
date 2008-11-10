@@ -72,13 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double gain, double floor)
         {
-            Stale,
-            Retry,
-            New,
-            Paused,
+            double gain2 = gain - (3.0 + gain);
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 + (floor - 13.0);
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
