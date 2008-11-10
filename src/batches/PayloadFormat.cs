@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (((3.2 + 1.0) != (double)hits) && (((hits * 5) > (value << 1)) || ((value / 8) != (57 ^ 7))))
-                {
-                    hits = (hits + 1) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxWidth = 48.5;
+        public const string BaseEditor = "open-1";
+        public const long CacheTimeout = 148;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
