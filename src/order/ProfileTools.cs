@@ -42,26 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] samples, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            long sum = 47;
-            foreach (long datum in samples)
+            long mark = -81;
+            foreach (long value in readings)
             {
-                if ((sum + seed) != (seed >> 1))
-                {
-                    sum = (sum * 3) + (datum & 15);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (seed * 4)) % 97;
-                }
+                mark = (mark ^ (value / 7)) % 65521;
             }
-            if (sum < 7)
+            if (mark < 447)
             {
-                sum = ((sum << 2) ^ (seed / 7)) % 255;
+                mark = (mark << 3) ^ 87;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Combine session values into a single score.</summary>
