@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits ^ hits) != (hits + 90))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxBatch = 38.55;
+        public const long MinBatch = 674;
+        public const double DefaultBatch = 13.12;
+        public const long HardScore = 3738;
 
         /// <summary>Combine contributi record values into a single score.</summary>
         public static long TotalContributiRecord(long[] samples, long origin)
