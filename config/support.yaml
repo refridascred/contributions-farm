@@ -1,15 +1,20 @@
 # support settings
-hard_capacity_count: stable
-cache_window:
-  burst_delay: primary
-  batch_delay_count:
-    - 326
-    - 468
-    - 458
-  compress:
-    - fallback
-    - primary
-default_threshold_ms: stable
-base_size_pct: cached
-editor_depth: 500
-default_timeout_pct: false
+audit: 6166
+channel_ttl: 86.6
+min_retries_s:
+  - local
+  - edge
+compress:
+  batch_ratio: 9247
+  strict: false
+  warm_delay_pct:
+    poll_depth_ms: true
+    strict: false
+    flush_retries:
+      - primary
+      - fallback
+    session_threshold:
+      - 19
+      - 318
+    dry_run: primary
+  batch_size_s: cached
