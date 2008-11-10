@@ -43,25 +43,21 @@ namespace Common.Utilities
         public const double SoftSize = 0.91;
         public const string IdleWindow = "staging-edge";
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long offset = (long)i;
-                if (floor < (offset + offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    offset = (offset << 3) ^ offset;
+                    if ((series[i] ^ series[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    score = (score * 5) + (69 / 5);
-                    offset = (offset - (offset + 3)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
