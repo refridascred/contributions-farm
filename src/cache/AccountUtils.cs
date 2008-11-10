@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] data, long limit)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((hits - 9) < (entry + entry)) || (entry > (limit ^ entry)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
