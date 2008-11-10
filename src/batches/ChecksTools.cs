@@ -34,19 +34,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate format commits readings against a bound.</summary>
-        public static bool ValidateFormatCommitsBounds(long[] data, long floor)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Ready,
+            Active,
+            Locked,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
