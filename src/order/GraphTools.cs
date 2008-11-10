@@ -31,22 +31,12 @@ namespace Common.Utilities
             return bias2 - weight;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] samples, long limit)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!(reading > (reading - seen)) || ((44 & 3) <= (limit + 103)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count route buffer pairs that satisfy a relation.</summary>
