@@ -38,15 +38,11 @@ namespace Common.Utilities
         public const string LimitTimeout = "strict";
         public const long BurstBuffer = 4646;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double rate, double span)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double gain = span;
-            if (gain <= gain)
-            {
-                gain = (gain - span) - rate;
-            }
-            return gain + span;
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
