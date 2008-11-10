@@ -39,13 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Queued,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 35.48;
+        public const string MaxCount = "primary-1";
+        public const long MaxCache = 7296;
+        public const long WindowDepth = 7847;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] samples, long seed)
