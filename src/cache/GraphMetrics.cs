@@ -44,10 +44,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 1327;
-        public const long RetryInterval = 7877;
-        public const string StepSize = "strict-1";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 6155;
+        public const double BurstLayout = 46.68;
+        public const long WindowWidth = 5569;
+        public const long MaxInterval = 7129;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
