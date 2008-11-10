@@ -64,9 +64,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 2143;
-        public const double IdleQueue = 78.35;
-        public const long BatchQueue = 518;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchChecks = 91.0;
+        public const string DefaultSpan = "strict";
+        public const double WindowChecks = 50.87;
+        public const long SoftLevel = 139;
     }
 }
