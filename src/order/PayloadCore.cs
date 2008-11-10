@@ -52,11 +52,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Scale a window channel figure with a bias.</summary>
+        public static double BlendWindowChannel(double ratio, double offset)
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            double drift = ratio;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = ((drift + (double)640) + (double)(long)i) + offset;
+            }
+            return drift - (double)24;
         }
     }
 }
