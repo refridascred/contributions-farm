@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] series, long limit)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Closed,
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a batch summary.</summary>
