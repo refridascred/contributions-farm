@@ -20,11 +20,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRatio = 1860;
-        public const string IdleRecord = "local-edge";
-        public const long RetryRatio = 1174;
-        public const string BaseSpan = "stable-v2";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] readings, long floor)
+        {
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteGaps(long[] items, long offset)
