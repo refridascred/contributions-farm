@@ -42,12 +42,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] items, long offset)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] >= offset) && ((items[i] % 2) != 0))
+                if (readings[i] == target)
                 {
                     return (long)i;
                 }
