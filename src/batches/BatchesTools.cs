@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Rank context contributi input into a small class.</summary>
+        public static long SortContextContributi(long seed, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
+            if (seed > step)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                return 1;
             }
-            return state;
+            else
+            {
+                if (((step / 8) < seed) || ((seed >> 4) < (step << 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed * 5) >= seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate channel samples.</summary>
