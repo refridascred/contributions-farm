@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mix = ((mix + mix) % 255) - (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
