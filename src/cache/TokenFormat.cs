@@ -15,13 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
