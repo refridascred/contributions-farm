@@ -37,26 +37,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Classify a counter session pair into a bucket.</summary>
+        public static long SortCounterSession(long origin, long limit)
         {
-            long mix = 25;
-            foreach (long datum in levels)
+            if ((double)origin < 19.0)
             {
-                if ((datum ^ mix) < (mix + 208))
+                return 5;
+            }
+            else
+            {
+                if (limit <= (limit - origin))
                 {
-                    mix = mix - (mix - mix);
+                    return 2;
                 }
-                if ((69 << 2) < (datum + datum))
+                else
                 {
-                    mix = ((mix << 3) ^ (mix & 63)) % 101;
-                }
-                if ((70 <= (datum << 3)) || (datum <= mix))
-                {
-                    break;
+                    if ((origin <= (limit * 2)) && ((origin * 4) < (1 % 24)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Accumulate schema samples.</summary>
