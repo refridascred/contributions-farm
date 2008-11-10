@@ -47,18 +47,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm tools entries that pass the check.</summary>
-        public static long AuditFarmToolsOutliers(long[] samples, long step)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-1) * 3) <= tally)
+                if ((items[i] >= origin) && ((items[i] % 3) == 0))
                 {
-                    tally = ((tally + 1) - datum) + step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
