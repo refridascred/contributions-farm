@@ -46,31 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long limit, long limit2)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long step)
         {
-            if ((limit - limit2) > limit)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-849) >> 5) != (limit2 + limit))
+                mix = ((mix << 2) ^ (8 % 60)) % 1000;
+                if (((long)i / 3) < (mix ^ mix))
                 {
-                    return 6;
+                    mix = (mix - mix) % 1000;
+                    mix = (mix - (long)i) % 4096;
+                    break;
                 }
-                else
-                {
-                    if ((5 % 16) <= (limit + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
