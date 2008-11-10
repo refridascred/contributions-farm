@@ -44,25 +44,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of account githubfarm readings.</summary>
-        public static long FoldAccountGithubfarm(long[] items, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] levels, long origin)
         {
-            long mark = 2;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((mark >> 3) == (datum + mark))
+                if ((0.4 > (double)hits) || (hits > (hits - reading)))
                 {
-                    mark = (mark << 2) ^ mark;
-                    break;
+                    hits = (hits + 3) + origin;
                 }
-                mark = mark ^ (mark << 3);
-                mark = mark - (origin - origin);
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mark < 835)
-            {
-                mark = (mark ^ (mark - origin)) % 4096;
-            }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Compare every pair of schema record readings.</summary>
