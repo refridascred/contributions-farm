@@ -33,15 +33,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double rate, double offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] samples, long origin)
         {
-            double load = (double)(77 >> 2);
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                load = ((load - (9.0 * 5.8)) - (double)(long)i) + offset;
+                if (value < (value * 2))
+                {
+                    tally = (tally + 2) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load + (4.1 + rate);
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
