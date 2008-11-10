@@ -1,15 +1,8 @@
 {
-  "persist": {
-    "hard_delay": "standard",
-    "dry_run": 9.66,
-    "cache_depth_s": "primary"
-  },
-  "max_size_pct": 9022,
-  "route_ratio": {
-    "burst_depth": "cached",
-    "audit": 60,
-    "soft_retries_ms": "latest",
-    "dry_run": "strict"
-  },
-  "profile_ttl": "legacy"
+  "format_ttl": ["blue", "staging"],
+  "enabled": false,
+  "dry_run": 99,
+  "persist": 28,
+  "cache_capacity_s": "blue",
+  "max_retries_ms": [208, 307]
 }
