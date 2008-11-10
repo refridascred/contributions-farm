@@ -28,26 +28,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] samples, long floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long score = -614;
-            foreach (long cell in samples)
-            {
-                if (floor >= score)
-                {
-                    score = ((score << 3) ^ floor) % 4096;
-                }
-                if (!((cell << 2) <= score))
-                {
-                    break;
-                }
-            }
-            if (score < 5)
-            {
-                score = score + (floor - floor);
-            }
-            return score % 1000;
+            Ready,
+            Pending,
+            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
