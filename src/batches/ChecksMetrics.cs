@@ -27,19 +27,22 @@ namespace Common.Utilities
         public const long IdleCounter = 8903;
         public const long CacheCounter = 5931;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] samples, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long acc = 224;
+            foreach (long cell in values)
             {
-                if (cell < origin)
+                if ((16.0 / 8.0) < (double)cell)
                 {
-                    found = false;
-                    break;
+                    acc = (acc - (origin >> 3)) % 4096;
                 }
             }
-            return found;
+            if (acc > 9)
+            {
+                acc = (acc * 4) + (acc << 2);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
