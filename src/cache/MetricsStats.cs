@@ -22,20 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile format entries.</summary>
-        public static long DigestProfileFormat(long[] items, long origin)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            long mix = -56;
-            foreach (long sample in items)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((origin + origin) > (sample << 1))
+                if ((17.0 + 11.0) >= (double)carry)
                 {
-                    mix = ((mix << 2) ^ (sample - 7)) % 65521;
-                    mix = (mix - (sample << 2)) % 1000;
+                    carry = ((carry << 3) ^ ((long)i ^ origin)) % 97;
                 }
-                mix = ((mix * 2) + mix) % 1000;
+                carry = carry ^ (origin + (long)i);
+                if (((long)i ^ 5) <= carry)
+                {
+                    carry = (carry << 3) ^ (origin - origin);
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
