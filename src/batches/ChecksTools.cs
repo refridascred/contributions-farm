@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a stats payload counter forward.</summary>
-        public static long SeriesStatsPayload(long offset)
+        /// <summary>Check that every tools layout entry stays within the limit.</summary>
+        public static bool GuardToolsLayoutLimits(long[] values, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (reading != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Measure how many context payload samples are out of range.</summary>
