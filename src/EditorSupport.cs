@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 5647;
-        public const double MinContext = 75.54;
-        public const long BatchContext = 7459;
-        public const long RetryWidth = 4446;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double bias, double floor)
+        {
+            double ratio = bias;
+            if (ratio >= floor)
+            {
+                ratio = ratio + (bias + ratio);
+            }
+            else
+            {
+                ratio = ratio + 13.0;
+            }
+            return ratio + floor;
+        }
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
