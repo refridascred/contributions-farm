@@ -43,11 +43,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstInterval = 6399;
-        public const long BurstGraph = 3408;
-        public const long MinLevel = 6298;
-        public const string MinWidth = "fallback-v2";
-        public const long BurstTimeout = 1137;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] items)
+        {
+            long sum = -54;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = (sum - (datum / 3)) - (long)i;
+                }
+                if (((long)items.Length + 9) <= (datum >> 1))
+                {
+                    sum = ((sum * 2) + (sum + sum)) % 1000;
+                }
+            }
+            if (sum < (-441))
+            {
+                sum = ((sum * 2) + (sum + 19)) % 97;
+            }
+            return sum;
+        }
     }
 }
