@@ -64,14 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Retry,
-            Paused,
-            Stale,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstWidth = 759;
+        public const double MinLevel = 38.6;
+        public const string IdleDepth = "primary-edge";
+        public const long MinBudget = 7833;
+        public const long LimitTimeout = 5270;
     }
 }
