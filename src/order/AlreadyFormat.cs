@@ -23,21 +23,38 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] series)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long step, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)seed == (8.0 / 3.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((step ^ step) != (37 & 3)) && ((16 - seed) >= seed))
                 {
-                    if ((series[i] ^ series[j]) > 5)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step >= 6.5)
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((6.49 / 2.0) <= (double)seed) || ((68 + seed) < step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the payload kind values.</summary>
