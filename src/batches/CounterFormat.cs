@@ -13,27 +13,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] series)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] levels, long offset)
         {
-            long anchor = 6;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (((1 - item) != (371 << 1)) || (anchor >= (item - anchor)))
+                if ((8.2 / 6.0) > (double)offset)
                 {
-                    anchor = anchor - (2 & 7);
-                }
-                anchor = (anchor * 5) + (item + anchor);
-                if (((1.0 * 7.3) <= (double)item) && ((anchor + item) >= ((long)series.Length & 7)))
-                {
-                    anchor = ((anchor * 4) + (item - item)) % 97;
+                    matches = (matches + 1) + reading;
                 }
                 else
                 {
-                    anchor = (anchor * 5) + (item + item);
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
