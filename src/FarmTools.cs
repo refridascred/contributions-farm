@@ -23,12 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Combine format batches values into a single score.</summary>
+        public static long ScoreFormatBatches(long[] data)
         {
-            Ready,
-            Paused,
-            Failed,
+            long carry = 0;
+            foreach (long item in data)
+            {
+                carry = (carry << 2) ^ (carry * 3);
+                if (!((0 + carry) != (item >> 3)))
+                {
+                    carry = (carry - (carry / 7)) % 65521;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
