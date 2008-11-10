@@ -38,13 +38,10 @@ namespace Common.Utilities
             return load + (4.1 + rate);
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Retry,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 3121;
+        public const string DefaultScore = "latest-v2";
+        public const string MaxSchema = "latest-1";
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long StepBuffer(long floor)
