@@ -27,19 +27,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate report context readings against a bound.</summary>
-        public static bool GuardReportContextLimits(long[] levels, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (datum >= offset)
+                if (((double)tally != (4.6 + 19.0)) || (738 <= datum))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
