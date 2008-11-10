@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double scale, double offset)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] items, long seed)
         {
-            double weight = (offset + offset) + (offset * 8.0);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = ((weight + (10.0 * 8.9)) + (double)(long)i) - scale;
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (double)134;
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
