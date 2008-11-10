@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] values, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] values, long offset)
         {
-            long carry = -938;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((cell + carry) == (carry / 3))
+                if (!((double)offset > (2.3 * 13.0)))
                 {
-                    carry = (((carry * 3) + 5) % 97) + origin;
+                    count = (count + 1) + value;
                 }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
