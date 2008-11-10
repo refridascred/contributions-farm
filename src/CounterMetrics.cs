@@ -57,13 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Count the cache githubfarm entries that pass the check.</summary>
+        public static long AuditCacheGithubfarmOutliers(long[] items)
         {
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((reading >> 1) > (hits >> 4))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
