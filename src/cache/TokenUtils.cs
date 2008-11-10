@@ -20,17 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long limit)
+        /// <summary>Combine command schema values into a single score.</summary>
+        public static long WeighCommandSchema(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 53;
+            foreach (long reading in readings)
             {
-                if ((readings[i] < limit) && ((readings[i] % 5) == 0))
+                sum = ((sum * 5) + (origin + reading)) % 4096;
+                if ((double)sum >= (8.25 * 13.0))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (sum > 624)
+            {
+                sum = ((sum * 3) + (origin % 16)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
