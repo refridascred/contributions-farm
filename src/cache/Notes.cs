@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long origin, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
+            long prev = origin ^ bound;
+            if ((3.2 - 9.18) > (double)prev)
+            {
+                return 5;
+            }
+            else
+            {
+                if (19.0 >= (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + bound) < (prev - (-8)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((prev / 2) > prev))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route state values.</summary>
