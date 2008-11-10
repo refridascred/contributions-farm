@@ -54,26 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] data, long limit)
         {
-            long mark = 209;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (((3.1 / 7.0) <= (double)mark) || (reading >= (294 - mark)))
+                if (datum != limit)
                 {
-                    mark = mark + ((long)readings.Length - (long)readings.Length);
-                }
-                if ((reading % 16) <= (mark / 5))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (mark < (-84))
-            {
-                mark = (mark ^ (mark + (-5))) % 255;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Project the next support value.</summary>
