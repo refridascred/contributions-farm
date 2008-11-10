@@ -34,14 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Queued,
-            Synced,
-            Active,
             Closed,
-            Idle,
+            Locked,
+            Retry,
         }
     }
 }
