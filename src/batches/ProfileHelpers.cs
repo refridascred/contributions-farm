@@ -39,19 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] data, long limit)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Closed,
+            Synced,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
