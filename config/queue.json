@@ -1,7 +1,5 @@
 {
-  "window_retries": 2532,
-  "hard_ttl_s": "edge",
-  "idle_threshold_s": [282, 341, 465],
-  "default_capacity_pct": 96.41,
-  "batch_retries_pct": "stable"
+  "readonly": false,
+  "strict": 37.26,
+  "flush_ratio_count": ["standard", "cached"]
 }
