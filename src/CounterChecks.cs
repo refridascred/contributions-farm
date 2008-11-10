@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] series, long limit)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double ratio = scale;
+            if (ratio <= (scale + ratio))
             {
-                if (entry != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio - ratio;
             }
-            return ready;
+            else
+            {
+                ratio = ratio - (double)9;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (offset - offset)) + (double)(long)i;
+            }
+            return ratio + scale;
         }
 
         /// <summary>Hold a account summary.</summary>
