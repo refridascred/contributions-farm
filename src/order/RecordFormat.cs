@@ -39,19 +39,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate metric buffer readings against a bound.</summary>
-        public static bool ValidateMetricBufferRange(long[] items, long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long target)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (value >= origin)
+                if (!((double)810 > (double)(long)i))
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor * 2) + anchor) % 4096;
                 }
+                else
+                {
+                    anchor = ((anchor * 3) + (anchor + target)) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Roll a batch already counter forward.</summary>
