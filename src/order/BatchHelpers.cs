@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ((load - (double)77) + ratio) + bias;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] values, long floor)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
