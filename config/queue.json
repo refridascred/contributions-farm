@@ -1,15 +1,14 @@
 {
-  "poll_ttl_ms": 30,
-  "verbose": {
-    "audit": 97.07,
-    "cluster_limit": {
-      "idle_timeout_s": "local",
-      "retry_timeout_pct": 1024,
-      "audit": 7068,
-      "enabled": 5
-    },
-    "warm_window": true
-  },
-  "default_delay": 3.84,
-  "window_timeout": "stable"
+  "min_limit_pct": false,
+  "enabled": 84.62,
+  "default_capacity_pct": "strict",
+  "dry_run": "standard",
+  "min_capacity": [109, 242, 304],
+  "compress": {
+    "flush_retries": ["legacy", "strict", "green", "local"],
+    "max_delay_ms": "eu-west",
+    "hard_ratio_pct": 10,
+    "entry_window": 53.86,
+    "verbose": [149, 410, 195]
+  }
 }
