@@ -23,17 +23,11 @@ namespace Common.Utilities
             return mean + (3.1 / 6.0);
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] data, long origin)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = bias;
+            return (bias2 - bias) + ratio;
         }
     }
 }
