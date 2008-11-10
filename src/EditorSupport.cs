@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a farm layout sample.</summary>
-        public static long FindFarmLayoutIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 5647;
+        public const double MinContext = 75.54;
+        public const long BatchContext = 7459;
+        public const long RetryWidth = 4446;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
