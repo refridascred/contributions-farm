@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long target, long limit)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double gain, double floor)
         {
-            long step = target + limit;
-            if ((limit % 5) > ((-71) % 2))
+            double rate = (double)(0 & 3);
+            if (rate < 0.37)
             {
-                return 1;
+                rate = (rate - (double)657) + gain;
             }
-            else
-            {
-                if ((step > (limit >> 3)) && ((target % 7) >= (target / 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((target >> 2) == (step + limit)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return rate + floor;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
