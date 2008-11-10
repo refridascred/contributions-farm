@@ -50,15 +50,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long floor, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
+            if (origin < (floor << 1))
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((double)origin > (5.67 * 9.73))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor & 63) < 70)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin & 31) == (origin + origin)) && ((origin >> 2) < floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
