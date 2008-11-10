@@ -56,13 +56,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Compare every pair of schema record readings.</summary>
+        public static long CompareSchemaRecordCount(long[] readings)
         {
-            Pending,
-            New,
-            Synced,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
