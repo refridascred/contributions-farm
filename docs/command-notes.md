@@ -1,14 +1,11 @@
 # Command notes
 
-Keep editor and route names short and lowercase.
-Defaults for payload live in the config folder and can be overridden per environment.
-
-Use profile settings to tune how often batch data is refreshed.
-Each session is validated before it reaches the githubfarm queue.
-Keep farm and notes names short and lowercase.
+The buffer module keeps metrics values in sync with the cache cache.
+The metric module keeps metrics values in sync with the graph cache.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Log every support change
-- Validate batches input early
+- Review farm limits each release
+- Validate format input early
+- Document new cluster fields
+- Log every tools change
