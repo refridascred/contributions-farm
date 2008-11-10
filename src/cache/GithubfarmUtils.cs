@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 3004;
-        public const long LimitBudget = 1553;
-        public const double BatchWidth = 16.65;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
