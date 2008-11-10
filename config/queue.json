@@ -1,8 +1,5 @@
 {
-  "audit": "cached",
-  "verbose": "local",
-  "sync_depth": 89.79,
-  "stats_depth": 2756,
-  "githubfarm_window": "stable",
-  "poll_size": "eu-west"
+  "soft_size_pct": [144, 495, 234],
+  "batch_retries_ms": "open",
+  "githubfarm_timeout": true
 }
