@@ -20,14 +20,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Failed,
-            Closed,
-            Dropped,
-            Queued,
-            Draft,
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
