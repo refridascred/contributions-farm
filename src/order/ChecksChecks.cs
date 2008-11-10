@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 185;
-        public const long StepContext = 6841;
-        public const double IdleContext = 21.59;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double bias, double span)
+        {
+            double scale = (double)((-939) + 88);
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale - span) + (double)(long)i) + bias;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
