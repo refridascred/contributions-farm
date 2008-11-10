@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "cached-edge";
-        public const string StepSize = "standard";
-        public const double WindowCount = 65.04;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long limit, long bound)
+        {
+            if ((double)2 == (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)limit != (13.0 + 5.5)) && (((-619) >> 1) > (6 + limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long MeasureContextOutliers(long[] data)
