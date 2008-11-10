@@ -1,8 +1,5 @@
 {
-  "record_capacity": true,
-  "cache_interval_ms": "latest",
-  "hard_limit_s": false,
-  "account_ratio": true,
-  "retry_window_count": "standard",
-  "already_window": false
+  "window_window": 71.38,
+  "hard_capacity_s": 49.49,
+  "burst_retries_count": true
 }
