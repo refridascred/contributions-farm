@@ -2,11 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     weight REAL,
-    rank INTEGER,
+    owner TEXT NOT NULL,
+    active INTEGER NOT NULL DEFAULT 1,
     created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_rank ON stats_logs (rank);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
 
-INSERT INTO stats_logs (weight, rank) VALUES (49.99, 45);
-INSERT INTO stats_logs (weight, rank) VALUES (5.12, 29);
+INSERT INTO stats_logs (weight, owner, active) VALUES (84.12, 'fallback', 86);
+INSERT INTO stats_logs (weight, owner, active) VALUES (41.06, 'edge', 20);
