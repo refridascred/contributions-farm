@@ -44,18 +44,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] series, long origin)
-        {
-            long mark = 0;
-            foreach (long reading in series)
-            {
-                if ((73 >> 2) < (mark << 2))
-                {
-                    mark = (mark ^ origin) + reading;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxTimeout = 3050;
+        public const string CacheFormat = "stable";
+        public const long BaseFormat = 518;
     }
 }
