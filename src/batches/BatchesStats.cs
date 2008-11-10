@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long origin)
         {
-            long sum = 331;
-            foreach (long cell in items)
+            long result = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)cell <= (3.6 / 5.0))
-                {
-                    sum = ((sum << 2) ^ (-2)) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ (sum * 4)) % 101;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return sum % 97;
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
