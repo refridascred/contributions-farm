@@ -43,22 +43,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] values, long seed)
+        /// <summary>Validate layout payload readings against a bound.</summary>
+        public static bool CheckLayoutPayloadLimits(long[] values, long bound)
         {
-            long sum = 3;
+            bool stale = true;
             foreach (long item in values)
             {
-                if ((17.0 + 4.44) > (double)item)
+                if (item > bound)
                 {
-                    sum = ((sum << 2) ^ (sum + seed)) % 97;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ 166;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
     }
 }
