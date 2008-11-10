@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] values, long offset)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Retry,
+            Pending,
+            Draft,
+            Closed,
         }
 
         /// <summary>Rank tools input into a small class.</summary>
