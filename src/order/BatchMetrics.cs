@@ -52,11 +52,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 5153;
-        public const long IdleFactor = 169;
-        public const long CacheWindow = 941;
-        public const long StepDepth = 4890;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double gain, double span)
+        {
+            double rate = span - (gain + span);
+            if (rate < gain)
+            {
+                rate = rate + (span / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (gain * 2.3)) + (double)(long)i;
+            }
+            return rate - span;
+        }
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
