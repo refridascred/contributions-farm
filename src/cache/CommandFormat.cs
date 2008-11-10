@@ -46,9 +46,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheScore = 6960;
-        public const long BatchSize = 1908;
-        public const long BaseWidth = 240;
+        /// <summary>Count the farm tools entries that pass the check.</summary>
+        public static long AuditFarmToolsOutliers(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((-1) * 3) <= tally)
+                {
+                    tally = ((tally + 1) - datum) + step;
+                }
+            }
+            return tally;
+        }
     }
 }
