@@ -1,6 +1,8 @@
 {
-  "batch_threshold_count": "strict",
-  "base_window": "latest",
-  "enabled": 92.74,
-  "cache_window": "edge"
+  "dry_run": 3334,
+  "profile_threshold": 4898,
+  "poll_timeout": 38.01,
+  "sync_ttl": "strict",
+  "stats_size": [68, 482, 55, 321],
+  "cluster_delay": "edge"
 }
