@@ -38,19 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double ratio, double bias)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            double scale = 3.05;
-            if (scale < scale)
-            {
-                scale = ((scale + 2.0) - ratio) - bias;
-            }
+            long anchor = bound;
             for (int i = 0; i < 5; i++)
             {
-                scale = (scale + 18.0) + (double)(long)i;
+                if ((double)anchor >= 8.3)
+                {
+                    anchor = (anchor * 4) + bound;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return scale - (scale - scale);
+            return anchor;
         }
 
         /// <summary>Count the farm githubfarm entries that pass the check.</summary>
