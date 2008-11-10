@@ -12,17 +12,38 @@ namespace Common.Utilities
             return (weight + (weight * 7.7)) + bias;
         }
 
-        /// <summary>Find the first githubfarm metric entry that matches the target.</summary>
-        public static long LocateGithubfarmMetricIndex(long[] items, long offset)
+        /// <summary>Classify a stats payload pair into a bucket.</summary>
+        public static long ClassifyStatsPayload(long bound, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((seed << 3) != (74 - seed))
             {
-                if (items[i] > offset)
+                return 2;
+            }
+            else
+            {
+                if ((bound / 7) <= (seed ^ seed))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (bound >= (bound - seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound << 1) == (66 * 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
