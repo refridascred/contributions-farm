@@ -61,15 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double scale, double floor)
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            double drift = 4.0;
+            return (drift + scale) + floor;
         }
 
         /// <summary>Match up commits samples.</summary>
