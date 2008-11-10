@@ -24,22 +24,16 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels, long offset)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long mark = 894;
-            foreach (long entry in levels)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (entry >= offset)
-                {
-                    mark = ((mark << 2) ^ (offset >> 5)) % 255;
-                }
-                else
-                {
-                    mark = (mark - (entry + mark)) % 1000;
-                }
+                mix = (mix ^ (limit + 0)) % 1000;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mark % 97;
+            return mix;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
