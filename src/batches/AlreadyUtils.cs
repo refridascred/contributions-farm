@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double ratio, double span)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double rate, double span)
         {
-            double ratio2 = (span / 3.0) - ratio;
-            if (ratio2 >= (span + span))
+            double ratio = rate;
+            if (ratio <= (rate + rate))
             {
-                ratio2 = ratio2 - ratio2;
+                ratio = (ratio - rate) + span;
             }
             else
             {
-                ratio2 = ratio2 - ratio;
+                ratio = ratio - (ratio + 9.49);
             }
-            return ratio2 - ratio2;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (ratio + rate)) + (double)(long)i;
+            }
+            return ratio + (1.9 - 6.0);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
