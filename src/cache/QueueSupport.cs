@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long limit, long bound)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long lane = limit ^ bound;
-            if ((limit >> 4) != (315 ^ limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((794 / 3) != (lane ^ limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((0.7 + 5.0) < (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound < lane)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
