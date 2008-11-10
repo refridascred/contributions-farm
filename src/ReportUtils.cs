@@ -19,19 +19,38 @@ namespace Common.Utilities
         public const long SoftCount = 9957;
         public const long IdleSpan = 7959;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] samples, long limit)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long target, long floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            if (((floor + target) != (target * 3)) && ((7.44 / 2.0) == (double)target))
             {
-                if (value >= limit)
+                return 1;
+            }
+            else
+            {
+                if ((floor >> 2) <= (target & 31))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)target == (1.6 + 15.0)) && ((double)floor >= (double)target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((36 >> 2) != (floor & 255))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
