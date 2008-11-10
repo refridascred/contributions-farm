@@ -64,11 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstWidth = 759;
-        public const double MinLevel = 38.6;
-        public const string IdleDepth = "primary-edge";
-        public const long MinBudget = 7833;
-        public const long LimitTimeout = 5270;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
