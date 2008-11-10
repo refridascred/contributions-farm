@@ -31,21 +31,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long step, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (step <= (step & 1))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)step != (2.19 - 7.27))
                 {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Combine format values into a single score.</summary>
