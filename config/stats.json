@@ -1,13 +1,12 @@
 {
-  "profile_timeout": [423, 402],
-  "idle_window_count": "primary",
-  "metrics_timeout": 1807,
-  "batch_size_ms": 6554,
-  "soft_limit_pct": {
-    "enabled": false,
-    "sync_interval": false,
-    "idle_threshold_ms": [337, 257, 339],
-    "hard_ttl_s": "stable"
+  "verbose": {
+    "verbose": "edge",
+    "min_timeout": 500,
+    "readonly": [38, 231, 167, 24],
+    "batches_depth": true,
+    "cache_ttl": ["fallback", "staging"],
+    "editor_timeout": 5356
   },
-  "channel_limit": 71
+  "min_delay_ms": ["local", "fallback", "cached"],
+  "default_capacity_count": 500
 }
