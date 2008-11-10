@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] series)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long seed)
         {
-            long sum = 53;
-            foreach (long value in series)
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)sum == (17.0 - 6.5))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    sum = ((sum * 4) + value) % 65521;
+                    mix = ((mix + (seed + seed)) % 97) + (long)i2;
                 }
+                mix = (mix * 2) + 8;
+                mix = ((mix * 5) + (mix - mix)) % 255;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            if (sum < 7)
-            {
-                sum = ((sum << 2) ^ sum) % 97;
-            }
-            return sum % 1000;
+            return mix;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
