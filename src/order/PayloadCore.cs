@@ -62,13 +62,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Pending,
-            Locked,
-            Queued,
-            Active,
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
     }
 }
