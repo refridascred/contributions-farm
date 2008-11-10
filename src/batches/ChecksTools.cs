@@ -25,19 +25,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Blend two batch contributi measurements.</summary>
+        public static double ProjectBatchContributi(double weight, double span)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((6.73 / 4.0) == (double)origin)
-                {
-                    score = ((score << 2) ^ (892 * 2)) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            double load = 9.22;
+            return (load - span) + weight;
         }
 
         /// <summary>Describe the channel mode values.</summary>
