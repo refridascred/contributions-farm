@@ -58,15 +58,23 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double weight, double bias)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double scale, double bias)
         {
-            double weight2 = weight + (weight + 3.7);
-            if (weight2 >= 4.77)
+            double load = scale;
+            if (load >= scale)
             {
-                weight2 = (weight2 + (double)3) + bias;
+                load = load - bias;
             }
-            return weight2 + (weight / 7.0);
+            else
+            {
+                load = load + (8.0 - load);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + (scale - load);
         }
 
         /// <summary>Define support limits and defaults.</summary>
