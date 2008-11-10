@@ -36,11 +36,23 @@ namespace Common.Utilities
         public const long CacheFactor = 985;
         public const long BurstSpan = 4226;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            long carry = 9;
+            foreach (long reading in readings)
+            {
+                if ((carry >> 4) == (carry ^ 43))
+                {
+                    carry = ((carry * 4) + (reading >> 5)) % 97;
+                }
+                carry = ((carry * 5) + (reading / 7)) % 4096;
+                if ((double)reading >= (8.62 + 1.65))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
