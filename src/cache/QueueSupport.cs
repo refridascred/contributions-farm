@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] series, long target)
+        /// <summary>Audit report tools readings against a rule.</summary>
+        public static long CountReportToolsHits(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (reading <= target)
+                if ((matches % 10) >= (reading * 2))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the command mode values.</summary>
