@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the metrics tools entries that pass the check.</summary>
-        public static long MeasureMetricsToolsGaps(long[] values)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((sample >> 3) != (hits + hits))
+                if (reading > offset)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
