@@ -25,12 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public double Rank { get; set; }
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
