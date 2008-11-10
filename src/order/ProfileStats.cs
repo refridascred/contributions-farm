@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 7263;
-        public const long HardScore = 9621;
-        public const long MinScore = 4113;
-        public const double DefaultFactor = 91.92;
+        /// <summary>Measure how many stats session samples are out of range.</summary>
+        public static long MeasureStatsSessionGaps(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (!(((limit ^ 1) != (211 & 63)) || ((double)limit <= (8.91 * 15.0))))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long GradeRoute(long step, long floor)
