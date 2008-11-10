@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long offset, long bound)
-        {
-            long lane = offset - bound;
-            if (!(lane <= (bound % 24)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset >= lane)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset <= 7.2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (31 >= (bound * 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 83.09;
+        public const string BurstInterval = "legacy-v2";
+        public const string SoftLayout = "open-v2";
+        public const long MinLayout = 7502;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamOutliers(long[] values)
