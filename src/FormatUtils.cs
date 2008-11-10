@@ -62,19 +62,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double scale, double offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long bound, long origin)
         {
-            double load = offset;
-            if (load >= (scale * 8.4))
+            if (((double)origin != (9.1 - 9.0)) && ((origin % 16) == (origin << 2)))
             {
-                load = load + (1.2 - offset);
+                return 4;
             }
             else
             {
-                load = load + (offset / 5.0);
+                if (((-540) + origin) > bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin - origin) < origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-360) + bound) <= (825 % 24))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return load - offset;
         }
     }
 }
