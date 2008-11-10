@@ -38,22 +38,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit token layout readings against a rule.</summary>
-        public static long TallyTokenLayoutOutliers(long[] levels, long floor)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((floor << 1) >= floor) && ((sample <= (sample & 63)) && (16.0 <= (double)floor)))
+                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
