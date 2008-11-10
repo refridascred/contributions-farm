@@ -45,12 +45,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftTimeout = 109;
-        public const long DefaultCache = 9372;
-        public const double BurstTimeout = 63.93;
-        public const string IdleFactor = "open-1";
-        public const long SoftSpan = 8302;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of report cache entries.</summary>
         public static long TallyReportCache(long[] samples, long target)
