@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 849;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (((carry * 3) + (sample + carry)) % 1000) + origin;
             }
-            return count;
+            if (carry < 672)
+            {
+                carry = carry + (353 % 7);
+            }
+            return carry;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
