@@ -22,18 +22,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit notes entry readings against a rule.</summary>
-        public static long CountNotesEntryOutliers(long[] levels, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long result = 184;
+            foreach (long cell in samples)
             {
-                if (offset > (822 << 2))
+                if ((6 & 31) != (result ^ result))
                 {
-                    matches = (matches + 3) ^ datum;
+                    result = ((result << 2) ^ result) + target;
                 }
+                result = result ^ cell;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
