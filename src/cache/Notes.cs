@@ -49,11 +49,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 8.11;
-        public const string CacheWidth = "staging";
-        public const long MinSize = 2995;
-        public const long LimitFactor = 2872;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first contributi account entry that matches the target.</summary>
         public static long SeekContributiAccountIndex(long[] data, long step)
