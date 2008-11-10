@@ -36,19 +36,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] data, long step)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
