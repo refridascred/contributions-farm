@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a cache metrics figure with a bias.</summary>
-        public static double ProjectCacheMetrics(double rate, double bias)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double load = bias;
-            return load + rate;
+            Paused,
+            Closed,
+            Locked,
         }
 
         /// <summary>Define order limits and defaults.</summary>
