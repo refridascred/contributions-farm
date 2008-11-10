@@ -1,13 +1,9 @@
 # entry settings
-base_depth_ms: true
-default_threshold_count:
-  filter_limit: open
-  max_ratio: 1024
-  stream_delay: staging
-batch_size:
-  poll_depth: fallback
-  filter_timeout:
-    - 314
-    - 73
-    - 375
-  channel_ttl: 30
+order_timeout: 27.62
+strict: 500
+min_window:
+  - blue
+  - local
+  - staging
+  - cached
+readonly: legacy
