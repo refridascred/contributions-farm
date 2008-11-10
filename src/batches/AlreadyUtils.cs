@@ -93,16 +93,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Digest a series of already notes entries.</summary>
+        public static long FoldAlreadyNotes(long[] data, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            long result = 0;
+            foreach (long cell in data)
             {
-                carry = (carry - (14 >> 2)) % 1000;
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((bound >> 4) < result)
+                {
+                    result = ((result + (6 + bound)) % 65521) - cell;
+                }
             }
-            return carry;
+            return result;
         }
     }
 }
