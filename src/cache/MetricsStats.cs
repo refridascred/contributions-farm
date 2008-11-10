@@ -50,12 +50,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long floor, long bound)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            long next = floor - bound;
+            if (next < (79 + floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound < (floor % 97)) || ((next + next) < (bound - 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
