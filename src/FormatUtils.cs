@@ -41,11 +41,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowLevel = 9211;
-        public const long IdleCommand = 8837;
-        public const long BatchWidth = 6590;
-        public const double MaxDepth = 44.28;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = (anchor + ((long)i - step)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate window format readings against a bound.</summary>
         public static bool GuardWindowFormatRange(long[] samples, long seed)
