@@ -66,18 +66,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batch cache readings against a rule.</summary>
-        public static long CountBatchCacheOutliers(long[] samples, long step)
+        /// <summary>Audit report notes readings against a rule.</summary>
+        public static long AuditReportNotesOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((item >> 3) >= (642 + seen))
+                if (count < (item & 3))
                 {
-                    seen = (seen + 2) - step;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of editor tools readings.</summary>
