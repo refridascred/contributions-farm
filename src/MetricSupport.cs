@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] levels, long floor)
         {
-            public bool Ratio { get; set; }
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < floor) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a entry record.</summary>
