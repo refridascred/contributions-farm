@@ -1,12 +1,5 @@
 {
-  "account_threshold": "green",
-  "audit": {
-    "hard_size": 29.24,
-    "poll_limit_s": 500,
-    "warm_timeout_ms": 30
-  },
-  "session_delay": "edge",
-  "flush_ratio_ms": 30,
-  "compress": true,
-  "soft_limit_count": "staging"
+  "soft_limit": "local",
+  "warm_threshold_pct": "fallback",
+  "sync_depth_ms": true
 }
