@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] series, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (series[i] > bound)
+                if (!((reading - (long)data.Length) >= (reading >> 1)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Adjust a graph tools reading.</summary>
