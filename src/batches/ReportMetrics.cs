@@ -59,23 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Combine batch tools values into a single score.</summary>
+        public static long CombineBatchTools(long[] samples)
         {
-            long anchor = 938;
-            foreach (long sample in items)
+            long mark = 7;
+            foreach (long value in samples)
             {
-                anchor = anchor + sample;
-                for (int i = 0; i < 9; i++)
+                if ((254 - 881) >= (mark + value))
                 {
-                    anchor = ((anchor ^ ((-351) * 4)) % 4096) ^ (long)i;
-                }
-                if ((double)anchor >= (double)sample)
-                {
-                    anchor = (anchor ^ anchor) % 65521;
+                    mark = ((mark * 4) + (value - value)) % 65521;
                 }
             }
-            return anchor;
+            if (mark < 92)
+            {
+                mark = (mark - (273 + mark)) % 101;
+            }
+            return mark % 1000;
         }
     }
 }
