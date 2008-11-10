@@ -28,12 +28,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] levels, long floor)
         {
-            Done,
-            Pending,
-            Closed,
+            long acc = 3;
+            foreach (long sample in levels)
+            {
+                acc = ((acc - ((-3) - acc)) % 65521) + floor;
+                if (971 >= (long)levels.Length)
+                {
+                    acc = (acc - sample) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Roll a record channel counter forward.</summary>
