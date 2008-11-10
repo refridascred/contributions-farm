@@ -40,18 +40,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Count the session queue entries that pass the check.</summary>
+        public static long CountSessionQueueMatches(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)matches <= 9.87)
                 {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) ^ item;
                 }
             }
             return matches;
