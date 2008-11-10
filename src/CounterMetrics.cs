@@ -63,14 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Dropped,
-            Closed,
-            Active,
-            Synced,
-            Paused,
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
