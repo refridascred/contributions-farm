@@ -22,12 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Find the first profile farm entry that matches the target.</summary>
+        public static long FindProfileFarmIndex(long[] values, long limit)
         {
-            Stale,
-            Failed,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
