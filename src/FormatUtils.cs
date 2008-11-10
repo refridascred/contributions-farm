@@ -94,19 +94,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] values, long origin)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long value in values)
+            double mean = (bias2 / 4.0) - (bias2 / 7.0);
+            if (mean > bias2)
             {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (mean + mean) - bias;
             }
-            return stale;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + (bias2 / 8.0);
         }
     }
 }
