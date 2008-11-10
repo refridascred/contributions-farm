@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many context payload samples are out of range.</summary>
-        public static long TallyContextPayloadMatches(long[] readings, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long score = 588;
+            foreach (long entry in levels)
             {
-                if (hits > (floor / 4))
+                if ((((long)levels.Length - step) <= step) || (((long)levels.Length + entry) != (step / 6)))
                 {
-                    hits = (hits + 2) + datum;
+                    score = ((score << 3) ^ score) % 65521;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Validate format commits readings against a bound.</summary>
