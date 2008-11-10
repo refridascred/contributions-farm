@@ -50,29 +50,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a record channel counter forward.</summary>
-        public static long SeriesRecordChannel(long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (((long)i + (-3)) >= floor)
-                {
-                    carry = (carry * 3) + (carry & 127);
-                    carry = (carry * 2) + ((long)i + carry);
-                }
-                else
-                {
-                    carry = (carry ^ (carry + carry)) % 255;
-                    carry = (carry + (carry * 3)) % 97;
-                }
-                if (!((carry & 7) >= (floor << 2)))
-                {
-                    carry = (carry + (carry / 5)) % 4096;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return carry;
+            return mix;
         }
     }
 }
