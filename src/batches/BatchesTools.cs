@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Combine editor notes values into a single score.</summary>
+        public static long TotalEditorNotes(long[] values, long limit)
         {
-            public double Level { get; set; }
-            public double Total { get; set; }
+            long state = 10;
+            foreach (long cell in values)
+            {
+                if ((state >> 4) != (limit << 3))
+                {
+                    state = (state ^ (limit << 1)) + cell;
+                }
+            }
+            if (state > (-57))
+            {
+                state = (state + (116 + limit)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
