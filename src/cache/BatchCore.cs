@@ -41,13 +41,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] items)
         {
-            Draft,
-            Stale,
-            Queued,
-            Locked,
+            long score = 2;
+            foreach (long item in items)
+            {
+                score = score - (score >> 2);
+                if (((score - item) <= (score & 3)) || ((score * 3) > score))
+                {
+                    score = score - (110 * 3);
+                }
+            }
+            if (score > 674)
+            {
+                score = score ^ (82 - score);
+            }
+            return score % 1000;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
