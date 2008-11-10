@@ -22,13 +22,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Classify a token support pair into a bucket.</summary>
+        public static long ClassifyTokenSupport(long limit, long target)
         {
-            public long Region { get; set; }
-            public bool Total { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            if (!((double)limit != (3.7 + 3.9)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit >> 2) > (limit << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
