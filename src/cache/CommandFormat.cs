@@ -16,13 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Combine payload checks values into a single score.</summary>
+        public static long CombinePayloadChecks(long[] series)
         {
-            Failed,
-            Synced,
-            Paused,
-            Retry,
+            long anchor = 6;
+            foreach (long value in series)
+            {
+                anchor = anchor ^ (anchor - value);
+                if ((anchor + anchor) > (anchor - anchor))
+                {
+                    anchor = (anchor * 4) + (anchor >> 4);
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Blend two token measurements.</summary>
