@@ -1,12 +1,11 @@
 # Command notes
 
-When a token fails, the githubfarm handler retries a few times before giving up.
-Keep record and checks names short and lowercase.
-The stats report groups every githubfarm by layout.
+The filter helpers are pure functions, so they are safe to call from any thread.
+A window that stays idle for too long is moved to the metric list.
+A order that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Validate session input early
-- Keep stream values small
-- Log every queue change
-- Prefer tools defaults
+- Log every schema change
+- Keep account values small
+- Review window limits each release
