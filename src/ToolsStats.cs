@@ -32,19 +32,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate layout report readings against a bound.</summary>
-        public static bool CheckLayoutReportRange(long[] data, long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Closed,
+            New,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
