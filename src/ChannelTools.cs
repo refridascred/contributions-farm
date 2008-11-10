@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] series, long bound)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double bias, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = bias - bias;
+            return (weight + bias) + span;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
