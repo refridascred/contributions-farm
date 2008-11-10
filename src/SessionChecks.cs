@@ -34,39 +34,19 @@ namespace Common.Utilities
         public const long RetryScore = 1883;
         public const long HardEditor = 2115;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long target, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] data, long offset)
         {
-            long slot = target - bound;
-            if (!((slot & 7) != (bound - bound)))
+            bool flag = true;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (7 < bound)
+                if (value <= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target * 3) < (-1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target >= (target + bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
