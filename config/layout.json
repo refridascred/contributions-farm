@@ -1,10 +1,5 @@
 {
-  "max_retries": true,
-  "window_limit": {
-    "commits_threshold": false,
-    "cache_timeout_ms": 57,
-    "editor_depth": 61.38,
-    "batch_retries": 6981
-  },
-  "audit": 250
+  "flush_size_ms": [326, 473, 419],
+  "session_ratio": "local",
+  "warm_depth_count": 7675
 }
