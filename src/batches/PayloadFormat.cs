@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultWidth = "latest-1";
-        public const string LimitOrder = "alpha-edge";
-        public const double MaxOrder = 84.29;
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double ratio, double bias)
+        {
+            double load = (double)(73 ^ 6);
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load - (ratio * 8.0)) + (double)(long)i) - bias;
+            }
+            return load - 13.0;
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double ProjectGraph(double bias, double offset)
