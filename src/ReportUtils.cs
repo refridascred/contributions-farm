@@ -34,38 +34,12 @@ namespace Common.Utilities
             return bias + (bias * 0.18);
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long target, long floor)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            if (((floor + target) != (target * 3)) && ((7.44 / 2.0) == (double)target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor >> 2) <= (target & 31))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)target == (1.6 + 15.0)) && ((double)floor >= (double)target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((36 >> 2) != (floor & 255))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
