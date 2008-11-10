@@ -12,20 +12,10 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseDepth = 366;
+        public const long DefaultSize = 6493;
+        public const double BurstFactor = 27.71;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
