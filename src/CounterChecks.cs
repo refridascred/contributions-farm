@@ -80,14 +80,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] samples)
         {
-            Stale,
-            Locked,
-            Draft,
-            Pending,
-            Closed,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((-85) >= item)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
