@@ -55,23 +55,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context schema samples.</summary>
-        public static long WeighContextSchema(long[] items, long offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long carry = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry - (offset << 1)) % 255;
-                if ((double)entry < (6.0 * 19.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry * 4) + (carry * 3);
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < 5)
-            {
-                carry = (carry * 2) + 771;
-            }
-            return carry;
+            return tally;
         }
     }
 }
