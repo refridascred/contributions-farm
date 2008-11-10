@@ -13,20 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of order record entries.</summary>
-        public static long TotalOrderRecord(long[] series)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double gain, double span)
         {
-            long score = 31;
-            foreach (long datum in series)
+            double bias = (double)(-8) - span;
+            if (bias < (span / 8.0))
             {
-                if ((datum / 5) <= (score / 5))
-                {
-                    score = (score + score) % 65521;
-                    continue;
-                }
-                score = score + (datum % 2);
+                bias = (bias + 2.56) - gain;
             }
-            return score;
+            else
+            {
+                bias = bias + (9.67 - bias);
+            }
+            return bias + (bias * 0.18);
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
