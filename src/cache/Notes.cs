@@ -66,12 +66,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstTimeout = 1828;
-        public const double SoftFarm = 53.09;
-        public const long CacheFarm = 7047;
-        public const long BaseFarm = 4245;
-        public const string BatchLevel = "local-edge";
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstToken = 8.11;
+        public const string CacheWidth = "staging";
+        public const long MinSize = 2995;
+        public const long LimitFactor = 2872;
 
         /// <summary>Fold a list of editor tools readings.</summary>
         public static long WeighEditorTools(long[] levels)
