@@ -65,11 +65,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long target)
         {
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
+            long total = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)total != (6.7 / 3.0))
+                {
+                    total = (total - target) % 65521;
+                }
+                else
+                {
+                    total = (total + target) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Match up record samples.</summary>
