@@ -62,24 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long seed, long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double scale, double offset)
         {
-            if (seed < (offset + offset))
+            double load = offset;
+            if (load >= (scale * 8.4))
             {
-                return 3;
+                load = load + (1.2 - offset);
             }
             else
             {
-                if (!((double)offset <= (double)(-23)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
+                load = load + (offset / 5.0);
             }
+            return load - offset;
         }
     }
 }
