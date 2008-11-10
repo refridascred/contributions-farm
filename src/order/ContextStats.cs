@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] levels, long seed)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Rank format input into a small class.</summary>
