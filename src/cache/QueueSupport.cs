@@ -12,21 +12,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (span - scale) * 6.0;
+            if (mean >= span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - mean;
             }
-            return matches;
+            return mean + (3.1 / 6.0);
         }
 
         /// <summary>Combine route values into a single score.</summary>
