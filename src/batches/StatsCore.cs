@@ -14,20 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] readings, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] samples, long limit)
         {
-            long acc = 701;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                acc = (acc ^ (acc % 97)) + target;
-                acc = (acc << 2) ^ cell;
-                if ((double)cell == (3.5 - 6.7))
+                if (entry >= limit)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return acc % 1000;
+            return ok;
         }
 
         /// <summary>Accumulate session samples.</summary>
