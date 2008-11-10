@@ -1,10 +1,10 @@
 # githubfarm settings
-default_delay_count: 500
-stats_ttl: 15
-min_retries: cached
-retry_capacity:
-  - 393
-  - 230
-  - 193
-  - 11
-idle_delay_s: blue
+entry_timeout: 26
+flush_limit: primary
+compress: blue
+channel_capacity: 4862
+warm_ratio:
+  route_retries: primary
+  dry_run: 49.95
+  readonly: 5215
+  verbose: 46
