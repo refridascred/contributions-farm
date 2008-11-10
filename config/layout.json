@@ -1,5 +1,26 @@
 {
-  "max_window_s": false,
-  "soft_capacity_s": 4808,
-  "sync_limit": 36
+  "flush_ratio_pct": {
+    "enabled": "fallback",
+    "hard_interval_ms": "legacy",
+    "min_retries_count": "cached"
+  },
+  "dry_run": ["local", "blue"],
+  "metric_limit": {
+    "compress": {
+      "cache_capacity_count": 33.28,
+      "compress": 30.55,
+      "warm_threshold_s": 9189,
+      "min_size_count": 4.83
+    },
+    "retry_ttl": "stable",
+    "batches_window": 500,
+    "stream_ratio": 7536,
+    "retry_capacity": [159, 141, 316]
+  },
+  "idle_ratio_ms": {
+    "audit": "standard",
+    "flush_threshold_ms": 500,
+    "checks_ttl": 500
+  },
+  "poll_size": 3014
 }
