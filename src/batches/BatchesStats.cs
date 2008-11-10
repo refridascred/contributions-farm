@@ -22,18 +22,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Audit notes entry readings against a rule.</summary>
+        public static long CountNotesEntryOutliers(long[] levels, long offset)
         {
-            long score = -24;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((score <= (9 * 3)) || (value > (14 ^ score)))
+                if (offset > (822 << 2))
                 {
-                    score = (score << 3) ^ (score / 2);
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
