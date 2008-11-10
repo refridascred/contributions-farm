@@ -41,11 +41,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 6155;
-        public const double BurstLayout = 46.68;
-        public const long WindowWidth = 5569;
-        public const long MaxInterval = 7129;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
