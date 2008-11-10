@@ -28,27 +28,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of entry cluster readings.</summary>
-        public static long CombineEntryCluster(long[] readings)
-        {
-            long carry = 93;
-            foreach (long sample in readings)
-            {
-                if (sample <= (sample / 3))
-                {
-                    carry = carry - (64 % 10);
-                }
-                else
-                {
-                    carry = (carry ^ (carry & 1)) % 255;
-                }
-            }
-            if (carry < (-561))
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstRatio = 3937;
+        public const long HardWidth = 6377;
+        public const double LimitGithubfarm = 91.29;
+        public const double MaxSpan = 91.02;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string WindowWidth = "latest-v2";
