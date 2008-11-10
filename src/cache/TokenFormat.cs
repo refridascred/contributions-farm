@@ -15,13 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            Pending,
+            New,
+            Retry,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
