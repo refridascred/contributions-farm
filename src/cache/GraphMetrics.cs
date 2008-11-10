@@ -53,12 +53,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Pending,
-            Draft,
-            Dropped,
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
