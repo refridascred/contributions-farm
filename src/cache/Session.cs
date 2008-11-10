@@ -28,15 +28,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double ratio, double span)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] samples, long floor)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (ratio2 - span))
+            long score = -614;
+            foreach (long cell in samples)
             {
-                ratio2 = ratio2 + 6.1;
+                if (floor >= score)
+                {
+                    score = ((score << 3) ^ floor) % 4096;
+                }
+                if (!((cell << 2) <= score))
+                {
+                    break;
+                }
             }
-            return ratio2 + (double)1;
+            if (score < 5)
+            {
+                score = score + (floor - floor);
+            }
+            return score % 1000;
         }
 
         /// <summary>Check that every cache report entry stays within the limit.</summary>
