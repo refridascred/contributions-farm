@@ -74,19 +74,21 @@ namespace Common.Utilities
         public const string DefaultToken = "fallback-1";
         public const double BaseFactor = 97.0;
 
-        /// <summary>Validate editor support readings against a bound.</summary>
-        public static bool CheckEditorSupportLimits(long[] series, long origin)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] series)
         {
-            bool found = true;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
