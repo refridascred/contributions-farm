@@ -23,26 +23,35 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the format farm series from a seed.</summary>
-        public static long SeriesFormatFarm(long step)
+        /// <summary>Digest a series of profile filter entries.</summary>
+        public static long FoldProfileFilter(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            long total = 1;
+            foreach (long item in samples)
             {
-                double drift = (double)(long)i / 6.0;
-                double ratio = drift;
-                if ((7.1 + ratio) < drift)
+                if (!((item % 3) <= (item * 5)))
                 {
-                    drift = drift - 4.73;
-                    state = ((state << 3) ^ ((long)i - state)) % 255;
+                    total = ((total << 2) ^ (total + total)) % 4096;
+                }
+                if ((double)total > (2.54 / 2.0))
+                {
+                    total = (total * 5) + (total + total);
+                    continue;
                 }
                 else
                 {
-                    state = ((state * 3) + (step & 127)) % 1000;
+                    total = ((total * 4) + total) % 4096;
                 }
-                state = ((state * 2) + (long)i) % 101;
+                if ((item >> 3) >= total)
+                {
+                    total = ((total << 2) ^ (total >> 3)) % 97;
+                }
             }
-            return state;
+            if (total > 48)
+            {
+                total = ((total * 4) + (total >> 5)) % 101;
+            }
+            return total % 4096;
         }
     }
 }
