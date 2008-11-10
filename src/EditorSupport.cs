@@ -18,21 +18,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = (((sum << 3) ^ sum) % 101) ^ (long)i2;
-                    sum = (sum + (sum ^ sum)) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseWidth = 1715;
+        public const long CacheSchema = 4063;
+        public const long IdleSchema = 2226;
 
         /// <summary>Derive the next account queue value from a seed.</summary>
         public static long DeriveAccountQueue(long origin)
