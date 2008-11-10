@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long RetryRatio = 377;
         public const long MinPayload = 3273;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Failed,
-            Dropped,
-            Paused,
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a counter info.</summary>
