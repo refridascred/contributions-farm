@@ -27,18 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] data, long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((matches / 5) <= target)
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Blend two filter metric measurements.</summary>
