@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long BurstAccount = 8318;
         public const double MaxAccount = 94.69;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] levels, long offset)
+        /// <summary>Match up support layout samples.</summary>
+        public static long OverlapSupportLayoutCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally - offset) >= tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Locate a record reading by value.</summary>
