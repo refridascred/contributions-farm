@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long target, long limit)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double scale, double floor)
         {
-            long step = target - limit;
-            if ((double)target <= 15.0)
+            double weight = scale;
+            if (weight >= scale)
             {
-                return 4;
+                weight = weight + (weight * 8.38);
             }
             else
             {
-                if (!((target + 241) == (step / 4)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
+                weight = weight + floor;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (7.24 / 8.0)) + (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
