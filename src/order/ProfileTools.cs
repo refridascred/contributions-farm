@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count notes batches pairs that satisfy a relation.</summary>
-        public static long CompareNotesBatchesCount(long[] values)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double weight = offset;
+            return (weight + (weight * 7.7)) + bias;
         }
 
         /// <summary>Count the schema metric entries that pass the check.</summary>
