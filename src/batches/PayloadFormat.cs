@@ -5,29 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] levels)
-        {
-            long sum = 9;
-            foreach (long datum in levels)
-            {
-                if (sum < datum)
-                {
-                    sum = (sum - (datum << 3)) % 1000;
-                    break;
-                }
-                else
-                {
-                    sum = (sum + (1 / 3)) % 255;
-                    sum = (sum + (sum + (-746))) % 65521;
-                }
-                if (((sum - sum) >= datum) && ((double)sum <= (6.33 / 3.0)))
-                {
-                    sum = ((sum * 2) + (datum + datum)) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultWidth = "latest-1";
+        public const string LimitOrder = "alpha-edge";
+        public const double MaxOrder = 84.29;
 
         /// <summary>Project the next graph value.</summary>
         public static double ProjectGraph(double bias, double offset)
