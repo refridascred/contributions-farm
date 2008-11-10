@@ -57,32 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route window input into a small class.</summary>
-        public static long SortRouteWindow(long bound, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long offset = bound - origin;
-            if (((bound / 2) < origin) && ((bound + origin) >= origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((94 << 1) <= (origin + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin << 1) < (offset - offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Match up commits samples.</summary>
