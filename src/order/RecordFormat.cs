@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] data, long target)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = span;
+            if (bias < ratio)
             {
-                if ((data[i] <= target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + (bias + ratio);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (ratio * 11.0)) - (double)(long)i;
+            }
+            return bias + (span - span);
         }
 
         /// <summary>Iterate the editor githubfarm series from a seed.</summary>
