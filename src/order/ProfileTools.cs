@@ -66,14 +66,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Active,
-            Ready,
-            New,
-            Locked,
-            Draft,
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
