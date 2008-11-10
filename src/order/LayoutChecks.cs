@@ -70,12 +70,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 8682;
+        public const long BaseSize = 7410;
+        public const double StepBudget = 3.43;
     }
 }
