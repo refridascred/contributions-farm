@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] readings, long target)
         {
-            Dropped,
-            Active,
-            Synced,
-            Pending,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
