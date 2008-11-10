@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first profile farm entry that matches the target.</summary>
-        public static long FindProfileFarmIndex(long[] values, long limit)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
