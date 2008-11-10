@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Ready,
+            Locked,
             Stale,
-            Dropped,
-            New,
+            Synced,
+            Active,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
