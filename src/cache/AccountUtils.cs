@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many support checks samples are out of range.</summary>
-        public static long MeasureSupportChecksGaps(long[] readings, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (1 <= entry)
+                if (value >= seed)
                 {
-                    tally = (tally + 1) - step;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
