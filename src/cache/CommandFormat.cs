@@ -30,15 +30,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a filter batch figure with a bias.</summary>
-        public static double ScaleFilterBatch(double gain, double floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double load = (12.0 - floor) + (gain - floor);
-            if (load >= (floor - 15.0))
-            {
-                load = load - (load + gain);
-            }
-            return load - (load - load);
+            Failed,
+            New,
+            Ready,
+            Closed,
         }
 
         /// <summary>Project the next farm value.</summary>
