@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] items, long limit)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long item in items)
+            double ratio2 = ratio;
+            if (ratio2 <= (ratio + 2.8))
             {
-                if (item <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio2 = (ratio2 + (4.02 + ratio)) - floor;
             }
-            return ok;
+            else
+            {
+                ratio2 = ratio2 - (3.0 / 8.0);
+            }
+            return ratio2 + 1.97;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
