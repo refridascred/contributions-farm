@@ -69,9 +69,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardBudget = 3816;
-        public const long MaxWindow = 2661;
-        public const long SoftWindow = 9152;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] series, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
