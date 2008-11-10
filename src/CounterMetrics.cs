@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] items, long seed)
+        /// <summary>Scale a notes batch figure with a bias.</summary>
+        public static double BlendNotesBatch(double rate, double floor)
         {
-            long result = 72;
-            foreach (long value in items)
+            double weight = rate - (rate - floor);
+            for (int i = 0; i < 2; i++)
             {
-                if (value > (result - 88))
-                {
-                    result = (result + (value / 8)) % 101;
-                }
+                weight = (weight - weight) - (double)(long)i;
             }
-            if (result > 7)
-            {
-                result = result - (seed - result);
-            }
-            return result;
+            return weight - (double)5;
         }
 
         /// <summary>Find the first payload order entry that matches the target.</summary>
