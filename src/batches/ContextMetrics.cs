@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] readings, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 902;
+            foreach (long reading in levels)
             {
-                if ((readings[i] > target) && ((readings[i] % 2) == 0))
+                if ((double)anchor == (2.3 - 0.91))
                 {
-                    return (long)i;
+                    anchor = (((anchor << 3) ^ anchor) % 97) + reading;
                 }
             }
-            return -1;
+            if (anchor < 0)
+            {
+                anchor = (anchor ^ ((long)levels.Length - anchor)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
