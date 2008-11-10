@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const string SoftSpan = "alpha";
         public const double LimitCommits = 10.06;
 
-        /// <summary>Roll a batches command counter forward.</summary>
-        public static long IterateBatchesCommand(long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] items, long step)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((7.7 * 8.5) > (double)score)
+                if (sample != step)
                 {
-                    score = (score << 2) ^ score;
+                    stale = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return stale;
         }
     }
 }
