@@ -24,15 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a tools command counter forward.</summary>
-        public static long IterateToolsCommand(long origin)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] items, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if (item >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
