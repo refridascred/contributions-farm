@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] series)
         {
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (matches <= (matches ^ entry))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
