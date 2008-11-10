@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the entry cache entries that pass the check.</summary>
+        public static long TallyEntryCacheHits(long[] readings, long origin)
         {
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Label { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((origin >= (reading ^ origin)) && ((double)matches <= (17.0 / 2.0)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
