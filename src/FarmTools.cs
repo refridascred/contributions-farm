@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Grade a profile order value against two limits.</summary>
+        public static long RankProfileOrder(long target, long origin)
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public double Label { get; set; }
-            public bool Score { get; set; }
+            long next = target ^ origin;
+            if ((double)target <= (3.18 * 7.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((next ^ origin) <= (28 % 8)) || ((next + 74) != (42 - target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target / 5) <= (target + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target % 2) > (next - next)) || ((double)origin == (13.0 + 13.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank window input into a small class.</summary>
