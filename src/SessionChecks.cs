@@ -57,13 +57,15 @@ namespace Common.Utilities
             return load - (load / 7.0);
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long target)
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public bool Region { get; set; }
-            public double Count { get; set; }
+            long acc = target;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
