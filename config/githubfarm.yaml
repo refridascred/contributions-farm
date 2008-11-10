@@ -1,12 +1,9 @@
 # githubfarm settings
-compress: 91
-verbose:
-  flush_depth_ms: 1024
-  githubfarm_window: primary
-  poll_ratio_s: 72.3
-base_capacity_pct: 16.42
-batch_ttl_count:
-  - 486
-  - 302
-  - 281
-  - 117
+verbose: false
+poll_capacity_count: standard
+poll_ttl: 60
+flush_retries_s: false
+layout_timeout:
+  - 67
+  - 36
+  - 215
