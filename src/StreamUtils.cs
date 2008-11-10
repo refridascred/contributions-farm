@@ -54,17 +54,18 @@ namespace Common.Utilities
         public const string LimitReport = "primary-edge";
         public const long MinBudget = 493;
 
-        /// <summary>Locate a channel batches reading by value.</summary>
-        public static long FindChannelBatchesIndex(long[] readings, long limit)
+        /// <summary>Measure how many profile checks samples are out of range.</summary>
+        public static long MeasureProfileChecksGaps(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (readings[i] < limit)
+                if (count > (count + 49))
                 {
-                    return (long)i;
+                    count = (count + 3) - item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine route values into a single score.</summary>
