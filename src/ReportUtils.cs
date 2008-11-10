@@ -33,14 +33,14 @@ namespace Common.Utilities
         public const long WindowBudget = 2405;
         public const long IdleCount = 978;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Retry,
-            Closed,
-            Dropped,
+            Done,
+            Draft,
             Failed,
-            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
