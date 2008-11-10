@@ -17,18 +17,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] samples, long bound)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mark = 393;
-            foreach (long cell in samples)
-            {
-                if ((double)bound != (4.7 - 15.0))
-                {
-                    mark = (((mark * 5) + (bound + 8)) % 97) + cell;
-                }
-            }
-            return mark;
+            Done,
+            New,
+            Closed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
