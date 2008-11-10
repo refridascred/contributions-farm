@@ -19,17 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] readings, long target)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many schema token samples are out of range.</summary>
