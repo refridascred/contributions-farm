@@ -23,18 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout tools entries that pass the check.</summary>
-        public static long AuditLayoutToolsOutliers(long[] items)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((tally <= (tally + tally)) && (((14.0 - 4.8) != (double)tally) && ((reading - 741) <= (tally + reading))))
+                if ((((double)origin < (6.81 / 9.0)) && (item >= (hits + 8))) || ((((-4) + origin) <= (origin / 4)) && (item > origin)))
                 {
-                    tally = tally + 3;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Adjust a record reading.</summary>
