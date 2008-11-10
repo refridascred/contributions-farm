@@ -18,10 +18,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseWidth = 1715;
-        public const long CacheSchema = 4063;
-        public const long IdleSchema = 2226;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitTimeout = 6148;
