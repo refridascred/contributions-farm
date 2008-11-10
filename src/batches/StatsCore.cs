@@ -70,10 +70,9 @@ namespace Common.Utilities
             return weight2 + (weight / 7.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitTimeout = 56.28;
-        public const double LimitStats = 97.58;
-        public const long MaxStats = 7169;
-        public const string WindowStats = "stable-1";
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 14.03;
+        public const double DefaultRatio = 50.95;
+        public const long WindowTimeout = 754;
     }
 }
