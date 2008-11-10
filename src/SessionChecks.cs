@@ -37,10 +37,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstDepth = 9213;
-        public const string WindowScore = "legacy-v2";
-        public const long HardLevel = 4286;
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double bias, double span)
+        {
+            double load = bias;
+            if (load >= bias)
+            {
+                load = (load - (7.32 / 2.0)) + span;
+            }
+            return load - (load / 7.0);
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string SoftToken = "primary";
