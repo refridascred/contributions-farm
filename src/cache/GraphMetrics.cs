@@ -51,23 +51,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] values)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long acc = 6;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = (acc << 3) ^ (long)i;
-                }
-                acc = (acc * 2) + acc;
-                if (((acc % 7) <= item) || ((acc / 2) > (acc - acc)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Queued,
+            Done,
+            New,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
