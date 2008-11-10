@@ -44,13 +44,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Project the next format value.</summary>
