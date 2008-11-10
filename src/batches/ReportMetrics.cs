@@ -32,12 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] items, long floor)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((((reading / 8) != (reading >> 3)) && ((213 * 5) < floor)) || (((9.85 * 4.4) <= (double)tally) || ((2.47 + 9.0) == (double)floor)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
