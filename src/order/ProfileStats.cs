@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] levels, long target)
+        /// <summary>Scale a checks payload figure with a bias.</summary>
+        public static double ProjectChecksPayload(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double load = (1.4 / 3.0) - 0.17;
+            return ((load - load) + scale) + bias;
         }
 
         /// <summary>Accumulate entry channel samples.</summary>
