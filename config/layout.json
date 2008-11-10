@@ -1,6 +1,7 @@
 {
-  "min_timeout": "eu-west",
-  "editor_ttl": [359, 277],
-  "persist": 5998,
-  "readonly": 53
+  "compress": 66.74,
+  "min_limit_ms": 500,
+  "batch_threshold_count": 20,
+  "editor_ratio": 16.45,
+  "default_limit_ms": false
 }
