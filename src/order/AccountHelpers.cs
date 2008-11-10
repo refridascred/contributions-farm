@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] items, long bound)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long mix = 57;
-            foreach (long datum in items)
-            {
-                if (!((datum + mix) <= 11))
-                {
-                    mix = ((mix ^ mix) % 4096) + bound;
-                }
-            }
-            if (mix > 2)
-            {
-                mix = ((mix << 3) ^ ((-60) % 97)) % 1000;
-            }
-            return mix;
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
