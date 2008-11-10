@@ -20,18 +20,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] levels, long step)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)cell > (0.9 * 1.7))
                 {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) - step;
                 }
             }
             return matches;
