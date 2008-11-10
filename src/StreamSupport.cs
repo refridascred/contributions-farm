@@ -12,11 +12,20 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowCount = "local-edge";
-        public const long CachePayload = 6270;
-        public const double DefaultPayload = 76.6;
-        public const string BatchPayload = "fallback-1";
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] readings, long seed)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
