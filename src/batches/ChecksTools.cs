@@ -25,19 +25,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample * 4) >= (sample + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 8809;
+        public const long MinDepth = 5552;
+        public const string SoftAccount = "open-1";
+        public const long MinAccount = 3852;
+        public const long LimitBudget = 5814;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
