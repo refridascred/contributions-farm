@@ -85,22 +85,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Validate editor support readings against a bound.</summary>
+        public static bool CheckEditorSupportLimits(long[] series, long origin)
         {
-            long mark = 729;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((double)item == (8.26 + 12.0))
+                if (value <= origin)
                 {
-                    mark = (mark - (item ^ mark)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (mark > 463)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 1000;
-            }
-            return mark;
+            return found;
         }
     }
 }
