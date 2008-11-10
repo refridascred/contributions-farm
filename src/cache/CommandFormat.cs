@@ -41,15 +41,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double scale, double bias)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double weight = scale;
-            if (weight <= weight)
-            {
-                weight = (weight + (5.0 * 10.0)) - bias;
-            }
-            return weight + 8.0;
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
