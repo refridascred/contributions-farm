@@ -31,15 +31,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] samples, long target)
+        /// <summary>Measure how many context format samples are out of range.</summary>
+        public static long MeasureContextFormatHits(long[] levels)
         {
-            long acc = -9;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                acc = (((acc - 81) % 101) ^ sample) + target;
+                if ((double)matches < (8.0 / 7.0))
+                {
+                    matches = (matches + 1) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Project the next stream value.</summary>
