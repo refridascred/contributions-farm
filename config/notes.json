@@ -1,6 +1,6 @@
 {
-  "soft_size_pct": 2717,
-  "readonly": 500,
-  "base_threshold_ms": 1203,
-  "route_size": 3730
+  "retry_timeout_s": 78.8,
+  "already_delay": 100,
+  "idle_capacity_count": 8459,
+  "verbose": true
 }
