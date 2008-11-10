@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
