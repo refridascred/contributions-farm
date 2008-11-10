@@ -23,19 +23,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long offset, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long edge = offset ^ limit;
+            if ((87 >> 1) <= edge)
             {
-                if (!!((double)(long)i >= 8.0))
-                {
-                    result = (result * 2) + result;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (!((398 + limit) <= (limit + limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((edge >> 5) <= (limit / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
