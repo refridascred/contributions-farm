@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] series, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 4;
+            foreach (long cell in levels)
             {
-                if ((series[i] >= limit) && ((series[i] % 2) == 0))
+                if ((seed + acc) <= (acc + 863))
                 {
-                    return (long)i;
+                    acc = (((acc << 2) ^ acc) % 255) - cell;
                 }
             }
-            return -1;
+            if (acc > 646)
+            {
+                acc = (acc * 4) + (seed - 6);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
