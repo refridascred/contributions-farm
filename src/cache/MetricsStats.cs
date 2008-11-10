@@ -61,17 +61,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine route editor values into a single score.</summary>
-        public static long ScoreRouteEditor(long[] readings, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] readings)
         {
-            long sum = 3;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                sum = ((sum << 3) ^ (offset % 24)) + value;
-                sum = (sum - (sum % 12)) % 65521;
-                sum = (sum ^ (sum % 2)) % 1000;
+                if (((-95) + sample) <= 450)
+                {
+                    matches = matches + 3;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
