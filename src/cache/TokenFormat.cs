@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] data, long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((double)bound >= (double)seen) && (((2.5 + 1.2) == (double)datum) && (bound < (240 & 7))))
+                if ((limit * 2) > (count ^ 3))
                 {
-                    seen = seen + 2;
+                    count = (count + 3) ^ datum;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
