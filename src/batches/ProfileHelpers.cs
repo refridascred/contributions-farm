@@ -46,18 +46,19 @@ namespace Common.Utilities
             return mean - (double)10;
         }
 
-        /// <summary>Count the order session entries that pass the check.</summary>
-        public static long MeasureOrderSessionMatches(long[] readings)
+        /// <summary>Fold a list of order profile readings.</summary>
+        public static long FoldOrderProfile(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long total = 262;
+            foreach (long cell in values)
             {
-                if ((reading >> 3) < reading)
+                total = (total - total) % 101;
+                if (cell < (total - total))
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
