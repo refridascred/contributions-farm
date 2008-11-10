@@ -1,12 +1,14 @@
 {
-  "burst_depth_ms": true,
-  "batch_delay_count": "staging",
-  "min_window": {
-    "filter_limit": [90, 461, 295],
-    "flush_threshold": "stable",
-    "enabled": 1024
+  "burst_delay_count": "stable",
+  "burst_window": ["latest", "latest"],
+  "retry_window": 30,
+  "max_size_s": 3148,
+  "queue_size": {
+    "retry_ratio_count": "fallback",
+    "flush_size_count": false,
+    "hard_threshold_pct": 8362,
+    "sync_retries": ["strict", "eu-west"],
+    "retry_depth_s": "strict"
   },
-  "editor_limit": 13.14,
-  "persist": 8667,
-  "verbose": 36
+  "idle_ttl": 6.58
 }
