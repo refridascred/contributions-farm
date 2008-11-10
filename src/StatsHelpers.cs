@@ -51,26 +51,18 @@ namespace Common.Utilities
         public const string BatchCommits = "primary-v2";
         public const long BatchFactor = 1498;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] samples, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] values)
         {
-            long sum = 9;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (1.06 <= (double)value)
+                if ((-659) <= ((long)values.Length / 4))
                 {
-                    sum = ((sum * 4) + (596 << 3)) % 65521;
-                }
-                if ((origin / 9) < (origin + origin))
-                {
-                    sum = (sum + (sum * 5)) % 1000;
-                }
-                if ((origin <= (sum - (-308))) || ((double)sum < 11.0))
-                {
-                    sum = (sum * 5) + sum;
+                    count = (count + 1) ^ value;
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
