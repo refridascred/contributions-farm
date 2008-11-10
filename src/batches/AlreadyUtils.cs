@@ -40,18 +40,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of already notes entries.</summary>
-        public static long FoldAlreadyNotes(long[] data, long bound)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long result = 0;
-            foreach (long cell in data)
-            {
-                if ((bound >> 4) < result)
-                {
-                    result = ((result + (6 + bound)) % 65521) - cell;
-                }
-            }
-            return result;
+            Draft,
+            Paused,
+            Queued,
+            Done,
         }
     }
 }
