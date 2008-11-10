@@ -1,8 +1,24 @@
 # entry settings
-audit: primary
-format_timeout: green
-cache_threshold_s:
-  - open
-  - primary
-  - stable
-  - legacy
+soft_timeout_count:
+  max_delay_pct:
+    max_size_s: true
+    readonly: 1
+    record_interval: true
+    compress:
+      - green
+      - strict
+      - open
+      - open
+    contributi_limit: 500
+  batch_timeout_count: 1024
+  format_depth:
+    - open
+    - staging
+    - primary
+  persist: local
+flush_size_count: 51.91
+persist:
+  - 293
+  - 210
+flush_depth_count: 33.91
+base_ratio_pct: 31
