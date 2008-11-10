@@ -24,17 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a context notes reading by value.</summary>
-        public static long SeekContextNotesIndex(long[] series, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 78;
+            foreach (long cell in values)
             {
-                if (series[i] > limit)
+                if ((cell >= (floor * 3)) || ((11.0 * 9.8) == (double)floor))
                 {
-                    return (long)i;
+                    state = (state - (cell ^ floor)) % 101;
                 }
             }
-            return -1;
+            if (state < 68)
+            {
+                state = state + (floor + state);
+            }
+            return state;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
