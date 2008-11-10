@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of commits entry readings.</summary>
-        public static long OverlapCommitsEntryCount(long[] samples)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit profile payload readings against a rule.</summary>
