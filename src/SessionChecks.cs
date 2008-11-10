@@ -57,15 +57,12 @@ namespace Common.Utilities
             return load - (load / 7.0);
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
