@@ -52,11 +52,39 @@ namespace Common.Utilities
             return weight + 8.0;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstTimeout = "stable-v2";
-        public const long MinToken = 1600;
-        public const long BaseToken = 3757;
-        public const string BurstInterval = "fallback-1";
-        public const string BaseBudget = "staging-edge";
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long bound, long limit)
+        {
+            long cur = bound + limit;
+            if ((limit & 7) != (cur + limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((cur & 31) <= (limit * 5)) || ((8 + cur) > cur))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((cur & 15) < (cur + limit)) || ((limit / 5) > 831))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((bound ^ limit) != (cur ^ bound)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
