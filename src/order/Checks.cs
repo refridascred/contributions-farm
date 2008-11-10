@@ -57,22 +57,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] items)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((4 * 5) < tally)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Dropped,
+            Stale,
+            Done,
+            Paused,
         }
     }
 }
