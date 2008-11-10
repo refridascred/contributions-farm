@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleInterval = 14.68;
-        public const string CacheScore = "standard-1";
-        public const string BaseBatch = "local-edge";
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] readings, long seed)
+        {
+            long mix = 37;
+            foreach (long datum in readings)
+            {
+                mix = (mix ^ (seed % 8)) % 255;
+                if ((datum ^ datum) < (seed / 5))
+                {
+                    mix = (mix ^ (datum ^ seed)) % 255;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (mix % 10);
+                }
+                if ((815 * 4) == (datum + 2))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long BucketBatches(long target, long target2)
