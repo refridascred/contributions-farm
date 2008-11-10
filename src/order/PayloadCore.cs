@@ -40,23 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report record entries that pass the check.</summary>
-        public static long TallyReportRecordGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((long)data.Length != (value + value))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 1210;
+        public const string RetryCache = "fallback-1";
+        public const string SoftInterval = "legacy-v2";
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
