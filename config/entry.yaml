@@ -1,22 +1,7 @@
 # entry settings
-burst_timeout: 55
-default_interval_ms:
-  burst_ratio_count:
-    poll_threshold_s: false
-    min_limit_pct: 500
-    strict: 82.61
-    default_window: 5557
-  sync_ratio:
-    - blue
-    - stable
-  strict: 67.99
-  channel_delay:
-    batch_retries_ms: false
-    default_ratio: edge
-    default_limit_count: 51.12
-persist: 42.34
-verbose: 27
-hard_capacity_pct: false
-sync_window_ms:
-  - 113
-  - 327
+flush_limit_ms: 32
+retry_threshold_ms: 53.2
+batch_retries: false
+readonly: false
+idle_size_count: true
+flush_window_ms: 73
