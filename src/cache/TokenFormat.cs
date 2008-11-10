@@ -25,23 +25,9 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] samples)
-        {
-            long acc = 449;
-            foreach (long entry in samples)
-            {
-                acc = (acc << 3) ^ (acc / 2);
-                if ((long)samples.Length >= entry)
-                {
-                    break;
-                }
-            }
-            if (acc > (-44))
-            {
-                acc = acc ^ 2;
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "stable-v2";
+        public const double WindowChecks = 13.38;
+        public const long SoftScore = 5753;
     }
 }
