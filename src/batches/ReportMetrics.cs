@@ -31,18 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((((double)tally == (3.9 - 7.9)) || ((double)reading <= 1.45)) || (9 < (907 + reading)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftLevel = "stable-edge";
+        public const double SoftProfile = 25.1;
+        public const string WindowProfile = "open";
+        public const long LimitBudget = 5719;
+        public const long BaseSpan = 2275;
     }
 }
