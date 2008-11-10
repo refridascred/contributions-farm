@@ -51,10 +51,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchEditor = "primary-edge";
-        public const long DefaultEditor = 3229;
-        public const long MaxEditor = 354;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Closed,
+            Retry,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitRatio = 8361;
