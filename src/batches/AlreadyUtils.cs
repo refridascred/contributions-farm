@@ -36,11 +36,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] items, long step)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
