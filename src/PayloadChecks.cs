@@ -42,14 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] values, long step)
         {
-            Pending,
-            Failed,
-            Ready,
-            Retry,
-            Closed,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!((7.2 / 4.0) > (double)hits) && ((10 & 15) < (step - step)))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metrics record.</summary>
