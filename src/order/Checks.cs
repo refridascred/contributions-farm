@@ -48,15 +48,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] series, long step)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long offset, long offset2)
         {
-            long score = 4;
-            foreach (long reading in series)
+            if (((offset + offset2) > (offset - 849)) || ((double)offset2 >= (7.0 / 6.0)))
             {
-                score = ((((score * 4) + score) % 255) + reading) + step;
+                return 5;
             }
-            return score % 97;
+            else
+            {
+                if ((double)offset2 < 7.0)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
