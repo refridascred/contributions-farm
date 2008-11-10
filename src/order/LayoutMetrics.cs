@@ -40,21 +40,24 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long origin, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (seed > (origin << 1))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((origin - seed) <= (5 << 1)) && ((82 - (-2)) > origin))
                 {
-                    if ((items[i] ^ items[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
     }
 }
