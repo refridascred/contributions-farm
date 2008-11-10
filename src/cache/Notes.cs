@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long LimitRatio = 8611;
         public const long HardPayload = 2913;
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] samples, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a context notes reading by value.</summary>
