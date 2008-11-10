@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Failed,
-            Pending,
-            Active,
-            Dropped,
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
