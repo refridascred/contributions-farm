@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long target, long limit)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            long step = target - limit;
+            if ((double)target <= 15.0)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((target + 241) == (step / 4)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Combine payload checks values into a single score.</summary>
