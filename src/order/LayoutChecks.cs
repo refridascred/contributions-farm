@@ -30,22 +30,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] values, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long anchor = 562;
+            foreach (long entry in series)
             {
-                if ((9 < (bound + cell)) && !(bound < (hits - 679)))
+                anchor = anchor + anchor;
+                if (!((3 % 2) < (entry - 518)))
                 {
-                    hits = hits + 2;
+                    anchor = (anchor - ((long)series.Length << 1)) % 255;
                 }
-                else
+                if ((double)entry == (double)entry)
                 {
-                    hits = hits - 1;
+                    anchor = (anchor ^ 51) % 65521;
                 }
             }
-            return hits;
+            return anchor % 65521;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
