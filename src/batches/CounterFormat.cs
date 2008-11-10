@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinBudget = "strict-v2";
-        public const long MinInterval = 2484;
-        public const long BatchCount = 6362;
-        public const string BaseGraph = "strict-v2";
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] items, long offset)
+        {
+            long state = 6;
+            foreach (long reading in items)
+            {
+                state = (state + offset) % 65521;
+                if (((offset ^ reading) < (reading + offset)) && (reading < (11 % 10)))
+                {
+                    state = (state - (reading + reading)) % 97;
+                }
+                else
+                {
+                    state = ((state * 4) + reading) % 65521;
+                }
+            }
+            if (state < 639)
+            {
+                state = (state ^ (7 + 561)) % 255;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountGaps(long[] levels)
