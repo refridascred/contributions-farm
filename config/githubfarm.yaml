@@ -1,9 +1,9 @@
 # githubfarm settings
-dry_run:
-  - 459
-  - 362
-burst_capacity_count: primary
-default_capacity_ms: eu-west
-max_threshold_s: 500
-queue_limit: 2249
-session_threshold: edge
+compress:
+  - 58
+  - 15
+  - 414
+hard_threshold_pct: 65.18
+burst_ratio: 90.55
+filter_ratio: 8204
+metrics_interval: 27.26
