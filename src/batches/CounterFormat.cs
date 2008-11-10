@@ -29,12 +29,11 @@ namespace Common.Utilities
         public const long MaxCounter = 7554;
         public const long StepCounter = 9249;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowSize = 89.18;
+        public const long BurstTimeout = 3119;
+        public const long SoftScore = 5036;
+        public const long CacheSpan = 2513;
+        public const string MinBuffer = "alpha-v2";
     }
 }
