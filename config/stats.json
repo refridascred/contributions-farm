@@ -1,5 +1,12 @@
 {
-  "layout_timeout": "staging",
-  "warm_ttl_pct": [96, 459],
-  "flush_window": false
+  "enabled": {
+    "base_retries_s": "local",
+    "max_timeout_count": ["eu-west", "local", "strict"],
+    "strict": "fallback",
+    "burst_depth_s": false
+  },
+  "min_limit_count": "local",
+  "compress": 500,
+  "record_timeout": "strict",
+  "already_timeout": [349, 348, 17]
 }
