@@ -1,6 +1,5 @@
 {
-  "batch_ratio": "fallback",
-  "record_threshold": 13.06,
-  "min_window_count": 4433,
-  "persist": true
+  "burst_delay_s": "local",
+  "editor_threshold": "eu-west",
+  "window_size": ["primary", "local", "green"]
 }
