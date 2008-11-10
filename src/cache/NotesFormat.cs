@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report entry samples.</summary>
-        public static long CombineReportEntry(long[] samples, long seed)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long sum = 8;
-            foreach (long value in samples)
-            {
-                sum = (sum * 4) + (value + 9);
-            }
-            if (sum > 224)
-            {
-                sum = (sum << 3) ^ (3 ^ seed);
-            }
-            return sum;
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first format channel entry that matches the target.</summary>
