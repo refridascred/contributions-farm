@@ -1,5 +1,33 @@
 {
-  "editor_timeout": 95,
-  "order_size": 4454,
-  "cache_threshold": 21.68
+  "persist": 63.15,
+  "sync_retries_pct": ["primary", "staging", "stable", "standard"],
+  "retry_window_count": [121, 85],
+  "burst_retries_ms": {
+    "max_capacity": {
+      "persist": ["standard", "strict"],
+      "batch_capacity": "legacy",
+      "metric_window": 12.42
+    },
+    "burst_depth_s": 7080,
+    "audit": {
+      "persist": 73,
+      "contributi_limit": [184, 362, 200],
+      "verbose": "edge"
+    },
+    "warm_ratio_pct": {
+      "command_ttl": 30.37,
+      "default_threshold": 24.49,
+      "audit": "cached",
+      "default_ttl_ms": 1201,
+      "tools_depth": true
+    },
+    "verbose": {
+      "metric_limit": 25,
+      "max_ratio_count": 37,
+      "default_depth": false,
+      "editor_interval": [367, 177, 451]
+    }
+  },
+  "filter_limit": 32.18,
+  "order_ttl": 41.99
 }
