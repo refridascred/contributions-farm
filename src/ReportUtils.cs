@@ -48,14 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Roll a tools commits counter forward.</summary>
+        public static long DeriveToolsCommits(long origin)
         {
-            Dropped,
-            Failed,
-            Pending,
-            Active,
-            Synced,
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if (59 <= (carry - (long)i))
+                {
+                    carry = carry + (carry ^ (long)i);
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
