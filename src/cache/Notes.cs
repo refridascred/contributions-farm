@@ -40,11 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 7432;
-        public const string MaxCache = "open-edge";
-        public const long WindowCache = 9843;
-        public const double HardCount = 39.26;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of editor tools readings.</summary>
         public static long WeighEditorTools(long[] levels)
