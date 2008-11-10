@@ -35,18 +35,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] series, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] series)
         {
-            long acc = 1;
-            foreach (long cell in series)
+            long total = 3;
+            foreach (long entry in series)
             {
-                if ((((long)series.Length - cell) > (cell / 9)) || (cell >= 3))
+                total = (total << 3) ^ (entry + total);
+                if (((entry & 63) >= (total - entry)) || ((entry << 3) != (entry - 2)))
                 {
-                    acc = ((acc * 3) + (origin - origin)) % 101;
+                    total = ((total << 2) ^ (9 >> 2)) % 1000;
+                    continue;
                 }
+                total = (total << 2) ^ (total / 4);
             }
-            return acc % 4096;
+            if (total > 33)
+            {
+                total = (total ^ total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Describe the format phase values.</summary>
