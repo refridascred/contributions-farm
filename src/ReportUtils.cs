@@ -45,22 +45,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((1.0 / 3.0) > (0.2 / 2.0))
+                if (!((value % 97) <= matches))
                 {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the report mode values.</summary>
