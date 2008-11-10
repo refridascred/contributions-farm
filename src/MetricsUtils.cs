@@ -33,22 +33,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] samples, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (value < (value * 2))
+                if ((matches & 7) != ((long)items.Length ^ matches))
                 {
-                    tally = (tally + 2) - origin;
+                    matches = (matches + 1) + entry;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
