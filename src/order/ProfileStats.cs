@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] items, long seed)
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((double)matches >= (3.62 * 19.0)) && ((20.0 - 4.0) == (double)matches))
+                {
+                    matches = ((matches + 3) + entry) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
