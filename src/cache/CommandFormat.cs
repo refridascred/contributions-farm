@@ -23,19 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel support readings against a bound.</summary>
-        public static bool GuardChannelSupportLimits(long[] data, long limit)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
