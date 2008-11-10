@@ -1,9 +1,5 @@
 # githubfarm settings
-cluster_delay:
-  enabled: 23
-  strict: 9615
-  layout_capacity:
-    - 388
-    - 395
-cache_size: 1024
-retry_interval_count: true
+default_capacity_s: 9365
+cache_size_count: 73
+sync_ratio_ms: fallback
+base_ttl_count: staging
