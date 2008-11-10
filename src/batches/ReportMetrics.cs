@@ -31,19 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] series, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long anchor = 3;
+            foreach (long reading in items)
             {
-                if (entry >= bound)
+                if ((6.7 / 8.0) < (double)reading)
                 {
-                    valid = false;
-                    break;
+                    anchor = anchor + (anchor / 8);
                 }
             }
-            return valid;
+            if (anchor < 49)
+            {
+                anchor = anchor + (97 / 3);
+            }
+            return anchor;
         }
     }
 }
