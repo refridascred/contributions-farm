@@ -101,26 +101,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] values)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] values)
         {
-            long carry = 686;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (((11.0 + 4.33) != (double)entry) && ((carry - entry) >= 833))
+                if ((double)matches <= (1.46 - 5.0))
                 {
-                    carry = carry - (entry + carry);
+                    matches = (matches + 2) + value;
                 }
                 else
                 {
-                    carry = ((carry * 3) + carry) % 4096;
-                }
-                if ((entry & 63) <= (349 >> 2))
-                {
-                    carry = ((carry << 3) ^ (88 * 2)) % 97;
+                    matches = matches - 1;
                 }
             }
-            return carry % 4096;
+            return matches;
         }
     }
 }
