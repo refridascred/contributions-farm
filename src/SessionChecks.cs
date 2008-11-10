@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowInterval = 5246;
-        public const long IdleInterval = 6400;
-        public const long BatchLevel = 333;
-        public const long MinInterval = 8616;
-        public const long CacheCommits = 3876;
+        /// <summary>Match up buffer record samples.</summary>
+        public static long PairBufferRecordCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool GuardGraphLimits(long[] values, long seed)
