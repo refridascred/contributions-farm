@@ -1,11 +1,6 @@
 {
-  "entry_delay": "legacy",
-  "burst_interval_count": 76.12,
-  "enabled": false,
-  "compress": {
-    "contributi_window": "primary",
-    "channel_interval": false,
-    "graph_limit": 43.02
-  },
-  "account_capacity": "open"
+  "queue_timeout": "primary",
+  "base_ratio": "blue",
+  "batch_size_pct": "legacy",
+  "batch_depth_count": "primary"
 }
