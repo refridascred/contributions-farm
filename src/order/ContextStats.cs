@@ -66,11 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] readings, long target)
         {
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count % 100) < (target * 2))
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
