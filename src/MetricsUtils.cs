@@ -40,11 +40,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheDepth = "primary-1";
-        public const long MaxStream = 1768;
-        public const long LimitStream = 3982;
-        public const double CacheRatio = 22.92;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Done,
+            Locked,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BatchSchema = 3121;
