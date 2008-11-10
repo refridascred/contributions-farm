@@ -5,30 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] values, long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long offset, long target)
         {
-            long state = 955;
-            foreach (long datum in values)
+            if ((target - target) != (target & 255))
             {
-                if ((double)state > (5.61 + 3.83))
+                return 7;
+            }
+            else
+            {
+                if ((target * 2) >= (target - target))
                 {
-                    state = (state + (39 / 8)) % 97;
+                    return 4;
                 }
-                if (state > (datum ^ 514))
+                else
                 {
-                    state = state + state;
-                }
-                if ((state > (datum + seed)) || ((state >> 4) != (seed << 3)))
-                {
-                    break;
+                    if ((double)offset <= (2.0 + 2.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target + offset) <= (0 & 127))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (state > 93)
-            {
-                state = state - 0;
-            }
-            return state % 4096;
         }
 
         /// <summary>Combine counter support values into a single score.</summary>
