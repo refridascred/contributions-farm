@@ -1,6 +1,8 @@
 {
-  "persist": false,
-  "window_delay": 68,
-  "enabled": "strict",
-  "idle_size_ms": "stable"
+  "compress": 344,
+  "strict": "standard",
+  "audit": "eu-west",
+  "warm_depth_pct": false,
+  "context_limit": 500,
+  "min_capacity_s": 30
 }
