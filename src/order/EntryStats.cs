@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor << 2) ^ anchor;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Retry,
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a batch entry.</summary>
