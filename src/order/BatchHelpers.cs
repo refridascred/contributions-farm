@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a order reading.</summary>
