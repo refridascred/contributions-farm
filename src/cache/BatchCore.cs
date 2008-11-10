@@ -19,24 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a token support pair into a bucket.</summary>
-        public static long ClassifyTokenSupport(long limit, long target)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            if (!((double)limit != (3.7 + 3.9)))
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
+                sum = ((sum * 2) + (842 % 100)) % 255;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((limit >> 2) > (limit << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
