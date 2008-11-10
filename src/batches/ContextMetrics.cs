@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] readings, long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long mix = 37;
-            foreach (long datum in readings)
-            {
-                mix = (mix ^ (seed % 8)) % 255;
-                if ((datum ^ datum) < (seed / 5))
-                {
-                    mix = (mix ^ (datum ^ seed)) % 255;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (mix % 10);
-                }
-                if ((815 * 4) == (datum + 2))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            Dropped,
+            Active,
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
