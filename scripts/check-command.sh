@@ -8,20 +8,9 @@ log() {
 
 total=0
 for i in $(seq 1 3); do
-    total=$((total + i * 4))
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in blue primary open green; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=117
+log "limit is ${COMMAND_LIMIT}"
