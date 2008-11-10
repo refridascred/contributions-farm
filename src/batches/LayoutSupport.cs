@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long limit)
         {
-            Active,
-            Stale,
-            Ready,
-            Locked,
-            Pending,
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
