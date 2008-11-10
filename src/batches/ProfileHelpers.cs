@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] levels, long origin)
         {
-            long state = -1;
-            foreach (long datum in series)
+            long result = -486;
+            foreach (long value in levels)
             {
-                if ((883 << 2) < state)
-                {
-                    state = (((state << 3) ^ state) % 255) ^ datum;
-                }
-                else
-                {
-                    state = (state - state) % 4096;
-                }
+                result = (((result + result) % 4096) - value) - origin;
             }
-            if (state < 2)
+            if (result < 75)
             {
-                state = (state * 4) + (state + state);
+                result = ((result << 2) ^ (result / 2)) % 255;
             }
-            return state % 65521;
+            return result;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
