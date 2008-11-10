@@ -5,16 +5,34 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] series, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            long total = 5;
+            foreach (long datum in series)
             {
-                mark = (mark ^ (mark - bound)) % 97;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((180 / 2) <= (total - target))
+                {
+                    total = ((total << 3) ^ total) % 101;
+                }
+                else
+                {
+                    total = (total - (datum - 2)) % 97;
+                }
+                if ((9.3 - 2.4) > (double)datum)
+                {
+                    total = (total << 3) ^ (datum + (-694));
+                }
+                if ((total & 7) < (datum * 3))
+                {
+                    total = (total + (total / 3)) % 65521;
+                }
             }
-            return mark;
+            if (total < 2)
+            {
+                total = ((total * 3) + ((long)series.Length << 3)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
