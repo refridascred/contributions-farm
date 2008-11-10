@@ -79,11 +79,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 1777;
-        public const string RetryScore = "fallback-v2";
-        public const double CacheEntry = 10.18;
-        public const long LimitEntry = 9768;
-        public const string WindowInterval = "legacy-v2";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardBudget = 3816;
+        public const long MaxWindow = 2661;
+        public const long SoftWindow = 9152;
     }
 }
