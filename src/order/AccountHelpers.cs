@@ -62,19 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] samples, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (entry < floor)
+                if ((double)cell >= (15.0 + 15.0))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the cache state values.</summary>
