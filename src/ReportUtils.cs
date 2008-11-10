@@ -56,19 +56,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] samples, long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long step)
         {
-            long acc = 7;
-            foreach (long reading in samples)
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                acc = ((acc ^ (-892)) % 65521) - offset;
-                if ((5 * 5) == (reading << 1))
-                {
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return acc;
+            return mark;
         }
     }
 }
