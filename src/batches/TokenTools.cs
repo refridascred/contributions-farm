@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] items, long floor)
-        {
-            long total = 2;
-            foreach (long sample in items)
-            {
-                if (!((floor / 6) < (sample / 7)))
-                {
-                    total = ((total << 2) ^ total) % 97;
-                }
-                total = (total * 4) + sample;
-                total = total - floor;
-            }
-            if (total > 7)
-            {
-                total = ((total << 3) ^ (total - 34)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "alpha-edge";
+        public const long MinContributi = 3114;
+        public const long SoftDepth = 8419;
+        public const long WindowContributi = 4662;
+        public const string MinFactor = "fallback-v2";
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
