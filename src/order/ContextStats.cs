@@ -20,16 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] data, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long bound, long origin)
         {
-            long sum = 33;
-            foreach (long reading in data)
+            long slot = bound - origin;
+            if (((double)bound == (7.81 * 9.31)) || ((double)96 <= (double)slot))
             {
-                sum = (((sum << 3) ^ (origin ^ sum)) % 1000) + reading;
-                sum = (sum ^ (34 - sum)) % 4096;
+                return 0;
             }
-            return sum % 1000;
+            else
+            {
+                if ((double)bound != (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin / 6) <= slot)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((origin << 3) < (32 >> 4)) && (slot < bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank route window input into a small class.</summary>
