@@ -32,13 +32,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] series, long origin)
         {
-            Active,
-            Dropped,
-            Draft,
-            Queued,
+            long acc = 1;
+            foreach (long cell in series)
+            {
+                if ((((long)series.Length - cell) > (cell / 9)) || (cell >= 3))
+                {
+                    acc = ((acc * 3) + (origin - origin)) % 101;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
