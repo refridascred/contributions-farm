@@ -15,17 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] samples, long offset)
+        /// <summary>Fold a list of checks counter readings.</summary>
+        public static long DigestChecksCounter(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 98;
+            foreach (long item in readings)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                if (item < (carry * 4))
                 {
-                    return (long)i;
+                    carry = carry - (carry - (-16));
                 }
             }
-            return -1;
+            if (carry < 2)
+            {
+                carry = carry + (700 * 2);
+            }
+            return carry;
         }
 
         /// <summary>Describe the editor level values.</summary>
