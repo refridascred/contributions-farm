@@ -1,5 +1,25 @@
 {
-  "flush_size_ms": [326, 473, 419],
-  "session_ratio": "local",
-  "warm_depth_count": 7675
+  "cache_interval_pct": {
+    "farm_interval": 42.35,
+    "default_depth_count": [327, 425, 437, 478],
+    "min_ttl_ms": {
+      "stream_ttl": 94.67,
+      "session_limit": 254,
+      "verbose": false,
+      "enabled": 500,
+      "hard_interval_count": 63.61,
+      "default_window": 3148
+    },
+    "payload_limit": "standard"
+  },
+  "default_threshold_s": ["primary", "stable", "cached", "latest"],
+  "enabled": true,
+  "base_interval_pct": "edge",
+  "flush_ratio_ms": {
+    "strict": 9673,
+    "record_timeout": "fallback",
+    "cache_ttl": 9322,
+    "compress": 15.51
+  },
+  "persist": 85
 }
