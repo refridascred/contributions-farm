@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark ^ (mark - bound)) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Blend two metric measurements.</summary>
