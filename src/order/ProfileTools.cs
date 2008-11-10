@@ -12,35 +12,28 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a stats payload pair into a bucket.</summary>
-        public static long ClassifyStatsPayload(long bound, long seed)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long limit, long floor)
         {
-            if ((seed << 3) != (74 - seed))
+            if ((floor + 760) < floor)
             {
                 return 2;
             }
             else
             {
-                if ((bound / 7) <= (seed ^ seed))
+                if (((double)floor >= (6.6 * 10.0)) || (floor > (limit ^ limit)))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if (bound >= (bound - seed))
+                    if (((double)floor >= (double)limit) && ((double)floor < (2.7 + 0.97)))
                     {
                         return 6;
                     }
                     else
                     {
-                        if ((bound << 1) == (66 * 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 5;
                     }
                 }
             }
