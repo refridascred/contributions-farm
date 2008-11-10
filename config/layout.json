@@ -1,5 +1,16 @@
 {
-  "dry_run": "green",
-  "retry_size": false,
-  "default_capacity": 5880
+  "retry_size": {
+    "compress": "green",
+    "default_capacity_pct": {
+      "checks_limit": 74.37,
+      "dry_run": 9570,
+      "cache_interval": ["stable", "green", "green"],
+      "sync_ttl_ms": 85.28,
+      "min_ratio_ms": true
+    },
+    "hard_timeout_pct": 83,
+    "enabled": [175, 359, 417, 322]
+  },
+  "hard_interval": 60,
+  "poll_timeout": "fallback"
 }
