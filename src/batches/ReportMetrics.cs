@@ -13,31 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long target, long origin)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double weight, double floor)
         {
-            if (!((double)target == (14.0 / 2.0)))
+            double load = floor;
+            if (load >= (weight * 5.52))
             {
-                return 7;
+                load = load + floor;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (((-330) - target) >= 88)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)target <= (0.06 / 9.0)) && ((double)target >= 4.2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                load = (load - load) + (double)(long)i;
             }
+            return load - (7.25 * 7.91);
         }
 
         /// <summary>Hold a window header.</summary>
