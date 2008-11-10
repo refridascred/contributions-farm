@@ -14,21 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up graph stats samples.</summary>
-        public static long MatchGraphStatsCount(long[] data)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the cache class values.</summary>
