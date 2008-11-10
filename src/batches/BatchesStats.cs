@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] readings, long origin)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long mix = 448;
-            foreach (long reading in readings)
-            {
-                if ((reading < mix) || ((mix + origin) < (mix + 707)))
-                {
-                    mix = ((mix * 5) + origin) % 65521;
-                }
-            }
-            return mix;
+            Retry,
+            Dropped,
+            Pending,
+            Closed,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
