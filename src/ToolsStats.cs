@@ -22,15 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Closed,
+            Locked,
+            Pending,
+            Active,
+            Paused,
         }
 
         /// <summary>Validate layout report readings against a bound.</summary>
