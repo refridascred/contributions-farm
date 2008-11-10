@@ -32,26 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long score = 62;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    score = (((score * 5) + (item & 1)) % 101) ^ (long)i;
-                }
-                if ((item >= 4) && ((double)item < (0.1 - 19.0)))
-                {
-                    score = ((score << 2) ^ score) % 1000;
-                }
-            }
-            if (score < 3)
-            {
-                score = (score + (98 ^ score)) % 101;
-            }
-            return score;
+            Retry,
+            Failed,
+            Draft,
+            Ready,
+            Synced,
         }
     }
 }
