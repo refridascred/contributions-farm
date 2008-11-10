@@ -18,17 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a queue graph reading by value.</summary>
-        public static long LookupQueueGraphIndex(long[] readings, long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = acc - (origin / 8);
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
