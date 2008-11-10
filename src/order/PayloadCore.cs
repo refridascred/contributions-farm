@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const long CacheProfile = 3602;
         public const long BaseProfile = 941;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryInterval = 8588;
-        public const long BaseTimeout = 8622;
-        public const double MinNotes = 44.28;
-        public const long WindowNotes = 6049;
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double weight, double span)
+        {
+            double bias = (double)43 / 6.0;
+            if (bias <= (double)58)
+            {
+                bias = (bias - (span * 2.02)) - weight;
+            }
+            return bias + (span + span);
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long RollBatches(long floor)
