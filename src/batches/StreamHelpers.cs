@@ -29,22 +29,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long score = 290;
+            foreach (long entry in readings)
             {
-                if (sample <= (sample * 4))
+                if ((double)entry < (15.0 + 18.0))
                 {
-                    matches = matches + 1;
+                    score = (score + (score + entry)) % 255;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = (score ^ (score >> 3)) % 4096;
                 }
             }
-            return matches;
+            if (score > 4)
+            {
+                score = (score - (score >> 4)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
