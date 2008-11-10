@@ -27,13 +27,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double ratio, double bias)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            double bias2 = ratio;
+            if (bias2 > 3.1)
+            {
+                bias2 = (bias2 + (double)24) + bias;
+            }
+            return bias2 - (double)0;
         }
     }
 }
