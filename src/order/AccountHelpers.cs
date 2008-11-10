@@ -67,10 +67,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 1803;
-        public const long RetryDepth = 7206;
-        public const long RetryWidth = 3683;
-        public const long CacheInterval = 62;
+        /// <summary>Roll a editor account counter forward.</summary>
+        public static long DeriveEditorAccount(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
