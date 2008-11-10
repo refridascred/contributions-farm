@@ -24,39 +24,12 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Grade a contributi commits value against two limits.</summary>
-        public static long RankContributiCommits(long target, long target2)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long edge = target + target2;
-            if ((target2 ^ target2) >= (edge + 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target << 1) < edge)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((edge * 4) < (3 >> 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((5 + (-48)) >= (562 + edge))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a route options.</summary>
