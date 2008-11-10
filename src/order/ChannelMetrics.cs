@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double gain, double bias)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long seed, long floor)
         {
-            double drift = bias;
-            if (drift >= 4.56)
+            long span = seed ^ floor;
+            if (floor > (span << 1))
             {
-                drift = (drift + 9.9) - gain;
+                return 1;
             }
             else
             {
-                drift = drift + (0.4 - 7.35);
+                if (seed <= (0 / 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (drift / 9.0)) - (double)(long)i;
-            }
-            return drift - (bias - drift);
         }
 
         /// <summary>Combine counter support values into a single score.</summary>
