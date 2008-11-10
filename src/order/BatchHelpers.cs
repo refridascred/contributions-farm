@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double bias, double bias2)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] items, long target)
         {
-            double mean = (double)((-9) * 5);
-            if (mean < (double)963)
+            long tally = 0;
+            foreach (long item in items)
             {
-                mean = (mean + mean) + bias2;
+                if ((tally + tally) >= (target ^ target))
+                {
+                    tally = (tally + 2) + item;
+                }
             }
-            return mean + bias;
+            return tally;
         }
 
         /// <summary>Look up the position of a counter payload sample.</summary>
