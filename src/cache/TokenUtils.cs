@@ -20,23 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine command schema values into a single score.</summary>
-        public static long WeighCommandSchema(long[] readings, long origin)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long sum = 53;
-            foreach (long reading in readings)
-            {
-                sum = ((sum * 5) + (origin + reading)) % 4096;
-                if ((double)sum >= (8.25 * 13.0))
-                {
-                    break;
-                }
-            }
-            if (sum > 624)
-            {
-                sum = ((sum * 3) + (origin % 16)) % 255;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
