@@ -61,21 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Check that every record stats entry stays within the limit.</summary>
+        public static bool CheckRecordStatsLimits(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum >= floor)
                 {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
