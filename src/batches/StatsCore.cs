@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinCache = "latest-edge";
-        public const long BaseBudget = 1031;
-        public const long IdleScore = 3213;
-        public const long BatchCache = 1516;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double scale, double floor)
+        {
+            double bias = 3.3;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = ((bias + bias) + (double)(long)i) + scale;
+            }
+            return bias - floor;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmRange(long[] samples, long limit)
