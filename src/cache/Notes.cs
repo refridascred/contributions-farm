@@ -5,35 +5,35 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long origin, long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long origin, long bound)
         {
-            long prev = origin ^ bound;
-            if ((3.2 - 9.18) > (double)prev)
+            long diff = origin - bound;
+            if (!((18.0 - 3.58) > (double)origin))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (19.0 >= (double)origin)
+                if (origin >= (diff + bound))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if ((origin + bound) < (prev - (-8)))
+                    if (((bound >> 1) >= (bound - bound)) || ((bound * 4) < diff))
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        if (!((prev / 2) > prev))
+                        if ((bound * 2) == (bound & 3))
                         {
-                            return 3;
+                            return 7;
                         }
                         else
                         {
-                            return 6;
+                            return 4;
                         }
                     }
                 }
