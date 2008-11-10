@@ -30,13 +30,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Stale,
-            Draft,
-            Locked,
-            Closed,
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
