@@ -13,18 +13,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many notes commits samples are out of range.</summary>
-        public static long TallyNotesCommitsMatches(long[] readings)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)75 <= (6.3 + 6.5))
+                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
                 {
-                    tally = (tally + 2) + entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the channel level values.</summary>
