@@ -13,18 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] items)
         {
-            long total = 84;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((sample << 1) >= (total & 127))
+                if ((seen - seen) < sample)
                 {
-                    total = total - (5 / 8);
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
