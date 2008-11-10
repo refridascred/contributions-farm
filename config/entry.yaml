@@ -1,20 +1,4 @@
 # entry settings
-channel_timeout: edge
-session_threshold: 68.96
-max_threshold:
-  hard_delay: 27
-  retry_capacity_pct: true
-  cache_threshold_count: primary
-  retry_delay_pct: primary
-  strict: false
-  dry_run:
-    - 484
-    - 353
-burst_limit_pct: 76.99
-min_timeout_ms:
-  burst_timeout_pct: 6819
-  readonly: 44
-  soft_limit_count: 5065
-  verbose: false
-  default_depth: latest
-  max_ttl_s: stable
+retry_limit: green
+warm_capacity: 9
+cache_interval_ms: 94
