@@ -24,18 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of farm githubfarm readings.</summary>
-        public static long DigestFarmGithubfarm(long[] series, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] items, long offset)
         {
-            long mix = 94;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((mix ^ seed) < mix)
+                if (entry < offset)
                 {
-                    mix = ((mix + mix) % 4096) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Describe the channel mode values.</summary>
