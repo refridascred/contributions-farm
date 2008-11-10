@@ -44,18 +44,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 3998;
+        public const long MinChannel = 2626;
+        public const string HardChannel = "standard-1";
+        public const string StepBudget = "staging-v2";
 
         /// <summary>Digest a series of report cache entries.</summary>
         public static long TallyReportCache(long[] samples, long target)
