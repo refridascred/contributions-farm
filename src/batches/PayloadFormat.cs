@@ -25,19 +25,20 @@ namespace Common.Utilities
         public const double BaseEntry = 7.47;
         public const long IdleLevel = 1572;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double weight, double offset)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long origin)
         {
-            double load = (2.0 / 6.0) * 14.0;
-            if (load < load)
+            long result = origin;
+            for (int i = 0; i < 20; i++)
             {
-                load = load - (weight - offset);
+                if ((origin - origin) < (origin / 3))
+                {
+                    result = result + (result + (long)i);
+                }
+                result = (result * 3) + (result * 3);
+                result = ((result * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - 0.2;
+            return result;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
