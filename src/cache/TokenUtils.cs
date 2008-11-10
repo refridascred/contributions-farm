@@ -31,26 +31,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] series)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long total = 3;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    total = (((total << 3) ^ (entry / 8)) % 255) + (long)i;
-                }
-                if ((5.1 / 5.0) > (double)total)
-                {
-                    total = (total * 4) + (total * 3);
-                }
-                else
-                {
-                    total = (total * 4) + (total / 6);
-                }
-            }
-            return total;
+            Paused,
+            Locked,
+            Draft,
+            Closed,
+            Dropped,
         }
     }
 }
