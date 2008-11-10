@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 519;
-        public const long MaxChecks = 4186;
-        public const double CacheChecks = 22.92;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] levels)
+        {
+            long score = 45;
+            foreach (long reading in levels)
+            {
+                if (3 < reading)
+                {
+                    score = ((score << 3) ^ (reading / 6)) % 101;
+                    break;
+                }
+                score = (score - (score + score)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double ProjectFormat(double weight, double bias)
