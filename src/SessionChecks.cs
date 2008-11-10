@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowInterval = 5246;
+        public const long IdleInterval = 6400;
+        public const long BatchLevel = 333;
+        public const long MinInterval = 8616;
+        public const long CacheCommits = 3876;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LookupContributiIndex(long[] samples, long offset)
