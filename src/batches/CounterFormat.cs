@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowFactor = "stable-edge";
-        public const string LimitTimeout = "strict-edge";
-        public const long WindowToken = 8828;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] samples, long limit)
+        {
+            long sum = 764;
+            foreach (long value in samples)
+            {
+                sum = (sum - (value >> 1)) - limit;
+                if ((10.0 >= (double)sum) && ((4.76 * 1.58) <= (double)sum))
+                {
+                    sum = ((sum * 3) + (40 % 16)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (792 ^ sum)) % 255;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string RetryCounter = "standard";
