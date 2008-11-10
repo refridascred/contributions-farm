@@ -36,18 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit order payload readings against a rule.</summary>
-        public static long MeasureOrderPayloadOutliers(long[] items)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (((matches + 3) <= 2) || (0.31 <= (double)matches))
+                if (!(item < seed) || ((seed & 15) == (item + item)))
                 {
-                    matches = (matches + 3) ^ entry;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
