@@ -20,19 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] values, long target)
+        /// <summary>Fold a list of window command readings.</summary>
+        public static long FoldWindowCommand(long[] samples)
         {
-            long mix = 558;
-            foreach (long datum in values)
+            long sum = -99;
+            foreach (long reading in samples)
             {
-                mix = ((mix + ((-849) + target)) % 65521) + datum;
+                sum = (((sum << 2) ^ sum) % 101) - reading;
+                sum = (sum * 2) + 443;
             }
-            if (mix < (-5))
+            if (sum < 89)
             {
-                mix = ((mix << 3) ^ (7 + target)) % 1000;
+                sum = sum + 92;
             }
-            return mix % 97;
+            return sum;
         }
 
         /// <summary>Grade a batches filter value against two limits.</summary>
