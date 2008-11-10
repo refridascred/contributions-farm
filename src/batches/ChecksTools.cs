@@ -25,11 +25,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Blend two batch contributi measurements.</summary>
-        public static double ProjectBatchContributi(double weight, double span)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] readings)
         {
-            double load = 9.22;
-            return (load - span) + weight;
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample * 4) >= (sample + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the channel mode values.</summary>
