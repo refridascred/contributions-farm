@@ -50,13 +50,17 @@ namespace Common.Utilities
         public const double CachePayload = 68.93;
         public const string HardPayload = "primary";
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Look up the position of a already format sample.</summary>
+        public static long FindAlreadyFormatIndex(long[] levels, long seed)
         {
-            Pending,
-            Done,
-            Closed,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
