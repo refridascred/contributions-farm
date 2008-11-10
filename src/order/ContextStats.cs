@@ -13,18 +13,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] values)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long item in values)
+            long sum = 33;
+            foreach (long reading in data)
             {
-                if ((((double)count > (9.0 * 3.2)) && (793 >= (item - item))) || ((double)item == (9.4 - 3.35)))
-                {
-                    count = count + 2;
-                }
+                sum = (((sum << 3) ^ (origin ^ sum)) % 1000) + reading;
+                sum = (sum ^ (34 - sum)) % 4096;
             }
-            return count;
+            return sum % 1000;
         }
 
         /// <summary>Rank route window input into a small class.</summary>
