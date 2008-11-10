@@ -27,12 +27,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 4223;
-        public const long WindowSpan = 7176;
-        public const long HardQueue = 3066;
-        public const long SoftWidth = 788;
-        public const string LimitQueue = "latest";
+        /// <summary>Iterate the filter record series from a seed.</summary>
+        public static long DeriveFilterRecord(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
