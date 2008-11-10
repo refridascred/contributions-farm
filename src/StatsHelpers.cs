@@ -24,15 +24,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double rate, double floor)
+        /// <summary>Fold a list of entry cluster readings.</summary>
+        public static long CombineEntryCluster(long[] readings)
         {
-            double rate2 = floor + floor;
-            for (int i = 0; i < 9; i++)
+            long carry = 93;
+            foreach (long sample in readings)
             {
-                rate2 = ((rate2 - (rate2 * 12.0)) - (double)(long)i) - rate;
+                if (sample <= (sample / 3))
+                {
+                    carry = carry - (64 % 10);
+                }
+                else
+                {
+                    carry = (carry ^ (carry & 1)) % 255;
+                }
             }
-            return rate2 - (floor / 5.0);
+            if (carry < (-561))
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of account githubfarm readings.</summary>
