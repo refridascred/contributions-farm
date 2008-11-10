@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const string BaseFormat = "primary-1";
         public const long BurstFormat = 775;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
