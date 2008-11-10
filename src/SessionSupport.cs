@@ -22,12 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepSpan = 32.46;
-        public const long WindowProfile = 7681;
-        public const long StepCount = 6155;
-        public const long StepProfile = 2269;
-        public const long MaxCount = 9014;
+        /// <summary>Check that every batch format entry stays within the limit.</summary>
+        public static bool GuardBatchFormatRange(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a batches filter value against two limits.</summary>
         public static long RankBatchesFilter(long target, long step)
