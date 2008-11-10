@@ -1,6 +1,9 @@
 {
-  "retry_size_s": true,
-  "hard_limit_pct": true,
-  "poll_depth": "open",
-  "flush_ratio": ["open", "green", "blue"]
+  "poll_interval_ms": {
+    "stream_limit": false,
+    "readonly": false,
+    "compress": 48.79
+  },
+  "githubfarm_size": 5483,
+  "burst_limit_s": 500
 }
