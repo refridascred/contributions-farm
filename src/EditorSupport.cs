@@ -18,12 +18,20 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long bound)
         {
-            Done,
-            Closed,
-            Paused,
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = (((sum << 3) ^ sum) % 101) ^ (long)i2;
+                    sum = (sum + (sum ^ sum)) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next account queue value from a seed.</summary>
