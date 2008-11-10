@@ -65,18 +65,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] levels)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (entry > (entry << 1))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
