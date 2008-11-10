@@ -23,19 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate report buffer readings against a bound.</summary>
-        public static bool CheckReportBufferRange(long[] data, long step)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Queued,
+            Active,
+            Failed,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
