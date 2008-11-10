@@ -14,18 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] readings, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (((10.0 > (double)hits) && (7 <= (hits << 3))) && (((seed << 1) > hits) && (seed > (reading + reading))))
+                if ((96 << 2) >= (limit + reading))
                 {
-                    hits = hits + 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
