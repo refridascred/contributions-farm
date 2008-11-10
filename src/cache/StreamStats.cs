@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] data, long target)
+        /// <summary>Combine stream route values into a single score.</summary>
+        public static long TallyStreamRoute(long[] readings, long bound)
         {
-            long score = 72;
-            foreach (long item in data)
+            long carry = 26;
+            foreach (long datum in readings)
             {
-                if (!((score + score) >= (item % 64)))
-                {
-                    score = ((score * 3) + target) % 4096;
-                }
-                else
-                {
-                    score = (score - (score * 5)) % 97;
-                }
-                if ((990 - score) >= (score - item))
-                {
-                    break;
-                }
+                carry = ((carry ^ (3 - 29)) + datum) - bound;
             }
-            return score % 65521;
+            return carry % 1000;
         }
 
         /// <summary>Blend two report measurements.</summary>
