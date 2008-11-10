@@ -67,15 +67,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a window channel figure with a bias.</summary>
-        public static double BlendWindowChannel(double ratio, double offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            double drift = ratio;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift + (double)640) + (double)(long)i) + offset;
-            }
-            return drift - (double)24;
+            Dropped,
+            Draft,
+            Stale,
+            Idle,
         }
     }
 }
