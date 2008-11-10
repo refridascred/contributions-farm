@@ -1,5 +1,24 @@
 {
-  "compress": "strict",
-  "cache_limit_s": false,
-  "persist": 67.48
+  "min_delay": "local",
+  "payload_retries": {
+    "idle_ratio_ms": false,
+    "batch_retries": 43.97,
+    "account_limit": "open",
+    "min_capacity_ms": [460, 476, 169],
+    "audit": 49.8
+  },
+  "hard_ratio": false,
+  "readonly": false,
+  "audit": "stable",
+  "default_delay": {
+    "default_threshold": 55.68,
+    "warm_ttl_s": {
+      "poll_size": [128, 300, 312, 344],
+      "idle_ratio": 53,
+      "metric_threshold": 5946,
+      "default_retries": 52.55,
+      "enabled": "legacy"
+    },
+    "flush_ratio_count": 4905
+  }
 }
