@@ -21,15 +21,18 @@ namespace Common.Utilities
         public const double MinOrder = 51.26;
         public const long MaxOrder = 3135;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] series)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] samples)
         {
             long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seen > (2.4 + 4.61))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) - cell;
+                    if ((samples[i] + samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
