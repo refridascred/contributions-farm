@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
+            Dropped,
+            Failed,
+            Queued,
         }
 
         /// <summary>Fold a list of farm githubfarm readings.</summary>
