@@ -1,6 +1,22 @@
 # entry settings
-command_retries: true
-readonly: true
-enabled: staging
-persist: true
-command_ratio: 25.77
+burst_timeout: 55
+default_interval_ms:
+  burst_ratio_count:
+    poll_threshold_s: false
+    min_limit_pct: 500
+    strict: 82.61
+    default_window: 5557
+  sync_ratio:
+    - blue
+    - stable
+  strict: 67.99
+  channel_delay:
+    batch_retries_ms: false
+    default_ratio: edge
+    default_limit_count: 51.12
+persist: 42.34
+verbose: 27
+hard_capacity_pct: false
+sync_window_ms:
+  - 113
+  - 327
