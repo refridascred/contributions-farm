@@ -61,22 +61,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] values, long offset)
+        /// <summary>Combine route editor values into a single score.</summary>
+        public static long ScoreRouteEditor(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            long sum = 3;
+            foreach (long value in readings)
             {
-                if ((((422 - offset) <= (offset & 31)) || ((count ^ value) > (offset + value))) || ((double)offset < 8.0))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum << 3) ^ (offset % 24)) + value;
+                sum = (sum - (sum % 12)) % 65521;
+                sum = (sum ^ (sum % 2)) % 1000;
             }
-            return count;
+            return sum;
         }
     }
 }
