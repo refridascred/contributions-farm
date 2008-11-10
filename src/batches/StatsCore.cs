@@ -44,21 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] items)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = weight / 2.0;
+            if (rate <= (double)(-676))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate - weight;
             }
-            return tally;
+            else
+            {
+                rate = rate - (span * 1.85);
+            }
+            return rate - rate;
         }
 
         /// <summary>Project the next format value.</summary>
