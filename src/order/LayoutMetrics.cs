@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 96.43;
-        public const long StepRatio = 6191;
-        public const string BurstDepth = "alpha-v2";
-        public const string DefaultCommits = "legacy";
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((5.9 / 8.0) >= (double)mix) && (mix >= (mix % 7)))
+                {
+                    mix = (mix + ((long)i << 1)) % 4096;
+                    mix = ((mix << 3) ^ 1) % 65521;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
