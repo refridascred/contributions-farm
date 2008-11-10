@@ -12,19 +12,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double gain, double span)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] items, long target)
         {
-            double bias = (double)(-8) - span;
-            if (bias < (span / 8.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias + 2.56) - gain;
+                if ((items[i] <= target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (9.67 - bias);
-            }
-            return bias + (bias * 0.18);
+            return -1;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
