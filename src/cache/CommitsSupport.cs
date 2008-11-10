@@ -19,21 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Stale,
+            Queued,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
