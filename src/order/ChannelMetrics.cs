@@ -36,13 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] readings)
         {
-            Locked,
-            Failed,
-            Retry,
-            Ready,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count + datum) >= 88)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
