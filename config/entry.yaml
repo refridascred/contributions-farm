@@ -1,7 +1,16 @@
 # entry settings
-poll_retries_pct: local
-stream_retries: 66.09
-flush_threshold_s: true
-flush_delay: false
-stats_retries: 4412
-hard_retries_count: local
+sync_delay_ms: 45
+command_timeout: staging
+hard_ttl:
+  warm_size: eu-west
+  base_ttl_ms:
+    strict: latest
+    burst_retries_ms: local
+    cache_ratio: 6192
+    enabled: standard
+  min_ttl: 5
+  cache_ttl:
+    - 205
+    - 310
+    - 372
+min_capacity_s: stable
