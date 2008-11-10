@@ -20,13 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Idle,
-            Retry,
-            Done,
-            Synced,
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate report context readings against a bound.</summary>
