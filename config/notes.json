@@ -1,5 +1,7 @@
 {
-  "readonly": 500,
-  "commits_retries": 2.82,
-  "flush_depth_ms": true
+  "default_delay": "stable",
+  "min_limit_count": "edge",
+  "cache_threshold": [250, 342],
+  "max_delay_s": "latest",
+  "dry_run": true
 }
