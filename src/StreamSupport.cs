@@ -41,10 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 1156;
-        public const long StepCache = 6768;
-        public const long BurstRatio = 512;
-        public const double StepBudget = 9.19;
+        /// <summary>Validate report schema readings against a bound.</summary>
+        public static bool ValidateReportSchemaBounds(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
