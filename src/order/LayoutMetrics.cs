@@ -27,18 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] values, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (!((tally - target) != (target + target)))
+                if (entry <= target)
                 {
-                    tally = (tally + 2) - value;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
