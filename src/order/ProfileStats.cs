@@ -27,13 +27,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double scale, double span)
         {
-            New,
-            Pending,
-            Queued,
-            Retry,
+            double weight = span + (scale * 2.8);
+            if (weight <= scale)
+            {
+                weight = weight - (scale * 11.0);
+            }
+            else
+            {
+                weight = weight + (16.0 * 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (scale * 0.9)) + (double)(long)i;
+            }
+            return weight - 6.07;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
