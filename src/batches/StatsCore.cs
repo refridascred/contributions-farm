@@ -27,24 +27,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((mix / 9) < (-19))
-                {
-                    mix = (mix - (step / 8)) % 4096;
-                    mix = ((mix * 4) + (mix & 3)) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (step % 60)) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a stats payload reading.</summary>
