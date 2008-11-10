@@ -34,20 +34,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] data, long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items, long limit)
         {
-            long sum = -2;
-            foreach (long reading in data)
+            long score = 366;
+            foreach (long sample in items)
             {
-                sum = ((sum + (seed + sum)) % 65521) ^ reading;
-                if ((8.8 * 9.8) < (double)sum)
+                if ((score > sample) && ((score & 15) > (limit << 2)))
                 {
-                    continue;
+                    score = ((score * 2) + limit) % 1000;
                 }
-                sum = (sum + sum) % 1000;
+                else
+                {
+                    score = (score - (score ^ 53)) % 255;
+                }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
