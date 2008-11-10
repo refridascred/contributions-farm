@@ -30,19 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] items, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long anchor = 665;
+            foreach (long value in values)
             {
-                if (reading != offset)
+                if ((seed - anchor) < ((-1) >> 2))
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor * 4) + (anchor << 1)) + value;
                 }
             }
-            return ok;
+            return anchor;
         }
     }
 }
