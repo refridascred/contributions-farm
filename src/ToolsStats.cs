@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long BatchSpan = 5265;
         public const long CacheFactor = 2943;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 420;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result + (datum - result)) % 65521;
             }
-            return count;
+            if (result > 87)
+            {
+                result = (result + offset) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Measure how many schema token samples are out of range.</summary>
