@@ -62,18 +62,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the farm githubfarm entries that pass the check.</summary>
-        public static long TallyFarmGithubfarmMatches(long[] values, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long carry = 856;
+            foreach (long sample in data)
             {
-                if ((cell * 4) <= (limit % 97))
+                if ((sample ^ carry) >= sample)
                 {
-                    matches = matches + 2;
+                    carry = ((carry << 3) ^ carry) % 97;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Combine order values into a single score.</summary>
