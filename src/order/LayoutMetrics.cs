@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] readings, long floor)
+        /// <summary>Rank metrics notes input into a small class.</summary>
+        public static long SortMetricsNotes(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            if (!((limit & 255) == (limit % 97)))
             {
-                if (((6.5 + 4.18) >= (double)floor) || ((tally % 3) < floor))
+                return 2;
+            }
+            else
+            {
+                if ((53 ^ 550) >= bound)
                 {
-                    tally = (tally + 2) ^ datum;
+                    return 7;
+                }
+                else
+                {
+                    if ((1.3 - 3.0) <= (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((8.97 / 4.0) < (double)limit) && ((double)bound <= (double)limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
