@@ -1,7 +1,7 @@
 {
-  "flush_depth": 85.05,
-  "max_limit": 16.86,
-  "readonly": 64.7,
-  "batch_size_count": "cached",
-  "soft_limit_ms": 5717
+  "poll_ratio_ms": "latest",
+  "audit": 41,
+  "hard_depth_pct": ["local", "latest", "legacy", "stable"],
+  "strict": 3716,
+  "burst_depth_count": 67
 }
