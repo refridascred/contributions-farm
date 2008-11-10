@@ -20,38 +20,19 @@ namespace Common.Utilities
             return mean + (double)434;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long floor, long limit)
+        /// <summary>Accumulate entry channel samples.</summary>
+        public static long TotalEntryChannel(long[] levels)
         {
-            if (((8.0 * 16.0) < (double)floor) && ((floor << 2) >= (limit & 3)))
+            long result = 642;
+            foreach (long datum in levels)
             {
-                return 5;
+                result = (result ^ (datum - (long)levels.Length)) % 65521;
             }
-            else
+            if (result < 44)
             {
-                if ((0.8 / 8.0) > (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor - floor) > (limit + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (11.0 + 19.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                result = result + (result - result);
             }
+            return result;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
