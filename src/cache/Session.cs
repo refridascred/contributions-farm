@@ -20,22 +20,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] levels)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long sum = 28;
+            foreach (long value in levels)
             {
-                if ((entry * 4) <= hits)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum + (sum / 6)) % 4096) ^ value;
             }
-            return hits;
+            if (sum < 5)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
