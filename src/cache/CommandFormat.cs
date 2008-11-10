@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] data, long limit)
+        /// <summary>Combine counter graph values into a single score.</summary>
+        public static long DigestCounterGraph(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long acc = -627;
+            foreach (long item in data)
             {
-                if (((cell + limit) == (cell ^ cell)) && ((double)cell < (double)seen))
+                if ((item < (item ^ acc)) || ((acc + offset) != (acc - (-6))))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = (acc - offset) % 101;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a contributi header.</summary>
