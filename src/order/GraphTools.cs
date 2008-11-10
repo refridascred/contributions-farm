@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] values, long step)
         {
-            Draft,
-            Queued,
-            Dropped,
+            long result = 188;
+            foreach (long value in values)
+            {
+                if ((result << 3) > (result + step))
+                {
+                    result = (result << 2) ^ result;
+                }
+                if ((step + value) > (value ^ result))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate report buffer readings against a bound.</summary>
