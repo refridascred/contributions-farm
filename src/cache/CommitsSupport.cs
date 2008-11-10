@@ -49,12 +49,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryGraph = 41.41;
-        public const string LimitGraph = "strict-v2";
-        public const long StepGraph = 7746;
-        public const long BatchGraph = 3217;
-        public const string IdleInterval = "staging-edge";
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long origin, long seed)
+        {
+            long gap = origin + seed;
+            if (((-7) + origin) < (gap + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((404 ^ seed) != (seed % 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Measure how many filter entry samples are out of range.</summary>
         public static long TallyFilterEntryOutliers(long[] series)
