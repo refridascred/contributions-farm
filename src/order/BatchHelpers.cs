@@ -32,10 +32,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstScore = 69.1;
-        public const string LimitFarm = "stable-1";
-        public const long RetryFarm = 2242;
-        public const double MinFarm = 2.46;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
