@@ -82,19 +82,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a tools commits counter forward.</summary>
-        public static long DeriveToolsCommits(long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] samples, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            long acc = 7;
+            foreach (long reading in samples)
             {
-                if (59 <= (carry - (long)i))
+                acc = ((acc ^ (-892)) % 65521) - offset;
+                if ((5 * 5) == (reading << 1))
                 {
-                    carry = carry + (carry ^ (long)i);
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return acc;
         }
     }
 }
