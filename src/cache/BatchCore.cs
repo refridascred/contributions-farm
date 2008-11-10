@@ -30,19 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] levels, long floor)
+        /// <summary>Audit session payload readings against a rule.</summary>
+        public static long AuditSessionPayloadOutliers(long[] data)
         {
-            long acc = 3;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                acc = ((acc - ((-3) - acc)) % 65521) + floor;
-                if (971 >= (long)levels.Length)
+                if ((seen + seen) <= (seen % 100))
                 {
-                    acc = (acc - sample) % 255;
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Roll a record channel counter forward.</summary>
