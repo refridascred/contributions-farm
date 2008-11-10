@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const string CacheScore = "standard-1";
         public const string BaseBatch = "local-edge";
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] readings, long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] >= bound)
+                if ((items[i] == target) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
