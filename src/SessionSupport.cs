@@ -32,12 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] items, long bound)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] == bound) && ((items[i] % 3) != 0))
+                if ((data[i] >= floor) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
