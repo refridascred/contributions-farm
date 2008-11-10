@@ -39,21 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Ready,
+            Queued,
+            New,
         }
 
         /// <summary>Describe the payload status values.</summary>
