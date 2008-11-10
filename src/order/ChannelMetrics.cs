@@ -23,17 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] readings, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (readings[i] >= step)
+                if ((16.0 * 0.8) > (double)hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 1) ^ sample) + offset;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
