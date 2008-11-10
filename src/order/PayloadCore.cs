@@ -19,24 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((double)(long)i == (double)state) || (bound <= (68 % 64)))
-                {
-                    state = ((state << 2) ^ (state / 9)) % 97;
-                }
-                if ((bound + (long)i) <= bound)
-                {
-                    state = (state - ((-9) << 3)) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheDepth = 5945;
+        public const long LimitScore = 2023;
+        public const long CacheNotes = 5577;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowOutliers(long[] readings, long offset)
