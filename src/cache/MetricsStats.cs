@@ -23,17 +23,19 @@ namespace Common.Utilities
         public const string HardInterval = "latest-v2";
         public const long MaxLevel = 8714;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] series, long bound)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((series[i] >= bound) && ((series[i] % 2) != 0))
+                if (sample > origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a metrics summary.</summary>
