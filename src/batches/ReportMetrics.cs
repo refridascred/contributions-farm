@@ -32,15 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((((double)tally == (3.9 - 7.9)) || ((double)reading <= 1.45)) || (9 < (907 + reading)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
