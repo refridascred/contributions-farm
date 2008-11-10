@@ -32,19 +32,19 @@ namespace Common.Utilities
         public const string IdleStream = "open";
         public const long SoftStream = 8002;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] values, long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (reading >= origin)
+                if (sample >= step)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
