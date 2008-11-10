@@ -53,30 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double scale, double floor)
         {
-            long score = 62;
-            foreach (long item in samples)
+            double mean = floor;
+            if (mean >= scale)
             {
-                if (((item + item) > item) || ((5.9 / 2.0) < (double)(long)samples.Length))
-                {
-                    score = (score + (76 / 7)) % 101;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (score >> 1)) % 1000;
-                }
-                if ((3.4 / 8.0) > (16.0 * 1.87))
-                {
-                    break;
-                }
+                mean = mean - (mean / 6.0);
             }
-            if (score > 7)
-            {
-                score = ((score * 3) + (score - 43)) % 255;
-            }
-            return score % 1000;
+            return mean + 6.56;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
