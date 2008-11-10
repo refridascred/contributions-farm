@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleScore = "staging";
+        public const long LimitSession = 6959;
+        public const long MaxSession = 8046;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long WindowAlready = 7325;
