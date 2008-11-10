@@ -35,26 +35,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches token samples.</summary>
-        public static long FoldBatchesToken(long[] items)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            long state = 926;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value < (state & 31)) || ((state ^ 166) != (value << 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state + (value - value)) % 101;
-                }
-                else
-                {
-                    state = ((state * 5) + state) % 4096;
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state < 172)
-            {
-                state = (state - (state ^ state)) % 97;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Validate window format readings against a bound.</summary>
