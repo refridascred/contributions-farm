@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Synced,
-            Pending,
-            Done,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseLevel = 8724;
+        public const long LimitSession = 7250;
+        public const string BatchDepth = "cached-1";
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferOutliers(long[] levels, long floor)
