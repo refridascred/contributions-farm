@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] series)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry == (6.0 / 2.0))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
