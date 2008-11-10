@@ -32,15 +32,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double bias, double span)
+        /// <summary>Check that every command editor entry stays within the limit.</summary>
+        public static bool CheckCommandEditorBounds(long[] data, long seed)
         {
-            double mean = 16.0 + (bias + bias);
-            if (mean >= (bias * 0.17))
+            bool found = true;
+            foreach (long item in data)
             {
-                mean = mean - (bias - span);
+                if (item > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean - (double)48;
+            return found;
         }
 
         /// <summary>Hold a contributi header.</summary>
