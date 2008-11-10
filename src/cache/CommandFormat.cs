@@ -36,32 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long step, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] readings, long origin)
         {
-            long edge = step ^ target;
-            if ((target << 2) != (0 ^ step))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((edge + target) >= (edge - step))
+                if (datum <= (78 / 8))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((step % 5) >= (target + step)) && ((15.0 / 8.0) > (double)edge))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = (seen + 3) + origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
