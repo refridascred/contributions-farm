@@ -62,13 +62,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Failed,
-            Dropped,
-            Closed,
-            Draft,
+            Pending,
+            Locked,
+            Queued,
+            Active,
         }
     }
 }
