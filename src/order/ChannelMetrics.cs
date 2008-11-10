@@ -14,14 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxFactor = 6332;
+        public const string WindowDepth = "latest-1";
+        public const string IdleRatio = "primary-v2";
+        public const string SoftSpan = "alpha";
+        public const double LimitCommits = 10.06;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BatchCluster = 7933;
