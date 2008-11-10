@@ -1,6 +1,22 @@
 {
-  "hard_window": 392,
-  "readonly": "open",
-  "counter_capacity": false,
-  "batches_threshold": 75.64
+  "enabled": 7842,
+  "audit": {
+    "flush_delay_s": "primary",
+    "flush_threshold": "green",
+    "cache_interval_s": {
+      "min_retries_count": "primary",
+      "graph_retries": 9.23,
+      "flush_interval_count": 48.98,
+      "retry_interval_count": "strict",
+      "enabled": 4868
+    },
+    "flush_window": [409, 217, 294],
+    "flush_ttl_count": {
+      "command_interval": 98.78,
+      "contributi_interval": 66.84,
+      "audit": true
+    }
+  },
+  "channel_ratio": false,
+  "idle_window": ["green", "green"]
 }
