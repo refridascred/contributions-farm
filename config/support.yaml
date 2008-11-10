@@ -1,11 +1,15 @@
 # support settings
-burst_capacity: 71.36
-flush_capacity_s:
-  persist: true
-  account_retries: staging
-  cache_interval: 250
-  idle_delay_ms: true
-warm_limit: cached
-warm_threshold_ms:
-  - blue
-  - standard
+flush_retries_pct:
+  - 438
+  - 263
+layout_limit:
+  enabled: true
+  profile_size: 250
+  max_size_ms: 3027
+  farm_retries: 2343
+  layout_ttl: 8032
+soft_size_ms: open
+hard_timeout:
+  - 3
+  - 253
+  - 192
