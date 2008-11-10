@@ -1,14 +1,14 @@
 # Command notes
 
-Keep metric and commits names short and lowercase.
-The graph helpers are pure functions, so they are safe to call from any thread.
+Keep editor and route names short and lowercase.
+Defaults for payload live in the config folder and can be overridden per environment.
 
-Each cache is validated before it reaches the route queue.
-Keep context and contributi names short and lowercase.
+Use profile settings to tune how often batch data is refreshed.
+Each session is validated before it reaches the githubfarm queue.
+Keep farm and notes names short and lowercase.
 
 ## Guidelines
 
-- Prefer order defaults
-- Document new metrics fields
-- Review cache limits each release
-- Validate filter input early
+- Prefer editor defaults
+- Log every support change
+- Validate batches input early
