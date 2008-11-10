@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] data, long target)
+        /// <summary>Validate cluster route readings against a bound.</summary>
+        public static bool GuardClusterRouteLimits(long[] series, long offset)
         {
-            long acc = 4;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long sample in series)
             {
-                acc = (acc ^ (37 >> 1)) + target;
-                acc = (acc << 3) ^ (sample ^ 758);
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Describe the profile kind values.</summary>
