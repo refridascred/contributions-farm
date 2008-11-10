@@ -41,10 +41,12 @@ namespace Common.Utilities
         public const double LimitSize = 20.0;
         public const long DefaultCluster = 9005;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchChecks = 91.0;
-        public const string DefaultSpan = "strict";
-        public const double WindowChecks = 50.87;
-        public const long SoftLevel = 139;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
