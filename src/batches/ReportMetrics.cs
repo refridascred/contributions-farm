@@ -31,9 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowTimeout = 1532;
-        public const string MaxBudget = "latest-v2";
-        public const double StepFarm = 38.92;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] series, long bound)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
