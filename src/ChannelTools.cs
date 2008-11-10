@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long step, long limit)
+        /// <summary>Audit filter entry readings against a rule.</summary>
+        public static long TallyFilterEntryHits(long[] levels)
         {
-            if ((limit / 6) < (step * 3))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((3.4 / 9.0) >= (double)limit) || ((0.3 - 7.9) < (double)limit))
+                if (!((double)matches == (19.0 * 4.74)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step / 7) >= (limit ^ 188))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step / 6) > limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 2) + value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
