@@ -1,9 +1,18 @@
 # githubfarm settings
-verbose: false
-poll_capacity_count: standard
-poll_ttl: 60
-flush_retries_s: false
-layout_timeout:
-  - 67
-  - 36
-  - 215
+entry_capacity:
+  soft_timeout_count: 4837
+  min_limit_count:
+    - local
+    - green
+    - stable
+  poll_size_ms: latest
+compress:
+  format_timeout: legacy
+  hard_depth_ms:
+    - 202
+    - 271
+    - 500
+    - 400
+  poll_window: cached
+retry_window: stable
+persist: false
