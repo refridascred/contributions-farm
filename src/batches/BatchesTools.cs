@@ -23,18 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] samples, long offset)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((offset + offset) <= (tally + entry)) || ((offset <= (0 / 6)) && (3.38 > (double)offset)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a route session counter forward.</summary>
