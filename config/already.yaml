@@ -1,6 +1,13 @@
 # already settings
-already_delay: primary
-compress: 4.39
-base_interval: legacy
-soft_retries_pct: true
-min_retries: 250
+readonly: stable
+soft_delay_s: blue
+command_ttl: 30
+stream_capacity:
+  - 481
+  - 289
+  - 252
+batch_depth:
+  - 484
+  - 187
+  - 175
+command_limit: 38
