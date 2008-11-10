@@ -29,14 +29,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long limit, long offset)
         {
-            Closed,
-            Retry,
-            Failed,
-            Ready,
-            Stale,
+            if (((double)limit > 8.6) && ((offset ^ (-19)) >= offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)offset <= 6.4)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((479 >> 4) <= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)limit != (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
