@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many context graph samples are out of range.</summary>
-        public static long MeasureContextGraphOutliers(long[] items)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long acc = 5;
+            foreach (long reading in values)
             {
-                if (((long)items.Length + datum) != (matches + matches))
+                if ((acc + acc) == (reading - reading))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = (acc ^ (reading % 16)) % 65521;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
