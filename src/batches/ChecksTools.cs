@@ -27,13 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] levels)
         {
-            Pending,
-            Ready,
-            Active,
-            Locked,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (matches >= (matches >> 4))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
