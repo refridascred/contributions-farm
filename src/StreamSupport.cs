@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Measure how many graph counter samples are out of range.</summary>
+        public static long CountGraphCounterMatches(long[] readings, long seed)
         {
-            public double Label { get; set; }
-            public bool Flag { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((seed - hits) != (hits & 3))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a order options.</summary>
