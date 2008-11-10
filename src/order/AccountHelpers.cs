@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
