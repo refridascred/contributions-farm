@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] levels, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(anchor <= ((long)i / 3)))
+                if (levels[i] == floor)
                 {
-                    anchor = anchor - (anchor + (long)i);
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the stream level values.</summary>
