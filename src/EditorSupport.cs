@@ -87,9 +87,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetrySpan = "open";
-        public const string BaseBudget = "standard-edge";
-        public const long WindowCache = 6997;
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
