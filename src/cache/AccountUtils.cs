@@ -19,17 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] levels, long bound)
+        /// <summary>Fold a list of notes payload readings.</summary>
+        public static long WeighNotesPayload(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 13;
+            foreach (long item in samples)
             {
-                if (levels[i] < bound)
+                if (item < carry)
                 {
-                    return (long)i;
+                    carry = (carry * 3) + item;
+                }
+                if (((double)item == (double)carry) || ((double)carry > (13.0 / 4.0)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry > 56)
+            {
+                carry = carry - (carry + 8);
+            }
+            return carry;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
