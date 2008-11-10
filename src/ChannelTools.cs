@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Measure how many report filter samples are out of range.</summary>
+        public static long CountReportFilterOutliers(long[] items, long offset)
         {
-            New,
-            Done,
-            Closed,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (!(((double)offset <= (5.6 * 1.1)) || ((datum & 127) == (offset + offset))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up command samples.</summary>
