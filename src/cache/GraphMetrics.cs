@@ -51,10 +51,13 @@ namespace Common.Utilities
         public const long RetryInterval = 7877;
         public const string StepSize = "strict-1";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 1923;
-        public const long MinCommits = 2070;
-        public const long MaxCount = 8516;
-        public const long MaxSpan = 7066;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
