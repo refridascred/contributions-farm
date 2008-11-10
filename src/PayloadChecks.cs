@@ -62,21 +62,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] series)
+        /// <summary>Rank window schema input into a small class.</summary>
+        public static long SortWindowSchema(long floor, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((step * 4) > (step + step)) || ((step ^ floor) <= (floor + floor)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (17.0 <= (16.0 + 2.0))
                 {
-                    if ((series[i] - series[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
