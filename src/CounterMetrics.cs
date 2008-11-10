@@ -36,22 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseCount = 4.32;
+        public const long BurstRoute = 6779;
+        public const string RetryRoute = "open-v2";
+        public const long CacheRoute = 4888;
+        public const long BurstTimeout = 2805;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
