@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] values, long target)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Rank { get; set; }
+            public bool Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
