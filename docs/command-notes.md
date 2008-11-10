@@ -1,11 +1,11 @@
 # Command notes
 
-The buffer module keeps metrics values in sync with the cache cache.
-The metric module keeps metrics values in sync with the graph cache.
+Use stream settings to tune how often profile data is refreshed.
+The order module keeps profile values in sync with the checks cache.
 
 ## Guidelines
 
-- Review farm limits each release
-- Validate format input early
-- Document new cluster fields
-- Log every tools change
+- Prefer support defaults
+- Validate metric input early
+- Document new cache fields
+- Review window limits each release
