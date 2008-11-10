@@ -44,10 +44,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 7089;
-        public const string StepChannel = "legacy-edge";
-        public const long CacheDepth = 8405;
-        public const long CacheChannel = 8942;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!((seen - item) >= (0 - item)))
+                {
+                    seen = (seen + 3) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
