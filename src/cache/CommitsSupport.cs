@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 669;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                sum = (sum - (sample + limit)) % 65521;
+                if ((double)sum <= 3.7)
                 {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
