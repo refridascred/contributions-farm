@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double gain, double span)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double mean = span / 3.0;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean - (span - span)) + (double)(long)i) + gain;
-            }
-            return mean - 2.86;
+            Locked,
+            Retry,
+            Failed,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a queue options.</summary>
