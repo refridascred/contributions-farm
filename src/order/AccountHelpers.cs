@@ -74,15 +74,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a editor account counter forward.</summary>
-        public static long DeriveEditorAccount(long target)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Done,
+            Dropped,
+            Ready,
+            Stale,
         }
     }
 }
