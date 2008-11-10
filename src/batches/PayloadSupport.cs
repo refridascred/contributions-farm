@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const string HardProfile = "open-edge";
         public const long IdleFactor = 3909;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] series, long floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor >> 2) >= tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) - datum;
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a route account counter forward.</summary>
