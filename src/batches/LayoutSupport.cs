@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] series, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((series[i] == limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
