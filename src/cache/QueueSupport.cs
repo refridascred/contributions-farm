@@ -33,21 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)result != (20.0 - 3.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result << 3) ^ (result + result)) % 255;
+                    if ((samples[i] ^ samples[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = (result << 3) ^ 70;
-                result = result - (result - result);
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return tally;
         }
     }
 }
