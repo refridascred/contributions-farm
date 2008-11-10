@@ -80,20 +80,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window format readings against a bound.</summary>
-        public static bool GuardWindowFormatRange(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "local-1";
+        public const long WindowInterval = 4945;
+        public const long IdleInterval = 8738;
+        public const string DefaultCluster = "open-v2";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MaxCount = 9237;
