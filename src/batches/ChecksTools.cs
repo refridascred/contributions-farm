@@ -33,19 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double rate, double floor)
         {
-            long total = 227;
-            foreach (long cell in items)
-            {
-                total = ((total ^ (175 % 16)) % 65521) ^ cell;
-            }
-            if (total < 26)
-            {
-                total = (total ^ (total >> 3)) % 97;
-            }
-            return total;
+            double weight = (double)((-7) + 320);
+            return ((weight - weight) + rate) + floor;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
