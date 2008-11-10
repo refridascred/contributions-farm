@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the cache stream series from a seed.</summary>
-        public static long IterateCacheStream(long limit)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((acc >> 1) <= acc) && ((double)limit <= (3.6 / 4.0)))
-                {
-                    acc = (acc << 3) ^ limit;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    long edge = (limit << 3) - (87 % 3);
-                    acc = (acc + (limit - edge)) + (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the schema status values.</summary>
