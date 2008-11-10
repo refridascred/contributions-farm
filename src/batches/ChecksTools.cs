@@ -49,10 +49,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 6108;
-        public const string MaxTimeout = "staging-edge";
-        public const string CacheInterval = "stable-v2";
-        public const double RetryInterval = 62.5;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double rate, double floor)
+        {
+            double gain = floor;
+            if (gain >= (double)12)
+            {
+                gain = gain - (rate + gain);
+            }
+            return gain - (double)(-448);
+        }
     }
 }
