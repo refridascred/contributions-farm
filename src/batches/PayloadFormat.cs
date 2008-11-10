@@ -19,10 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepWidth = 5037;
-        public const double BaseEntry = 7.47;
-        public const long IdleLevel = 1572;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Closed,
+            Retry,
+            Failed,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long RollEditor(long origin)
