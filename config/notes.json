@@ -1,5 +1,16 @@
 {
-  "min_ratio_ms": [170, 493],
-  "enabled": 76.69,
-  "contributi_ratio": 30
+  "strict": 2906,
+  "enabled": ["latest", "local"],
+  "metric_ratio": {
+    "soft_ratio": {
+      "readonly": true,
+      "default_capacity": "fallback",
+      "flush_delay_s": 326,
+      "soft_limit_s": true
+    },
+    "default_interval_pct": ["blue", "legacy", "fallback", "legacy"],
+    "persist": [287, 489, 146, 10],
+    "poll_retries_count": 22.2
+  },
+  "schema_interval": true
 }
