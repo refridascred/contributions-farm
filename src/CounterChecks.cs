@@ -63,12 +63,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            Done,
-            Paused,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already mode values.</summary>
