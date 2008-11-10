@@ -1,40 +1,7 @@
 # githubfarm settings
-githubfarm_threshold:
-  - fallback
-  - standard
-  - fallback
-hard_ratio_s: latest
-stats_delay: 30
-soft_capacity_s:
-  default_threshold_ms:
-    default_timeout: 39
-    dry_run:
-      - local
-      - standard
-    base_size_ms: 30
-    route_capacity: staging
-    batch_window:
-      - eu-west
-      - primary
-      - fallback
-  hard_ratio:
-    - latest
-    - strict
-  window_retries:
-    persist: 92
-    compress:
-      - 399
-      - 25
-      - 466
-    dry_run: 100
-    sync_capacity: false
-    min_timeout: edge
-  format_retries:
-    - 266
-    - 284
-    - 428
-    - 229
-  compress: false
-  poll_capacity: 93
-flush_window_pct: false
-channel_delay: fallback
+hard_capacity_count: 5662
+idle_ratio_ms: 5497
+idle_depth_ms: latest
+min_ttl: 47.9
+default_threshold_ms: 7305
+enabled: 31.01
