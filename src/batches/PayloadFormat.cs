@@ -26,20 +26,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((step ^ step) > (step - step))
-                {
-                    mix = (mix + mix) % 1000;
-                }
-                mix = (mix + (mix + mix)) % 101;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Idle,
+            Stale,
+            Draft,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Combine order counter values into a single score.</summary>
