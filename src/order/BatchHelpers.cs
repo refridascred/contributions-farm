@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] samples, long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)((-9) * 5);
+            if (mean < (double)963)
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                mean = (mean + mean) + bias2;
             }
-            return -1;
+            return mean + bias;
         }
 
         /// <summary>Look up the position of a counter payload sample.</summary>
