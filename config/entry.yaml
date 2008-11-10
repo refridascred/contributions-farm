@@ -1,4 +1,4 @@
 # entry settings
-notes_ttl: 26
-idle_delay_pct: 7790
-min_ttl_count: 74.53
+poll_timeout_pct: false
+stream_delay: blue
+burst_interval_s: eu-west
