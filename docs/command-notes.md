@@ -1,10 +1,16 @@
 # Command notes
 
-The stats report groups every channel by batch.
-The graph helpers are pure functions, so they are safe to call from any thread.
+When a metric fails, the route handler retries a few times before giving up.
+Run the stream check before changing any already limits.
+The cluster report groups every checks by commits.
+
+Use stream settings to tune how often payload data is refreshed.
+When a payload fails, the format handler retries a few times before giving up.
+Use record settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Document new stats fields
-- Review githubfarm limits each release
-- Prefer layout defaults
+- Document new already fields
+- Validate queue input early
+- Prefer format defaults
+- Review counter limits each release
