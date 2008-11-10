@@ -1,8 +1,7 @@
 # support settings
-enabled:
-  - strict
-  - primary
-  - fallback
-  - eu-west
-hard_interval_count: 4.16
-hard_threshold_pct: 250
+flush_threshold_pct: stable
+window_window:
+  - 469
+  - 401
+  - 183
+batches_capacity: primary
