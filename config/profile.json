@@ -1,8 +1,5 @@
 {
-  "poll_threshold": 3735,
-  "route_limit": 57.38,
-  "min_depth_ms": ["open", "blue"],
-  "route_timeout": 72.58,
-  "hard_interval_pct": ["legacy", "strict", "open", "staging"],
-  "sync_size_s": "eu-west"
+  "hard_delay": false,
+  "cache_threshold": 22.29,
+  "payload_depth": false
 }
