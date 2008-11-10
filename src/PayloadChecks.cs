@@ -90,14 +90,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] levels)
         {
-            Paused,
-            New,
-            Pending,
-            Stale,
-            Retry,
+            long acc = 624;
+            foreach (long datum in levels)
+            {
+                if (!(((datum % 100) > (datum - acc)) && ((0.2 / 9.0) == (double)datum)))
+                {
+                    acc = ((acc << 2) ^ datum) % 97;
+                }
+                acc = acc ^ (acc << 2);
+            }
+            return acc;
         }
     }
 }
