@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Classify a entry batches pair into a bucket.</summary>
+        public static long GradeEntryBatches(long offset, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            if (!(floor >= (offset >> 3)))
             {
-                if (((5.9 / 8.0) >= (double)mix) && (mix >= (mix % 7)))
-                {
-                    mix = (mix + ((long)i << 1)) % 4096;
-                    mix = ((mix << 3) ^ 1) % 65521;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (offset >= (offset - offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor % 5) > (floor >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer record.</summary>
