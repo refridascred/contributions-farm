@@ -1,7 +1,13 @@
 # support settings
-flush_threshold_pct: stable
-window_window:
-  - 469
-  - 401
-  - 183
-batches_capacity: primary
+command_ttl: 2725
+retry_threshold_s:
+  - 106
+  - 268
+  - 103
+max_size_s: 30
+default_interval_count: 5358
+entry_window:
+  - 217
+  - 468
+  - 26
+  - 247
