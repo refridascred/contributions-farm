@@ -46,13 +46,22 @@ namespace Common.Utilities
         public const long BatchGraph = 3217;
         public const string IdleInterval = "staging-edge";
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Measure how many filter entry samples are out of range.</summary>
+        public static long TallyFilterEntryOutliers(long[] series)
         {
-            Done,
-            Idle,
-            Stale,
-            Closed,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((item / 7) > (tally - tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
