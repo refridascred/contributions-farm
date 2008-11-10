@@ -13,13 +13,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Count context buffer pairs that satisfy a relation.</summary>
+        public static long MatchContextBufferCount(long[] levels)
         {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of route readings.</summary>
