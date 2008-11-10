@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long target, long floor)
         {
-            Draft,
-            Closed,
-            Paused,
-            Locked,
+            if ((621 * 3) >= floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((floor % 16) > target) || ((double)target >= 5.3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - floor) <= (floor ^ target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a payload summary.</summary>
