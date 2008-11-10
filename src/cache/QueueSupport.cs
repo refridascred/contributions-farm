@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Check that every batches metrics entry stays within the limit.</summary>
+        public static bool GuardBatchesMetricsLimits(long[] readings, long seed)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate cache tools samples.</summary>
