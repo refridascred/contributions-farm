@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] readings, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (cell >= offset)
+                if (entry <= (count << 3))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) + limit;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Grade a batches filter value against two limits.</summary>
