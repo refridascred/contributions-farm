@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Closed,
-            Done,
-            Stale,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleContributi = 18.18;
+        public const long CacheContributi = 5227;
+        public const double RetryContributi = 71.72;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BatchSpan = "cached-1";
