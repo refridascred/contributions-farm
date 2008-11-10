@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstBudget = 80.41;
-        public const long HardSpan = 3464;
-        public const long StepTimeout = 8342;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a queue graph reading by value.</summary>
         public static long LookupQueueGraphIndex(long[] readings, long floor)
