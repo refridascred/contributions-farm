@@ -43,19 +43,21 @@ namespace Common.Utilities
         public const string BatchLayout = "legacy-v2";
         public const double WindowLevel = 90.95;
 
-        /// <summary>Digest a series of stream format entries.</summary>
-        public static long CombineStreamFormat(long[] values, long step)
+        /// <summary>Match up buffer report samples.</summary>
+        public static long CompareBufferReportCount(long[] series)
         {
-            long acc = 576;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((acc + 2) < (step & 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc ^ (item << 2)) % 4096;
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = (acc << 2) ^ (acc / 3);
             }
-            return acc % 97;
+            return hits;
         }
     }
 }
