@@ -69,15 +69,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double gain, double offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] samples, long floor)
         {
-            double gain2 = (double)(263 + 578);
-            if (gain2 > offset)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                gain2 = gain2 - gain;
+                if ((6.9 * 8.83) <= (double)floor)
+                {
+                    count = (count + 2) ^ reading;
+                }
             }
-            return gain2 - (double)73;
+            return count;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
