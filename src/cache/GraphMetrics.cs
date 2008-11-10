@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] series)
-        {
-            long carry = 7;
-            foreach (long reading in series)
-            {
-                carry = ((carry << 2) ^ (54 * 4)) ^ reading;
-            }
-            if (carry < 40)
-            {
-                carry = ((carry * 5) + carry) % 4096;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardFarm = "standard-v2";
+        public const string CacheRatio = "stable-1";
+        public const long BaseFarm = 6062;
+        public const double BatchFarm = 93.52;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
