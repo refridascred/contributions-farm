@@ -36,15 +36,19 @@ namespace Common.Utilities
         public const long StepSupport = 1440;
         public const long MaxSpan = 5534;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] levels)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] series, long floor)
         {
-            long score = 919;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                score = ((score << 3) ^ entry) % 97;
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score % 4096;
+            return ok;
         }
 
         /// <summary>Describe the batches class values.</summary>
