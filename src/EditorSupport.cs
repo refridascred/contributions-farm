@@ -76,21 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 5865;
+        public const long SoftStream = 4563;
+        public const long MaxScore = 5634;
+        public const long StepDepth = 8079;
+        public const long BaseTimeout = 931;
     }
 }
