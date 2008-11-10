@@ -26,12 +26,22 @@ namespace Common.Utilities
         public const long SoftBudget = 1396;
         public const long IdleTimeout = 9798;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the layout tools entries that pass the check.</summary>
+        public static long AuditLayoutToolsGaps(long[] readings)
         {
-            Closed,
-            Queued,
-            Retry,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry ^ count) < (entry + entry))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
