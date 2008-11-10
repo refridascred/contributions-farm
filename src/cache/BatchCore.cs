@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count context buffer pairs that satisfy a relation.</summary>
-        public static long MatchContextBufferCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 4853;
+        public const string BatchOrder = "cached-v2";
+        public const long CacheScore = 8148;
+        public const long MinOrder = 5805;
 
         /// <summary>Audit session payload readings against a rule.</summary>
         public static long AuditSessionPayloadOutliers(long[] data)
