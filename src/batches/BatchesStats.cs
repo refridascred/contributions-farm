@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const double LimitLevel = 10.61;
         public const long BatchWindow = 1525;
 
-        /// <summary>Count the session queue entries that pass the check.</summary>
-        public static long CountSessionQueueMatches(long[] items)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((double)matches <= 9.87)
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
