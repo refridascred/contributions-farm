@@ -27,19 +27,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] items, long origin)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Done,
+            Queued,
+            Closed,
+            Pending,
         }
     }
 }
