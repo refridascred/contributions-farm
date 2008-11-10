@@ -78,19 +78,18 @@ namespace Common.Utilities
         public const long CacheTimeout = 4563;
         public const double MinDepth = 75.78;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((double)(long)i < (16.0 * 8.0))
+                if ((2.8 + 4.38) > (double)reading)
                 {
-                    acc = acc ^ acc;
+                    tally = tally + 3;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return tally;
         }
     }
 }
