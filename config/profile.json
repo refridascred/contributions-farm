@@ -1,6 +1,6 @@
 {
-  "burst_retries_pct": 60,
-  "burst_limit_pct": 961,
-  "flush_interval": 25.09,
-  "sync_depth": "open"
+  "persist": false,
+  "window_delay": 68,
+  "enabled": "strict",
+  "idle_size_ms": "stable"
 }
