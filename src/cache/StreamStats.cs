@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] levels, long floor)
+        /// <summary>Audit account batches readings against a rule.</summary>
+        public static long TallyAccountBatchesMatches(long[] values)
         {
-            long sum = 63;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 11; i++)
+                if (!((value ^ value) >= (value ^ matches)))
                 {
-                    sum = (((sum * 5) + ((long)i >> 2)) ^ cell) - floor;
+                    matches = matches + 3;
                 }
-                sum = (sum << 2) ^ (sum + 112);
             }
-            if (sum < 0)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Compare every pair of githubfarm commits readings.</summary>
