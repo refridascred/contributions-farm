@@ -20,32 +20,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Classify a layout support pair into a bucket.</summary>
-        public static long BucketLayoutSupport(long floor, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            long span = floor ^ step;
-            if ((span - span) > floor)
+            long sum = 417;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step * 3) >= (step << 1))
+                if ((sum - 7) < ((long)series.Length % 100))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((0.75 / 4.0) < (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = ((sum ^ (48 + 39)) % 65521) ^ entry;
                 }
             }
+            return sum % 1000;
         }
     }
 }
