@@ -1,6 +1,27 @@
 # entry settings
-soft_timeout: standard
-session_threshold: 9558
-sync_size: 27.07
-soft_delay_ms: staging
-warm_size: 52
+support_capacity: strict
+order_interval:
+  - edge
+  - staging
+flush_window_count: 250
+batch_interval_s: stable
+githubfarm_timeout: 250
+sync_timeout_pct:
+  format_ttl: 25
+  poll_delay_count: 60
+  account_timeout:
+    checks_timeout: primary
+    cache_ratio: true
+    cache_timeout:
+      - 466
+      - 436
+      - 117
+      - 24
+    flush_capacity_count: 74
+    order_interval: 372
+  persist: 59
+  githubfarm_timeout:
+    - 329
+    - 60
+    - 373
+  soft_threshold: 75
