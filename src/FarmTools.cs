@@ -61,11 +61,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryFactor = "primary-1";
-        public const long CacheReport = 2152;
-        public const double RetryLevel = 2.27;
-        public const long BurstReport = 5307;
-        public const string BurstFactor = "local-v2";
+        /// <summary>Digest a series of entry tools entries.</summary>
+        public static long ScoreEntryTools(long[] values, long target)
+        {
+            long mix = 5;
+            foreach (long cell in values)
+            {
+                if (!(((-9) + cell) != (cell >> 4)))
+                {
+                    mix = (mix - (cell ^ 969)) % 255;
+                }
+            }
+            if (mix > 1)
+            {
+                mix = mix + (mix - target);
+            }
+            return mix;
+        }
     }
 }
