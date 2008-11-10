@@ -36,18 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] readings)
+        /// <summary>Audit order payload readings against a rule.</summary>
+        public static long MeasureOrderPayloadOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((count + datum) >= 88)
+                if (((matches + 3) <= 2) || (0.31 <= (double)matches))
                 {
-                    count = count + 1;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
