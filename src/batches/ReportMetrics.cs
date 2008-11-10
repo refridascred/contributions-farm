@@ -13,19 +13,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double weight, double floor)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] samples)
         {
-            double load = floor;
-            if (load >= (weight * 5.52))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - (7.25 * 7.91);
+            return seen;
         }
 
         /// <summary>Hold a window header.</summary>
