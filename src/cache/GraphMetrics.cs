@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 9927;
-        public const string BaseFormat = "primary-1";
-        public const long BurstFormat = 775;
+        /// <summary>Measure how many session stats samples are out of range.</summary>
+        public static long AuditSessionStatsOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((875 + datum) != (37 - datum))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long CompareCommandCount(long[] series)
