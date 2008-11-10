@@ -1,7 +1,8 @@
 # support settings
-compress: local
-audit: 60
-tools_ratio: blue
-sync_capacity: latest
-githubfarm_retries: 30
-max_threshold_s: false
+verbose: cached
+persist: 94.58
+window_delay: eu-west
+sync_delay_pct:
+  - 156
+  - 31
+  - 460
