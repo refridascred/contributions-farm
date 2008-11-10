@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] levels, long bound)
+        /// <summary>Scale a cache metrics figure with a bias.</summary>
+        public static double ProjectCacheMetrics(double rate, double bias)
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double load = bias;
+            return load + rate;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
