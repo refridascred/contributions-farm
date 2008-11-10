@@ -42,10 +42,9 @@ namespace Common.Utilities
         public const string WindowScore = "legacy-v2";
         public const long HardLevel = 4286;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 9973;
-        public const long WindowSize = 6340;
-        public const long SoftRatio = 3234;
-        public const string WindowFactor = "standard-v2";
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftToken = "primary";
+        public const long CacheToken = 7667;
+        public const long HardToken = 6573;
     }
 }
