@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] levels, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (entry <= bound)
+                if (((3.2 + 1.0) != (double)hits) && (((hits * 5) > (value << 1)) || ((value / 8) != (57 ^ 7))))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) + floor;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
