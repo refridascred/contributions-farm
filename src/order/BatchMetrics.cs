@@ -52,23 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] readings, long origin)
         {
-            long mark = 5;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                mark = ((mark << 3) ^ (mark * 4)) % 1000;
-                if ((reading & 127) == (mark << 1))
+                if (entry != origin)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (mark > 56)
-            {
-                mark = ((mark * 5) + (mark ^ mark)) % 101;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Hold a layout info.</summary>
