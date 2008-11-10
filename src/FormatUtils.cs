@@ -86,11 +86,19 @@ namespace Common.Utilities
         public const long IdleInterval = 8738;
         public const string DefaultCluster = "open-v2";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxCount = 9237;
-        public const string BaseCount = "strict";
-        public const long WindowTimeout = 8607;
-        public const string BurstContext = "strict";
-        public const double LimitContext = 40.94;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] values, long origin)
+        {
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
