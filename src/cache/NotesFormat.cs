@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] values, long target)
+        /// <summary>Find the first format account entry that matches the target.</summary>
+        public static long FindFormatAccountIndex(long[] readings, long floor)
         {
-            long anchor = 459;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor - (target / 9)) % 101) - reading;
-                anchor = (anchor - (target & 127)) % 65521;
+                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 7)
-            {
-                anchor = anchor ^ (target + target);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate report entry samples.</summary>
