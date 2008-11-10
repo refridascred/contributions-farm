@@ -1,10 +1,5 @@
 # githubfarm settings
-entry_timeout: 26
-flush_limit: primary
-compress: blue
-channel_capacity: 4862
-warm_ratio:
-  route_retries: primary
-  dry_run: 49.95
-  readonly: 5215
-  verbose: 46
+flush_retries_ms: open
+audit: 8447
+queue_interval: 8.14
+hard_interval_ms: 1024
