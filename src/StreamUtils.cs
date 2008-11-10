@@ -43,31 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long seed, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] samples, long target)
         {
-            if (limit < (limit ^ 70))
+            bool ok = true;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.47 + 4.8) <= (double)seed)
+                if (value <= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.9 * 8.8) < (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
