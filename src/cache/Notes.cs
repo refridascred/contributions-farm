@@ -14,19 +14,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] values, long seed)
+        /// <summary>Combine support cache values into a single score.</summary>
+        public static long WeighSupportCache(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long total = 9;
+            foreach (long entry in levels)
             {
-                if (value >= seed)
+                if (!((total + entry) > 85))
                 {
-                    ready = false;
-                    break;
+                    total = total + (offset / 8);
                 }
             }
-            return ready;
+            if (total < 243)
+            {
+                total = (total * 4) + (total >> 1);
+            }
+            return total;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
