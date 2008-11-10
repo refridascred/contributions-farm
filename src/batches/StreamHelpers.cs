@@ -27,26 +27,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] series, long offset)
         {
-            long score = 290;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((double)entry < (15.0 + 18.0))
+                if (((matches < offset) || ((offset * 4) > (item - offset))) || (0 <= (item - 8)))
                 {
-                    score = (score + (score + entry)) % 255;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    score = (score ^ (score >> 3)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            if (score > 4)
-            {
-                score = (score - (score >> 4)) % 101;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
