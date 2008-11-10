@@ -23,12 +23,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] series, long step)
+        /// <summary>Look up the position of a counter payload sample.</summary>
+        public static long LookupCounterPayloadIndex(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] >= step)
+                if ((data[i] > floor) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
