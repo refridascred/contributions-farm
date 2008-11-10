@@ -6,19 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+mode="${1:-edge}"
 case "${mode}" in
-    cached)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in local stable staging; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=18
-log "limit is ${BUFFER_LIMIT}"
