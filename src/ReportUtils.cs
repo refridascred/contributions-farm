@@ -34,13 +34,11 @@ namespace Common.Utilities
             return bias + (bias * 0.18);
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheNotes = "cached";
+        public const long WindowNotes = 4414;
+        public const long WindowBudget = 2405;
+        public const long IdleCount = 978;
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
