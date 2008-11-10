@@ -67,11 +67,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultSession = 18.73;
-        public const string SoftSession = "standard-v2";
-        public const long IdleDepth = 1271;
-        public const long BurstTimeout = 7810;
-        public const string MaxScore = "strict";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardSize = 7257;
+        public const long BatchFactor = 1622;
+        public const long RetryScore = 819;
+        public const long BatchLevel = 7832;
+        public const string CacheRatio = "primary";
     }
 }
