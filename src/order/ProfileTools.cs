@@ -23,22 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix << 2) ^ (8 % 60)) % 1000;
-                if (((long)i / 3) < (mix ^ mix))
-                {
-                    mix = (mix - mix) % 1000;
-                    mix = (mix - (long)i) % 4096;
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Done,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
