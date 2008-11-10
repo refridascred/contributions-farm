@@ -54,11 +54,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] items, long limit)
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value - count) > (limit >> 4))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
