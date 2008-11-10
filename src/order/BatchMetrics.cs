@@ -17,13 +17,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] levels, long limit)
         {
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)matches == (double)limit)
+                {
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
