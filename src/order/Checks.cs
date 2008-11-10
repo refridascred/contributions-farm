@@ -22,15 +22,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] levels, long offset)
         {
             long tally = 0;
-            foreach (long item in series)
+            foreach (long item in levels)
             {
-                if (((long)series.Length ^ item) <= (tally * 5))
+                if ((tally - offset) >= tally)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
