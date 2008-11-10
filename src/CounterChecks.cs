@@ -52,14 +52,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Closed,
-            Retry,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepDepth = 3347;
+        public const long StepContributi = 1382;
+        public const long BaseContributi = 2073;
+        public const long BatchContributi = 4115;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitRatio = 8361;
