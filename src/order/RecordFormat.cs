@@ -35,21 +35,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of tools format readings.</summary>
-        public static long MatchToolsFormatCount(long[] samples)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Pending,
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
