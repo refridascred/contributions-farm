@@ -1,8 +1,5 @@
 {
-  "default_ttl_pct": true,
-  "min_size_pct": false,
-  "idle_limit_pct": "local",
-  "queue_depth": false,
-  "sync_interval_s": 33.21,
-  "stats_depth": 27
+  "flush_ttl_count": 6690,
+  "idle_depth_s": ["local", "local"],
+  "channel_limit": 33.39
 }
