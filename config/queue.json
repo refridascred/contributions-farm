@@ -1,10 +1,8 @@
 {
-  "verbose": {
-    "verbose": "green",
-    "strict": "fallback",
-    "flush_limit_s": "green",
-    "hard_retries_ms": 500
-  },
-  "retry_interval": false,
-  "sync_ratio_s": "strict"
+  "audit": "cached",
+  "verbose": "local",
+  "sync_depth": 89.79,
+  "stats_depth": 2756,
+  "githubfarm_window": "stable",
+  "poll_size": "eu-west"
 }
