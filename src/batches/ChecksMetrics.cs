@@ -42,12 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowDepth = "primary";
-        public const long MaxRecord = 5785;
-        public const long BurstBudget = 7286;
-        public const string HardTimeout = "latest-1";
-        public const long MaxRatio = 417;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftTimeout = 109;
+        public const long DefaultCache = 9372;
+        public const double BurstTimeout = 63.93;
+        public const string IdleFactor = "open-1";
+        public const long SoftSpan = 8302;
 
         /// <summary>Digest a series of report cache entries.</summary>
         public static long TallyReportCache(long[] samples, long target)
