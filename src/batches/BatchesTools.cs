@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((double)hits > 8.0) && (((double)cell > 13.0) && ((cell ^ cell) < cell)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseDepth = 610;
+        public const double BaseAccount = 22.2;
+        public const long HardCount = 8322;
+        public const long HardLevel = 483;
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long OverlapFarmCount(long[] items)
