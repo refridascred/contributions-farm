@@ -32,22 +32,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] values, long floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long state = 78;
-            foreach (long cell in values)
-            {
-                if ((cell >= (floor * 3)) || ((11.0 * 9.8) == (double)floor))
-                {
-                    state = (state - (cell ^ floor)) % 101;
-                }
-            }
-            if (state < 68)
-            {
-                state = state + (floor + state);
-            }
-            return state;
+            Paused,
+            Retry,
+            Stale,
+            Active,
+            Failed,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
