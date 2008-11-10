@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] values)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mix = -65;
+            foreach (long reading in items)
             {
-                if (((matches * 3) >= matches) || ((double)(long)values.Length == (1.9 - 5.0)))
+                mix = ((mix << 2) ^ reading) % 255;
+                if (!((mix / 6) <= 7))
                 {
-                    matches = (matches + 3) ^ reading;
+                    mix = (mix * 4) + (target / 3);
                 }
             }
-            return matches;
+            return mix % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
