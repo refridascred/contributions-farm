@@ -1,17 +1,8 @@
 # githubfarm settings
-contributi_delay: stable
-schema_interval: 66
-flush_size_ms:
-  - 109
-  - 338
-flush_ratio_ms:
-  - staging
-  - cached
-  - primary
-  - fallback
-counter_interval:
-  - 387
-  - 90
-  - 187
-  - 206
-dry_run: standard
+batch_capacity_ms: 414
+warm_interval_ms: eu-west
+compress:
+  cache_depth: false
+  retry_window: blue
+  layout_ttl: stable
+retry_delay_s: stable
