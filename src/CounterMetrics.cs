@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the token filter entries that pass the check.</summary>
-        public static long CountTokenFilterGaps(long[] data, long bound)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (((double)count > (1.0 + 9.9)) || (count >= (bound & 3)))
-                {
-                    count = (count + 3) - datum;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
