@@ -39,21 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total - (limit * 4)) % 255;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = (total + (3 + 89)) + (long)i2;
-                }
-                total = ((total << 3) ^ (total >> 5)) % 1000;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Ready,
+            Queued,
+            New,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a metric header.</summary>
