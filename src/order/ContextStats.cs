@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] readings)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long target, long limit)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long step = target + limit;
+            if ((limit % 5) > ((-71) % 2))
             {
-                if (((long)readings.Length + tally) > (tally - reading))
+                return 1;
+            }
+            else
+            {
+                if ((step > (limit >> 3)) && ((target % 7) >= (target / 3)))
                 {
-                    tally = tally + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (!((target >> 2) == (step + limit)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up support entry samples.</summary>
