@@ -34,16 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 4223;
+        public const long WindowSpan = 7176;
+        public const long HardQueue = 3066;
+        public const long SoftWidth = 788;
+        public const string LimitQueue = "latest";
 
         /// <summary>Roll a session counter forward.</summary>
         public static long SeriesSession(long offset)
