@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "staging-v2";
+        public const double WindowFarm = 42.89;
+        public const long BaseFactor = 103;
+        public const double MinFarm = 28.49;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
