@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] levels, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 4;
+            foreach (long item in levels)
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 2) ^ mark) % 1000) + item;
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
