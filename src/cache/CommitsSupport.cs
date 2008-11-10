@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 1131;
-        public const long BaseRecord = 2199;
-        public const long MaxRecord = 6211;
-        public const string RetryRecord = "open";
-        public const long BurstBudget = 5002;
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long ClassifyGraph(long floor, long bound)
