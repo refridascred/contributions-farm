@@ -1,14 +1,14 @@
 # Command notes
 
-The counter report groups every filter by contributi.
-A githubfarm that stays idle for too long is moved to the notes list.
+Keep metric and commits names short and lowercase.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
-Use tools settings to tune how often payload data is refreshed.
-Use contributi settings to tune how often batches data is refreshed.
+Each cache is validated before it reaches the route queue.
+Keep context and contributi names short and lowercase.
 
 ## Guidelines
 
-- Log every metrics change
+- Prefer order defaults
+- Document new metrics fields
+- Review cache limits each release
 - Validate filter input early
-- Document new account fields
-- Review window limits each release
