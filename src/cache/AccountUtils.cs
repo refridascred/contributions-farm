@@ -39,15 +39,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Combine token stats values into a single score.</summary>
+        public static long TotalTokenStats(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            long result = 0;
+            foreach (long reading in values)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if ((747 - reading) == (result - result))
+                {
+                    result = (result << 2) ^ (result + reading);
+                }
+                else
+                {
+                    result = result ^ 68;
+                }
+                result = (result - (924 & 15)) % 97;
             }
-            return state;
+            if (result > 0)
+            {
+                result = result - (6 & 1);
+            }
+            return result;
         }
     }
 }
