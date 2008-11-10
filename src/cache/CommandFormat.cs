@@ -25,19 +25,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every graph metric entry stays within the limit.</summary>
-        public static bool GuardGraphMetricBounds(long[] samples, long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            double weight = scale;
+            if (weight <= weight)
             {
-                if (cell < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight + (5.0 * 10.0)) - bias;
             }
-            return valid;
+            return weight + 8.0;
         }
 
         /// <summary>Project the next farm value.</summary>
