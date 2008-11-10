@@ -15,15 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long target)
+        /// <summary>Count the window buffer entries that pass the check.</summary>
+        public static long CountWindowBufferHits(long[] readings, long step)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if ((hits / 2) != (hits + 5))
+                {
+                    hits = ((hits + 1) ^ sample) - step;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Adjust a commits reading.</summary>
