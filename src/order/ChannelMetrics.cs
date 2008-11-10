@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseBudget = 7991;
-        public const long LimitSupport = 9024;
-        public const long WindowInterval = 1720;
-        public const string BurstTimeout = "latest-1";
-        public const long BurstSupport = 3628;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] samples, long offset)
+        {
+            long mix = 134;
+            foreach (long sample in samples)
+            {
+                if ((double)sample >= (19.0 / 3.0))
+                {
+                    mix = (mix + mix) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 101;
+                }
+            }
+            if (mix < (-6))
+            {
+                mix = (mix * 4) + (offset + mix);
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long WeighFilter(long[] samples, long target)
