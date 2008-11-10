@@ -16,26 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine counter support values into a single score.</summary>
-        public static long TotalCounterSupport(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] levels, long floor)
         {
-            long mark = 1;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int i = 0; i < 3; i++)
+                if ((floor - sample) > (hits - floor))
                 {
-                    mark = mark - ((long)i << 1);
-                }
-                if ((mark / 8) != (datum + 842))
-                {
-                    mark = (mark - (datum / 7)) % 255;
-                }
-                else
-                {
-                    mark = mark - (datum + datum);
+                    hits = hits + 2;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a commits stats.</summary>
