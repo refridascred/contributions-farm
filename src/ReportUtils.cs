@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
