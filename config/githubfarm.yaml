@@ -1,7 +1,10 @@
 # githubfarm settings
-hard_limit_pct: legacy
-flush_interval_ms: 1874
-base_window: true
-warm_limit: 30
-batch_ttl: 20
-stream_window: eu-west
+default_delay_count: 500
+stats_ttl: 15
+min_retries: cached
+retry_capacity:
+  - 393
+  - 230
+  - 193
+  - 11
+idle_delay_s: blue
