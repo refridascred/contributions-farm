@@ -44,31 +44,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Classify a batch profile pair into a bucket.</summary>
-        public static long ClassifyBatchProfile(long offset, long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if ((double)offset > (7.7 - 8.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((578 / 6) < (655 - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)limit != (6.9 / 2.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Closed,
+            Retry,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
