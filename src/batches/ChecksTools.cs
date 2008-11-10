@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowSize = 9285;
-        public const string MinInterval = "primary-v2";
-        public const double LimitMetric = 3.07;
+        /// <summary>Roll a stats payload counter forward.</summary>
+        public static long SeriesStatsPayload(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long GradeGithubfarm(long bound, long limit)
