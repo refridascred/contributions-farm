@@ -53,18 +53,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] levels)
+        /// <summary>Measure how many batch format samples are out of range.</summary>
+        public static long MeasureBatchFormatOutliers(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((double)cell >= (15.0 + 15.0))
+                if ((4.73 + 14.0) == (double)sample)
                 {
-                    hits = hits + 2;
+                    matches = (matches + 2) - target;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
