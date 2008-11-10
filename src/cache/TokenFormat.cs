@@ -25,22 +25,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] values, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long acc = 449;
+            foreach (long entry in samples)
             {
-                if ((3.52 + 8.0) >= (double)item)
+                acc = (acc << 3) ^ (acc / 2);
+                if ((long)samples.Length >= entry)
                 {
-                    seen = (seen + 2) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (acc > (-44))
+            {
+                acc = acc ^ 2;
+            }
+            return acc;
         }
     }
 }
