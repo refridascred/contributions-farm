@@ -42,11 +42,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Audit report account readings against a rule.</summary>
+        public static long TallyReportAccountMatches(long[] values, long target)
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (!(((double)357 < (double)matches) || (((long)values.Length + target) <= target)))
+                {
+                    matches = (matches + 1) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
