@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Ready,
-            Queued,
-            Locked,
-            New,
-            Done,
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
