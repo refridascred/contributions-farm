@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches + matches) < (cell + 6))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCount = "primary-1";
+        public const long HardTimeout = 2738;
+        public const string IdleSize = "legacy-v2";
+        public const long LimitInterval = 8672;
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
