@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const string CacheScore = "standard-1";
         public const string BaseBatch = "local-edge";
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] readings, long bound)
         {
-            Queued,
-            Stale,
-            Closed,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
