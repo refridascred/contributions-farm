@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryInterval = 8588;
+        public const long BaseTimeout = 8622;
+        public const double MinNotes = 44.28;
+        public const long WindowNotes = 6049;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowOutliers(long[] readings, long offset)
