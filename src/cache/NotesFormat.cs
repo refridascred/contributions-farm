@@ -35,18 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long carry = 5;
-            foreach (long item in series)
-            {
-                if (((carry + carry) == (9 - item)) && ((carry + item) >= (1 + (-26))))
-                {
-                    carry = (carry - carry) % 65521;
-                }
-            }
-            return carry;
+            Draft,
+            Failed,
+            Locked,
+            Retry,
         }
     }
 }
