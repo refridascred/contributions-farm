@@ -24,15 +24,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of contributi profile readings.</summary>
-        public static long FoldContributiProfile(long[] levels)
-        {
-            long total = 22;
-            foreach (long value in levels)
-            {
-                total = (total - (total * 5)) - value;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 2531;
+        public const string IdleSize = "latest";
+        public const long StepBatch = 8561;
     }
 }
