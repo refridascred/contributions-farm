@@ -78,17 +78,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] samples, long floor)
+        /// <summary>Check that every route payload entry stays within the limit.</summary>
+        public static bool CheckRoutePayloadLimits(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (samples[i] <= floor)
+                if (entry != limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
