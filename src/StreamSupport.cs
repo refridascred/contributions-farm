@@ -33,18 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit stats tools readings against a rule.</summary>
-        public static long TallyStatsToolsHits(long[] series)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (!(((reading + (-22)) > reading) || (seen >= (seen + 989))))
+                if (item < seed)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
