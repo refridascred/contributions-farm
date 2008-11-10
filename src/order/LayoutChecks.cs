@@ -38,22 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] values, long offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((value % 64) >= (seen >> 5))
-                {
-                    seen = (seen + 2) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
