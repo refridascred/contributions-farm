@@ -1,6 +1,22 @@
 # githubfarm settings
-base_capacity_s: strict
-idle_timeout_pct: local
-poll_size_pct: 1024
-batch_limit_count: green
-buffer_timeout: primary
+cache_ratio_pct:
+  - stable
+  - strict
+  - cached
+  - green
+min_threshold:
+  min_interval:
+    - 281
+    - 114
+  idle_interval_ms:
+    - stable
+    - legacy
+    - blue
+    - strict
+  retry_limit_ms: 78.13
+tools_ratio:
+  - local
+  - standard
+  - latest
+  - primary
+cache_limit: false
