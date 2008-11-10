@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryCount = 72;
+        public const long SoftProfile = 5101;
+        public const long CacheProfile = 3602;
+        public const long BaseProfile = 941;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryInterval = 8588;
