@@ -17,22 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] levels, long limit)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double load = scale - (floor / 2.0);
+            if (load < (double)1)
             {
-                if ((double)matches == (double)limit)
-                {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = load - (2.5 + floor);
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Define order limits and defaults.</summary>
