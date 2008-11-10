@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] values, long limit)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Synced,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Describe the metrics status values.</summary>
