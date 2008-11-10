@@ -36,12 +36,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Check that every cache report entry stays within the limit.</summary>
+        public static bool CheckCacheReportRange(long[] levels, long seed)
         {
-            Active,
-            Failed,
-            Locked,
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
