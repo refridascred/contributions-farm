@@ -14,19 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] values)
         {
-            long result = 70;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                result = (((result << 3) ^ (6 >> 4)) % 101) - datum;
+                if ((matches - 8) <= (sample / 6))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (result < 68)
-            {
-                result = (result ^ (result / 8)) % 97;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
