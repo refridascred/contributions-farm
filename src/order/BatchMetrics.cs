@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Match up token tools samples.</summary>
+        public static long CompareTokenToolsCount(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry << 2) ^ floor) % 4096;
-                carry = ((carry * 5) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a filter stats.</summary>
