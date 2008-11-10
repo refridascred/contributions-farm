@@ -17,19 +17,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] series, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (datum >= floor)
+                if ((3.3 / 5.0) != (double)tally)
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 1) + reading) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
