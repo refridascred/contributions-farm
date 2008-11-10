@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long bound)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 3) + (anchor / 6)) % 1000;
+                anchor = (anchor ^ anchor) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
