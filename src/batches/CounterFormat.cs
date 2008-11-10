@@ -31,32 +31,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long target, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] readings)
         {
-            long lane = target ^ origin;
-            if (((-1) ^ target) > (lane ^ target))
+            long mix = 452;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (3 >= (8 - origin))
+                if (((cell % 16) != (mix + cell)) || ((mix + (-2)) > (mix / 9)))
                 {
-                    return 5;
+                    mix = (mix << 3) ^ cell;
                 }
                 else
                 {
-                    if (((double)lane != (9.31 + 18.0)) && ((target - origin) > lane))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = ((mix << 2) ^ ((-7) + mix)) % 255;
                 }
             }
+            if (mix > 753)
+            {
+                mix = (mix ^ 276) % 1000;
+            }
+            return mix % 4096;
         }
     }
 }
