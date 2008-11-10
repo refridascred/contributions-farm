@@ -13,19 +13,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the command counter series from a seed.</summary>
-        public static long IterateCommandCounter(long floor)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if (state >= (state + floor))
-                {
-                    state = state + (state >> 2);
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
