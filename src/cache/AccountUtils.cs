@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] items)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum >= (19.0 * 6.0))
+                if (items[i] > seed)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up counter samples.</summary>
