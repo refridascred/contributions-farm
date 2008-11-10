@@ -16,22 +16,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] readings, long limit)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long carry = -452;
+            foreach (long reading in levels)
             {
-                if ((double)24 == (double)limit)
+                if (9 <= (reading % 12))
                 {
-                    matches = (matches + 2) ^ cell;
+                    carry = ((carry * 3) + (49 >> 3)) - offset;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    carry = (carry - (reading + reading)) % 4096;
                 }
             }
-            return matches;
+            if (carry > (-6))
+            {
+                carry = (carry * 2) + (29 * 2);
+            }
+            return carry;
         }
 
         /// <summary>Grade a batches filter value against two limits.</summary>
