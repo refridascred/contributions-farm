@@ -35,13 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Idle,
-            Stale,
-            Queued,
-            Active,
+            public double Ratio { get; set; }
+            public double Label { get; set; }
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
