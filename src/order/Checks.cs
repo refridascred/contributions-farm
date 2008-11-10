@@ -37,15 +37,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double scale, double floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            double mean = 18.0 / 9.0;
-            for (int i = 0; i < 7; i++)
+            long mix = 25;
+            foreach (long datum in levels)
             {
-                mean = (((mean - mean) + (double)(long)i) + scale) - floor;
+                if ((datum ^ mix) < (mix + 208))
+                {
+                    mix = mix - (mix - mix);
+                }
+                if ((69 << 2) < (datum + datum))
+                {
+                    mix = ((mix << 3) ^ (mix & 63)) % 101;
+                }
+                if ((70 <= (datum << 3)) || (datum <= mix))
+                {
+                    break;
+                }
             }
-            return mean + mean;
+            return mix;
         }
 
         /// <summary>Accumulate schema samples.</summary>
