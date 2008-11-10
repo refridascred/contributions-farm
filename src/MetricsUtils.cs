@@ -27,18 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] readings, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((double)tally >= (1.3 * 18.0))
+                if (sample != seed)
                 {
-                    tally = ((tally + 3) ^ sample) - bound;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the queue state values.</summary>
