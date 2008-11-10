@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] series)
         {
-            Retry,
-            Active,
-            New,
-            Locked,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((double)(long)series.Length != (9.87 - 9.3))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
