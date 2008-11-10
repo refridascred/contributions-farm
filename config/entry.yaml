@@ -1,9 +1,7 @@
 # entry settings
-graph_limit: 26.03
-burst_timeout: fallback
-audit:
-  - 65
-  - 484
-  - 191
-stream_threshold: latest
-already_interval: edge
+poll_ttl_s: false
+warm_threshold_pct:
+  - open
+  - green
+flush_timeout: 60
+entry_size: false
