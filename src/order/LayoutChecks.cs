@@ -21,12 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Audit githubfarm batches readings against a rule.</summary>
+        public static long TallyGithubfarmBatchesOutliers(long[] levels, long origin)
         {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (5.0 >= (double)count)
+                {
+                    count = ((count + 1) - datum) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of context entries.</summary>
