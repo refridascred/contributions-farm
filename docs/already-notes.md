@@ -1,11 +1,10 @@
 # Already notes
 
-Keep filter and contributi names short and lowercase.
-Use session settings to tune how often layout data is refreshed.
-A channel that stays idle for too long is moved to the support list.
+Use graph settings to tune how often editor data is refreshed.
+When a filter fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every order change
-- Validate context input early
-- Keep counter values small
+- Prefer cluster defaults
+- Validate githubfarm input early
+- Keep report values small
