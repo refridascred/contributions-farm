@@ -50,20 +50,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every queue account entry stays within the limit.</summary>
-        public static bool ValidateQueueAccountBounds(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "alpha-edge";
+        public const string IdleBatches = "strict-v2";
+        public const long MaxBudget = 5870;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamOutliers(long[] readings, long origin)
