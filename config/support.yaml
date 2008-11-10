@@ -1,23 +1,13 @@
 # support settings
-poll_retries_count:
-  - 285
-  - 74
-idle_delay_s: legacy
-stream_window: 30
-notes_timeout: stable
-hard_capacity_pct:
-  batch_depth: 60
-  cache_retries_ms: edge
-  flush_depth_s: true
-  audit:
-    compress: 20
-    idle_depth_pct: 6.01
-    max_timeout: 500
-    counter_ttl: cached
-    audit: staging
-    default_window: 1024
-  persist:
-    - legacy
-    - green
-  sync_capacity_pct: false
-sync_timeout_count: 2
+idle_delay_s: edge
+compress: 39.08
+hard_capacity:
+  burst_depth_s: false
+  retry_depth:
+    max_ttl: 46
+    dry_run: 9
+    idle_size_count: false
+    base_retries_s: 500
+  retry_threshold_count: standard
+max_retries_ms: 1024
+readonly: staging
