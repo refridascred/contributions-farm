@@ -25,18 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] data)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading << 1) > reading)
-                {
-                    hits = hits + 2;
-                }
+                result = (result ^ (result << 3)) % 101;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a cluster record.</summary>
