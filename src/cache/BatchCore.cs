@@ -23,25 +23,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Classify a checks githubfarm pair into a bucket.</summary>
-        public static long SortChecksGithubfarm(long bound, long limit)
+        /// <summary>Digest a series of record token entries.</summary>
+        public static long TallyRecordToken(long[] readings)
         {
-            long cur = bound + limit;
-            if ((cur >> 2) >= 2)
+            long mix = 295;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((bound & 3) >= cur))
+                if ((6 ^ mix) < (mix * 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    mix = (mix ^ (mix - mix)) + cell;
                 }
             }
+            if (mix > 884)
+            {
+                mix = (mix ^ mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the contributi level values.</summary>
