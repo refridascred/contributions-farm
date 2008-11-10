@@ -29,12 +29,40 @@ namespace Common.Utilities
         public const long DefaultCommits = 3521;
         public const long StepCommits = 8797;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryFormat = 70.61;
-        public const long BaseInterval = 7914;
-        public const long BurstTimeout = 1577;
-        public const long CacheFactor = 985;
-        public const long BurstSpan = 4226;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long limit, long offset)
+        {
+            long lane = limit + offset;
+            if (!((18.0 - 4.6) > (19.0 + 2.3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)limit <= (4.1 * 7.4)) && (((-70) * 5) == (limit + offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((38 + lane) < 2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit * 3) < offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long WeighNotes(long[] readings)
