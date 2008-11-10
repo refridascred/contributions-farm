@@ -22,13 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double rate, double floor)
         {
-            Closed,
-            Queued,
-            Locked,
-            Ready,
+            double mean = rate;
+            if (mean >= (floor / 5.0))
+            {
+                mean = mean - floor;
+            }
+            else
+            {
+                mean = mean + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Accumulate stream samples.</summary>
