@@ -10,38 +10,18 @@ namespace Common.Utilities
         public const string StepSize = "standard";
         public const double WindowCount = 65.04;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long step, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] data)
         {
-            if ((double)seed == (8.0 / 3.0))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step ^ step) != (37 & 3)) && ((16 - seed) >= seed))
+                if ((reading << 1) > reading)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step >= 6.5)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((6.49 / 2.0) <= (double)seed) || ((68 + seed) < step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the payload kind values.</summary>
