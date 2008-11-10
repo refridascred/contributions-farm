@@ -30,24 +30,15 @@ namespace Common.Utilities
         public const long RetryScore = 1883;
         public const long HardEditor = 2115;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long offset, long limit)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long floor)
         {
-            if ((20 % 10) != (limit & 3))
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((0 ^ offset) <= (offset ^ limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return state;
         }
     }
 }
