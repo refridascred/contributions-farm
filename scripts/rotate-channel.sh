@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west latest; do
+for item in standard open; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+mode="${1:-open}"
 case "${mode}" in
-    open)
+    standard)
         log "fast path"
         ;;
     *)
