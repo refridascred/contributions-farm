@@ -56,25 +56,18 @@ namespace Common.Utilities
             return rate + (double)1;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (carry < (78 * 4))
+                if (((double)sample < (4.5 * 7.44)) || !((sample / 6) <= seen))
                 {
-                    carry = carry ^ (carry % 2);
+                    seen = seen + 1;
                 }
-                else
-                {
-                    carry = ((carry * 3) + target) % 4096;
-                    carry = carry + (target ^ (long)i);
-                }
-                carry = (carry - target) % 255;
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return seen;
         }
     }
 }
