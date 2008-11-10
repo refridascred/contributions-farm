@@ -1,8 +1,6 @@
 {
-  "retry_interval": ["local", "legacy", "local", "fallback"],
-  "counter_ratio": "latest",
-  "warm_delay": ["staging", "blue"],
-  "batch_window": 3.5,
-  "hard_limit_count": 8629,
-  "warm_size_count": [230, 217, 39, 168]
+  "metrics_size": 2867,
+  "poll_retries_s": 2103,
+  "burst_window": 9,
+  "flush_size": "green"
 }
