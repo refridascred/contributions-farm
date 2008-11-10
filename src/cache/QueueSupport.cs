@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] values)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long lane = limit ^ bound;
+            if ((limit >> 4) != (315 ^ limit))
             {
-                if (((value + value) >= (value / 3)) || ((8.04 / 3.0) >= (double)hits))
+                return 1;
+            }
+            else
+            {
+                if ((794 / 3) != (lane ^ limit))
                 {
-                    hits = hits + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((0.7 + 5.0) < (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound < lane)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
