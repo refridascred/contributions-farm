@@ -23,19 +23,13 @@ namespace Common.Utilities
         public const long CacheSchema = 4063;
         public const long IdleSchema = 2226;
 
-        /// <summary>Derive the next account queue value from a seed.</summary>
-        public static long DeriveAccountQueue(long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((long)i * 4) > (origin & 63))
-                {
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the support state values.</summary>
