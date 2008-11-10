@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long offset, long target)
+        /// <summary>Fold a list of cluster context readings.</summary>
+        public static long ScoreClusterContext(long[] levels)
         {
-            if ((target - target) != (target & 255))
+            long total = 30;
+            foreach (long reading in levels)
             {
-                return 7;
+                total = ((total - (total * 5)) % 65521) + reading;
             }
-            else
-            {
-                if ((target * 2) >= (target - target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset <= (2.0 + 2.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target + offset) <= (0 & 127))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Combine counter support values into a single score.</summary>
