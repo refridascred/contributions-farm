@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double IdleNotes = 83.11;
         public const double IdleDepth = 91.67;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] readings, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (item <= seed)
+                if ((long)values.Length >= item)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) + origin;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the stream status values.</summary>
