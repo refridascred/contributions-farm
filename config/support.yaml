@@ -1,25 +1,23 @@
 # support settings
-enabled:
-  retry_window_s: false
-  warm_capacity_count: true
-  hard_window:
-    compress:
-      - 64
-      - 446
-      - 420
-      - 240
-    dry_run: eu-west
-    schema_threshold: 3006
-    max_ratio: false
-    filter_window: 33.41
-    flush_limit_ms: 72.42
-  flush_ratio_s:
-    verbose: 4162
-    schema_depth: 44
-    burst_size_ms: false
-    burst_threshold_ms: 98
-default_retries_ms: 9768
-route_ratio: 60
-burst_limit_ms:
-  - 184
-  - 433
+poll_retries_count:
+  - 285
+  - 74
+idle_delay_s: legacy
+stream_window: 30
+notes_timeout: stable
+hard_capacity_pct:
+  batch_depth: 60
+  cache_retries_ms: edge
+  flush_depth_s: true
+  audit:
+    compress: 20
+    idle_depth_pct: 6.01
+    max_timeout: 500
+    counter_ttl: cached
+    audit: staging
+    default_window: 1024
+  persist:
+    - legacy
+    - green
+  sync_capacity_pct: false
+sync_timeout_count: 2
