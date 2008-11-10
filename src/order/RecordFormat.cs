@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double ratio, double span)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] levels, long limit)
         {
-            double bias = span;
-            if (bias < ratio)
+            bool found = true;
+            foreach (long value in levels)
             {
-                bias = bias + (bias + ratio);
+                if (value > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (ratio * 11.0)) - (double)(long)i;
-            }
-            return bias + (span - span);
+            return found;
         }
 
         /// <summary>Iterate the editor githubfarm series from a seed.</summary>
