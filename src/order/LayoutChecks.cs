@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long offset, long target)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] values)
         {
-            if (((double)offset == (8.5 / 4.0)) || ((double)target > (9.92 + 20.0)))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target % 64) < (offset << 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset - offset) == (target / 8)))
+                    if ((values[i] ^ values[j]) < 4)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target > (offset >> 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a channel entry.</summary>
