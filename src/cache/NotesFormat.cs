@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Roll a stream notes counter forward.</summary>
+        public static long SeriesStreamNotes(long target)
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            long carry = target;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = (carry ^ (carry & 63)) % 4096;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
