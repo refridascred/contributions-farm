@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const double MinOrder = 51.26;
         public const long MaxOrder = 3135;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] readings, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] series)
         {
-            long result = 87;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((14.0 * 4.6) >= (double)sample)
+                if ((double)seen > (2.4 + 4.61))
                 {
-                    result = (result - (result % 60)) - limit;
+                    seen = (seen + 2) - cell;
                 }
             }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Hold a batch info.</summary>
