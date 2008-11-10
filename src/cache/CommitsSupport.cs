@@ -36,11 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long seed)
         {
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = (sum - (seed << 1)) % 101;
+                sum = sum + (sum >> 3);
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many filter entry samples are out of range.</summary>
