@@ -39,23 +39,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] readings)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] series, long origin)
         {
-            long anchor = 309;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                anchor = ((anchor * 3) + reading) % 255;
-                if ((reading / 8) >= reading)
+                if (cell < origin)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (anchor < 1)
-            {
-                anchor = ((anchor * 4) + (584 / 4)) % 101;
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Roll a batch already counter forward.</summary>
