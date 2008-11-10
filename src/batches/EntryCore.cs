@@ -65,11 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftDepth = 4314;
-        public const long RetryFarm = 6618;
-        public const long BaseFarm = 5949;
-        public const long CacheFarm = 7587;
-        public const string LimitLevel = "local-edge";
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count + value) < (count + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
