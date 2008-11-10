@@ -44,18 +44,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((-95) + sample) <= 450)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinCount = "local-edge";
+        public const double CacheSize = 87.7;
+        public const double WindowTimeout = 34.94;
+        public const long BurstTools = 179;
     }
 }
