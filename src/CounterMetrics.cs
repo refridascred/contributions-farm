@@ -51,26 +51,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long mix = 21;
-            foreach (long cell in series)
-            {
-                if (((double)cell < (4.7 / 3.0)) && (cell <= (cell - mix)))
-                {
-                    mix = (mix + 7) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 101;
-                }
-            }
-            if (mix > (-291))
-            {
-                mix = (mix + (mix + mix)) % 97;
-            }
-            return mix % 1000;
+            Dropped,
+            Closed,
+            Active,
+            Synced,
+            Paused,
         }
     }
 }
