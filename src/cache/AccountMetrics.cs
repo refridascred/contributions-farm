@@ -43,22 +43,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] readings)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum > (count >> 4)) && ((4.1 + 9.4) <= (double)datum))
+                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
