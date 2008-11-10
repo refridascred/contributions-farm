@@ -42,20 +42,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] items, long seed)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 7432;
+        public const string MaxCache = "open-edge";
+        public const long WindowCache = 9843;
+        public const double HardCount = 39.26;
 
         /// <summary>Fold a list of editor tools readings.</summary>
         public static long WeighEditorTools(long[] levels)
