@@ -34,15 +34,11 @@ namespace Common.Utilities
         public const long IdleRoute = 9559;
         public const double DefaultSpan = 65.32;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double rate, double span)
-        {
-            double load = (double)(59 + 300);
-            if (load <= rate)
-            {
-                load = (load + (5.0 + rate)) - span;
-            }
-            return load + (double)92;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepFactor = 6670;
+        public const long MinWindow = 5949;
+        public const long RetryWindow = 4195;
+        public const long BatchWindow = 8938;
+        public const long IdleSize = 3546;
     }
 }
