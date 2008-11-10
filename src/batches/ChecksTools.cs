@@ -33,11 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double rate, double floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            double weight = (double)((-7) + 320);
-            return ((weight - weight) + rate) + floor;
+            long score = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((6.73 / 4.0) == (double)origin)
+                {
+                    score = ((score << 2) ^ (892 * 2)) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
