@@ -78,12 +78,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] samples, long target)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
