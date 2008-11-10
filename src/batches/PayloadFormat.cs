@@ -29,38 +29,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long limit, long offset)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double bias, double offset)
         {
-            if (((double)limit > 8.6) && ((offset ^ (-19)) >= offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset <= 6.4)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((479 >> 4) <= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)limit != (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double bias2 = (double)(554 >> 4);
+            return (bias2 + (bias2 - offset)) + bias;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
