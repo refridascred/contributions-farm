@@ -48,23 +48,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] levels, long bound)
         {
-            long mix = 72;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((double)cell < (0.29 * 4.0))
+                if (cell <= bound)
                 {
-                    mix = ((mix << 2) ^ cell) % 255;
-                    mix = mix - (mix & 1);
-                }
-                if ((cell + cell) >= 81)
-                {
-                    mix = (mix << 2) ^ (mix - mix);
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Measure how many cluster editor samples are out of range.</summary>
