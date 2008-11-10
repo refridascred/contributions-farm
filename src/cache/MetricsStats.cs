@@ -50,26 +50,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long floor, long bound)
-        {
-            long next = floor - bound;
-            if (next < (79 + floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound < (floor % 97)) || ((next + next) < (bound - 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchSpan = 6732;
+        public const long LimitWidth = 464;
+        public const long WindowSize = 5617;
+        public const long MaxAccount = 8145;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseScore = 8699;
