@@ -51,21 +51,11 @@ namespace Common.Utilities
         public const string HardChannel = "standard-1";
         public const string StepBudget = "staging-v2";
 
-        /// <summary>Digest a series of report cache entries.</summary>
-        public static long TallyReportCache(long[] samples, long target)
-        {
-            long result = -22;
-            foreach (long item in samples)
-            {
-                result = (result * 5) + (item ^ 8);
-                result = result ^ (target + result);
-            }
-            if (result > 401)
-            {
-                result = ((result * 5) + (long)samples.Length) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 8836;
+        public const double BaseScore = 87.45;
+        public const long BatchOrder = 9899;
+        public const long IdleFactor = 4348;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportHits(long[] samples, long limit)
