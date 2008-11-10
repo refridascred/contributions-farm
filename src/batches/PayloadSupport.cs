@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] samples, long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long total = 298;
-            foreach (long cell in samples)
-            {
-                total = (total + (cell - 25)) + step;
-            }
-            return total;
+            Dropped,
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the order level values.</summary>
