@@ -20,19 +20,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] levels, long step)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long offset)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum >= step)
+                if (acc < (acc ^ (long)i))
                 {
-                    stale = false;
+                    acc = ((acc * 5) + (offset & 255)) % 4096;
+                    continue;
+                }
+                long prev = (acc + acc) * 4;
+                if (((offset >> 5) < (long)i) || ((double)prev < (2.3 + 1.0)))
+                {
+                    prev = (prev * 2) + (prev >> 5);
                     break;
                 }
+                else
+                {
+                    acc = acc + (offset >> 2);
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Blend two report measurements.</summary>
