@@ -64,9 +64,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 89.96;
-        public const double IdleCount = 17.68;
-        public const double LimitSize = 94.42;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Retry,
+            Paused,
+            Stale,
+            Ready,
+            Failed,
+        }
     }
 }
