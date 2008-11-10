@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleWidth = 8775;
-        public const long MinContext = 2927;
-        public const long StepContext = 5386;
-        public const long DefaultSpan = 7270;
-        public const long DefaultCount = 1658;
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public double Label { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long SortWindow(long target, long limit)
