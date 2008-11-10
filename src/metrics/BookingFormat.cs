@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Audit already tools readings against a rule.</summary>
-        public static long AuditAlreadyToolsOutliers(long[] data)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)sample > 11.0)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    tally = tally + 2;
+                    state = (((state * 3) + (origin >> 3)) % 1000) - (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
