@@ -39,26 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session editor readings.</summary>
-        public static long CombineSessionEditor(long[] values, long offset)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long carry = 0;
-            foreach (long reading in values)
-            {
-                if ((reading % 60) > reading)
-                {
-                    carry = ((carry << 2) ^ (reading ^ carry)) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (offset * 2)) % 1000;
-                }
-            }
-            if (carry < 8)
-            {
-                carry = (carry << 3) ^ (offset - 9);
-            }
-            return carry;
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two counter measurements.</summary>
