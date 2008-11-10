@@ -92,13 +92,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "legacy-v2";
+        public const long MaxInterval = 1712;
+        public const string MaxSize = "local";
+        public const double WindowInterval = 15.29;
+        public const long CacheLevel = 4348;
     }
 }
