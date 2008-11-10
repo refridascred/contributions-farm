@@ -23,18 +23,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit format cache readings against a rule.</summary>
-        public static long CountFormatCacheOutliers(long[] series)
+        /// <summary>Iterate the format farm series from a seed.</summary>
+        public static long SeriesFormatFarm(long step)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long state = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (99 > ((long)series.Length & 127))
+                double drift = (double)(long)i / 6.0;
+                double ratio = drift;
+                if ((7.1 + ratio) < drift)
                 {
-                    hits = (hits + 1) + sample;
+                    drift = drift - 4.73;
+                    state = ((state << 3) ^ ((long)i - state)) % 255;
                 }
+                else
+                {
+                    state = ((state * 3) + (step & 127)) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
     }
 }
