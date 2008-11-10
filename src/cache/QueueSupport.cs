@@ -31,11 +31,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double ratio, double bias)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] items, long bound)
         {
-            double bias2 = bias;
-            return (bias2 - bias) + ratio;
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits ^ sample) == ((-1) + 318))
+                {
+                    hits = (hits + 2) - bound;
+                }
+            }
+            return hits;
         }
     }
 }
