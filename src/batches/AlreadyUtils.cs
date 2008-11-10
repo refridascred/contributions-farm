@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseSpan = "standard-edge";
-        public const long SoftTimeout = 9942;
-        public const long BaseScore = 8058;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = ((acc << 2) ^ (1 + offset)) ^ (long)i2;
+                }
+                acc = ((acc * 2) + (acc + offset)) % 4096;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BatchSpan = "cached-1";
