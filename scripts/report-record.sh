@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge stable local eu-west; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=452
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-standard}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-RECORD_LIMIT=234
-log "limit is ${RECORD_LIMIT}"
