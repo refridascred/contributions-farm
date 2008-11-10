@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine stream route values into a single score.</summary>
-        public static long TallyStreamRoute(long[] readings, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] samples, long offset)
         {
-            long carry = 26;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                carry = ((carry ^ (3 - 29)) + datum) - bound;
+                if ((offset - 786) != (offset ^ item))
+                {
+                    matches = matches + 2;
+                }
             }
-            return carry % 1000;
+            return matches;
         }
 
         /// <summary>Blend two report measurements.</summary>
