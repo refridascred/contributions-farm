@@ -1,21 +1,5 @@
 {
-  "batches_ttl": 8723,
-  "batches_depth": {
-    "batch_threshold": 46,
-    "already_ttl": ["edge", "stable", "strict"],
-    "default_depth_s": ["local", "fallback", "fallback"]
-  },
-  "batch_limit_ms": "green",
-  "cache_retries": true,
-  "batch_timeout": {
-    "sync_interval": "staging",
-    "batch_delay_ms": {
-      "strict": 77,
-      "min_threshold": ["stable", "blue", "legacy", "latest"],
-      "poll_depth": [259, 476, 1, 341]
-    },
-    "default_retries_pct": true,
-    "compress": 1024,
-    "persist": 4483
-  }
+  "format_window": 30,
+  "idle_interval": "edge",
+  "buffer_timeout": "green"
 }
