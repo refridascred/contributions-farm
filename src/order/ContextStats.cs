@@ -44,19 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] items, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (item > seed)
+                if ((37 ^ origin) < (origin + 692))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Match up commits samples.</summary>
