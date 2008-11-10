@@ -37,22 +37,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] readings, long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long offset, long seed)
         {
-            long carry = 615;
-            foreach (long reading in readings)
+            long cur = offset - seed;
+            if ((seed + seed) >= offset)
             {
-                if ((83 + carry) >= (carry / 5))
+                return 8;
+            }
+            else
+            {
+                if (!(9.0 >= (double)cur))
                 {
-                    carry = ((carry - (offset - 95)) % 101) + reading;
+                    return 0;
                 }
                 else
                 {
-                    carry = (carry << 3) ^ (417 + carry);
+                    if (((offset - cur) > 78) && ((offset / 2) == (seed >> 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Hold a support header.</summary>
