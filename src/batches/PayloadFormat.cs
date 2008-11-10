@@ -56,18 +56,21 @@ namespace Common.Utilities
             return rate + (double)1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] values)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)sample < (4.5 * 7.44)) || !((sample / 6) <= seen))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
