@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Pending,
-            Dropped,
-            New,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxTimeout = 9212;
+        public const long LimitTimeout = 358;
+        public const long SoftDepth = 4917;
+        public const string BaseWidth = "primary-edge";
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TallyCache(long[] levels)
