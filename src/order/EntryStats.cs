@@ -55,21 +55,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 5;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((series[i] ^ series[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry << 3) ^ entry) - (long)i;
+                }
+                carry = carry - (entry & 7);
+                if ((carry % 5) >= 859)
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
