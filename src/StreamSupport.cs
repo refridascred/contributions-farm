@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Offset { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseFactor = 4320;
+        public const long RetryNotes = 2908;
+        public const long MinBudget = 3514;
+        public const double IdleNotes = 83.11;
+        public const double IdleDepth = 91.67;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferLimits(long[] readings, long seed)
