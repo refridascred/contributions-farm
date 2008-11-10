@@ -23,13 +23,11 @@ namespace Common.Utilities
         public const long CacheSchema = 4063;
         public const long IdleSchema = 2226;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Paused,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitTimeout = 6148;
+        public const string MaxSession = "stable-edge";
+        public const long BaseLevel = 5531;
+        public const long BaseFactor = 2980;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool GuardQueueBounds(long[] items, long bound)
