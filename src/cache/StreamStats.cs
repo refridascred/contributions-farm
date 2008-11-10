@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] values)
         {
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            long carry = 81;
+            foreach (long value in values)
+            {
+                if (!(((long)values.Length / 8) <= carry))
+                {
+                    carry = ((carry ^ (carry * 4)) % 1000) ^ value;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
