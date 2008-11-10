@@ -64,18 +64,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout filter readings against a rule.</summary>
-        public static long TallyLayoutFilterHits(long[] data, long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((sample & 7) <= sample)
+                if ((value % 64) >= (seen >> 5))
                 {
-                    matches = (matches + 2) - offset;
+                    seen = (seen + 2) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine window metrics values into a single score.</summary>
