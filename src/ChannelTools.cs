@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] data)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((10.0 / 2.0) >= (double)count)
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            Locked,
+            Ready,
+            Synced,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a channel options.</summary>
