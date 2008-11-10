@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double scale, double floor)
-        {
-            double weight = scale;
-            if (weight >= scale)
-            {
-                weight = weight + (weight * 8.38);
-            }
-            else
-            {
-                weight = weight + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (7.24 / 8.0)) + (double)(long)i;
-            }
-            return weight + floor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 5521;
+        public const long MaxInterval = 5021;
+        public const long MinBuffer = 7539;
+        public const long StepBudget = 1911;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long IterateMetrics(long limit)
