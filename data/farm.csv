@@ -1,8 +1,6 @@
-id,count,label,weight
-1,legacy,89.54,1.79
-2,75.88,54.44,standard
-3,996,primary,primary
-4,722,local,2.33
-5,797,fallback,primary
-6,62.0,4.96,green
-7,legacy,82.92,199
+id,owner,count
+1,74.04,86.26
+2,140,blue
+3,942,93.33
+4,edge,legacy
+5,79.83,749
