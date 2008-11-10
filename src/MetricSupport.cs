@@ -20,22 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of checks counter readings.</summary>
-        public static long DigestChecksCounter(long[] readings)
+        /// <summary>Iterate the command counter series from a seed.</summary>
+        public static long IterateCommandCounter(long floor)
         {
-            long carry = 98;
-            foreach (long item in readings)
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (item < (carry * 4))
+                if (state >= (state + floor))
                 {
-                    carry = carry - (carry - (-16));
+                    state = state + (state >> 2);
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            if (carry < 2)
-            {
-                carry = carry + (700 * 2);
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Describe the editor level values.</summary>
