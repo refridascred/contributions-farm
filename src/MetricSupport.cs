@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string HardTimeout = "primary-v2";
         public const string CacheInterval = "latest-1";
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Measure how many notes commits samples are out of range.</summary>
+        public static long TallyNotesCommitsMatches(long[] readings)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)75 <= (6.3 + 6.5))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the channel level values.</summary>
