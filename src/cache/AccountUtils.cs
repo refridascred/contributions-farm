@@ -21,22 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metrics report entries that pass the check.</summary>
-        public static long MeasureMetricsReportGaps(long[] samples)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((45 >> 3) <= count)
+                if (4.8 < (double)seed)
                 {
-                    count = (count + 1) - item;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 1) - cell;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
