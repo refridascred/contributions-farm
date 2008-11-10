@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
             public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a profile options.</summary>
