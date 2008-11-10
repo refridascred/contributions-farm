@@ -38,18 +38,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 8920;
+        public const double SoftSize = 0.91;
+        public const string IdleWindow = "staging-edge";
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] readings)
