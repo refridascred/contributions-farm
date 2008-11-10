@@ -15,22 +15,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] levels, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long result = 135;
+            foreach (long entry in samples)
             {
-                if ((8.2 / 6.0) > (double)offset)
-                {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = (result << 2) ^ 466;
+                result = ((result * 4) + (entry - 967)) % 255;
             }
-            return matches;
+            if (result < 3)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
