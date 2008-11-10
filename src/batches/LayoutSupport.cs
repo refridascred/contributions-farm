@@ -20,11 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 7794;
-        public const double MaxOrder = 42.58;
-        public const long MinCount = 72;
-        public const long BaseOrder = 6879;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Failed,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenGaps(long[] readings, long limit)
