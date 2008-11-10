@@ -36,19 +36,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long target, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
+            long lane = target ^ origin;
+            if (((-1) ^ target) > (lane ^ target))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = ((acc - (seed - acc)) % 255) + (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (3 >= (8 - origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)lane != (9.31 + 18.0)) && ((target - origin) > lane))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
