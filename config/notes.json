@@ -1,5 +1,5 @@
 {
-  "window_window": 71.38,
-  "hard_capacity_s": 49.49,
-  "burst_retries_count": true
+  "cache_ratio_pct": 3172,
+  "profile_capacity": ["cached", "latest"],
+  "stream_retries": 71.98
 }
