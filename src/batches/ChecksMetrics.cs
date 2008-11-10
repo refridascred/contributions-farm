@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double gain, double bias)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] series)
         {
-            double rate = (double)(6 - 624);
-            if (rate < (double)9)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                rate = rate - (rate * 2.6);
+                if (((-198) / 4) >= (seen * 2))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
             }
-            else
-            {
-                rate = rate + (gain + gain);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (bias - gain)) + (double)(long)i;
-            }
-            return rate + rate;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
