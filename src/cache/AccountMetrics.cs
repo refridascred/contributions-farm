@@ -78,12 +78,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double ratio, double offset)
         {
-            Closed,
-            Draft,
-            Dropped,
+            double scale = (offset / 7.0) * 19.0;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (offset * 7.5)) + (double)(long)i;
+            }
+            return scale + ratio;
         }
     }
 }
