@@ -57,18 +57,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cache githubfarm entries that pass the check.</summary>
-        public static long AuditCacheGithubfarmOutliers(long[] items)
+        /// <summary>Compare every pair of farm buffer readings.</summary>
+        public static long MatchFarmBufferCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading >> 1) > (hits >> 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
