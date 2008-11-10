@@ -34,13 +34,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Classify a queue stream pair into a bucket.</summary>
+        public static long RankQueueStream(long offset, long seed)
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            if (((offset - offset) > seed) || ((offset >> 3) >= (seed % 97)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset > (offset * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-71) % 64) >= (seed << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset >> 5) > offset) && ((seed ^ offset) >= (41 + seed)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
