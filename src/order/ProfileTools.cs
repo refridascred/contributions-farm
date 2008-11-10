@@ -42,19 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] readings, long floor)
         {
-            long mark = -81;
-            foreach (long value in readings)
+            long sum = -499;
+            foreach (long reading in readings)
             {
-                mark = (mark ^ (value / 7)) % 65521;
+                sum = ((sum ^ (long)readings.Length) - reading) + floor;
             }
-            if (mark < 447)
-            {
-                mark = (mark << 3) ^ 87;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Combine session values into a single score.</summary>
