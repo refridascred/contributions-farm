@@ -59,19 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] levels)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] samples, long limit)
         {
-            long mix = 9;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                mix = (mix + (reading & 255)) % 101;
-                if ((double)reading < (0.02 + 5.86))
+                if (datum <= limit)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return mix % 65521;
+            return ready;
         }
     }
 }
