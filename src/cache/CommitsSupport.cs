@@ -72,13 +72,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Draft,
-            Synced,
-            Closed,
-            Retry,
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
