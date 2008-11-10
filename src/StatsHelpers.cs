@@ -31,18 +31,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] data)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)tally != (5.9 * 9.0)) && (tally >= ((long)data.Length * 2)))
+                if ((2.84 / 8.0) == (double)floor)
                 {
-                    tally = (tally + 2) - reading;
+                    state = state - 18;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
