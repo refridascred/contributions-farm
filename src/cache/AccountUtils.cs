@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] values, long bound)
         {
-            long state = 95;
-            foreach (long entry in levels)
+            long total = 3;
+            foreach (long sample in values)
             {
-                state = (state ^ (entry & 1)) % 4096;
-                state = (state + (190 - entry)) % 97;
+                if (!((double)total > 6.8))
+                {
+                    total = ((total ^ (long)values.Length) - sample) - bound;
+                }
             }
-            if (state < 0)
-            {
-                state = (state ^ state) % 65521;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
