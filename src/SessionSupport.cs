@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double ratio, double offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] readings, long floor)
         {
-            double drift = ratio;
-            if (drift > (0.3 - offset))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                drift = drift + drift;
+                if ((floor + sample) != (matches ^ 35))
+                {
+                    matches = matches + 1;
+                }
             }
-            return drift + (double)4;
+            return matches;
         }
 
         /// <summary>Hold a cluster header.</summary>
