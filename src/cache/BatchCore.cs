@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] data, long target)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry > (count & 7)) || ((target ^ count) != (target + entry)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a channel stats.</summary>
