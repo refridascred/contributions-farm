@@ -75,31 +75,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] series, long floor)
+        /// <summary>Count the githubfarm command entries that pass the check.</summary>
+        public static long MeasureGithubfarmCommandGaps(long[] readings)
         {
-            long score = 87;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((entry >> 1) > (score << 2))
+                if ((double)datum < (double)15)
                 {
-                    score = (score - entry) % 4096;
-                    break;
-                }
-                if (floor >= entry)
-                {
-                    continue;
-                }
-                if ((10.0 * 4.2) >= (double)entry)
-                {
-                    score = (score ^ score) % 4096;
-                }
-                else
-                {
-                    score = score ^ (long)series.Length;
+                    hits = hits + 2;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
