@@ -49,18 +49,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] items)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long step)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((tally << 1) >= tally)
-                {
-                    tally = (tally + 2) + item;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
     }
 }
