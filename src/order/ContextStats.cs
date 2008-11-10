@@ -57,22 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] readings, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] data)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((count % 100) < (target * 2))
+                if ((15 - matches) == (matches << 2))
                 {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 3) - value;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
