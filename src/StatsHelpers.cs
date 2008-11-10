@@ -22,11 +22,33 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstRatio = 3937;
-        public const long HardWidth = 6377;
-        public const double LimitGithubfarm = 91.29;
-        public const double MaxSpan = 91.02;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long bound, long target)
+        {
+            long diff = bound - target;
+            if ((diff + bound) > bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (target > (25 + diff))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((bound >> 5) > diff))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string WindowWidth = "latest-v2";
