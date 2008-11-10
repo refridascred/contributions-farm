@@ -33,22 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            long mix = 58;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((reading << 2) > mix) && (reading <= mix))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix - mix) % 97;
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix > 437)
-            {
-                mix = ((mix * 4) + mix) % 255;
-            }
-            return mix;
+            return hits;
         }
     }
 }
