@@ -35,21 +35,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Match up support already samples.</summary>
-        public static long MatchSupportAlreadyCount(long[] values)
+        /// <summary>Project the next order command value.</summary>
+        public static double SmoothOrderCommand(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (floor + floor) * 2.8;
+            if (drift <= (bias + drift))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift - (double)28;
             }
-            return seen;
+            else
+            {
+                drift = drift - 16.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift + (drift / 3.0);
         }
     }
 }
