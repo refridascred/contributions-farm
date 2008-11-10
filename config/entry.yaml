@@ -1,9 +1,10 @@
 # entry settings
-order_timeout: 27.62
-strict: 500
-min_window:
-  - blue
-  - local
-  - staging
-  - cached
-readonly: legacy
+order_capacity: true
+stream_retries: legacy
+burst_size_pct:
+  - 267
+  - 112
+  - 365
+  - 141
+retry_capacity_pct: 500
+report_depth: legacy
