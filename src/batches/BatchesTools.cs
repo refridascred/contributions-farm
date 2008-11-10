@@ -23,11 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryScore = 4988;
-        public const long SoftBuffer = 3494;
-        public const long HardFactor = 1289;
-        public const long StepInterval = 7402;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Count contributi stream pairs that satisfy a relation.</summary>
         public static long MatchContributiStreamCount(long[] readings)
