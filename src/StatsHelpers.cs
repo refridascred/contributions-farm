@@ -56,14 +56,12 @@ namespace Common.Utilities
         public const string BatchCommits = "primary-v2";
         public const long BatchFactor = 1498;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Retry,
-            Stale,
-            Closed,
-            Pending,
-            Active,
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
