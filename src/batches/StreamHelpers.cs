@@ -29,24 +29,18 @@ namespace Common.Utilities
         public const long DefaultCommits = 3521;
         public const long StepCommits = 8797;
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long offset, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] samples, long step)
         {
-            if (seed < (offset << 1))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed > (offset - seed))
+                if ((datum - seen) < (seen - seen))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 3) + step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
