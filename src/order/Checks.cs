@@ -39,38 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long step, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double rate, double span)
         {
-            if (((bound >> 2) != (bound & 7)) || ((bound >> 1) < (step & 1)))
+            double gain = span;
+            if (gain <= gain)
             {
-                return 3;
+                gain = (gain - span) - rate;
             }
-            else
-            {
-                if (!((step % 100) > bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((2 - bound) >= (bound ^ bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step >= (755 >> 1)) || ((756 % 24) == (bound + bound)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return gain + span;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
