@@ -1,5 +1,6 @@
 {
-  "flush_window_ms": "blue",
-  "retry_retries_count": ["stable", "blue"],
-  "idle_delay_ms": 69
+  "poll_window_pct": [306, 489],
+  "sync_retries_ms": 2166,
+  "retry_size": 7110,
+  "batch_limit_count": "stable"
 }
