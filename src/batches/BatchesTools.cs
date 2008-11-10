@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine editor notes values into a single score.</summary>
-        public static long TotalEditorNotes(long[] values, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] samples, long bound)
         {
-            long state = 10;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if ((state >> 4) != (limit << 3))
+                if (entry >= bound)
                 {
-                    state = (state ^ (limit << 1)) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            if (state > (-57))
-            {
-                state = (state + (116 + limit)) % 65521;
-            }
-            return state % 1000;
+            return ready;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
