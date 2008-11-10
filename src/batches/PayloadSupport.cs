@@ -26,36 +26,30 @@ namespace Common.Utilities
         public const long SoftBudget = 1396;
         public const long IdleTimeout = 9798;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] series, long limit)
         {
-            long score = 690;
-            foreach (long sample in series)
+            long sum = 852;
+            foreach (long item in series)
             {
-                if ((sample / 9) < (sample % 100))
+                if (((sum ^ limit) >= (item ^ limit)) || ((limit + item) < (limit / 9)))
                 {
-                    score = (score ^ (sample / 3)) % 97;
+                    sum = sum ^ item;
                 }
-                if (!((sample * 3) > (sample & 31)))
+                if (7.93 <= (double)sum)
                 {
-                    score = score ^ (sample << 2);
                     break;
                 }
-                else
+                if (!((item << 3) == (limit >> 3)))
                 {
-                    score = score ^ (6 * 4);
-                    score = (score << 2) ^ (sample ^ score);
+                    sum = (sum + item) % 65521;
                 }
-                if (!((score * 3) != (score / 8)))
+                if ((double)sum >= (5.04 * 4.06))
                 {
-                    score = (score - 669) % 255;
+                    break;
                 }
             }
-            if (score < 651)
-            {
-                score = score + score;
-            }
-            return score % 1000;
+            return sum;
         }
     }
 }
