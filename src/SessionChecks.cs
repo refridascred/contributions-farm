@@ -22,19 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] values, long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long target)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long result = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                result = result - (result >> 5);
+                result = ((result << 2) ^ result) % 97;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Hold a queue stats.</summary>
