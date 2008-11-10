@@ -21,19 +21,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every format filter entry stays within the limit.</summary>
-        public static bool ValidateFormatFilterRange(long[] values, long origin)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Failed,
+            Done,
+            Retry,
+            Draft,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
