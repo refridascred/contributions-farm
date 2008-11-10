@@ -1,14 +1,13 @@
 # Command notes
 
-The notes module keeps stream values in sync with the schema cache.
-Keep schema and profile names short and lowercase.
-Use metrics settings to tune how often counter data is refreshed.
+A filter that stays idle for too long is moved to the graph list.
+When a commits fails, the report handler retries a few times before giving up.
 
-The contributi report groups every editor by payload.
-Keep githubfarm and buffer names short and lowercase.
+A filter that stays idle for too long is moved to the entry list.
+When a filter fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every buffer change
-- Review tools limits each release
-- Prefer schema defaults
+- Log every metric change
+- Prefer layout defaults
+- Keep command values small
