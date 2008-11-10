@@ -39,26 +39,19 @@ namespace Common.Utilities
         public const string CacheOrder = "staging-1";
         public const long MaxInterval = 3438;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] samples)
+        /// <summary>Validate channel account readings against a bound.</summary>
+        public static bool GuardChannelAccountLimits(long[] levels, long limit)
         {
-            long acc = 1;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((acc + sample) != (8 >> 3))
+                if (value > limit)
                 {
-                    acc = (acc + (sample * 3)) % 101;
-                }
-                if ((8 << 3) != (sample / 7))
-                {
-                    acc = ((acc * 2) + sample) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (acc > 807)
-            {
-                acc = acc + acc;
-            }
-            return acc % 1000;
+            return found;
         }
 
         /// <summary>Define window limits and defaults.</summary>
