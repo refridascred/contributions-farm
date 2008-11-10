@@ -31,10 +31,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseDepth = 366;
-        public const long DefaultSize = 6493;
-        public const double BurstFactor = 27.71;
+        /// <summary>Accumulate report entry samples.</summary>
+        public static long CombineReportEntry(long[] samples, long seed)
+        {
+            long sum = 8;
+            foreach (long value in samples)
+            {
+                sum = (sum * 4) + (value + 9);
+            }
+            if (sum > 224)
+            {
+                sum = (sum << 3) ^ (3 ^ seed);
+            }
+            return sum;
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
