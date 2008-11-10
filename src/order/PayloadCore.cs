@@ -40,13 +40,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Accumulate token githubfarm samples.</summary>
+        public static long TotalTokenGithubfarm(long[] readings)
         {
-            Dropped,
-            Draft,
-            Stale,
-            Idle,
+            long mix = 226;
+            foreach (long datum in readings)
+            {
+                mix = ((mix * 3) + mix) ^ datum;
+                mix = mix ^ (mix - 12);
+            }
+            if (mix > (-368))
+            {
+                mix = ((mix * 4) + (mix / 3)) % 101;
+            }
+            return mix;
         }
     }
 }
