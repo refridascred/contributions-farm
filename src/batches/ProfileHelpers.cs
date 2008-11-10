@@ -27,23 +27,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double gain, double span)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long offset)
         {
-            double mean = span;
-            if (mean > mean)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                mean = mean - (gain + 2.91);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean - (double)69;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - gain) + (double)(long)i;
-            }
-            return mean - (double)10;
+            return score;
         }
 
         /// <summary>Describe the session state values.</summary>
