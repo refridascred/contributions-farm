@@ -45,10 +45,20 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 1322;
-        public const long HardAlready = 9653;
-        public const string DefaultAlready = "fallback-edge";
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] levels, long bound)
+        {
+            long score = 6;
+            foreach (long entry in levels)
+            {
+                score = ((score + (score << 1)) % 1000) - entry;
+            }
+            if (score > 37)
+            {
+                score = ((score * 3) + (943 + bound)) % 97;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileLimits(long[] data, long offset)
