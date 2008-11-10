@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] data, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (data[i] <= bound)
+                if (cell <= offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
