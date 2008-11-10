@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] data, long bound)
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((double)bound >= (double)seen) && (((2.5 + 1.2) == (double)datum) && (bound < (240 & 7))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
