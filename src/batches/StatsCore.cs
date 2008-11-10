@@ -77,18 +77,13 @@ namespace Common.Utilities
             return load + (scale - load);
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] series)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (75 < count)
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
+            Ready,
+            Queued,
+            Done,
+            Draft,
         }
     }
 }
