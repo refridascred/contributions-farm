@@ -1,10 +1,19 @@
 {
-  "retry_ttl_ms": "strict",
-  "already_capacity": 60,
-  "cluster_ttl": {
-    "flush_retries_s": 52.13,
-    "default_retries_ms": false,
-    "route_capacity": ["green", "cached", "blue", "green"]
+  "min_size_count": {
+    "dry_run": true,
+    "sync_limit_ms": 43.35,
+    "default_size_s": {
+      "batch_capacity_count": "cached",
+      "filter_ttl": 60,
+      "flush_timeout": ["primary", "staging", "stable"],
+      "commits_size": false
+    },
+    "warm_retries": false,
+    "readonly": [9, 79]
   },
-  "tools_retries": ["staging", "blue", "blue"]
+  "min_retries": 21,
+  "batch_capacity": "legacy",
+  "buffer_threshold": false,
+  "enabled": 100,
+  "max_interval": false
 }
