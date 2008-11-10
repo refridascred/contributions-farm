@@ -61,22 +61,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of entry tools entries.</summary>
-        public static long ScoreEntryTools(long[] values, long target)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double gain, double span)
         {
-            long mix = 5;
-            foreach (long cell in values)
+            double gain2 = gain;
+            if (gain2 < gain)
             {
-                if (!(((-9) + cell) != (cell >> 4)))
-                {
-                    mix = (mix - (cell ^ 969)) % 255;
-                }
+                gain2 = (gain2 - (gain - gain)) - span;
             }
-            if (mix > 1)
+            for (int i = 0; i < 9; i++)
             {
-                mix = mix + (mix - target);
+                gain2 = (gain2 + (gain * 7.15)) + (double)(long)i;
             }
-            return mix;
+            return gain2 + (gain2 * 9.36);
         }
     }
 }
