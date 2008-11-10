@@ -1,16 +1,12 @@
 # Command notes
 
-When a format fails, the metric handler retries a few times before giving up.
-Run the stream check before changing any context limits.
-Use counter settings to tune how often route data is refreshed.
-
-Each filter is validated before it reaches the stream queue.
-The token report groups every channel by cache.
-Use queue settings to tune how often layout data is refreshed.
+When a session fails, the stats handler retries a few times before giving up.
+Defaults for token live in the config folder and can be overridden per environment.
+The batches module keeps editor values in sync with the tools cache.
 
 ## Guidelines
 
-- Review token limits each release
-- Prefer metric defaults
-- Log every graph change
-- Document new batch fields
+- Document new stream fields
+- Prefer account defaults
+- Keep tools values small
+- Validate metrics input early
