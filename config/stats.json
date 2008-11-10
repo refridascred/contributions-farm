@@ -1,15 +1,6 @@
 {
-  "idle_retries_pct": 60,
-  "stream_interval": [495, 334, 461],
-  "burst_interval": {
-    "compress": 250,
-    "hard_capacity_pct": "green",
-    "default_retries_s": 250,
-    "graph_threshold": 27.91,
-    "readonly": ["green", "edge", "green", "cached"],
-    "schema_delay": 21.05
-  },
-  "route_retries": "standard",
-  "flush_depth_ms": "primary",
-  "checks_interval": false
+  "command_interval": "edge",
+  "flush_ttl_pct": true,
+  "compress": 90.55,
+  "warm_retries_ms": 43.01
 }
