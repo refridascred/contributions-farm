@@ -1,7 +1,8 @@
 {
-  "soft_size": 86.07,
-  "min_delay": "blue",
-  "persist": 2,
-  "batch_capacity": true,
-  "metrics_limit": 3851
+  "window_delay": "eu-west",
+  "hard_window": true,
+  "hard_threshold_count": 96.09,
+  "soft_delay": "standard",
+  "sync_depth_ms": true,
+  "poll_interval": false
 }
