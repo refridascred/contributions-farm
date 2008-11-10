@@ -49,15 +49,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double rate, double floor)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            double gain = floor;
-            if (gain >= (double)12)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - (rate + gain);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain - (double)(-448);
+            return seen;
         }
     }
 }
