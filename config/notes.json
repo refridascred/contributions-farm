@@ -1,31 +1,6 @@
 {
-  "verbose": {
-    "retry_ratio": {
-      "format_ttl": 1024,
-      "compress": "latest",
-      "idle_window": 74,
-      "batch_size_s": 32.98
-    },
-    "stats_limit": "edge",
-    "flush_ttl_s": {
-      "warm_threshold_count": 60,
-      "min_interval": "legacy",
-      "context_retries": "blue",
-      "base_threshold": ["fallback", "blue", "blue"],
-      "default_delay_ms": 11.57,
-      "commits_retries": "edge"
-    }
-  },
-  "persist": 22.15,
-  "poll_ttl": {
-    "default_delay_s": 984,
-    "base_interval_count": {
-      "record_depth": [418, 370],
-      "metrics_capacity": true,
-      "max_capacity": 93,
-      "retry_window": "standard"
-    },
-    "counter_ratio": false,
-    "cluster_depth": 29.12
-  }
+  "checks_threshold": 34,
+  "channel_size": false,
+  "retry_interval_pct": ["cached", "open", "blue"],
+  "min_capacity": 31
 }
