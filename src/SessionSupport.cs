@@ -20,26 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] levels, long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long carry = -452;
-            foreach (long reading in levels)
-            {
-                if (9 <= (reading % 12))
-                {
-                    carry = ((carry * 3) + (49 >> 3)) - offset;
-                }
-                else
-                {
-                    carry = (carry - (reading + reading)) % 4096;
-                }
-            }
-            if (carry > (-6))
-            {
-                carry = (carry * 2) + (29 * 2);
-            }
-            return carry;
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a batches filter value against two limits.</summary>
