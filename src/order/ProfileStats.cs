@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double rate, double span)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] levels, long target)
         {
-            double mean = (span - span) * 14.0;
-            if (mean >= (rate * 0.15))
+            bool flag = true;
+            foreach (long value in levels)
             {
-                mean = mean - rate;
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + (double)434;
+            return flag;
         }
 
         /// <summary>Accumulate entry channel samples.</summary>
