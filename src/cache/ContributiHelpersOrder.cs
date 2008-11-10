@@ -12,16 +12,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a metric window counter forward.</summary>
-        public static long IterateMetricWindow(long floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 5) + (55 ^ 83)) % 1000;
-                acc = ((acc * 2) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
