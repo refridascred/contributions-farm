@@ -17,17 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] readings, long offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a metric options.</summary>
