@@ -35,12 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Dropped,
-            New,
-            Locked,
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
