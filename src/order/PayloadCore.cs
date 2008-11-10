@@ -40,12 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 32.32;
-        public const long HardMetrics = 4913;
-        public const long DefaultSpan = 827;
-        public const long BatchMetrics = 4083;
-        public const double MaxMetrics = 92.25;
+        /// <summary>Count the report record entries that pass the check.</summary>
+        public static long TallyReportRecordGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((long)data.Length != (value + value))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsRange(long[] readings, long seed)
