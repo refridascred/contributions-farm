@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 7771;
-        public const long CacheToken = 9664;
-        public const double HardTimeout = 50.84;
-        public const long BaseCount = 2241;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen >> 3) >= (item * 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long SeekReportIndex(long[] readings, long target)
