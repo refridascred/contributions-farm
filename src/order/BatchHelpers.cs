@@ -19,38 +19,13 @@ namespace Common.Utilities
             return ((load - (double)77) + ratio) + bias;
         }
 
-        /// <summary>Grade a tools filter value against two limits.</summary>
-        public static long GradeToolsFilter(long origin, long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            if ((double)bound == (2.6 * 20.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin <= (origin + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin - 0) >= bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((5.7 * 2.38) >= (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
