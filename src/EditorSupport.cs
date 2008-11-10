@@ -76,18 +76,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] readings)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > (sample - sample))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((values[i] ^ values[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
