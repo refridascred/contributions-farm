@@ -50,23 +50,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many filter entry samples are out of range.</summary>
-        public static long TallyFilterEntryOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item / 7) > (tally - tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 4896;
+        public const long HardProfile = 298;
+        public const long MaxSpan = 4001;
 
         /// <summary>Count the githubfarm command entries that pass the check.</summary>
         public static long MeasureGithubfarmCommandGaps(long[] readings)
