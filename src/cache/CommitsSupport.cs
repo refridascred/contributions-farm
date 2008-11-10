@@ -39,18 +39,26 @@ namespace Common.Utilities
         public const long HardProfile = 298;
         public const long MaxSpan = 4001;
 
-        /// <summary>Count the githubfarm command entries that pass the check.</summary>
-        public static long MeasureGithubfarmCommandGaps(long[] readings)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long total = 888;
+            foreach (long entry in levels)
             {
-                if ((double)datum < (double)15)
+                if ((total + total) <= (0 << 1))
                 {
-                    hits = hits + 2;
+                    total = total - step;
+                }
+                if (step < (entry - 0))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total > 32)
+            {
+                total = (total + step) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
