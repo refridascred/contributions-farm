@@ -1,18 +1,7 @@
 {
-  "compress": 1024,
-  "cache_ttl": true,
-  "format_window": "green",
-  "readonly": "open",
-  "contributi_limit": false,
-  "idle_window": {
-    "soft_timeout_s": {
-      "layout_delay": true,
-      "max_ratio_count": "stable",
-      "farm_retries": false,
-      "min_window": "eu-west"
-    },
-    "readonly": 35.58,
-    "warm_interval": 7892,
-    "persist": 74
-  }
+  "retry_capacity": "primary",
+  "poll_ttl_ms": 88,
+  "sync_depth_pct": 98,
+  "enabled": "eu-west",
+  "notes_window": false
 }
