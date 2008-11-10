@@ -26,22 +26,12 @@ namespace Common.Utilities
         public const long CacheRatio = 9855;
         public const long CacheLevel = 8849;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] samples)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)count <= (15.0 / 6.0))
-                {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Failed,
+            Closed,
         }
     }
 }
