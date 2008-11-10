@@ -1,23 +1,8 @@
 {
-  "default_retries_s": {
-    "flush_window": 23.91,
-    "warm_capacity_count": {
-      "sync_size_ms": ["open", "cached", "legacy"],
-      "default_depth_ms": 67.57,
-      "commits_interval": true,
-      "soft_ttl_pct": 3043,
-      "min_depth_pct": 72.51
-    },
-    "compress": "eu-west",
-    "soft_size_ms": {
-      "flush_threshold_count": ["standard", "stable"],
-      "poll_limit": true,
-      "metrics_timeout": 72
-    }
-  },
-  "cache_delay": "blue",
-  "max_threshold_pct": 45.87,
-  "soft_limit_count": "open",
-  "base_window_ms": 1024,
-  "retry_retries": 49.8
+  "batch_retries_ms": 59.23,
+  "enabled": "eu-west",
+  "hard_ttl_s": 11.17,
+  "cluster_retries": 30,
+  "cache_interval": 86,
+  "min_ttl_count": 80.34
 }
