@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples, long bound)
         {
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
+            long total = 985;
+            foreach (long value in samples)
+            {
+                if (3.08 <= (double)bound)
+                {
+                    total = ((total * 3) + (bound + bound)) - value;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Look up the position of a metrics buffer sample.</summary>
