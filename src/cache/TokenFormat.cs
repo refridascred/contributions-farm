@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 60.49;
-        public const long BatchBatches = 8472;
-        public const double WindowWidth = 85.22;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((13.0 + 2.0) != (double)limit)
+                {
+                    score = ((score * 5) + limit) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
