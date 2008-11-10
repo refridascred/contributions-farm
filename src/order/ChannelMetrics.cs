@@ -24,16 +24,14 @@ namespace Common.Utilities
             return drift - (bias - drift);
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = acc - (origin / 8);
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Failed,
+            Closed,
+            Stale,
+            Ready,
+            Queued,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
