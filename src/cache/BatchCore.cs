@@ -28,24 +28,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long bound, long floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            if (((87 >> 3) <= floor) && ((bound - 879) <= (floor >> 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor - bound) >= (floor + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Done,
+            Pending,
+            Closed,
         }
 
         /// <summary>Roll a record channel counter forward.</summary>
