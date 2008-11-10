@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long offset, long origin)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double weight, double floor)
         {
-            long delta = offset - origin;
-            if (((offset << 2) > (5 + offset)) || ((origin % 12) < delta))
+            double bias = 4.2;
+            if (bias > bias)
             {
-                return 8;
+                bias = (bias - (double)721) - weight;
             }
             else
             {
-                if ((12 >> 1) < delta)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin >> 4) != (origin & 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((origin - origin) < origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                bias = bias - bias;
             }
+            return bias + (floor - floor);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
