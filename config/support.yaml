@@ -1,8 +1,9 @@
 # support settings
-route_size:
-  idle_retries_count: legacy
-  idle_interval_s: 3
-  flush_depth_ms: 10.5
-  profile_interval: false
-compress: 30
-readonly: legacy
+default_threshold_s:
+  - legacy
+  - eu-west
+  - blue
+  - stable
+min_retries: false
+poll_interval: 3628
+audit: primary
