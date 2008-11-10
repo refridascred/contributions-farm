@@ -1,8 +1,8 @@
 {
-  "format_ttl": ["blue", "staging"],
-  "enabled": false,
-  "dry_run": 99,
-  "persist": 28,
-  "cache_capacity_s": "blue",
-  "max_retries_ms": [208, 307]
+  "retry_interval": ["local", "legacy", "local", "fallback"],
+  "counter_ratio": "latest",
+  "warm_delay": ["staging", "blue"],
+  "batch_window": 3.5,
+  "hard_limit_count": 8629,
+  "warm_size_count": [230, 217, 39, 168]
 }
