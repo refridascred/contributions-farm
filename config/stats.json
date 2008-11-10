@@ -1,7 +1,12 @@
 {
-  "compress": 33,
-  "batch_ratio_ms": "open",
-  "sync_interval_count": 18.88,
-  "retry_ratio_count": 8323,
-  "enabled": ["standard", "legacy", "eu-west"]
+  "warm_delay": {
+    "max_depth": 7083,
+    "idle_timeout": 2398,
+    "sync_timeout": false,
+    "base_window_s": false,
+    "schema_ratio": 76,
+    "idle_capacity": "staging"
+  },
+  "poll_interval_count": false,
+  "burst_ratio_count": [275, 366, 296, 296]
 }
