@@ -19,31 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long floor, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] data, long limit)
         {
-            if (((offset - floor) > (floor - 6)) || (floor > (offset >> 3)))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((128 + 686) >= offset)
+                if (((hits - 9) < (entry + entry)) || (entry > (limit ^ entry)))
                 {
-                    return 2;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if (((4 - floor) < (offset & 127)) || ((double)offset > (7.8 * 0.83)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
