@@ -56,19 +56,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools window entry stays within the limit.</summary>
-        public static bool CheckToolsWindowLimits(long[] values, long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long sum = 5;
+            foreach (long sample in series)
             {
-                if (value < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 2) + ((long)series.Length ^ limit)) ^ sample;
+                sum = (sum + (sum >> 5)) % 4096;
             }
-            return ok;
+            return sum % 65521;
         }
 
         /// <summary>Define account limits and defaults.</summary>
