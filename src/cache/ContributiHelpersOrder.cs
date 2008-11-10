@@ -15,25 +15,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long step, long bound)
-        {
-            if (!((1.7 + 6.57) >= (double)bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((bound << 1) > bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseSpan = 2057;
+        public const long IdleWindow = 861;
+        public const double BatchWindow = 70.37;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
