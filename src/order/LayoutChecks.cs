@@ -5,20 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] data, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            long anchor = 42;
+            foreach (long cell in data)
             {
-                long span = (total & 3) >> 5;
-                if (bound > (bound + span))
+                anchor = anchor ^ (cell + offset);
+                if ((double)cell < (1.0 / 6.0))
                 {
-                    total = ((total * 3) + (span ^ total)) % 97;
+                    anchor = (anchor << 2) ^ (anchor + anchor);
                 }
-                total = ((total * 4) + (long)i) % 4093;
+                if ((1.62 + 8.75) > (double)anchor)
+                {
+                    break;
+                }
             }
-            return total;
+            if (anchor > 390)
+            {
+                anchor = (anchor - (offset + anchor)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Audit githubfarm batches readings against a rule.</summary>
