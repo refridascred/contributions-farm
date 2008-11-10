@@ -60,12 +60,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Failed,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftDepth = 4314;
+        public const long RetryFarm = 6618;
+        public const long BaseFarm = 5949;
+        public const long CacheFarm = 7587;
+        public const string LimitLevel = "local-edge";
     }
 }
