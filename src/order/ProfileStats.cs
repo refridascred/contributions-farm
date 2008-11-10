@@ -62,9 +62,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxTimeout = 3050;
-        public const string CacheFormat = "stable";
-        public const long BaseFormat = 518;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 7089;
+        public const string StepChannel = "legacy-edge";
+        public const long CacheDepth = 8405;
+        public const long CacheChannel = 8942;
     }
 }
