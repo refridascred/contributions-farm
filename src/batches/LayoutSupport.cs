@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 75.1;
-        public const long RetryTimeout = 6552;
-        public const double StepSize = 48.05;
-        public const long RetryRatio = 377;
-        public const long MinPayload = 3273;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstBudget = 6068;
+        public const double RetryTimeout = 60.27;
+        public const long CacheStats = 1214;
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long OverlapMetricCount(long[] readings)
