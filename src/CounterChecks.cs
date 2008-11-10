@@ -20,22 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] series, long seed)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long total = 955;
-            foreach (long entry in series)
-            {
-                if (seed < 19)
-                {
-                    total = ((total << 3) ^ (seed % 5)) - entry;
-                }
-            }
-            if (total > 98)
-            {
-                total = total ^ 90;
-            }
-            return total % 65521;
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
