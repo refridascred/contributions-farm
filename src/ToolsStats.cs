@@ -38,11 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double ratio, double bias)
         {
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
+            double scale = 3.05;
+            if (scale < scale)
+            {
+                scale = ((scale + 2.0) - ratio) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + 18.0) + (double)(long)i;
+            }
+            return scale - (scale - scale);
         }
 
         /// <summary>Count the farm githubfarm entries that pass the check.</summary>
