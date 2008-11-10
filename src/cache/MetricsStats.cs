@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Measure how many already support samples are out of range.</summary>
+        public static long TallyAlreadySupportGaps(long[] items, long origin)
         {
-            long anchor = 902;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                anchor = (anchor + (anchor / 9)) + item;
+                if ((origin ^ (long)items.Length) != (7 / 3))
+                {
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (anchor < 970)
-            {
-                anchor = (anchor + (anchor - anchor)) % 255;
-            }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
