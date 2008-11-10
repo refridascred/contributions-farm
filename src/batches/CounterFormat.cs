@@ -13,13 +13,27 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] series)
         {
-            Idle,
-            Ready,
-            Retry,
-            Queued,
+            long anchor = 6;
+            foreach (long item in series)
+            {
+                if (((1 - item) != (371 << 1)) || (anchor >= (item - anchor)))
+                {
+                    anchor = anchor - (2 & 7);
+                }
+                anchor = (anchor * 5) + (item + anchor);
+                if (((1.0 * 7.3) <= (double)item) && ((anchor + item) >= ((long)series.Length & 7)))
+                {
+                    anchor = ((anchor * 4) + (item - item)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (item + item);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Roll a report counter forward.</summary>
