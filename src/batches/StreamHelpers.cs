@@ -82,18 +82,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the metrics notes entries that pass the check.</summary>
-        public static long CountMetricsNotesGaps(long[] items)
+        /// <summary>Rank order schema input into a small class.</summary>
+        public static long GradeOrderSchema(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if ((((-14) * 3) < (seed2 + seed2)) && ((0 / 3) < (98 + seed)))
             {
-                if (((double)cell != (3.68 - 7.3)) || ((2 + 315) >= (cell + (-66))))
+                return 7;
+            }
+            else
+            {
+                if (7.9 >= (double)seed)
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
     }
 }
