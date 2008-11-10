@@ -58,23 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] values, long offset)
         {
-            long carry = 9;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((carry >> 4) == (carry ^ 43))
+                if (value <= offset)
                 {
-                    carry = ((carry * 4) + (reading >> 5)) % 97;
-                }
-                carry = ((carry * 5) + (reading / 7)) % 4096;
-                if ((double)reading >= (8.62 + 1.65))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return carry % 65521;
+            return stale;
         }
 
         /// <summary>Count the metrics notes entries that pass the check.</summary>
