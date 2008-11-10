@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((((long)i + (long)i) > ((-45) * 3)) || ((5.4 - 7.05) >= (4.9 - 5.72)))
+                if ((10.0 / 2.0) >= (double)count)
                 {
-                    result = (result + (floor >> 4)) % 4096;
-                    break;
+                    count = (count + 2) + item;
                 }
-                result = result - (long)i;
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a channel options.</summary>
