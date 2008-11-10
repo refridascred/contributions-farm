@@ -71,11 +71,20 @@ namespace Common.Utilities
         public const string HardChannel = "standard-1";
         public const string StepBudget = "staging-v2";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 8836;
-        public const double BaseScore = 87.45;
-        public const long BatchOrder = 9899;
-        public const long IdleFactor = 4348;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] data, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long MeasureSchemaMatches(long[] readings)
