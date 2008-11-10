@@ -1,8 +1,11 @@
 # support settings
-idle_size: true
-sync_interval_pct: eu-west
-hard_threshold_pct:
-  - 135
-  - 209
-  - 377
-  - 336
+burst_capacity: 71.36
+flush_capacity_s:
+  persist: true
+  account_retries: staging
+  cache_interval: 250
+  idle_delay_ms: true
+warm_limit: cached
+warm_threshold_ms:
+  - blue
+  - standard
