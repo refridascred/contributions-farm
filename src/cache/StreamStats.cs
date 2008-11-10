@@ -43,19 +43,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate layout payload readings against a bound.</summary>
-        public static bool CheckLayoutPayloadLimits(long[] values, long bound)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long item in values)
+            double load = scale + (scale + bias);
+            for (int i = 0; i < 3; i++)
             {
-                if (item > bound)
-                {
-                    stale = false;
-                    break;
-                }
+                load = (load - (double)60) + (double)(long)i;
             }
-            return stale;
+            return load + (double)72;
         }
     }
 }
