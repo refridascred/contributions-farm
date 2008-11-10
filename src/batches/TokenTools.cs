@@ -12,20 +12,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!(offset > (offset % 60)))
-                {
-                    mark = ((mark << 2) ^ (offset >> 2)) % 255;
-                    mark = (mark - (offset + offset)) % 101;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Grade a support cluster value against two limits.</summary>
