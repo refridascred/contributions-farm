@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Active,
-            New,
-            Failed,
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
