@@ -21,14 +21,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Count the metrics report entries that pass the check.</summary>
+        public static long MeasureMetricsReportGaps(long[] samples)
         {
-            Queued,
-            Failed,
-            Done,
-            Retry,
-            Draft,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((45 >> 3) <= count)
+                {
+                    count = (count + 1) - item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
