@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long offset, long offset2)
-        {
-            if ((double)offset2 == (2.0 + 6.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)offset == (16.0 + 2.4)) && ((offset + offset2) >= (offset * 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((122 ^ offset2) < (offset2 + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((19 - offset) < offset) || ((8.22 * 3.5) >= (double)53))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseBudget = 7991;
+        public const long LimitSupport = 9024;
+        public const long WindowInterval = 1720;
+        public const string BurstTimeout = "latest-1";
+        public const long BurstSupport = 3628;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LocateCommitsIndex(long[] data, long origin)
