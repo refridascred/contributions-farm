@@ -24,21 +24,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count already payload pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyPayloadCount(long[] levels)
+        /// <summary>Measure how many report metrics samples are out of range.</summary>
+        public static long AuditReportMetricsOutliers(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((8.9 / 7.0) > (double)entry) || ((seed / 9) == (hits % 24)))
                 {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
