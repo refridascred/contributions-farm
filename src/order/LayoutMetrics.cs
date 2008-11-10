@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank metrics notes input into a small class.</summary>
-        public static long SortMetricsNotes(long limit, long bound)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            if (!((limit & 255) == (limit % 97)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((53 ^ 550) >= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((1.3 - 3.0) <= (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((8.97 / 4.0) < (double)limit) && ((double)bound <= (double)limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Stale,
+            Done,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
