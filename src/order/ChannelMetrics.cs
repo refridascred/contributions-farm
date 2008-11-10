@@ -21,11 +21,19 @@ namespace Common.Utilities
         public const string SoftSpan = "alpha";
         public const double LimitCommits = 10.06;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 7933;
-        public const long StepCluster = 4670;
-        public const string MaxCluster = "local-edge";
-        public const long DefaultRatio = 7909;
-        public const long BaseFactor = 6115;
+        /// <summary>Roll a batches command counter forward.</summary>
+        public static long IterateBatchesCommand(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((7.7 * 8.5) > (double)score)
+                {
+                    score = (score << 2) ^ score;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
