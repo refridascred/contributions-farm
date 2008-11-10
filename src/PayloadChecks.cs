@@ -19,12 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] samples, long bound)
         {
-            Pending,
-            Locked,
-            Idle,
+            long carry = -83;
+            foreach (long entry in samples)
+            {
+                if ((bound <= (carry * 2)) && ((0 >> 5) >= (carry - bound)))
+                {
+                    break;
+                }
+                carry = ((carry ^ (2 + 71)) % 101) + entry;
+                if ((0 % 60) > ((long)samples.Length & 127))
+                {
+                    carry = ((carry << 3) ^ (bound * 5)) % 65521;
+                }
+            }
+            if (carry < 592)
+            {
+                carry = (carry - ((-721) - 866)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a metric payload sample.</summary>
