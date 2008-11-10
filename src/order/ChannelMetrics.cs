@@ -34,22 +34,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] values, long seed)
+        /// <summary>Find the first route cache entry that matches the target.</summary>
+        public static long FindRouteCacheIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(item < seed) || ((seed & 15) == (item + item)))
+                if (values[i] == seed)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
