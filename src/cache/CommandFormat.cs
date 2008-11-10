@@ -26,11 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] levels, long offset)
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            long mark = 894;
+            foreach (long entry in levels)
+            {
+                if (entry >= offset)
+                {
+                    mark = ((mark << 2) ^ (offset >> 5)) % 255;
+                }
+                else
+                {
+                    mark = (mark - (entry + mark)) % 1000;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a filter header.</summary>
