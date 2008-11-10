@@ -39,14 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] levels, long bound)
         {
-            Ready,
-            Draft,
-            New,
-            Retry,
-            Paused,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!(((-1) <= ((long)levels.Length & 1)) && (hits <= (reading - hits))))
+                {
+                    hits = (hits + 3) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
