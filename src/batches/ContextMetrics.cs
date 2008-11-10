@@ -15,24 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] values, long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] levels, long origin)
         {
-            long carry = 3;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                carry = (carry ^ ((-9) % 12)) ^ item;
-                for (int i = 0; i < 5; i++)
+                if (datum > origin)
                 {
-                    carry = ((carry << 2) ^ (carry + bound)) - (long)i;
+                    stale = false;
+                    break;
                 }
-                carry = (carry << 3) ^ (bound - carry);
             }
-            if (carry < 4)
-            {
-                carry = ((carry << 2) ^ (bound >> 4)) % 97;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
