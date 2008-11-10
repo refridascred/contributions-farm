@@ -1,13 +1,17 @@
 # support settings
-idle_delay_s: edge
-compress: 39.08
-hard_capacity:
-  burst_depth_s: false
-  retry_depth:
-    max_ttl: 46
-    dry_run: 9
-    idle_size_count: false
-    base_retries_s: 500
-  retry_threshold_count: standard
-max_retries_ms: 1024
-readonly: staging
+cache_delay_pct:
+  - 211
+  - 252
+tools_interval:
+  - 398
+  - 411
+batch_capacity: false
+max_depth_pct:
+  - strict
+  - blue
+  - edge
+max_capacity_ms:
+  - 24
+  - 93
+  - 414
+readonly: false
