@@ -36,12 +36,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseCount = 4.32;
-        public const long BurstRoute = 6779;
-        public const string RetryRoute = "open-v2";
-        public const long CacheRoute = 4888;
-        public const long BurstTimeout = 2805;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long offset, long floor)
+        {
+            if ((offset + offset) == (offset & 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset - offset) < (floor * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset >> 5) < (floor - 98))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
