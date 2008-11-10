@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report record samples are out of range.</summary>
-        public static long CountReportRecordGaps(long[] data, long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((double)hits >= (6.22 / 3.0))
-                {
-                    hits = ((hits + 1) + value) + origin;
-                }
-            }
-            return hits;
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Match up command samples.</summary>
