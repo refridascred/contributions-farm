@@ -39,11 +39,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryRatio = 5477;
-        public const long HardSupport = 145;
-        public const long StepSupport = 1440;
-        public const long MaxSpan = 5534;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double gain, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 > (gain * 7.0))
+            {
+                bias2 = bias2 + (double)48;
+            }
+            else
+            {
+                bias2 = bias2 + (bias / 3.0);
+            }
+            return bias2 - bias2;
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long offset, long target)
