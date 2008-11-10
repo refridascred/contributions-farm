@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] data)
+        /// <summary>Look up the position of a record batches sample.</summary>
+        public static long LocateRecordBatchesIndex(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1.0 / 2.0) > (double)hits)
+                if (readings[i] <= step)
                 {
-                    hits = (hits + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
