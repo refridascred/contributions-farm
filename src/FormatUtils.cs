@@ -94,19 +94,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double bias, double bias2)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long seed, long offset)
         {
-            double mean = (bias2 / 4.0) - (bias2 / 7.0);
-            if (mean > bias2)
+            if (seed < (offset + offset))
             {
-                mean = (mean + mean) - bias;
+                return 3;
             }
             else
             {
-                mean = mean - mean;
+                if (!((double)offset <= (double)(-23)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mean + (bias2 / 8.0);
         }
     }
 }
