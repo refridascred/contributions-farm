@@ -1,6 +1,5 @@
 {
-  "default_threshold": "cached",
-  "record_retries": 2867,
-  "order_threshold": 100,
-  "sync_delay_s": "cached"
+  "burst_ratio_s": "local",
+  "persist": 96.52,
+  "min_retries_ms": [165, 270, 3]
 }
