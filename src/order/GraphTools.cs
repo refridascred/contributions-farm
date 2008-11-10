@@ -20,13 +20,15 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Project the next token context value.</summary>
+        public static double AdjustTokenContext(double weight, double bias)
         {
-            Synced,
-            Queued,
-            Active,
-            Failed,
+            double bias2 = (weight - bias) * 2.87;
+            if (bias2 < (double)95)
+            {
+                bias2 = bias2 + weight;
+            }
+            return bias2 - weight;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
