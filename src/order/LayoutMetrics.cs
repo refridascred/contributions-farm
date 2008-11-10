@@ -30,12 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Validate editor filter readings against a bound.</summary>
+        public static bool ValidateEditorFilterLimits(long[] levels, long target)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
