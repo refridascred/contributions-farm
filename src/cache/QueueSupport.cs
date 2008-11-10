@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] values, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (!((double)offset > (2.3 * 13.0)))
+                if (item <= floor)
                 {
-                    count = (count + 1) + value;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
