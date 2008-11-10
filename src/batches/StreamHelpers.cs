@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] items)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((seen >> 3) >= 3)
-                {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a report info.</summary>
