@@ -41,15 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] readings, long floor)
+        /// <summary>Count the notes payload entries that pass the check.</summary>
+        public static long CountNotesPayloadGaps(long[] levels, long origin)
         {
-            long sum = -499;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                sum = ((sum ^ (long)readings.Length) - reading) + floor;
+                if ((56 & 3) > origin)
+                {
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Combine session values into a single score.</summary>
