@@ -1,5 +1,6 @@
 {
-  "editor_delay": "blue",
-  "idle_timeout_pct": false,
-  "burst_limit_count": 95.42
+  "hard_window": 392,
+  "readonly": "open",
+  "counter_capacity": false,
+  "batches_threshold": 75.64
 }
