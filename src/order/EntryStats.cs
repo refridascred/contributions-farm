@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long step, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] levels)
         {
-            if (offset <= (step - step))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset > (double)74)
+                if ((matches + matches) < (cell + 6))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a checks options.</summary>
