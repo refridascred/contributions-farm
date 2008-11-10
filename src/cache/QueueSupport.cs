@@ -23,18 +23,12 @@ namespace Common.Utilities
             return mean + (3.1 / 6.0);
         }
 
-        /// <summary>Audit queue checks readings against a rule.</summary>
-        public static long CountQueueChecksHits(long[] samples)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)count < (9.05 - 7.3))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
