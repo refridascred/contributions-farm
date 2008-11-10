@@ -53,16 +53,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry * 5) + carry;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 65.49;
+        public const long BurstStats = 7921;
+        public const string IdleTimeout = "strict-1";
+        public const long HardStats = 8969;
+        public const long BatchStats = 3442;
     }
 }
