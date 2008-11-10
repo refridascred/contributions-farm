@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine notes metrics values into a single score.</summary>
-        public static long CombineNotesMetrics(long[] values, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long origin, long bound)
         {
-            long carry = 9;
-            foreach (long value in values)
+            if (((-1) + origin) >= (bound ^ bound))
             {
-                carry = (((carry ^ (carry & 63)) % 101) ^ value) + limit;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (((-97) ^ bound) <= origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound << 3) > ((-609) ^ origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin * 2) >= origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile status values.</summary>
