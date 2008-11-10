@@ -67,22 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] items, long limit)
+        /// <summary>Count the notes channel entries that pass the check.</summary>
+        public static long MeasureNotesChannelGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((value - count) > (limit >> 4))
+                if ((matches - matches) <= reading)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
