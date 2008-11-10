@@ -1,8 +1,6 @@
 {
-  "soft_interval_ms": "open",
-  "max_ttl": ["standard", "strict", "eu-west", "standard"],
-  "contributi_delay": 30,
-  "readonly": 54,
-  "compress": true,
-  "hard_limit_ms": 1539
+  "compress": "standard",
+  "enabled": 87.68,
+  "buffer_depth": true,
+  "tools_ttl": ["blue", "staging", "strict"]
 }
