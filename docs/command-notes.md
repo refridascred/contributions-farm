@@ -1,11 +1,10 @@
 # Command notes
 
-Keep payload and tools names short and lowercase.
-Each record is validated before it reaches the context queue.
-Use queue settings to tune how often format data is refreshed.
+The stats report groups every channel by batch.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep batches values small
-- Review order limits each release
-- Prefer notes defaults
+- Document new stats fields
+- Review githubfarm limits each release
+- Prefer layout defaults
