@@ -1,4 +1,4 @@
 # entry settings
-idle_delay: local
-persist: strict
-default_depth_ms: false
+notes_ttl: 26
+idle_delay_pct: 7790
+min_ttl_count: 74.53
