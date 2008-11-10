@@ -37,10 +37,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 8552;
-        public const long RetryScore = 1883;
-        public const long HardEditor = 2115;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen + datum) >= (datum + (-9)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadBounds(long[] data, long offset)
