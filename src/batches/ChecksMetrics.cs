@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long IdleCounter = 8903;
         public const long CacheCounter = 5931;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] readings, long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (entry > floor)
+                if (cell < origin)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
