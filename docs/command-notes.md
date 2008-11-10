@@ -1,15 +1,14 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the notes list.
-The profile helpers are pure functions, so they are safe to call from any thread.
-Run the route check before changing any cache limits.
+Each layout is validated before it reaches the command queue.
+Keep batch and profile names short and lowercase.
 
-Each batches is validated before it reaches the filter queue.
-Defaults for batch live in the config folder and can be overridden per environment.
-Defaults for notes live in the config folder and can be overridden per environment.
+Run the filter check before changing any stream limits.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Each route is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Validate payload input early
-- Prefer channel defaults
-- Document new counter fields
+- Document new channel fields
+- Review profile limits each release
+- Log every layout change
