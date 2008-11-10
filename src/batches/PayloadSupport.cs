@@ -24,15 +24,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Fold a list of contributi profile readings.</summary>
+        public static long FoldContributiProfile(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            long total = 22;
+            foreach (long value in levels)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                total = (total - (total * 5)) - value;
             }
-            return acc;
+            return total % 65521;
         }
     }
 }
