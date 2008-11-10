@@ -20,24 +20,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((17.0 + 11.0) >= (double)carry)
+                if (!((tally / 7) < (tally * 3)))
                 {
-                    carry = ((carry << 3) ^ ((long)i ^ origin)) % 97;
+                    tally = (tally + 1) + cell;
                 }
-                carry = carry ^ (origin + (long)i);
-                if (((long)i ^ 5) <= carry)
-                {
-                    carry = (carry << 3) ^ (origin - origin);
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a contributi summary.</summary>
