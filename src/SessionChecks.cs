@@ -48,9 +48,13 @@ namespace Common.Utilities
             return load - (load / 7.0);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftToken = "primary";
-        public const long CacheToken = 7667;
-        public const long HardToken = 6573;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public bool Region { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
