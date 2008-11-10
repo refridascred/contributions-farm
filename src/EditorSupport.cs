@@ -76,11 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 5865;
-        public const long SoftStream = 4563;
-        public const long MaxScore = 5634;
-        public const long StepDepth = 8079;
-        public const long BaseTimeout = 931;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (sample > (sample - sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
