@@ -53,12 +53,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long seed, long offset)
         {
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
+            if ((offset << 2) > (86 / 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (428 < (858 + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
