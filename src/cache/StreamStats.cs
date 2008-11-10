@@ -43,15 +43,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double scale, double bias)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            double load = scale + (scale + bias);
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load - (double)60) + (double)(long)i;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + (double)72;
+            return count;
         }
     }
 }
