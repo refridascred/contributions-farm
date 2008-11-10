@@ -14,22 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] samples, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] values, long seed)
         {
-            long acc = 569;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((acc % 100) >= (0 + acc))
+                if (value >= seed)
                 {
-                    acc = (((acc * 3) + (acc ^ origin)) % 1000) ^ entry;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (origin >> 5);
+                    ready = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return ready;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
