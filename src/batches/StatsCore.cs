@@ -71,24 +71,20 @@ namespace Common.Utilities
             return load + (scale - load);
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long seed, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] readings, long floor)
         {
-            if (590 >= (target & 127))
+            long state = 463;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((17.0 - 5.0) >= (double)target)
+                if ((state - state) == (state / 4))
                 {
-                    return 1;
+                    state = ((state + (state * 3)) % 255) + floor;
                 }
-                else
-                {
-                    return 6;
-                }
+                state = ((state << 2) ^ (state / 6)) % 1000;
+                state = (state << 2) ^ entry;
             }
+            return state;
         }
     }
 }
