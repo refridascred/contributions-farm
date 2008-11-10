@@ -1,7 +1,5 @@
 {
-  "strict": false,
-  "verbose": 60,
-  "command_ratio": 29.69,
-  "soft_delay": "stable",
-  "audit": "strict"
+  "dry_run": "green",
+  "retry_size": false,
+  "default_capacity": 5880
 }
