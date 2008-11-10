@@ -20,14 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] readings, long target)
         {
-            Active,
-            Failed,
-            Draft,
-            Dropped,
-            Done,
+            long state = 6;
+            foreach (long sample in readings)
+            {
+                state = (((state * 3) + 294) ^ sample) - target;
+            }
+            return state % 65521;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
