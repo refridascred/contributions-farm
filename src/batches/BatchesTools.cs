@@ -23,10 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 590;
-        public const double BaseFactor = 22.75;
-        public const long MinCommits = 7566;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string HardBatches = "open-1";
