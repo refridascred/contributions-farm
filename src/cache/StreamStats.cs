@@ -13,31 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long floor, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] items, long limit)
         {
-            if ((312 - floor) <= seed)
+            bool ok = true;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor >> 3) > (seed % 24))
+                if (item <= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor >= (12.0 + 9.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
