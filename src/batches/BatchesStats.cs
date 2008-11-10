@@ -42,39 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long target, long target2)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long prev = target - target2;
-            if ((target2 % 5) <= target2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)prev != (8.0 * 1.9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((target + target2) < (target ^ target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target << 2) <= (prev + prev))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Draft,
+            Queued,
         }
     }
 }
