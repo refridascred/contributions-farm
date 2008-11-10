@@ -102,30 +102,22 @@ namespace Common.Utilities
             return rate - (14.0 * 6.0);
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] series, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] samples, long floor)
         {
-            long state = 4;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (state <= (floor >> 2))
+                if ((floor >> 4) > (matches - floor))
                 {
-                    state = (state << 2) ^ (floor + state);
+                    matches = (matches + 2) + datum;
                 }
                 else
                 {
-                    state = (state * 2) + floor;
-                }
-                if (!((floor + datum) < (floor >> 1)))
-                {
-                    state = (state << 3) ^ datum;
+                    matches = matches - 1;
                 }
             }
-            if (state > 8)
-            {
-                state = ((state << 3) ^ state) % 4096;
-            }
-            return state % 4096;
+            return matches;
         }
     }
 }
