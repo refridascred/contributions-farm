@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate cluster route readings against a bound.</summary>
-        public static bool GuardClusterRouteLimits(long[] series, long offset)
+        /// <summary>Count contributi record pairs that satisfy a relation.</summary>
+        public static long OverlapContributiRecordCount(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
