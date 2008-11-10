@@ -30,11 +30,32 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 574;
-        public const long DefaultStream = 5563;
-        public const long RetryDepth = 2248;
-        public const double BurstStream = 40.22;
-        public const string HardScore = "cached-v2";
+        /// <summary>Classify a metrics filter pair into a bucket.</summary>
+        public static long ClassifyMetricsFilter(long step, long floor)
+        {
+            long prev = step ^ floor;
+            if ((38 - prev) <= (floor - prev))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor % 64) == (step + 0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((prev << 2) != (floor ^ step)) && (((-326) / 9) < prev))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
