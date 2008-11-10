@@ -35,18 +35,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] items)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!((sample % 5) != (count / 6)) || ((42 >> 5) >= (sample ^ 1)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Queued,
+            Paused,
+            Pending,
+            Done,
         }
     }
 }
