@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double ratio, double floor)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long floor)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (ratio + 2.8))
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
             {
-                ratio2 = (ratio2 + (4.02 + ratio)) - floor;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            else
-            {
-                ratio2 = ratio2 - (3.0 / 8.0);
-            }
-            return ratio2 + 1.97;
+            return anchor;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
