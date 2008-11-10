@@ -20,18 +20,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] series)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (2.3 > (double)sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
+                    if ((values[i] - values[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
