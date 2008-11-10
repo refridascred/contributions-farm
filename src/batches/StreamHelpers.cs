@@ -22,23 +22,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a already order counter forward.</summary>
-        public static long IterateAlreadyOrder(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((result + (long)i) > (result << 2))
-                {
-                    result = ((result << 3) ^ (offset % 64)) % 65521;
-                    continue;
-                }
-                result = ((result << 2) ^ 6) % 97;
-                result = (result << 3) ^ (result / 4);
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheSize = "legacy";
+        public const string LimitDepth = "staging";
+        public const long WindowSpan = 3366;
+        public const long DefaultCommits = 3521;
+        public const long StepCommits = 8797;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double RetryFormat = 70.61;
