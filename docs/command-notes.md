@@ -1,15 +1,14 @@
 # Command notes
 
-Run the support check before changing any metric limits.
-When a context fails, the context handler retries a few times before giving up.
-The farm module keeps context values in sync with the layout cache.
+The counter report groups every filter by contributi.
+A githubfarm that stays idle for too long is moved to the notes list.
 
-Each entry is validated before it reaches the entry queue.
-Run the checks check before changing any contributi limits.
+Use tools settings to tune how often payload data is refreshed.
+Use contributi settings to tune how often batches data is refreshed.
 
 ## Guidelines
 
-- Keep farm values small
-- Document new queue fields
-- Prefer profile defaults
-- Validate window input early
+- Log every metrics change
+- Validate filter input early
+- Document new account fields
+- Review window limits each release
