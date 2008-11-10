@@ -14,39 +14,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long bound, long origin)
+        /// <summary>Match up support entry samples.</summary>
+        public static long CompareSupportEntryCount(long[] samples)
         {
-            long slot = bound - origin;
-            if (((double)bound == (7.81 * 9.31)) || ((double)96 <= (double)slot))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound != (double)origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin / 6) <= slot)
+                    if ((samples[i] + samples[j]) != 17)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((origin << 3) < (32 >> 4)) && (slot < bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
