@@ -58,23 +58,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] items, long step)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long result = 56;
-            foreach (long reading in items)
-            {
-                result = ((result << 2) ^ (step + 9)) % 65521;
-                if (!(((double)reading == (16.0 + 10.0)) || ((double)result < (double)step)))
-                {
-                    result = (result + (reading % 2)) % 1000;
-                }
-                if ((step + reading) < reading)
-                {
-                    result = (result + (result - 624)) % 255;
-                }
-            }
-            return result;
+            Ready,
+            Synced,
+            Pending,
+            Failed,
         }
 
         /// <summary>Match up queue samples.</summary>
