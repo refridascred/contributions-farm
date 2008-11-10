@@ -14,39 +14,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long target, long origin)
+        /// <summary>Accumulate stream queue samples.</summary>
+        public static long CombineStreamQueue(long[] data)
         {
-            long bound = target + origin;
-            if ((target / 4) < (target * 3))
+            long state = 635;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (25 >= origin)
+                state = state + (sample >> 2);
+                if ((state + sample) > sample)
                 {
-                    return 0;
+                    state = (state << 2) ^ (state + state);
                 }
                 else
                 {
-                    if ((0 + origin) < bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin != (1.76 - 2.51))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = (state + (395 % 64)) % 1000;
                 }
             }
+            if (state > 23)
+            {
+                state = (state * 2) + state;
+            }
+            return state;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
