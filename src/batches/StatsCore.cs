@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepSize = "strict-1";
-        public const long RetryMetric = 7419;
-        public const long LimitSize = 7262;
-        public const string BurstDepth = "alpha-1";
-        public const double BaseMetric = 25.42;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinCache = "latest-edge";
+        public const long BaseBudget = 1031;
+        public const long IdleScore = 3213;
+        public const long BatchCache = 1516;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmRange(long[] samples, long limit)
