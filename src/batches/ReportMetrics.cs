@@ -22,22 +22,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] levels, long origin)
         {
-            long anchor = 3;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((6.7 / 8.0) < (double)reading)
+                if (!(921 >= (origin + (-491))))
                 {
-                    anchor = anchor + (anchor / 8);
+                    count = (count + 3) + sample;
                 }
             }
-            if (anchor < 49)
-            {
-                anchor = anchor + (97 / 3);
-            }
-            return anchor;
+            return count;
         }
     }
 }
