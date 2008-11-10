@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Retry,
-            Dropped,
-            Pending,
-            Closed,
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
