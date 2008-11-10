@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Closed,
-            Stale,
-            Idle,
-            Ready,
+            public string Count { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the stats status values.</summary>
