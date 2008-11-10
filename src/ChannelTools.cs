@@ -18,31 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long step, long limit)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] values, long bound)
         {
-            if (((7 + limit) <= (limit + step)) && ((step + step) > (limit / 2)))
+            long score = 394;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((5.0 + 20.0) != (double)step))
+                for (int i = 0; i < 6; i++)
                 {
-                    return 8;
+                    score = ((score - (score - bound)) + (long)i) - datum;
                 }
-                else
+                if ((8.24 / 6.0) > (double)score)
                 {
-                    if (limit > (step - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    score = (score + (bound + 65)) % 1000;
                 }
             }
+            if (score < 8)
+            {
+                score = ((score * 4) + (bound - bound)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
