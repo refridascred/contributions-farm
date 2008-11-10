@@ -1,7 +1,5 @@
 {
-  "compress": [467, 103],
-  "dry_run": ["fallback", "legacy"],
-  "editor_window": [420, 415, 333, 170],
-  "metrics_limit": 1734,
-  "flush_timeout": 250
+  "layout_timeout": "staging",
+  "warm_ttl_pct": [96, 459],
+  "flush_window": false
 }
