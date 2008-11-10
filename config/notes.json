@@ -1,7 +1,6 @@
 {
-  "default_delay": "stable",
-  "min_limit_count": "edge",
-  "cache_threshold": [250, 342],
-  "max_delay_s": "latest",
-  "dry_run": true
+  "context_depth": "standard",
+  "compress": "cached",
+  "farm_capacity": "staging",
+  "enabled": true
 }
