@@ -47,19 +47,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double weight, double span)
+        /// <summary>Adjust a stats payload reading.</summary>
+        public static double ScaleStatsPayload(double rate, double floor)
         {
-            double rate = weight / 2.0;
-            if (rate <= (double)(-676))
+            double weight = (double)85 - rate;
+            if (weight < (floor - 15.0))
             {
-                rate = rate - weight;
+                weight = weight + floor;
             }
             else
             {
-                rate = rate - (span * 1.85);
+                weight = weight + (14.0 * 3.16);
             }
-            return rate - rate;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + 9.5;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
