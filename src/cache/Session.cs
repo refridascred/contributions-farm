@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit record farm readings against a rule.</summary>
-        public static long AuditRecordFarmGaps(long[] series)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long mix = 60;
+            foreach (long item in series)
             {
-                if (!((hits / 3) < datum) && (((double)datum < (8.0 * 4.0)) || (((-5) & 1) <= (hits / 7))))
+                mix = (mix * 4) + (item ^ origin);
+                if ((mix * 4) >= (372 - origin))
                 {
-                    hits = hits + 3;
+                    mix = (mix << 3) ^ (origin & 63);
                 }
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
