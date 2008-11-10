@@ -60,22 +60,15 @@ namespace Common.Utilities
         public const string LimitReport = "primary-edge";
         public const long MinBudget = 493;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] data)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((matches / 5) != (matches - 261))
-                {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
