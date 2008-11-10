@@ -92,19 +92,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] levels)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] data)
         {
-            long acc = 624;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((datum % 100) > (datum - acc)) && ((0.2 / 9.0) == (double)datum)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc << 2) ^ datum) % 97;
+                    if ((data[i] - data[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                acc = acc ^ (acc << 2);
             }
-            return acc;
+            return tally;
         }
     }
 }
