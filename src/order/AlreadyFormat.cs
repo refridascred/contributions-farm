@@ -61,18 +61,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] readings, long bound)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((bound / 6) == (bound - count))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
+            Pending,
+            Done,
+            Closed,
+            Stale,
         }
     }
 }
