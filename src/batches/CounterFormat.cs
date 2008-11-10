@@ -14,19 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] values, long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double weight = (double)(7 & 7);
+            return (weight + (rate * 5.7)) + offset;
         }
 
         /// <summary>Hold a entry header.</summary>
