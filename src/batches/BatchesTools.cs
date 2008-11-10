@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseDepth = 610;
-        public const double BaseAccount = 22.2;
-        public const long HardCount = 8322;
-        public const long HardLevel = 483;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + entry) >= entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool ValidateWindowBounds(long[] values, long target)
