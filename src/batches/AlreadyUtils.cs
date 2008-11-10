@@ -13,18 +13,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] series)
+        /// <summary>Count commits stats pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsStatsCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((datum & 7) <= 376) && (((hits & 63) < 0) || ((datum * 5) != (7 - 0))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a metric options.</summary>
