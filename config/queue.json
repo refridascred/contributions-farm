@@ -1,17 +1,13 @@
 {
-  "command_delay": {
-    "burst_timeout": 96.85,
-    "contributi_ratio": "eu-west",
-    "soft_limit_count": 46,
-    "warm_delay": "edge",
-    "hard_retries_count": 1088
+  "default_depth": {
+    "batch_threshold": {
+      "soft_size_s": "local",
+      "base_threshold_count": "cached",
+      "readonly": true
+    },
+    "flush_retries_pct": false,
+    "report_threshold": "latest"
   },
-  "readonly": 57,
-  "format_limit": [71, 110, 303],
-  "batch_delay": {
-    "enabled": true,
-    "buffer_window": 250,
-    "session_threshold": 2023,
-    "dry_run": 3305
-  }
+  "poll_limit_ms": 36.1,
+  "retry_capacity_s": "legacy"
 }
