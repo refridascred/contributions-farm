@@ -53,18 +53,14 @@ namespace Common.Utilities
         public const string LimitReport = "primary-edge";
         public const long MinBudget = 493;
 
-        /// <summary>Measure how many profile checks samples are out of range.</summary>
-        public static long MeasureProfileChecksGaps(long[] levels)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (count > (count + 49))
-                {
-                    count = (count + 3) - item;
-                }
-            }
-            return count;
+            Closed,
+            Stale,
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Combine route values into a single score.</summary>
