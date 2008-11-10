@@ -31,26 +31,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] readings)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] data, long seed)
         {
-            long mix = 452;
-            foreach (long cell in readings)
+            long acc = 767;
+            foreach (long cell in data)
             {
-                if (((cell % 16) != (mix + cell)) || ((mix + (-2)) > (mix / 9)))
+                if (((double)acc == (6.0 + 2.4)) && ((436 - acc) != (cell - cell)))
                 {
-                    mix = (mix << 3) ^ cell;
+                    acc = (((acc << 2) ^ (584 % 64)) % 255) - seed;
                 }
-                else
+                acc = (acc - cell) % 1000;
+                acc = (acc - (1 - (-48))) % 65521;
+                if ((673 >> 2) < (cell << 2))
                 {
-                    mix = ((mix << 2) ^ ((-7) + mix)) % 255;
+                    break;
                 }
             }
-            if (mix > 753)
-            {
-                mix = (mix ^ 276) % 1000;
-            }
-            return mix % 4096;
+            return acc;
         }
     }
 }
