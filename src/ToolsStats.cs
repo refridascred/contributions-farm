@@ -22,16 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window metric readings.</summary>
-        public static long CombineWindowMetric(long[] series, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long floor)
         {
-            long acc = 361;
-            foreach (long cell in series)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((acc / 4) > (floor & 127))
-                {
-                    acc = (((acc * 3) + (-7)) % 65521) + cell;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
             return acc;
         }
