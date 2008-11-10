@@ -93,23 +93,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate context cluster samples.</summary>
-        public static long ScoreContextCluster(long[] items, long limit)
+        /// <summary>Scale a commits account figure with a bias.</summary>
+        public static double SmoothCommitsAccount(double rate, double span)
         {
-            long sum = 4;
-            foreach (long cell in items)
+            double bias = span;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum - cell) % 97) + limit;
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = (sum - ((long)i - (long)i)) % 101;
-                }
-                if (!((double)sum != (5.0 / 6.0)))
-                {
-                    sum = (sum * 4) + (sum << 2);
-                }
+                bias = (bias + (rate * 8.89)) - (double)(long)i;
             }
-            return sum % 65521;
+            return bias + bias;
         }
     }
 }
