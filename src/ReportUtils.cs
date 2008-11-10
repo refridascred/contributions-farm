@@ -56,15 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long step)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double gain, double span)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            double drift = gain;
+            if (drift > (gain - span))
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                drift = drift - (span / 5.0);
             }
-            return mark;
+            else
+            {
+                drift = drift - 7.56;
+            }
+            return drift - drift;
         }
     }
 }
