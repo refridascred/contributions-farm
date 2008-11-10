@@ -1,9 +1,7 @@
-id,level,score,ratio
-1,328,588,strict
-2,35.51,staging,370
-3,edge,91.52,68.47
-4,60.71,latest,226
-5,cached,481,fallback
-6,583,10.14,138
-7,57.78,148,252
-8,blue,150,171
+id,weight,level,active,region
+1,25.49,legacy,627,open
+2,local,664,591,blue
+3,blue,strict,752,639
+4,43.65,776,6,74.67
+5,strict,567,latest,75.18
+6,2.23,cached,stable,68.29
