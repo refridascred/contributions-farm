@@ -39,22 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] items, long bound)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long total = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((datum - tally) == (bound << 1))
+                total = (total - (limit * 4)) % 255;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    tally = tally + 2;
+                    total = (total + (3 + 89)) + (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total << 3) ^ (total >> 5)) % 1000;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a metric header.</summary>
