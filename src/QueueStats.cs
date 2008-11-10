@@ -36,13 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] levels, long offset)
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
