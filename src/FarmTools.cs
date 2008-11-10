@@ -41,19 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] levels, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell <= offset)
+                if (!(((carry >> 5) >= limit) && (limit <= ((long)i << 2))))
                 {
-                    valid = false;
-                    break;
+                    carry = carry ^ carry;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return valid;
+            return carry;
         }
     }
 }
