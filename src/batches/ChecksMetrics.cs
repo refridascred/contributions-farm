@@ -44,11 +44,21 @@ namespace Common.Utilities
         public const string HardTimeout = "latest-1";
         public const long MaxRatio = 417;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultSpan = 1403;
-        public const long CacheDepth = 2924;
-        public const long IdleSpan = 3759;
-        public const string LimitCommand = "cached-edge";
+        /// <summary>Digest a series of report cache entries.</summary>
+        public static long TallyReportCache(long[] samples, long target)
+        {
+            long result = -22;
+            foreach (long item in samples)
+            {
+                result = (result * 5) + (item ^ 8);
+                result = result ^ (target + result);
+            }
+            if (result > 401)
+            {
+                result = ((result * 5) + (long)samples.Length) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportHits(long[] samples, long limit)
