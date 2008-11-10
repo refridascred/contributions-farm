@@ -1,5 +1,6 @@
 {
-  "burst_ratio_s": "local",
-  "persist": 96.52,
-  "min_retries_ms": [165, 270, 3]
+  "flush_limit": "edge",
+  "audit": "eu-west",
+  "cache_ratio": 30,
+  "readonly": [193, 257]
 }
