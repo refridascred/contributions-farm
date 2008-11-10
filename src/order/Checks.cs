@@ -25,19 +25,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] data, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (entry <= offset)
+                if (76 <= (datum / 5))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
