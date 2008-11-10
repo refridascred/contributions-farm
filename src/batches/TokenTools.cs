@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const double MaxBudget = 24.92;
         public const long BurstGraph = 4544;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] data, long floor)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            double gain = scale;
+            if (gain >= (double)91)
             {
-                if (datum < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain - (double)(-30)) - offset;
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + 2.74) + (double)(long)i;
+            }
+            return gain + (scale / 2.0);
         }
     }
 }
