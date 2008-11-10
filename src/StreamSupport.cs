@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Closed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
