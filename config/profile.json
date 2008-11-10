@@ -1,6 +1,7 @@
 {
-  "flush_threshold_s": 100,
-  "flush_window_pct": [439, 64, 77, 183],
-  "base_ttl_pct": 55,
-  "poll_window_s": 500
+  "strict": false,
+  "editor_timeout": 6280,
+  "hard_delay": "stable",
+  "enabled": ["legacy", "eu-west"],
+  "audit": 70
 }
