@@ -28,19 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate editor filter readings against a bound.</summary>
-        public static bool ValidateEditorFilterLimits(long[] levels, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (item < target)
+                if (reading >= seed)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
