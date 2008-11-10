@@ -36,19 +36,11 @@ namespace Common.Utilities
             return weight + 8.0;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double bias, double bias2)
-        {
-            double rate = (double)(440 + 8);
-            if (rate >= bias2)
-            {
-                rate = (rate - (double)15) + bias;
-            }
-            else
-            {
-                rate = rate + (rate / 5.0);
-            }
-            return rate - (rate * 9.1);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstTimeout = "stable-v2";
+        public const long MinToken = 1600;
+        public const long BaseToken = 3757;
+        public const string BurstInterval = "fallback-1";
+        public const string BaseBudget = "staging-edge";
     }
 }
