@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Failed,
-            Ready,
-            Idle,
-            Dropped,
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
