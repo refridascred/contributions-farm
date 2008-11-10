@@ -31,19 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] series, long origin)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
