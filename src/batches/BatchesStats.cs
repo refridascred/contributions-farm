@@ -23,22 +23,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine token record values into a single score.</summary>
-        public static long WeighTokenRecord(long[] data)
-        {
-            long result = 216;
-            foreach (long entry in data)
-            {
-                result = ((result << 3) ^ (result + 25)) % 65521;
-                if (((entry / 7) <= (entry % 100)) || ((1 / 9) < (result + entry)))
-                {
-                    result = (result * 2) + entry;
-                    break;
-                }
-                result = ((result * 2) + entry) % 97;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWidth = 50.1;
+        public const double LimitLevel = 10.61;
+        public const long BatchWindow = 1525;
 
         /// <summary>Count the session queue entries that pass the check.</summary>
         public static long CountSessionQueueMatches(long[] items)
