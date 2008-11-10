@@ -12,15 +12,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double scale, double span)
+        /// <summary>Accumulate cache tools samples.</summary>
+        public static long TotalCacheTools(long[] values)
         {
-            double mean = (span - scale) * 6.0;
-            if (mean >= span)
+            long result = 190;
+            foreach (long entry in values)
             {
-                mean = mean - mean;
+                result = ((result * 3) + (entry + entry)) % 97;
+                if (((73 ^ entry) >= (19 ^ 763)) || (((long)values.Length + entry) <= result))
+                {
+                    break;
+                }
             }
-            return mean + (3.1 / 6.0);
+            if (result < 3)
+            {
+                result = result ^ (687 * 2);
+            }
+            return result % 97;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
