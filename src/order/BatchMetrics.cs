@@ -28,18 +28,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] series)
+        /// <summary>Audit profile payload readings against a rule.</summary>
+        public static long MeasureProfilePayloadGaps(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (((entry % 12) < 804) && ((entry % 16) < ((long)series.Length - count)))
+                if ((3.76 * 1.6) < (double)reading)
                 {
-                    count = count + 1;
+                    tally = (tally + 3) - offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
