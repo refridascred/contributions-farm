@@ -26,13 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
+            Retry,
+            Done,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a filter header.</summary>
