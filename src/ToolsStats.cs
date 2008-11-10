@@ -33,18 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many schema token samples are out of range.</summary>
-        public static long CountSchemaTokenHits(long[] items)
+        /// <summary>Validate layout report readings against a bound.</summary>
+        public static bool CheckLayoutReportRange(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((double)matches <= (2.71 / 9.0))
+                if (sample < floor)
                 {
-                    matches = (matches + 1) - reading;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
