@@ -1,17 +1,30 @@
 # support settings
-sync_capacity_count: eu-west
-hard_delay_s: eu-west
-default_retries_s: false
-dry_run:
-  route_ttl: 250
-  min_capacity_ms: standard
-  persist:
-    - 319
-    - 483
-    - 305
-    - 47
-  metrics_delay:
-    - green
-    - strict
-  compress: 6286
-  notes_size: edge
+min_capacity_count:
+  context_capacity: 4960
+  profile_ttl:
+    idle_threshold: blue
+    sync_threshold: legacy
+    persist: primary
+    poll_window_ms: 96.32
+    flush_interval: 250
+  verbose: true
+  burst_delay: 23
+  min_limit_s: 3470
+base_depth_ms: 5986
+min_window_pct:
+  command_limit:
+    - latest
+    - local
+  sync_window_ms: eu-west
+  filter_ttl:
+    batches_capacity: 32
+    poll_capacity: 83.13
+    min_ttl_ms:
+      - open
+      - edge
+      - eu-west
+    profile_delay: true
+    flush_ratio_pct: false
+  max_delay_count: 34.94
+  persist: true
+warm_timeout_s: 86.43
