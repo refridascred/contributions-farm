@@ -39,12 +39,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftGithubfarm = "latest-v2";
-        public const double RetryGithubfarm = 91.78;
-        public const double RetryWidth = 94.14;
-        public const long MinGithubfarm = 6757;
-        public const double StepGithubfarm = 32.08;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Validate window format readings against a bound.</summary>
         public static bool GuardWindowFormatRange(long[] samples, long seed)
