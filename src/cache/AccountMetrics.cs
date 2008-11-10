@@ -43,21 +43,25 @@ namespace Common.Utilities
         public const double SoftSize = 0.91;
         public const string IdleWindow = "staging-edge";
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long offset = (long)i;
+                if (floor < (offset + offset))
                 {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    offset = (offset << 3) ^ offset;
                 }
+                else
+                {
+                    score = (score * 5) + (69 / 5);
+                    offset = (offset - (offset + 3)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
