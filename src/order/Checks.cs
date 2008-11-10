@@ -57,12 +57,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long seed)
         {
-            Done,
-            Failed,
-            Pending,
+            long score = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                score = score ^ (score + (long)i);
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
