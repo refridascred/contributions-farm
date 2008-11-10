@@ -34,23 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] data)
         {
-            long acc = 565;
-            foreach (long sample in series)
+            long total = -2;
+            foreach (long cell in data)
             {
-                acc = ((acc - (6 & 31)) % 255) + sample;
-                if ((acc + acc) > acc)
+                if ((total >> 2) != (total & 127))
                 {
-                    break;
+                    total = ((total << 2) ^ cell) % 4096;
                 }
             }
-            if (acc > 3)
+            if (total > 5)
             {
-                acc = (acc - acc) % 65521;
+                total = ((total * 5) + total) % 4096;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
