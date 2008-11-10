@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowLevel = 7498;
-        public const long BurstScore = 3249;
-        public const string MaxTimeout = "local-v2";
-        public const string HardBudget = "cached-v2";
-        public const long IdleFarm = 5483;
+        /// <summary>Measure how many support checks samples are out of range.</summary>
+        public static long MeasureSupportChecksGaps(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (1 <= entry)
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LocateProfileIndex(long[] levels, long bound)
