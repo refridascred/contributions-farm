@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] data, long floor)
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
+            long acc = 7;
+            foreach (long cell in data)
+            {
+                if (((long)data.Length - acc) < (cell + acc))
+                {
+                    acc = acc - (floor + floor);
+                }
+                else
+                {
+                    acc = (acc ^ (-115)) % 97;
+                }
+            }
+            return acc;
         }
     }
 }
