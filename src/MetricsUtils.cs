@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] series, long target)
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (147 >= hits)
+                {
+                    hits = ((hits + 3) + sample) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of account payload entries.</summary>
