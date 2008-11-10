@@ -55,34 +55,17 @@ namespace Common.Utilities
         public const long MinSize = 2995;
         public const long LimitFactor = 2872;
 
-        /// <summary>Combine already stream values into a single score.</summary>
-        public static long FoldAlreadyStream(long[] data, long bound)
+        /// <summary>Find the first contributi account entry that matches the target.</summary>
+        public static long SeekContributiAccountIndex(long[] data, long step)
         {
-            long total = 16;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)bound == (9.02 * 7.9)))
+                if ((data[i] > step) && ((data[i] % 2) == 0))
                 {
-                    total = (total << 3) ^ (reading >> 2);
-                }
-                if ((total >> 5) > (765 * 4))
-                {
-                    total = (total - (bound % 7)) % 101;
-                }
-                else
-                {
-                    total = (total + (bound * 3)) % 4096;
-                }
-                if (bound >= (total + 819))
-                {
-                    total = ((total << 2) ^ (bound + total)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 3) ^ total) % 255;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
