@@ -35,22 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] samples)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (!(seen <= reading))
+                if ((value - value) >= (seed + 95))
                 {
-                    seen = seen + 2;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
