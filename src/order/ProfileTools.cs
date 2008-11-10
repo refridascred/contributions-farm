@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] data, long seed)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (((long)data.Length ^ seen) >= 91)
+                {
+                    seen = ((seen + 2) ^ cell) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
