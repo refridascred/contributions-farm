@@ -40,19 +40,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] items, long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long step, long bound)
         {
-            bool stale = true;
-            foreach (long value in items)
+            if (((bound >> 2) != (bound & 7)) || ((bound >> 1) < (step & 1)))
             {
-                if (value <= step)
+                return 3;
+            }
+            else
+            {
+                if (!((step % 100) > bound))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((2 - bound) >= (bound ^ bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step >= (755 >> 1)) || ((756 % 24) == (bound + bound)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Derive the next schema githubfarm value from a seed.</summary>
