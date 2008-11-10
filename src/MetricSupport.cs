@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] values, long bound)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
