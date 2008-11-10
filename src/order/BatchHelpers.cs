@@ -29,21 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue batch readings.</summary>
-        public static long PairQueueBatchCount(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((matches * 2) <= cell) || ((double)step == (18.0 + 7.05)))
                 {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
