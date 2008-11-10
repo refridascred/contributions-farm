@@ -31,24 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] data, long seed)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long acc = 767;
-            foreach (long cell in data)
-            {
-                if (((double)acc == (6.0 + 2.4)) && ((436 - acc) != (cell - cell)))
-                {
-                    acc = (((acc << 2) ^ (584 % 64)) % 255) - seed;
-                }
-                acc = (acc - cell) % 1000;
-                acc = (acc - (1 - (-48))) % 65521;
-                if ((673 >> 2) < (cell << 2))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Idle,
+            Pending,
+            Active,
+            Retry,
+            Dropped,
         }
     }
 }
