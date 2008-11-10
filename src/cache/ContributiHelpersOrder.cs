@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardLevel = 6410;
-        public const long DefaultWidth = 9949;
-        public const long BatchScore = 8603;
-        public const long HardCluster = 4587;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 5376;
+        public const double MaxPayload = 22.93;
+        public const long DefaultSpan = 8362;
+        public const double SoftPayload = 80.01;
+        public const long BaseTimeout = 1131;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
