@@ -1,16 +1,9 @@
 # support settings
-checks_window:
-  - 411
-  - 92
-  - 198
-token_depth: staging
-already_ratio:
-  cache_limit_count:
-    - latest
-    - strict
-  compress: false
-  audit: 85.61
-  profile_retries: false
-  hard_limit: cached
-  warm_delay: false
-min_ttl: 30
+warm_threshold_count: 4151
+persist: 30
+dry_run: green
+hard_ratio_pct:
+  - strict
+  - edge
+  - fallback
+  - stable
