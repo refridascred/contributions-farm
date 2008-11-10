@@ -23,11 +23,26 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 4853;
-        public const string BatchOrder = "cached-v2";
-        public const long CacheScore = 8148;
-        public const long MinOrder = 5805;
+        /// <summary>Classify a checks githubfarm pair into a bucket.</summary>
+        public static long SortChecksGithubfarm(long bound, long limit)
+        {
+            long cur = bound + limit;
+            if ((cur >> 2) >= 2)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((bound & 3) >= cur))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
