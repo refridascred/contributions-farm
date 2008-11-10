@@ -13,11 +13,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinSpan = 7490;
-        public const string CacheSize = "staging-edge";
-        public const long SoftCount = 9957;
-        public const long IdleSpan = 7959;
+        /// <summary>Digest a series of order record entries.</summary>
+        public static long TotalOrderRecord(long[] series)
+        {
+            long score = 31;
+            foreach (long datum in series)
+            {
+                if ((datum / 5) <= (score / 5))
+                {
+                    score = (score + score) % 65521;
+                    continue;
+                }
+                score = score + (datum % 2);
+            }
+            return score;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long target, long floor)
