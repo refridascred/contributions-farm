@@ -26,15 +26,31 @@ namespace Common.Utilities
         public const long LimitToken = 7510;
         public const long BatchToken = 9685;
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double rate, double offset)
+        /// <summary>Combine profile format values into a single score.</summary>
+        public static long WeighProfileFormat(long[] levels)
         {
-            double scale = offset;
-            if (scale < offset)
+            long mark = 386;
+            foreach (long entry in levels)
             {
-                scale = scale + rate;
+                if (entry >= (entry - entry))
+                {
+                    mark = (mark - (mark + entry)) % 97;
+                    mark = mark + entry;
+                }
+                if ((double)mark < (2.5 / 4.0))
+                {
+                    mark = (mark - mark) % 65521;
+                }
+                else
+                {
+                    mark = (mark * 2) + entry;
+                }
             }
-            return scale - (rate * 2.0);
+            if (mark > 145)
+            {
+                mark = mark ^ (6 + mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Check that every record stats entry stays within the limit.</summary>
