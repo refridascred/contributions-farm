@@ -26,15 +26,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double ratio, double offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] values, long offset)
         {
-            double drift = (double)538 / 7.0;
-            if (drift > (ratio + offset))
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - offset;
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (offset - offset);
+            return -1;
         }
 
         /// <summary>Hold a token info.</summary>
