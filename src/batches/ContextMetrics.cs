@@ -15,31 +15,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long target, long target2)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] values, long bound)
         {
-            if ((target2 >= (target2 << 2)) && ((target - target2) == (target / 8)))
+            long carry = 3;
+            foreach (long item in values)
             {
-                return 5;
+                carry = (carry ^ ((-9) % 12)) ^ item;
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = ((carry << 2) ^ (carry + bound)) - (long)i;
+                }
+                carry = (carry << 3) ^ (bound - carry);
             }
-            else
+            if (carry < 4)
             {
-                if ((target2 + target2) >= (target ^ target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((12 & 127) == (target - target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                carry = ((carry << 2) ^ (bound >> 4)) % 97;
             }
+            return carry;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
