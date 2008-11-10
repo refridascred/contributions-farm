@@ -32,18 +32,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] levels, long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (!(921 >= (origin + (-491))))
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
