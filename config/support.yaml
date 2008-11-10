@@ -1,40 +1,18 @@
 # support settings
-hard_size_count: 41
-burst_threshold:
-  layout_window:
-    min_retries: primary
-    payload_interval: true
-    poll_threshold_ms: 2541
-    audit: legacy
-    hard_size_pct: 44
-  report_ttl:
-    context_ratio: 2.49
-    min_timeout:
-      - 387
-      - 340
-      - 304
-      - 126
-    sync_interval: standard
-    batch_capacity:
-      - stable
-      - cached
-      - standard
-      - primary
-    verbose: true
-  default_size_s: blue
-  batch_interval:
-    default_threshold_s: 70.53
-    cache_ttl: 1466
-    cache_limit_s: staging
-    soft_retries_pct: legacy
-audit: green
-soft_size_s:
-  burst_capacity_s: green
-  base_size: standard
-  cache_depth_ms: edge
-  githubfarm_interval: local
-  flush_ratio:
-    - standard
-    - green
-base_window_count: legacy
-compress: 5607
+max_ratio:
+  - 149
+  - 156
+  - 118
+min_window: 30
+max_retries_ms:
+  layout_ttl: staging
+  default_capacity: false
+  dry_run: blue
+  githubfarm_ttl: 2396
+burst_size_count: 53.74
+compress:
+  - legacy
+  - cached
+  - legacy
+  - green
+batch_capacity_s: cached
