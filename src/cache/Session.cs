@@ -20,19 +20,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double weight, double bias)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] levels)
         {
-            double load = weight;
-            if (load >= (double)33)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                load = (load - (double)922) - bias;
+                if ((entry * 4) <= hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (load / 3.0)) + (double)(long)i;
-            }
-            return load - load;
+            return hits;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
