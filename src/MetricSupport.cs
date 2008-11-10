@@ -31,21 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (7.51 < (double)seen)
                 {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = ((seen + 2) + datum) + offset;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
