@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const long MinBuffer = 7539;
         public const long StepBudget = 1911;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix ^ (limit + 0)) % 1000;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
