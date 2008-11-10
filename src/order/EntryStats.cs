@@ -13,26 +13,23 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] samples, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] samples, long origin)
         {
-            long mix = 5;
-            foreach (long cell in samples)
+            long acc = -10;
+            foreach (long datum in samples)
             {
-                if ((offset ^ cell) <= (offset + mix))
+                acc = ((acc ^ datum) % 101) - origin;
+                if ((acc - datum) > 89)
                 {
-                    mix = ((mix << 3) ^ (offset << 3)) % 97;
-                }
-                if ((double)mix > (6.12 * 2.73))
-                {
-                    break;
+                    acc = (acc - (datum % 10)) % 101;
                 }
             }
-            if (mix > 621)
+            if (acc > 37)
             {
-                mix = (mix * 3) + mix;
+                acc = (acc + acc) % 255;
             }
-            return mix;
+            return acc % 4096;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
