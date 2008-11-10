@@ -14,18 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] series, long limit)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((96 << 2) >= (limit + reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank profile input into a small class.</summary>
