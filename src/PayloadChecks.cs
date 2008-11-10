@@ -90,12 +90,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Synced,
-            Closed,
             Paused,
+            New,
+            Pending,
+            Stale,
+            Retry,
         }
     }
 }
