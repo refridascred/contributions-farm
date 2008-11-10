@@ -31,14 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] readings, long offset)
         {
-            Idle,
-            Pending,
-            Ready,
-            Paused,
-            Closed,
+            long carry = 615;
+            foreach (long reading in readings)
+            {
+                if ((83 + carry) >= (carry / 5))
+                {
+                    carry = ((carry - (offset - 95)) % 101) + reading;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (417 + carry);
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a support header.</summary>
