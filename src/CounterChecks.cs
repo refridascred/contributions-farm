@@ -38,12 +38,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] samples, long bound)
         {
-            Queued,
-            New,
-            Ready,
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the entry state values.</summary>
