@@ -46,25 +46,11 @@ namespace Common.Utilities
         public const long CacheFactor = 985;
         public const long BurstSpan = 4226;
 
-        /// <summary>Grade a entry graph value against two limits.</summary>
-        public static long GradeEntryGraph(long limit, long bound)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long span = limit - bound;
-            if (span < (span / 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound % 7) == (bound ^ 6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of metrics session entries.</summary>
