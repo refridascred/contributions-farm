@@ -43,21 +43,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = (carry + (16 % 60)) % 255;
+                if (((long)i > carry) || (carry > 3))
                 {
-                    if ((data[i] + data[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry * 5) + (carry * 5);
+                    continue;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
     }
 }
