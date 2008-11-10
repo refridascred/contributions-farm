@@ -21,24 +21,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long origin, long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            if (seed > (origin << 1))
+            double mean = 8.6;
+            if (mean > (mean / 4.0))
             {
-                return 0;
+                mean = mean - ratio;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((origin - seed) <= (5 << 1)) && ((82 - (-2)) > origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
+                mean = (mean - (double)7) + (double)(long)i;
             }
+            return mean + floor;
         }
     }
 }
