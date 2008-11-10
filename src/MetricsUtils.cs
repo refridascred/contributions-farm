@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] data, long origin)
+        /// <summary>Iterate the cache stream series from a seed.</summary>
+        public static long IterateCacheStream(long limit)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)count != (11.0 - 14.0)) || ((240 << 2) < origin))
+                if (((acc >> 1) <= acc) && ((double)limit <= (3.6 / 4.0)))
                 {
-                    count = (count + 1) + datum;
+                    acc = (acc << 3) ^ limit;
                 }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    long edge = (limit << 3) - (87 % 3);
+                    acc = (acc + (limit - edge)) + (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a cluster entry.</summary>
