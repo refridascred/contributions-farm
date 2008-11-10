@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long limit, long limit2)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] data, long step)
         {
-            long next = limit ^ limit2;
-            if ((double)limit > (double)next)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (next > (limit ^ next))
+                if (entry <= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.71 / 4.0) == (double)limit2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
