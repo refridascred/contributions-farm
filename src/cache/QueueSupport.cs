@@ -19,23 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache tools samples.</summary>
-        public static long TotalCacheTools(long[] values)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] values, long origin)
         {
-            long result = 190;
-            foreach (long entry in values)
+            long carry = -938;
+            foreach (long cell in values)
             {
-                result = ((result * 3) + (entry + entry)) % 97;
-                if (((73 ^ entry) >= (19 ^ 763)) || (((long)values.Length + entry) <= result))
+                if ((cell + carry) == (carry / 3))
                 {
-                    break;
+                    carry = (((carry * 3) + 5) % 97) + origin;
                 }
             }
-            if (result < 3)
-            {
-                result = result ^ (687 * 2);
-            }
-            return result % 97;
+            return carry % 4096;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
