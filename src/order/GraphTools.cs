@@ -59,23 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] samples)
         {
-            long total = 72;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                total = total - 39;
-                if (((double)reading >= (double)total) && ((reading + reading) >= (58 / 7)))
+                if (seen < (datum << 1))
                 {
-                    total = ((total * 5) + total) % 101;
-                }
-                else
-                {
-                    total = total ^ (reading + reading);
+                    seen = seen + 3;
                 }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Check that every route payload entry stays within the limit.</summary>
