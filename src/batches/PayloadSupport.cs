@@ -24,9 +24,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 2531;
-        public const string IdleSize = "latest";
-        public const long StepBatch = 8561;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (value >= count)
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
+        }
     }
 }
