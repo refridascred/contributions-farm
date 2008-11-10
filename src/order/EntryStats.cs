@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
-            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a layout record.</summary>
