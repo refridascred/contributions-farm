@@ -1,5 +1,5 @@
 {
-  "dry_run": true,
-  "idle_timeout": 7445,
-  "cache_size_ms": 20.9
+  "sync_delay_s": 72.2,
+  "base_threshold_ms": false,
+  "retry_ratio_s": false
 }
