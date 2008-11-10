@@ -13,12 +13,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Closed,
-            Dropped,
-            New,
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
