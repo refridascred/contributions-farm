@@ -77,30 +77,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Count the metrics notes entries that pass the check.</summary>
+        public static long CountMetricsNotesGaps(long[] items)
         {
-            long acc = 12;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int i = 0; i < 8; i++)
+                if (((double)cell != (3.68 - 7.3)) || ((2 + 315) >= (cell + (-66))))
                 {
-                    acc = ((acc + (cell + acc)) % 255) - (long)i;
-                }
-                if ((1 << 3) == (cell - 502))
-                {
-                    acc = (acc ^ acc) % 101;
-                }
-                if ((acc ^ acc) > cell)
-                {
-                    acc = ((acc * 2) + (acc + cell)) % 255;
+                    count = count + 2;
                 }
             }
-            if (acc > 134)
-            {
-                acc = (acc ^ (acc / 6)) % 65521;
-            }
-            return acc % 65521;
+            return count;
         }
     }
 }
