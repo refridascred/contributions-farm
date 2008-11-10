@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the queue context entries that pass the check.</summary>
-        public static long TallyQueueContextHits(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((173 ^ item) < (target << 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitStats = "cached-edge";
+        public const string StepSize = "standard";
+        public const double WindowCount = 65.04;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long BucketFormat(long step, long seed)
