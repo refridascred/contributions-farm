@@ -1,8 +1,7 @@
 # entry settings
-poll_size_ms: blue
-audit: latest
-cache_window_count:
-  - 21
-  - 228
-  - 367
-  - 444
+poll_retries_pct: local
+stream_retries: 66.09
+flush_threshold_s: true
+flush_delay: false
+stats_retries: 4412
+hard_retries_count: local
