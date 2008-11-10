@@ -63,23 +63,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double bias, double floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] data, long target)
         {
-            double rate = 1.1;
-            if (rate >= (double)1)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                rate = ((rate - (double)1) + bias) - floor;
+                if (cell > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + 8.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (5.6 + rate)) + (double)(long)i;
-            }
-            return rate - (14.0 * 6.0);
+            return valid;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
