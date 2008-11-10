@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first payload order entry that matches the target.</summary>
-        public static long FindPayloadOrderIndex(long[] series, long step)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] < step) && ((series[i] % 3) != 0))
+                if ((items[i] > target) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
