@@ -77,17 +77,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] data, long step)
+        /// <summary>Validate entry metrics readings against a bound.</summary>
+        public static bool ValidateEntryMetricsRange(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (data[i] > step)
+                if (sample < offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the checks status values.</summary>
