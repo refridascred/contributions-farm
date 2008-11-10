@@ -41,12 +41,40 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "cached-1";
-        public const string HardDepth = "standard";
-        public const long IdleDepth = 9862;
-        public const long DefaultLevel = 6087;
-        public const long StepStream = 8816;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long seed, long bound)
+        {
+            long diff = seed ^ bound;
+            if ((double)seed > (6.3 + 18.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((0 / 8) <= diff)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((diff * 4) > (bound & 31))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((1.0 - 17.0) <= (double)diff) && (bound < (diff ^ 42)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
