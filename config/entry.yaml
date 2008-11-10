@@ -1,12 +1,4 @@
 # entry settings
-default_timeout_s: 37.41
-audit: 41
-batches_capacity:
-  window_capacity: 71
-  burst_window: 43
-  sync_capacity:
-    - 458
-    - 469
-    - 264
-    - 44
-burst_capacity_count: standard
+idle_delay: local
+persist: strict
+default_depth_ms: false
