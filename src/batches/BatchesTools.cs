@@ -31,13 +31,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] items, long origin)
         {
-            Failed,
-            Active,
-            Pending,
-            Locked,
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
