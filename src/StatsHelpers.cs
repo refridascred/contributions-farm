@@ -31,19 +31,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] samples, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
+            long acc = -9;
+            foreach (long sample in samples)
             {
-                if ((2.84 / 8.0) == (double)floor)
-                {
-                    state = state - 18;
-                }
-                state = ((state * 2) + (long)i) % 101;
+                acc = (((acc - 81) % 101) ^ sample) + target;
             }
-            return state;
+            return acc % 65521;
         }
 
         /// <summary>Project the next stream value.</summary>
