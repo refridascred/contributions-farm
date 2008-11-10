@@ -39,23 +39,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long target)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((double)810 > (double)(long)i))
-                {
-                    anchor = ((anchor * 2) + anchor) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (anchor + target)) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a batch already counter forward.</summary>
