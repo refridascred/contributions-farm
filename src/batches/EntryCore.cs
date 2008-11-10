@@ -58,13 +58,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Retry,
             Failed,
+            Locked,
             Synced,
-            Idle,
         }
     }
 }
