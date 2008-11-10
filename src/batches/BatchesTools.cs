@@ -26,19 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetryFactor = "local";
+        public const double BaseSession = 42.29;
+        public const long MaxSession = 9434;
+        public const long MinSession = 279;
     }
 }
