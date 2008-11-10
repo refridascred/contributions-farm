@@ -31,12 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            Done,
+            Closed,
+            Paused,
         }
 
         /// <summary>Derive the next account queue value from a seed.</summary>
