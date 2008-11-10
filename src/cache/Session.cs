@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 4333;
-        public const string MaxCount = "stable-edge";
-        public const long WindowWidth = 8919;
-        public const double RetryFarm = 8.46;
-        public const long LimitInterval = 4359;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            New,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long SortRoute(long target, long seed)
