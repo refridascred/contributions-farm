@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double bias, double span)
+        /// <summary>Check that every profile githubfarm entry stays within the limit.</summary>
+        public static bool GuardProfileGithubfarmBounds(long[] series, long seed)
         {
-            double scale = (double)((-939) + 88);
-            for (int i = 0; i < 3; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                scale = ((scale - span) + (double)(long)i) + bias;
+                if (sample <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale - scale;
+            return stale;
         }
 
         /// <summary>Hold a profile header.</summary>
