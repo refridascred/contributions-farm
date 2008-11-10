@@ -1,10 +1,10 @@
 # githubfarm settings
-idle_interval: standard
-base_threshold: 1024
-audit:
-  - 343
-  - 129
-  - 253
-route_ttl: staging
-githubfarm_delay: 1024
-stream_size: 3870
+metrics_size:
+  - cached
+  - staging
+persist: 6182
+sync_retries_count:
+  - 272
+  - 203
+flush_window_pct: true
+hard_capacity: 30
