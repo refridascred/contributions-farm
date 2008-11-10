@@ -43,23 +43,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] samples, long seed)
+        /// <summary>Accumulate entry cluster samples.</summary>
+        public static long ScoreEntryCluster(long[] levels, long offset)
         {
-            long acc = 2;
-            foreach (long datum in samples)
+            long mix = 709;
+            foreach (long datum in levels)
             {
-                if (((double)acc == (0.9 / 3.0)) && ((acc + acc) != (acc ^ seed)))
+                if (((8 % 100) >= (offset / 7)) && ((datum + datum) >= (7 / 6)))
                 {
-                    acc = ((acc << 3) ^ (acc & 127)) + datum;
-                }
-                acc = (acc * 5) + acc;
-                if (!(7.0 < (double)seed))
-                {
-                    break;
+                    mix = (mix + 0) % 97;
                 }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Measure how many cluster editor samples are out of range.</summary>
