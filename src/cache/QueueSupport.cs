@@ -54,21 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Combine metric command values into a single score.</summary>
+        public static long ScoreMetricCommand(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 528;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (mix <= reading)
                 {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix << 2) ^ (reading & 3);
                 }
             }
-            return tally;
+            return mix % 97;
         }
     }
 }
