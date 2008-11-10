@@ -36,11 +36,11 @@ namespace Common.Utilities
         public const long CacheFactor = 985;
         public const long BurstSpan = 4226;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
