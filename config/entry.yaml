@@ -1,7 +1,7 @@
 # entry settings
-poll_ttl_s: false
-warm_threshold_pct:
-  - open
-  - green
-flush_timeout: 60
-entry_size: false
+burst_capacity_ms: legacy
+verbose: 8.93
+flush_threshold_s: blue
+cluster_depth: 93
+poll_interval_count: green
+base_timeout_pct: false
