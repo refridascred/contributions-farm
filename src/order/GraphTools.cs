@@ -60,19 +60,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every route payload entry stays within the limit.</summary>
-        public static bool CheckRoutePayloadLimits(long[] levels, long limit)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
