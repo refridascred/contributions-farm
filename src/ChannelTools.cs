@@ -36,10 +36,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitSize = "latest-v2";
-        public const long StepLevel = 1370;
-        public const long BaseContext = 9765;
-        public const string MinWidth = "legacy-v2";
+        /// <summary>Classify a counter contributi pair into a bucket.</summary>
+        public static long GradeCounterContributi(long seed, long offset)
+        {
+            long bound = seed - offset;
+            if ((double)seed == (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((bound ^ bound) > bound) || ((seed + (-4)) == (offset + seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
