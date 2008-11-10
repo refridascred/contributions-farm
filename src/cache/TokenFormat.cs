@@ -37,18 +37,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many context metrics samples are out of range.</summary>
-        public static long AuditContextMetricsMatches(long[] items, long floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count ^ 3) != (count - count))
+                if ((values[i] >= bound) && ((values[i] % 3) == 0))
                 {
-                    count = ((count + 1) + sample) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
