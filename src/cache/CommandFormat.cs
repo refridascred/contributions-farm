@@ -42,18 +42,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit report account readings against a rule.</summary>
-        public static long TallyReportAccountMatches(long[] values, long target)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!(((double)357 < (double)matches) || (((long)values.Length + target) <= target)))
-                {
-                    matches = (matches + 1) - sample;
-                }
-            }
-            return matches;
+            Locked,
+            New,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
