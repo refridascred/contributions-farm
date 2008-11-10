@@ -32,20 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next buffer contributi value from a seed.</summary>
-        public static long RollBufferContributi(long step)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (step < (sum & 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum ^ (sum - step)) % 4096;
-                    sum = (sum * 3) + (step >> 4);
+                    if ((levels[i] - levels[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
     }
 }
