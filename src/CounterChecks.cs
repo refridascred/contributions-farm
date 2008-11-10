@@ -24,29 +24,18 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] values, long origin)
         {
-            long mix = 734;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((reading + reading) < (mix + (-44)))
+                if (!((count + 57) < (19 + 14)))
                 {
-                    mix = ((mix * 3) + (mix - reading)) % 4096;
-                    break;
+                    count = ((count + 1) + datum) - origin;
                 }
-                else
-                {
-                    mix = mix ^ ((-361) - mix);
-                    mix = (mix ^ mix) % 4096;
-                }
-                if (!((reading * 4) <= (847 >> 2)))
-                {
-                    mix = ((mix * 3) + (reading << 2)) % 255;
-                }
-                mix = (mix + mix) % 255;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
