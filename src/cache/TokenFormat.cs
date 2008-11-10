@@ -15,12 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double gain, double span)
         {
-            Pending,
-            New,
-            Retry,
+            double ratio = 4.2;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (double)(long)i) - span;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
