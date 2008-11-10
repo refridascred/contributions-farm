@@ -66,22 +66,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((floor >> 4) > (matches - floor))
-                {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitRatio = 8361;
+        public const string IdleScore = "legacy-v2";
+        public const string DefaultCount = "open-edge";
+        public const long MinTimeout = 9197;
     }
 }
