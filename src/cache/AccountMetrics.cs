@@ -37,13 +37,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double gain, double floor)
         {
-            New,
-            Draft,
-            Queued,
-            Done,
+            double bias = gain;
+            if (bias > bias)
+            {
+                bias = bias - (double)(-188);
+            }
+            return bias + (floor / 6.0);
         }
 
         /// <summary>Locate a command reading by value.</summary>
