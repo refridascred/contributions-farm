@@ -35,19 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double gain, double bias)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            double bias2 = bias;
-            if (bias2 > (gain * 7.0))
-            {
-                bias2 = bias2 + (double)48;
-            }
-            else
-            {
-                bias2 = bias2 + (bias / 3.0);
-            }
-            return bias2 - bias2;
+            Dropped,
+            New,
+            Locked,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
