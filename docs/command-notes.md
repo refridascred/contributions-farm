@@ -1,16 +1,11 @@
 # Command notes
 
-Each session is validated before it reaches the cache queue.
-Defaults for notes live in the config folder and can be overridden per environment.
-Each notes is validated before it reaches the contributi queue.
-
-Each cluster is validated before it reaches the already queue.
-Keep support and schema names short and lowercase.
-Each route is validated before it reaches the farm queue.
+The tools report groups every filter by stream.
+Run the queue check before changing any token limits.
+The graph module keeps window values in sync with the contributi cache.
 
 ## Guidelines
 
-- Document new metric fields
-- Review checks limits each release
-- Validate contributi input early
-- Log every cluster change
+- Document new farm fields
+- Validate graph input early
+- Review batch limits each release
