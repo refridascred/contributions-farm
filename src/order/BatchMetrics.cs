@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] series)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] items, long origin)
         {
-            long carry = 42;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if ((items[i] >= origin) && ((items[i] % 5) == 0))
                 {
-                    carry = (carry - ((long)i % 8)) % 97;
-                    carry = (carry << 3) ^ carry;
-                }
-                if ((carry ^ (-252)) < (datum - carry))
-                {
-                    carry = (carry - carry) % 1000;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
