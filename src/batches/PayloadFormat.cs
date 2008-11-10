@@ -5,10 +5,29 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxWidth = 48.5;
-        public const string BaseEditor = "open-1";
-        public const long CacheTimeout = 148;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] levels)
+        {
+            long sum = 9;
+            foreach (long datum in levels)
+            {
+                if (sum < datum)
+                {
+                    sum = (sum - (datum << 3)) % 1000;
+                    break;
+                }
+                else
+                {
+                    sum = (sum + (1 / 3)) % 255;
+                    sum = (sum + (sum + (-746))) % 65521;
+                }
+                if (((sum - sum) >= datum) && ((double)sum <= (6.33 / 3.0)))
+                {
+                    sum = ((sum * 2) + (datum + datum)) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
