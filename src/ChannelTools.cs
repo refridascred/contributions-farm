@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseSpan = 6298;
-        public const long DefaultFactor = 5121;
-        public const string BatchPayload = "alpha";
+        /// <summary>Measure how many report record samples are out of range.</summary>
+        public static long CountReportRecordGaps(long[] data, long origin)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)hits >= (6.22 / 3.0))
+                {
+                    hits = ((hits + 1) + value) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] items)
