@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many stats session samples are out of range.</summary>
-        public static long MeasureStatsSessionGaps(long[] readings, long limit)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!(((limit ^ 1) != (211 & 63)) || ((double)limit <= (8.91 * 15.0))))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
