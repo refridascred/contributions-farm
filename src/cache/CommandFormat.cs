@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public double Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine payload checks values into a single score.</summary>
