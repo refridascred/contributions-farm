@@ -36,13 +36,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long origin)
         {
-            Paused,
-            Queued,
-            Draft,
-            Retry,
+            long state = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
