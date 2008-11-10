@@ -34,38 +34,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a queue stream pair into a bucket.</summary>
-        public static long RankQueueStream(long offset, long seed)
+        /// <summary>Roll a route session counter forward.</summary>
+        public static long StepRouteSession(long target)
         {
-            if (((offset - offset) > seed) || ((offset >> 3) >= (seed % 97)))
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset > (offset * 3))
+                result = result - (target & 1);
+                result = (result ^ (result << 3)) % 97;
+                if (!(target <= (result >> 4)))
                 {
-                    return 7;
+                    result = ((result << 2) ^ (result / 2)) % 65521;
+                    result = (result << 2) ^ (result & 63);
                 }
-                else
-                {
-                    if (((-71) % 64) >= (seed << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset >> 5) > offset) && ((seed ^ offset) >= (41 + seed)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
+            return result;
         }
     }
 }
