@@ -78,11 +78,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardFactor = "fallback-edge";
-        public const double LimitScore = 53.94;
-        public const long WindowOrder = 4285;
-        public const long RetryInterval = 5185;
-        public const long BatchOrder = 5626;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
