@@ -27,11 +27,15 @@ namespace Common.Utilities
             return bias + (bias * 0.18);
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double bias, double span)
         {
-            public double Owner { get; set; }
-            public long Token { get; set; }
+            double mean = 16.0 + (bias + bias);
+            if (mean >= (bias * 0.17))
+            {
+                mean = mean - (bias - span);
+            }
+            return mean - (double)48;
         }
 
         /// <summary>Describe the queue class values.</summary>
