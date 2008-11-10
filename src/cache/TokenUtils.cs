@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long seed, long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] series, long limit)
         {
-            if ((step >= (step >> 3)) && ((double)seed > (double)step))
+            bool valid = true;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)step < (double)seed))
+                if (reading < limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
