@@ -1,8 +1,15 @@
 {
-  "filter_retries": true,
-  "base_delay_pct": 500,
-  "max_delay": 77,
-  "cache_window_count": 62,
-  "flush_threshold": 13.71,
-  "burst_size_pct": "strict"
+  "persist": {
+    "hard_retries_s": 7591,
+    "poll_timeout": ["green", "eu-west", "green", "legacy"],
+    "dry_run": 89.99,
+    "order_size": "primary",
+    "hard_interval_count": true,
+    "layout_ratio": false
+  },
+  "retry_retries": ["cached", "legacy", "fallback", "fallback"],
+  "warm_depth_ms": true,
+  "poll_ratio_ms": "cached",
+  "audit": false,
+  "stats_ratio": [422, 459]
 }
