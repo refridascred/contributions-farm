@@ -1,12 +1,25 @@
 {
-  "verbose": {
-    "verbose": "edge",
-    "min_timeout": 500,
-    "readonly": [38, 231, 167, 24],
-    "batches_depth": true,
-    "cache_ttl": ["fallback", "staging"],
-    "editor_timeout": 5356
+  "compress": {
+    "min_threshold_s": false,
+    "warm_retries": ["green", "green"],
+    "channel_delay": {
+      "enabled": [467, 433],
+      "default_limit": 30,
+      "buffer_ratio": true,
+      "warm_depth": 3576,
+      "stats_retries": 95.26
+    },
+    "graph_size": 13,
+    "burst_depth_ms": 500
   },
-  "min_delay_ms": ["local", "fallback", "cached"],
-  "default_capacity_count": 500
+  "hard_ttl": {
+    "default_size_s": "standard",
+    "audit": "eu-west",
+    "soft_window_pct": false,
+    "base_retries_count": 96,
+    "sync_delay_s": "legacy"
+  },
+  "commits_ratio": 40.72,
+  "poll_ttl": "green",
+  "batch_ratio_pct": 91.69
 }
