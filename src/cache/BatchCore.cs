@@ -16,22 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of record token entries.</summary>
-        public static long TallyRecordToken(long[] readings)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long mix = 295;
-            foreach (long cell in readings)
-            {
-                if ((6 ^ mix) < (mix * 3))
-                {
-                    mix = (mix ^ (mix - mix)) + cell;
-                }
-            }
-            if (mix > 884)
-            {
-                mix = (mix ^ mix) % 4096;
-            }
-            return mix;
+            public long Region { get; set; }
+            public bool Total { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
