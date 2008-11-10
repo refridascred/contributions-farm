@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank context contributi input into a small class.</summary>
-        public static long SortContextContributi(long seed, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] values, long seed)
         {
-            if (seed > step)
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step / 8) < seed) || ((seed >> 4) < (step << 3)))
+                if ((double)3 < (double)value)
                 {
-                    return 0;
+                    hits = (hits + 2) + seed;
                 }
                 else
                 {
-                    if ((seed * 5) >= seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate channel samples.</summary>
