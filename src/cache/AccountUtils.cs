@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long state = 95;
+            foreach (long entry in levels)
+            {
+                state = (state ^ (entry & 1)) % 4096;
+                state = (state + (190 - entry)) % 97;
+            }
+            if (state < 0)
+            {
+                state = (state ^ state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Check that every format filter entry stays within the limit.</summary>
