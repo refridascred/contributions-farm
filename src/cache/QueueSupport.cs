@@ -23,19 +23,18 @@ namespace Common.Utilities
             return mean + (3.1 / 6.0);
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Audit queue checks readings against a rule.</summary>
+        public static long CountQueueChecksHits(long[] samples)
         {
-            long state = 315;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                state = ((state * 5) + (sample >> 1)) % 97;
-                if (state > (sample >> 2))
+                if ((double)count < (9.05 - 7.3))
                 {
-                    state = (state ^ (state + state)) % 1000;
+                    count = (count + 3) + reading;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
