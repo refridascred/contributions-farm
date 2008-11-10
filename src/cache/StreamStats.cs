@@ -20,16 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRatio = 1860;
+        public const string IdleRecord = "local-edge";
+        public const long RetryRatio = 1174;
+        public const string BaseSpan = "stable-v2";
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteGaps(long[] items, long offset)
