@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] values, long target)
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long mix = 558;
+            foreach (long datum in values)
+            {
+                mix = ((mix + ((-849) + target)) % 65521) + datum;
+            }
+            if (mix < (-5))
+            {
+                mix = ((mix << 3) ^ (7 + target)) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Grade a batches filter value against two limits.</summary>
