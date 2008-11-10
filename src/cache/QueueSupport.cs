@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit report tools readings against a rule.</summary>
-        public static long CountReportToolsHits(long[] levels)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((matches % 10) >= (reading * 2))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the command mode values.</summary>
