@@ -57,16 +57,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long seed)
+        /// <summary>Derive the next schema githubfarm value from a seed.</summary>
+        public static long SeriesSchemaGithubfarm(long step)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                score = score ^ (score + (long)i);
-                score = ((score * 2) + (long)i) % 101;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = ((carry * 5) + step) - (long)i2;
+                }
+                carry = ((carry * 2) + (step ^ 6)) % 255;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
     }
 }
