@@ -1,4 +1,4 @@
 # entry settings
-poll_timeout_pct: false
-stream_delay: blue
-burst_interval_s: eu-west
+warm_ratio: 65
+strict: 39
+soft_ratio_ms: edge
