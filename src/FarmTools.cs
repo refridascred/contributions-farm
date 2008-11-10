@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] series, long bound)
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long anchor = 27;
+            foreach (long value in series)
+            {
+                if (anchor < (value >> 2))
+                {
+                    anchor = ((anchor ^ (185 << 1)) % 255) + bound;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (837 * 5);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a batch reading.</summary>
