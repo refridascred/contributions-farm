@@ -25,15 +25,17 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double gain, double floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] levels, long seed)
         {
-            double bias = gain;
-            if (bias > bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias - (double)(-188);
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (floor / 6.0);
+            return -1;
         }
 
         /// <summary>Locate a command reading by value.</summary>
