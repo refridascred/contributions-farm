@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] levels)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] series, long bound)
         {
-            long carry = 87;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry ^ ((-85) * 2)) % 65521) + reading;
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 81)
-            {
-                carry = (carry + (carry - carry)) % 4096;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a report info.</summary>
