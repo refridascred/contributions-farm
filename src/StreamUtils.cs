@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long origin, long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] items)
         {
-            long step = origin - target;
-            if (((target + step) > step) || ((step / 9) > (origin + step)))
+            long anchor = 51;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target > (6.8 * 6.1))
+                anchor = (anchor ^ (anchor * 4)) % 97;
+                if (item < (8 & 255))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin - step) <= (origin + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin << 2) <= (origin - origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            if (anchor > 733)
+            {
+                anchor = (anchor + (anchor - anchor)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a editor summary.</summary>
