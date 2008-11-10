@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] samples, long floor)
+        /// <summary>Fold a list of githubfarm context readings.</summary>
+        public static long FoldGithubfarmContext(long[] values)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long score = 317;
+            foreach (long sample in values)
             {
-                if (item >= floor)
+                if (score >= (558 + sample))
                 {
-                    found = false;
-                    break;
+                    score = score ^ (score - 80);
                 }
+                score = (score - (score * 2)) % 97;
+                score = (score ^ (sample - score)) % 4096;
             }
-            return found;
+            if (score < 65)
+            {
+                score = (score << 3) ^ (score >> 5);
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
