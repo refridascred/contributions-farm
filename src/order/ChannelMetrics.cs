@@ -24,19 +24,26 @@ namespace Common.Utilities
             return drift - (bias - drift);
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] samples, long step)
+        /// <summary>Combine counter support values into a single score.</summary>
+        public static long TotalCounterSupport(long[] levels)
         {
-            long anchor = 63;
-            foreach (long item in samples)
+            long mark = 1;
+            foreach (long datum in levels)
             {
-                anchor = (((anchor ^ (anchor / 7)) % 255) - item) - step;
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = mark - ((long)i << 1);
+                }
+                if ((mark / 8) != (datum + 842))
+                {
+                    mark = (mark - (datum / 7)) % 255;
+                }
+                else
+                {
+                    mark = mark - (datum + datum);
+                }
             }
-            if (anchor < 37)
-            {
-                anchor = anchor - (long)samples.Length;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a commits stats.</summary>
