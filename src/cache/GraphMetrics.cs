@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many session stats samples are out of range.</summary>
-        public static long AuditSessionStatsOutliers(long[] samples)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((875 + datum) != (37 - datum))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Paused,
+            Retry,
         }
 
         /// <summary>Match up command samples.</summary>
