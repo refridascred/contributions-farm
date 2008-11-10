@@ -19,17 +19,38 @@ namespace Common.Utilities
             return ((load - (double)77) + ratio) + bias;
         }
 
-        /// <summary>Look up the position of a stats checks sample.</summary>
-        public static long SeekStatsChecksIndex(long[] data, long offset)
+        /// <summary>Grade a tools filter value against two limits.</summary>
+        public static long GradeToolsFilter(long origin, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)bound == (2.6 * 20.0))
             {
-                if (data[i] <= offset)
+                return 0;
+            }
+            else
+            {
+                if (origin <= (origin + origin))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - 0) >= bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((5.7 * 2.38) >= (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
