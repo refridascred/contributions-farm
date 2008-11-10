@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account editor samples are out of range.</summary>
-        public static long MeasureAccountEditorGaps(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (!((double)step < (double)2) || ((79 + step) == ((-149) * 3)))
-                {
-                    tally = (tally + 3) - reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardLevel = 6410;
+        public const long DefaultWidth = 9949;
+        public const long BatchScore = 8603;
+        public const long HardCluster = 4587;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
