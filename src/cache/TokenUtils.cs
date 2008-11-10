@@ -14,18 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] readings)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((16.0 * 20.0) < (double)matches)
-                {
-                    matches = (matches + 1) + entry;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
