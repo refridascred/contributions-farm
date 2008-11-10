@@ -20,39 +20,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Grade a support cluster value against two limits.</summary>
-        public static long RankSupportCluster(long floor, long floor2)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] samples, long limit)
         {
-            long next = floor ^ floor2;
-            if (((double)floor2 != (10.0 / 4.0)) || ((next / 4) != (floor * 2)))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor2 << 3) <= (floor2 + 724))
+                if ((limit >> 1) >= count)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((5.2 - 4.7) <= (double)next)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((next - floor2) <= (floor + floor2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = (count + 1) ^ datum;
                 }
             }
+            return count;
         }
     }
 }
