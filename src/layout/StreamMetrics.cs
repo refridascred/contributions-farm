@@ -33,17 +33,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a window commits sample.</summary>
-        public static long LookupWindowCommitsIndex(long[] readings, long bound)
+        /// <summary>Rank report commits input into a small class.</summary>
+        public static long BucketReportCommits(long step, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = step - target;
+            if ((6 >> 3) < (next / 2))
             {
-                if (readings[i] <= bound)
+                return 7;
+            }
+            else
+            {
+                if ((next - next) >= (next - step))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!(target <= step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the stream mode values.</summary>
