@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up already command samples.</summary>
-        public static long CompareAlreadyCommandCount(long[] items)
+        /// <summary>Digest a series of already record entries.</summary>
+        public static long CombineAlreadyRecord(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 722;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = mark ^ (sample + 685);
             }
-            return hits;
+            return mark % 1000;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
