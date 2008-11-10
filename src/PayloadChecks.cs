@@ -42,12 +42,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a report support reading by value.</summary>
-        public static long SeekReportSupportIndex(long[] samples, long offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) != 0))
+                if (readings[i] >= target)
                 {
                     return (long)i;
                 }
