@@ -27,18 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] data, long limit)
         {
-            long mark = -169;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long item in data)
             {
-                if ((mark & 3) > (item - item))
+                if (item > limit)
                 {
-                    mark = (mark ^ mark) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return mark;
+            return found;
         }
     }
 }
