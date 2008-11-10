@@ -82,15 +82,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a commits account figure with a bias.</summary>
-        public static double SmoothCommitsAccount(double rate, double span)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double bias = span;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (rate * 8.89)) - (double)(long)i;
-            }
-            return bias + bias;
+            public double Owner { get; set; }
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
