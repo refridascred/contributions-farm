@@ -1,10 +1,21 @@
 # entry settings
-cache_limit_pct: 0.45
-filter_interval: primary
-idle_retries: blue
-hard_window: blue
-verbose: 30
-persist:
-  - 260
-  - 41
-  - 386
+idle_retries_ms: 8936
+soft_window_pct:
+  - 348
+  - 23
+  - 341
+cache_delay:
+  - eu-west
+  - strict
+  - standard
+  - primary
+warm_capacity:
+  notes_ttl: 68.47
+  soft_ratio_pct: 27.97
+  cache_window: false
+  poll_capacity: 45.22
+  soft_ratio:
+    - legacy
+    - cached
+    - green
+hard_retries_ms: 43.79
