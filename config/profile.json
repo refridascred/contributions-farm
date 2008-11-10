@@ -1,6 +1,17 @@
 {
-  "cache_delay_count": ["local", "stable", "primary"],
-  "warm_ttl_pct": "eu-west",
-  "max_threshold_s": "staging",
-  "sync_threshold_s": 3.2
+  "warm_delay_s": 5.16,
+  "base_interval_count": 250,
+  "support_capacity": {
+    "cache_threshold": ["strict", "stable"],
+    "already_limit": 97,
+    "min_retries": 2250,
+    "retry_window_ms": {
+      "strict": 1997,
+      "payload_interval": 4770,
+      "burst_retries_s": 3643,
+      "hard_retries_s": true,
+      "poll_depth_ms": true
+    },
+    "dry_run": "latest"
+  }
 }
