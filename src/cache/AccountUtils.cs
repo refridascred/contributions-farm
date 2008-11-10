@@ -19,26 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes payload readings.</summary>
-        public static long WeighNotesPayload(long[] samples)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long carry = 13;
-            foreach (long item in samples)
-            {
-                if (item < carry)
-                {
-                    carry = (carry * 3) + item;
-                }
-                if (((double)item == (double)carry) || ((double)carry > (13.0 / 4.0)))
-                {
-                    break;
-                }
-            }
-            if (carry > 56)
-            {
-                carry = carry - (carry + 8);
-            }
-            return carry;
+            Pending,
+            New,
+            Locked,
+            Closed,
+            Synced,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
