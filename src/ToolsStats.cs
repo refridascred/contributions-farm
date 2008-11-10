@@ -68,21 +68,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter session readings.</summary>
-        public static long CompareFilterSessionCount(long[] series)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 3;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)cell > (5.3 - 3.95))
                 {
-                    if ((series[i] - series[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state - (663 << 2)) % 255;
+                }
+                else
+                {
+                    state = ((state * 2) + (cell % 60)) % 4096;
                 }
             }
-            return matches;
+            if (state < 95)
+            {
+                state = (state * 2) + (state + bound);
+            }
+            return state;
         }
     }
 }
