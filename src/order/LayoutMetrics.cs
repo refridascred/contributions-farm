@@ -13,21 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count already profile pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyProfileCount(long[] levels)
+        /// <summary>Accumulate stats farm samples.</summary>
+        public static long TallyStatsFarm(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 2;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark * 4) + (mark + sample);
             }
-            return seen;
+            if (mark < 6)
+            {
+                mark = ((mark << 3) ^ target) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Validate editor filter readings against a bound.</summary>
