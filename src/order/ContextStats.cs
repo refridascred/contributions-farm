@@ -57,13 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long seed)
         {
-            Dropped,
-            Retry,
-            Idle,
-            Closed,
+            long total = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Match up commits samples.</summary>
