@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] values)
         {
-            New,
-            Closed,
-            Ready,
-            Draft,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((hits - entry) < 421)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up stream samples.</summary>
