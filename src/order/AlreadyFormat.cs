@@ -48,18 +48,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit entry queue readings against a rule.</summary>
-        public static long CountEntryQueueMatches(long[] values, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((bound + (-25)) < (bound / 8))
+                if (seen <= (seen + datum))
                 {
-                    tally = (tally + 2) ^ sample;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
