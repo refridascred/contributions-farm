@@ -21,23 +21,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] data)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] items)
         {
-            long carry = 786;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry << 3) ^ ((long)i << 1);
+                    if ((items[i] + items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((cell % 64) > carry)
-                {
-                    carry = (carry - cell) % 4096;
-                }
-                carry = (carry - cell) % 101;
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
