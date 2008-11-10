@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Digest a series of tools queue entries.</summary>
+        public static long CombineToolsQueue(long[] series)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            long total = 949;
+            foreach (long datum in series)
+            {
+                if (((-67) * 3) < (total / 9))
+                {
+                    total = ((total ^ (98 % 7)) % 65521) - datum;
+                }
+            }
+            if (total < 11)
+            {
+                total = ((total << 2) ^ ((long)series.Length ^ total)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
