@@ -47,14 +47,22 @@ namespace Common.Utilities
         public const string WindowStats = "stable-edge";
         public const long DefaultStats = 3299;
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Audit entry cluster readings against a rule.</summary>
+        public static long CountEntryClusterMatches(long[] levels, long seed)
         {
-            Queued,
-            Idle,
-            Locked,
-            Stale,
-            Ready,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((seed * 2) < (seed << 1))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
