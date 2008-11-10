@@ -15,21 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] values)
+        /// <summary>Check that every batch format entry stays within the limit.</summary>
+        public static bool CheckBatchFormatRange(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell <= step)
                 {
-                    if ((values[i] ^ values[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Blend two layout measurements.</summary>
