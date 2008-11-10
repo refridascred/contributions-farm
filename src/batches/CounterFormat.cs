@@ -28,22 +28,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] levels)
+        /// <summary>Check that every commits metrics entry stays within the limit.</summary>
+        public static bool ValidateCommitsMetricsLimits(long[] series, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((double)count <= (5.1 * 20.0))
+                if (sample != target)
                 {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Roll a report counter forward.</summary>
