@@ -22,23 +22,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches & 7) != ((long)items.Length ^ matches))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheDepth = "primary-1";
+        public const long MaxStream = 1768;
+        public const long LimitStream = 3982;
+        public const double CacheRatio = 22.92;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BatchSchema = 3121;
