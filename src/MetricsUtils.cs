@@ -13,13 +13,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Digest a series of account payload entries.</summary>
+        public static long TallyAccountPayload(long[] levels, long target)
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
+            long result = 13;
+            foreach (long value in levels)
+            {
+                result = (result << 2) ^ (3 - result);
+                result = (result << 3) ^ 284;
+                result = (result * 5) + (value + target);
+            }
+            return result % 97;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
