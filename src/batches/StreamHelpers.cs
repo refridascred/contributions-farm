@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long bound)
+        /// <summary>Adjust a graph tools reading.</summary>
+        public static double AdjustGraphTools(double ratio, double span)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            double gain = ratio;
+            if (gain >= (3.7 * 8.0))
             {
-                long step = (sum >> 1) / 5;
-                step = (step << 2) ^ (73 / 2);
-                if (((sum % 100) <= sum) || ((sum + 15) == (345 / 9)))
-                {
-                    sum = (sum - (33 >> 3)) % 97;
-                    sum = sum + (step & 63);
-                }
-                sum = ((sum * 3) + (long)i) % 101;
+                gain = gain + (span + 0.9);
             }
-            return sum;
+            return gain - gain;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
