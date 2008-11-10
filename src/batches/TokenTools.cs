@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] data, long floor)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((664 + sample) > (floor / 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Draft,
+            Synced,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
