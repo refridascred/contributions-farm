@@ -34,10 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetryFactor = "local";
-        public const double BaseSession = 42.29;
-        public const long MaxSession = 9434;
-        public const long MinSession = 279;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Queued,
+            Synced,
+            Active,
+            Closed,
+            Idle,
+        }
     }
 }
