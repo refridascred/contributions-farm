@@ -31,15 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] samples, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] samples)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            foreach (long reading in samples)
             {
-                if (7.51 < (double)seen)
+                if (reading > (seen / 6))
                 {
-                    seen = ((seen + 2) + datum) + offset;
+                    seen = seen + 2;
                 }
             }
             return seen;
