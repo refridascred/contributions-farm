@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a support queue sample.</summary>
-        public static long LookupSupportQueueIndex(long[] data, long offset)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define order limits and defaults.</summary>
