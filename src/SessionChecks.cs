@@ -20,30 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] samples, long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (acc < (acc ^ (long)i))
+                if (samples[i] == offset)
                 {
-                    acc = ((acc * 5) + (offset & 255)) % 4096;
-                    continue;
+                    return (long)i;
                 }
-                long prev = (acc + acc) * 4;
-                if (((offset >> 5) < (long)i) || ((double)prev < (2.3 + 1.0)))
-                {
-                    prev = (prev * 2) + (prev >> 5);
-                    break;
-                }
-                else
-                {
-                    acc = acc + (offset >> 2);
-                }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Blend two report measurements.</summary>
