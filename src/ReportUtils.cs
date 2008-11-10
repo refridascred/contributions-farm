@@ -60,19 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double gain, double span)
-        {
-            double drift = gain;
-            if (drift > (gain - span))
-            {
-                drift = drift - (span / 5.0);
-            }
-            else
-            {
-                drift = drift - 7.56;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchFactor = "alpha";
+        public const long CacheRatio = 2167;
+        public const long HardBudget = 7588;
+        public const long MaxWidth = 9967;
+        public const string LimitSupport = "fallback-v2";
     }
 }
