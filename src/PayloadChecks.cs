@@ -77,19 +77,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate entry metrics readings against a bound.</summary>
-        public static bool ValidateEntryMetricsRange(long[] values, long offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] series)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
