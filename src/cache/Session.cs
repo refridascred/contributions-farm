@@ -27,12 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long limit)
         {
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Project the next order command value.</summary>
