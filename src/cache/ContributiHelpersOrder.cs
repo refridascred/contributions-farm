@@ -22,24 +22,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long offset, long seed)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            if ((seed - seed) <= (0 - offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed % 10) > (offset >> 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Locked,
+            Draft,
+            Retry,
+            Synced,
+            Closed,
         }
     }
 }
