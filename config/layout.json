@@ -1,17 +1,5 @@
 {
-  "readonly": {
-    "dry_run": 9983,
-    "min_interval": "legacy",
-    "contributi_timeout": 100,
-    "stats_retries": {
-      "burst_ttl_count": 42,
-      "token_limit": [30, 344],
-      "base_depth_count": ["green", "stable", "green"]
-    },
-    "layout_ratio": 250,
-    "persist": false
-  },
-  "enabled": 95,
-  "context_capacity": "edge",
-  "warm_window": [124, 488, 261, 356]
+  "metric_ratio": 49,
+  "command_size": 39,
+  "flush_size_count": "stable"
 }
