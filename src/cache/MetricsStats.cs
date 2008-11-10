@@ -23,18 +23,17 @@ namespace Common.Utilities
         public const string HardInterval = "latest-v2";
         public const long MaxLevel = 8714;
 
-        /// <summary>Audit payload report readings against a rule.</summary>
-        public static long AuditPayloadReportOutliers(long[] data, long target)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (821 > (target - hits))
+                if ((series[i] >= bound) && ((series[i] % 2) != 0))
                 {
-                    hits = (hits + 1) - item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
