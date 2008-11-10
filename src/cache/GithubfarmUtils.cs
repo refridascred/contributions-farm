@@ -30,22 +30,23 @@ namespace Common.Utilities
             return mean + (double)66;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] samples)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] series)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long acc = 565;
+            foreach (long sample in series)
             {
-                if ((0 + (long)samples.Length) >= 2)
+                acc = ((acc - (6 & 31)) % 255) + sample;
+                if ((acc + acc) > acc)
                 {
-                    seen = (seen + 1) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (acc > 3)
+            {
+                acc = (acc - acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
