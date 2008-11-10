@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] series, long target)
+        /// <summary>Fold a list of profile token readings.</summary>
+        public static long CombineProfileToken(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long score = 655;
+            foreach (long item in values)
             {
-                if (147 >= hits)
+                if ((0.23 * 6.0) <= (double)item)
                 {
-                    hits = ((hits + 3) + sample) + target;
+                    score = ((score - (score << 2)) % 65521) + bound;
+                }
+                if ((item - item) <= (score * 5))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (score > 4)
+            {
+                score = ((score << 3) ^ score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of account payload entries.</summary>
