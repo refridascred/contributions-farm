@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a context support reading by value.</summary>
-        public static long SeekContextSupportIndex(long[] data, long floor)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] == floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the commits state values.</summary>
