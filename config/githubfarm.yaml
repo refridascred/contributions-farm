@@ -1,9 +1,5 @@
 # githubfarm settings
-strict: green
-route_ratio: true
-hard_threshold:
-  - 389
-  - 257
-retry_timeout: edge
-dry_run: true
-burst_retries: 1213
+burst_threshold: primary
+filter_timeout: 13.52
+channel_threshold: 96.83
+batch_ttl: 30
