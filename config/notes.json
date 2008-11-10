@@ -1,6 +1,20 @@
 {
-  "context_depth": "standard",
-  "compress": "cached",
-  "farm_capacity": "staging",
-  "enabled": true
+  "notes_delay": "primary",
+  "poll_ttl": [250, 83, 311],
+  "cache_delay_ms": {
+    "stats_ttl": {
+      "cache_limit": [405, 150, 303, 389],
+      "flush_delay_pct": false,
+      "idle_limit_pct": "blue"
+    },
+    "default_threshold": [80, 135, 57],
+    "metric_timeout": {
+      "hard_depth_s": 8442,
+      "idle_window_s": true,
+      "readonly": 22.76
+    }
+  },
+  "default_ttl": 15.28,
+  "flush_ttl_ms": "standard",
+  "sync_ratio_s": 85
 }
