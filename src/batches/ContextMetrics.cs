@@ -57,18 +57,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cluster editor samples are out of range.</summary>
-        public static long AuditClusterEditorMatches(long[] series, long seed)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((((seed * 2) <= value) && ((double)seen == (double)value)) && !((2.56 * 3.7) != (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
