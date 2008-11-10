@@ -23,18 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] readings, long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long carry = 5;
-            foreach (long value in readings)
-            {
-                if ((floor - value) >= (value ^ value))
-                {
-                    carry = (carry - (floor << 3)) % 97;
-                }
-            }
-            return carry;
+            Idle,
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
