@@ -17,19 +17,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double gain, double offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long limit, long bound)
         {
-            double rate = offset * 5.28;
-            if (rate > (gain * 8.39))
+            long offset = limit ^ bound;
+            if ((offset << 1) < (offset & 7))
             {
-                rate = rate - rate;
+                return 4;
             }
             else
             {
-                rate = rate - gain;
+                if (limit <= (bound + 6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset + limit) >= (571 * 2)) || ((double)bound == (double)433))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit >= (limit - limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return rate - (offset - offset);
         }
 
         /// <summary>Rank profile input into a small class.</summary>
