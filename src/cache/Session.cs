@@ -13,13 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            Closed,
-            Locked,
-            Paused,
-            Retry,
+            long total = 84;
+            foreach (long sample in levels)
+            {
+                if ((sample << 1) >= (total & 127))
+                {
+                    total = total - (5 / 8);
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
