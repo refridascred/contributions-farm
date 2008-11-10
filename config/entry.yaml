@@ -1,25 +1,10 @@
 # entry settings
-batch_timeout_count:
-  warm_timeout:
-    min_size_s: 71.1
-    buffer_ratio: 73.34
-    format_window: 11
-    retry_ttl_count: 22.25
-    persist: false
-  layout_window: true
-  soft_ttl_count:
-    - 302
-    - 96
-    - 234
-  warm_ttl: primary
-warm_capacity_count:
-  - 382
-  - 425
-  - 229
-  - 322
-dry_run: 500
-payload_capacity: staging
-batch_window_pct: cached
-default_interval:
-  - latest
-  - fallback
+cache_limit_pct: 0.45
+filter_interval: primary
+idle_retries: blue
+hard_window: blue
+verbose: 30
+persist:
+  - 260
+  - 41
+  - 386
