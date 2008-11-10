@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit account batches readings against a rule.</summary>
-        public static long TallyAccountBatchesMatches(long[] values)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((value ^ value) >= (value ^ matches)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] - data[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
