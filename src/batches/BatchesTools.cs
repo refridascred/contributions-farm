@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] data)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry + entry) >= entry)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the schema mode values.</summary>
