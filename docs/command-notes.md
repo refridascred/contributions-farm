@@ -1,14 +1,16 @@
 # Command notes
 
-When a filter fails, the editor handler retries a few times before giving up.
-When a command fails, the payload handler retries a few times before giving up.
+Each session is validated before it reaches the cache queue.
+Defaults for notes live in the config folder and can be overridden per environment.
+Each notes is validated before it reaches the contributi queue.
 
-Run the buffer check before changing any session limits.
-The schema module keeps cache values in sync with the support cache.
-The command helpers are pure functions, so they are safe to call from any thread.
+Each cluster is validated before it reaches the already queue.
+Keep support and schema names short and lowercase.
+Each route is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Log every metric change
-- Validate route input early
-- Review format limits each release
+- Document new metric fields
+- Review checks limits each release
+- Validate contributi input early
+- Log every cluster change
