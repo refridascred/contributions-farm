@@ -22,13 +22,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            Pending,
-            Idle,
-            Queued,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
