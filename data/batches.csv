@@ -1,10 +1,6 @@
-id,level,state,rank
-1,810,green,blue
-2,573,local,361
-3,74.21,4.29,229
-4,516,open,854
-5,50.88,open,3
-6,194,389,780
-7,45.72,66.82,882
-8,151,green,308
-9,25.19,134,443
+id,count,score
+1,65.17,646
+2,92.57,edge
+3,385,468
+4,primary,759
+5,standard,latest
