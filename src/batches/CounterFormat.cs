@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long BatchCount = 6362;
         public const string BaseGraph = "strict-v2";
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((double)datum >= (double)130)
+                if ((double)count <= (5.1 * 20.0))
                 {
-                    hits = hits + 1;
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a report counter forward.</summary>
