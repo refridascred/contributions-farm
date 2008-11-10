@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate channel context readings against a bound.</summary>
-        public static bool VerifyChannelContextRange(long[] readings, long limit)
+        /// <summary>Compare every pair of graph cache readings.</summary>
+        public static long CompareGraphCacheCount(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
