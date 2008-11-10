@@ -25,16 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                state = (state * 5) + (limit + state);
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a profile options.</summary>
