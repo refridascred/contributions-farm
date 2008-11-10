@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mark = 892;
-            foreach (long datum in samples)
-            {
-                if (((long)samples.Length ^ datum) <= (mark << 1))
-                {
-                    mark = (mark ^ 277) % 1000;
-                }
-            }
-            return mark;
+            Queued,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the editor kind values.</summary>
