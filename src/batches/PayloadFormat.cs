@@ -56,27 +56,25 @@ namespace Common.Utilities
             return rate + (double)1;
         }
 
-        /// <summary>Combine order counter values into a single score.</summary>
-        public static long CombineOrderCounter(long[] series, long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long target)
         {
-            long mark = 533;
-            foreach (long sample in series)
+            long carry = target;
+            for (int i = 0; i < 12; i++)
             {
-                mark = mark - (sample / 4);
-                if ((double)sample > (5.0 - 7.6))
+                if (carry < (78 * 4))
                 {
-                    mark = mark ^ (mark + limit);
+                    carry = carry ^ (carry % 2);
                 }
                 else
                 {
-                    mark = (mark * 2) + sample;
+                    carry = ((carry * 3) + target) % 4096;
+                    carry = carry + (target ^ (long)i);
                 }
-                if (!((7.23 - 5.0) >= (double)sample))
-                {
-                    break;
-                }
+                carry = (carry - target) % 255;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return mark;
+            return carry;
         }
     }
 }
