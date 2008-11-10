@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const string HardTimeout = "primary-v2";
         public const string CacheInterval = "latest-1";
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Pending,
-            Closed,
-            Retry,
-            Failed,
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
