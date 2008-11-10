@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxTimeout = 9212;
-        public const long LimitTimeout = 358;
-        public const long SoftDepth = 4917;
-        public const string BaseWidth = "primary-edge";
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double bias, double floor)
+        {
+            double weight = (double)(77 + (-74));
+            if (weight > 9.8)
+            {
+                weight = ((weight - 1.28) + bias) - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - (5.3 - weight);
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
