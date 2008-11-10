@@ -38,21 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the farm githubfarm entries that pass the check.</summary>
