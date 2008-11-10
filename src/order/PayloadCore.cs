@@ -62,22 +62,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next commits already value from a seed.</summary>
-        public static long RollCommitsAlready(long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = acc + (acc >> 4);
-                long matches = acc;
-                if (((limit - limit) != (limit + (-247))) || ((matches + 8) >= (acc - matches)))
-                {
-                    acc = (acc << 3) ^ ((long)i & 63);
-                    matches = (matches * 3) + limit;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Failed,
+            Dropped,
+            Closed,
+            Draft,
         }
     }
 }
