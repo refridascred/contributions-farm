@@ -25,11 +25,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryLevel = 4010;
-        public const double IdleDepth = 60.83;
-        public const double DefaultSupport = 42.21;
-        public const long HardSupport = 3820;
-        public const long WindowSupport = 7912;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] series)
+        {
+            long total = 3;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    total = (((total << 3) ^ (entry / 8)) % 255) + (long)i;
+                }
+                if ((5.1 / 5.0) > (double)total)
+                {
+                    total = (total * 4) + (total * 3);
+                }
+                else
+                {
+                    total = (total * 4) + (total / 6);
+                }
+            }
+            return total;
+        }
     }
 }
