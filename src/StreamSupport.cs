@@ -22,20 +22,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(((82 + target) < 73) || ((double)target != (double)6)))
+                if ((((long)i / 4) < 0) || ((long)i >= (mix - 26)))
                 {
-                    mark = (mark - (long)i) % 101;
-                    mark = mark - (target + (long)i);
+                    break;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mark;
+            return mix;
         }
     }
 }
