@@ -52,39 +52,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a token payload value against two limits.</summary>
-        public static long GradeTokenPayload(long floor, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] readings)
         {
-            long delta = floor - limit;
-            if ((delta + delta) > (floor - limit))
+            long anchor = 309;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor & 255) > (-29))
+                anchor = ((anchor * 3) + reading) % 255;
+                if ((reading / 8) >= reading)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((delta * 3) == (limit ^ floor)) || ((floor + floor) < delta))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (8.75 <= (double)floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            if (anchor < 1)
+            {
+                anchor = ((anchor * 4) + (584 / 4)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a cache token figure with a bias.</summary>
