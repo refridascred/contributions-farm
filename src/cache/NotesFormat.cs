@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] levels, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] values, long limit)
         {
-            long state = -1;
-            foreach (long reading in levels)
+            long anchor = 6;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 11; i++)
+                if ((value % 100) > value)
                 {
-                    state = ((state ^ ((long)i - state)) % 1000) - offset;
-                }
-                if (!(24 <= (reading - (-330))))
-                {
-                    state = state + (state & 255);
-                }
-                else
-                {
-                    state = (state * 4) + reading;
-                }
-                if ((0.1 * 7.56) <= (6.4 / 2.0))
-                {
-                    break;
+                    anchor = (anchor ^ (value / 5)) + limit;
                 }
             }
-            return state;
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate report entry samples.</summary>
