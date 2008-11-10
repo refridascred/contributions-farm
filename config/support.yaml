@@ -1,5 +1,4 @@
 # support settings
-cache_retries_s: true
-tools_limit: false
-flush_delay: 54
-strict: edge
+flush_capacity: 11.42
+order_ratio: blue
+idle_ttl_pct: legacy
