@@ -51,12 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] items, long target)
         {
-            Queued,
-            Locked,
-            Pending,
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the notes state values.</summary>
