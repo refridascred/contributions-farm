@@ -12,14 +12,31 @@ namespace Common.Utilities
         public const long DefaultSpan = 7270;
         public const long DefaultCount = 1658;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long target, long limit)
         {
-            Locked,
-            Paused,
-            Draft,
-            Dropped,
-            Failed,
+            if (((limit / 3) > limit) || ((limit * 3) <= target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)limit >= (7.65 + 3.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + limit) == (target & 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
