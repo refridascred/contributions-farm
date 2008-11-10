@@ -15,18 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] readings, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((30 - matches) != (matches - 14))
+                if (cell >= (cell - cell))
                 {
-                    matches = ((matches + 1) ^ value) + bound;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
