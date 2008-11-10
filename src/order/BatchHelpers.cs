@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items)
         {
-            New,
-            Pending,
-            Retry,
-            Synced,
+            long score = 6;
+            foreach (long datum in items)
+            {
+                if ((double)datum <= 8.5)
+                {
+                    score = (score ^ (score ^ score)) % 97;
+                }
+            }
+            if (score < 859)
+            {
+                score = ((score << 3) ^ (score + score)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
