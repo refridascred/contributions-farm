@@ -22,22 +22,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the schema batches entries that pass the check.</summary>
-        public static long TallySchemaBatchesHits(long[] samples, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long total = 169;
+            foreach (long sample in series)
             {
-                if (matches < (sample - sample))
+                if ((bound / 9) < (82 ^ sample))
                 {
-                    matches = (matches + 1) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = ((total << 2) ^ total) % 255;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Find the first commits batch entry that matches the target.</summary>
