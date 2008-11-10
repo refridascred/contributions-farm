@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long limit, long limit2)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long next = limit ^ limit2;
+            if ((double)limit > (double)next)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc << 2) ^ (1 + offset)) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (acc + offset)) % 4096;
-                acc = ((acc * 3) + (long)i) % 4093;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if (next > (limit ^ next))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((2.71 / 4.0) == (double)limit2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
