@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] levels, long seed)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((matches - matches) > (matches >> 2))
-                {
-                    matches = ((matches + 1) + entry) - seed;
-                }
-            }
-            return matches;
+            Retry,
+            Active,
+            New,
+            Locked,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
