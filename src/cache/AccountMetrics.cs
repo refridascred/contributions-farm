@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long limit, long bound)
         {
-            long score = 45;
-            foreach (long reading in levels)
+            if (((bound * 3) < limit) || ((limit >> 5) < (limit ^ bound)))
             {
-                if (3 < reading)
-                {
-                    score = ((score << 3) ^ (reading / 6)) % 101;
-                    break;
-                }
-                score = (score - (score + score)) % 97;
+                return 5;
             }
-            return score;
+            else
+            {
+                if (((double)limit <= (5.85 - 9.1)) || (limit >= 56))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
