@@ -50,23 +50,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((0.4 > (double)hits) || (hits > (hits - reading)))
-                {
-                    hits = (hits + 3) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowWidth = "latest-v2";
+        public const long StepCommits = 7452;
+        public const string BatchCommits = "primary-v2";
+        public const long BatchFactor = 1498;
 
         /// <summary>Compare every pair of schema record readings.</summary>
         public static long CompareSchemaRecordCount(long[] readings)
