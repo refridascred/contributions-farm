@@ -1,4 +1,6 @@
 # entry settings
-retry_limit: green
-warm_capacity: 9
-cache_interval_ms: 94
+soft_timeout: standard
+session_threshold: 9558
+sync_size: 27.07
+soft_delay_ms: staging
+warm_size: 52
