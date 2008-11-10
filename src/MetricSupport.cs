@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long offset)
         {
-            Pending,
-            Locked,
-            Stale,
-            Done,
-            Queued,
+            long score = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = ((score * 5) + ((long)i2 - score)) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of checks counter readings.</summary>
