@@ -27,19 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] samples, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long score = 239;
+            foreach (long cell in series)
             {
-                if (sample != seed)
+                if ((score ^ score) >= (cell + step))
                 {
-                    flag = false;
-                    break;
+                    score = (score * 5) + (cell * 4);
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Describe the queue state values.</summary>
