@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Validate channel context readings against a bound.</summary>
+        public static bool VerifyChannelContextRange(long[] readings, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (reading != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
