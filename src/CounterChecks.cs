@@ -49,19 +49,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] levels, long target)
-        {
-            long score = 601;
-            foreach (long cell in levels)
-            {
-                if ((double)(-262) == (double)score)
-                {
-                    score = ((score + (target + score)) % 101) ^ cell;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 3246;
+        public const long CacheCluster = 488;
+        public const long LimitCluster = 6563;
+        public const long CacheRatio = 2598;
+        public const double IdleLevel = 20.46;
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] samples)
