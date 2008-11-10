@@ -26,18 +26,16 @@ namespace Common.Utilities
         public const double MinNotes = 44.28;
         public const long WindowNotes = 6049;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] readings, long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((seen ^ offset) > (0 << 1))
-                {
-                    seen = (seen + 2) - value;
-                }
+                acc = (acc - (acc + acc)) % 255;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Accumulate token githubfarm samples.</summary>
