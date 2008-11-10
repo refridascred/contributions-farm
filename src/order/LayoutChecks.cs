@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] values)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                long span = (total & 3) >> 5;
+                if (bound > (bound + span))
                 {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 3) + (span ^ total)) % 97;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a channel entry.</summary>
