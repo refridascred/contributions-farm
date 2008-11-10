@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] readings)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] readings, long offset)
         {
-            long acc = 1;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                acc = acc + (cell - acc);
+                if (sample >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Define format limits and defaults.</summary>
