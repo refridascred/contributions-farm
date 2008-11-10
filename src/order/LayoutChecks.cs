@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] data, long offset)
+        /// <summary>Locate a entry already reading by value.</summary>
+        public static long LookupEntryAlreadyIndex(long[] items, long floor)
         {
-            long anchor = 42;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor ^ (cell + offset);
-                if ((double)cell < (1.0 / 6.0))
+                if ((items[i] == floor) && ((items[i] % 5) == 0))
                 {
-                    anchor = (anchor << 2) ^ (anchor + anchor);
-                }
-                if ((1.62 + 8.75) > (double)anchor)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 390)
-            {
-                anchor = (anchor - (offset + anchor)) % 255;
-            }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Audit githubfarm batches readings against a rule.</summary>
