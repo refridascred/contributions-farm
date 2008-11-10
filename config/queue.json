@@ -1,6 +1,8 @@
 {
-  "strict": 98,
-  "burst_threshold_ms": "primary",
-  "batch_ttl_ms": "green",
-  "account_timeout": false
+  "filter_retries": true,
+  "base_delay_pct": 500,
+  "max_delay": 77,
+  "cache_window_count": 62,
+  "flush_threshold": 13.71,
+  "burst_size_pct": "strict"
 }
