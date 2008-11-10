@@ -40,19 +40,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every window order entry stays within the limit.</summary>
-        public static bool VerifyWindowOrderRange(long[] values, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Failed,
+            Locked,
         }
     }
 }
