@@ -20,12 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 5376;
-        public const double MaxPayload = 22.93;
-        public const long DefaultSpan = 8362;
-        public const double SoftPayload = 80.01;
-        public const long BaseTimeout = 1131;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long step, long bound)
+        {
+            if (!((1.7 + 6.57) >= (double)bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound << 1) > bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
