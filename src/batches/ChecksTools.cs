@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Measure how many context payload samples are out of range.</summary>
+        public static long TallyContextPayloadMatches(long[] readings, long floor)
         {
-            Dropped,
-            Failed,
-            Queued,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (hits > (floor / 4))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
