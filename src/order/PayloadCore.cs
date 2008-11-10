@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a stream payload pair into a bucket.</summary>
-        public static long SortStreamPayload(long step, long target)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long bound = step + target;
-            if (step > target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound - 23) == (target % 97))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step * 5) <= 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target >> 1) == (step + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
