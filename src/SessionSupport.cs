@@ -28,17 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] data, long floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((data[i] >= floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = (score - (score % 100)) % 255;
+                score = score - ((long)i % 7);
+                score = ((score * 3) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
