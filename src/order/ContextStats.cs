@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Failed,
-            Ready,
-            Idle,
-            Stale,
-            Paused,
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
