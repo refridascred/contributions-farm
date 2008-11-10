@@ -36,31 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a counter session pair into a bucket.</summary>
-        public static long SortCounterSession(long origin, long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            if ((double)origin < 19.0)
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit <= (limit - origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin <= (limit * 2)) && ((origin * 4) < (1 % 24)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Done,
+            Idle,
+            Queued,
         }
 
         /// <summary>Accumulate schema samples.</summary>
