@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseLevel = 8724;
-        public const long LimitSession = 7250;
-        public const string BatchDepth = "cached-1";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryCount = 28.11;
+        public const long BaseStream = 2548;
+        public const long StepWidth = 7595;
+        public const double BurstFactor = 21.49;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string RetryCounter = "standard";
