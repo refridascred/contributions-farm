@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double gain, double floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] levels)
         {
-            double rate = (double)(0 & 3);
-            if (rate < 0.37)
+            long carry = -499;
+            foreach (long reading in levels)
             {
-                rate = (rate - (double)657) + gain;
+                if ((carry + carry) >= (carry - reading))
+                {
+                    carry = (carry ^ (reading % 2)) % 1000;
+                }
             }
-            return rate + floor;
+            return carry % 97;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
