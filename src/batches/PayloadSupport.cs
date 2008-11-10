@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long MaxEditor = 2899;
         public const long IdleEditor = 432;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] readings, long step)
+        /// <summary>Compare every pair of format window readings.</summary>
+        public static long PairFormatWindowCount(long[] levels)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item + step) > (step + step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] - levels[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a notes stats.</summary>
