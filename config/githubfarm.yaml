@@ -1,7 +1,5 @@
 # githubfarm settings
-batch_window_count: 250
-window_retries: open
-report_retries: 14.03
-sync_window_s: true
-default_window_pct: 14.01
-stream_delay: 500
+idle_depth: true
+stream_threshold: green
+format_window: legacy
+readonly: 54.52
