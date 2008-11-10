@@ -35,13 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
