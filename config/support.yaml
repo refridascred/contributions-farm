@@ -1,10 +1,12 @@
 # support settings
-retry_interval_ms: 83.22
-sync_ratio_count:
-  - 15
-  - 305
-  - 442
-  - 61
-batch_ratio_s: true
-farm_window: 9300
-burst_threshold_pct: 4074
+idle_size:
+  warm_delay: blue
+  record_threshold: true
+  max_ttl_count: 86.32
+  cluster_size:
+    soft_depth: 1311
+    notes_timeout: strict
+    batches_ttl: strict
+    cache_size: 1024
+max_retries_count: staging
+poll_threshold_count: staging
