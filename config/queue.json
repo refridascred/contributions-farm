@@ -1,5 +1,5 @@
 {
-  "batch_timeout_ms": "cached",
-  "strict": "green",
-  "warm_capacity_pct": false
+  "cache_capacity": 8914,
+  "batch_window": true,
+  "account_window": "staging"
 }
