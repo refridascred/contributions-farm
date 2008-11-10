@@ -60,21 +60,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up buffer report samples.</summary>
-        public static long CompareBufferReportCount(long[] series)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 9;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = (mix + (reading & 255)) % 101;
+                if ((double)reading < (0.02 + 5.86))
                 {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return mix % 65521;
         }
     }
 }
