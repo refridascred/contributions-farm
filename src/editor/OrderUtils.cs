@@ -38,39 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stream cache pair into a bucket.</summary>
-        public static long ClassifyStreamCache(long origin, long origin2)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] levels, long limit)
         {
-            long bound = origin ^ origin2;
-            if ((origin <= (origin / 3)) && ((origin2 << 3) <= origin))
+            long score = 310;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin2 - bound) < (origin / 6))
+                if ((14.0 + 11.0) >= (7.6 * 4.8))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (735 <= (origin2 >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8.0 * 19.0) < (double)bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    score = ((score * 4) + (score * 2)) ^ reading;
                 }
             }
+            if (score < 4)
+            {
+                score = ((score * 2) + (limit - limit)) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the session status values.</summary>
