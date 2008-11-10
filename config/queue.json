@@ -1,6 +1,5 @@
 {
-  "batch_limit_s": 1986,
-  "enabled": 70.38,
-  "batch_ratio": "strict",
-  "farm_capacity": false
+  "sync_window": true,
+  "sync_ttl_ms": "edge",
+  "editor_limit": "staging"
 }
