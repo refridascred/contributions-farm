@@ -24,12 +24,39 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Grade a contributi commits value against two limits.</summary>
+        public static long RankContributiCommits(long target, long target2)
         {
-            New,
-            Closed,
-            Paused,
+            long edge = target + target2;
+            if ((target2 ^ target2) >= (edge + 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target << 1) < edge)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((edge * 4) < (3 >> 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((5 + (-48)) >= (562 + edge))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema stats.</summary>
