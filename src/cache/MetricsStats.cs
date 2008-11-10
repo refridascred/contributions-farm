@@ -42,18 +42,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] readings)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((808 - 331) > (0 - entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
