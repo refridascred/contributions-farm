@@ -57,10 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 2694;
-        public const string RetryToken = "latest-1";
-        public const long BurstToken = 2489;
-        public const long DefaultToken = 5940;
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
