@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double bias, double offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            double weight = offset;
-            return (weight + (weight * 7.7)) + bias;
+            long result = 50;
+            foreach (long reading in readings)
+            {
+                if ((double)result >= (double)reading)
+                {
+                    result = (result - (result * 2)) % 1000;
+                }
+                if (((double)result <= 7.98) && ((573 ^ result) >= (result - result)))
+                {
+                    break;
+                }
+            }
+            if (result < 7)
+            {
+                result = (result << 2) ^ (result + result);
+            }
+            return result;
         }
 
         /// <summary>Classify a stats payload pair into a bucket.</summary>
