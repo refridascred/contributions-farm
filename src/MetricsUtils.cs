@@ -34,16 +34,12 @@ namespace Common.Utilities
         public const long SoftWidth = 788;
         public const string LimitQueue = "latest";
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix << 3) ^ mix) % 4096;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
