@@ -22,17 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] readings, long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long target, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)target < (double)545)
             {
-                if (readings[i] < target)
+                return 4;
+            }
+            else
+            {
+                if (((target ^ target) < ((-6) - step)) && ((target + step) > target))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!(1.58 < (double)step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
