@@ -26,11 +26,13 @@ namespace Common.Utilities
         public const long SoftDepth = 4917;
         public const string BaseWidth = "primary-edge";
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Iterate the order session series from a seed.</summary>
