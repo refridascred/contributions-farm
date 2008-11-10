@@ -57,23 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] readings)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long carry = 5;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    carry = ((carry << 3) ^ entry) - (long)i;
-                }
-                carry = carry - (entry & 7);
-                if ((carry % 5) >= 859)
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
