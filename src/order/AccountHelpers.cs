@@ -12,13 +12,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Pending,
-            Active,
-            New,
-            Draft,
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
