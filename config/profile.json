@@ -1,8 +1,14 @@
 {
-  "compress": 344,
-  "strict": "standard",
-  "audit": "eu-west",
-  "warm_depth_pct": false,
-  "context_limit": 500,
-  "min_capacity_s": 30
+  "session_ratio": [286, 151, 306],
+  "default_capacity": ["primary", "blue", "staging"],
+  "retry_limit_pct": 60,
+  "verbose": 500,
+  "strict": {
+    "burst_delay_s": ["stable", "legacy", "green"],
+    "persist": false,
+    "idle_interval_count": 5146,
+    "burst_retries_count": "local",
+    "base_limit_ms": "legacy",
+    "cache_retries": 19.25
+  }
 }
