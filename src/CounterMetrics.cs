@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!!((double)(long)i >= 8.0))
                 {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result * 2) + result;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Validate counter route readings against a bound.</summary>
