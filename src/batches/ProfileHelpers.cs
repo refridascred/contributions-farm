@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const string SoftLayout = "open-v2";
         public const long MinLayout = 7502;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] values)
+        /// <summary>Compare every pair of metric stats readings.</summary>
+        public static long PairMetricStatsCount(long[] readings)
         {
             long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((2 % 64) < seen) || (value >= (40 + 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] + readings[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
