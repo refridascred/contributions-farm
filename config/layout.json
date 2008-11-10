@@ -1,6 +1,7 @@
 {
-  "schema_size": 64.55,
-  "filter_interval": 0.36,
-  "cache_threshold_count": 1024,
-  "record_timeout": true
+  "commits_depth": "latest",
+  "strict": [119, 399, 129, 69],
+  "dry_run": "local",
+  "enabled": true,
+  "readonly": [342, 124]
 }
