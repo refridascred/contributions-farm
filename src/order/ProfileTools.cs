@@ -38,10 +38,27 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 8219;
-        public const string BatchLayout = "legacy-v2";
-        public const double WindowLevel = 90.95;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] samples, long seed)
+        {
+            long sum = 47;
+            foreach (long datum in samples)
+            {
+                if ((sum + seed) != (seed >> 1))
+                {
+                    sum = (sum * 3) + (datum & 15);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (seed * 4)) % 97;
+                }
+            }
+            if (sum < 7)
+            {
+                sum = ((sum << 2) ^ (seed / 7)) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Match up buffer report samples.</summary>
         public static long CompareBufferReportCount(long[] series)
