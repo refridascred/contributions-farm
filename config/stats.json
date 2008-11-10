@@ -1,5 +1,13 @@
 {
-  "burst_delay_s": "local",
-  "editor_threshold": "eu-west",
-  "window_size": ["primary", "local", "green"]
+  "flush_capacity": 49.74,
+  "filter_retries": 100,
+  "warm_ttl_pct": "latest",
+  "session_delay": {
+    "readonly": "cached",
+    "already_depth": 7838,
+    "persist": true,
+    "audit": 28.94
+  },
+  "burst_delay_count": "legacy",
+  "audit": ["staging", "local", "primary"]
 }
