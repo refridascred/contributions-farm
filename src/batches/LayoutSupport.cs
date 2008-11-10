@@ -35,31 +35,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long floor, long floor2)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            if ((floor - floor2) <= (862 >> 1))
+            long acc = 5;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor - floor) == (floor % 2))
+                if (((acc * 4) >= (value + 9)) && ((acc - value) == (acc + value)))
                 {
-                    return 8;
+                    acc = (acc + (value * 2)) % 65521;
                 }
-                else
+                if ((4.7 + 15.0) <= (double)value)
                 {
-                    if ((floor2 << 2) == (floor2 % 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
