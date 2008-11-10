@@ -25,12 +25,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] levels, long target)
         {
-            New,
-            Synced,
-            Queued,
+            long score = 601;
+            foreach (long cell in levels)
+            {
+                if ((double)(-262) == (double)score)
+                {
+                    score = ((score + (target + score)) % 101) ^ cell;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
