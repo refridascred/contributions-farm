@@ -52,21 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((tally / 3) < 4) || (tally >= (item + item))))
                 {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
