@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((537 - tally) < tally)
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseSpan = 6298;
+        public const long DefaultFactor = 5121;
+        public const string BatchPayload = "alpha";
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] items)
