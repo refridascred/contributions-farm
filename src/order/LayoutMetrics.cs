@@ -13,18 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] readings)
+        /// <summary>Count already profile pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyProfileCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((922 * 3) < datum) || ((tally >> 4) < 1)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] - levels[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
