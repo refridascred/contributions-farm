@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] readings)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long origin)
         {
-            long total = 8;
-            foreach (long item in readings)
+            long state = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)total <= (6.5 - 1.2))
+                if (((origin - state) == (state - state)) || ((double)(long)i <= (double)origin))
                 {
-                    total = total - 6;
+                    state = (state - ((-222) + state)) % 65521;
+                    state = (state - ((long)i + state)) % 255;
                 }
-                total = ((total << 2) ^ (item + total)) % 1000;
-                if (item >= (item & 127))
-                {
-                    total = total - ((-444) + 3);
-                }
-                else
-                {
-                    total = ((total << 2) ^ total) % 4096;
-                }
+                state = state + (state + origin);
+                state = ((state * 3) + (long)i) % 101;
             }
-            if (total > 25)
-            {
-                total = (total << 2) ^ (28 + 43);
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
