@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=89
-log "limit is ${CHANNEL_LIMIT}"
+for item in edge cached green; do
+    log "checking ${item}"
+done
 
-mode="${1:-cached}"
+mode="${1:-fallback}"
 case "${mode}" in
-    blue)
+    staging)
         log "fast path"
         ;;
     *)
