@@ -27,12 +27,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] levels)
         {
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
+            long carry = 43;
+            foreach (long sample in levels)
+            {
+                carry = (((carry << 2) ^ (720 >> 2)) % 65521) + sample;
+            }
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
