@@ -1,8 +1,8 @@
-id,region,label,level,score
-1,572,606,607,90.92
-2,61.84,green,784,strict
-3,335,583,edge,15.26
-4,blue,strict,348,211
-5,41.28,4.94,primary,23.3
-6,70,707,797,498
-7,475,79.14,75.73,latest
+id,label,weight,score
+1,973,949,113
+2,635,306,343
+3,edge,315,open
+4,88,495,55.67
+5,41.78,fallback,edge
+6,58.85,latest,edge
+7,968,64.67,cached
