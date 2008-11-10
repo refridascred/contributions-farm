@@ -27,15 +27,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Check that every support format entry stays within the limit.</summary>
