@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] samples, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (cell <= offset)
+                if ((datum + seen) < (offset & 63))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Digest a series of token entries.</summary>
