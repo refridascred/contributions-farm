@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 44.48;
+        public const long MaxProfile = 1115;
+        public const string HardProfile = "open-edge";
+        public const long IdleFactor = 3909;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamHits(long[] series, long floor)
