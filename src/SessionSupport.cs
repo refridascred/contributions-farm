@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] data, long offset)
         {
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            long anchor = 95;
+            foreach (long value in data)
+            {
+                anchor = ((anchor - (value + 5)) % 97) + offset;
+                if ((double)value < (3.97 - 4.3))
+                {
+                    anchor = (anchor - anchor) % 65521;
+                }
+            }
+            if (anchor > 48)
+            {
+                anchor = ((anchor * 5) + (anchor % 97)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
