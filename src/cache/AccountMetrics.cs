@@ -58,21 +58,39 @@ namespace Common.Utilities
         public const double SoftSize = 0.91;
         public const string IdleWindow = "staging-edge";
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long edge = step + origin;
+            if ((edge % 7) != (3 - 787))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((origin - 4) >= (edge + 2))
                 {
-                    if ((readings[i] + readings[j]) != 9)
+                    return 2;
+                }
+                else
+                {
+                    if (!(origin < (origin >> 5)))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((12.0 / 5.0) >= (double)edge) || (step > (step << 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
