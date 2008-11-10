@@ -37,32 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long offset, long seed)
+        /// <summary>Find the first buffer filter entry that matches the target.</summary>
+        public static long LocateBufferFilterIndex(long[] values, long origin)
         {
-            long cur = offset - seed;
-            if ((seed + seed) >= offset)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(9.0 >= (double)cur))
+                if (values[i] > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset - cur) > 78) && ((offset / 2) == (seed >> 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
