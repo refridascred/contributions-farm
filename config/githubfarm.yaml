@@ -1,7 +1,9 @@
 # githubfarm settings
-hard_size: 7.08
-retry_timeout: 23.83
-min_ttl_s: 60
-idle_ratio: 250
-burst_interval_ms: 25
-flush_window_ms: 60
+strict: green
+route_ratio: true
+hard_threshold:
+  - 389
+  - 257
+retry_timeout: edge
+dry_run: true
+burst_retries: 1213
