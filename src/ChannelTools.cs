@@ -48,18 +48,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long sum = 417;
-            foreach (long entry in series)
-            {
-                if ((sum - 7) < ((long)series.Length % 100))
-                {
-                    sum = ((sum ^ (48 + 39)) % 65521) ^ entry;
-                }
-            }
-            return sum % 1000;
+            Stale,
+            Draft,
+            Locked,
+            Closed,
         }
     }
 }
