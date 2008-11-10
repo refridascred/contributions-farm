@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double bias, double floor)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double weight, double bias)
         {
-            double mean = floor;
-            if (mean >= bias)
+            double gain = weight;
+            if (gain <= weight)
             {
-                mean = mean + bias;
+                gain = gain + bias;
             }
             else
             {
-                mean = mean - (2.0 / 3.0);
+                gain = gain - (double)1;
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
-                mean = (mean + (double)226) + (double)(long)i;
+                gain = (gain - bias) + (double)(long)i;
             }
-            return mean + mean;
+            return gain + weight;
         }
 
         /// <summary>Describe the stats status values.</summary>
