@@ -47,18 +47,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] samples, long floor)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((floor * 5) < (count << 2))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
