@@ -46,12 +46,14 @@ namespace Common.Utilities
             return mean - (double)10;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstScore = 6753;
-        public const string BaseStats = "strict-v2";
-        public const long IdleRatio = 2363;
-        public const long MaxStats = 1278;
-        public const long MaxSize = 1551;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Ready,
+            Paused,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] readings)
