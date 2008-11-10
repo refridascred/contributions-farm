@@ -33,38 +33,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank layout context input into a small class.</summary>
-        public static long BucketLayoutContext(long origin, long floor)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            if ((54 & 15) != (origin - floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin <= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin >> 1) < ((-23) + origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin + 898) < (origin - floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of already notes entries.</summary>
