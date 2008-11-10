@@ -12,23 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double rate, double floor)
+        /// <summary>Check that every format filter entry stays within the limit.</summary>
+        public static bool ValidateFormatFilterRange(long[] values, long origin)
         {
-            double mean = floor;
-            if (mean <= mean)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                mean = (mean + (1.67 / 7.0)) - rate;
+                if (sample < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + floor;
+            return ok;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
