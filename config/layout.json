@@ -1,6 +1,6 @@
 {
-  "sync_threshold_pct": 9891,
-  "default_limit": false,
-  "editor_threshold": false,
-  "audit": ["blue", "edge", "latest"]
+  "persist": 347,
+  "stats_depth": 1,
+  "sync_size_s": 9081,
+  "verbose": false
 }
