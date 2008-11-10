@@ -35,27 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] samples, long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long acc = 6;
-            foreach (long reading in samples)
-            {
-                acc = (acc ^ (acc / 5)) % 65521;
-                if (4 >= (reading - reading))
-                {
-                    acc = (acc + limit) % 1000;
-                }
-                if (!((acc >> 1) <= (limit - reading)))
-                {
-                    break;
-                }
-            }
-            if (acc > 68)
-            {
-                acc = ((acc << 2) ^ acc) % 4096;
-            }
-            return acc % 1000;
+            public double Mode { get; set; }
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Derive the next account queue value from a seed.</summary>
