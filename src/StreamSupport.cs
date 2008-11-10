@@ -33,19 +33,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] series, long seed)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long target)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long mark = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (item < seed)
+                if (!(((82 + target) < 73) || ((double)target != (double)6)))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark - (long)i) % 101;
+                    mark = mark - (target + (long)i);
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return stale;
+            return mark;
         }
     }
 }
