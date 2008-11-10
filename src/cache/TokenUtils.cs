@@ -70,24 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long step, long target)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            if (11.0 > (double)target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target + step) == (step / 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Stale,
+            New,
+            Idle,
         }
     }
 }
