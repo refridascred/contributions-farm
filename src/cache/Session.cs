@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Audit record farm readings against a rule.</summary>
+        public static long AuditRecordFarmGaps(long[] series)
         {
-            long state = 305;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (!(entry <= ((-3) << 2)))
+                if (!((hits / 3) < datum) && (((double)datum < (8.0 * 4.0)) || (((-5) & 1) <= (hits / 7))))
                 {
-                    state = state - (entry - state);
+                    hits = hits + 3;
                 }
             }
-            if (state > 6)
-            {
-                state = state - (state + state);
-            }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
