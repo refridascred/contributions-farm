@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const double RetryStats = 45.11;
         public const string DefaultStats = "fallback-1";
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 7325;
+        public const string CacheFactor = "staging-1";
+        public const long SoftInterval = 8266;
+        public const double DefaultAlready = 6.16;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionOutliers(long[] series, long bound)
