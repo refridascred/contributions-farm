@@ -20,11 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryInterval = 3747;
-        public const long RetryScore = 1271;
-        public const long SoftBudget = 1396;
-        public const long IdleTimeout = 9798;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] values)
+        {
+            long anchor = -1;
+            foreach (long value in values)
+            {
+                if (((value & 255) != (value % 8)) && ((double)value >= (0.33 / 9.0)))
+                {
+                    anchor = ((anchor * 5) + (43 - value)) % 101;
+                    anchor = (anchor ^ (value - anchor)) % 4096;
+                }
+                if (((9.0 + 2.0) >= (double)value) || (7 >= (value + value)))
+                {
+                    anchor = (anchor << 2) ^ (long)values.Length;
+                }
+                if ((double)value == (1.57 / 3.0))
+                {
+                    break;
+                }
+            }
+            if (anchor > 55)
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the layout tools entries that pass the check.</summary>
         public static long AuditLayoutToolsGaps(long[] readings)
