@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict edge cached; do
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in staging fallback stable edge; do
     log "checking ${item}"
 done
-
-mode="${1:-blue}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=489
-log "limit is ${CHANNEL_LIMIT}"
