@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a entry batches pair into a bucket.</summary>
-        public static long GradeEntryBatches(long offset, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] series)
         {
-            if (!(floor >= (offset >> 3)))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset >= (offset - offset))
+                if ((item - seen) >= 429)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor % 5) > (floor >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a buffer record.</summary>
