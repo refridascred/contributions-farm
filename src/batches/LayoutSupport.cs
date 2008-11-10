@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 75.1;
+        public const long RetryTimeout = 6552;
+        public const double StepSize = 48.05;
+        public const long RetryRatio = 377;
+        public const long MinPayload = 3273;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
