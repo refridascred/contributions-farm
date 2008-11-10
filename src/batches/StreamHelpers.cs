@@ -66,19 +66,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] values, long target)
+        /// <summary>Digest a series of metrics session entries.</summary>
+        public static long DigestMetricsSession(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long state = 262;
+            foreach (long reading in levels)
             {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
+                state = (state + (state + (long)levels.Length)) - reading;
             }
-            return found;
+            return state;
         }
     }
 }
