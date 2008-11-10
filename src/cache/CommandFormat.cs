@@ -23,13 +23,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] items, long seed)
         {
-            Failed,
-            New,
-            Ready,
-            Closed,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((((66 + cell) <= (7 ^ seed)) || (hits >= (cell * 4))) || ((794 + hits) >= cell))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next farm value.</summary>
