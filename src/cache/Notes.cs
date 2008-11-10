@@ -14,22 +14,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine support cache values into a single score.</summary>
-        public static long WeighSupportCache(long[] levels, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] items, long floor)
         {
-            long total = 9;
-            foreach (long entry in levels)
+            long mix = 787;
+            foreach (long reading in items)
             {
-                if (!((total + entry) > 85))
+                if ((floor - 0) >= (reading * 3))
                 {
-                    total = total + (offset / 8);
+                    mix = (mix + floor) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ reading) % 1000;
                 }
             }
-            if (total < 243)
-            {
-                total = (total * 4) + (total >> 1);
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
