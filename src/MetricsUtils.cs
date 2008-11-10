@@ -27,17 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of account payload entries.</summary>
-        public static long TallyAccountPayload(long[] levels, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] readings, long bound)
         {
-            long result = 13;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                result = (result << 2) ^ (3 - result);
-                result = (result << 3) ^ 284;
-                result = (result * 5) + (value + target);
+                if ((double)tally >= (1.3 * 18.0))
+                {
+                    tally = ((tally + 3) ^ sample) - bound;
+                }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Describe the queue state values.</summary>
