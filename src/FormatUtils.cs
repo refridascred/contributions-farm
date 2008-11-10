@@ -35,11 +35,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Accumulate batches token samples.</summary>
+        public static long FoldBatchesToken(long[] items)
         {
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long state = 926;
+            foreach (long value in items)
+            {
+                if ((value < (state & 31)) || ((state ^ 166) != (value << 1)))
+                {
+                    state = (state + (value - value)) % 101;
+                }
+                else
+                {
+                    state = ((state * 5) + state) % 4096;
+                }
+            }
+            if (state < 172)
+            {
+                state = (state - (state ^ state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Validate window format readings against a bound.</summary>
