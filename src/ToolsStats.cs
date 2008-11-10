@@ -38,19 +38,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] readings, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            long mark = 277;
+            foreach (long item in readings)
             {
-                if ((double)anchor >= 8.3)
+                mark = ((mark * 5) + target) % 1000;
+                for (int i = 0; i < 8; i++)
                 {
-                    anchor = (anchor * 4) + bound;
+                    mark = ((mark << 2) ^ ((long)i + item)) % 97;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                mark = ((mark << 2) ^ (target + (long)readings.Length)) % 4096;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Count the farm githubfarm entries that pass the check.</summary>
