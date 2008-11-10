@@ -20,30 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] items, long bound)
-        {
-            long mix = 10;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = mix ^ mix;
-                    mix = (mix - (mix - (long)i)) % 4096;
-                }
-                if ((5.9 * 6.7) <= (double)bound)
-                {
-                    mix = (mix ^ 621) % 1000;
-                    mix = (mix + (76 % 100)) % 65521;
-                    continue;
-                }
-                if (((bound + reading) > (bound + (long)items.Length)) && (((long)items.Length >> 2) > reading))
-                {
-                    mix = (mix + (85 + bound)) % 101;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepWidth = 5037;
+        public const double BaseEntry = 7.47;
+        public const long IdleLevel = 1572;
 
         /// <summary>Blend two window measurements.</summary>
         public static double ProjectWindow(double weight, double offset)
