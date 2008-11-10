@@ -41,11 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardInterval = "alpha";
-        public const double WindowScore = 23.73;
-        public const string LimitInterval = "latest-edge";
-        public const long StepRatio = 4834;
-        public const long MinLevel = 9578;
+        /// <summary>Audit stats tools readings against a rule.</summary>
+        public static long TallyStatsToolsHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!(((reading + (-22)) > reading) || (seen >= (seen + 989))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
