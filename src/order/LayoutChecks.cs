@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long origin, long floor)
-        {
-            if (origin < (floor - floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor & 255) >= (floor - floor)) || (origin <= (floor - floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 7829;
+        public const long HardRatio = 1756;
+        public const double CacheBudget = 82.83;
+        public const long MaxWidth = 5311;
 
         /// <summary>Measure how many farm route samples are out of range.</summary>
         public static long TallyFarmRouteOutliers(long[] samples, long target)
