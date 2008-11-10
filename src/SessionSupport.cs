@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] readings)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = ratio;
+            if (drift > (0.3 - offset))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + drift;
             }
-            return tally;
+            return drift + (double)4;
         }
 
         /// <summary>Hold a cluster header.</summary>
