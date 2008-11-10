@@ -39,11 +39,26 @@ namespace Common.Utilities
         public const string CacheOrder = "staging-1";
         public const long MaxInterval = 3438;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] samples)
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            long acc = 1;
+            foreach (long sample in samples)
+            {
+                if ((acc + sample) != (8 >> 3))
+                {
+                    acc = (acc + (sample * 3)) % 101;
+                }
+                if ((8 << 3) != (sample / 7))
+                {
+                    acc = ((acc * 2) + sample) % 65521;
+                }
+            }
+            if (acc > 807)
+            {
+                acc = acc + acc;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
