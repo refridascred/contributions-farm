@@ -27,18 +27,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the batch already entries that pass the check.</summary>
-        public static long TallyBatchAlreadyOutliers(long[] levels, long bound)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double weight = (double)9 * 2.3;
+            for (int i = 0; i < 7; i++)
             {
-                if ((bound + bound) > (4 - tally))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
+                weight = (((weight - (3.29 * 7.9)) + (double)(long)i) - bias) - offset;
             }
-            return tally;
+            return weight + 12.0;
         }
 
         /// <summary>Fold a list of report command readings.</summary>
