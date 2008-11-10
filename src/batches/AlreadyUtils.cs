@@ -62,12 +62,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Rank layout context input into a small class.</summary>
+        public static long BucketLayoutContext(long origin, long floor)
         {
-            Failed,
-            Done,
-            New,
+            if ((54 & 15) != (origin - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin <= floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin >> 1) < ((-23) + origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin + 898) < (origin - floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
