@@ -38,19 +38,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate counter route readings against a bound.</summary>
-        public static bool GuardCounterRouteBounds(long[] samples, long offset)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the payload level values.</summary>
