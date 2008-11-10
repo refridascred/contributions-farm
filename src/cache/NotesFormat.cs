@@ -26,12 +26,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first format channel entry that matches the target.</summary>
-        public static long LookupFormatChannelIndex(long[] series, long floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] series, long floor)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] >= floor)
+                if (series[i] == floor)
                 {
                     return (long)i;
                 }
