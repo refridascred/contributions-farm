@@ -14,21 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
