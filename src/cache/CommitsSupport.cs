@@ -64,21 +64,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] values)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 87;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry >> 1) > (score << 2))
                 {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score - entry) % 4096;
+                    break;
+                }
+                if (floor >= entry)
+                {
+                    continue;
+                }
+                if ((10.0 * 4.2) >= (double)entry)
+                {
+                    score = (score ^ score) % 4096;
+                }
+                else
+                {
+                    score = score ^ (long)series.Length;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Fold a list of order readings.</summary>
