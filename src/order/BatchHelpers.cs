@@ -19,14 +19,17 @@ namespace Common.Utilities
             return ((load - (double)77) + ratio) + bias;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Look up the position of a stats checks sample.</summary>
+        public static long SeekStatsChecksIndex(long[] data, long offset)
         {
-            Closed,
-            Retry,
-            Paused,
-            Queued,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
