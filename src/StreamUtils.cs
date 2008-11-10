@@ -72,19 +72,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] data, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long acc = 3;
+            foreach (long reading in samples)
             {
-                if (cell > origin)
+                if (!((acc << 2) >= bound))
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc + bound) % 97) ^ reading;
                 }
             }
-            return ready;
+            if (acc > (-192))
+            {
+                acc = (acc - acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Scale a commits account figure with a bias.</summary>
