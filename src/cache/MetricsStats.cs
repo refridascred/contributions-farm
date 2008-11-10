@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many already support samples are out of range.</summary>
-        public static long TallyAlreadySupportGaps(long[] items, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long acc = 1;
+            foreach (long cell in readings)
             {
-                if ((origin ^ (long)items.Length) != (7 / 3))
-                {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = acc + (cell - acc);
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
