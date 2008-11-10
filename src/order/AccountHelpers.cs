@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long SoftRatio = 2028;
         public const long BurstDepth = 8409;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] samples, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] samples, long seed)
         {
-            long tally = 0;
+            long matches = 0;
             foreach (long reading in samples)
             {
-                if (bound >= (34 - (-93)))
+                if ((matches + 0) < matches)
                 {
-                    tally = (tally + 2) + reading;
+                    matches = ((matches + 1) + reading) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
