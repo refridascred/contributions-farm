@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long SoftBudget = 1396;
         public const long IdleTimeout = 9798;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] items, long step)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Queued,
+            Retry,
         }
     }
 }
