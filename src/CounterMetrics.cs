@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a notes batch figure with a bias.</summary>
-        public static double BlendNotesBatch(double rate, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] samples)
         {
-            double weight = rate - (rate - floor);
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                weight = (weight - weight) - (double)(long)i;
+                if (tally >= (datum >> 2))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight - (double)5;
+            return tally;
         }
 
         /// <summary>Find the first payload order entry that matches the target.</summary>
