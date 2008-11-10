@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit filter entry readings against a rule.</summary>
-        public static long TallyFilterEntryHits(long[] levels)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (!((double)matches == (19.0 * 4.74)))
+                if (cell < seed)
                 {
-                    matches = (matches + 2) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Measure how many report filter samples are out of range.</summary>
