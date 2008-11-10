@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] levels, long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] items, long floor)
         {
-            long result = -486;
-            foreach (long value in levels)
+            long mark = -51;
+            foreach (long datum in items)
             {
-                result = (((result + result) % 4096) - value) - origin;
+                if ((91 - mark) != (mark + floor))
+                {
+                    mark = ((mark ^ (floor << 1)) % 65521) ^ datum;
+                }
             }
-            if (result < 75)
+            if (mark > 319)
             {
-                result = ((result << 2) ^ (result / 2)) % 255;
+                mark = mark - (mark ^ mark);
             }
-            return result;
+            return mark % 4096;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
