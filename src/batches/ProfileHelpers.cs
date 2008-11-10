@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 83.09;
-        public const string BurstInterval = "legacy-v2";
-        public const string SoftLayout = "open-v2";
-        public const long MinLayout = 7502;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            New,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Compare every pair of metric stats readings.</summary>
         public static long PairMetricStatsCount(long[] readings)
