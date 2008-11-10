@@ -39,15 +39,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Locked,
-            Failed,
-            Ready,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 5999;
+        public const long HardSize = 5761;
+        public const long BatchInterval = 5637;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
