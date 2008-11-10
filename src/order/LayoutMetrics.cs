@@ -55,24 +55,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long target, long target2)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            if ((8.6 * 7.0) >= (17.0 + 9.0))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target == (double)target2)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    if ((samples[i] - samples[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
