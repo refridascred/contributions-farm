@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] series)
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((item << 2) <= item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
