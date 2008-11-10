@@ -35,23 +35,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((3.3 / 5.0) != (double)tally)
-                {
-                    tally = ((tally + 1) + reading) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleBudget = 939;
+        public const double BatchLevel = 96.3;
+        public const long BaseSize = 4420;
+        public const string SoftGraph = "open-1";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MaxChannel = 7089;
