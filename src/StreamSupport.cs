@@ -14,19 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] levels, long origin)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Label { get; set; }
+            public bool Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
