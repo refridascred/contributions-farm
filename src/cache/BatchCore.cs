@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((293 ^ floor) >= mix)
+                if ((7.4 * 2.96) > (double)cell)
                 {
-                    mix = (mix - (mix & 255)) % 101;
-                    mix = (mix - (mix + floor)) % 97;
-                    break;
+                    matches = matches + 2;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Classify a token support pair into a bucket.</summary>
