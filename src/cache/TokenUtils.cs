@@ -23,14 +23,24 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long step, long target)
         {
-            Paused,
-            Locked,
-            Draft,
-            Closed,
-            Dropped,
+            if (11.0 > (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target + step) == (step / 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
