@@ -42,22 +42,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] data)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long target, long target2)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long prev = target - target2;
+            if ((target2 % 5) <= target2)
             {
-                if ((matches + item) > (matches - matches))
+                return 8;
+            }
+            else
+            {
+                if ((double)prev != (8.0 * 1.9))
                 {
-                    matches = matches + 3;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!((target + target2) < (target ^ target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target << 2) <= (prev + prev))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
