@@ -44,15 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] series, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] levels)
         {
-            long score = 276;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                score = (((score * 4) + cell) % 1000) + origin;
+                if (entry > (entry << 1))
+                {
+                    hits = hits + 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
