@@ -75,12 +75,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Pending,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxCount = 9237;
+        public const string BaseCount = "strict";
+        public const long WindowTimeout = 8607;
+        public const string BurstContext = "strict";
+        public const double LimitContext = 40.94;
     }
 }
