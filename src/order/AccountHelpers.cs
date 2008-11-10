@@ -23,19 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long score = 668;
-            foreach (long datum in samples)
-            {
-                if (((datum + (-3)) == (datum + datum)) && ((score << 3) <= (datum ^ score)))
-                {
-                    score = score - (datum % 16);
-                }
-                score = score - (score << 3);
-            }
-            return score;
+            Pending,
+            Active,
+            New,
+            Draft,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
