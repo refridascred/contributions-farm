@@ -33,18 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] items, long bound)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((hits ^ sample) == ((-1) + 318))
+                if ((double)result != (20.0 - 3.0))
                 {
-                    hits = (hits + 2) - bound;
+                    result = ((result << 3) ^ (result + result)) % 255;
                 }
+                result = (result << 3) ^ 70;
+                result = result - (result - result);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
     }
 }
