@@ -44,13 +44,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Locked,
-            New,
-            Draft,
-            Synced,
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the buffer level values.</summary>
