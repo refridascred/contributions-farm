@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long LimitRatio = 8611;
         public const long HardPayload = 2913;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinLevel = 4945;
-        public const long BurstLevel = 5408;
-        public const double HardSupport = 44.69;
-        public const long WindowBudget = 2306;
-        public const long BatchSize = 6042;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a context notes reading by value.</summary>
         public static long SeekContextNotesIndex(long[] series, long limit)
