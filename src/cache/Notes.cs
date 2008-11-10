@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 9283;
-        public const double BurstWidth = 4.0;
-        public const long LimitRatio = 8611;
-        public const long HardPayload = 2913;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long SeekFarmIndex(long[] samples, long limit)
