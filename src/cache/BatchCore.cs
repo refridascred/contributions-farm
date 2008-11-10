@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] levels, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] readings, long origin)
         {
-            long acc = 4;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((seed + acc) <= (acc + 863))
+                if (item <= origin)
                 {
-                    acc = (((acc << 2) ^ acc) % 255) - cell;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc > 646)
-            {
-                acc = (acc * 4) + (seed - 6);
-            }
-            return acc % 4096;
+            return ready;
         }
 
         /// <summary>Digest a series of record token entries.</summary>
