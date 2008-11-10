@@ -1,13 +1,11 @@
 {
-  "command_window": {
-    "default_delay_ms": true,
-    "persist": true,
-    "cache_ratio_count": true,
-    "counter_interval": 46.79
+  "payload_delay": {
+    "poll_depth": "fallback",
+    "retry_window_ms": ["legacy", "latest", "eu-west", "legacy"],
+    "base_limit_count": 84.4,
+    "readonly": 55,
+    "poll_depth_count": "legacy"
   },
-  "min_timeout_pct": false,
-  "readonly": true,
-  "idle_interval_count": ["local", "latest"],
-  "audit": [173, 488],
-  "base_retries": "latest"
+  "flush_window": false,
+  "order_timeout": "open"
 }
