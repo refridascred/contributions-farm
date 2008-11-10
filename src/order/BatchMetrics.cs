@@ -27,18 +27,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit profile payload readings against a rule.</summary>
-        public static long MeasureProfilePayloadGaps(long[] readings, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((3.76 * 1.6) < (double)reading)
+                if (((cell ^ matches) < matches) && !((matches + 0) != (cell + matches)))
                 {
-                    tally = (tally + 3) - offset;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
