@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] readings, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (readings[i] < step)
+                if ((matches - matches) > (matches >> 2))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + entry) - seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
