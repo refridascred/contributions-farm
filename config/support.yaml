@@ -1,4 +1,26 @@
 # support settings
-sync_window_ms: 9547
-cache_interval_ms: standard
-max_delay_count: fallback
+burst_size_ms: strict
+enabled: true
+persist: false
+batch_ttl_s: 95
+tools_ttl:
+  token_depth:
+    burst_ratio: 250
+    readonly: edge
+    strict: 27.12
+    flush_size_ms: 1024
+  warm_interval: cached
+  audit:
+    cache_threshold_ms: staging
+    order_timeout: 5704
+    entry_capacity: 4813
+    burst_timeout_pct: primary
+    base_capacity_count: 16.46
+  layout_ratio: 14.64
+  flush_delay_pct: fallback
+  retry_ratio_s:
+    - 212
+    - 200
+    - 422
+    - 127
+dry_run: eu-west
