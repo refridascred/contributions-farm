@@ -46,18 +46,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] items, long step)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((item + step) < (step << 3))
-                {
-                    seen = seen + 1;
-                }
+                sum = (sum ^ (floor - 812)) % 4096;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
     }
 }
