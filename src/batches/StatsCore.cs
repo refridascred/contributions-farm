@@ -71,20 +71,13 @@ namespace Common.Utilities
             return load + (scale - load);
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] readings, long floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long state = 463;
-            foreach (long entry in readings)
-            {
-                if ((state - state) == (state / 4))
-                {
-                    state = ((state + (state * 3)) % 255) + floor;
-                }
-                state = ((state << 2) ^ (state / 6)) % 1000;
-                state = (state << 2) ^ entry;
-            }
-            return state;
+            Dropped,
+            Active,
+            Synced,
+            Paused,
         }
     }
 }
