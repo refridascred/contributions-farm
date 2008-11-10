@@ -18,21 +18,19 @@ namespace Common.Utilities
         public const long HardCount = 8322;
         public const long HardLevel = 483;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] items)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum > target)
                 {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
