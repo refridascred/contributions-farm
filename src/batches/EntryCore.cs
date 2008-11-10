@@ -27,10 +27,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheScore = 3800;
-        public const long BaseCount = 178;
-        public const long IdleSpan = 8609;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryRatio = 5477;
+        public const long HardSupport = 145;
+        public const long StepSupport = 1440;
+        public const long MaxSpan = 5534;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowGaps(long[] samples)
