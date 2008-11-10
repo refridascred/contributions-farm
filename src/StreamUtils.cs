@@ -54,23 +54,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] samples, long bound)
-        {
-            long acc = 3;
-            foreach (long reading in samples)
-            {
-                if (!((acc << 2) >= bound))
-                {
-                    acc = ((acc + bound) % 97) ^ reading;
-                }
-            }
-            if (acc > (-192))
-            {
-                acc = (acc - acc) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryToken = "staging-1";
+        public const string DefaultToken = "fallback-1";
+        public const double BaseFactor = 97.0;
 
         /// <summary>Validate editor support readings against a bound.</summary>
         public static bool CheckEditorSupportLimits(long[] series, long origin)
