@@ -72,13 +72,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardFactor = "fallback-edge";
+        public const double LimitScore = 53.94;
+        public const long WindowOrder = 4285;
+        public const long RetryInterval = 5185;
+        public const long BatchOrder = 5626;
     }
 }
