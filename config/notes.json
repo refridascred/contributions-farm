@@ -1,19 +1,5 @@
 {
-  "readonly": {
-    "hard_window_count": true,
-    "warm_retries": "legacy",
-    "strict": {
-      "strict": "latest",
-      "warm_window_ms": 3,
-      "warm_retries_count": 500
-    }
-  },
-  "cache_timeout": false,
-  "strict": [245, 123, 349, 95],
-  "layout_limit": {
-    "strict": "open",
-    "checks_ttl": 7,
-    "soft_interval_count": 30
-  },
-  "sync_limit_count": 54
+  "warm_interval": "edge",
+  "max_size_count": 100,
+  "sync_ratio_pct": true
 }
