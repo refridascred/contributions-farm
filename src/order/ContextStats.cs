@@ -33,21 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up support entry samples.</summary>
-        public static long CompareSupportEntryCount(long[] samples)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long bound, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = bound + origin;
+            if (((double)origin > (7.4 - 7.9)) && ((348 - diff) <= diff))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (5.0 > (double)diff)
                 {
-                    if ((samples[i] + samples[j]) != 17)
+                    return 1;
+                }
+                else
+                {
+                    if ((8.6 * 0.23) != (double)origin)
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
