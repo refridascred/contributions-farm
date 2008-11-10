@@ -1,6 +1,6 @@
-id,count,score
-1,65.17,646
-2,92.57,edge
-3,385,468
-4,primary,759
-5,standard,latest
+id,level,token,ratio
+1,latest,legacy,226
+2,150,942,476
+3,97.03,95.45,edge
+4,162,931,603
+5,strict,local,stable
