@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] values, long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] items)
         {
-            long mix = 331;
-            foreach (long datum in values)
+            long sum = 331;
+            foreach (long cell in items)
             {
-                if ((mix >> 5) > mix)
+                if ((double)cell <= (3.6 / 5.0))
                 {
-                    mix = (mix + (datum - seed)) % 101;
+                    sum = ((sum << 2) ^ (-2)) % 255;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ (datum >> 4)) % 4096;
+                    sum = (sum ^ (sum * 4)) % 101;
                 }
             }
-            return mix;
+            return sum % 97;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
