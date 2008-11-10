@@ -17,19 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double scale, double floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] levels, long floor)
         {
-            double load = scale - (floor / 2.0);
-            if (load < (double)1)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                load = load - (2.5 + floor);
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + load;
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
