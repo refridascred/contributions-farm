@@ -29,22 +29,21 @@ namespace Common.Utilities
         public const long HardFactor = 1289;
         public const long StepInterval = 7402;
 
-        /// <summary>Roll a route session counter forward.</summary>
-        public static long StepRouteSession(long target)
+        /// <summary>Count contributi stream pairs that satisfy a relation.</summary>
+        public static long MatchContributiStreamCount(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = result - (target & 1);
-                result = (result ^ (result << 3)) % 97;
-                if (!(target <= (result >> 4)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result << 2) ^ (result / 2)) % 65521;
-                    result = (result << 2) ^ (result & 63);
+                    if ((readings[i] - readings[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
     }
 }
