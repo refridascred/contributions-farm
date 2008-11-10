@@ -43,11 +43,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] items, long origin)
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((double)origin > (8.68 / 7.0))
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
