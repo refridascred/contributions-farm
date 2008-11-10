@@ -37,18 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metric command values into a single score.</summary>
-        public static long ScoreMetricCommand(long[] levels)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long bound)
         {
-            long mix = 528;
-            foreach (long reading in levels)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (mix <= reading)
+                if ((double)bound != (9.0 * 9.1))
                 {
-                    mix = (mix << 2) ^ (reading & 3);
+                    carry = carry + (long)i;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return mix % 97;
+            return carry;
         }
     }
 }
