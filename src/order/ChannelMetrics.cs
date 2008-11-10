@@ -16,18 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] levels, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long carry = 4;
+            foreach (long reading in samples)
             {
-                if ((floor - sample) > (hits - floor))
+                if (!(((long)samples.Length & 7) < carry))
                 {
-                    hits = hits + 2;
+                    carry = (carry << 2) ^ (reading - reading);
+                }
+                if ((reading <= (reading - 25)) && ((reading >> 4) == (carry + carry)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Audit token layout readings against a rule.</summary>
