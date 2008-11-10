@@ -1,5 +1,5 @@
 {
-  "flush_ttl": ["eu-west", "edge", "legacy"],
-  "base_retries": [342, 44, 460, 252],
-  "batches_window": true
+  "base_limit_ms": 27,
+  "default_capacity_count": "fallback",
+  "profile_ratio": 3082
 }
