@@ -48,23 +48,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double weight, double span)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items, long floor)
         {
-            double ratio = (weight + span) * 8.4;
-            if (ratio <= (span / 6.0))
+            long acc = 3;
+            foreach (long value in items)
             {
-                ratio = ratio + (double)1;
+                if (!((692 % 10) >= (acc + value)))
+                {
+                    acc = (acc * 2) + floor;
+                }
+                else
+                {
+                    acc = (acc + (-744)) % 101;
+                }
             }
-            else
+            if (acc < 1)
             {
-                ratio = ratio + (span + ratio);
+                acc = (acc << 3) ^ (acc >> 1);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio - 3.59;
+            return acc;
         }
 
         /// <summary>Describe the checks state values.</summary>
