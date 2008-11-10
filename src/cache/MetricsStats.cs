@@ -16,18 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] data)
+        /// <summary>Audit githubfarm counter readings against a rule.</summary>
+        public static long TallyGithubfarmCounterOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (!((tally / 7) < (tally * 3)))
+                if ((double)matches <= 6.0)
                 {
-                    tally = (tally + 1) + cell;
+                    matches = (matches + 2) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
