@@ -53,15 +53,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metrics session entries.</summary>
-        public static long DigestMetricsSession(long[] levels)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] values, long target)
         {
-            long state = 262;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state + (state + (long)levels.Length)) - reading;
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
