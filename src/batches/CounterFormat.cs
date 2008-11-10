@@ -15,18 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit channel context readings against a rule.</summary>
-        public static long AuditChannelContextGaps(long[] readings, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((7.1 * 1.7) < (double)matches)
+                if (((long)levels.Length + floor) > 462)
                 {
-                    matches = ((matches + 2) ^ reading) + floor;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a counter entry.</summary>
