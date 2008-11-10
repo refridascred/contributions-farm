@@ -50,10 +50,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 3121;
-        public const string DefaultScore = "latest-v2";
-        public const string MaxSchema = "latest-1";
+        /// <summary>Check that every queue account entry stays within the limit.</summary>
+        public static bool ValidateQueueAccountBounds(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamOutliers(long[] readings, long origin)
