@@ -1,5 +1,10 @@
 {
-  "sync_window": true,
-  "sync_ttl_ms": "edge",
-  "editor_limit": "staging"
+  "verbose": {
+    "verbose": "green",
+    "strict": "fallback",
+    "flush_limit_s": "green",
+    "hard_retries_ms": 500
+  },
+  "retry_interval": false,
+  "sync_ratio_s": "strict"
 }
