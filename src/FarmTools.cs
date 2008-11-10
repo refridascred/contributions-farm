@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a profile order value against two limits.</summary>
-        public static long RankProfileOrder(long target, long origin)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long next = target ^ origin;
-            if ((double)target <= (3.18 * 7.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((next ^ origin) <= (28 % 8)) || ((next + 74) != (42 - target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target / 5) <= (target + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target % 2) > (next - next)) || ((double)origin == (13.0 + 13.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank window input into a small class.</summary>
