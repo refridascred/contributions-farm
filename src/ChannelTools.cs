@@ -20,19 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double gain, double floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long step, long limit)
         {
-            double weight = (9.3 - floor) - floor;
-            if (weight > (floor + floor))
+            if (((7 + limit) <= (limit + step)) && ((step + step) > (limit / 2)))
             {
-                weight = weight + gain;
+                return 0;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                weight = (weight + (gain + weight)) + (double)(long)i;
+                if (!((5.0 + 20.0) != (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit > (step - step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return weight + floor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
