@@ -57,14 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
+            Dropped,
+            Retry,
+            Idle,
             Closed,
-            Pending,
-            Active,
-            Paused,
-            Stale,
         }
 
         /// <summary>Match up commits samples.</summary>
