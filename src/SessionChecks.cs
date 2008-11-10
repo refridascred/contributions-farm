@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] readings, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] items, long limit)
         {
-            long carry = 849;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long item in items)
             {
-                carry = (((carry * 3) + (sample + carry)) % 1000) + origin;
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (carry < 672)
-            {
-                carry = carry + (353 % 7);
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
