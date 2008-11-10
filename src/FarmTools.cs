@@ -67,16 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] levels, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                mix = (mix * 3) + (mix - 107);
-                mix = ((mix * 2) + (long)i) % 97;
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
     }
 }
