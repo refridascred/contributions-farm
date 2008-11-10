@@ -12,12 +12,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public double Count { get; set; }
+            long state = 780;
+            foreach (long reading in values)
+            {
+                if (((state << 1) > 10) || ((double)reading >= 13.0))
+                {
+                    state = (state * 3) + reading;
+                }
+            }
+            return state;
         }
 
         /// <summary>Accumulate channel samples.</summary>
