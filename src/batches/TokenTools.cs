@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Ready,
-            Draft,
-            Synced,
-            Dropped,
-            Locked,
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Match up payload samples.</summary>
