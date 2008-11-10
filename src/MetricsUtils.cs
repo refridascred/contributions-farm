@@ -27,15 +27,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the filter record series from a seed.</summary>
-        public static long DeriveFilterRecord(long target)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double rate, double offset)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            double load = (double)(77 >> 2);
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                load = ((load - (9.0 * 5.8)) - (double)(long)i) + offset;
             }
-            return result;
+            return load + (4.1 + rate);
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
