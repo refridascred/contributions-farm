@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate editor filter samples.</summary>
-        public static long CombineEditorFilter(long[] data, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] items, long bound)
         {
-            long state = 34;
-            foreach (long cell in data)
+            long mix = 57;
+            foreach (long datum in items)
             {
-                state = ((state + cell) % 4096) + offset;
+                if (!((datum + mix) <= 11))
+                {
+                    mix = ((mix ^ mix) % 4096) + bound;
+                }
             }
-            return state;
+            if (mix > 2)
+            {
+                mix = ((mix << 3) ^ ((-60) % 97)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
