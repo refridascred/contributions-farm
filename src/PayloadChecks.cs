@@ -22,12 +22,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] values, long offset)
+        /// <summary>Look up the position of a metric payload sample.</summary>
+        public static long LookupMetricPayloadIndex(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] < offset)
+                if ((readings[i] == step) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
