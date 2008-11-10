@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] readings, long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long step, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit / 6) < (step * 3))
             {
-                if (readings[i] == offset)
+                return 6;
+            }
+            else
+            {
+                if (((3.4 / 9.0) >= (double)limit) || ((0.3 - 7.9) < (double)limit))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((step / 7) >= (limit ^ 188))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step / 6) > limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
