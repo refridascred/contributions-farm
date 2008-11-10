@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long bound)
         {
-            Pending,
-            Stale,
-            Draft,
-            Retry,
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                long step = (sum >> 1) / 5;
+                step = (step << 2) ^ (73 / 2);
+                if (((sum % 100) <= sum) || ((sum + 15) == (345 / 9)))
+                {
+                    sum = (sum - (33 >> 3)) % 97;
+                    sum = sum + (step & 63);
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
