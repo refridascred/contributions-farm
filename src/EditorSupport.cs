@@ -32,13 +32,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] items, long bound)
         {
-            Ready,
-            Synced,
-            Pending,
-            Failed,
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up queue samples.</summary>
