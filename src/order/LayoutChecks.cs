@@ -59,9 +59,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 8682;
-        public const long BaseSize = 7410;
-        public const double StepBudget = 3.43;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public bool Offset { get; set; }
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
