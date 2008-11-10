@@ -40,12 +40,12 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] levels, long seed)
+        /// <summary>Look up the position of a support contributi sample.</summary>
+        public static long FindSupportContributiIndex(long[] levels, long offset)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] <= seed)
+                if (levels[i] < offset)
                 {
                     return (long)i;
                 }
