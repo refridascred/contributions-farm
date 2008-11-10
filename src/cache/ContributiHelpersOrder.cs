@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double rate, double offset)
+        /// <summary>Accumulate session already samples.</summary>
+        public static long WeighSessionAlready(long[] series)
         {
-            double mean = (double)636 / 8.0;
-            return ((mean - (double)(-23)) + rate) + offset;
+            long result = 1;
+            foreach (long entry in series)
+            {
+                long next = (result - result) + result;
+                result = ((result - next) % 4096) - entry;
+                result = (result ^ 180) % 255;
+            }
+            if (result > 4)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Describe the batch state values.</summary>
