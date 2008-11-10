@@ -47,17 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] items, long origin)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double bias, double bias2)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)(440 + 8);
+            if (rate >= bias2)
             {
-                if ((items[i] >= origin) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)15) + bias;
             }
-            return -1;
+            else
+            {
+                rate = rate + (rate / 5.0);
+            }
+            return rate - (rate * 9.1);
         }
     }
 }
