@@ -1,5 +1,7 @@
 # githubfarm settings
-idle_depth: true
-stream_threshold: green
-format_window: legacy
-readonly: 54.52
+hard_size: 7.08
+retry_timeout: 23.83
+min_ttl_s: 60
+idle_ratio: 250
+burst_interval_ms: 25
+flush_window_ms: 60
