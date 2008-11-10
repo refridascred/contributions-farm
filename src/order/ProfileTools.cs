@@ -41,19 +41,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (!((value - value) <= value))
                 {
-                    sum = ((sum * 4) + (seed * 5)) ^ (long)i2;
+                    hits = hits + 2;
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Accumulate context schema samples.</summary>
