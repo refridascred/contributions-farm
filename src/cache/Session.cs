@@ -13,39 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long target, long seed)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long lane = target - seed;
-            if (!(75 < (lane + target)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((565 - 2) >= (target ^ 59))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + lane) < seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target * 2) >= 599)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
