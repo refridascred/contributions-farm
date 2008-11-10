@@ -14,18 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] readings, long floor)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((floor + sample) != (matches ^ 35))
+                anchor = ((anchor * 4) + (step * 4)) % 65521;
+                long cur = (step % 100) % 64;
+                if (((long)i != (cur / 8)) && ((cur << 3) == (anchor & 3)))
                 {
-                    matches = matches + 1;
+                    cur = (cur + (step ^ step)) % 97;
+                    break;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
