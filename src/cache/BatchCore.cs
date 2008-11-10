@@ -31,18 +31,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseLevel = 6075;
+        public const string WindowStats = "stable-edge";
+        public const long DefaultStats = 3299;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
