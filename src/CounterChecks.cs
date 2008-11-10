@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double scale, double offset)
         {
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            double weight = (offset + offset) + (offset * 8.0);
+            for (int i = 0; i < 3; i++)
+            {
+                weight = ((weight + (10.0 * 8.9)) + (double)(long)i) - scale;
+            }
+            return weight - (double)134;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
