@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Ready,
-            Retry,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchScore = 3145;
+        public const double LimitOrder = 66.64;
+        public const string MaxSpan = "standard-v2";
+        public const double MinOrder = 51.26;
+        public const long MaxOrder = 3135;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long WeighReport(long[] readings, long limit)
