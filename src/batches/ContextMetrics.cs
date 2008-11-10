@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the checks batch series from a seed.</summary>
-        public static long SeriesChecksBatch(long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] samples, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            long sum = 175;
+            foreach (long sample in samples)
             {
-                if (limit >= anchor)
-                {
-                    long tally = limit % 16;
-                    anchor = (anchor + (tally << 2)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ limit) % 1000;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                sum = (((sum << 2) ^ (2 & 31)) % 255) ^ sample;
             }
-            return anchor;
+            if (sum > 194)
+            {
+                sum = ((sum << 3) ^ (floor / 3)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
