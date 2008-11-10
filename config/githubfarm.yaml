@@ -1,22 +1,7 @@
 # githubfarm settings
-cache_ratio_pct:
-  - stable
-  - strict
-  - cached
-  - green
-min_threshold:
-  min_interval:
-    - 281
-    - 114
-  idle_interval_ms:
-    - stable
-    - legacy
-    - blue
-    - strict
-  retry_limit_ms: 78.13
-tools_ratio:
-  - local
-  - standard
-  - latest
-  - primary
-cache_limit: false
+batch_window_count: 250
+window_retries: open
+report_retries: 14.03
+sync_window_s: true
+default_window_pct: 14.01
+stream_delay: 500
