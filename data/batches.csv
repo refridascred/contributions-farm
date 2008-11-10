@@ -1,6 +1,10 @@
-id,score,active
-1,363,45.51
-2,739,eu-west
-3,3.3,standard
-4,595,98.23
-5,97.57,819
+id,region,level,rank
+1,6.91,29.48,422
+2,393,65,52.86
+3,latest,54.42,244
+4,698,strict,cached
+5,eu-west,41.43,latest
+6,38.95,676,legacy
+7,39.01,315,78.23
+8,local,364,eu-west
+9,758,188,218
