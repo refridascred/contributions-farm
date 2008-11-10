@@ -1,18 +1,6 @@
 {
-  "min_interval": "green",
-  "audit": "cached",
-  "default_retries": {
-    "token_ttl": {
-      "enabled": true,
-      "min_delay": 93.21,
-      "sync_delay_pct": false
-    },
-    "base_limit": [346, 218],
-    "strict": 94.24,
-    "base_ttl": "cached",
-    "cache_threshold": 1024,
-    "default_depth_count": 34.2
-  },
-  "burst_delay_s": 94,
-  "soft_window_pct": 65.53
+  "batch_ratio": "fallback",
+  "record_threshold": 13.06,
+  "min_window_count": 4433,
+  "persist": true
 }
