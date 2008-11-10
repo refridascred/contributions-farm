@@ -11,11 +11,33 @@ namespace Common.Utilities
         public const long BaseCommits = 7577;
         public const long BurstCommits = 720;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "alpha-edge";
-        public const long MaxRatio = 8525;
-        public const long BurstBudget = 5316;
-        public const string CacheSchema = "standard-v2";
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long step, long target)
+        {
+            long bound = step + target;
+            if ((bound ^ step) != (bound + target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(step > bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step >> 2) >= (bound + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool CheckContextBounds(long[] samples, long floor)
