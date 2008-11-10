@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const long RetryRatio = 377;
         public const long MinPayload = 3273;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a counter info.</summary>
