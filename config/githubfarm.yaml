@@ -1,16 +1,35 @@
 # githubfarm settings
-batch_depth_s: stable
-retry_ratio: false
-command_depth:
-  audit:
-    readonly: 7.64
-    metric_ratio:
-      - eu-west
+poll_delay_s: eu-west
+soft_ratio_count:
+  base_depth_s: 1517
+  farm_ttl: 52.51
+  enabled: false
+stream_threshold: 6820
+notes_delay:
+  burst_capacity:
+    dry_run: green
+    readonly: primary
+    graph_delay: 29.25
+    burst_interval: stable
+  sync_delay_ms:
+    - standard
+    - primary
+    - stable
+    - cached
+  burst_limit:
+    strict: 88
+    hard_window: 9695
+    buffer_limit: 5650
+    poll_retries_count:
+      - latest
+      - staging
+      - local
+      - open
+    max_timeout:
+      - latest
       - strict
       - open
-      - green
-    verbose: 21
-  default_retries_ms: 100
-  soft_size_pct: 8244
-  burst_threshold: true
-compress: 87.98
+      - eu-west
+  idle_ttl_pct: 10.87
+soft_timeout: 1024
+idle_ratio: 2167
