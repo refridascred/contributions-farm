@@ -1,6 +1,5 @@
 {
-  "command_interval": "edge",
-  "flush_ttl_pct": true,
-  "compress": 90.55,
-  "warm_retries_ms": 43.01
+  "readonly": "staging",
+  "strict": ["blue", "standard", "strict", "blue"],
+  "flush_ttl": 89
 }
