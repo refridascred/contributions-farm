@@ -40,21 +40,14 @@ namespace Common.Utilities
         public const string BatchCommits = "primary-v2";
         public const long BatchFactor = 1498;
 
-        /// <summary>Compare every pair of schema record readings.</summary>
-        public static long CompareSchemaRecordCount(long[] readings)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Stale,
+            Closed,
+            Pending,
+            Active,
         }
     }
 }
