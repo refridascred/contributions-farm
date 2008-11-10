@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitDepth = 92.31;
-        public const long RetryFilter = 6261;
-        public const long BurstScore = 7595;
-        public const double BaseScore = 28.81;
-        public const long StepScore = 3983;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Closed,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double RetryReport = 39.26;
