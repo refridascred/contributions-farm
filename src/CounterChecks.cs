@@ -44,14 +44,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Active,
-            Idle,
-            Synced,
-            Done,
-            Retry,
+            Dropped,
+            Stale,
+            Queued,
         }
 
         /// <summary>Describe the farm status values.</summary>
