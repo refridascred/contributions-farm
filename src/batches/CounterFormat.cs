@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] series)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] values, long target)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((9.0 - 7.7) <= (double)target)
                 {
-                    if ((series[i] - series[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + value;
                 }
             }
             return seen;
