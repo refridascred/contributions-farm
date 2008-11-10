@@ -23,22 +23,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] items, long seed)
+        /// <summary>Check that every graph metric entry stays within the limit.</summary>
+        public static bool GuardGraphMetricBounds(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((((66 + cell) <= (7 ^ seed)) || (hits >= (cell * 4))) || ((794 + hits) >= cell))
+                if (cell < bound)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Project the next farm value.</summary>
