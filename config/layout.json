@@ -1,6 +1,12 @@
 {
-  "compress": "standard",
-  "enabled": 87.68,
-  "buffer_depth": true,
-  "tools_ttl": ["blue", "staging", "strict"]
+  "burst_depth_ms": true,
+  "batch_delay_count": "staging",
+  "min_window": {
+    "filter_limit": [90, 461, 295],
+    "flush_threshold": "stable",
+    "enabled": 1024
+  },
+  "editor_limit": 13.14,
+  "persist": 8667,
+  "verbose": 36
 }
