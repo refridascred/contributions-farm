@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 2;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((floor / 6) < (sample / 7)))
                 {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total << 2) ^ total) % 97;
                 }
+                total = (total * 4) + sample;
+                total = total - floor;
             }
-            return matches;
+            if (total > 7)
+            {
+                total = ((total << 3) ^ (total - 34)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the queue level values.</summary>
