@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] items, long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long state = 6;
-            foreach (long reading in items)
-            {
-                state = (state + offset) % 65521;
-                if (((offset ^ reading) < (reading + offset)) && (reading < (11 % 10)))
-                {
-                    state = (state - (reading + reading)) % 97;
-                }
-                else
-                {
-                    state = ((state * 4) + reading) % 65521;
-                }
-            }
-            if (state < 639)
-            {
-                state = (state ^ (7 + 561)) % 255;
-            }
-            return state % 4096;
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every commits metrics entry stays within the limit.</summary>
