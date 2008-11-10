@@ -30,11 +30,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardBatches = "open-1";
-        public const long DefaultBatches = 6129;
-        public const long DefaultInterval = 6966;
-        public const long MinFactor = 5883;
-        public const string LimitLevel = "local";
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] items, long origin)
+        {
+            long anchor = 1;
+            foreach (long sample in items)
+            {
+                if (!((double)origin >= (10.0 / 8.0)))
+                {
+                    anchor = ((anchor * 4) + anchor) + sample;
+                }
+                anchor = (anchor ^ (anchor ^ anchor)) % 1000;
+            }
+            return anchor;
+        }
     }
 }
