@@ -1,7 +1,8 @@
-id,active,token,rank
-1,399,906,19.74
-2,edge,338,primary
-3,77.35,fallback,open
-4,690,377,308
-5,524,latest,15.05
-6,standard,eu-west,63.62
+id,rank,owner
+1,13.37,staging
+2,60.03,414
+3,717,23.6
+4,728,560
+5,5.29,standard
+6,44,strict
+7,16.81,staging
