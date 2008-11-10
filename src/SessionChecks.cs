@@ -20,15 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double bias, double offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] samples, long floor)
         {
-            double weight = (double)9 * 2.3;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (((weight - (3.29 * 7.9)) + (double)(long)i) - bias) - offset;
+                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + 12.0;
+            return -1;
         }
 
         /// <summary>Validate tools window readings against a bound.</summary>
