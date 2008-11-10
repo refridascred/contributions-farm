@@ -14,11 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Check that every batches already entry stays within the limit.</summary>
+        public static bool VerifyBatchesAlreadyBounds(long[] readings, long floor)
         {
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
