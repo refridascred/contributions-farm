@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            Synced,
+            Pending,
+            Done,
+            Closed,
+            Paused,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
