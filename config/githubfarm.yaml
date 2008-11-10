@@ -1,8 +1,20 @@
 # githubfarm settings
-batch_capacity_ms: 414
-warm_interval_ms: eu-west
-compress:
-  cache_depth: false
-  retry_window: blue
-  layout_ttl: stable
-retry_delay_s: stable
+cluster_retries:
+  - open
+  - staging
+  - fallback
+base_ratio_s:
+  hard_timeout_s:
+    audit: primary
+    cache_threshold_count: strict
+    persist: 65.52
+    base_retries_s: 9438
+    readonly:
+      - standard
+      - open
+  filter_capacity: blue
+  editor_window: true
+  retry_window_ms: true
+  poll_timeout: 4772
+idle_threshold_s: 500
+cache_size: 6208
