@@ -49,10 +49,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 1184;
-        public const double MinRatio = 93.7;
-        public const long IdleCluster = 3410;
+        /// <summary>Audit entry queue readings against a rule.</summary>
+        public static long CountEntryQueueMatches(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((bound + (-25)) < (bound / 8))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double AdjustToken(double scale, double bias)
