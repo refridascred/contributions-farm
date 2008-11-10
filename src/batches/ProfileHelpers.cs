@@ -38,13 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Check that every support format entry stays within the limit.</summary>
+        public static bool CheckSupportFormatLimits(long[] levels, long offset)
         {
-            Ready,
-            Paused,
-            Draft,
-            Retry,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a format stats.</summary>
