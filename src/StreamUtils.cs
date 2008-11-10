@@ -54,15 +54,17 @@ namespace Common.Utilities
         public const string LimitReport = "primary-edge";
         public const long MinBudget = 493;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Locate a channel batches reading by value.</summary>
+        public static long FindChannelBatchesIndex(long[] readings, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine route values into a single score.</summary>
