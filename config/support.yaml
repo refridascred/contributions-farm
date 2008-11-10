@@ -1,18 +1,10 @@
 # support settings
-max_ratio:
-  - 149
-  - 156
-  - 118
-min_window: 30
-max_retries_ms:
-  layout_ttl: staging
-  default_capacity: false
-  dry_run: blue
-  githubfarm_ttl: 2396
-burst_size_count: 53.74
-compress:
-  - legacy
-  - cached
-  - legacy
-  - green
-batch_capacity_s: cached
+stats_depth: open
+command_ttl: 100
+support_retries: 60
+enabled: edge
+soft_capacity:
+  - 330
+  - 418
+  - 68
+verbose: staging
