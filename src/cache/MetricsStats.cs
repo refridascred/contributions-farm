@@ -16,19 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (!((double)seen == (double)step))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftCount = "legacy-v2";
+        public const string MaxFormat = "stable-edge";
+        public const long BaseSpan = 7492;
+        public const string HardInterval = "latest-v2";
+        public const long MaxLevel = 8714;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksLimits(long[] items, long seed)
