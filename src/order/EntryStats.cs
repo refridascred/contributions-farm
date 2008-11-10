@@ -47,10 +47,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitDepth = 5707;
-        public const string DefaultLevel = "fallback-v2";
-        public const long SoftBatch = 5523;
-        public const long BaseLevel = 8095;
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
