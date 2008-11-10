@@ -13,18 +13,31 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] levels, long step)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long offset, long step)
         {
-            long score = 588;
-            foreach (long entry in levels)
+            if ((step & 63) == (step << 2))
             {
-                if ((((long)levels.Length - step) <= step) || (((long)levels.Length + entry) != (step / 6)))
+                return 6;
+            }
+            else
+            {
+                if (((19.0 * 2.4) >= (double)step) && ((581 - offset) <= (927 ^ step)))
                 {
-                    score = ((score << 3) ^ score) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step >= (5.1 + 3.4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
