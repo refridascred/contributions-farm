@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Idle,
-            Active,
-            Dropped,
+            Closed,
             Draft,
-            Paused,
+            Retry,
         }
 
         /// <summary>Hold a commits stats.</summary>
