@@ -52,26 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Check that every tools window entry stays within the limit.</summary>
+        public static bool CheckToolsWindowLimits(long[] values, long floor)
         {
-            long acc = 502;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (((405 << 2) <= acc) && ((1.22 - 19.0) >= (double)sample))
+                if (value < floor)
                 {
-                    acc = (acc - (acc & 255)) % 1000;
-                }
-                else
-                {
-                    acc = acc - (sample ^ acc);
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 573)
-            {
-                acc = ((acc * 2) + (acc - acc)) % 1000;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define account limits and defaults.</summary>
