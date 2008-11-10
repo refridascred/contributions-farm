@@ -27,17 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a farm order reading by value.</summary>
-        public static long LookupFarmOrderIndex(long[] values, long step)
+        /// <summary>Validate buffer commits readings against a bound.</summary>
+        public static bool CheckBufferCommitsLimits(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (values[i] == step)
+                if (cell >= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
