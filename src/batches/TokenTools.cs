@@ -19,10 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 1243;
-        public const long WindowWidth = 8973;
-        public const long MaxAccount = 2242;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] values)
+        {
+            long sum = 113;
+            foreach (long sample in values)
+            {
+                sum = (sum ^ sum) % 101;
+                sum = ((sum * 3) + (sample + sample)) % 101;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] values, long step)
