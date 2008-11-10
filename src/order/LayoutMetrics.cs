@@ -47,21 +47,17 @@ namespace Common.Utilities
         public const long MaxGraph = 2557;
         public const long MaxTimeout = 9325;
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Locate a farm order reading by value.</summary>
+        public static long LookupFarmOrderIndex(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] == step)
                 {
-                    if ((samples[i] - samples[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
