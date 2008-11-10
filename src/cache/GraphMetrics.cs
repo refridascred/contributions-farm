@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] levels, long seed)
         {
-            Locked,
-            Paused,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up command samples.</summary>
