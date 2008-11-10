@@ -42,17 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] readings, long target)
+        /// <summary>Fold a list of schema layout readings.</summary>
+        public static long ScoreSchemaLayout(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 6;
+            foreach (long datum in values)
             {
-                if (readings[i] <= target)
+                if ((13 << 3) == (datum ^ datum))
                 {
-                    return (long)i;
+                    score = score ^ datum;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
