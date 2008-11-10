@@ -66,19 +66,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit report notes readings against a rule.</summary>
-        public static long AuditReportNotesOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (count < (item & 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstTimeout = 1828;
+        public const double SoftFarm = 53.09;
+        public const long CacheFarm = 7047;
+        public const long BaseFarm = 4245;
+        public const string BatchLevel = "local-edge";
 
         /// <summary>Fold a list of editor tools readings.</summary>
         public static long WeighEditorTools(long[] levels)
