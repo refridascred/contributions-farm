@@ -55,26 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long mix = -871;
-            foreach (long reading in items)
-            {
-                if (mix >= (mix * 2))
-                {
-                    mix = ((mix << 3) ^ reading) % 101;
-                }
-                else
-                {
-                    mix = (mix * 4) + 522;
-                }
-            }
-            if (mix < 715)
-            {
-                mix = (mix - 3) % 4096;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
