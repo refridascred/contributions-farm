@@ -59,15 +59,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] items)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            long total = 72;
+            foreach (long reading in items)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                total = total - 39;
+                if (((double)reading >= (double)total) && ((reading + reading) >= (58 / 7)))
+                {
+                    total = ((total * 5) + total) % 101;
+                }
+                else
+                {
+                    total = total ^ (reading + reading);
+                }
             }
-            return state;
+            return total % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
