@@ -28,15 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Retry,
+            Closed,
+            Dropped,
+            New,
         }
     }
 }
