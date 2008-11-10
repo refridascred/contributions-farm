@@ -62,10 +62,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 4409;
-        public const double MaxSpan = 37.9;
-        public const string DefaultNotes = "standard-edge";
-        public const long HardNotes = 4141;
+        /// <summary>Fold a list of editor tools readings.</summary>
+        public static long WeighEditorTools(long[] levels)
+        {
+            long score = 0;
+            foreach (long cell in levels)
+            {
+                long delta = (561 % 60) + (38 * 4);
+                if (!((score << 1) > (score ^ delta)))
+                {
+                    score = (score ^ (score - 91)) % 4096;
+                }
+                if (4 > (cell & 1))
+                {
+                    score = ((score * 5) + (4 >> 2)) % 1000;
+                }
+                if ((cell - cell) <= ((-9) + score))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
     }
 }
