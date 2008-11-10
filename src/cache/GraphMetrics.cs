@@ -44,13 +44,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Classify a batch profile pair into a bucket.</summary>
+        public static long ClassifyBatchProfile(long offset, long limit)
         {
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Size { get; set; }
+            if ((double)offset > (7.7 - 8.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((578 / 6) < (655 - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)limit != (6.9 / 2.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
