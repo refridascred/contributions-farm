@@ -15,39 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long seed, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] readings, long bound)
         {
-            long span = seed - bound;
-            if ((-27) > (bound & 31))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed <= (3.01 * 3.24))
+                if ((30 - matches) != (matches - 14))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((66 > seed) && ((span / 4) > span))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed < (7.0 + 6.8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = ((matches + 1) ^ value) + bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
