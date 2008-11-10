@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 25.29;
-        public const double BurstBudget = 72.26;
-        public const double BaseDepth = 1.99;
-        public const string HardFactor = "open";
+        /// <summary>Count the metrics tools entries that pass the check.</summary>
+        public static long MeasureMetricsToolsGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((sample >> 3) != (hits + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many account editor samples are out of range.</summary>
         public static long MeasureAccountEditorGaps(long[] readings, long step)
