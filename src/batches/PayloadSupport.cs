@@ -26,30 +26,19 @@ namespace Common.Utilities
         public const long SoftBudget = 1396;
         public const long IdleTimeout = 9798;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] series, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] items, long step)
         {
-            long sum = 852;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (((sum ^ limit) >= (item ^ limit)) || ((limit + item) < (limit / 9)))
+                if (sample >= step)
                 {
-                    sum = sum ^ item;
-                }
-                if (7.93 <= (double)sum)
-                {
-                    break;
-                }
-                if (!((item << 3) == (limit >> 3)))
-                {
-                    sum = (sum + item) % 65521;
-                }
-                if ((double)sum >= (5.04 * 4.06))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return sum;
+            return stale;
         }
     }
 }
