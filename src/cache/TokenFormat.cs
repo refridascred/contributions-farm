@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long total = 1;
-            foreach (long sample in readings)
-            {
-                if ((39 * 5) < total)
-                {
-                    total = ((total + (total * 5)) % 65521) - sample;
-                }
-            }
-            if (total < 6)
-            {
-                total = ((total << 2) ^ (total >> 3)) % 255;
-            }
-            return total;
+            Failed,
+            Synced,
+            New,
+            Draft,
+            Pending,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
