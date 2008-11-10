@@ -1,28 +1,4 @@
 # entry settings
-order_retries: green
-enabled: blue
-payload_ratio:
-  order_interval: legacy
-  githubfarm_interval: 45.07
-  soft_delay: strict
-  soft_limit: strict
-  entry_threshold:
-    metric_size: 1024
-    dry_run: eu-west
-    min_ratio_count: standard
-    flush_ratio_count: 80.3
-    format_interval: green
-    retry_retries_s: 11.54
-  idle_ttl:
-    enabled: 65.59
-    max_limit:
-      - 25
-      - 420
-    dry_run: staging
-    soft_retries:
-      - open
-      - fallback
-      - staging
-      - edge
-    max_ratio_pct: standard
-    readonly: 500
+sync_timeout_count: 98
+batch_size_count: 5784
+batch_ratio_ms: false
