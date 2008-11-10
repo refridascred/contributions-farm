@@ -23,18 +23,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the window checks entries that pass the check.</summary>
-        public static long MeasureWindowChecksOutliers(long[] levels, long offset)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((16.0 * 5.0) >= (double)entry)
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
+            Idle,
+            Queued,
+            Draft,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
