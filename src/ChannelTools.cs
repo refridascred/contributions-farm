@@ -37,21 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitSize = "latest-v2";
+        public const long StepLevel = 1370;
+        public const long BaseContext = 9765;
+        public const string MinWidth = "legacy-v2";
     }
 }
