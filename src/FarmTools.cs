@@ -23,15 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double rate, double offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double ratio = (double)319;
-            if (ratio > (offset + ratio))
-            {
-                ratio = ratio + (rate / 5.0);
-            }
-            return ratio + (offset / 4.0);
+            Ready,
+            Paused,
+            Failed,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
