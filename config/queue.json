@@ -1,28 +1,5 @@
 {
-  "soft_threshold": [341, 269, 384, 195],
-  "order_depth": {
-    "soft_timeout_ms": true,
-    "stream_delay": {
-      "default_ratio_pct": true,
-      "dry_run": 60,
-      "min_interval_ms": ["standard", "legacy"],
-      "retry_ratio": true
-    },
-    "batch_depth_s": "fallback"
-  },
-  "contributi_size": "green",
-  "batches_window": [96, 147, 193, 481],
-  "warm_ratio": {
-    "readonly": 4056,
-    "soft_threshold": {
-      "warm_interval": 30,
-      "verbose": 4850,
-      "burst_window": 39,
-      "strict": "strict"
-    },
-    "warm_window": true,
-    "batch_threshold": true,
-    "min_ttl_count": 500
-  },
-  "compress": 32.18
+  "graph_timeout": 7122,
+  "flush_threshold_pct": false,
+  "already_window": 100
 }
