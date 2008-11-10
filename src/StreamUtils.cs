@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Stale,
-            Failed,
-            Ready,
-            Active,
+            public bool Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
