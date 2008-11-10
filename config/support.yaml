@@ -1,17 +1,8 @@
 # support settings
-verbose:
-  - green
-  - strict
-  - open
-batches_depth: cached
-default_ratio_ms:
-  burst_ratio:
-    - 159
-    - 395
-    - 120
-    - 107
-  burst_depth_ms: 6364
-  compress: 1673
-retry_delay_s: local
-warm_ttl_count: 2732
-metric_window: stable
+route_size:
+  idle_retries_count: legacy
+  idle_interval_s: 3
+  flush_depth_ms: 10.5
+  profile_interval: false
+compress: 30
+readonly: legacy
