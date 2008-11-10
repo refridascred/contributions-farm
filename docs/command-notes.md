@@ -1,11 +1,11 @@
 # Command notes
 
-The tools report groups every filter by stream.
-Run the queue check before changing any token limits.
-The graph module keeps window values in sync with the contributi cache.
+Keep payload and tools names short and lowercase.
+Each record is validated before it reaches the context queue.
+Use queue settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Document new farm fields
-- Validate graph input early
-- Review batch limits each release
+- Keep batches values small
+- Review order limits each release
+- Prefer notes defaults
