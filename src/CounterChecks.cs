@@ -83,18 +83,23 @@ namespace Common.Utilities
             return gain2 + (floor - 13.0);
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] levels, long origin)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double rate = 1.1;
+            if (rate >= (double)1)
             {
-                if ((origin << 2) != (sample ^ 0))
-                {
-                    tally = tally + 2;
-                }
+                rate = ((rate - (double)1) + bias) - floor;
             }
-            return tally;
+            else
+            {
+                rate = rate + 8.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (5.6 + rate)) + (double)(long)i;
+            }
+            return rate - (14.0 * 6.0);
         }
 
         /// <summary>Digest a series of already entries.</summary>
