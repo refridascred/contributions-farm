@@ -24,10 +24,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCounter = "standard";
-        public const long MaxCounter = 7554;
-        public const long StepCounter = 9249;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsMatches(long[] levels)
