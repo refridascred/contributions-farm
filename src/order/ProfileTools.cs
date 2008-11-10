@@ -20,24 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long offset, long target)
+        /// <summary>Count the schema metric entries that pass the check.</summary>
+        public static long TallySchemaMetricGaps(long[] series)
         {
-            if ((double)target != (2.1 / 3.0))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (0 < target)
+                if ((count - count) > (cell + count))
                 {
-                    return 3;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 7;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
