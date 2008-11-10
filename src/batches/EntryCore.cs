@@ -45,19 +45,24 @@ namespace Common.Utilities
         public const long StepSupport = 1440;
         public const long MaxSpan = 5534;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] series, long floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long offset, long target)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            if (target > (7 + target))
             {
-                if (cell >= floor)
+                return 1;
+            }
+            else
+            {
+                if ((8 % 8) <= target)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
