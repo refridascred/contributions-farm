@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Iterate the editor githubfarm series from a seed.</summary>
+        public static long StepEditorGithubfarm(long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc + acc) % 101;
-                acc = ((acc << 3) ^ acc) % 4096;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = ((acc << 3) ^ acc) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Describe the profile status values.</summary>
