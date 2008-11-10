@@ -43,19 +43,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((6.9 * 8.83) <= (double)floor)
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinSpan = 5669;
+        public const string IdleGraph = "strict-edge";
+        public const long CacheGraph = 8919;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long ScoreBatch(long[] readings, long floor)
