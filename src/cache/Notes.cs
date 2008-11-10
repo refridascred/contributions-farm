@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long origin, long bound)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long diff = origin - bound;
-            if (!((18.0 - 3.58) > (double)origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin >= (diff + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound >> 1) >= (bound - bound)) || ((bound * 4) < diff))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound * 2) == (bound & 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the route state values.</summary>
