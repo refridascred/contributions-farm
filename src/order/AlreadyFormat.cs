@@ -37,13 +37,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxSpan = 4489;
+        public const long CacheScore = 1684;
+        public const long HardTimeout = 2855;
+        public const long MinGithubfarm = 5527;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepSize = 7154;
