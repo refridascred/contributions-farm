@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseScore = 2441;
-        public const double RetryStats = 45.11;
-        public const string DefaultStats = "fallback-1";
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long WindowAlready = 7325;
