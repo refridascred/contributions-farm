@@ -57,19 +57,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] readings, long floor)
+        /// <summary>Grade a buffer command value against two limits.</summary>
+        public static long ClassifyBufferCommand(long offset, long floor)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            if (floor > (6 + offset))
             {
-                if (sample > floor)
+                return 2;
+            }
+            else
+            {
+                if (!((double)floor != (0.1 * 4.6)))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - floor) < (offset * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
