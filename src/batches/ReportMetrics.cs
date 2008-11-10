@@ -31,11 +31,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftLevel = "stable-edge";
-        public const double SoftProfile = 25.1;
-        public const string WindowProfile = "open";
-        public const long LimitBudget = 5719;
-        public const long BaseSpan = 2275;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long bound, long step)
+        {
+            if ((step - bound) > step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound * 5) >= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound - step) >= (87 + step)) || ((bound / 8) >= (bound - bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
