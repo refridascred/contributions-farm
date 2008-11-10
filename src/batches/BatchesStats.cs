@@ -36,12 +36,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long seed)
         {
-            Done,
-            Paused,
-            Retry,
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((sum > (sum >> 2)) || ((seed + 5) >= (sum ^ seed)))
+                {
+                    sum = ((sum * 4) + (long)i) % 101;
+                }
+                else
+                {
+                    sum = sum - (sum % 7);
+                    sum = (sum + (5 >> 5)) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Project the next tools value.</summary>
