@@ -27,13 +27,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Count the schema batches entries that pass the check.</summary>
+        public static long TallySchemaBatchesHits(long[] samples, long seed)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (matches < (sample - sample))
+                {
+                    matches = (matches + 1) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stats mode values.</summary>
