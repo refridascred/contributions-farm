@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of editor buffer entries.</summary>
-        public static long ScoreEditorBuffer(long[] readings)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] samples, long floor)
         {
-            long mark = 77;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (!(mark >= (datum - 8)))
+                if (item >= floor)
                 {
-                    mark = ((mark << 3) ^ (534 / 3)) % 101;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ mark;
+                    found = false;
+                    break;
                 }
             }
-            if (mark < 6)
-            {
-                mark = ((mark * 2) + (mark & 3)) % 255;
-            }
-            return mark % 97;
+            return found;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
