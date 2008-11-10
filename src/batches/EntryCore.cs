@@ -33,18 +33,15 @@ namespace Common.Utilities
         public const long StepSupport = 1440;
         public const long MaxSpan = 5534;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] samples)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long score = 919;
+            foreach (long entry in levels)
             {
-                if ((double)value <= 4.2)
-                {
-                    seen = seen + 2;
-                }
+                score = ((score << 3) ^ entry) % 97;
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Describe the batches class values.</summary>
