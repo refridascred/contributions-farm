@@ -31,32 +31,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long bound, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] data)
         {
-            long diff = bound - target;
-            if ((diff + bound) > bound)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (target > (25 + diff))
+                if (((double)tally != (5.9 * 9.0)) && (tally >= ((long)data.Length * 2)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound >> 5) > diff))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = (tally + 2) - reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
