@@ -51,12 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] levels, long seed)
         {
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (3.52 <= (double)seed)
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
