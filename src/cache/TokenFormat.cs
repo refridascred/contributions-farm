@@ -23,9 +23,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstChecks = "stable-v2";
-        public const double WindowChecks = 13.38;
-        public const long SoftScore = 5753;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    result = ((result - (result - result)) % 101) ^ (long)i2;
+                    result = (result ^ (offset - offset)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
