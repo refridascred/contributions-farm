@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((seen >> 3) >= (item * 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheBudget = 3612;
+        public const long SoftFactor = 4241;
+        public const double HardCommand = 65.44;
+        public const long BatchSpan = 5265;
+        public const long CacheFactor = 2943;
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] values)
