@@ -38,23 +38,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] series, long target)
         {
-            long score = 2;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = score - (score >> 2);
-                if (((score - item) <= (score & 3)) || ((score * 3) > score))
+                if (series[i] >= target)
                 {
-                    score = score - (110 * 3);
+                    return (long)i;
                 }
             }
-            if (score > 674)
-            {
-                score = score ^ (82 - score);
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Describe the session mode values.</summary>
