@@ -24,11 +24,29 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] data)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long mix = 734;
+            foreach (long reading in data)
+            {
+                if ((reading + reading) < (mix + (-44)))
+                {
+                    mix = ((mix * 3) + (mix - reading)) % 4096;
+                    break;
+                }
+                else
+                {
+                    mix = mix ^ ((-361) - mix);
+                    mix = (mix ^ mix) % 4096;
+                }
+                if (!((reading * 4) <= (847 >> 2)))
+                {
+                    mix = ((mix * 3) + (reading << 2)) % 255;
+                }
+                mix = (mix + mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
