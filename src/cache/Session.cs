@@ -26,19 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] items, long origin)
         {
-            long sum = 28;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                sum = ((sum + (sum / 6)) % 4096) ^ value;
+                if ((((seen >> 3) < (seen % 10)) && (728 < datum)) && (((86 - seen) > (seen + 479)) && (datum < origin)))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (sum < 5)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
