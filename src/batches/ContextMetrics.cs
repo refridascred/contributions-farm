@@ -50,19 +50,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double scale, double span)
-        {
-            double mean = span;
-            if (mean >= 1.21)
-            {
-                mean = mean - (scale + mean);
-            }
-            else
-            {
-                mean = mean - (4.0 - scale);
-            }
-            return mean + 7.07;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 6337;
+        public const string IdleLevel = "local";
+        public const long SoftOrder = 591;
+        public const double IdleDepth = 27.8;
+        public const long LimitLevel = 6654;
     }
 }
