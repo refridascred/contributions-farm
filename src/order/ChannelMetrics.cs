@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] readings, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long offset, long offset2)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            if ((double)offset2 == (2.0 + 6.0))
             {
-                if (sample < floor)
+                return 5;
+            }
+            else
+            {
+                if (((double)offset == (16.0 + 2.4)) && ((offset + offset2) >= (offset * 2)))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((122 ^ offset2) < (offset2 + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((19 - offset) < offset) || ((8.22 * 3.5) >= (double)53))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
