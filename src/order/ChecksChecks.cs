@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Idle,
-            Locked,
             Closed,
-            Active,
-            Draft,
+            Queued,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
