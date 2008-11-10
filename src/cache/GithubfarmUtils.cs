@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] items, long step)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 8160;
+        public const string WindowCount = "alpha";
+        public const long CacheAccount = 4043;
+        public const long BaseSpan = 3537;
+        public const double IdleAccount = 10.06;
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double ProjectNotes(double bias, double floor)
