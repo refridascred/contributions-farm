@@ -37,38 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long floor, long step)
+        /// <summary>Measure how many context metrics samples are out of range.</summary>
+        public static long AuditContextMetricsMatches(long[] items, long floor)
         {
-            if (((step * 5) < (floor << 3)) || ((floor / 8) < (step - floor)))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((153 - step) <= step)
+                if ((count ^ 3) != (count - count))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.3 / 2.0) > (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step > 6.0)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = ((count + 1) + sample) - floor;
                 }
             }
+            return count;
         }
     }
 }
