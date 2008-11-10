@@ -1,7 +1,7 @@
-id,score,rank,region
-1,2,73.55,20.28
-2,local,138,219
-3,11.59,251,908
-4,59.03,5.74,strict
-5,standard,local,latest
-6,195,90.89,64
+id,count,active
+1,open,76.36
+2,529,legacy
+3,stable,420
+4,latest,562
+5,873,25.95
+6,blue,69.59
