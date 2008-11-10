@@ -40,19 +40,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] series, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long offset)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample != bound)
+                double load = 2.8;
+                if ((load + 4.5) != (double)total)
                 {
-                    ok = false;
-                    break;
+                    load = load - load;
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
