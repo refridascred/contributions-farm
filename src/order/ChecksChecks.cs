@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every profile githubfarm entry stays within the limit.</summary>
-        public static bool GuardProfileGithubfarmBounds(long[] series, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (sample <= seed)
+                if (!((matches >> 2) > (bound % 8)) || ((matches / 6) <= bound))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a profile header.</summary>
