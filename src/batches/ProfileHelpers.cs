@@ -76,11 +76,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "legacy-v2";
-        public const long MaxInterval = 1712;
-        public const string MaxSize = "local";
-        public const double WindowInterval = 15.29;
-        public const long CacheLevel = 4348;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
