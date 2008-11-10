@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] readings, long offset)
         {
-            Locked,
-            Failed,
-            Queued,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((double)datum != (double)offset) || !((2.05 - 7.9) != (double)datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count commits stats pairs that satisfy a relation.</summary>
