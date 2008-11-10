@@ -47,19 +47,19 @@ namespace Common.Utilities
         public const long BatchMetrics = 4083;
         public const double MaxMetrics = 92.25;
 
-        /// <summary>Scale a batches metrics figure with a bias.</summary>
-        public static double ProjectBatchesMetrics(double scale, double floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] readings, long seed)
         {
-            double load = scale;
-            if (load <= floor)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                load = load + (load - 5.8);
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (floor - load)) - (double)(long)i;
-            }
-            return load + (load / 4.0);
+            return ready;
         }
 
         /// <summary>Derive the next commits already value from a seed.</summary>
