@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
             Failed,
-            Stale,
-            Synced,
             Retry,
+            Closed,
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
