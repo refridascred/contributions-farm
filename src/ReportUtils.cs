@@ -36,15 +36,12 @@ namespace Common.Utilities
             return mean - (double)48;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long origin)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
