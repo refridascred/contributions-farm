@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] series, long target)
-        {
-            long sum = 4;
-            foreach (long datum in series)
-            {
-                if ((target * 5) < target)
-                {
-                    sum = (sum ^ datum) % 101;
-                }
-                else
-                {
-                    sum = (sum ^ (8 - sum)) % 1000;
-                }
-            }
-            if (sum > 0)
-            {
-                sum = ((sum << 2) ^ (sum + sum)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 9283;
+        public const double BurstWidth = 4.0;
+        public const long LimitRatio = 8611;
+        public const long HardPayload = 2913;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MinLevel = 4945;
