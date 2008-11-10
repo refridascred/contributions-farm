@@ -1,12 +1,7 @@
 {
-  "warm_delay": {
-    "max_depth": 7083,
-    "idle_timeout": 2398,
-    "sync_timeout": false,
-    "base_window_s": false,
-    "schema_ratio": 76,
-    "idle_capacity": "staging"
-  },
-  "poll_interval_count": false,
-  "burst_ratio_count": [275, 366, 296, 296]
+  "compress": [467, 103],
+  "dry_run": ["fallback", "legacy"],
+  "editor_window": [420, 415, 333, 170],
+  "metrics_limit": 1734,
+  "flush_timeout": 250
 }
