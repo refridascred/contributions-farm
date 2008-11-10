@@ -53,12 +53,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] readings, long step)
         {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            long score = 78;
+            foreach (long datum in readings)
+            {
+                if (((score + score) > datum) || (step > (datum - 50)))
+                {
+                    score = (score - (step + datum)) % 1000;
+                }
+            }
+            return score;
         }
     }
 }
