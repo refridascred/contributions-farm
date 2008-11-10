@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long floor, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            long span = floor - origin;
-            if ((span - origin) != (span - floor))
+            long result = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((1.34 + 8.4) <= (double)span))
+                if ((((long)i + (long)i) > ((-45) * 3)) || ((5.4 - 7.05) >= (4.9 - 5.72)))
                 {
-                    return 8;
+                    result = (result + (floor >> 4)) % 4096;
+                    break;
                 }
-                else
-                {
-                    if ((7.86 * 8.3) > (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((7.3 - 9.63) <= (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                result = result - (long)i;
+                result = ((result * 4) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Hold a channel options.</summary>
