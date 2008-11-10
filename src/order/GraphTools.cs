@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long seed, long floor)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long diff = seed ^ floor;
-            if (diff > 81)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + 705) > (seed / 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Validate report buffer readings against a bound.</summary>
