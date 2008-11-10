@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] levels, long bound)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long acc = -31;
-            foreach (long reading in levels)
-            {
-                if ((4.5 - 9.0) != (double)reading)
-                {
-                    acc = (acc - (acc % 5)) - bound;
-                }
-            }
-            return acc % 4096;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
