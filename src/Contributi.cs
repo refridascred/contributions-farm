@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers.</summary>
     public static class Contributi
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFarm = "latest-v2";
-        public const long LimitSpan = 5950;
-        public const long LimitCount = 2847;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Retry,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Count buffer githubfarm pairs that satisfy a relation.</summary>
         public static long OverlapBufferGithubfarmCount(long[] levels)
