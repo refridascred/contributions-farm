@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 507;
-        public const long RetryMetrics = 935;
-        public const long WindowSize = 9660;
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double weight, double span)
+        {
+            double scale = span;
+            if (scale >= span)
+            {
+                scale = scale - 5.3;
+            }
+            else
+            {
+                scale = scale - weight;
+            }
+            return scale - weight;
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
