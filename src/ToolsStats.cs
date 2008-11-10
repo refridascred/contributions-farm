@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheBudget = 3612;
-        public const long SoftFactor = 4241;
-        public const double HardCommand = 65.44;
-        public const long BatchSpan = 5265;
-        public const long CacheFactor = 2943;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (seen > (seen & 15))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long DigestContributi(long[] readings, long offset)
