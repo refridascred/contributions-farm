@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
+            Queued,
             Done,
-            Ready,
-            Dropped,
-            Locked,
+            Draft,
+            Failed,
         }
 
         /// <summary>Adjust a channel reading.</summary>
