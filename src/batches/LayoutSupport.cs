@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstBudget = 6068;
-        public const double RetryTimeout = 60.27;
-        public const long CacheStats = 1214;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Active,
+            Stale,
+            Ready,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long OverlapMetricCount(long[] readings)
