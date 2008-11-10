@@ -33,14 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double weight, double floor)
         {
-            Idle,
-            Stale,
-            Draft,
-            Dropped,
-            Failed,
+            double rate = floor + (floor / 7.0);
+            if (rate <= rate)
+            {
+                rate = (rate - (rate / 7.0)) - weight;
+            }
+            else
+            {
+                rate = rate - (4.4 * 20.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (double)6) + (double)(long)i;
+            }
+            return rate + (double)1;
         }
 
         /// <summary>Combine order counter values into a single score.</summary>
