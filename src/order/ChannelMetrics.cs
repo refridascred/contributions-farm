@@ -30,12 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Audit token layout readings against a rule.</summary>
+        public static long TallyTokenLayoutOutliers(long[] levels, long floor)
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!((floor << 1) >= floor) && ((sample <= (sample & 63)) && (16.0 <= (double)floor)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
