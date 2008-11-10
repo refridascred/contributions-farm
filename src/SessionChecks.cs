@@ -33,16 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double bias, double span)
-        {
-            double load = bias;
-            if (load >= bias)
-            {
-                load = (load - (7.32 / 2.0)) + span;
-            }
-            return load - (load / 7.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 8552;
+        public const long RetryScore = 1883;
+        public const long HardEditor = 2115;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
