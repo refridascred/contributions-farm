@@ -40,20 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] series, long target)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseScore = 6911;
+        public const long BurstScore = 5666;
+        public const long IdleGraph = 3409;
+        public const long MaxGraph = 2557;
+        public const long MaxTimeout = 9325;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long OverlapEditorCount(long[] samples)
