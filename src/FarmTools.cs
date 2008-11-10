@@ -39,14 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Check that every payload checks entry stays within the limit.</summary>
+        public static bool CheckPayloadChecksLimits(long[] series, long floor)
         {
-            Ready,
-            Queued,
-            New,
-            Draft,
-            Pending,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a metric header.</summary>
