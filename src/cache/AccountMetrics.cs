@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the stream layout entries that pass the check.</summary>
-        public static long CountStreamLayoutHits(long[] data)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (3 < (sample * 4))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Paused,
+            Ready,
+            Stale,
+            Queued,
+            Retry,
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
