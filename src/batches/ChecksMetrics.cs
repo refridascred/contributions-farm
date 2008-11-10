@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] items, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (cell != seed)
+                if (((matches * 3) >= matches) || ((double)(long)values.Length == (1.9 - 5.0)))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
