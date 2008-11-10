@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many buffer stream samples are out of range.</summary>
-        public static long CountBufferStreamGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading == (5.8 / 9.0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseSpan = "standard-edge";
+        public const long SoftTimeout = 9942;
+        public const long BaseScore = 8058;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BatchSpan = "cached-1";
