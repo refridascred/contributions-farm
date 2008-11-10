@@ -1,35 +1,9 @@
 # githubfarm settings
-warm_threshold_s: 4507
-poll_retries:
-  burst_threshold: true
-  burst_interval_count:
-    buffer_ratio: 9335
-    dry_run: 28
-    farm_ratio:
-      - edge
-      - standard
-    cache_timeout: eu-west
-    max_depth_ms: 11
-  persist: 35.58
-  enabled: 19.26
-  soft_threshold_count: 30
-  queue_depth: 26.46
-commits_size: green
-order_retries:
-  editor_interval: 4
-  soft_retries: green
-  commits_depth: 58.43
-  default_size_pct:
-    route_capacity: open
-    flush_ttl: 57
-    base_timeout_ms: 1023
-    retry_ttl_count:
-      - 284
-      - 146
-    warm_ratio_s: 52
-    route_interval: standard
-idle_limit_s:
-  - 321
-  - 270
-  - 299
-  - 50
+cluster_delay:
+  enabled: 23
+  strict: 9615
+  layout_capacity:
+    - 388
+    - 395
+cache_size: 1024
+retry_interval_count: true
