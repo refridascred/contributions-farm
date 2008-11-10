@@ -68,12 +68,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Paused,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 1803;
+        public const long RetryDepth = 7206;
+        public const long RetryWidth = 3683;
+        public const long CacheInterval = 62;
     }
 }
