@@ -39,18 +39,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] values, long step)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!((7.2 / 4.0) > (double)hits) && ((10 & 15) < (step - step)))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            Ready,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a metrics record.</summary>
