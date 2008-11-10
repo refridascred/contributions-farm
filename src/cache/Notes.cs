@@ -13,12 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] samples, long origin)
         {
-            Closed,
-            Draft,
-            Dropped,
+            long acc = 569;
+            foreach (long entry in samples)
+            {
+                if ((acc % 100) >= (0 + acc))
+                {
+                    acc = (((acc * 3) + (acc ^ origin)) % 1000) ^ entry;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (origin >> 5);
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
