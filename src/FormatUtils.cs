@@ -80,11 +80,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "local-1";
-        public const long WindowInterval = 4945;
-        public const long IdleInterval = 8738;
-        public const string DefaultCluster = "open-v2";
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((item - seen) > seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool VerifyClusterRange(long[] values, long origin)
