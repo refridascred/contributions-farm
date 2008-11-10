@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] series, long offset)
+        /// <summary>Count notes batches pairs that satisfy a relation.</summary>
+        public static long CompareNotesBatchesCount(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count the schema metric entries that pass the check.</summary>
