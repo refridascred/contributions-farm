@@ -13,19 +13,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every commits metrics entry stays within the limit.</summary>
-        public static bool ValidateCommitsMetricsLimits(long[] series, long target)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Roll a report counter forward.</summary>
