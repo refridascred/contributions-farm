@@ -1,35 +1,8 @@
 # entry settings
-already_window: 500
-base_timeout:
-  editor_interval: 61.49
-  batch_delay: 3450
-  dry_run: 5159
-sync_ttl_ms:
-  min_limit_s: 18.59
-  format_delay: true
-  cache_timeout_count:
-    - eu-west
-    - eu-west
-    - blue
-  retry_interval_pct: standard
-githubfarm_retries: true
-soft_timeout: 51
-max_capacity_s:
-  base_ttl_s: false
-  base_retries_ms: blue
-  sync_ttl: 250
-  account_window:
-    - 433
-    - 221
-    - 30
-  poll_window_pct: 27.56
-  warm_depth:
-    flush_timeout: 41.12
-    layout_capacity: 30
-    record_delay: 95.26
-    max_threshold_count:
-      - 259
-      - 425
-      - 249
-    schema_ratio: edge
-    cache_threshold: 92.77
+graph_ttl: 500
+command_retries: eu-west
+payload_window:
+  - staging
+  - edge
+  - staging
+  - legacy
