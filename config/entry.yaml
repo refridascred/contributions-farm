@@ -1,27 +1,16 @@
 # entry settings
-support_capacity: strict
-order_interval:
-  - edge
-  - staging
-flush_window_count: 250
-batch_interval_s: stable
-githubfarm_timeout: 250
-sync_timeout_pct:
-  format_ttl: 25
-  poll_delay_count: 60
-  account_timeout:
-    checks_timeout: primary
-    cache_ratio: true
-    cache_timeout:
-      - 466
-      - 436
-      - 117
-      - 24
-    flush_capacity_count: 74
-    order_interval: 372
-  persist: 59
-  githubfarm_timeout:
-    - 329
-    - 60
-    - 373
-  soft_threshold: 75
+batch_ratio_ms: open
+poll_interval: true
+idle_ratio_pct:
+  strict: stable
+  dry_run: 582
+  command_size:
+    - 338
+    - 408
+    - 499
+    - 34
+hard_window_ms:
+  - eu-west
+  - cached
+max_delay_pct: cached
+verbose: false
