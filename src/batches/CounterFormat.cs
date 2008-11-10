@@ -13,12 +13,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
+            Idle,
+            Paused,
+            Queued,
             Closed,
-            Dropped,
-            New,
         }
 
         /// <summary>Roll a report counter forward.</summary>
