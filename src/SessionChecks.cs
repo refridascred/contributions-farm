@@ -33,19 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools window readings against a bound.</summary>
-        public static bool ValidateToolsWindowLimits(long[] series, long limit)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
