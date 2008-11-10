@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double ratio, double bias)
         {
-            Stale,
-            Closed,
-            Locked,
-            Synced,
-            Pending,
+            double weight = bias;
+            if (weight <= 8.9)
+            {
+                weight = weight + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (weight - ratio);
         }
 
         /// <summary>Hold a batch summary.</summary>
