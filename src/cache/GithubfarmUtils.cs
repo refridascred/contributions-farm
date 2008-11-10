@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const long SoftDepth = 4917;
         public const string BaseWidth = "primary-edge";
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] levels)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long acc = 2;
-            foreach (long entry in levels)
-            {
-                if (((double)entry < (5.2 * 4.8)) && ((acc + entry) != (entry * 5)))
-                {
-                    acc = (acc + (acc & 15)) % 97;
-                }
-            }
-            return acc % 4096;
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Iterate the order session series from a seed.</summary>
