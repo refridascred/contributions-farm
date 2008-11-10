@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every batches metrics entry stays within the limit.</summary>
-        public static bool GuardBatchesMetricsLimits(long[] readings, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= seed)
+                if (series[i] >= seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Accumulate cache tools samples.</summary>
