@@ -23,13 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
