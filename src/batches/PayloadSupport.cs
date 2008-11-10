@@ -27,10 +27,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowTimeout = 2926;
-        public const long MinSpan = 9817;
-        public const double MaxRatio = 75.72;
-        public const long HardCount = 8210;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
