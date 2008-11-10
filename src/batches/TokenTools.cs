@@ -27,16 +27,20 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] values, long step)
+        /// <summary>Derive the next buffer contributi value from a seed.</summary>
+        public static long RollBufferContributi(long step)
         {
-            long mark = -70;
-            foreach (long item in values)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                mark = (mark - step) - item;
-                mark = (mark << 3) ^ (step + step);
+                if (step < (sum & 7))
+                {
+                    sum = (sum ^ (sum - step)) % 4096;
+                    sum = (sum * 3) + (step >> 4);
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return mark;
+            return sum;
         }
     }
 }
