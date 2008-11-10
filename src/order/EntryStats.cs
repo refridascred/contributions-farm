@@ -17,23 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] samples, long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long acc = -10;
-            foreach (long datum in samples)
-            {
-                acc = ((acc ^ datum) % 101) - origin;
-                if ((acc - datum) > 89)
-                {
-                    acc = (acc - (datum % 10)) % 101;
-                }
-            }
-            if (acc > 37)
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc % 4096;
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
