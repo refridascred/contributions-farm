@@ -1,9 +1,17 @@
 # githubfarm settings
-compress:
-  - 58
-  - 15
-  - 414
-hard_threshold_pct: 65.18
-burst_ratio: 90.55
-filter_ratio: 8204
-metrics_interval: 27.26
+contributi_delay: stable
+schema_interval: 66
+flush_size_ms:
+  - 109
+  - 338
+flush_ratio_ms:
+  - staging
+  - cached
+  - primary
+  - fallback
+counter_interval:
+  - 387
+  - 90
+  - 187
+  - 206
+dry_run: standard
