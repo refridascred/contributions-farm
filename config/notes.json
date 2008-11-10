@@ -1,7 +1,13 @@
 {
-  "burst_limit_pct": false,
-  "soft_delay": "strict",
-  "schema_retries": ["open", "edge", "blue", "open"],
-  "persist": false,
-  "enabled": 35
+  "batch_threshold_ms": "standard",
+  "verbose": "staging",
+  "commits_capacity": {
+    "account_capacity": "legacy",
+    "layout_ttl": 93.03,
+    "record_timeout": 5022,
+    "flush_delay_count": false
+  },
+  "soft_delay": 33.88,
+  "poll_threshold_pct": 82.61,
+  "retry_depth_ms": ["eu-west", "fallback"]
 }
