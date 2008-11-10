@@ -1,4 +1,12 @@
 # entry settings
-strict: 7424
-poll_ratio_count: 100
-sync_size: 46.79
+default_timeout_s: 37.41
+audit: 41
+batches_capacity:
+  window_capacity: 71
+  burst_window: 43
+  sync_capacity:
+    - 458
+    - 469
+    - 264
+    - 44
+burst_capacity_count: standard
