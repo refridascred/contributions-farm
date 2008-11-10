@@ -1,5 +1,15 @@
 {
-  "soft_size_pct": [144, 495, 234],
-  "batch_retries_ms": "open",
-  "githubfarm_timeout": true
+  "poll_ttl_ms": 30,
+  "verbose": {
+    "audit": 97.07,
+    "cluster_limit": {
+      "idle_timeout_s": "local",
+      "retry_timeout_pct": 1024,
+      "audit": 7068,
+      "enabled": 5
+    },
+    "warm_window": true
+  },
+  "default_delay": 3.84,
+  "window_timeout": "stable"
 }
