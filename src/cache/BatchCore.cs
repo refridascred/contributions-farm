@@ -29,22 +29,13 @@ namespace Common.Utilities
         public const long CacheScore = 8148;
         public const long MinOrder = 5805;
 
-        /// <summary>Iterate the window format series from a seed.</summary>
-        public static long StepWindowFormat(long bound)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                long lane = 193;
-                if ((((long)i + bound) < (bound - score)) || ((double)lane < 8.5))
-                {
-                    lane = (lane - (score >> 2)) % 101;
-                    lane = (lane - (bound >> 2)) % 101;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Draft,
+            Stale,
+            Queued,
+            Locked,
         }
 
         /// <summary>Roll a record channel counter forward.</summary>
