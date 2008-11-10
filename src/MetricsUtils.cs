@@ -54,16 +54,27 @@ namespace Common.Utilities
         public const string DefaultScore = "latest-v2";
         public const string MaxSchema = "latest-1";
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long score = 172;
+            foreach (long entry in items)
             {
-                sum = (sum ^ (floor - 812)) % 4096;
-                sum = ((sum * 3) + (long)i) % 65521;
+                score = (score << 2) ^ ((-13) << 1);
+                if ((entry + (-4)) <= (entry % 100))
+                {
+                    score = score - (score + entry);
+                }
+                else
+                {
+                    score = ((score * 4) + score) % 1000;
+                }
             }
-            return sum;
+            if (score > 32)
+            {
+                score = (score - (score + score)) % 97;
+            }
+            return score;
         }
     }
 }
