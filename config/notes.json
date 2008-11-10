@@ -1,13 +1,8 @@
 {
-  "batch_threshold_ms": "standard",
-  "verbose": "staging",
-  "commits_capacity": {
-    "account_capacity": "legacy",
-    "layout_ttl": 93.03,
-    "record_timeout": 5022,
-    "flush_delay_count": false
-  },
-  "soft_delay": 33.88,
-  "poll_threshold_pct": 82.61,
-  "retry_depth_ms": ["eu-west", "fallback"]
+  "record_capacity": true,
+  "cache_interval_ms": "latest",
+  "hard_limit_s": false,
+  "account_ratio": true,
+  "retry_window_count": "standard",
+  "already_window": false
 }
