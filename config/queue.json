@@ -1,6 +1,15 @@
 {
-  "metrics_size": 2867,
-  "poll_retries_s": 2103,
-  "burst_window": 9,
-  "flush_size": "green"
+  "hard_ttl": {
+    "session_capacity": true,
+    "warm_window_s": {
+      "soft_timeout_count": 78.43,
+      "hard_window": "staging",
+      "sync_ttl": "staging",
+      "readonly": 8703,
+      "base_threshold_ms": 35
+    },
+    "poll_depth": 46.58
+  },
+  "tools_delay": [9, 446, 77],
+  "compress": "staging"
 }
