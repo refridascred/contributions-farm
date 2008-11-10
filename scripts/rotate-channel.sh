@@ -6,11 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=296
+CHANNEL_LIMIT=491
 log "limit is ${CHANNEL_LIMIT}"
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
