@@ -1,6 +1,6 @@
 {
-  "hard_timeout": 18.14,
-  "flush_interval_pct": 36,
-  "warm_ttl_s": "stable",
-  "dry_run": [343, 483, 357]
+  "compress": "standard",
+  "poll_limit_count": 2970,
+  "schema_ratio": true,
+  "stream_ttl": false
 }
