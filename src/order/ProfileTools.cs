@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long offset, long target)
         {
-            Failed,
-            Retry,
-            Closed,
+            if ((double)target != (2.1 / 3.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (0 < target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
