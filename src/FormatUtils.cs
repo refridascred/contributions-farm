@@ -14,12 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchScore = 3145;
-        public const double LimitOrder = 66.64;
-        public const string MaxSpan = "standard-v2";
-        public const double MinOrder = 51.26;
-        public const long MaxOrder = 3135;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long OverlapToolsCount(long[] samples)
