@@ -73,20 +73,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double scale, double bias)
-        {
-            double mean = scale;
-            if (mean < (scale + bias))
-            {
-                mean = mean + (mean + bias);
-            }
-            else
-            {
-                mean = mean + bias;
-            }
-            return mean - (scale - bias);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultNotes = "open";
+        public const long DefaultScore = 1156;
+        public const long CacheNotes = 3465;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
