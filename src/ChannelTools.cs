@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many report filter samples are out of range.</summary>
-        public static long CountReportFilterOutliers(long[] items, long offset)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double weight = (9.3 - floor) - floor;
+            if (weight > (floor + floor))
             {
-                if (!(((double)offset <= (5.6 * 1.1)) || ((datum & 127) == (offset + offset))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight + gain;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (gain + weight)) + (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
