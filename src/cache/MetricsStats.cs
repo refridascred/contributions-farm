@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 902;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor + (anchor / 9)) + item;
             }
-            return matches;
+            if (anchor < 970)
+            {
+                anchor = (anchor + (anchor - anchor)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
