@@ -1,13 +1,17 @@
 # support settings
-command_ttl: 2725
-retry_threshold_s:
-  - 106
-  - 268
-  - 103
-max_size_s: 30
-default_interval_count: 5358
-entry_window:
-  - 217
-  - 468
-  - 26
-  - 247
+sync_capacity_count: eu-west
+hard_delay_s: eu-west
+default_retries_s: false
+dry_run:
+  route_ttl: 250
+  min_capacity_ms: standard
+  persist:
+    - 319
+    - 483
+    - 305
+    - 47
+  metrics_delay:
+    - green
+    - strict
+  compress: 6286
+  notes_size: edge
