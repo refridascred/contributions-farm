@@ -50,19 +50,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every cache report entry stays within the limit.</summary>
-        public static bool CheckCacheReportRange(long[] levels, long seed)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long mix = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (item < seed)
+                mix = mix - (-5);
+                for (int i3 = 0; i3 < 9; i3++)
                 {
-                    found = false;
-                    break;
+                    mix = (((mix << 3) ^ (67 & 15)) % 1000) ^ (long)i3;
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return found;
+            return mix;
         }
     }
 }
