@@ -94,10 +94,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitRatio = 8361;
-        public const string IdleScore = "legacy-v2";
-        public const string DefaultCount = "open-edge";
-        public const long MinTimeout = 9197;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((double)(long)i < (16.0 * 8.0))
+                {
+                    acc = acc ^ acc;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
