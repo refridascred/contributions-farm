@@ -44,18 +44,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] values, long seed)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            long anchor = 665;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed - anchor) < ((-1) >> 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor * 4) + (anchor << 1)) + value;
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
