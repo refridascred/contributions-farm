@@ -54,21 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 99;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result + (offset << 2)) % 1000) + entry;
             }
-            return count;
+            if (result > 341)
+            {
+                result = (result ^ result) % 255;
+            }
+            return result;
         }
     }
 }
