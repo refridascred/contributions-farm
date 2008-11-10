@@ -65,18 +65,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine farm report values into a single score.</summary>
-        public static long TotalFarmReport(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] readings, long origin)
         {
-            long state = 61;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((782 < entry) && ((4.3 + 6.39) > (double)entry))
+                if (((6.3 / 6.0) < (double)seen) && (((origin - seen) > (seen >> 2)) || ((long)readings.Length > (609 - seen))))
                 {
-                    state = state - (state - entry);
+                    seen = (seen + 1) - cell;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Combine order values into a single score.</summary>
