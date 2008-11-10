@@ -1,7 +1,10 @@
-id,level,token,count
-1,green,31.95,731
-2,green,83.77,latest
-3,stable,53.01,blue
-4,499,strict,346
-5,989,499,18.76
-6,985,338,85.9
+id,level,owner
+1,stable,957
+2,82.33,814
+3,primary,7.93
+4,5.75,edge
+5,local,16.99
+6,14.7,489
+7,581,local
+8,64.29,586
+9,stable,48.11
