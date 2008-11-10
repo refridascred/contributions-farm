@@ -23,20 +23,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long offset)
+        /// <summary>Audit format cache readings against a rule.</summary>
+        public static long CountFormatCacheOutliers(long[] series)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (99 > ((long)series.Length & 127))
                 {
-                    result = ((result - (result - result)) % 101) ^ (long)i2;
-                    result = (result ^ (offset - offset)) % 4096;
+                    hits = (hits + 1) + sample;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return hits;
         }
     }
 }
