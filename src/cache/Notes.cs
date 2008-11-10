@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long LimitRatio = 8611;
         public const long HardPayload = 2913;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] items, long limit)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Locate a context notes reading by value.</summary>
