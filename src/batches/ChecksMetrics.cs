@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const long IdleCounter = 8903;
         public const long CacheCounter = 5931;
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double weight, double offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] readings, long floor)
         {
-            double load = 8.8 * 8.65;
-            for (int i = 0; i < 2; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                load = (load - (load - weight)) + (double)(long)i;
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load + offset;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
