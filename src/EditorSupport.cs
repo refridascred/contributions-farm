@@ -32,19 +32,39 @@ namespace Common.Utilities
         public const long BaseLevel = 5531;
         public const long BaseFactor = 2980;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] items, long bound)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long target, long target2)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long diff = target ^ target2;
+            if ((diff - target) > (target << 3))
             {
-                if (sample != bound)
+                return 3;
+            }
+            else
+            {
+                if ((double)diff <= 2.0)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target2 == (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1 & 1) > (target2 * 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Match up queue samples.</summary>
