@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] samples, long bound)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
