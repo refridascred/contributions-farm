@@ -20,16 +20,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] data, long seed)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long score = 37;
-            foreach (long datum in data)
-            {
-                score = (score + (seed / 3)) - datum;
-                score = ((score * 3) + (seed / 2)) % 65521;
-            }
-            return score % 65521;
+            Failed,
+            Closed,
+            Dropped,
+            Queued,
+            Draft,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
