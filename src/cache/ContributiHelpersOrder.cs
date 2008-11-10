@@ -22,14 +22,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long floor)
         {
-            Locked,
-            Draft,
-            Retry,
-            Synced,
-            Closed,
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
