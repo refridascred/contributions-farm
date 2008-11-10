@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] items, long target)
+        /// <summary>Check that every schema account entry stays within the limit.</summary>
+        public static bool CheckSchemaAccountLimits(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((items[i] <= target) && ((items[i] % 2) == 0))
+                if (item < seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
