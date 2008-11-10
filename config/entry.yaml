@@ -1,24 +1,20 @@
 # entry settings
-enabled: 500
-readonly: true
-warm_depth_pct:
-  - legacy
-  - legacy
-  - open
-  - stable
-idle_ratio_ms: 100
-idle_limit_pct:
-  account_threshold: false
-  filter_limit:
-    already_window: 81
-    burst_ttl_s:
-      - 172
-      - 377
-    min_size_ms: 63
-    batch_delay_s:
-      - 166
-      - 130
-      - 189
-    hard_delay_count: 2062
-    retry_capacity: 48
-  retry_ttl_count: standard
+max_ratio_pct:
+  hard_limit: primary
+  payload_size: 64.05
+  retry_ratio_ms: 1206
+  compress:
+    verbose: 97
+    batch_threshold_s: cached
+    token_limit: 23
+  max_delay_count: 60
+counter_interval: 5634
+batch_ttl_count:
+  cluster_timeout: true
+  audit:
+    - primary
+    - standard
+    - legacy
+  sync_depth_s: 4858
+max_size: 94
+base_retries: local
