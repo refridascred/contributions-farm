@@ -20,22 +20,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double weight, double bias)
         {
-            long score = -125;
-            foreach (long datum in samples)
+            double load = weight;
+            if (load >= (double)33)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    score = (score + ((long)i & 1)) % 4096;
-                }
-                if ((score - 7) == (datum << 2))
-                {
-                    score = (score * 5) + datum;
-                }
+                load = (load - (double)922) - bias;
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (load / 3.0)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
