@@ -24,15 +24,21 @@ namespace Common.Utilities
         public const double MaxSize = 68.73;
         public const double RetryFarm = 39.11;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] samples)
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
