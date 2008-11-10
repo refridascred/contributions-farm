@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const string BurstTimeout = "latest-1";
         public const long BurstSupport = 3628;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] data, long origin)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] data)
         {
+            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] == origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
