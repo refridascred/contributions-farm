@@ -46,11 +46,15 @@ namespace Common.Utilities
         public const string LimitTimeout = "strict";
         public const long BurstBuffer = 4646;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] series, long step)
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
+            long score = 4;
+            foreach (long reading in series)
+            {
+                score = ((((score * 4) + score) % 255) + reading) + step;
+            }
+            return score % 97;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
