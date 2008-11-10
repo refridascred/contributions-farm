@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] levels, long floor)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((floor ^ floor) < (cell << 2))
-                {
-                    tally = tally + 1;
-                }
+                sum = (sum * 4) + floor;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
