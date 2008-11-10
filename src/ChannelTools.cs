@@ -36,21 +36,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Classify a layout support pair into a bucket.</summary>
+        public static long BucketLayoutSupport(long floor, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long span = floor ^ step;
+            if ((span - span) > floor)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step * 3) >= (step << 1))
                 {
-                    if ((data[i] + data[j]) == 15)
+                    return 6;
+                }
+                else
+                {
+                    if ((0.75 / 4.0) < (double)floor)
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
     }
 }
