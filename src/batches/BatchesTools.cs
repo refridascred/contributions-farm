@@ -34,14 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Failed,
-            Done,
-            Queued,
-            Closed,
-            Pending,
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
