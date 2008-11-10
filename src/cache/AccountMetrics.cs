@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long limit, long bound)
-        {
-            if (((bound * 3) < limit) || ((limit >> 5) < (limit ^ bound)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit <= (5.85 - 9.1)) || (limit >= 56))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 7327;
+        public const string StepCount = "fallback-edge";
+        public const long StepSchema = 2403;
+        public const long MinSchema = 5845;
+        public const long DefaultSchema = 6839;
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double ProjectFormat(double weight, double bias)
