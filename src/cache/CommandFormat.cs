@@ -16,22 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] data, long seed)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long state = -91;
-            foreach (long sample in data)
-            {
-                if (((double)state < (6.1 * 9.5)) && ((state * 4) >= (seed / 3)))
-                {
-                    state = (state - (80 + 3)) % 4096;
-                }
-                if (((state >> 3) < (sample << 3)) || (((-50) + sample) != (seed + sample)))
-                {
-                    state = state - (sample + state);
-                }
-            }
-            return state;
+            Failed,
+            Synced,
+            Paused,
+            Retry,
         }
 
         /// <summary>Check that every graph metric entry stays within the limit.</summary>
