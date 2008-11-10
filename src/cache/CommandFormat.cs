@@ -42,13 +42,32 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long step, long target)
         {
-            Locked,
-            New,
-            Dropped,
-            Closed,
+            long edge = step ^ target;
+            if ((target << 2) != (0 ^ step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((edge + target) >= (edge - step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((step % 5) >= (target + step)) && ((15.0 / 8.0) > (double)edge))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
