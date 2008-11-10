@@ -40,14 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Idle,
-            Active,
-            Paused,
-            New,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowMetrics = 32.32;
+        public const long HardMetrics = 4913;
+        public const long DefaultSpan = 827;
+        public const long BatchMetrics = 4083;
+        public const double MaxMetrics = 92.25;
 
         /// <summary>Scale a batches metrics figure with a bias.</summary>
         public static double ProjectBatchesMetrics(double scale, double floor)
