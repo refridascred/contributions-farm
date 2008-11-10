@@ -20,19 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values)
-        {
-            long state = 780;
-            foreach (long reading in values)
-            {
-                if (((state << 1) > 10) || ((double)reading >= 13.0))
-                {
-                    state = (state * 3) + reading;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 1243;
+        public const long WindowWidth = 8973;
+        public const long MaxAccount = 2242;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] values, long step)
