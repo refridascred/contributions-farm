@@ -50,12 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long total = 227;
+            foreach (long cell in items)
+            {
+                total = ((total ^ (175 % 16)) % 65521) ^ cell;
+            }
+            if (total < 26)
+            {
+                total = (total ^ (total >> 3)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
