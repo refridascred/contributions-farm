@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
