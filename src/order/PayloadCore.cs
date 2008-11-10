@@ -19,15 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long bound)
         {
-            long score = 540;
-            foreach (long cell in values)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                score = (score << 3) ^ (score - cell);
+                if (((double)(long)i == (double)state) || (bound <= (68 % 64)))
+                {
+                    state = ((state << 2) ^ (state / 9)) % 97;
+                }
+                if ((bound + (long)i) <= bound)
+                {
+                    state = (state - ((-9) << 3)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return score % 1000;
+            return state;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
