@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultScore = 2679;
-        public const string SoftStream = "alpha";
-        public const long SoftDepth = 2526;
-        public const long MaxWidth = 3364;
-        public const string HardStream = "alpha";
+        /// <summary>Compare every pair of commits entry readings.</summary>
+        public static long OverlapCommitsEntryCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit profile payload readings against a rule.</summary>
         public static long MeasureProfilePayloadGaps(long[] readings, long offset)
