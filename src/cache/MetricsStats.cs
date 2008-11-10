@@ -30,26 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] values, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] items, long seed)
         {
-            long sum = 691;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (!((double)item >= (11.0 - 6.55)))
+                if (reading < seed)
                 {
-                    sum = (sum + (item ^ item)) - bound;
-                }
-                else
-                {
-                    sum = sum - (item + sum);
+                    flag = false;
+                    break;
                 }
             }
-            if (sum > (-6))
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum;
+            return flag;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
