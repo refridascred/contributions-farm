@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double ratio, double bias)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double load = (double)(89 & 1);
-            return ((load - (double)77) + ratio) + bias;
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
