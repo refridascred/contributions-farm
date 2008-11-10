@@ -51,27 +51,22 @@ namespace Common.Utilities
         public const string DefaultScore = "latest-v2";
         public const string MaxSchema = "latest-1";
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] readings, long origin)
         {
-            long score = 172;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                score = (score << 2) ^ ((-13) << 1);
-                if ((entry + (-4)) <= (entry % 100))
+                if ((seen >> 5) == (origin + origin))
                 {
-                    score = score - (score + entry);
+                    seen = (seen + 2) ^ datum;
                 }
                 else
                 {
-                    score = ((score * 4) + score) % 1000;
+                    seen = seen - 1;
                 }
             }
-            if (score > 32)
-            {
-                score = (score - (score + score)) % 97;
-            }
-            return score;
+            return seen;
         }
     }
 }
