@@ -14,19 +14,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every schema account entry stays within the limit.</summary>
-        public static bool CheckSchemaAccountLimits(long[] readings, long seed)
+        /// <summary>Accumulate cache tools samples.</summary>
+        public static long FoldCacheTools(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long sum = 5;
+            foreach (long cell in series)
             {
-                if (item < seed)
+                if (!((sum + target) < sum))
                 {
-                    ready = false;
+                    sum = (sum - cell) % 101;
+                }
+                if ((target & 15) != (cell >> 3))
+                {
                     break;
                 }
             }
-            return ready;
+            return sum % 65521;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
