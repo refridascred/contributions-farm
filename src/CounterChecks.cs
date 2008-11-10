@@ -51,20 +51,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] data, long target)
-        {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchEditor = "primary-edge";
+        public const long DefaultEditor = 3229;
+        public const long MaxEditor = 354;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitRatio = 8361;
