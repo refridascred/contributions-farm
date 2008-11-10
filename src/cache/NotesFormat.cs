@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] levels, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long result = 0;
+            foreach (long sample in readings)
             {
-                if (reading > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                result = result ^ (result + sample);
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
