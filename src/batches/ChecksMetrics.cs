@@ -45,11 +45,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 3998;
-        public const long MinChannel = 2626;
-        public const string HardChannel = "standard-1";
-        public const string StepBudget = "staging-v2";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 1322;
+        public const long HardAlready = 9653;
+        public const string DefaultAlready = "fallback-edge";
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileLimits(long[] data, long offset)
