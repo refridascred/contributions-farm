@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Locked,
-            Stale,
-            Synced,
-            Active,
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
