@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const long LimitSupport = 6658;
         public const long MinSupport = 5553;
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double scale, double floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] series, long floor)
         {
-            double mean = floor;
-            if (mean >= scale)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                mean = mean - (mean / 6.0);
+                if (datum >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean + 6.56;
+            return stale;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
