@@ -34,18 +34,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] samples, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long sum = -2;
+            foreach (long reading in data)
             {
-                if (((-425) << 2) > (seen / 6))
+                sum = ((sum + (seed + sum)) % 65521) ^ reading;
+                if ((8.8 * 9.8) < (double)sum)
                 {
-                    seen = ((seen + 3) + reading) - floor;
+                    continue;
                 }
+                sum = (sum + sum) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
