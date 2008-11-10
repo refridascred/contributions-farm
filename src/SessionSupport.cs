@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] data, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] data)
         {
-            long anchor = 95;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                anchor = ((anchor - (value + 5)) % 97) + offset;
-                if ((double)value < (3.97 - 4.3))
+                if ((1.0 / 2.0) > (double)hits)
                 {
-                    anchor = (anchor - anchor) % 65521;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            if (anchor > 48)
-            {
-                anchor = ((anchor * 5) + (anchor % 97)) % 97;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
