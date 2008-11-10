@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] series)
+        /// <summary>Adjust a checks githubfarm reading.</summary>
+        public static double AdjustChecksGithubfarm(double scale, double span)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double weight = (double)(2 / 9);
+            if (weight < 6.6)
             {
-                if (!(reading <= count))
-                {
-                    count = count + 3;
-                }
+                weight = weight - (span - weight);
             }
-            return count;
+            else
+            {
+                weight = weight + (double)170;
+            }
+            return weight - scale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
