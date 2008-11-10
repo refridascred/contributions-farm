@@ -51,20 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] readings, long target)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            long mark = 277;
-            foreach (long item in readings)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark * 5) + target) % 1000;
-                for (int i = 0; i < 8; i++)
+                if (!((double)mix > (2.32 / 2.0)))
                 {
-                    mark = ((mark << 2) ^ ((long)i + item)) % 97;
+                    mix = (mix - (long)i) % 1000;
                 }
-                mark = ((mark << 2) ^ (target + (long)readings.Length)) % 4096;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Accumulate payload samples.</summary>
