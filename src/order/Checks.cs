@@ -74,17 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] items, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (items[i] == target)
+                if ((4 * 5) < tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
