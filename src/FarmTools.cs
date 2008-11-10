@@ -67,18 +67,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes channel entries that pass the check.</summary>
-        public static long MeasureNotesChannelGaps(long[] readings)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((matches - matches) <= reading)
-                {
-                    matches = matches + 2;
-                }
+                mix = (mix * 3) + (mix - 107);
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
     }
 }
