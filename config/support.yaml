@@ -1,30 +1,23 @@
 # support settings
-min_capacity_count:
-  context_capacity: 4960
-  profile_ttl:
-    idle_threshold: blue
-    sync_threshold: legacy
-    persist: primary
-    poll_window_ms: 96.32
-    flush_interval: 250
-  verbose: true
-  burst_delay: 23
-  min_limit_s: 3470
-base_depth_ms: 5986
-min_window_pct:
-  command_limit:
-    - latest
-    - local
-  sync_window_ms: eu-west
-  filter_ttl:
-    batches_capacity: 32
-    poll_capacity: 83.13
-    min_ttl_ms:
-      - open
-      - edge
-      - eu-west
-    profile_delay: true
-    flush_ratio_pct: false
-  max_delay_count: 34.94
-  persist: true
-warm_timeout_s: 86.43
+base_size_s: true
+readonly:
+  readonly: strict
+  compress: true
+  base_capacity: false
+  persist: 46.78
+retry_timeout_count:
+  strict: 250
+  metric_window: 7171
+  cache_retries_count: 6.69
+  enabled:
+    checks_timeout:
+      - legacy
+      - blue
+      - latest
+    poll_delay_pct:
+      - 199
+      - 137
+      - 203
+    readonly: 100
+    hard_size_s: legacy
+  flush_timeout_ms: standard
