@@ -26,32 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long limit, long target)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] series)
         {
-            long diff = limit ^ target;
-            if ((3 - diff) > (limit >> 2))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit == (9.73 - 8.9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((target - diff) > (diff - target)) || (diff > (diff & 7)))
+                    if ((series[i] ^ series[j]) > 12)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
