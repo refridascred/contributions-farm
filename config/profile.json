@@ -1,14 +1,6 @@
 {
-  "cache_depth_s": true,
-  "dry_run": [438, 193, 217],
-  "support_capacity": 7995,
-  "audit": ["open", "primary", "staging"],
-  "min_ttl": {
-    "compress": 64,
-    "batch_delay": ["strict", "edge", "latest", "blue"],
-    "burst_ratio_ms": 100,
-    "default_capacity_s": false,
-    "readonly": 500
-  },
-  "verbose": 100
+  "burst_retries_pct": 60,
+  "burst_limit_pct": 961,
+  "flush_interval": 25.09,
+  "sync_depth": "open"
 }
