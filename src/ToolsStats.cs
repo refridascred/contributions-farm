@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] items)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
             long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seen > (seen & 15))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) ^ value;
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
