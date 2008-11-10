@@ -10,17 +10,31 @@ namespace Common.Utilities
         public const string CacheScore = "standard-1";
         public const string BaseBatch = "local-edge";
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] items, long target)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long target, long target2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((target2 >= (target2 << 2)) && ((target - target2) == (target / 8)))
             {
-                if ((items[i] == target) && ((items[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((target2 + target2) >= (target ^ target))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((12 & 127) == (target - target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
