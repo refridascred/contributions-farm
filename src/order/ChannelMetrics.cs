@@ -5,25 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long seed, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] values, long seed)
         {
-            long span = seed ^ floor;
-            if (floor > (span << 1))
+            long state = 955;
+            foreach (long datum in values)
             {
-                return 1;
+                if ((double)state > (5.61 + 3.83))
+                {
+                    state = (state + (39 / 8)) % 97;
+                }
+                if (state > (datum ^ 514))
+                {
+                    state = state + state;
+                }
+                if ((state > (datum + seed)) || ((state >> 4) != (seed << 3)))
+                {
+                    break;
+                }
             }
-            else
+            if (state > 93)
             {
-                if (seed <= (0 / 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
+                state = state - 0;
             }
+            return state % 4096;
         }
 
         /// <summary>Combine counter support values into a single score.</summary>
