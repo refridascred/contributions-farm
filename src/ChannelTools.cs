@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] samples, long seed)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < seed)
+                if ((series[i] >= bound) && ((series[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Rank order input into a small class.</summary>
