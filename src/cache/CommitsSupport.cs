@@ -22,31 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long floor, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] series)
         {
-            if ((floor + floor) < (bound * 2))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((0.1 / 9.0) < (double)bound)
+                if (2.3 > (double)sample)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound > 2.1)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
