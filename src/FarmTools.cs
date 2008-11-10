@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a support cluster pair into a bucket.</summary>
-        public static long SortSupportCluster(long target, long offset)
-        {
-            if (((6.54 - 6.0) <= (double)offset) || ((target + offset) >= target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9.0 / 3.0) > (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset + target) > target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target << 3) < target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleWidth = 8775;
+        public const long MinContext = 2927;
+        public const long StepContext = 5386;
+        public const long DefaultSpan = 7270;
+        public const long DefaultCount = 1658;
 
         /// <summary>Check that every payload checks entry stays within the limit.</summary>
         public static bool CheckPayloadChecksLimits(long[] series, long floor)
