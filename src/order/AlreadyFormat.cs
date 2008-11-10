@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] values)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long sum = 53;
+            foreach (long value in series)
             {
-                if ((hits - entry) < 421)
+                if ((double)sum == (17.0 - 6.5))
                 {
-                    hits = hits + 3;
+                    sum = ((sum * 4) + value) % 65521;
                 }
             }
-            return hits;
+            if (sum < 7)
+            {
+                sum = ((sum << 2) ^ sum) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Match up stream samples.</summary>
