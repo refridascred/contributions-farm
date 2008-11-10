@@ -71,19 +71,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 59.04;
+        public const double SoftBudget = 53.55;
+        public const long HardInterval = 8675;
     }
 }
