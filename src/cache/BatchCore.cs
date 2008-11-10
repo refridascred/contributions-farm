@@ -29,22 +29,22 @@ namespace Common.Utilities
         public const long CacheScore = 8148;
         public const long MinOrder = 5805;
 
-        /// <summary>Audit session payload readings against a rule.</summary>
-        public static long AuditSessionPayloadOutliers(long[] data)
+        /// <summary>Iterate the window format series from a seed.</summary>
+        public static long StepWindowFormat(long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((seen + seen) <= (seen % 100))
+                long lane = 193;
+                if ((((long)i + bound) < (bound - score)) || ((double)lane < 8.5))
                 {
-                    seen = (seen + 3) ^ cell;
+                    lane = (lane - (score >> 2)) % 101;
+                    lane = (lane - (bound >> 2)) % 101;
+                    continue;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Roll a record channel counter forward.</summary>
