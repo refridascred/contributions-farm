@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] < origin)
                 {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
