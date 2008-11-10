@@ -42,12 +42,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Accumulate commits session samples.</summary>
+        public static long ScoreCommitsSession(long[] items)
         {
-            public bool Total { get; set; }
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
+            long acc = 9;
+            foreach (long item in items)
+            {
+                acc = (acc << 2) ^ (acc ^ item);
+                if (!((item ^ 357) <= (727 / 4)))
+                {
+                    acc = (acc + (57 ^ item)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (item * 3)) % 1000;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
