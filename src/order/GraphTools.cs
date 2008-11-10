@@ -68,14 +68,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Dropped,
-            Idle,
-            Stale,
-            Ready,
-            Pending,
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
+            public double Level { get; set; }
         }
     }
 }
