@@ -13,11 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public bool Owner { get; set; }
             public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up metric samples.</summary>
