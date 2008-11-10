@@ -13,25 +13,26 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long limit, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] samples, long offset)
         {
-            long diff = limit - target;
-            if (!((diff + limit) <= (target ^ limit)))
+            long mix = 5;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((980 >> 1) < (limit - 4)) && ((75 + diff) > (limit << 2)))
+                if ((offset ^ cell) <= (offset + mix))
                 {
-                    return 7;
+                    mix = ((mix << 3) ^ (offset << 3)) % 97;
                 }
-                else
+                if ((double)mix > (6.12 * 2.73))
                 {
-                    return 8;
+                    break;
                 }
             }
+            if (mix > 621)
+            {
+                mix = (mix * 3) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
