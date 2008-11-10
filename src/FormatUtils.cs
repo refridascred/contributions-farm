@@ -23,16 +23,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 52.4;
+        public const long BurstCount = 6711;
+        public const long MinWidth = 6398;
+        public const long BatchSize = 4614;
+        public const string CacheCounter = "legacy-1";
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteOutliers(long[] readings, long target)
