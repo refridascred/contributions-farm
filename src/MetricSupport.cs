@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long bound, long origin)
-        {
-            long step = bound + origin;
-            if (!((double)43 >= (double)step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((bound - bound) > origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + 168) >= (bound + 625))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseScore = 6522;
+        public const long WindowFormat = 8272;
+        public const string HardTimeout = "primary-v2";
+        public const string CacheInterval = "latest-1";
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
