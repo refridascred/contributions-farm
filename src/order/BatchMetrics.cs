@@ -46,20 +46,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 5153;
+        public const long IdleFactor = 169;
+        public const long CacheWindow = 941;
+        public const long StepDepth = 4890;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
