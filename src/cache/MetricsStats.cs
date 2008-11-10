@@ -36,13 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Locked,
-            Failed,
-            Dropped,
-            Synced,
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
