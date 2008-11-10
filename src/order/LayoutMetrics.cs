@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long offset, long offset2)
         {
-            Paused,
-            Stale,
-            Done,
+            long gap = offset ^ offset2;
+            if ((120 > (8 + gap)) || ((double)offset == (double)gap))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((offset2 ^ offset) > (offset2 >> 4)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)offset2 > (3.92 * 2.0)) && ((double)gap >= 9.57))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (896 < (offset * 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stats farm samples.</summary>
