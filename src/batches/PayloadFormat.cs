@@ -38,23 +38,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double weight, double floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double weight, double offset)
         {
-            double rate = floor + (floor / 7.0);
-            if (rate <= rate)
+            double load = (2.0 / 6.0) * 14.0;
+            if (load < load)
             {
-                rate = (rate - (rate / 7.0)) - weight;
-            }
-            else
-            {
-                rate = rate - (4.4 * 20.0);
+                load = load - (weight - offset);
             }
             for (int i = 0; i < 2; i++)
             {
-                rate = (rate - (double)6) + (double)(long)i;
+                load = (load + load) + (double)(long)i;
             }
-            return rate + (double)1;
+            return load - 0.2;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
