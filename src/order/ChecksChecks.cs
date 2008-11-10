@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] readings, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            long mix = 57;
+            foreach (long entry in readings)
+            {
+                mix = ((mix - seed) % 255) ^ entry;
+            }
+            if (mix < 8)
+            {
+                mix = mix + (mix + 382);
+            }
+            return mix;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
