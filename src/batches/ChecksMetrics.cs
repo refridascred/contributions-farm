@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] series)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (((-198) / 4) >= (seen * 2))
+                if ((0.32 - 6.18) > (double)matches)
                 {
-                    seen = (seen + 2) ^ sample;
+                    matches = ((matches + 3) - entry) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
