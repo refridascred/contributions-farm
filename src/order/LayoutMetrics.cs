@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((6.5 + 4.18) >= (double)floor) || ((tally % 3) < floor))
                 {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
