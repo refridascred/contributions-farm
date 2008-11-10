@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!(count > (6 ^ 2)))
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a order reading.</summary>
