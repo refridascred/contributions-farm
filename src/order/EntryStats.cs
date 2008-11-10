@@ -43,23 +43,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double weight, double offset)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double gain = offset - weight;
-            if (gain <= offset)
-            {
-                gain = gain - offset;
-            }
-            else
-            {
-                gain = gain + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain + gain;
+            Locked,
+            New,
+            Idle,
+            Done,
+            Queued,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
