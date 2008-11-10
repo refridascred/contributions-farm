@@ -41,16 +41,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double weight, double offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor + ((long)i - step)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            double gain = 0.27;
+            return ((gain + (double)504) + weight) + offset;
         }
 
         /// <summary>Validate window format readings against a bound.</summary>
