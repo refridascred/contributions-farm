@@ -40,17 +40,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Look up the position of a support contributi sample.</summary>
-        public static long FindSupportContributiIndex(long[] levels, long offset)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (double)((-30) % 12);
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
+                weight = ((weight - floor) + (double)(long)i) - rate;
             }
-            return -1;
+            return weight - (double)86;
         }
 
         /// <summary>Define window limits and defaults.</summary>
