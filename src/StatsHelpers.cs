@@ -46,24 +46,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long offset, long target)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double weight, double span)
         {
-            if ((target ^ offset) == (5 - target))
+            double ratio = (weight + span) * 8.4;
+            if (ratio <= (span / 6.0))
             {
-                return 5;
+                ratio = ratio + (double)1;
             }
             else
             {
-                if ((target ^ target) >= (offset >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
+                ratio = ratio + (span + ratio);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio - 3.59;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
