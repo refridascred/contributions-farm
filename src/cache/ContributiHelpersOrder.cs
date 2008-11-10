@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double rate, double offset)
         {
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
+            double mean = (double)636 / 8.0;
+            return ((mean - (double)(-23)) + rate) + offset;
         }
 
         /// <summary>Describe the batch state values.</summary>
