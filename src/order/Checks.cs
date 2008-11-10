@@ -39,12 +39,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 3130;
-        public const double BurstWidth = 60.78;
-        public const double CacheBuffer = 67.46;
-        public const string LimitTimeout = "strict";
-        public const long BurstBuffer = 4646;
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double scale, double floor)
+        {
+            double mean = 18.0 / 9.0;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (((mean - mean) + (double)(long)i) + scale) - floor;
+            }
+            return mean + mean;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long DigestSchema(long[] series, long step)
