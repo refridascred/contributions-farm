@@ -37,17 +37,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long floor)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
