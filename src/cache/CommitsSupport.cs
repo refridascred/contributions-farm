@@ -36,25 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long origin, long seed)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long gap = origin + seed;
-            if (((-7) + origin) < (gap + origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((404 ^ seed) != (seed % 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many filter entry samples are out of range.</summary>
