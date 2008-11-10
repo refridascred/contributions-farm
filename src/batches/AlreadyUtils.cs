@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double rate, double span)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double ratio = rate;
-            if (ratio <= (rate + rate))
-            {
-                ratio = (ratio - rate) + span;
-            }
-            else
-            {
-                ratio = ratio - (ratio + 9.49);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (ratio + rate)) + (double)(long)i;
-            }
-            return ratio + (1.9 - 6.0);
+            Closed,
+            Done,
+            Stale,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
