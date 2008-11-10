@@ -19,39 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long step, long floor)
-        {
-            if (412 >= (step << 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (11.0 >= (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step * 3) != (step / 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor ^ step) == (floor % 60))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 8487;
+        public const long RetryDepth = 8468;
+        public const long IdleSpan = 3957;
+        public const long LimitSupport = 6658;
+        public const long MinSupport = 5553;
 
         /// <summary>Blend two support measurements.</summary>
         public static double ProjectSupport(double scale, double floor)
