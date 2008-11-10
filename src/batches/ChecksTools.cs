@@ -25,12 +25,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 8809;
-        public const long MinDepth = 5552;
-        public const string SoftAccount = "open-1";
-        public const long MinAccount = 3852;
-        public const long LimitBudget = 5814;
+        /// <summary>Fold a list of farm githubfarm readings.</summary>
+        public static long DigestFarmGithubfarm(long[] series, long seed)
+        {
+            long mix = 94;
+            foreach (long sample in series)
+            {
+                if ((mix ^ seed) < mix)
+                {
+                    mix = ((mix + mix) % 4096) + sample;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
