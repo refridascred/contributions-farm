@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] values, long floor)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a already options.</summary>
