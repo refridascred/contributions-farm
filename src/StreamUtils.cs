@@ -43,21 +43,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long seed, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (limit < (limit ^ 70))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((8.47 + 4.8) <= (double)seed)
                 {
-                    if ((levels[i] ^ levels[j]) < 14)
+                    return 7;
+                }
+                else
+                {
+                    if ((8.9 * 8.8) < (double)seed)
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
