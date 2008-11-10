@@ -24,17 +24,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] levels, long limit)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long floor, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor + floor) < (bound * 2))
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((0.1 / 9.0) < (double)bound)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound > 2.1)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
