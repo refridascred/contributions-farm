@@ -29,13 +29,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            New,
-            Pending,
-            Active,
-            Closed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 1156;
+        public const long StepCache = 6768;
+        public const long BurstRatio = 512;
+        public const double StepBudget = 9.19;
     }
 }
