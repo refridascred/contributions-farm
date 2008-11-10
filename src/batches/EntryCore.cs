@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] levels, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (levels[i] < limit)
+                if ((value >> 5) >= (matches / 9))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
