@@ -41,12 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Fold a list of report command readings.</summary>
+        public static long ScoreReportCommand(long[] values)
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long acc = 94;
+            foreach (long cell in values)
+            {
+                if (!((86 + acc) <= (cell & 3)))
+                {
+                    acc = acc ^ (acc << 2);
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
