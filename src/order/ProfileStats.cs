@@ -34,19 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] readings, long target)
+        /// <summary>Validate command farm readings against a bound.</summary>
+        public static bool GuardCommandFarmRange(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (entry != target)
+                if (cell > offset)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
