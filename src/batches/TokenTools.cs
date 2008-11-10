@@ -20,18 +20,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] levels, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long mark = -70;
+            foreach (long item in values)
             {
-                if ((double)cell > (0.9 * 1.7))
-                {
-                    matches = (matches + 1) - step;
-                }
+                mark = (mark - step) - item;
+                mark = (mark << 3) ^ (step + step);
             }
-            return matches;
+            return mark;
         }
     }
 }
