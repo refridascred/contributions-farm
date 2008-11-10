@@ -45,15 +45,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of farm checks readings.</summary>
-        public static long TotalFarmChecks(long[] values, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] samples, long seed)
         {
-            long score = 37;
-            foreach (long sample in values)
+            long score = 360;
+            foreach (long value in samples)
             {
-                if (((sample ^ 1) > (sample / 2)) || ((double)score >= 1.3))
+                score = (score + 10) % 255;
+                score = ((score << 2) ^ (score + score)) % 4096;
+                if ((value >> 1) >= (value << 1))
                 {
-                    score = (((score << 2) ^ (917 / 5)) % 65521) - target;
+                    score = (score ^ (seed + seed)) % 255;
                 }
             }
             return score;
