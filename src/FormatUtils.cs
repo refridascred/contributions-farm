@@ -70,11 +70,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardSize = 7257;
-        public const long BatchFactor = 1622;
-        public const long RetryScore = 819;
-        public const long BatchLevel = 7832;
-        public const string CacheRatio = "primary";
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Pending,
+            Stale,
+            Draft,
+        }
     }
 }
