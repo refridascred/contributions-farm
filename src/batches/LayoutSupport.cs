@@ -20,13 +20,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Synced,
-            New,
-            Closed,
-            Ready,
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of farm entries.</summary>
