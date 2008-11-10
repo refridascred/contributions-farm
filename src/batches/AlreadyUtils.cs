@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] data, long step)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            double ratio2 = (span / 3.0) - ratio;
+            if (ratio2 >= (span + span))
             {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio2 = ratio2 - ratio2;
             }
-            return valid;
+            else
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
