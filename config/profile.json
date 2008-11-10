@@ -1,7 +1,8 @@
 {
-  "poll_delay": true,
-  "cluster_window": 5362,
-  "retry_depth": ["green", "strict", "local"],
-  "warm_size_s": 1024,
-  "cache_capacity": [313, 89]
+  "support_capacity": 1,
+  "schema_ttl": [156, 259, 412, 106],
+  "hard_depth_s": 1024,
+  "strict": 12.64,
+  "dry_run": [251, 325, 194],
+  "min_limit_pct": 2397
 }
