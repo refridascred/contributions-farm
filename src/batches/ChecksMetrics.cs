@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long offset, long origin)
         {
-            Draft,
-            Queued,
-            Locked,
+            long delta = offset - origin;
+            if (((offset << 2) > (5 + offset)) || ((origin % 12) < delta))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((12 >> 1) < delta)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin >> 4) != (origin & 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((origin - origin) < origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
