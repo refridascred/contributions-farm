@@ -88,19 +88,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] items, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long seed)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum != target)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum * 4) + (seed * 5)) ^ (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Accumulate context schema samples.</summary>
