@@ -19,33 +19,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long bound, long origin)
-        {
-            long diff = bound + origin;
-            if (((double)origin > (7.4 - 7.9)) && ((348 - diff) <= diff))
-            {
-                return 0;
-            }
-            else
-            {
-                if (5.0 > (double)diff)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((8.6 * 0.23) != (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 473;
+        public const long BatchLevel = 144;
+        public const double IdleScore = 62.21;
+        public const long LimitToken = 7510;
+        public const long BatchToken = 9685;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiOutliers(long[] values, long origin)
