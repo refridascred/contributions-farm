@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double ratio, double span)
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public long Score { get; set; }
+            double scale = ratio;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + span) + (double)(long)i;
+            }
+            return scale + (double)76;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
