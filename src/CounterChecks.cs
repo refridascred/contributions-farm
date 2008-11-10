@@ -46,11 +46,20 @@ namespace Common.Utilities
         public const long DefaultLevel = 6087;
         public const long StepStream = 8816;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepDepth = 3347;
-        public const long StepContributi = 1382;
-        public const long BaseContributi = 2073;
-        public const long BatchContributi = 4115;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] series, long origin)
+        {
+            long mix = 642;
+            foreach (long reading in series)
+            {
+                mix = ((mix + mix) % 97) ^ reading;
+            }
+            if (mix < 80)
+            {
+                mix = mix ^ origin;
+            }
+            return mix;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitRatio = 8361;
