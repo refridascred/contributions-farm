@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const long LimitToken = 7510;
         public const long BatchToken = 9685;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] values, long origin)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double rate, double offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double scale = offset;
+            if (scale < offset)
             {
-                if ((37 ^ origin) < (origin + 692))
-                {
-                    count = (count + 3) ^ entry;
-                }
+                scale = scale + rate;
             }
-            return count;
+            return scale - (rate * 2.0);
         }
 
         /// <summary>Check that every record stats entry stays within the limit.</summary>
