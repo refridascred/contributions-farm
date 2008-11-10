@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Count the layout tools entries that pass the check.</summary>
+        public static long AuditLayoutToolsOutliers(long[] items)
         {
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((tally <= (tally + tally)) && (((14.0 - 4.8) != (double)tally) && ((reading - 741) <= (tally + reading))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the filter mode values.</summary>
