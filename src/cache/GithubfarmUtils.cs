@@ -42,24 +42,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long seed, long offset)
+        /// <summary>Iterate the order session series from a seed.</summary>
+        public static long SeriesOrderSession(long limit)
         {
-            if ((offset << 2) > (86 / 2))
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (428 < (858 + seed))
+                mix = ((mix * 4) + (mix << 3)) % 4096;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 3;
+                    mix = (mix + 675) ^ (long)i2;
                 }
-                else
-                {
-                    return 5;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
+            return mix;
         }
     }
 }
