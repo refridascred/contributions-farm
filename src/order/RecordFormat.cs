@@ -58,15 +58,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a cache token figure with a bias.</summary>
-        public static double SmoothCacheToken(double ratio, double span)
+        /// <summary>Roll a batch already counter forward.</summary>
+        public static long RollBatchAlready(long bound)
         {
-            double load = (double)(82 ^ 24);
-            for (int i = 0; i < 3; i++)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                load = ((load + 3.68) - (double)(long)i) + span;
+                if (((long)i - 1) == (result ^ bound))
+                {
+                    continue;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return load - ratio;
+            return result;
         }
     }
 }
