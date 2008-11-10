@@ -46,11 +46,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowWidth = "latest-v2";
-        public const long StepCommits = 7452;
-        public const string BatchCommits = "primary-v2";
-        public const long BatchFactor = 1498;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long offset, long target)
+        {
+            if ((target ^ offset) == (5 - target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target ^ target) >= (offset >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterMatches(long[] values)
