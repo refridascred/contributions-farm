@@ -75,19 +75,12 @@ namespace Common.Utilities
             return mean - (scale - bias);
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] readings, long target)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
