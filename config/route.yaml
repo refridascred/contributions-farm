@@ -1,6 +1,4 @@
 # route settings
-editor_retries: staging
-sync_depth: true
-context_interval: fallback
-cache_window: 0.44
-min_ratio_ms: true
+retry_timeout_count: 98
+max_threshold: legacy
+max_timeout_count: 1495
