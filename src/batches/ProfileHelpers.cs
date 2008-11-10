@@ -66,10 +66,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultNotes = "open";
-        public const long DefaultScore = 1156;
-        public const long CacheNotes = 3465;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry - limit) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
