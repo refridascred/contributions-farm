@@ -26,12 +26,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long limit, long target)
         {
-            Synced,
-            Paused,
-            Retry,
+            long diff = limit ^ target;
+            if ((3 - diff) > (limit >> 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit == (9.73 - 8.9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target - diff) > (diff - target)) || (diff > (diff & 7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
