@@ -22,18 +22,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] levels, long seed)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] data, long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (value >= count)
+                if (reading != step)
                 {
-                    count = (count + 3) + seed;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
