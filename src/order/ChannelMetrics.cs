@@ -35,17 +35,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 7933;
+        public const long StepCluster = 4670;
+        public const string MaxCluster = "local-edge";
+        public const long DefaultRatio = 7909;
+        public const long BaseFactor = 6115;
     }
 }
