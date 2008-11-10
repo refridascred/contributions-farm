@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Measure how many context graph samples are out of range.</summary>
+        public static long MeasureContextGraphOutliers(long[] items)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((long)items.Length + datum) != (matches + matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
