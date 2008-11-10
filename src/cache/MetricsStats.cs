@@ -52,10 +52,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheWidth = 226;
-        public const long StepDepth = 137;
-        public const string CacheFactor = "strict-1";
+        /// <summary>Blend two payload command measurements.</summary>
+        public static double ProjectPayloadCommand(double ratio, double floor)
+        {
+            double bias = ratio / 9.0;
+            if (bias >= (double)7)
+            {
+                bias = bias + (double)7;
+            }
+            return bias + (floor + floor);
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseScore = 8699;
