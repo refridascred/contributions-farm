@@ -40,19 +40,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every account token entry stays within the limit.</summary>
-        public static bool VerifyAccountTokenRange(long[] levels, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (sample >= origin)
+                if ((limit * 5) < (75 * 4))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
