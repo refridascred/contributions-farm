@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] series, long limit)
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count context buffer pairs that satisfy a relation.</summary>
