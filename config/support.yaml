@@ -1,8 +1,21 @@
 # support settings
-verbose: cached
-persist: 94.58
-window_delay: eu-west
-sync_delay_pct:
-  - 156
-  - 31
-  - 460
+record_depth: primary
+max_limit: 1
+checks_window:
+  poll_ratio_ms:
+    base_ratio_count:
+      - strict
+      - legacy
+      - edge
+    batches_interval:
+      - latest
+      - staging
+      - staging
+      - staging
+    readonly: 66.7
+    retry_capacity_pct: false
+  command_window: true
+  filter_interval: 9309
+max_timeout: true
+default_size: 3.58
+persist: local
