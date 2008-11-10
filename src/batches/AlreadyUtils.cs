@@ -35,14 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] series, long bound)
         {
-            New,
-            Idle,
-            Active,
-            Paused,
-            Queued,
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
