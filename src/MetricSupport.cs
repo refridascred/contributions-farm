@@ -16,19 +16,23 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] values, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long anchor = 866;
+            foreach (long item in readings)
             {
-                if (datum >= bound)
+                if (item >= anchor)
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor << 3) ^ 22;
                 }
+                else
+                {
+                    anchor = anchor ^ 10;
+                }
+                anchor = (anchor ^ anchor) % 4096;
             }
-            return flag;
+            return anchor % 4096;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
