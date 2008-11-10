@@ -41,19 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report schema readings against a bound.</summary>
-        public static bool ValidateReportSchemaBounds(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardInterval = "alpha";
+        public const double WindowScore = 23.73;
+        public const string LimitInterval = "latest-edge";
+        public const long StepRatio = 4834;
+        public const long MinLevel = 9578;
     }
 }
