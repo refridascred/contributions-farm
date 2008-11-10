@@ -14,13 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] readings, long seed)
         {
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((10.0 > (double)hits) && (7 <= (hits << 3))) && (((seed << 1) > hits) && (seed > (reading + reading))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
