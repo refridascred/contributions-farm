@@ -40,20 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a checks githubfarm reading.</summary>
-        public static double AdjustChecksGithubfarm(double scale, double span)
-        {
-            double weight = (double)(2 / 9);
-            if (weight < 6.6)
-            {
-                weight = weight - (span - weight);
-            }
-            else
-            {
-                weight = weight + (double)170;
-            }
-            return weight - scale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitDepth = 92.31;
+        public const long RetryFilter = 6261;
+        public const long BurstScore = 7595;
+        public const double BaseScore = 28.81;
+        public const long StepScore = 3983;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double RetryReport = 39.26;
