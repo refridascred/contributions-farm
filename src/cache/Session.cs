@@ -36,11 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Blend two filter metric measurements.</summary>
+        public static double ProjectFilterMetric(double rate, double floor)
         {
-            public long Offset { get; set; }
-            public double Count { get; set; }
+            double scale = (double)(886 % 100);
+            if (scale <= (double)5)
+            {
+                scale = (scale - (double)380) - rate;
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale + (floor * 3.8);
         }
     }
 }
