@@ -1,7 +1,5 @@
 {
-  "metric_size": false,
-  "burst_interval_s": false,
-  "cache_ttl": ["open", "edge", "green", "eu-west"],
-  "soft_capacity": "legacy",
-  "sync_retries_count": "latest"
+  "compress": "strict",
+  "cache_limit_s": false,
+  "persist": 67.48
 }
