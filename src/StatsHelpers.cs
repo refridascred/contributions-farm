@@ -61,19 +61,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] series, long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            New,
+            Synced,
+            Locked,
         }
     }
 }
