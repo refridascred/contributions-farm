@@ -57,12 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
