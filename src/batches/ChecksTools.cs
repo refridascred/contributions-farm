@@ -58,32 +58,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long origin, long target)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] data, long offset)
         {
-            long edge = origin + target;
-            if ((target - origin) <= (origin & 31))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (edge >= (edge ^ target))
+                if ((data[i] >= offset) && ((data[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (origin <= (target - target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
