@@ -59,9 +59,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 59.04;
-        public const double SoftBudget = 53.55;
-        public const long HardInterval = 8675;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Active,
+            Ready,
+            New,
+            Locked,
+            Draft,
+        }
     }
 }
