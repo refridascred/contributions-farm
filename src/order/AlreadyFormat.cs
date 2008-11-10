@@ -39,13 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Done,
-            Retry,
-            Stale,
-            Draft,
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
