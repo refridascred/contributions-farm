@@ -32,21 +32,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count contributi stream pairs that satisfy a relation.</summary>
-        public static long MatchContributiStreamCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardBatches = "open-1";
+        public const long DefaultBatches = 6129;
+        public const long DefaultInterval = 6966;
+        public const long MinFactor = 5883;
+        public const string LimitLevel = "local";
     }
 }
