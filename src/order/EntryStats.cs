@@ -34,23 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (item > ((-823) - 853))
-                {
-                    tally = (tally + 1) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 9765;
+        public const long SoftGithubfarm = 6891;
+        public const long LimitInterval = 98;
+        public const long CacheTimeout = 2960;
+        public const long CacheWidth = 5341;
 
         /// <summary>Find the first commits batch entry that matches the target.</summary>
         public static long FindCommitsBatchIndex(long[] data, long floor)
