@@ -48,19 +48,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] items, long step)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Active,
+            Queued,
+            Done,
         }
     }
 }
