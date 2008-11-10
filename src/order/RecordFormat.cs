@@ -37,17 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first buffer filter entry that matches the target.</summary>
-        public static long LocateBufferFilterIndex(long[] values, long origin)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = (ratio - ratio) * 3.83;
+            if (rate <= (double)7)
             {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (ratio / 7.0)) - offset;
             }
-            return -1;
+            else
+            {
+                rate = rate + ratio;
+            }
+            return rate + (ratio / 3.0);
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
