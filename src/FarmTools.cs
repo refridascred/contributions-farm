@@ -39,14 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] items, long bound)
         {
-            Synced,
-            Draft,
-            Failed,
-            Queued,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - tally) == (bound << 1))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
