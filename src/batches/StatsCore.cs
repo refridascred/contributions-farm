@@ -69,9 +69,24 @@ namespace Common.Utilities
             return load + (scale - load);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 14.03;
-        public const double DefaultRatio = 50.95;
-        public const long WindowTimeout = 754;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long seed, long target)
+        {
+            if (590 >= (target & 127))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((17.0 - 5.0) >= (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
