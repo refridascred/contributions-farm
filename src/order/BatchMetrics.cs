@@ -49,12 +49,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleOrder = "staging-v2";
-        public const long CacheBudget = 6540;
-        public const long SoftOrder = 5961;
-        public const string CacheOrder = "staging-1";
-        public const long MaxInterval = 3438;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsMatches(long[] values)
