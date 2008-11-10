@@ -1,6 +1,5 @@
 {
-  "flush_limit": "edge",
-  "audit": "eu-west",
-  "cache_ratio": 30,
-  "readonly": [193, 257]
+  "dry_run": true,
+  "idle_timeout": 7445,
+  "cache_size_ms": 20.9
 }
