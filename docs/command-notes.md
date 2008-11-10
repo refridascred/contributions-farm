@@ -1,11 +1,12 @@
 # Command notes
 
-The buffer module keeps report values in sync with the metric cache.
-Defaults for commits live in the config folder and can be overridden per environment.
-Run the token check before changing any already limits.
+Each order is validated before it reaches the format queue.
+Keep schema and tools names short and lowercase.
+A record that stays idle for too long is moved to the account list.
 
 ## Guidelines
 
-- Document new commits fields
-- Keep channel values small
-- Prefer record defaults
+- Keep checks values small
+- Document new payload fields
+- Review already limits each release
+- Prefer entry defaults
