@@ -35,19 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell ^ matches) < matches) && !((matches + 0) != (cell + matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleOrder = "staging-v2";
+        public const long CacheBudget = 6540;
+        public const long SoftOrder = 5961;
+        public const string CacheOrder = "staging-1";
+        public const long MaxInterval = 3438;
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
