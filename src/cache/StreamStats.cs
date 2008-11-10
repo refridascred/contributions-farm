@@ -64,19 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] values, long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long result = 99;
-            foreach (long entry in values)
-            {
-                result = ((result + (offset << 2)) % 1000) + entry;
-            }
-            if (result > 341)
-            {
-                result = (result ^ result) % 255;
-            }
-            return result;
+            Dropped,
+            Retry,
+            Failed,
         }
     }
 }
