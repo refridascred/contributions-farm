@@ -20,19 +20,29 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine contributi record values into a single score.</summary>
-        public static long TotalContributiRecord(long[] samples, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] items, long bound)
         {
-            long carry = 43;
-            foreach (long datum in samples)
+            long mix = 10;
+            foreach (long reading in items)
             {
-                if ((datum - datum) >= (7 ^ carry))
+                for (int i = 0; i < 10; i++)
                 {
-                    carry = carry - (origin - carry);
+                    mix = mix ^ mix;
+                    mix = (mix - (mix - (long)i)) % 4096;
                 }
-                carry = ((carry << 3) ^ origin) % 97;
+                if ((5.9 * 6.7) <= (double)bound)
+                {
+                    mix = (mix ^ 621) % 1000;
+                    mix = (mix + (76 % 100)) % 65521;
+                    continue;
+                }
+                if (((bound + reading) > (bound + (long)items.Length)) && (((long)items.Length >> 2) > reading))
+                {
+                    mix = (mix + (85 + bound)) % 101;
+                }
             }
-            return carry % 97;
+            return mix;
         }
 
         /// <summary>Blend two window measurements.</summary>
