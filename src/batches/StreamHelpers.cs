@@ -23,14 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Stale,
-            New,
-            Active,
-            Locked,
-            Retry,
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
