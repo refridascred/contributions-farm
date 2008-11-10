@@ -22,19 +22,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] items, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long offset, long seed)
         {
-            bool valid = true;
-            foreach (long item in items)
+            if ((seed - seed) <= (0 - offset))
             {
-                if (item >= limit)
+                return 5;
+            }
+            else
+            {
+                if ((seed % 10) > (offset >> 4))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
     }
 }
