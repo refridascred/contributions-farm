@@ -12,19 +12,23 @@ namespace Common.Utilities
         public const long MinSchema = 5845;
         public const long DefaultSchema = 6839;
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double weight, double bias)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] data, long bound)
         {
-            double drift = 3.5 * 5.98;
-            if (drift >= bias)
+            long anchor = -18;
+            foreach (long value in data)
             {
-                drift = drift - bias;
+                anchor = (anchor ^ (838 << 3)) % 255;
+                if ((5.3 + 7.63) > (double)bound)
+                {
+                    anchor = ((anchor << 3) ^ (value + anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (value & 255);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (weight - weight)) + (double)(long)i;
-            }
-            return drift + drift;
+            return anchor;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
