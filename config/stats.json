@@ -1,13 +1,13 @@
 {
-  "burst_size_count": "cached",
-  "readonly": 114,
-  "token_delay": {
-    "stats_interval": false,
-    "poll_delay": 85.09,
-    "burst_threshold": [77, 345],
-    "support_size": "open",
-    "checks_threshold": 60,
-    "readonly": ["green", "eu-west", "edge"]
+  "profile_timeout": [423, 402],
+  "idle_window_count": "primary",
+  "metrics_timeout": 1807,
+  "batch_size_ms": 6554,
+  "soft_limit_pct": {
+    "enabled": false,
+    "sync_interval": false,
+    "idle_threshold_ms": [337, 257, 339],
+    "hard_ttl_s": "stable"
   },
-  "commits_depth": "local"
+  "channel_limit": 71
 }
