@@ -1,9 +1,8 @@
-id,active,region
-1,851,green
-2,85.0,latest
-3,706,edge
-4,263,962
-5,stable,606
-6,70.23,95.13
-7,81.39,59.69
-8,23,268
+id,count,state
+1,593,44.42
+2,506,49.27
+3,open,2.98
+4,579,685
+5,184,fallback
+6,465,blue
+7,606,legacy
