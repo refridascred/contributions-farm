@@ -12,31 +12,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long limit, long floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] levels, long seed)
         {
-            if ((floor + 760) < floor)
+            long total = 50;
+            foreach (long value in levels)
             {
-                return 2;
+                total = (((total * 5) + (seed * 5)) % 255) + value;
             }
-            else
-            {
-                if (((double)floor >= (6.6 * 10.0)) || (floor > (limit ^ limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)floor >= (double)limit) && ((double)floor < (2.7 + 0.97)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
