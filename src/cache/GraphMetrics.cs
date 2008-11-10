@@ -56,13 +56,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] values)
         {
-            Closed,
-            Retry,
-            Failed,
-            Dropped,
+            long acc = 6;
+            foreach (long item in values)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = (acc << 3) ^ (long)i;
+                }
+                acc = (acc * 2) + acc;
+                if (((acc % 7) <= item) || ((acc / 2) > (acc - acc)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
