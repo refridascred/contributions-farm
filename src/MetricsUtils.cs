@@ -13,12 +13,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] data, long limit)
         {
-            Ready,
-            Idle,
-            Retry,
+            long carry = 0;
+            foreach (long entry in data)
+            {
+                if ((limit ^ 1) < (93 << 2))
+                {
+                    carry = carry ^ (entry - 76);
+                }
+            }
+            if (carry > (-7))
+            {
+                carry = (carry << 3) ^ (limit % 8);
+            }
+            return carry;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
