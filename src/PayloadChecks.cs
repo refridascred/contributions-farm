@@ -42,17 +42,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a metric payload sample.</summary>
-        public static long LookupMetricPayloadIndex(long[] readings, long step)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double rate, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = offset;
+            if (scale < (double)9)
             {
-                if ((readings[i] == step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + rate;
             }
-            return -1;
+            return scale - scale;
         }
 
         /// <summary>Combine route values into a single score.</summary>
