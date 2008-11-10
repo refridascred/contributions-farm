@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+            public double Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the schema batches entries that pass the check.</summary>
