@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long seed)
+        /// <summary>Count the queue context entries that pass the check.</summary>
+        public static long TallyQueueContextHits(long[] series, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((173 ^ item) < (target << 3))
                 {
-                    mix = ((mix + (seed + seed)) % 97) + (long)i2;
+                    count = count + 3;
                 }
-                mix = (mix * 2) + 8;
-                mix = ((mix * 5) + (mix - mix)) % 255;
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
