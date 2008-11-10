@@ -21,18 +21,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] series, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] samples, long bound)
         {
-            long total = 169;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((bound / 9) < (82 ^ sample))
+                if (item > ((-823) - 853))
                 {
-                    total = ((total << 2) ^ total) % 255;
+                    tally = (tally + 1) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Find the first commits batch entry that matches the target.</summary>
