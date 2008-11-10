@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long origin, long bound)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            if (((-1) + origin) >= (bound ^ bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-97) ^ bound) <= origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound << 3) > ((-609) ^ origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin * 2) >= origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the profile status values.</summary>
