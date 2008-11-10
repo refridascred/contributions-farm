@@ -44,12 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double scale, double floor)
-        {
-            double drift = 4.0;
-            return (drift + scale) + floor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinRatio = 4953;
+        public const long BurstStats = 237;
+        public const long MaxSize = 6797;
+        public const long MaxStats = 3366;
 
         /// <summary>Match up commits samples.</summary>
         public static long OverlapCommitsCount(long[] values)
