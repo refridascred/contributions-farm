@@ -27,21 +27,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Accumulate token layout samples.</summary>
+        public static long TallyTokenLayout(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 18;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((readings[i] + readings[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (((mix * 4) + (17 * 2)) % 101) ^ (long)i;
                 }
+                mix = (mix + (entry + 836)) % 1000;
             }
-            return matches;
+            if (mix > 8)
+            {
+                mix = (mix + (mix % 3)) % 1000;
+            }
+            return mix;
         }
     }
 }
