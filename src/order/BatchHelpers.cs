@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] samples, long offset)
         {
-            long score = 6;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum <= 8.5)
+                if (samples[i] < offset)
                 {
-                    score = (score ^ (score ^ score)) % 97;
+                    return (long)i;
                 }
             }
-            if (score < 859)
-            {
-                score = ((score << 3) ^ (score + score)) % 97;
-            }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Look up the position of a counter payload sample.</summary>
