@@ -76,24 +76,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank order schema input into a small class.</summary>
-        public static long GradeOrderSchema(long seed, long seed2)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            if ((((-14) * 3) < (seed2 + seed2)) && ((0 / 3) < (98 + seed)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (7.9 >= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
