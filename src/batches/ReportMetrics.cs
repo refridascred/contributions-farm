@@ -59,22 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch tools values into a single score.</summary>
-        public static long CombineBatchTools(long[] samples)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long mark = 7;
-            foreach (long value in samples)
-            {
-                if ((254 - 881) >= (mark + value))
-                {
-                    mark = ((mark * 4) + (value - value)) % 65521;
-                }
-            }
-            if (mark < 92)
-            {
-                mark = (mark - (273 + mark)) % 101;
-            }
-            return mark % 1000;
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
