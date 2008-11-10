@@ -38,23 +38,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next order command value.</summary>
-        public static double SmoothOrderCommand(double bias, double floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double drift = (floor + floor) * 2.8;
-            if (drift <= (bias + drift))
-            {
-                drift = drift - (double)28;
-            }
-            else
-            {
-                drift = drift - 16.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift + (drift / 3.0);
+            Draft,
+            Stale,
+            Failed,
+            Ready,
+            Closed,
         }
     }
 }
