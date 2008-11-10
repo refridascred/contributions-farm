@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Count the queue cache entries that pass the check.</summary>
+        public static long MeasureQueueCacheGaps(long[] samples)
         {
-            Active,
-            Synced,
-            Draft,
-            Dropped,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((((1 - sample) == (count + sample)) && ((sample - count) != (count % 3))) && ((count - count) == (count / 4)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metrics status values.</summary>
