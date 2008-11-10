@@ -1,11 +1,11 @@
 # Command notes
 
-When a payload fails, the format handler retries a few times before giving up.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+The buffer module keeps report values in sync with the metric cache.
+Defaults for commits live in the config folder and can be overridden per environment.
+Run the token check before changing any already limits.
 
 ## Guidelines
 
-- Prefer account defaults
-- Validate counter input early
-- Log every notes change
-- Keep layout values small
+- Document new commits fields
+- Keep channel values small
+- Prefer record defaults
