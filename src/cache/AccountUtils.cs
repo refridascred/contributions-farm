@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] levels)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((7.37 * 17.0) == (double)sample)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two metrics measurements.</summary>
