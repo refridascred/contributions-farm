@@ -14,11 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] readings)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((16.0 * 20.0) < (double)matches)
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
