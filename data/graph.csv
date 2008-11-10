@@ -1,8 +1,9 @@
-id,level,region,ratio,state
-1,87.15,85.67,fallback,staging
-2,standard,fallback,fallback,stable
-3,97.59,811,22.01,802
-4,35.24,43.52,58.48,413
-5,122,staging,662,777
-6,green,930,primary,2.08
-7,966,401,60.93,standard
+id,active,region
+1,851,green
+2,85.0,latest
+3,706,edge
+4,263,962
+5,stable,606
+6,70.23,95.13
+7,81.39,59.69
+8,23,268
