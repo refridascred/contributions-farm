@@ -1,6 +1,5 @@
 {
-  "persist": 347,
-  "stats_depth": 1,
-  "sync_size_s": 9081,
-  "verbose": false
+  "max_window_s": false,
+  "soft_capacity_s": 4808,
+  "sync_limit": 36
 }
