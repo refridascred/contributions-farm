@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxFactor = 9699;
+        public const string StepCount = "latest";
+        public const double RetryCount = 25.94;
+        public const long IdleCount = 55;
+        public const long MinStats = 7746;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmGaps(long[] readings)
