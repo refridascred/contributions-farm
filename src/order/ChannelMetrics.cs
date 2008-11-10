@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a notes window figure with a bias.</summary>
-        public static double SmoothNotesWindow(double gain, double offset)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            double ratio = gain + (gain * 7.56);
-            if (ratio > (double)(-965))
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (offset / 5.0)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            Failed,
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Hold a batches header.</summary>
