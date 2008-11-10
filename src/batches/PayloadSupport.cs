@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long MaxEditor = 2899;
         public const long IdleEditor = 432;
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] readings, long step)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item + step) > (step + step))
                 {
-                    if ((levels[i] ^ levels[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
