@@ -67,22 +67,11 @@ namespace Common.Utilities
         public const double BatchTimeout = 83.53;
         public const long HardReport = 7834;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] series)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (sample <= tally)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
