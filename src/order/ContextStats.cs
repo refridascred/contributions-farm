@@ -57,18 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] data)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((15 - matches) == (matches << 2))
-                {
-                    matches = (matches + 3) - value;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Active,
+            Draft,
+            Dropped,
         }
     }
 }
