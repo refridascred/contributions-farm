@@ -35,25 +35,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] series)
+        /// <summary>Roll a schema counter counter forward.</summary>
+        public static long StepSchemaCounter(long origin)
         {
-            long total = 3;
-            foreach (long entry in series)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                total = (total << 3) ^ (entry + total);
-                if (((entry & 63) >= (total - entry)) || ((entry << 3) != (entry - 2)))
+                acc = acc - origin;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    total = ((total << 2) ^ (9 >> 2)) % 1000;
-                    continue;
+                    acc = ((acc << 3) ^ origin) + (long)i2;
                 }
-                total = (total << 2) ^ (total / 4);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            if (total > 33)
-            {
-                total = (total ^ total) % 4096;
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
