@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the batch queue series from a seed.</summary>
-        public static long DeriveBatchQueue(long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                total = (total * 5) + total;
-                if (((total + 11) < floor) && ((4.0 / 3.0) <= (double)total))
-                {
-                    total = (total * 2) + (337 - floor);
-                    total = total - (total + floor);
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
