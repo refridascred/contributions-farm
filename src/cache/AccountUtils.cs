@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] readings, long seed)
+        /// <summary>Count the checks batch entries that pass the check.</summary>
+        public static long CountChecksBatchHits(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (value >= seed)
+                if ((origin + 711) >= (seen - sample))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
