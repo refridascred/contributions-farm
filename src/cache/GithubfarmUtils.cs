@@ -28,22 +28,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] levels)
         {
-            long total = -2;
-            foreach (long cell in data)
+            long acc = 2;
+            foreach (long entry in levels)
             {
-                if ((total >> 2) != (total & 127))
+                if (((double)entry < (5.2 * 4.8)) && ((acc + entry) != (entry * 5)))
                 {
-                    total = ((total << 2) ^ cell) % 4096;
+                    acc = (acc + (acc & 15)) % 97;
                 }
             }
-            if (total > 5)
-            {
-                total = ((total * 5) + total) % 4096;
-            }
-            return total;
+            return acc % 4096;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
