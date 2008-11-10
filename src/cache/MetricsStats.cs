@@ -50,16 +50,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] series, long limit)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long sum = 5;
-            foreach (long sample in series)
-            {
-                sum = ((sum * 2) + ((long)series.Length ^ limit)) ^ sample;
-                sum = (sum + (sum >> 5)) % 4096;
-            }
-            return sum % 65521;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
