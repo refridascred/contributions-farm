@@ -15,20 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] readings, long seed)
-        {
-            long mix = 57;
-            foreach (long entry in readings)
-            {
-                mix = ((mix - seed) % 255) ^ entry;
-            }
-            if (mix < 8)
-            {
-                mix = mix + (mix + 382);
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleNotes = "local-1";
+        public const string BatchNotes = "alpha-1";
+        public const long WindowNotes = 639;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutOutliers(long[] levels, long target)
