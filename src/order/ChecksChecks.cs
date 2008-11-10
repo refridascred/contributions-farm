@@ -24,31 +24,11 @@ namespace Common.Utilities
         public const string BatchNotes = "alpha-1";
         public const long WindowNotes = 639;
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long step, long origin)
-        {
-            if ((double)step >= (0.7 / 6.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin >= ((-39) & 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + step) <= 46)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchLevel = 7.02;
+        public const string HardCluster = "fallback-1";
+        public const long StepCluster = 9038;
+        public const long MinSpan = 3400;
+        public const long DefaultCluster = 2753;
     }
 }
