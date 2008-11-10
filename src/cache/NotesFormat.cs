@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] levels, long bound)
         {
-            long result = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                result = result ^ (result + sample);
+                if (entry <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
