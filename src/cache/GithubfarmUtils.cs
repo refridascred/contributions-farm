@@ -19,31 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long offset, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] samples, long bound)
         {
-            if ((double)floor >= (double)offset)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset > (floor / 4)) || ((offset * 2) < (floor ^ offset)))
+                if (reading < bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset - 30) == (offset + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
