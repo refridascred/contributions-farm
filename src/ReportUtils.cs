@@ -47,12 +47,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] data, long target)
         {
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
