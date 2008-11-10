@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCount = "primary-1";
-        public const long HardTimeout = 2738;
-        public const string IdleSize = "legacy-v2";
-        public const long LimitInterval = 8672;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
