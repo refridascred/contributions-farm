@@ -40,10 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 1210;
-        public const string RetryCache = "fallback-1";
-        public const string SoftInterval = "legacy-v2";
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string WindowProfile = "alpha-edge";
