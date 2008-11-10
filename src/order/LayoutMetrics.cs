@@ -27,19 +27,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] readings, long target)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            double load = bias;
+            if (load < bias)
             {
-                if (entry <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                load = (load - (double)1) + scale;
             }
-            return stale;
+            else
+            {
+                load = load + (8.17 / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load + 1.3;
         }
     }
 }
