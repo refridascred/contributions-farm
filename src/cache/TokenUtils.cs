@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
+            Ready,
             Stale,
-            Active,
-            Retry,
-            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a layout stats.</summary>
