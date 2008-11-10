@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryCount = 28.11;
-        public const long BaseStream = 2548;
-        public const long StepWidth = 7595;
-        public const double BurstFactor = 21.49;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string RetryCounter = "standard";
