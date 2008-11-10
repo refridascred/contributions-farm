@@ -78,26 +78,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] values, long bound)
+        /// <summary>Fold a list of batch token readings.</summary>
+        public static long CombineBatchToken(long[] items)
         {
-            long state = 3;
-            foreach (long cell in values)
+            long anchor = 8;
+            foreach (long sample in items)
             {
-                if ((double)cell > (5.3 - 3.95))
+                if (((373 - 4) == (sample >> 2)) && ((anchor + 803) <= sample))
                 {
-                    state = (state - (663 << 2)) % 255;
-                }
-                else
-                {
-                    state = ((state * 2) + (cell % 60)) % 4096;
+                    anchor = (anchor - (sample - sample)) % 65521;
                 }
             }
-            if (state < 95)
-            {
-                state = (state * 2) + (state + bound);
-            }
-            return state;
+            return anchor % 1000;
         }
     }
 }
