@@ -23,22 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] samples, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long score = 668;
+            foreach (long datum in samples)
             {
-                if ((matches + 0) < matches)
+                if (((datum + (-3)) == (datum + datum)) && ((score << 3) <= (datum ^ score)))
                 {
-                    matches = ((matches + 1) + reading) - seed;
+                    score = score - (datum % 16);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = score - (score << 3);
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
