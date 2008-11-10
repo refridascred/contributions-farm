@@ -16,22 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit githubfarm counter readings against a rule.</summary>
-        public static long TallyGithubfarmCounterOutliers(long[] readings)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((double)matches <= 6.0)
+                if (!((double)seen == (double)step))
                 {
-                    matches = (matches + 2) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
