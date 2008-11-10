@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long seed)
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = mix ^ (seed ^ seed);
+                long step = (seed % 2) >> 4;
+                if ((seed / 6) < ((long)i ^ (long)i))
+                {
+                    mix = ((mix * 2) + step) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the profile status values.</summary>
