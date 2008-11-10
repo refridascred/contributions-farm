@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitTimeout = 20.93;
-        public const long LimitQueue = 4303;
-        public const long IdleQueue = 2214;
-        public const long BaseTimeout = 4844;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Iterate the command counter series from a seed.</summary>
         public static long IterateCommandCounter(long floor)
