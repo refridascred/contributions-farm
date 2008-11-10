@@ -79,19 +79,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double scale, double bias)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] readings, long bound)
         {
-            double scale2 = (scale + bias) * 4.0;
-            if (scale2 < 7.0)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                scale2 = scale2 + (double)954;
+                if ((bound / 6) == (bound - count))
+                {
+                    count = (count + 2) + cell;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - bias) + (double)(long)i;
-            }
-            return scale2 + scale2;
+            return count;
         }
     }
 }
