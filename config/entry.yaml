@@ -1,8 +1,13 @@
 # entry settings
-graph_ttl: 500
-command_retries: eu-west
-payload_window:
-  - staging
-  - edge
-  - staging
-  - legacy
+base_depth_ms: true
+default_threshold_count:
+  filter_limit: open
+  max_ratio: 1024
+  stream_delay: staging
+batch_size:
+  poll_depth: fallback
+  filter_timeout:
+    - 314
+    - 73
+    - 375
+  channel_ttl: 30
