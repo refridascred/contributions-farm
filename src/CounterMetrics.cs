@@ -23,32 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long offset, long limit)
+        /// <summary>Find the first payload order entry that matches the target.</summary>
+        public static long FindPayloadOrderIndex(long[] series, long step)
         {
-            long edge = offset ^ limit;
-            if ((87 >> 1) <= edge)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((398 + limit) <= (limit + limit)))
+                if ((series[i] < step) && ((series[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((edge >> 5) <= (limit / 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
