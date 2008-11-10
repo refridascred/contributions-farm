@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Draft,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleInterval = 14.68;
+        public const string CacheScore = "standard-1";
+        public const string BaseBatch = "local-edge";
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
