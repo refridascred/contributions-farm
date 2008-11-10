@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] readings, long step)
         {
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
