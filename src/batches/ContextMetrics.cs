@@ -43,15 +43,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Done,
-            Locked,
-            Synced,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double CacheInterval = 14.68;
+        public const string MaxCache = "local";
+        public const double RetryCache = 94.72;
+        public const string BaseDepth = "stable-v2";
+        public const long IdleRatio = 5041;
 
         /// <summary>Measure how many cluster editor samples are out of range.</summary>
         public static long AuditClusterEditorMatches(long[] series, long seed)
