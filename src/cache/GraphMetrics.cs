@@ -51,13 +51,21 @@ namespace Common.Utilities
         public const long WindowWidth = 5569;
         public const long MaxInterval = 7129;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public double Weight { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
