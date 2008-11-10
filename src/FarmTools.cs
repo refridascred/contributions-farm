@@ -61,13 +61,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryFactor = "primary-1";
+        public const long CacheReport = 2152;
+        public const double RetryLevel = 2.27;
+        public const long BurstReport = 5307;
+        public const string BurstFactor = "local-v2";
     }
 }
