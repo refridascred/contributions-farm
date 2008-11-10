@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Active,
-            Closed,
-            New,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultScore = 2679;
+        public const string SoftStream = "alpha";
+        public const long SoftDepth = 2526;
+        public const long MaxWidth = 3364;
+        public const string HardStream = "alpha";
 
         /// <summary>Audit profile payload readings against a rule.</summary>
         public static long MeasureProfilePayloadGaps(long[] readings, long offset)
