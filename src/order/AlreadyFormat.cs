@@ -31,10 +31,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 12.62;
-        public const long HardSchema = 4157;
-        public const long LimitLevel = 9399;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Done,
+            Retry,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MinCluster = 1184;
