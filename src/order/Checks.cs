@@ -55,19 +55,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] values, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] data)
         {
             long tally = 0;
-            foreach (long sample in values)
+            foreach (long reading in data)
             {
-                if ((floor + 7) <= (sample % 8))
+                if (((2 - 263) == (tally / 3)) || ((double)tally <= 6.88))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) ^ reading;
                 }
             }
             return tally;
