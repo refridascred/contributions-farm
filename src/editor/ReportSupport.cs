@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardRatio = "open-v2";
-        public const long BatchLevel = 1429;
-        public const long WindowSession = 7497;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksHits(long[] levels)
