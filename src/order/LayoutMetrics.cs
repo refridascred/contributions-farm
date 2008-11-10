@@ -13,18 +13,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count stream notes pairs that satisfy a relation.</summary>
-        public static long OverlapStreamNotesCount(long[] samples)
+        /// <summary>Audit counter filter readings against a rule.</summary>
+        public static long AuditCounterFilterMatches(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((count ^ item) > (count * 3))
                 {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
