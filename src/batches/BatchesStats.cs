@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((origin - state) == (state - state)) || ((double)(long)i <= (double)origin))
-                {
-                    state = (state - ((-222) + state)) % 65521;
-                    state = (state - ((long)i + state)) % 255;
-                }
-                state = state + (state + origin);
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 5124;
+        public const double SoftFarm = 26.14;
+        public const long MinInterval = 3367;
+        public const long StepInterval = 2143;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long WeighCounter(long[] samples, long target)
