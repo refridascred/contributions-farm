@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] levels, long offset)
         {
-            Paused,
-            Closed,
-            Locked,
+            long state = -1;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    state = ((state ^ ((long)i - state)) % 1000) - offset;
+                }
+                if (!(24 <= (reading - (-330))))
+                {
+                    state = state + (state & 255);
+                }
+                else
+                {
+                    state = (state * 4) + reading;
+                }
+                if ((0.1 * 7.56) <= (6.4 / 2.0))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
