@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = (sum * 4) + floor;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
