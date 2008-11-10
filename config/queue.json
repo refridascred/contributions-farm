@@ -1,15 +1,7 @@
 {
-  "dry_run": {
-    "default_timeout_ms": true,
-    "sync_ttl": 1024,
-    "sync_retries_count": {
-      "batch_depth_count": true,
-      "dry_run": 250,
-      "graph_window": 1024
-    }
-  },
-  "metric_size": 100,
-  "enabled": [326, 73, 344],
-  "poll_limit_pct": ["strict", "green"],
-  "farm_depth": 43
+  "max_interval": 31.16,
+  "soft_depth_pct": false,
+  "soft_depth": true,
+  "editor_size": ["legacy", "latest", "legacy", "edge"],
+  "max_threshold_pct": "fallback"
 }
