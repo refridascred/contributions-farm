@@ -80,16 +80,26 @@ namespace Common.Utilities
             return gain2 - (double)73;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] readings, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            long acc = 976;
+            foreach (long sample in readings)
             {
-                carry = (carry - limit) % 1000;
-                carry = ((carry * 4) + (long)i) % 65521;
+                if ((8 - 4) < floor)
+                {
+                    acc = (acc ^ (floor - acc)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ ((-1) + sample)) % 101;
+                }
             }
-            return carry;
+            if (acc > 78)
+            {
+                acc = (acc * 2) + (acc + floor);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
