@@ -20,19 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long step)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)step < (7.85 + 7.8))
-                {
-                    sum = sum ^ (step - step);
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Active,
+            Failed,
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
