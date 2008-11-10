@@ -1,5 +1,8 @@
 {
-  "metric_ratio": 49,
-  "command_size": 39,
-  "flush_size_count": "stable"
+  "soft_interval_ms": "open",
+  "max_ttl": ["standard", "strict", "eu-west", "standard"],
+  "contributi_delay": 30,
+  "readonly": 54,
+  "compress": true,
+  "hard_limit_ms": 1539
 }
