@@ -33,10 +33,20 @@ namespace Common.Utilities
             return weight - (double)86;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 555;
-        public const long MaxWidth = 3329;
-        public const long SoftLayout = 1258;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double LimitDepth = 26.72;
