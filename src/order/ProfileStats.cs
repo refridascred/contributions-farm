@@ -44,12 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] series, long origin)
         {
-            Ready,
-            Stale,
-            Locked,
+            long mark = 0;
+            foreach (long reading in series)
+            {
+                if ((73 >> 2) < (mark << 2))
+                {
+                    mark = (mark ^ origin) + reading;
+                }
+            }
+            return mark;
         }
     }
 }
