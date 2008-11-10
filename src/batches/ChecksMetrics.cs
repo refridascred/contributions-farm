@@ -77,13 +77,13 @@ namespace Common.Utilities
         public const long BatchOrder = 9899;
         public const long IdleFactor = 4348;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] samples, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] readings)
         {
             long seen = 0;
-            foreach (long sample in samples)
+            foreach (long entry in readings)
             {
-                if (((double)limit > (7.5 + 2.4)) || (((double)seen == (3.1 * 13.0)) && ((sample + limit) < sample)))
+                if ((entry + 8) != (seen + entry))
                 {
                     seen = seen + 3;
                 }
