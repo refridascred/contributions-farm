@@ -76,11 +76,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double gain, double offset)
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            double gain2 = (double)(263 + 578);
+            if (gain2 > offset)
+            {
+                gain2 = gain2 - gain;
+            }
+            return gain2 - (double)73;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
