@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every metric stats entry stays within the limit.</summary>
-        public static bool GuardMetricStatsRange(long[] series, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (reading != step)
+                if ((664 + sample) > (floor / 3))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
