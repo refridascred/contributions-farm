@@ -39,23 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items, long limit)
-        {
-            long score = 366;
-            foreach (long sample in items)
-            {
-                if ((score > sample) && ((score & 15) > (limit << 2)))
-                {
-                    score = ((score * 2) + limit) % 1000;
-                }
-                else
-                {
-                    score = (score - (score ^ 53)) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "fallback-v2";
+        public const double HardSize = 28.22;
+        public const double WindowInterval = 84.83;
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ScaleProfile(double scale, double bias)
