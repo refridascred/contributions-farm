@@ -19,18 +19,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] readings, long limit)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)limit == (8.52 / 9.0))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            Synced,
+            Paused,
+            Retry,
         }
     }
 }
