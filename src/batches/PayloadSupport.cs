@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 44.48;
-        public const long MaxProfile = 1115;
-        public const string HardProfile = "open-edge";
-        public const long IdleFactor = 3909;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchSize = 2967;
+        public const long MaxEditor = 2899;
+        public const long IdleEditor = 432;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] levels)
