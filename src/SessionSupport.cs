@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch format entry stays within the limit.</summary>
-        public static bool GuardBatchFormatRange(long[] items, long seed)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double gain, double span)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            double drift = gain;
+            if (drift > (double)874)
             {
-                if (reading != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = (drift - gain) - span;
             }
-            return ready;
+            return drift - drift;
         }
 
         /// <summary>Grade a batches filter value against two limits.</summary>
