@@ -13,26 +13,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long limit, long limit2)
-        {
-            long slot = limit - limit2;
-            if ((1.38 * 1.84) != (double)limit2)
-            {
-                return 6;
-            }
-            else
-            {
-                if (slot > (slot << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinSpan = 7490;
+        public const string CacheSize = "staging-edge";
+        public const long SoftCount = 9957;
+        public const long IdleSpan = 7959;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileRange(long[] samples, long limit)
