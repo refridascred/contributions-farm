@@ -28,19 +28,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] data, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long target, long target2)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            if ((8.6 * 7.0) >= (17.0 + 9.0))
             {
-                if (reading >= seed)
+                return 1;
+            }
+            else
+            {
+                if ((double)target == (double)target2)
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
     }
 }
