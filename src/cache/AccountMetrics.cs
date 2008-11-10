@@ -33,10 +33,10 @@ namespace Common.Utilities
             return weight - (double)86;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 8920;
-        public const double SoftSize = 0.91;
-        public const string IdleWindow = "staging-edge";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 555;
+        public const long MaxWidth = 3329;
+        public const long SoftLayout = 1258;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double LimitDepth = 26.72;
