@@ -78,12 +78,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] series, long limit)
+        /// <summary>Locate a queue report reading by value.</summary>
+        public static long LocateQueueReportIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] <= limit) && ((series[i] % 2) == 0))
+                if (levels[i] >= origin)
                 {
                     return (long)i;
                 }
