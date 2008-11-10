@@ -38,12 +38,24 @@ namespace Common.Utilities
         public const long RetryScore = 1883;
         public const long HardEditor = 2115;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long offset, long limit)
         {
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
+            if ((20 % 10) != (limit & 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0 ^ offset) <= (offset ^ limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
