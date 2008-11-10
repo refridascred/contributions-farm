@@ -31,31 +31,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long bound, long step)
-        {
-            if ((step - bound) > step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound * 5) >= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound - step) >= (87 + step)) || ((bound / 8) >= (bound - bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowTimeout = 1532;
+        public const string MaxBudget = "latest-v2";
+        public const double StepFarm = 38.92;
     }
 }
