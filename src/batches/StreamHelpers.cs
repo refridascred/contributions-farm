@@ -83,15 +83,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double bias, double floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] data, long floor)
         {
-            double ratio = (bias - floor) - (double)96;
-            if (ratio > bias)
+            bool found = true;
+            foreach (long sample in data)
             {
-                ratio = ratio + (floor - bias);
+                if (sample <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio - floor;
+            return found;
         }
     }
 }
