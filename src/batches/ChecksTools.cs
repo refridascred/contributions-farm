@@ -16,21 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
