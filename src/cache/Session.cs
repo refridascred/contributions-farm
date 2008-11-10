@@ -35,20 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = mix - (-5);
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    mix = (((mix << 3) ^ (67 & 15)) % 1000) ^ (long)i3;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
