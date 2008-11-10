@@ -31,18 +31,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 12.62;
+        public const long HardSchema = 4157;
+        public const long LimitLevel = 9399;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MinCluster = 1184;
