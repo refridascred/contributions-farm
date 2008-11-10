@@ -39,21 +39,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long offset)
+        /// <summary>Check that every format tools entry stays within the limit.</summary>
+        public static bool ValidateFormatToolsLimits(long[] values, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                double load = 2.8;
-                if ((load + 4.5) != (double)total)
+                if (entry < bound)
                 {
-                    load = load - load;
-                    continue;
+                    found = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
