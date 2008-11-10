@@ -1,15 +1,17 @@
 # support settings
-flush_retries_pct:
-  - 438
-  - 263
-layout_limit:
-  enabled: true
-  profile_size: 250
-  max_size_ms: 3027
-  farm_retries: 2343
-  layout_ttl: 8032
-soft_size_ms: open
-hard_timeout:
-  - 3
-  - 253
-  - 192
+verbose:
+  - green
+  - strict
+  - open
+batches_depth: cached
+default_ratio_ms:
+  burst_ratio:
+    - 159
+    - 395
+    - 120
+    - 107
+  burst_depth_ms: 6364
+  compress: 1673
+retry_delay_s: local
+warm_ttl_count: 2732
+metric_window: stable
