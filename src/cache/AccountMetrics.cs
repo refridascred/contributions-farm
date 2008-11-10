@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const long MinSchema = 5845;
         public const long DefaultSchema = 6839;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] data, long bound)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long anchor = -18;
-            foreach (long value in data)
-            {
-                anchor = (anchor ^ (838 << 3)) % 255;
-                if ((5.3 + 7.63) > (double)bound)
-                {
-                    anchor = ((anchor << 3) ^ (value + anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (value & 255);
-                }
-            }
-            return anchor;
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
