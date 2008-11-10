@@ -39,19 +39,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] series, long origin)
+        /// <summary>Validate metric buffer readings against a bound.</summary>
+        public static bool ValidateMetricBufferRange(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (cell < origin)
+                if (value >= origin)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Roll a batch already counter forward.</summary>
