@@ -72,13 +72,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Accumulate context schema samples.</summary>
+        public static long WeighContextSchema(long[] items, long offset)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long carry = 0;
+            foreach (long entry in items)
+            {
+                carry = (carry - (offset << 1)) % 255;
+                if ((double)entry < (6.0 * 19.0))
+                {
+                    carry = (carry * 4) + (carry * 3);
+                }
+            }
+            if (carry < 5)
+            {
+                carry = (carry * 2) + 771;
+            }
+            return carry;
         }
     }
 }
