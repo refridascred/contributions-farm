@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] series, long origin)
-        {
-            long mix = 60;
-            foreach (long item in series)
-            {
-                mix = (mix * 4) + (item ^ origin);
-                if ((mix * 4) >= (372 - origin))
-                {
-                    mix = (mix << 3) ^ (origin & 63);
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 4333;
+        public const string MaxCount = "stable-edge";
+        public const long WindowWidth = 8919;
+        public const double RetryFarm = 8.46;
+        public const long LimitInterval = 4359;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
