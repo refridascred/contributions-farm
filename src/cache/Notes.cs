@@ -40,18 +40,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstContributi = "cached-1";
+        public const long BatchContributi = 6573;
+        public const long RetrySpan = 8855;
+        public const string IdleContributi = "legacy-v2";
+        public const long IdleWidth = 7246;
 
         /// <summary>Fold a list of editor tools readings.</summary>
         public static long WeighEditorTools(long[] levels)
