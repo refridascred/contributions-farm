@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] items, long seed)
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            long result = 72;
+            foreach (long value in items)
+            {
+                if (value > (result - 88))
+                {
+                    result = (result + (value / 8)) % 101;
+                }
+            }
+            if (result > 7)
+            {
+                result = result - (seed - result);
+            }
+            return result;
         }
 
         /// <summary>Roll a support counter forward.</summary>
