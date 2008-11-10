@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] samples)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] items)
         {
-            long carry = 8;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((carry + sample) < (carry * 5))
+                if ((double)datum >= (19.0 * 6.0))
                 {
-                    carry = (carry * 5) + ((-29) - 7);
-                }
-                if (812 <= carry)
-                {
-                    carry = (carry + (sample + carry)) % 1000;
+                    seen = seen + 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
