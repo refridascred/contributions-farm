@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Closed,
-            Queued,
-            Idle,
+            public bool Level { get; set; }
+            public bool Count { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
