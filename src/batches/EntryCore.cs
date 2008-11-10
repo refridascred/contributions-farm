@@ -69,18 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route already entries that pass the check.</summary>
-        public static long MeasureRouteAlreadyGaps(long[] levels)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen + seen) >= (seen >> 3))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
