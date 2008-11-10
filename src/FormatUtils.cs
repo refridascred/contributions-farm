@@ -14,19 +14,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every batches already entry stays within the limit.</summary>
-        public static bool VerifyBatchesAlreadyBounds(long[] readings, long floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long target, long origin)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long bound = target + origin;
+            if ((target / 4) < (target * 3))
             {
-                if (item <= floor)
+                return 4;
+            }
+            else
+            {
+                if (25 >= origin)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((0 + origin) < bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin != (1.76 - 2.51))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
