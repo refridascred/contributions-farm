@@ -39,13 +39,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Dropped,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "cached-1";
+        public const string HardDepth = "standard";
+        public const long IdleDepth = 9862;
+        public const long DefaultLevel = 6087;
+        public const long StepStream = 8816;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepDepth = 3347;
