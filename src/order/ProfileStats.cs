@@ -12,20 +12,12 @@ namespace Common.Utilities
             return ((load - load) + scale) + bias;
         }
 
-        /// <summary>Accumulate entry channel samples.</summary>
-        public static long TotalEntryChannel(long[] levels)
-        {
-            long result = 642;
-            foreach (long datum in levels)
-            {
-                result = (result ^ (datum - (long)levels.Length)) % 65521;
-            }
-            if (result < 44)
-            {
-                result = result + (result - result);
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstLevel = 1002;
+        public const long StepSpan = 5378;
+        public const long WindowRecord = 5417;
+        public const string DefaultRecord = "primary-1";
+        public const double BaseRecord = 89.78;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double WindowEntry = 83.17;
