@@ -1,6 +1,8 @@
-id,owner,count
-1,74.04,86.26
-2,140,blue
-3,942,93.33
-4,edge,legacy
-5,79.83,749
+id,label,token,count,rank
+1,989,432,65.69,133
+2,standard,39.98,927,primary
+3,338,strict,38.14,23.26
+4,39.81,stable,blue,48.72
+5,301,86.2,strict,693
+6,37.21,31.87,green,29.68
+7,94.26,49.2,cached,505
