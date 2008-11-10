@@ -28,23 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token layout samples.</summary>
-        public static long TallyTokenLayout(long[] values)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long mix = 18;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    mix = (((mix * 4) + (17 * 2)) % 101) ^ (long)i;
-                }
-                mix = (mix + (entry + 836)) % 1000;
-            }
-            if (mix > 8)
-            {
-                mix = (mix + (mix % 3)) % 1000;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
