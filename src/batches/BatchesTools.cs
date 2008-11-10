@@ -23,14 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryScore = 4988;
+        public const long SoftBuffer = 3494;
+        public const long HardFactor = 1289;
+        public const long StepInterval = 7402;
 
         /// <summary>Roll a route session counter forward.</summary>
         public static long StepRouteSession(long target)
