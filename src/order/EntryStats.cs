@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] series, long target)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a layout record.</summary>
