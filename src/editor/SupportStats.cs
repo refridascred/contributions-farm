@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] values, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((values[i] < step) && ((values[i] % 3) == 0))
+                if (entry != bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
