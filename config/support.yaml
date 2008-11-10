@@ -1,10 +1,4 @@
 # support settings
-stats_depth: open
-command_ttl: 100
-support_retries: 60
-enabled: edge
-soft_capacity:
-  - 330
-  - 418
-  - 68
-verbose: staging
+contributi_threshold: 8.62
+hard_timeout: green
+strict: false
