@@ -14,31 +14,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long target, long limit)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double rate, double offset)
         {
-            if (((limit / 3) > limit) || ((limit * 3) <= target))
+            double ratio = (double)319;
+            if (ratio > (offset + ratio))
             {
-                return 8;
+                ratio = ratio + (rate / 5.0);
             }
-            else
-            {
-                if (!((double)limit >= (7.65 + 3.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + limit) == (target & 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return ratio + (offset / 4.0);
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
