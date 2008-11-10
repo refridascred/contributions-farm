@@ -19,17 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] values, long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 540;
+            foreach (long cell in values)
             {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
+                score = (score << 3) ^ (score - cell);
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
