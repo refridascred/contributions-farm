@@ -14,22 +14,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate cache tools samples.</summary>
-        public static long FoldCacheTools(long[] series, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] readings, long seed)
         {
-            long sum = 5;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (!((sum + target) < sum))
+                if (value < seed)
                 {
-                    sum = (sum - cell) % 101;
-                }
-                if ((target & 15) != (cell >> 3))
-                {
+                    found = false;
                     break;
                 }
             }
-            return sum % 65521;
+            return found;
         }
 
         /// <summary>Check that every command editor entry stays within the limit.</summary>
