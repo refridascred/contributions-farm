@@ -41,39 +41,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long seed, long bound)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long diff = seed ^ bound;
-            if ((double)seed > (6.3 + 18.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((0 / 8) <= diff)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((diff * 4) > (bound & 31))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((1.0 - 17.0) <= (double)diff) && (bound < (diff ^ 42)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Done,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the already mode values.</summary>
