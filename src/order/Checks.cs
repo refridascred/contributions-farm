@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double weight, double floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            double weight2 = weight;
+            if (weight2 > floor)
             {
-                mix = mix ^ (seed ^ seed);
-                long step = (seed % 2) >> 4;
-                if ((seed / 6) < ((long)i ^ (long)i))
-                {
-                    mix = ((mix * 2) + step) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
+                weight2 = weight2 + (weight * 13.0);
             }
-            return mix;
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + (weight - weight2)) + (double)(long)i;
+            }
+            return weight2 - weight2;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
