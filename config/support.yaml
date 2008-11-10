@@ -1,23 +1,7 @@
 # support settings
-base_size_s: true
-readonly:
-  readonly: strict
-  compress: true
-  base_capacity: false
-  persist: 46.78
-retry_timeout_count:
-  strict: 250
-  metric_window: 7171
-  cache_retries_count: 6.69
-  enabled:
-    checks_timeout:
-      - legacy
-      - blue
-      - latest
-    poll_delay_pct:
-      - 199
-      - 137
-      - 203
-    readonly: 100
-    hard_size_s: legacy
-  flush_timeout_ms: standard
+compress: local
+audit: 60
+tools_ratio: blue
+sync_capacity: latest
+githubfarm_retries: 30
+max_threshold_s: false
