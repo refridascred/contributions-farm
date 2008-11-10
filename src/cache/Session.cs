@@ -35,19 +35,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Blend two filter metric measurements.</summary>
-        public static double ProjectFilterMetric(double rate, double floor)
+        /// <summary>Match up support already samples.</summary>
+        public static long MatchSupportAlreadyCount(long[] values)
         {
-            double scale = (double)(886 % 100);
-            if (scale <= (double)5)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale - (double)380) - rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + (floor * 3.8);
+            return seen;
         }
     }
 }
