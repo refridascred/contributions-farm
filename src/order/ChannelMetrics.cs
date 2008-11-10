@@ -39,22 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] samples)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long carry = 4;
-            foreach (long reading in samples)
-            {
-                if (!(((long)samples.Length & 7) < carry))
-                {
-                    carry = (carry << 2) ^ (reading - reading);
-                }
-                if ((reading <= (reading - 25)) && ((reading >> 4) == (carry + carry)))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
+            Ready,
+            Draft,
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
