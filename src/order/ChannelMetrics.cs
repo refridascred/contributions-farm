@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public long Total { get; set; }
             public long Stamp { get; set; }
-            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
