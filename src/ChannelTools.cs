@@ -12,20 +12,12 @@ namespace Common.Utilities
             return (weight + bias) + span;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = (mark ^ (long)i) % 255;
-                if ((double)(long)i < (2.09 * 11.0))
-                {
-                    mark = (mark ^ (mark + mark)) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Classify a layout support pair into a bucket.</summary>
