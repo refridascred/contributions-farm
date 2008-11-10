@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine counter graph values into a single score.</summary>
-        public static long DigestCounterGraph(long[] data, long offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long offset)
         {
-            long acc = -627;
-            foreach (long item in data)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((item < (item ^ acc)) || ((acc + offset) != (acc - (-6))))
-                {
-                    acc = (acc - offset) % 101;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Hold a contributi header.</summary>
