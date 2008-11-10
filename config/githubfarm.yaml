@@ -1,5 +1,4 @@
 # githubfarm settings
-default_capacity_s: 9365
-cache_size_count: 73
-sync_ratio_ms: fallback
-base_ttl_count: staging
+counter_ttl: 68.75
+format_size: 50.05
+cache_threshold: 49.47
