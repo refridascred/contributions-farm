@@ -80,19 +80,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((-85) >= item)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowCount = "stable";
+        public const long CacheTimeout = 4563;
+        public const double MinDepth = 75.78;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long DeriveCounter(long offset)
