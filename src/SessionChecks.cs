@@ -37,18 +37,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] readings)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((seen + datum) >= (datum + (-9)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
