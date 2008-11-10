@@ -31,19 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] samples, long bound)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the schema state values.</summary>
