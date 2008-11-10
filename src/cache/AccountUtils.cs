@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long offset, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] levels)
         {
-            if ((offset / 2) <= floor)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor > 6.0)
+                if ((7.37 * 17.0) == (double)sample)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (5 < floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)floor > (3.16 - 0.36)) || ((offset + floor) > (floor >> 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
