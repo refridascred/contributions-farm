@@ -1,5 +1,29 @@
 # githubfarm settings
-flush_retries_ms: open
-audit: 8447
-queue_interval: 8.14
-hard_interval_ms: 1024
+cache_ttl_s: 4269
+command_threshold:
+  batch_timeout_count:
+    verbose: 85.52
+    buffer_ttl: 16.08
+    poll_interval: 53
+    compress: 60
+    account_capacity: 3
+    warm_ttl: 36.14
+  soft_threshold: staging
+  warm_ttl: 21.28
+  idle_capacity_s:
+    base_window_pct: edge
+    poll_ratio: 5258
+    batch_capacity_pct: true
+    warm_size_pct: 7951
+    token_capacity: legacy
+  editor_capacity: latest
+  hard_capacity_s:
+    - local
+    - green
+    - fallback
+strict:
+  - 164
+  - 484
+  - 333
+warm_retries_count: 1024
+metric_retries: 60.19
