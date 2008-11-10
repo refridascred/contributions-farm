@@ -26,13 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Retry,
-            Done,
-            Dropped,
-            Active,
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a filter header.</summary>
