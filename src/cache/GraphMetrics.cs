@@ -44,13 +44,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
             public string Level { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
