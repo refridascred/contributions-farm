@@ -29,12 +29,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheSize = "legacy";
-        public const string LimitDepth = "staging";
-        public const long WindowSpan = 3366;
-        public const long DefaultCommits = 3521;
-        public const long StepCommits = 8797;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (sample <= (sample * 4))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long CompareOrderCount(long[] series)
