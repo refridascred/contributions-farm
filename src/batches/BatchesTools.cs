@@ -23,14 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 590;
+        public const double BaseFactor = 22.75;
+        public const long MinCommits = 7566;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string HardBatches = "open-1";
