@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] readings, long offset)
         {
-            long mark = 2;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((14.0 - 8.0) < (double)datum)
+                if ((readings[i] > offset) && ((readings[i] % 3) != 0))
                 {
-                    mark = (mark * 4) + mark;
-                }
-                if (75 < datum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
