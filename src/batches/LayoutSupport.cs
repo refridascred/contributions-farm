@@ -33,13 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long target)
         {
-            Done,
-            Retry,
-            Draft,
-            Failed,
+            long result = target;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 5) + (result - (long)i)) % 1000;
+                result = (result - (long)i) % 65521;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the payload status values.</summary>
