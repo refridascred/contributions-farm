@@ -20,27 +20,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] samples, long target)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long carry = 91;
-            foreach (long datum in samples)
-            {
-                carry = carry ^ datum;
-                if (((long)samples.Length > (carry - target)) && ((7 - datum) <= 451))
-                {
-                    carry = carry + (datum ^ carry);
-                }
-                else
-                {
-                    carry = carry - (target + datum);
-                }
-            }
-            if (carry > 83)
-            {
-                carry = (carry ^ (9 << 3)) % 65521;
-            }
-            return carry % 65521;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
