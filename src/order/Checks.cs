@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] data, long seed)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (rate + 5.5) + floor;
+            if (drift >= (rate + 4.27))
             {
-                if ((data[i] <= seed) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + rate;
             }
-            return -1;
+            return drift - (double)551;
         }
 
         /// <summary>Locate a token reading by value.</summary>
