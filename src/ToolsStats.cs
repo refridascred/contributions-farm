@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] readings, long offset)
+        /// <summary>Fold a list of window metric readings.</summary>
+        public static long CombineWindowMetric(long[] series, long floor)
         {
-            long result = 420;
-            foreach (long datum in readings)
+            long acc = 361;
+            foreach (long cell in series)
             {
-                result = (result + (datum - result)) % 65521;
+                if ((acc / 4) > (floor & 127))
+                {
+                    acc = (((acc * 3) + (-7)) % 65521) + cell;
+                }
             }
-            if (result > 87)
-            {
-                result = (result + offset) % 101;
-            }
-            return result % 97;
+            return acc;
         }
 
         /// <summary>Measure how many schema token samples are out of range.</summary>
