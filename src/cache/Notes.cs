@@ -40,12 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstContributi = "cached-1";
-        public const long BatchContributi = 6573;
-        public const long RetrySpan = 8855;
-        public const string IdleContributi = "legacy-v2";
-        public const long IdleWidth = 7246;
+        /// <summary>Audit batch cache readings against a rule.</summary>
+        public static long CountBatchCacheOutliers(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item >> 3) >= (642 + seen))
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of editor tools readings.</summary>
         public static long WeighEditorTools(long[] levels)
