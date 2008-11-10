@@ -15,16 +15,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            long sum = 113;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ sum) % 101;
-                sum = ((sum * 3) + (sample + sample)) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Derive the next buffer contributi value from a seed.</summary>
