@@ -35,11 +35,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleBudget = 939;
-        public const double BatchLevel = 96.3;
-        public const long BaseSize = 4420;
-        public const string SoftGraph = "open-1";
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            New,
+            Pending,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MaxChannel = 7089;
