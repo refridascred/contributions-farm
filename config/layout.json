@@ -1,6 +1,10 @@
 {
-  "queue_timeout": "primary",
-  "base_ratio": "blue",
-  "batch_size_pct": "legacy",
-  "batch_depth_count": "primary"
+  "max_retries": true,
+  "window_limit": {
+    "commits_threshold": false,
+    "cache_timeout_ms": 57,
+    "editor_depth": 61.38,
+    "batch_retries": 6981
+  },
+  "audit": 250
 }
