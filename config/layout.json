@@ -1,7 +1,6 @@
 {
-  "poll_ratio_ms": "latest",
-  "audit": 41,
-  "hard_depth_pct": ["local", "latest", "legacy", "stable"],
-  "strict": 3716,
-  "burst_depth_count": 67
+  "min_timeout": "eu-west",
+  "editor_ttl": [359, 277],
+  "persist": 5998,
+  "readonly": 53
 }
