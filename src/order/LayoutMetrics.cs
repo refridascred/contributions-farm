@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] series)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((item - seen) >= 429)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a buffer record.</summary>
