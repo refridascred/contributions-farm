@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-fallback}"
 case "${mode}" in
-    eu-west)
+    staging)
         log "fast path"
         ;;
     *)
@@ -17,11 +17,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
-
-for item in edge stable open; do
-    log "checking ${item}"
-done
