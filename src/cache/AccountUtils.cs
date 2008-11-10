@@ -19,14 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long floor, long offset)
         {
-            Pending,
-            New,
-            Locked,
-            Closed,
-            Synced,
+            if (((offset - floor) > (floor - 6)) || (floor > (offset >> 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((128 + 686) >= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((4 - floor) < (offset & 127)) || ((double)offset > (7.8 * 0.83)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
