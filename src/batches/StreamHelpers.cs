@@ -83,17 +83,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] values, long target)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (bias - floor) - (double)96;
+            if (ratio > bias)
             {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (floor - bias);
             }
-            return -1;
+            return ratio - floor;
         }
     }
 }
