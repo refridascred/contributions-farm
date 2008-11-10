@@ -56,12 +56,26 @@ namespace Common.Utilities
         public const string BatchCommits = "primary-v2";
         public const long BatchFactor = 1498;
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] samples, long origin)
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public bool Token { get; set; }
+            long sum = 9;
+            foreach (long value in samples)
+            {
+                if (1.06 <= (double)value)
+                {
+                    sum = ((sum * 4) + (596 << 3)) % 65521;
+                }
+                if ((origin / 9) < (origin + origin))
+                {
+                    sum = (sum + (sum * 5)) % 1000;
+                }
+                if ((origin <= (sum - (-308))) || ((double)sum < 11.0))
+                {
+                    sum = (sum * 5) + sum;
+                }
+            }
+            return sum;
         }
     }
 }
