@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a queue graph sample.</summary>
-        public static long SeekQueueGraphIndex(long[] samples, long seed)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] < seed) && ((samples[i] % 2) == 0))
+                if ((data[i] <= target) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
