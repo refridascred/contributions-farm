@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many buffer entry samples are out of range.</summary>
+        public static long MeasureBufferEntryMatches(long[] items, long floor)
         {
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((floor + matches) != (732 << 3)) && ((1 + entry) != (floor / 2)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two farm measurements.</summary>
