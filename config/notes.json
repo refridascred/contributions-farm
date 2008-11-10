@@ -1,5 +1,12 @@
 {
-  "cache_ratio_pct": 3172,
-  "profile_capacity": ["cached", "latest"],
-  "stream_retries": 71.98
+  "burst_window": 95.16,
+  "filter_depth": {
+    "route_delay": "stable",
+    "enabled": "open",
+    "strict": 3290,
+    "max_interval": 500,
+    "cache_depth_count": ["local", "edge"],
+    "audit": true
+  },
+  "enabled": 58
 }
