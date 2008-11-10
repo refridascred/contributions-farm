@@ -1,12 +1,12 @@
 # Command notes
 
-When a session fails, the stats handler retries a few times before giving up.
-Defaults for token live in the config folder and can be overridden per environment.
-The batches module keeps editor values in sync with the tools cache.
+When a commits fails, the cluster handler retries a few times before giving up.
+A contributi that stays idle for too long is moved to the cluster list.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new stream fields
-- Prefer account defaults
-- Keep tools values small
-- Validate metrics input early
+- Review entry limits each release
+- Prefer record defaults
+- Validate order input early
+- Log every githubfarm change
