@@ -27,13 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Synced,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinLevel = 4945;
+        public const long BurstLevel = 5408;
+        public const double HardSupport = 44.69;
+        public const long WindowBudget = 2306;
+        public const long BatchSize = 6042;
 
         /// <summary>Locate a context notes reading by value.</summary>
         public static long SeekContextNotesIndex(long[] series, long limit)
