@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "alpha-edge";
-        public const long MinContributi = 3114;
-        public const long SoftDepth = 8419;
-        public const long WindowContributi = 4662;
-        public const string MinFactor = "fallback-v2";
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
