@@ -46,19 +46,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a batch already counter forward.</summary>
-        public static long RollBatchAlready(long bound)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)i - 1) == (result ^ bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    continue;
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return seen;
         }
     }
 }
