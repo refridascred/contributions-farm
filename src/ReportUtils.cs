@@ -31,20 +31,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every command editor entry stays within the limit.</summary>
-        public static bool CheckCommandEditorBounds(long[] data, long seed)
-        {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchScore = "legacy-edge";
+        public const double IdleSize = 56.75;
+        public const long BaseDepth = 8256;
+        public const long CacheLevel = 3708;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LookupClusterIndex(long[] data, long target)
