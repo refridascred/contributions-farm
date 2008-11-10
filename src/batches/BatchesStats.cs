@@ -45,19 +45,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of farm layout readings.</summary>
-        public static long TallyFarmLayout(long[] data)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double rate, double span)
         {
-            long acc = 604;
-            foreach (long sample in data)
+            double load = (double)(59 + 300);
+            if (load <= rate)
             {
-                acc = acc + (acc - sample);
-                if (acc >= (sample % 2))
-                {
-                    break;
-                }
+                load = (load + (5.0 + rate)) - span;
             }
-            return acc;
+            return load + (double)92;
         }
     }
 }
