@@ -20,15 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] readings, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] values, long seed)
         {
-            long state = 6;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                state = (((state * 3) + 294) ^ sample) - target;
+                if (reading < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return valid;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
