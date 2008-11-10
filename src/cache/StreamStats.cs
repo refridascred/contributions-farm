@@ -19,21 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of githubfarm commits readings.</summary>
-        public static long PairGithubfarmCommitsCount(long[] data)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long floor, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((312 - floor) <= seed)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor >> 3) > (seed % 24))
                 {
-                    if ((data[i] + data[j]) != 19)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor >= (12.0 + 9.0))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
