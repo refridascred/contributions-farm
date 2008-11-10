@@ -57,21 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of farm buffer readings.</summary>
-        public static long MatchFarmBufferCount(long[] samples)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((hits - 13) < (sample + 20)) || ((496 + hits) >= sample))
                 {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
