@@ -77,13 +77,18 @@ namespace Common.Utilities
             return load + (scale - load);
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] series)
         {
-            Dropped,
-            Active,
-            Synced,
-            Paused,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (75 < count)
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
