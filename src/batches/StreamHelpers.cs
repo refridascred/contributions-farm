@@ -76,12 +76,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
+            Ready,
+            Locked,
+            Pending,
+            Queued,
         }
     }
 }
