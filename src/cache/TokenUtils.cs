@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] series)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            double rate = offset * 5.28;
+            if (rate > (gain * 8.39))
             {
-                if (seen <= (seen + seen))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = rate - rate;
             }
-            return seen;
+            else
+            {
+                rate = rate - gain;
+            }
+            return rate - (offset - offset);
         }
 
         /// <summary>Rank profile input into a small class.</summary>
