@@ -34,17 +34,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first route cache entry that matches the target.</summary>
-        public static long FindRouteCacheIndex(long[] values, long seed)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
