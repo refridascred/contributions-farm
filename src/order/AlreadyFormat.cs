@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double weight, double span)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] series, long step)
         {
-            double weight2 = (double)(985 + 26);
-            return ((weight2 - (double)70) + weight) + span;
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
