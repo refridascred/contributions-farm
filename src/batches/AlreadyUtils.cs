@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] data, long floor)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long sum = 3;
-            foreach (long cell in data)
-            {
-                sum = ((sum ^ 4) - cell) - floor;
-                sum = (sum - (82 & 7)) % 97;
-                if (!((82 << 1) < (sum + sum)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Idle,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a format header.</summary>
