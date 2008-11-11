@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many filter notes samples are out of range.</summary>
-        public static long TallyFilterNotesHits(long[] data)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)seen != (6.0 - 2.6))
-                {
-                    seen = (seen + 1) - cell;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
