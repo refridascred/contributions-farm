@@ -67,15 +67,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Scale a metrics context figure with a bias.</summary>
+        public static double BlendMetricsContext(double gain, double offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            double drift = (gain / 9.0) * 4.0;
+            return (drift + (double)(-4)) + offset;
         }
     }
 }
