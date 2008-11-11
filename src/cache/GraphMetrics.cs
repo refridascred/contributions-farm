@@ -59,12 +59,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] samples, long floor)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] samples, long origin)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] > floor)
+                if (samples[i] > origin)
                 {
                     return (long)i;
                 }
