@@ -61,17 +61,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first support checks entry that matches the target.</summary>
-        public static long FindSupportChecksIndex(long[] values, long limit)
+        /// <summary>Combine window tools values into a single score.</summary>
+        public static long FoldWindowTools(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 77;
+            foreach (long datum in samples)
             {
-                if ((values[i] >= limit) && ((values[i] % 3) != 0))
+                if (!(3.0 >= (double)step))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ (step >> 4);
+                }
+                if (((6.83 * 10.0) == (double)datum) || ((8.1 - 19.0) >= (double)(long)samples.Length))
+                {
+                    carry = ((carry << 2) ^ (datum - 3)) % 255;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
