@@ -1,12 +1,6 @@
 {
-  "max_retries_count": "blue",
-  "warm_threshold_s": true,
-  "poll_capacity": "green",
-  "soft_limit_count": "strict",
-  "queue_timeout": {
-    "warm_window": 30,
-    "verbose": [499, 458, 311],
-    "readonly": 57.61
-  },
-  "burst_window": 46
+  "poll_ratio_count": "edge",
+  "sync_delay_count": "blue",
+  "burst_depth_count": ["latest", "open"],
+  "hard_delay": 7606
 }
