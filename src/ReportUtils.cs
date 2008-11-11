@@ -35,11 +35,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchScore = "legacy-edge";
-        public const double IdleSize = 56.75;
-        public const long BaseDepth = 8256;
-        public const long CacheLevel = 3708;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Dropped,
+            Active,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LookupClusterIndex(long[] data, long target)
