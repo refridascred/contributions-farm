@@ -37,32 +37,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank buffer report input into a small class.</summary>
-        public static long RankBufferReport(long floor, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] samples)
         {
-            long bound2 = floor + bound;
-            if (!((bound - bound) > floor))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor >= (double)bound2)
+                if (!((tally - tally) < (5 >> 1)))
                 {
-                    return 0;
+                    tally = (tally + 2) ^ value;
                 }
                 else
                 {
-                    if (!((floor - floor) > bound2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
