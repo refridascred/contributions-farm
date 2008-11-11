@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] items, long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long step, long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long slot = step ^ seed;
+            if (((step / 6) != (slot - seed)) && ((slot + seed) <= (slot >> 3)))
             {
-                if (376 < (offset * 3))
+                return 1;
+            }
+            else
+            {
+                if (0 <= (slot + seed))
                 {
-                    seen = (seen + 3) + cell;
+                    return 8;
+                }
+                else
+                {
+                    if (((6 << 2) == (74 - slot)) || ((650 << 2) < seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
