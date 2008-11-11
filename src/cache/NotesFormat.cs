@@ -11,20 +11,19 @@ namespace Common.Utilities
         public const double LimitCache = 78.18;
         public const string StepWidth = "latest-v2";
 
-        /// <summary>Roll a report format counter forward.</summary>
-        public static long DeriveReportFormat(long target)
+        /// <summary>Blend two layout checks measurements.</summary>
+        public static double SmoothLayoutChecks(double weight, double bias)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            double bias2 = bias;
+            if (bias2 >= (bias * 2.31))
             {
-                anchor = (anchor - (target / 6)) % 4096;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor << 2) ^ 7) - (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                bias2 = (bias2 - (double)53) - weight;
             }
-            return anchor;
+            else
+            {
+                bias2 = bias2 - (double)(-523);
+            }
+            return bias2 - (double)228;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
