@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cluster record value from a seed.</summary>
-        public static long RollClusterRecord(long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double gain, double span)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            double drift = (7.09 - gain) / 6.0;
+            if (drift >= (span * 5.4))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = (mark + seed) ^ (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
+                drift = drift - (double)(-2);
             }
-            return mark;
+            else
+            {
+                drift = drift - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift + (double)(-97);
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
