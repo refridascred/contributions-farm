@@ -1,8 +1,7 @@
-id,state,token,rank,active
-1,standard,957,35.16,762
-2,blue,61,548,19.46
-3,654,32,fallback,standard
-4,24,789,strict,77.17
-5,90.84,24.3,9.84,37.28
-6,open,309,48.01,657
-7,572,181,770,90.91
+id,label
+1,30.9
+2,16.84
+3,28.66
+4,standard
+5,76.18
+6,cached
