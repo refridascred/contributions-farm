@@ -35,16 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state << 3) ^ (state - (long)i)) % 65521;
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
