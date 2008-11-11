@@ -1,8 +1,13 @@
 # support settings
-format_window: 60
-max_delay_pct: 87.73
-max_threshold_pct:
-  - strict
-  - local
-  - fallback
-  - eu-west
+account_depth:
+  - legacy
+  - stable
+batch_timeout_pct: true
+verbose: local
+payload_delay:
+  - 440
+  - 463
+  - 307
+  - 101
+audit: 70.58
+stream_ratio: 8.77
