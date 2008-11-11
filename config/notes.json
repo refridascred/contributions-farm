@@ -1,7 +1,5 @@
 {
-  "payload_ratio": true,
-  "max_depth_count": ["standard", "open", "edge"],
-  "retry_ttl_count": "green",
-  "default_depth_s": true,
-  "batches_ttl": "latest"
+  "strict": 26,
+  "compress": true,
+  "readonly": true
 }
