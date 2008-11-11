@@ -19,10 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitCount = "staging-1";
-        public const long IdleTimeout = 2111;
-        public const string DefaultDepth = "cached-1";
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long floor, long origin)
+        {
+            if (floor >= (origin & 31))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((origin - origin) < origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin - floor) == (floor + 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((origin ^ origin) <= floor) || ((origin - origin) < (floor + floor)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionHits(long[] data, long limit)
