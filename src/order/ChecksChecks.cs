@@ -32,19 +32,24 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] samples, long floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long step)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long score = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell > floor)
+                if ((score * 5) == (step - (long)i))
                 {
-                    found = false;
-                    break;
+                    score = score + (604 + 6);
+                    score = score + (score + step);
                 }
+                else
+                {
+                    score = (score ^ (step + step)) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return found;
+            return score;
         }
     }
 }
