@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback cached standard edge; do
+mode="${1:-fallback}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in blue edge stable standard; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=321
-log "limit is ${CHANNEL_LIMIT}"
