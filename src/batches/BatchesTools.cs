@@ -19,38 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long floor, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] series)
         {
-            if (floor >= (origin & 31))
+            long acc = 17;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((origin - origin) < origin))
+                acc = (acc * 3) + (value + acc);
+                if ((3 ^ (long)series.Length) >= (acc % 7))
                 {
-                    return 7;
+                    acc = (acc ^ value) % 101;
                 }
                 else
                 {
-                    if ((origin - floor) == (floor + 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((origin ^ origin) <= floor) || ((origin - origin) < (floor + floor)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = (acc ^ acc) % 1000;
                 }
             }
+            if (acc < 7)
+            {
+                acc = ((acc << 3) ^ acc) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
