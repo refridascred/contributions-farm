@@ -21,15 +21,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two command account measurements.</summary>
-        public static double ScaleCommandAccount(double bias, double span)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            double mean = 6.1;
-            if (mean < bias)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + (mean * 5.1)) - span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean - (double)906;
+            return count;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
