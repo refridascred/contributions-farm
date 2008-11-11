@@ -27,24 +27,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a already command pair into a bucket.</summary>
-        public static long GradeAlreadyCommand(long origin, long floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            if ((double)origin >= (7.4 - 1.5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor + 430) == (9 - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            New,
+            Ready,
+            Locked,
+            Stale,
+            Retry,
         }
     }
 }
