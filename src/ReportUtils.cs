@@ -27,21 +27,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count filter contributi pairs that satisfy a relation.</summary>
-        public static long CompareFilterContributiCount(long[] series)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the already state values.</summary>
