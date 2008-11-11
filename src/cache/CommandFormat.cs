@@ -33,18 +33,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] readings, long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (datum <= (78 / 8))
-                {
-                    seen = (seen + 3) + origin;
-                }
-            }
-            return seen;
+            Paused,
+            Closed,
+            Active,
+            Pending,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
