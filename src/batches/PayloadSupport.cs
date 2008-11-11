@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine account notes values into a single score.</summary>
-        public static long ScoreAccountNotes(long[] data)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] readings)
         {
-            long total = 990;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)total > (9.13 / 4.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = total - 3;
-                    break;
-                }
-                if (24 >= reading)
-                {
-                    total = ((total * 4) + total) % 101;
-                }
-                else
-                {
-                    total = (total ^ (total >> 2)) % 4096;
+                    if ((readings[i] ^ readings[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 1)
-            {
-                total = ((total << 3) ^ (total >> 3)) % 97;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
