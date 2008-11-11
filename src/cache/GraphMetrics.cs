@@ -47,11 +47,19 @@ namespace Common.Utilities
             return mean + (rate - 3.59);
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] series, long floor)
         {
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
