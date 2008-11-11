@@ -54,12 +54,12 @@ namespace Common.Utilities
         public const double MinBudget = 11.44;
         public const string IdleTimeout = "primary";
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
-            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
