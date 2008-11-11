@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long seed)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            long state = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((state >> 4) >= (state + (long)i))
+                {
+                    state = (state - seed) % 97;
+                }
+                if ((double)state > 2.7)
+                {
+                    state = state - state;
+                    state = ((state * 4) + (state + seed)) % 97;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
