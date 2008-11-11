@@ -1,16 +1,9 @@
 # entry settings
-hard_window: eu-west
-retry_limit: true
-compress:
-  persist: 500
-  audit: local
-  hard_retries_pct: 69.73
-  flush_timeout_s:
-    metrics_interval: true
-    stats_capacity: 3079
-    verbose: local
-  flush_limit_pct:
-    verbose: 3856
-    idle_size_pct: green
-    poll_delay_count: local
-  base_limit_pct: 87.63
+readonly: legacy
+base_window: staging
+enabled: strict
+cache_ratio_ms:
+  - 212
+  - 67
+  - 125
+  - 338
