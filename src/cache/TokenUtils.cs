@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardCounter = 35.0;
-        public const long RetryFactor = 6998;
-        public const string WindowCounter = "latest-v2";
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double ratio, double floor)
+        {
+            double load = ratio;
+            if (load <= (double)98)
+            {
+                load = load + (floor * 9.7);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + 5.2) + (double)(long)i;
+            }
+            return load - ratio;
+        }
 
         /// <summary>Classify a commits filter pair into a bucket.</summary>
         public static long RankCommitsFilter(long offset, long bound)
