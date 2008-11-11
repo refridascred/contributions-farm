@@ -30,31 +30,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long limit, long limit2)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            if ((limit >> 3) == (64 * 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit >> 4) > (limit - 98))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((7.32 * 2.52) >= (double)limit2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Synced,
+            Closed,
+            Retry,
+            Paused,
+            Done,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
