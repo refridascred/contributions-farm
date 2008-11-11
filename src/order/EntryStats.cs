@@ -28,11 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Match up report samples.</summary>
