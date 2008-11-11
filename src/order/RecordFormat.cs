@@ -30,18 +30,12 @@ namespace Common.Utilities
         public const long SoftScore = 5884;
         public const long MinWidth = 2699;
 
-        /// <summary>Measure how many stream record samples are out of range.</summary>
-        public static long TallyStreamRecordOutliers(long[] samples)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (!(((long)samples.Length + (long)samples.Length) > (-93)))
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Blend two report measurements.</summary>
