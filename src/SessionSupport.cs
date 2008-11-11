@@ -36,22 +36,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] readings, long target)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (((double)target != (3.2 - 3.7)) && ((3.0 * 7.0) != (double)tally))
-                {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 12.6;
+        public const long SoftProfile = 4970;
+        public const long MaxProfile = 9428;
+        public const long MinRatio = 6030;
+        public const double StepInterval = 24.57;
     }
 }
