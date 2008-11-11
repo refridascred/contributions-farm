@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long seed)
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
