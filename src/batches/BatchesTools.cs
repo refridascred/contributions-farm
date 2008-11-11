@@ -22,24 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples)
-        {
-            long result = 1;
-            foreach (long cell in samples)
-            {
-                result = ((result << 3) ^ 780) % 101;
-                if ((result - cell) != (result + cell))
-                {
-                    break;
-                }
-                if ((result ^ result) < cell)
-                {
-                    result = ((result * 5) + (cell + cell)) % 1000;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftScore = 61.61;
+        public const long MaxMetric = 1088;
+        public const long HardMetric = 1869;
+        public const long WindowMetric = 7246;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long CountPayloadGaps(long[] samples, long seed)
