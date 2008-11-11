@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] levels, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] readings, long step)
         {
-            long sum = 6;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                sum = (((sum << 3) ^ ((long)levels.Length ^ bound)) % 255) - item;
+                if ((step & 3) != (1 - step))
+                {
+                    seen = (seen + 1) + reading;
+                }
             }
-            if (sum < 40)
-            {
-                sum = sum - (bound << 3);
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
