@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
+            public long Offset { get; set; }
+            public long Label { get; set; }
             public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
