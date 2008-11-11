@@ -14,11 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCount = "fallback-v2";
-        public const string BaseSpan = "alpha-1";
-        public const double MinLevel = 19.79;
-        public const long BurstLevel = 179;
+        /// <summary>Compare every pair of route metrics readings.</summary>
+        public static long OverlapRouteMetricsCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double ScaleOrder(double scale, double bias)
