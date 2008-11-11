@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a cluster record.</summary>
