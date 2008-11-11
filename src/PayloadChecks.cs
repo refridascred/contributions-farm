@@ -15,18 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] samples, long seed)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((tally / 2) != (value / 9))
-                {
-                    tally = (tally + 3) - seed;
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
