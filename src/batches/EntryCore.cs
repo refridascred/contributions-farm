@@ -42,11 +42,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Project the next layout metrics value.</summary>
+        public static double BlendLayoutMetrics(double gain, double floor)
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            double drift = floor + gain;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - drift;
         }
     }
 }
