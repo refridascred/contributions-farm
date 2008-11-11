@@ -27,21 +27,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Classify a already command pair into a bucket.</summary>
+        public static long GradeAlreadyCommand(long origin, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)origin >= (7.4 - 1.5))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor + 430) == (9 - floor))
                 {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
