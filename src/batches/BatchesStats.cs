@@ -13,19 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] samples, long floor)
-        {
-            long result = 461;
-            foreach (long reading in samples)
-            {
-                if (((5.9 / 2.0) < (double)result) || (reading < (result ^ result)))
-                {
-                    result = ((result - (reading + result)) % 4096) - floor;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheSize = 3583;
+        public const long IdleDepth = 1668;
+        public const long BaseDepth = 1393;
+        public const long BurstCounter = 4445;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphLimits(long[] data, long bound)
