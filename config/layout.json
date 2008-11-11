@@ -1,18 +1,7 @@
 {
-  "persist": 62.64,
-  "warm_window": true,
-  "flush_depth_ms": 80,
-  "hard_interval_s": {
-    "retry_capacity": {
-      "audit": "staging",
-      "sync_threshold_s": 60,
-      "sync_ratio_pct": "fallback"
-    },
-    "base_ttl_ms": {
-      "retry_window_pct": ["open", "latest", "primary"],
-      "sync_timeout_pct": false,
-      "compress": true
-    },
-    "idle_retries_s": 63
-  }
+  "default_delay": "stable",
+  "already_interval": "legacy",
+  "batches_window": "standard",
+  "warm_retries_s": "local",
+  "min_ttl_s": false
 }
