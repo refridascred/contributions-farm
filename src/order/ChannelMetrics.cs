@@ -40,11 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstSpan = 6057;
-        public const string LimitBudget = "standard-v2";
-        public const long HardCommits = 8735;
-        public const long MaxLevel = 7806;
-        public const long RetryCommits = 6339;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((9.19 * 14.0) > (double)hits)
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
+        }
     }
 }
