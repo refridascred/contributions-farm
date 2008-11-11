@@ -44,31 +44,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long target, long step)
-        {
-            if (!((double)target < (double)step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((0.18 - 9.3) <= (double)target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((4 + step) < 5)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 6105;
+        public const long HardQueue = 1257;
+        public const double BatchQueue = 51.3;
+        public const long BurstRatio = 1097;
     }
 }
