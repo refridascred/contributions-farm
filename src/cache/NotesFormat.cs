@@ -27,15 +27,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] items, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            long result = 709;
+            foreach (long cell in items)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                result = (result + (origin + (long)items.Length)) - cell;
             }
-            return state;
+            return result;
         }
     }
 }
