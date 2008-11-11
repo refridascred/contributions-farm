@@ -49,22 +49,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] items, long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long bound)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long state = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)origin > (8.68 / 7.0))
-                {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 5) + (965 % 60)) % 65521;
+                state = (state - state) % 101;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
     }
 }
