@@ -37,19 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double gain, double span)
+        /// <summary>Find the first account entry entry that matches the target.</summary>
+        public static long SeekAccountEntryIndex(long[] samples, long bound)
         {
-            double weight = (double)((-404) + 987);
-            if (weight < 0.52)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = ((weight + (double)6) - gain) - span;
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (9.0 - weight);
+            return -1;
         }
 
         /// <summary>Describe the report status values.</summary>
