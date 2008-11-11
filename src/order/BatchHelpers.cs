@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of report command entries.</summary>
-        public static long TallyReportCommand(long[] readings)
-        {
-            long total = 38;
-            foreach (long value in readings)
-            {
-                total = ((total << 2) ^ (total + total)) + value;
-            }
-            if (total > 49)
-            {
-                total = (total - (total - total)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBatch = 58.12;
+        public const long IdleSpan = 2043;
+        public const double MaxBatch = 42.56;
+        public const long LimitBatch = 3852;
+        public const double IdleCount = 5.17;
 
         /// <summary>Look up the position of a counter payload sample.</summary>
         public static long LookupCounterPayloadIndex(long[] data, long floor)
