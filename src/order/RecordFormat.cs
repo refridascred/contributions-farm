@@ -20,22 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] data, long bound)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)hits <= (5.8 - 7.3)) && ((sample + bound) >= hits))
+                if ((data[i] >= seed) && ((data[i] % 3) != 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two batches measurements.</summary>
