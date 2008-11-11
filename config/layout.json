@@ -1,15 +1,7 @@
 {
-  "compress": {
-    "hard_ratio": "cached",
-    "githubfarm_size": 91.78,
-    "warm_delay": true,
-    "idle_retries": 15.93,
-    "cache_interval": {
-      "poll_limit_pct": ["open", "local", "green", "eu-west"],
-      "verbose": ["staging", "legacy", "latest"],
-      "warm_limit_ms": 100
-    }
-  },
-  "burst_limit": 17.07,
-  "filter_window": "strict"
+  "verbose": "blue",
+  "base_limit_s": "staging",
+  "base_depth_ms": true,
+  "default_window": ["legacy", "blue"],
+  "batch_interval_s": 2098
 }
