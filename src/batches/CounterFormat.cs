@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] data, long seed)
+        /// <summary>Validate buffer batch readings against a bound.</summary>
+        public static bool VerifyBufferBatchRange(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (value > seed)
+                if (entry != bound)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
