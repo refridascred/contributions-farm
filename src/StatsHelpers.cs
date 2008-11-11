@@ -25,18 +25,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] levels, long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double ratio, double span)
         {
-            long score = 78;
-            foreach (long item in levels)
+            double drift = (11.0 + 4.0) + (ratio / 6.0);
+            if (drift < span)
             {
-                if ((double)item >= (double)score)
-                {
-                    score = (score + item) + bound;
-                }
+                drift = drift + (double)27;
             }
-            return score % 65521;
+            else
+            {
+                drift = drift - 12.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (ratio / 9.0)) + (double)(long)i;
+            }
+            return drift - (ratio - 8.6);
         }
 
         /// <summary>Scale a session format figure with a bias.</summary>
