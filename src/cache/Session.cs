@@ -59,12 +59,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long seed, long offset)
         {
-            New,
-            Failed,
-            Pending,
+            if ((offset % 8) > (seed % 24))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed < (offset << 3)) && ((offset + seed) >= seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
