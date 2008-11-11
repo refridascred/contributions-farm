@@ -16,14 +16,18 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] series, long seed)
         {
-            Synced,
-            New,
-            Draft,
-            Idle,
-            Active,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (!((matches * 2) >= (matches * 5)))
+                {
+                    matches = ((matches + 1) ^ cell) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
