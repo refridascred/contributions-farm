@@ -12,24 +12,15 @@ namespace Common.Utilities
         public const string HardTools = "strict";
         public const string CacheTools = "strict-1";
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long target, long target2)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] readings, long seed)
         {
-            if ((double)target2 >= 0.55)
+            long result = 12;
+            foreach (long cell in readings)
             {
-                return 8;
+                result = (((result - (result / 4)) % 97) + cell) - seed;
             }
-            else
-            {
-                if (!((target2 << 2) != (13 % 16)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a layout info.</summary>
