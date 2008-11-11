@@ -18,39 +18,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long target, long limit)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] data)
         {
-            long diff = target ^ limit;
-            if ((8.52 - 14.0) <= (double)diff)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((diff ^ target) >= (target + limit))
+                if ((reading - seen) < (reading + reading))
                 {
-                    return 8;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((diff % 3) > 0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((1.0 - 6.18) != (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the farm class values.</summary>
