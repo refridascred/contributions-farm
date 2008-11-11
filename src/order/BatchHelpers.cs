@@ -29,13 +29,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Classify a cache metrics pair into a bucket.</summary>
+        public static long RankCacheMetrics(long offset, long offset2)
         {
-            Failed,
-            Ready,
-            New,
-            Paused,
+            long diff = offset ^ offset2;
+            if ((diff * 4) <= 6)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((diff - diff) == (97 * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)diff == (15.0 / 4.0)) || ((offset - diff) <= diff))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
