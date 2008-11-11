@@ -44,12 +44,14 @@ namespace Common.Utilities
         public const long MinCount = 4381;
         public const double SoftChannel = 57.52;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowScore = "standard-v2";
-        public const long StepCache = 7639;
-        public const long HardFactor = 3105;
-        public const double MinCache = 97.71;
-        public const long HardCount = 1818;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
