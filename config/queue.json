@@ -1,6 +1,7 @@
 {
-  "base_window": false,
-  "verbose": 4165,
-  "burst_threshold_pct": ["latest", "green", "blue", "cached"],
-  "burst_window_ms": 250
+  "verbose": 7139,
+  "poll_timeout_count": true,
+  "hard_capacity_s": "fallback",
+  "base_capacity_pct": "edge",
+  "graph_delay": [271, 318]
 }
