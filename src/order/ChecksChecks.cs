@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long target, long step)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] levels, long floor)
         {
-            if (((double)step >= 5.92) && (step <= 44))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step * 5) > (step + target)) || ((double)step > (8.03 / 8.0)))
+                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the support mode values.</summary>
