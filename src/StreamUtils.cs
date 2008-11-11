@@ -72,25 +72,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long step, long floor)
+        /// <summary>Count the cache commits entries that pass the check.</summary>
+        public static long AuditCacheCommitsHits(long[] samples, long origin)
         {
-            long delta = step ^ floor;
-            if ((step / 4) >= step)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((delta >= (delta * 4)) && ((double)delta <= (10.0 * 11.0)))
+                if ((origin % 24) < origin)
                 {
-                    return 3;
+                    hits = (hits + 2) ^ datum;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
