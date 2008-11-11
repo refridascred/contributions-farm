@@ -1,7 +1,12 @@
 {
-  "strict": false,
-  "editor_timeout": 6280,
-  "hard_delay": "stable",
-  "enabled": ["legacy", "eu-west"],
-  "audit": 70
+  "readonly": 44,
+  "strict": true,
+  "sync_window_s": {
+    "max_limit_count": 28.79,
+    "cache_size": false,
+    "persist": 96.17
+  },
+  "batch_threshold": 3897,
+  "cache_size_s": true,
+  "flush_limit_count": "latest"
 }
