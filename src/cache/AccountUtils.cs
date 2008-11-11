@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const long LimitSize = 4529;
         public const long CacheFactor = 7794;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "primary-1";
-        public const string WindowSize = "open";
-        public const string LimitBatches = "local-v2";
-        public const long HardBatches = 3570;
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Ready,
+            Locked,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long target)
