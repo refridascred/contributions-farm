@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheRatio = 54.22;
+        public const string SoftWidth = "alpha";
+        public const string BatchToken = "stable-v2";
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
