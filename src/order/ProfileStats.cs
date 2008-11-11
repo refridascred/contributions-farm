@@ -26,12 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] samples, long step)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define account limits and defaults.</summary>
