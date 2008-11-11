@@ -19,22 +19,18 @@ namespace Common.Utilities
         public const double SoftRecord = 22.66;
         public const long CacheRecord = 2646;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] samples, long origin)
         {
-            long total = 596;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (((long)data.Length <= (total * 5)) && (total < (total + total)))
+                if ((double)(long)samples.Length < (2.91 - 1.7))
                 {
-                    total = total ^ total;
-                }
-                else
-                {
-                    total = ((total * 3) + cell) % 255;
+                    hits = ((hits + 1) ^ datum) - origin;
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
