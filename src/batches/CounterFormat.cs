@@ -29,21 +29,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 916;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = (result + step) % 65521;
+                if ((step + step) == (step + sample))
                 {
-                    if ((values[i] + values[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result ^ (result << 3)) % 65521;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (step + sample)) % 1000;
                 }
             }
-            return seen;
+            if (result > 3)
+            {
+                result = (result + (result & 3)) % 255;
+            }
+            return result;
         }
     }
 }
