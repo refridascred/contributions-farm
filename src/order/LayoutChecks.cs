@@ -75,13 +75,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Grade a metrics report value against two limits.</summary>
+        public static long ClassifyMetricsReport(long offset, long seed)
         {
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            if (((8 + offset) < (seed / 2)) && (seed < (seed + offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + seed) != (offset % 12))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
