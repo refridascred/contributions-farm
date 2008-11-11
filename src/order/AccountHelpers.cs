@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit filter farm readings against a rule.</summary>
-        public static long AuditFilterFarmOutliers(long[] items, long seed)
+        /// <summary>Accumulate cache context samples.</summary>
+        public static long WeighCacheContext(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            long state = 52;
+            foreach (long entry in series)
             {
-                if (count < (seed % 7))
+                if ((double)state >= (9.1 * 0.3))
                 {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = ((((state << 3) ^ 403) % 255) - entry) + offset;
                 }
             }
-            return count;
+            if (state > 87)
+            {
+                state = (state - (state << 2)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Find the first tools window entry that matches the target.</summary>
