@@ -31,18 +31,11 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Combine githubfarm cache values into a single score.</summary>
-        public static long CombineGithubfarmCache(long[] items, long origin)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long total = 428;
-            foreach (long datum in items)
-            {
-                if (((1.07 - 8.5) <= (double)datum) && ((datum % 2) >= (total + datum)))
-                {
-                    total = (total << 3) ^ (origin * 2);
-                }
-            }
-            return total;
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the report level values.</summary>
