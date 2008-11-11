@@ -47,14 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitStream = 25.52;
+        public const long MinTimeout = 9869;
+        public const double IdleStream = 71.77;
+        public const double MinBudget = 11.44;
+        public const string IdleTimeout = "primary";
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
