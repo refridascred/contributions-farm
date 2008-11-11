@@ -42,14 +42,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] data, long floor)
         {
-            Draft,
-            Stale,
-            Failed,
-            Ready,
-            Closed,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell ^ 117) != (floor % 10))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
