@@ -22,13 +22,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] data, long bound)
         {
-            Ready,
-            Retry,
-            Paused,
-            Dropped,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
