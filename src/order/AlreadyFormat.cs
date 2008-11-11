@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long limit, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] samples, long step)
         {
-            if ((double)2 == (double)bound)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)limit != (13.0 + 5.5)) && (((-619) >> 1) > (6 + limit)))
+                if (cell != step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Roll a support counter forward.</summary>
