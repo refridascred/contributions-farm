@@ -29,27 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report cluster values into a single score.</summary>
-        public static long WeighReportCluster(long[] series)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long score = 432;
-            foreach (long item in series)
-            {
-                score = ((score * 2) + score) % 255;
-                if ((score + 828) < score)
-                {
-                    score = ((score * 3) + (item + 776)) % 1000;
-                }
-                else
-                {
-                    score = ((score * 2) + (score ^ item)) % 101;
-                }
-            }
-            if (score > 497)
-            {
-                score = ((score << 3) ^ (score >> 3)) % 101;
-            }
-            return score;
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
