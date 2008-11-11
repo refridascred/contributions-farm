@@ -23,32 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long anchor = 16;
-            foreach (long item in readings)
-            {
-                if ((double)item < (1.77 + 4.6))
-                {
-                    anchor = ((anchor << 2) ^ 760) % 255;
-                    anchor = ((anchor * 3) + anchor) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor << 1)) % 1000;
-                    anchor = (anchor - ((-4) & 1)) % 4096;
-                }
-                if ((37 << 1) < (item * 5))
-                {
-                    anchor = (anchor + (item * 5)) % 1000;
-                }
-                if (!((anchor - item) >= (anchor + (-69))))
-                {
-                    anchor = (anchor ^ (item / 2)) % 97;
-                }
-            }
-            return anchor % 1000;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
