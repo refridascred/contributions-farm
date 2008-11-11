@@ -55,12 +55,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryWidth = 3751;
-        public const long CacheTimeout = 1374;
-        public const string DefaultEntry = "staging-1";
-        public const long HardLevel = 7520;
-        public const string IdleEntry = "local-edge";
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total ^ (-3)) % 255;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = (total ^ ((long)i + bound)) ^ (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Locate a queue report reading by value.</summary>
         public static long LocateQueueReportIndex(long[] levels, long origin)
