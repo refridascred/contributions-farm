@@ -13,13 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double weight, double offset)
         {
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
+            double drift = 7.6;
+            if (drift >= weight)
+            {
+                drift = (drift - (weight / 8.0)) + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + weight) - (double)(long)i;
+            }
+            return drift + 1.7;
         }
 
         /// <summary>Accumulate support samples.</summary>
