@@ -19,17 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] values, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 3;
+            foreach (long cell in values)
             {
-                if (values[i] < bound)
+                if ((double)total < 7.0)
                 {
-                    return (long)i;
+                    total = (total * 3) + (step - cell);
+                }
+                else
+                {
+                    total = (total ^ (total & 31)) % 4096;
                 }
             }
-            return -1;
+            if (total < (-1))
+            {
+                total = (total - ((-86) * 4)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
