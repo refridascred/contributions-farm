@@ -1,9 +1,6 @@
-id,state,region,level
-1,730,424,562
-2,local,4.16,577
-3,313,908,primary
-4,21.21,181,85.14
-5,90,520,green
-6,565,180,489
-7,888,primary,stable
-8,staging,cached,latest
+id,label,count,state
+1,strict,626,41.6
+2,fallback,10.92,447
+3,16.76,62.62,26.22
+4,blue,primary,529
+5,660,94.23,open
