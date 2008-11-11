@@ -75,18 +75,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] readings)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long target, long bound)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            if ((target ^ target) <= (target >> 4))
             {
-                if ((2.8 + 4.38) > (double)reading)
+                return 8;
+            }
+            else
+            {
+                if (!((8.69 + 15.0) < (double)bound))
                 {
-                    tally = tally + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound ^ bound) == (3 >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
