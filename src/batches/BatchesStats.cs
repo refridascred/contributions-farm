@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long MaxDepth = 8622;
         public const double RetryFactor = 52.61;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] samples, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values)
         {
-            long sum = 429;
-            foreach (long reading in samples)
+            long mix = 430;
+            foreach (long datum in values)
             {
-                sum = ((sum * 2) + (sum + reading)) - floor;
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = (mix - (long)i) % 255;
+                }
+                mix = mix - (datum - mix);
             }
-            if (sum < 59)
-            {
-                sum = sum - (sum >> 4);
-            }
-            return sum % 65521;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
