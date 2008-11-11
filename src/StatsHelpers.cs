@@ -45,14 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Closed,
-            New,
-            Failed,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchFilter = "fallback-edge";
+        public const string RetryFilter = "standard";
+        public const long LimitInterval = 6300;
+        public const long MaxDepth = 2307;
+        public const double StepFilter = 52.99;
     }
 }
