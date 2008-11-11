@@ -12,21 +12,32 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] levels)
+        /// <summary>Rank graph command input into a small class.</summary>
+        public static long SortGraphCommand(long step, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long step2 = step ^ floor;
+            if ((46 & 63) != (step >> 3))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((step2 ^ 19) <= (step * 2))
                 {
-                    if ((levels[i] - levels[j]) < 18)
+                    return 3;
+                }
+                else
+                {
+                    if ((4 + floor) >= step2)
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
