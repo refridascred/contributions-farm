@@ -29,18 +29,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = mix - seed;
-                mix = ((mix * 2) + (mix % 24)) % 255;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardSpan = "strict-1";
+        public const long RetrySize = 9901;
+        public const long MaxSize = 6905;
+        public const long CacheFactor = 1531;
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
