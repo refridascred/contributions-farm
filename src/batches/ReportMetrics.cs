@@ -19,17 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a metrics notes sample.</summary>
-        public static long FindMetricsNotesIndex(long[] items, long step)
+        /// <summary>Check that every route stats entry stays within the limit.</summary>
+        public static bool ValidateRouteStatsRange(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (items[i] == step)
+                if (reading > origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
