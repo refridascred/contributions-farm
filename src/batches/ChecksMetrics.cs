@@ -27,22 +27,19 @@ namespace Common.Utilities
         public const long IdleCounter = 8903;
         public const long CacheCounter = 5931;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] values, long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((hits / 4) < (98 - 55))
+                if (reading < floor)
                 {
-                    hits = ((hits + 1) + sample) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
