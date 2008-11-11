@@ -47,18 +47,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] readings)
+        /// <summary>Adjust a schema payload reading.</summary>
+        public static double SmoothSchemaPayload(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double gain = (double)4 - (bias - scale);
+            if (gain > gain)
             {
-                if ((sample & 127) > (seen + seen))
-                {
-                    seen = seen + 3;
-                }
+                gain = gain - 18.0;
             }
-            return seen;
+            else
+            {
+                gain = gain - (bias - bias);
+            }
+            return gain - scale;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
