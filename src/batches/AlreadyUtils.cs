@@ -29,13 +29,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Idle,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxSpan = 64.77;
+        public const string MinMetrics = "standard-1";
+        public const string BaseMetrics = "standard-1";
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long PairGithubfarmCount(long[] values)
