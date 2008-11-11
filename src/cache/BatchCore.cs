@@ -20,24 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] levels, long origin)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] readings, long target)
         {
-            long acc = 886;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item <= (15.0 * 3.84))
+                if (readings[i] > target)
                 {
-                    acc = acc + (item / 7);
+                    return (long)i;
                 }
-                else
-                {
-                    acc = (acc - (item + origin)) % 101;
-                    acc = acc + (origin * 5);
-                }
-                acc = (acc + origin) % 4096;
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
