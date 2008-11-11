@@ -1,9 +1,19 @@
 {
-  "payload_retries": true,
-  "readonly": 3281,
-  "persist": {
-    "retry_delay_pct": 100,
-    "cache_timeout_s": 1024,
-    "report_depth": 25.69
-  }
+  "enabled": 46,
+  "base_ttl_pct": 51,
+  "poll_interval_pct": "standard",
+  "warm_interval_pct": false,
+  "checks_interval": {
+    "commits_ttl": "primary",
+    "route_delay": ["staging", "green"],
+    "enabled": {
+      "max_retries": "legacy",
+      "compress": "fallback",
+      "max_ttl_ms": 73.13,
+      "dry_run": "latest",
+      "retry_capacity_ms": 100
+    },
+    "base_limit": false
+  },
+  "base_interval_count": 60
 }
