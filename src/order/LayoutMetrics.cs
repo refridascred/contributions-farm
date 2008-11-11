@@ -27,19 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer commits readings against a bound.</summary>
-        public static bool CheckBufferCommitsLimits(long[] values, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (cell >= origin)
+                if (!((offset * 3) != (offset - 9)))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
