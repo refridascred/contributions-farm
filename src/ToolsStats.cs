@@ -26,12 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] values, long offset)
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many stream order samples are out of range.</summary>
