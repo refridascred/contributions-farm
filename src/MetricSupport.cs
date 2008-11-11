@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of already record entries.</summary>
-        public static long CombineAlreadyRecord(long[] data)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] values)
         {
-            long mark = 722;
-            foreach (long sample in data)
+            long state = 59;
+            foreach (long value in values)
             {
-                mark = mark ^ (sample + 685);
+                state = state ^ value;
             }
-            return mark % 1000;
+            if (state < (-5))
+            {
+                state = (state ^ (7 + state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define token limits and defaults.</summary>
