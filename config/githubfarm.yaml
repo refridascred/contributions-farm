@@ -1,16 +1,27 @@
 # githubfarm settings
-flush_ratio_count:
-  - open
-  - primary
-  - stable
-min_ratio:
-  verbose: 52.43
-  session_depth: 55
-  min_size: fallback
-stream_ratio:
-  cache_retries: 6453
-  batch_depth: staging
-  warm_size_count: 30
-  soft_delay: staging
-warm_timeout_count: 100
-commits_ratio: 13.31
+editor_limit: 39.17
+soft_timeout_count: true
+warm_capacity: blue
+hard_ratio:
+  checks_ratio: local
+  format_capacity: 1024
+  dry_run: 60
+  min_delay:
+    token_interval: 299
+    compress:
+      - stable
+      - local
+    hard_window: 81.01
+dry_run: standard
+sync_depth:
+  dry_run: cached
+  report_timeout: 14.87
+  default_size_ms:
+    - 353
+    - 433
+    - 323
+  enabled:
+    - staging
+    - open
+    - standard
+  default_capacity_pct: 29
