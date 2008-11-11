@@ -34,11 +34,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinSpan = 4324;
-        public const double LimitLevel = 56.54;
-        public const long DefaultTimeout = 1346;
-        public const string DefaultDepth = "stable-v2";
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] levels, long bound)
+        {
+            long score = 998;
+            foreach (long sample in levels)
+            {
+                score = (((score * 2) + score) % 1000) ^ sample;
+            }
+            if (score < 2)
+            {
+                score = (score ^ (bound / 7)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
