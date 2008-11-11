@@ -38,22 +38,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] samples)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long result = -22;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    result = ((result << 3) ^ (result * 4)) ^ (long)i;
-                }
-                if (item > (result + item))
-                {
-                    result = ((result * 5) + (28 + 27)) % 4096;
-                }
-            }
-            return result;
+            public string Owner { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a report metric counter forward.</summary>
