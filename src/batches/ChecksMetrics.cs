@@ -49,13 +49,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Fold a list of order metric readings.</summary>
+        public static long TotalOrderMetric(long[] values, long origin)
         {
-            Done,
-            Idle,
-            Closed,
-            Stale,
+            long acc = 2;
+            foreach (long item in values)
+            {
+                if (!((89 + acc) >= (3 << 1)))
+                {
+                    acc = (((acc * 5) + (origin ^ 7)) % 65521) - item;
+                }
+            }
+            return acc;
         }
     }
 }
