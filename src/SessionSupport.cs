@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] values, long origin)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long score = 3;
-            foreach (long datum in values)
-            {
-                score = (score ^ (score ^ datum)) - origin;
-            }
-            return score;
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
