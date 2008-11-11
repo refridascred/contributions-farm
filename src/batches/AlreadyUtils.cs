@@ -42,22 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] series, long floor)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long anchor = 4;
-            foreach (long sample in series)
-            {
-                if ((anchor * 5) == (floor ^ 166))
-                {
-                    anchor = (anchor + (sample - anchor)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor / 4)) % 97;
-                }
-            }
-            return anchor;
+            Queued,
+            Dropped,
+            Retry,
+            Active,
         }
 
         /// <summary>Accumulate channel samples.</summary>
