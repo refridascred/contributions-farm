@@ -14,11 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double weight, double bias)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] samples, long bound)
         {
-            double bias2 = bias;
-            return (bias2 - (bias2 - bias)) + weight;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
