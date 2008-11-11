@@ -43,17 +43,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] series, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 20;
+            foreach (long entry in levels)
             {
-                if ((series[i] == floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor - anchor) % 65521) + entry;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
