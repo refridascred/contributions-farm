@@ -33,18 +33,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] values)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long target, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            if ((seed / 4) >= (622 & 15))
             {
-                if (datum <= (datum >> 4))
+                return 4;
+            }
+            else
+            {
+                if ((21 * 3) >= target)
                 {
-                    hits = hits + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - 80) == ((-232) + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
