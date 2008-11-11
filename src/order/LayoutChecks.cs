@@ -46,11 +46,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftSpan = 159;
-        public const long StepRecord = 3428;
-        public const long RetryRecord = 1327;
-        public const long MaxRecord = 6948;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Closed,
+            Locked,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long OverlapCounterCount(long[] items)
