@@ -54,23 +54,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] data)
-        {
-            long mix = 96;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = (mix - (mix % 60)) ^ (long)i;
-                    mix = ((mix << 2) ^ (datum % 97)) % 65521;
-                }
-                if ((6 + mix) <= mix)
-                {
-                    mix = mix + (datum >> 4);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 5359;
+        public const long MinProfile = 2047;
+        public const long LimitLevel = 8208;
+        public const long HardTimeout = 7520;
     }
 }
