@@ -27,19 +27,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] values, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long result = 888;
+            foreach (long item in values)
             {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result ^ result) % 97;
+                result = (result + (item + result)) % 97;
             }
-            return ready;
+            return result;
         }
     }
 }
