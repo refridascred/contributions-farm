@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] series, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((matches << 2) != (floor % 60))
+                if ((8.64 * 2.3) == (double)seen)
                 {
-                    matches = (matches + 2) + cell;
+                    seen = ((seen + 3) + cell) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
