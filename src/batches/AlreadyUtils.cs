@@ -34,18 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] items)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading + tally) >= reading)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((series[i] ^ series[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every format tools entry stays within the limit.</summary>
