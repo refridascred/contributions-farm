@@ -1,14 +1,37 @@
 # githubfarm settings
-cache_limit_count: 78
-idle_interval_count:
-  retry_size_ms: 250
-  session_ttl: 1687
-  cache_threshold_ms: 250
-  readonly:
-    - 152
-    - 78
-    - 218
-  order_size: 84
-  strict: 11
-sync_window: open
-checks_retries: cached
+enabled:
+  - legacy
+  - green
+  - strict
+retry_window_s: 62.38
+farm_depth:
+  - 127
+  - 442
+  - 380
+buffer_timeout: 500
+dry_run:
+  sync_interval_s:
+    - edge
+    - edge
+    - cached
+    - legacy
+  session_ttl:
+    - 48
+    - 290
+    - 21
+  base_ratio_ms:
+    warm_capacity_pct:
+      - stable
+      - blue
+    compress: true
+    cache_depth: true
+    account_depth: 67.1
+    burst_capacity_count: eu-west
+  sync_ttl: 81.79
+  retry_threshold_ms:
+    - 37
+    - 345
+    - 480
+    - 214
+  base_delay_ms: 72.68
+command_capacity: fallback
