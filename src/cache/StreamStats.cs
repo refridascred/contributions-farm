@@ -20,19 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] readings, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (sample <= floor)
+                if ((hits + hits) <= (227 + 2))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
