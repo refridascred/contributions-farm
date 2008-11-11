@@ -13,11 +13,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "strict";
-        public const double MaxSpan = 80.93;
-        public const string MaxAlready = "local-1";
-        public const string RetryAlready = "stable-v2";
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long BucketChecks(long bound, long limit)
