@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=354
-log "limit is ${RECORD_LIMIT}"
-
 count=0
 while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-cached}"
+mode="${1:-open}"
 case "${mode}" in
-    edge)
+    eu-west)
         log "fast path"
         ;;
     *)
