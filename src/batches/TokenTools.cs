@@ -14,13 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheScore = 8549;
+        public const long SoftWidth = 5409;
+        public const long LimitTimeout = 7975;
 
         /// <summary>Measure how many channel payload samples are out of range.</summary>
         public static long AuditChannelPayloadGaps(long[] data, long seed)
