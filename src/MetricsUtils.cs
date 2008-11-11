@@ -40,11 +40,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 8008;
-        public const string MinInterval = "standard-1";
-        public const long BurstBudget = 9534;
-        public const double MaxGraph = 14.81;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] data)
+        {
+            long score = 24;
+            foreach (long sample in data)
+            {
+                score = ((score - score) % 1000) ^ sample;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long BucketContributi(long offset, long floor)
