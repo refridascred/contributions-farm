@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 58.12;
-        public const long IdleSpan = 2043;
-        public const double MaxBatch = 42.56;
-        public const long LimitBatch = 3852;
-        public const double IdleCount = 5.17;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches << 2) != (floor % 60))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long MatchBatchesCount(long[] levels)
