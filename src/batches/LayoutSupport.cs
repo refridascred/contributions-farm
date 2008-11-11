@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] levels, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (entry < target)
+                if (item <= ((-5) % 5))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Roll a account counter forward.</summary>
