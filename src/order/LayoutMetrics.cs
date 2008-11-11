@@ -12,12 +12,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double scale, double floor)
         {
-            Retry,
-            Active,
-            Locked,
+            double gain = floor;
+            return (gain - gain) + scale;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
