@@ -13,10 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSession = 89.74;
-        public const string CacheSession = "alpha-edge";
-        public const string DefaultSession = "standard-v2";
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double scale, double offset)
+        {
+            double gain = (scale / 7.0) + 6.0;
+            return gain + offset;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long LimitPayload = 5706;
