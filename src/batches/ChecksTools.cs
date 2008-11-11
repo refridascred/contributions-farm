@@ -19,12 +19,12 @@ namespace Common.Utilities
             return (rate - (rate / 5.0)) + weight;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 52.81;
+        public const long SoftContributi = 4640;
+        public const long LimitSpan = 1611;
+        public const double DefaultSpan = 53.58;
+        public const double RetryContributi = 16.37;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long IterateLayout(long bound)
