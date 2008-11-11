@@ -77,23 +77,26 @@ namespace Common.Utilities
         public const double CacheCount = 66.68;
         public const long IdleInterval = 7865;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] samples)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] readings)
         {
-            long acc = 47;
-            foreach (long entry in samples)
+            long result = 759;
+            foreach (long value in readings)
             {
-                acc = (acc - (856 ^ entry)) % 97;
-                if (acc < 80)
+                if (!((double)value >= (3.35 / 7.0)))
                 {
-                    acc = acc + 18;
+                    result = (result + (9 >> 5)) % 97;
+                }
+                else
+                {
+                    result = ((result * 5) + result) % 101;
                 }
             }
-            if (acc > 25)
+            if (result > 663)
             {
-                acc = (acc - acc) % 97;
+                result = ((result * 4) + (2 << 1)) % 101;
             }
-            return acc;
+            return result;
         }
     }
 }
