@@ -28,15 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            long score = 5;
+            foreach (long cell in samples)
             {
-                result = ((result * 4) + (long)i) % 97;
+                score = (score ^ (cell & 7)) % 65521;
+                if (((double)score < (9.0 / 2.0)) && (cell <= (cell & 15)))
+                {
+                    score = (score ^ cell) % 1000;
+                }
             }
-            return result;
+            return score;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
