@@ -37,13 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Paused,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinSpan = 3410;
+        public const string IdleWidth = "standard";
+        public const long StepScore = 8769;
+        public const double MinMetric = 85.64;
+        public const long LimitRatio = 9901;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderMatches(long[] data, long floor)
