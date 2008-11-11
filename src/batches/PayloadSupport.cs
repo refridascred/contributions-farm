@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long MaxEditor = 2899;
         public const long IdleEditor = 432;
 
-        /// <summary>Compare every pair of format window readings.</summary>
-        public static long PairFormatWindowCount(long[] levels)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((datum % 2) > (datum - 796)) || (((seen - target) != (seen % 24)) && ((datum & 15) != (target + seen))))
                 {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a notes stats.</summary>
