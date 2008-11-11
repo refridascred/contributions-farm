@@ -39,12 +39,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 1441;
+        public const double MinFactor = 31.3;
+        public const long BurstSize = 5291;
+        public const long WindowScore = 9741;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double MaxRoute = 73.18;
