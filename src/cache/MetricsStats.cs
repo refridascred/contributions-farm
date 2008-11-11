@@ -54,11 +54,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultSession = "cached-edge";
-        public const long MaxSession = 8453;
-        public const double RetryScore = 77.15;
-        public const long BatchLevel = 8262;
-        public const long IdleSession = 275;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)6 >= (double)tally)
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
+        }
     }
 }
