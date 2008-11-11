@@ -1,12 +1,10 @@
 # Command notes
 
-The order report groups every tools by stream.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-The metrics module keeps payload values in sync with the queue cache.
+Use tools settings to tune how often session data is refreshed.
+When a notes fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new queue fields
-- Log every support change
-- Keep entry values small
-- Review context limits each release
+- Validate buffer input early
+- Log every context change
+- Review stats limits each release
