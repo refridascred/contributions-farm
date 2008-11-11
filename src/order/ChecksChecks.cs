@@ -28,21 +28,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of cluster batch readings.</summary>
-        public static long PairClusterBatchCount(long[] values)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long origin, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long cur = origin + bound;
+            if (!((53 + bound) == (bound - origin)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((cur + bound) > (origin + origin))
                 {
-                    if ((values[i] + values[j]) < 17)
+                    return 4;
+                }
+                else
+                {
+                    if ((cur / 5) >= origin)
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((origin - bound) >= bound) && ((origin << 2) < (cur + cur)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
