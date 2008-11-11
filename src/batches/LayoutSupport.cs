@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a batches checks pair into a bucket.</summary>
-        public static long SortBatchesChecks(long origin, long limit)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            if (!((limit % 7) != (limit * 3)))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit > (origin * 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (limit > (origin - limit))
+                    if ((series[i] ^ series[j]) > 12)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a account counter forward.</summary>
