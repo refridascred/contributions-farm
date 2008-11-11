@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double rate, double span)
         {
-            Idle,
-            Closed,
-            New,
+            double weight = span;
+            if (weight <= (3.1 / 9.0))
+            {
+                weight = (weight + (double)7) - rate;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + weight;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
