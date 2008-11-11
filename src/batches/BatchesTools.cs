@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] values, long seed)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((double)3 < (double)value)
-                {
-                    hits = (hits + 2) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
