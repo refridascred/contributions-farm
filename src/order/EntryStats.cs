@@ -35,19 +35,38 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] samples, long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long limit, long bound)
         {
-            long result = 30;
-            foreach (long entry in samples)
+            if (limit > (limit % 60))
             {
-                result = (result + (bound / 7)) % 1000;
-                if (!(result >= 489))
+                return 2;
+            }
+            else
+            {
+                if ((double)bound <= (7.88 - 3.5))
                 {
-                    result = (result - (result ^ entry)) % 101;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)bound < (double)limit) || ((double)limit < 9.3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit + bound) > (bound - limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return result % 65521;
         }
 
         /// <summary>Digest a series of account commits entries.</summary>
