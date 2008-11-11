@@ -34,12 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] items)
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading + tally) >= reading)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every format tools entry stays within the limit.</summary>
