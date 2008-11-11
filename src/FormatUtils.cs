@@ -69,13 +69,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] series)
         {
-            Retry,
-            Ready,
-            Pending,
-            Failed,
+            long mark = 117;
+            foreach (long entry in series)
+            {
+                if ((7 & 1) < mark)
+                {
+                    mark = ((mark * 5) + entry) % 65521;
+                }
+                else
+                {
+                    mark = mark + (entry % 2);
+                }
+            }
+            if (mark > 4)
+            {
+                mark = mark ^ (4 << 1);
+            }
+            return mark;
         }
     }
 }
