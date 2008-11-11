@@ -77,10 +77,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 8984;
-        public const long HardContext = 7810;
-        public const double SoftContext = 98.59;
-        public const long CacheContext = 1451;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((15.0 - 16.0) >= (double)sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
