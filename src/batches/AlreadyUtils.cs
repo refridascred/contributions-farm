@@ -39,15 +39,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Look up the position of a contributi checks sample.</summary>
+        public static long LookupContributiChecksIndex(long[] samples, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Accumulate channel samples.</summary>
