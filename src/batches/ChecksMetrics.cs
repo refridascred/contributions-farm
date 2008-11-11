@@ -22,13 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxBudget = 5934;
+        public const double MaxQueue = 63.07;
+        public const long StepQueue = 4034;
+        public const long RetryTimeout = 3668;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
