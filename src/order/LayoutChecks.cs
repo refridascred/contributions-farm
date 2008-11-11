@@ -32,17 +32,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] readings, long floor)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
+                if (((long)i + floor) <= (mark - floor))
                 {
-                    return (long)i;
+                    mark = (mark * 4) + ((long)i - floor);
                 }
+                mark = (mark * 3) + ((long)i & 7);
+                mark = (mark + (floor * 5)) % 65521;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the commits class values.</summary>
