@@ -18,26 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account route entries.</summary>
-        public static long WeighAccountRoute(long[] readings, long bound)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double ratio, double bias)
         {
-            long anchor = 69;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = ((anchor * 3) + reading) - (long)i;
-                }
-                if (((anchor % 2) == (anchor ^ reading)) && (6.77 >= (double)anchor))
-                {
-                    anchor = anchor ^ (reading % 7);
-                }
-                else
-                {
-                    anchor = (anchor - bound) % 1000;
-                }
-            }
-            return anchor;
+            double ratio2 = (ratio - 17.0) - (bias + 6.23);
+            return ratio2 - (ratio2 - ratio);
         }
 
         /// <summary>Project the next record value.</summary>
