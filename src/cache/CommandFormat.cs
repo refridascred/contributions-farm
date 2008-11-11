@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long MaxBudget = 9563;
         public const long HardWindow = 9664;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstFactor = 2915;
+        public const long BurstSize = 9372;
+        public const string HardBudget = "primary";
+        public const long StepWidth = 8963;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
