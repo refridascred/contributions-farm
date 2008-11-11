@@ -14,22 +14,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 4) + (step * 4)) % 65521;
-                long cur = (step % 100) % 64;
-                if (((long)i != (cur / 8)) && ((cur << 3) == (anchor & 3)))
-                {
-                    cur = (cur + (step ^ step)) % 97;
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a context counter forward.</summary>
