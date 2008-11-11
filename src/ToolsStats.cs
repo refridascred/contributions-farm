@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Idle,
-            Synced,
-            Active,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowWidth = 4142;
+        public const double MaxFactor = 84.68;
+        public const string MaxProfile = "stable";
+        public const long LimitCount = 4666;
+        public const long StepProfile = 1723;
 
         /// <summary>Accumulate context samples.</summary>
         public static long TallyContext(long[] series, long offset)
