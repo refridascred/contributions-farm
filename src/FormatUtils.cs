@@ -50,17 +50,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] data, long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((data[i] == origin) && ((data[i] % 3) != 0))
+                if (item <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
