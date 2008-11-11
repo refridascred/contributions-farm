@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy local latest; do
+for item in staging eu-west latest local; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    staging)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
