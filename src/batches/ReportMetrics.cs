@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long step, long seed)
+        /// <summary>Locate a farm schema reading by value.</summary>
+        public static long LocateFarmSchemaIndex(long[] levels, long step)
         {
-            long slot = step ^ seed;
-            if (((step / 6) != (slot - seed)) && ((slot + seed) <= (slot >> 3)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (0 <= (slot + seed))
+                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((6 << 2) == (74 - slot)) || ((650 << 2) < seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a command info.</summary>
