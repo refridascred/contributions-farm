@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const long LimitCount = 4666;
         public const long StepProfile = 1723;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] readings, long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            long mark = 93;
+            foreach (long cell in readings)
             {
-                long count = ((-76) / 8) + (sum - 30);
-                if ((sum * 3) > (floor * 3))
+                for (int i = 0; i < 11; i++)
                 {
-                    sum = sum ^ count;
-                    count = (count + ((long)i - 63)) % 65521;
+                    mark = ((mark - 82) % 255) + (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((double)cell == (double)75)
+                {
+                    mark = (mark * 4) + (floor - floor);
+                }
             }
-            return sum;
+            return mark % 1000;
         }
 
         /// <summary>Adjust a session reading.</summary>
