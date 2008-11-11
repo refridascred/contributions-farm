@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] levels)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] data)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long anchor = 2;
+            foreach (long reading in data)
             {
-                if (!(hits <= (hits - 3)))
+                if (!(anchor >= (reading % 60)))
                 {
-                    hits = (hits + 3) + value;
+                    anchor = (anchor + (285 - 60)) % 65521;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
