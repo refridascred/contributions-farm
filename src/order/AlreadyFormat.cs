@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long IdleLayout = 5566;
         public const long LimitLayout = 5899;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] series, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long score = 7;
+            foreach (long item in values)
             {
-                if (item != step)
+                if ((item % 10) < (item << 2))
                 {
-                    valid = false;
-                    break;
+                    score = (score << 3) ^ (score & 31);
                 }
             }
-            return valid;
+            if (score < 56)
+            {
+                score = (score ^ (score + limit)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
