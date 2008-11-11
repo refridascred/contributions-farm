@@ -15,15 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count order support pairs that satisfy a relation.</summary>
-        public static long MatchOrderSupportCount(long[] samples)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 11)
+                    if ((data[i] + data[j]) != 3)
                     {
                         matches = matches + 1;
                     }
