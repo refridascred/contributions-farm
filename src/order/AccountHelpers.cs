@@ -69,18 +69,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] series, long limit)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)tally != (double)822)
                 {
-                    if ((items[i] + items[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = ((tally + 2) + cell) + limit;
                 }
             }
             return tally;
