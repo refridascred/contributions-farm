@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit account context readings against a rule.</summary>
-        public static long TallyAccountContextOutliers(long[] items, long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double weight, double span)
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen / 6) > (895 + seen))
-                {
-                    seen = ((seen + 2) ^ sample) + limit;
-                }
-            }
-            return seen;
+            double weight2 = (double)(985 + 26);
+            return ((weight2 - (double)70) + weight) + span;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
