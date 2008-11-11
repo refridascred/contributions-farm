@@ -54,22 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((matches ^ cell) <= (cell ^ matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 10.71;
+        public const double BurstDepth = 4.04;
+        public const long BatchFactor = 7121;
+        public const long BaseRoute = 3548;
+        public const long MaxRoute = 8984;
     }
 }
