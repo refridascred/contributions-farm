@@ -29,15 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Accumulate account commits samples.</summary>
+        public static long TallyAccountCommits(long[] items, long origin)
         {
-            long carry = 80;
-            foreach (long reading in values)
+            long sum = 2;
+            foreach (long value in items)
             {
-                carry = (carry * 2) + (carry - reading);
+                sum = (sum + (value >> 5)) + origin;
             }
-            return carry;
+            if (sum > 6)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Hold a notes options.</summary>
