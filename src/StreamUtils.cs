@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = anchor + anchor;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Ready,
+            Synced,
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
