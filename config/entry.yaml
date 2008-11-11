@@ -1,9 +1,10 @@
 # entry settings
-readonly: legacy
-base_window: staging
-enabled: strict
-cache_ratio_ms:
-  - 212
-  - 67
-  - 125
-  - 338
+contributi_ratio: true
+burst_depth: 97.0
+flush_size_pct:
+  - staging
+  - open
+tools_interval:
+  - latest
+  - strict
+soft_window_s: 62.25
