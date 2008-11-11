@@ -39,19 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double gain, double span)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double rate = span - (gain + span);
-            if (rate < gain)
-            {
-                rate = rate + (span / 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (gain * 2.3)) + (double)(long)i;
-            }
-            return rate - span;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
