@@ -21,18 +21,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] samples, long offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((long)samples.Length ^ reading) >= (offset - offset)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Active,
+            Retry,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
