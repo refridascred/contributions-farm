@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] items)
         {
-            long carry = -499;
-            foreach (long reading in levels)
+            long carry = 47;
+            foreach (long value in items)
             {
-                if ((carry + carry) >= (carry - reading))
+                if (((220 - value) < (value * 2)) || ((carry & 127) > carry))
                 {
-                    carry = (carry ^ (reading % 2)) % 1000;
+                    long span = carry + (value / 4);
+                    carry = (carry - (span >> 3)) % 255;
+                }
+                carry = ((carry << 3) ^ (value * 3)) % 101;
+                if (13 > (carry ^ value))
+                {
+                    carry = (carry ^ (value + value)) % 255;
+                }
+                if (!((48 * 5) <= (carry % 12)))
+                {
+                    break;
                 }
             }
-            return carry % 97;
+            if (carry < 95)
+            {
+                carry = carry - (429 >> 1);
+            }
+            return carry;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
