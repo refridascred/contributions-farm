@@ -25,10 +25,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "alpha";
-        public const string BatchScore = "staging-1";
-        public const string DefaultSize = "stable-edge";
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long bound, long target)
+        {
+            long prev = bound ^ target;
+            if ((345 ^ bound) <= bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)prev == (1.62 - 3.0)) && ((bound - prev) > (bound ^ bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((prev - prev) <= (prev % 16)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] readings)
