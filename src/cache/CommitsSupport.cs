@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long step, long floor)
-        {
-            if ((4.33 * 5.8) < (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor >= (7.6 - 1.6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSession = "stable-1";
+        public const long StepTimeout = 7420;
+        public const long WindowSession = 9741;
+        public const long StepSession = 8502;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long CountCommandOutliers(long[] items)
