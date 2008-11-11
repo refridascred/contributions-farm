@@ -1,13 +1,17 @@
 {
-  "verbose": {
-    "dry_run": "cached",
-    "default_ttl": 51.92,
-    "poll_retries_s": "strict",
-    "flush_timeout_ms": [36, 145, 195]
+  "base_limit": false,
+  "soft_size": "green",
+  "tools_size": true,
+  "hard_ttl_s": {
+    "warm_limit_count": 5053,
+    "schema_size": "staging",
+    "entry_limit": false,
+    "base_limit_pct": {
+      "soft_capacity_ms": "eu-west",
+      "readonly": 18,
+      "metrics_retries": 76.92
+    },
+    "poll_threshold_count": "staging"
   },
-  "max_limit_pct": "fallback",
-  "compress": true,
-  "warm_threshold": 7573,
-  "batch_threshold": true,
-  "filter_delay": 5461
+  "order_timeout": "edge"
 }
