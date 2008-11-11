@@ -79,19 +79,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] readings, long seed)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (score + score) % 65521;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
