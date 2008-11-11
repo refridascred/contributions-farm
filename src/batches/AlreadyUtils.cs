@@ -30,14 +30,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Idle,
-            Done,
-            Failed,
-            New,
-            Dropped,
+            public double Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every format tools entry stays within the limit.</summary>
