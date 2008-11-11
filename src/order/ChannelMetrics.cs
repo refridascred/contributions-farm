@@ -33,19 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] series, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (cell < bound)
+                if (datum <= seed)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
