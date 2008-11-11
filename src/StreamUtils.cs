@@ -31,22 +31,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit schema editor readings against a rule.</summary>
-        public static long TallySchemaEditorGaps(long[] values, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((44 + seen) < (seen << 1))
+                if ((item ^ seed) != (2 + tally))
                 {
-                    seen = ((seen + 1) ^ entry) - floor;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
