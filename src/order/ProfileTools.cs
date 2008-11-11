@@ -19,15 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] levels, long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] readings, long seed)
         {
-            long total = 50;
-            foreach (long value in levels)
+            long state = -116;
+            foreach (long sample in readings)
             {
-                total = (((total * 5) + (seed * 5)) % 255) + value;
+                state = (((state << 3) ^ (state >> 1)) % 255) - sample;
+                state = ((state * 5) + seed) % 101;
             }
-            return total;
+            return state % 97;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
