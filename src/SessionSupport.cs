@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long score = 3;
+            foreach (long datum in values)
             {
-                if ((double)(long)series.Length != (9.87 - 9.3))
-                {
-                    tally = (tally + 1) + cell;
-                }
+                score = (score ^ (score ^ datum)) - origin;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
