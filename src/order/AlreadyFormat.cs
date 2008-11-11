@@ -22,11 +22,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double rate, double floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double mean = rate;
-            return mean - floor;
+            New,
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
