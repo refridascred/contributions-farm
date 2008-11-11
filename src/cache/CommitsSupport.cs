@@ -40,10 +40,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 323;
-        public const double BurstSize = 46.62;
-        public const long SoftChecks = 5144;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseBudget = 36.71;
+        public const long WindowBatch = 8100;
+        public const long DefaultDepth = 8245;
+        public const long LimitCount = 9876;
+        public const string SoftWidth = "open";
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
