@@ -50,10 +50,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinCount = "local-edge";
-        public const double CacheSize = 87.7;
-        public const double WindowTimeout = 34.94;
-        public const long BurstTools = 179;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "cached-edge";
+        public const long MaxSession = 8453;
+        public const double RetryScore = 77.15;
+        public const long BatchLevel = 8262;
+        public const long IdleSession = 275;
     }
 }
