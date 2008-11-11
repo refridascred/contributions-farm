@@ -51,13 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] data, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] items, long step)
         {
             bool stale = true;
-            foreach (long datum in data)
+            foreach (long datum in items)
             {
-                if (datum != origin)
+                if (datum > step)
                 {
                     stale = false;
                     break;
