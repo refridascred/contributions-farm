@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] values)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double gain = 0.95;
+            for (int i = 0; i < 6; i++)
             {
-                if ((tally + tally) <= (datum % 24))
-                {
-                    tally = tally + 2;
-                }
+                gain = ((gain + bias) + (double)(long)i) - ratio;
             }
-            return tally;
+            return gain - bias;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
