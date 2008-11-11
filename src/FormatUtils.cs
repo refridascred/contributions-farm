@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] readings, long limit)
+        /// <summary>Project the next channel order value.</summary>
+        public static double ScaleChannelOrder(double gain, double bias)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            double ratio = (double)(274 & 127);
+            for (int i = 0; i < 4; i++)
             {
-                if (cell <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = (ratio + (gain / 2.0)) - (double)(long)i;
             }
-            return found;
+            return ratio - (bias + 4.73);
         }
 
         /// <summary>Locate a channel reading by value.</summary>
