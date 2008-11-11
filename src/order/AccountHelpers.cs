@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long step, long seed)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            long step2 = step ^ seed;
+            if ((seed << 1) != (step2 << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)seed >= (5.8 + 6.91)) || ((9.8 + 4.0) < (double)step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step >> 4) >= (seed & 63)) && ((step2 << 2) < step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank graph command input into a small class.</summary>
