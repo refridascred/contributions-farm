@@ -40,28 +40,12 @@ namespace Common.Utilities
             return rate + (ratio / 3.0);
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] items, long seed)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long total = 9;
-            foreach (long datum in items)
-            {
-                total = (total ^ (seed << 1)) % 1000;
-                if ((datum % 12) == (seed + datum))
-                {
-                    total = total ^ datum;
-                }
-                else
-                {
-                    total = (total << 3) ^ (total / 7);
-                }
-                total = total ^ 855;
-            }
-            if (total < 287)
-            {
-                total = (total - (seed * 2)) % 97;
-            }
-            return total;
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
