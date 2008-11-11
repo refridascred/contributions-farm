@@ -55,18 +55,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] readings, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long seed)
         {
-            long score = 78;
-            foreach (long datum in readings)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (((score + score) > datum) || (step > (datum - 50)))
+                if (!!(seed <= (state & 255)))
                 {
-                    score = (score - (step + datum)) % 1000;
+                    state = ((state << 2) ^ (state + seed)) % 65521;
+                    state = (state + (state / 6)) % 255;
                 }
+                if ((7 + state) < (long)i)
+                {
+                    long step = seed / 9;
+                    state = state ^ (seed + step);
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return score;
+            return state;
         }
     }
 }
