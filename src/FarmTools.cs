@@ -51,22 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] series, long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] values, long target)
         {
-            long mix = 9;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin >= (value & 127)) && ((double)origin == (9.0 - 4.8)))
+                if ((values[i] > target) && ((values[i] % 3) != 0))
                 {
-                    mix = ((mix * 4) + mix) % 255;
+                    return (long)i;
                 }
             }
-            if (mix < 10)
-            {
-                mix = (mix - (mix - mix)) % 1000;
-            }
-            return mix % 1000;
+            return -1;
         }
     }
 }
