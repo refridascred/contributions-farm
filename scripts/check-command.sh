@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard; do
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in cached blue green local; do
     log "checking ${item}"
 done
-
-mode="${1:-primary}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
