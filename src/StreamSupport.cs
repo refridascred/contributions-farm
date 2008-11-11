@@ -34,18 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] series)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double scale = 5.6;
+            for (int i = 0; i < 6; i++)
             {
-                if (960 <= (matches << 2))
-                {
-                    matches = (matches + 1) ^ value;
-                }
+                scale = (scale - (double)(long)i) - floor;
             }
-            return matches;
+            return scale + (ratio / 3.0);
         }
     }
 }
