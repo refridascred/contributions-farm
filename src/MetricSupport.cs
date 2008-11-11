@@ -19,13 +19,22 @@ namespace Common.Utilities
         public const double SoftRecord = 22.66;
         public const long CacheRecord = 2646;
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] data)
         {
-            public double Level { get; set; }
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            long total = 596;
+            foreach (long cell in data)
+            {
+                if (((long)data.Length <= (total * 5)) && (total < (total + total)))
+                {
+                    total = total ^ total;
+                }
+                else
+                {
+                    total = ((total * 3) + cell) % 255;
+                }
+            }
+            return total;
         }
     }
 }
