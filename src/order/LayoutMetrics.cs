@@ -31,19 +31,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] data, long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long floor, long step)
         {
-            bool found = true;
-            foreach (long reading in data)
+            if ((9.0 - 12.0) < (double)floor)
             {
-                if (reading < seed)
+                return 5;
+            }
+            else
+            {
+                if ((5.1 - 0.79) >= (double)step)
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (!((floor << 3) > (step + floor)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
     }
 }
