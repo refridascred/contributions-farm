@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate farm tools samples.</summary>
-        public static long TallyFarmTools(long[] levels, long seed)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long bound)
         {
-            long total = 174;
-            foreach (long reading in levels)
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                total = ((total << 3) ^ (reading ^ reading)) % 65521;
-                total = total + (reading + seed);
-                if (seed <= (seed * 5))
+                if (((bound % 12) < (anchor + bound)) || (bound >= anchor))
                 {
-                    total = (total << 3) ^ total;
+                    anchor = (anchor ^ ((long)i << 1)) % 4096;
                 }
+                else
+                {
+                    anchor = anchor - (1 ^ bound);
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (total > 5)
-            {
-                total = (total * 2) + (total + seed);
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Describe the entry mode values.</summary>
