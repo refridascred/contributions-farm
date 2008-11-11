@@ -51,39 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long seed, long target)
+        /// <summary>Validate metric checks readings against a bound.</summary>
+        public static bool GuardMetricChecksBounds(long[] values, long limit)
         {
-            long cur = seed ^ target;
-            if (((target ^ target) != (target & 63)) && ((953 / 4) < cur))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)target < (double)cur) && (target > (target & 31)))
+                if (datum > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((152 < (seed + seed)) && ((1 ^ seed) >= (seed + 6)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((9.0 / 5.0) != (double)seed) || ((cur * 5) > seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a route snapshot.</summary>
