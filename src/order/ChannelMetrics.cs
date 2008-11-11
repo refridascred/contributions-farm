@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] readings, long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] items, long origin)
         {
-            long mix = 913;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((reading + mix) > offset)
+                if (sample >= origin)
                 {
-                    mix = mix ^ 6;
-                }
-                else
-                {
-                    mix = mix - (68 / 7);
+                    flag = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return flag;
         }
 
         /// <summary>Project the next order value.</summary>
