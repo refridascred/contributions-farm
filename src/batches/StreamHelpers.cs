@@ -45,19 +45,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double ratio, double floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double scale = (double)91 * 4.4;
-            if (scale <= ratio)
-            {
-                scale = scale - (floor * 1.91);
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - (ratio * 5.0);
+            Pending,
+            New,
+            Queued,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
