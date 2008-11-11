@@ -39,18 +39,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit tools cluster readings against a rule.</summary>
-        public static long CountToolsClusterGaps(long[] levels)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)tally == (6.66 - 3.0))
+                if (items[i] >= target)
                 {
-                    tally = (tally + 3) ^ reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the graph state values.</summary>
