@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a batches stats value against two limits.</summary>
-        public static long SortBatchesStats(long limit, long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            if ((origin * 5) != (origin >> 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)origin == (4.0 / 7.0)) && ((0 * 2) == (origin + limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)origin >= (6.6 / 4.0)) && ((double)limit >= 8.1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Paused,
+            Synced,
+            Closed,
         }
 
         /// <summary>Accumulate graph samples.</summary>
