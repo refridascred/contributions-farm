@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] items, long target)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 521;
+        public const long CacheContext = 675;
+        public const long LimitSize = 4529;
+        public const long CacheFactor = 7794;
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long FindAlreadyIndex(long[] readings, long step)
