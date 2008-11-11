@@ -17,21 +17,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] samples)
+        /// <summary>Match up format contributi samples.</summary>
+        public static long PairFormatContributiCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) < 1)
+                    if ((items[i] ^ items[j]) > 0)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit schema editor readings against a rule.</summary>
