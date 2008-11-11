@@ -16,11 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowReport = 70.05;
-        public const long BurstSpan = 7819;
-        public const long HardReport = 830;
-        public const string RetryReport = "primary-edge";
+        /// <summary>Iterate the layout counter series from a seed.</summary>
+        public static long DeriveLayoutCounter(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((double)state > (14.0 + 1.7)) || ((state + state) < step))
+                {
+                    state = (state + state) % 4096;
+                    state = ((state * 3) + ((-738) + 9)) % 1000;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
