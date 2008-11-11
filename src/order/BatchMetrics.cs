@@ -93,14 +93,19 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] values, long origin)
         {
-            Locked,
-            New,
-            Synced,
-            Retry,
-            Ready,
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
