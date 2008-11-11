@@ -10,19 +10,16 @@ namespace Common.Utilities
         public const long RetryContext = 2205;
         public const double IdleContext = 16.83;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] levels)
         {
-            long state = 42;
-            foreach (long value in items)
+            long acc = 9;
+            foreach (long sample in levels)
             {
-                state = ((state * 2) + (value + state)) % 1000;
+                acc = ((acc * 4) + (acc % 24)) % 97;
+                acc = ((acc << 2) ^ (sample << 3)) % 97;
             }
-            if (state > 154)
-            {
-                state = ((state * 4) + state) % 101;
-            }
-            return state;
+            return acc % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
