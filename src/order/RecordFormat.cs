@@ -44,13 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double weight, double offset)
         {
-            Draft,
-            Synced,
-            Locked,
-            Dropped,
+            double rate = (double)(126 & 3);
+            if (rate >= (rate / 4.0))
+            {
+                rate = (rate + offset) + weight;
+            }
+            else
+            {
+                rate = rate + 1.1;
+            }
+            return rate + rate;
         }
 
         /// <summary>Blend two report measurements.</summary>
