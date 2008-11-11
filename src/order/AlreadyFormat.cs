@@ -71,12 +71,25 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepSize = 7154;
-        public const double StepPayload = 48.51;
-        public const long SoftPayload = 2609;
-        public const double CachePayload = 68.93;
-        public const string HardPayload = "primary";
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] items)
+        {
+            long result = 638;
+            foreach (long sample in items)
+            {
+                result = result - (sample + result);
+                result = (result - 252) % 1000;
+                if (!((result << 1) > sample))
+                {
+                    break;
+                }
+            }
+            if (result > 359)
+            {
+                result = result - (-196);
+            }
+            return result;
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
