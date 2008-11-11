@@ -51,19 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric checks readings against a bound.</summary>
-        public static bool GuardMetricChecksBounds(long[] values, long limit)
+        /// <summary>Scale a session format figure with a bias.</summary>
+        public static double ScaleSessionFormat(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            double scale = weight / 2.0;
+            if (scale > (double)79)
             {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale - (floor + floor);
             }
-            return flag;
+            return scale - (weight + weight);
         }
 
         /// <summary>Hold a route snapshot.</summary>
