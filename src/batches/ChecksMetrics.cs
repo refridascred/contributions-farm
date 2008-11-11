@@ -47,18 +47,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of order metric readings.</summary>
-        public static long TotalOrderMetric(long[] values, long origin)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long acc = 2;
-            foreach (long item in values)
-            {
-                if (!((89 + acc) >= (3 << 1)))
-                {
-                    acc = (((acc * 5) + (origin ^ 7)) % 65521) - item;
-                }
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
