@@ -54,23 +54,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a context layout figure with a bias.</summary>
-        public static double BlendContextLayout(double ratio, double floor)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] data, long origin)
         {
-            double rate = 2.5;
-            if (rate > 3.9)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate + (rate / 5.0)) + floor;
+                if ((data[i] == origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + 0.37;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - ratio) + (double)(long)i;
-            }
-            return rate + (rate / 7.0);
+            return -1;
         }
 
         /// <summary>Describe the already kind values.</summary>
