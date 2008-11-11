@@ -1,10 +1,16 @@
 # entry settings
-base_ttl: 677
-burst_timeout: false
-min_ttl: 6595
-editor_depth: 3510
-format_limit: 1.13
-default_delay:
-  - 185
-  - 126
-  - 433
+context_ratio: 10.97
+burst_depth: 16.61
+cache_ratio_s:
+  - staging
+  - legacy
+  - edge
+  - fallback
+enabled: 30
+hard_window_ms:
+  order_threshold: 80.62
+  soft_window: legacy
+  idle_depth: standard
+  layout_ratio: true
+  flush_ttl: false
+  flush_interval_count: 68.49
