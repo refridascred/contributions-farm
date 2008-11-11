@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] levels, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (((matches * 2) <= cell) || ((double)step == (18.0 + 7.05)))
+                if ((sample ^ seed) < seed)
                 {
-                    matches = matches + 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
