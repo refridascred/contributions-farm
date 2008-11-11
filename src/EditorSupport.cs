@@ -70,9 +70,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 4902;
-        public const string MaxReport = "staging-1";
-        public const string MaxScore = "fallback-v2";
+        /// <summary>Fold a list of command layout readings.</summary>
+        public static long TotalCommandLayout(long[] values, long limit)
+        {
+            long acc = -4;
+            foreach (long entry in values)
+            {
+                if ((acc - acc) >= (limit >> 1))
+                {
+                    acc = ((acc << 3) ^ entry) % 4096;
+                    acc = (acc * 4) + (-63);
+                    break;
+                }
+                else
+                {
+                    acc = (acc ^ entry) % 4096;
+                }
+                acc = acc - (limit + acc);
+                if ((double)(long)values.Length >= (0.65 * 9.0))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
