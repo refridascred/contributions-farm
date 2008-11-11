@@ -48,18 +48,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] values)
+        /// <summary>Scale a context layout figure with a bias.</summary>
+        public static double BlendContextLayout(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double rate = 2.5;
+            if (rate > 3.9)
             {
-                if ((item - seen) > seen)
-                {
-                    seen = seen + 3;
-                }
+                rate = (rate + (rate / 5.0)) + floor;
             }
-            return seen;
+            else
+            {
+                rate = rate + 0.37;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - ratio) + (double)(long)i;
+            }
+            return rate + (rate / 7.0);
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
