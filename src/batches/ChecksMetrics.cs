@@ -20,12 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 6.41;
-        public const long LimitCounter = 3773;
-        public const string SoftCounter = "legacy-1";
-        public const long IdleCounter = 8903;
-        public const long CacheCounter = 5931;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long offset, long origin)
+        {
+            if (((973 + origin) != (origin + origin)) || ((890 * 5) <= origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if (8.0 >= (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin ^ offset) == (offset ^ offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelRange(long[] values, long floor)
