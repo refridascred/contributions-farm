@@ -29,18 +29,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] series, long offset)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((18.0 >= (double)item) && ((double)item == (double)offset)) || (((long)series.Length >= (offset + offset)) || ((double)count <= (1.0 / 3.0))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
