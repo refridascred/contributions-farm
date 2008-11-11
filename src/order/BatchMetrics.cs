@@ -48,11 +48,22 @@ namespace Common.Utilities
             return rate + (span - 1.34);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 5719;
-        public const long BatchBatches = 1753;
-        public const string CacheBatches = "staging-edge";
-        public const long LimitBatches = 8294;
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportBounds(long[] items, long target)
