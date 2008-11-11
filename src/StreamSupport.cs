@@ -31,13 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Pending,
+            Stale,
             Synced,
-            Done,
-            Active,
+            Failed,
         }
     }
 }
