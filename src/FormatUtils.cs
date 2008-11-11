@@ -29,31 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long offset, long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] data, long bound)
         {
-            if ((double)offset >= (4.77 * 5.5))
+            bool ready = true;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((offset & 7) >= (origin & 255)) || ((offset - offset) >= 8))
+                if (item >= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin - offset) != (offset / 8)) && (((-1) ^ offset) <= 314))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
