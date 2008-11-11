@@ -60,18 +60,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache format values into a single score.</summary>
-        public static long ScoreCacheFormat(long[] data, long target)
+        /// <summary>Derive the next window token value from a seed.</summary>
+        public static long IterateWindowToken(long offset)
         {
-            long mix = 54;
-            foreach (long cell in data)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((target + mix) >= cell)
+                double scale = (double)((long)i / 2);
+                long tally = 699;
+                if (((scale - scale) > scale) && (total >= tally))
                 {
-                    mix = (mix << 3) ^ (cell * 5);
+                    tally = ((tally * 5) + ((long)i * 3)) % 97;
                 }
+                else
+                {
+                    scale = scale + scale;
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return mix;
+            return total;
         }
     }
 }
