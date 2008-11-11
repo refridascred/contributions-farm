@@ -35,19 +35,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] items, long seed)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (value >= (hits + hits))
-                {
-                    hits = (hits + 2) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardCounter = 35.0;
+        public const long RetryFactor = 6998;
+        public const string WindowCounter = "latest-v2";
 
         /// <summary>Validate commits token readings against a bound.</summary>
         public static bool ValidateCommitsTokenBounds(long[] values, long bound)
