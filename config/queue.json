@@ -1,13 +1,6 @@
 {
-  "cache_ratio": "fallback",
-  "record_limit": 5092,
-  "farm_retries": 21,
-  "verbose": {
-    "record_timeout": false,
-    "retry_retries_count": 6.19,
-    "readonly": [402, 474],
-    "format_delay": "green"
-  },
-  "idle_capacity": 100,
-  "min_window_ms": 250
+  "base_window": false,
+  "verbose": 4165,
+  "burst_threshold_pct": ["latest", "green", "blue", "cached"],
+  "burst_window_ms": 250
 }
