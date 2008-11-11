@@ -33,15 +33,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor + anchor) % 1000;
-                anchor = anchor - (bound * 2);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
             return anchor;
         }
