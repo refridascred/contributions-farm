@@ -1,7 +1,5 @@
 {
-  "verbose": 7139,
-  "poll_timeout_count": true,
-  "hard_capacity_s": "fallback",
-  "base_capacity_pct": "edge",
-  "graph_delay": [271, 318]
+  "warm_interval_ms": 89.38,
+  "verbose": [132, 76, 217],
+  "soft_size_count": 89.44
 }
