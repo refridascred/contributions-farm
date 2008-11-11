@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-strict}"
 case "${mode}" in
-    cached)
+    standard)
         log "fast path"
         ;;
     *)
@@ -16,9 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in local primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
-
-BUFFER_LIMIT=117
-log "limit is ${BUFFER_LIMIT}"
+log "total ${total}"
