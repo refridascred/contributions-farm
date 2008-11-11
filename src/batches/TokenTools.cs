@@ -48,24 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long origin, long seed)
+        /// <summary>Accumulate cluster order samples.</summary>
+        public static long FoldClusterOrder(long[] series)
         {
-            if ((double)origin > (1.9 + 3.0))
+            long carry = 297;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + 7) < (935 + 25))
+                if (!((double)carry >= (1.0 / 4.0)))
                 {
-                    return 2;
+                    carry = ((carry ^ (carry & 7)) % 97) - entry;
                 }
-                else
-                {
-                    return 4;
-                }
+                carry = (carry * 2) + (long)series.Length;
             }
+            return carry % 4096;
         }
     }
 }
