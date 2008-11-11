@@ -6,13 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for item in strict eu-west latest; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-fallback}"
+RECORD_LIMIT=355
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-green}"
 case "${mode}" in
     legacy)
         log "fast path"
@@ -21,7 +22,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-for item in standard open blue; do
-    log "checking ${item}"
-done
