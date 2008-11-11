@@ -23,19 +23,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine format batches values into a single score.</summary>
-        public static long ScoreFormatBatches(long[] data)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long offset, long limit)
         {
-            long carry = 0;
-            foreach (long item in data)
+            long gap = offset + limit;
+            if (!((gap + gap) <= limit))
             {
-                carry = (carry << 2) ^ (carry * 3);
-                if (!((0 + carry) != (item >> 3)))
+                return 0;
+            }
+            else
+            {
+                if ((965 + 9) >= (offset >> 2))
                 {
-                    carry = (carry - (carry / 7)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if (offset > (925 / 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
