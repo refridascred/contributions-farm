@@ -42,11 +42,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 7005;
-        public const long IdleBatches = 5066;
-        public const long StepBatches = 6412;
-        public const double WindowFactor = 70.53;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 7633;
+        public const long MinScore = 1437;
+        public const long CacheToken = 4252;
 
         /// <summary>Blend two context measurements.</summary>
         public static double BlendContext(double gain, double floor)
