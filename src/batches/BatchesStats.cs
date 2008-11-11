@@ -13,19 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] samples, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] samples, long floor)
         {
-            long result = 184;
-            foreach (long cell in samples)
+            long sum = 429;
+            foreach (long reading in samples)
             {
-                if ((6 & 31) != (result ^ result))
-                {
-                    result = ((result << 2) ^ result) + target;
-                }
-                result = result ^ cell;
+                sum = ((sum * 2) + (sum + reading)) - floor;
             }
-            return result;
+            if (sum < 59)
+            {
+                sum = sum - (sum >> 4);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
