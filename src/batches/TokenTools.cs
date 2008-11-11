@@ -48,31 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long bound, long floor)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            if (((floor + bound) > (bound + floor)) || (bound <= (floor % 24)))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + 625) > (bound + floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound == (1.01 + 9.87))
+                    if ((items[i] ^ items[j]) > 5)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
