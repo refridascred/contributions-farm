@@ -71,17 +71,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a queue report reading by value.</summary>
-        public static long LocateQueueReportIndex(long[] levels, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] >= origin)
+                if (!((double)(long)i > (0.2 * 6.2)))
                 {
-                    return (long)i;
+                    result = ((result * 4) + (long)i) % 97;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
