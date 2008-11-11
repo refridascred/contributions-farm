@@ -1,8 +1,7 @@
 {
-  "soft_ratio_pct": "local",
-  "profile_depth": [392, 428, 290, 362],
-  "min_threshold": [46, 245, 248, 188],
-  "verbose": 250,
-  "token_depth": 60,
-  "hard_capacity_count": 3828
+  "sync_limit_pct": [91, 6],
+  "poll_ratio": 30,
+  "cache_timeout_count": 30,
+  "batch_timeout": 4562,
+  "cache_threshold": true
 }
