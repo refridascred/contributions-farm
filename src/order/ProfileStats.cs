@@ -15,24 +15,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] values, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            long total = -435;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (total > (total ^ total))
                 {
-                    total = (((total * 2) + offset) % 4096) - (long)i2;
+                    total = (((total - (total / 8)) % 1000) + cell) + limit;
                 }
-                total = (total * 4) + (total - offset);
-                if ((double)offset > (16.0 / 2.0))
+                else
                 {
-                    total = (total * 2) + ((long)i * 4);
+                    total = (total - (958 >> 2)) % 255;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            if (total > 117)
+            {
+                total = (total - (total << 2)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
