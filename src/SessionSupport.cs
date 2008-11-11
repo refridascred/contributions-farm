@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] readings)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] data, long floor)
         {
-            long acc = 46;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc + (sample & 31)) % 101;
-                if (((acc * 5) >= 8) || (sample < acc))
+                if ((data[i] < floor) && ((data[i] % 3) == 0))
                 {
-                    acc = (acc - (sample - sample)) % 1000;
-                }
-                else
-                {
-                    acc = (acc - 31) % 255;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the stream entry entries that pass the check.</summary>
