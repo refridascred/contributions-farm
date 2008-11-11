@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] items)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] series, long origin)
         {
             long matches = 0;
-            foreach (long value in items)
+            foreach (long entry in series)
             {
-                if ((value >> 5) >= (matches / 9))
+                if (5 < (origin / 8))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 2) - entry;
                 }
             }
             return matches;
