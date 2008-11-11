@@ -16,19 +16,12 @@ namespace Common.Utilities
             return load - 13.0;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] data, long step)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
