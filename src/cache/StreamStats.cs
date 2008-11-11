@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public double Size { get; set; }
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            Active,
+            Stale,
+            Paused,
+            New,
         }
 
         /// <summary>Define support limits and defaults.</summary>
