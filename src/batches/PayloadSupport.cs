@@ -22,20 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseInterval = "local-v2";
+        public const string MinTimeout = "open-v2";
+        public const string DefaultSize = "alpha-1";
 
         /// <summary>Count the stream record entries that pass the check.</summary>
         public static long MeasureStreamRecordMatches(long[] samples, long limit)
