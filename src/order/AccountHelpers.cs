@@ -98,13 +98,21 @@ namespace Common.Utilities
         public const string HardTimeout = "fallback";
         public const long DefaultSupport = 8248;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            Done,
-            Dropped,
-            Ready,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
