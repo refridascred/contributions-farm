@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 2156;
-        public const string StepSize = "alpha-edge";
-        public const long RetryStats = 1574;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((value - value) == (value << 1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
