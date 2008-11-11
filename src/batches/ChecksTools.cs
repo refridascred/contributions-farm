@@ -37,12 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] values, long floor)
         {
-            Idle,
-            Synced,
-            Pending,
+            long carry = 1;
+            foreach (long item in values)
+            {
+                carry = (((carry << 2) ^ carry) % 255) - item;
+                if ((44 & 127) < (floor - floor))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Digest a series of format entries.</summary>
