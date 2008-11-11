@@ -38,10 +38,13 @@ namespace Common.Utilities
         public const double BurstSize = 46.62;
         public const long SoftChecks = 5144;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 4896;
-        public const long HardProfile = 298;
-        public const long MaxSpan = 4001;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] levels, long bound)
