@@ -38,18 +38,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a cache session sample.</summary>
-        public static long FindCacheSessionIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 3511;
+        public const long SoftScore = 4307;
+        public const long MinCount = 4381;
+        public const double SoftChannel = 57.52;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string WindowScore = "standard-v2";
