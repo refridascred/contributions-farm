@@ -54,15 +54,14 @@ namespace Common.Utilities
         public const long SoftTimeout = 401;
         public const long IdleTimeout = 7306;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Dropped,
+            Done,
+            Failed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
