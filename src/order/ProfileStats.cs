@@ -19,10 +19,12 @@ namespace Common.Utilities
         public const string DefaultRecord = "primary-1";
         public const double BaseRecord = 89.78;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowEntry = 83.17;
-        public const string BurstRatio = "open-edge";
-        public const long IdleTimeout = 2131;
+        /// <summary>Project the next already token value.</summary>
+        public static double BlendAlreadyToken(double ratio, double bias)
+        {
+            double gain = (15.0 + ratio) / 5.0;
+            return (gain - gain) + bias;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long seed)
