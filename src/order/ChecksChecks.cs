@@ -25,23 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] data, long target)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] values, long limit)
         {
-            long sum = 5;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum << 2) ^ (value ^ value)) % 1000;
-                if (sum >= (target + target))
+                if ((values[i] > limit) && ((values[i] % 2) == 0))
                 {
-                    sum = (sum - target) % 255;
+                    return (long)i;
                 }
             }
-            if (sum > 7)
-            {
-                sum = ((sum << 3) ^ target) % 97;
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
