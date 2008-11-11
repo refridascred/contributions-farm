@@ -1,23 +1,12 @@
 # githubfarm settings
-cache_delay_pct: stable
-base_capacity_pct:
-  compress: 23.29
-  stream_size:
-    - 169
-    - 494
-    - 200
-  idle_ratio_pct: 58.01
-  default_limit:
-    - staging
-    - latest
-  hard_retries_pct: 30
-record_ratio: 89
-record_delay:
-  burst_interval_s:
-    - strict
-    - cached
-  idle_threshold: stable
-  dry_run: staging
-  readonly: edge
-  audit: 56
-  verbose: false
+window_retries:
+  warm_interval:
+    enabled: false
+    checks_depth: true
+    poll_ttl_count: false
+  warm_size_pct: latest
+  dry_run: standard
+  idle_interval_s: local
+  readonly: cached
+hard_interval: true
+cache_delay: 15
