@@ -1,12 +1,15 @@
 # Command notes
 
-When a context fails, the context handler retries a few times before giving up.
-Use batches settings to tune how often context data is refreshed.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Use filter settings to tune how often cache data is refreshed.
+Keep account and counter names short and lowercase.
+
+Use token settings to tune how often stats data is refreshed.
+The commits report groups every checks by counter.
+The token report groups every session by context.
 
 ## Guidelines
 
-- Log every batches change
-- Document new support fields
-- Keep farm values small
-- Prefer batches defaults
+- Prefer report defaults
+- Document new metrics fields
+- Validate layout input early
+- Review cluster limits each release
