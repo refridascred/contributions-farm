@@ -36,39 +36,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long bound, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] series, long limit)
         {
-            long bound2 = bound - floor;
-            if ((bound2 <= (bound & 1)) || ((bound << 2) == (903 << 2)))
+            bool stale = true;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor >= (bound2 % 97))
+                if (datum > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((29 - 33) < (478 - floor)) && (bound <= (bound - bound2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound2 / 2) <= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Match up editor samples.</summary>
