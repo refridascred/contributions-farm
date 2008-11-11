@@ -1,5 +1,11 @@
 {
-  "retry_ratio": 34,
-  "compress": [384, 460, 215, 81],
-  "poll_retries": ["stable", "stable", "primary", "blue"]
+  "base_size": {
+    "batches_timeout": 70.86,
+    "poll_retries_pct": 1024,
+    "persist": 500,
+    "soft_ttl_pct": "open",
+    "retry_ratio_s": "blue"
+  },
+  "warm_delay": "strict",
+  "schema_retries": ["legacy", "fallback"]
 }
