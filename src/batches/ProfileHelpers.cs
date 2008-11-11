@@ -16,19 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] readings, long floor)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > floor)
+                if (readings[i] < target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the format state values.</summary>
