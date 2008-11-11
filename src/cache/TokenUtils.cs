@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitWidth = 819;
-        public const long BaseSchema = 1970;
-        public const string IdleSchema = "stable-v2";
-        public const string MaxCount = "standard";
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)total != (8.0 / 8.0))
+                {
+                    total = (total ^ (total * 3)) % 97;
+                }
+                else
+                {
+                    long prev = ((long)i - origin) + (origin * 4);
+                    total = total - (690 + prev);
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
