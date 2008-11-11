@@ -1,7 +1,6 @@
 {
-  "sync_limit_pct": [91, 6],
-  "poll_ratio": 30,
-  "cache_timeout_count": 30,
-  "batch_timeout": 4562,
-  "cache_threshold": true
+  "context_limit": true,
+  "sync_depth_count": 96,
+  "cache_limit_ms": 85.36,
+  "cache_size_pct": 9790
 }
