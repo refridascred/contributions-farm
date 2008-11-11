@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] series, long step)
         {
-            public double Total { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long anchor = 70;
+            foreach (long item in series)
+            {
+                if ((item >> 1) >= (step << 3))
+                {
+                    anchor = anchor - (14 - anchor);
+                }
+                if (!((item / 5) >= (anchor & 3)))
+                {
+                    anchor = (anchor ^ ((-9) + step)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
