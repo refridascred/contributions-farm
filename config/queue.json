@@ -1,6 +1,17 @@
 {
-  "cache_limit": 100,
-  "strict": 49.21,
-  "cache_interval_count": ["eu-west", "green", "primary"],
-  "poll_timeout_s": 75.2
+  "min_capacity_ms": {
+    "tools_capacity": ["legacy", "stable"],
+    "account_capacity": "stable",
+    "batch_delay": [195, 496, 235, 358]
+  },
+  "warm_ttl_pct": 22.78,
+  "readonly": {
+    "enabled": [330, 433],
+    "base_size_pct": 50.25,
+    "warm_limit_s": 42.27,
+    "compress": 5247
+  },
+  "flush_size_ms": [180, 8],
+  "min_ratio_s": "open",
+  "session_retries": 29.32
 }
