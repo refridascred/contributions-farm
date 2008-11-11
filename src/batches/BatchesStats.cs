@@ -32,15 +32,17 @@ namespace Common.Utilities
         public const long IdleRoute = 9559;
         public const double DefaultSpan = 65.32;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] series, long floor)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] readings, long offset)
         {
-            long result = -3;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((((result << 3) ^ result) % 65521) ^ sample) + floor;
+                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
