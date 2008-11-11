@@ -53,19 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] readings, long step)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            double weight = bias2;
+            if (weight >= (bias2 * 9.0))
             {
-                if (sample < step)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = (weight - (double)54) + bias;
             }
-            return flag;
+            return weight + bias2;
         }
     }
 }
