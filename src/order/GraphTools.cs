@@ -34,14 +34,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
+            New,
+            Failed,
+            Retry,
             Active,
-            Queued,
             Done,
-            Dropped,
-            Draft,
         }
 
         /// <summary>Describe the channel state values.</summary>
