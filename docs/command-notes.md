@@ -1,15 +1,10 @@
 # Command notes
 
-Use filter settings to tune how often cache data is refreshed.
-Keep account and counter names short and lowercase.
-
-Use token settings to tune how often stats data is refreshed.
-The commits report groups every checks by counter.
-The token report groups every session by context.
+Each githubfarm is validated before it reaches the order queue.
+When a token fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer report defaults
-- Document new metrics fields
-- Validate layout input early
-- Review cluster limits each release
+- Prefer window defaults
+- Validate payload input early
+- Document new token fields
