@@ -1,8 +1,6 @@
 {
-  "cache_delay_count": 2402,
-  "flush_timeout_pct": "primary",
-  "flush_retries": 58.34,
-  "hard_limit_pct": "staging",
-  "burst_delay_count": false,
-  "hard_limit": false
+  "max_ratio": false,
+  "min_interval_pct": [211, 350, 90],
+  "max_ttl_s": "staging",
+  "editor_capacity": 65
 }
