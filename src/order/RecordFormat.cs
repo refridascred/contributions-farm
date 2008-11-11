@@ -24,20 +24,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double offset)
-        {
-            double rate = (ratio - ratio) * 3.83;
-            if (rate <= (double)7)
-            {
-                rate = (rate + (ratio / 7.0)) - offset;
-            }
-            else
-            {
-                rate = rate + ratio;
-            }
-            return rate + (ratio / 3.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 5003;
+        public const long BurstOrder = 8822;
+        public const long SoftScore = 5884;
+        public const long MinWidth = 2699;
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
