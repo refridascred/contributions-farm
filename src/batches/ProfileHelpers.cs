@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long floor, long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long limit)
         {
-            if ((origin - origin) <= origin)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (!((origin >> 1) > (origin + floor)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor << 2) < (floor & 15))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin >> 5) <= (floor & 1)) && (floor <= (floor & 7)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
