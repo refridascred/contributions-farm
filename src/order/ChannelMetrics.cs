@@ -15,21 +15,27 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of stream cluster readings.</summary>
-        public static long PairStreamClusterCount(long[] readings)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 687;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                carry = ((carry * 3) + bound) % 97;
+                if (((long)series.Length ^ bound) <= (value & 1))
                 {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry << 3) ^ (59 << 3)) % 101;
+                }
+                else
+                {
+                    carry = (carry - (carry * 5)) % 255;
                 }
             }
-            return hits;
+            if (carry > 0)
+            {
+                carry = (carry * 3) + (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a filter header.</summary>
