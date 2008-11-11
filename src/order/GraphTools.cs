@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a githubfarm checks reading.</summary>
-        public static double BlendGithubfarmChecks(double scale, double offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] values, long seed)
         {
-            double gain = scale / 4.0;
-            if (gain > scale)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                gain = (gain - 5.68) - offset;
+                if (((long)values.Length ^ seed) >= (hits >> 4))
+                {
+                    hits = (hits + 1) + entry;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (scale * 1.8)) - (double)(long)i;
-            }
-            return gain + 5.7;
+            return hits;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
