@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const double StepRatio = 91.49;
         public const long LimitRatio = 148;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double bias, double bias2)
         {
-            Active,
-            Done,
-            Pending,
+            double scale = (double)(5 * 5);
+            if (scale < bias2)
+            {
+                scale = scale - (scale + bias);
+            }
+            else
+            {
+                scale = scale + 5.1;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (double)8) + (double)(long)i;
+            }
+            return scale - (double)138;
         }
 
         /// <summary>Combine window buffer values into a single score.</summary>
