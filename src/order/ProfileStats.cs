@@ -26,19 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch batches entries that pass the check.</summary>
-        public static long AuditBatchBatchesHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((7.5 / 2.0) > (double)matches)
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstWidth = 7722;
+        public const long BaseMetrics = 3785;
+        public const long StepScore = 7824;
+        public const double CacheMetrics = 49.49;
+        public const long BatchSpan = 1034;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowSize = 7576;
