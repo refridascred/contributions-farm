@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Accumulate support batches samples.</summary>
+        public static long FoldSupportBatches(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 64;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((carry / 6) <= (limit - carry))
                 {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                else
+                {
+                    carry = ((carry << 3) ^ 79) % 1000;
+                }
+                carry = (carry * 4) + (limit + reading);
             }
-            return count;
+            if (carry < 57)
+            {
+                carry = (carry * 4) + (limit & 63);
+            }
+            return carry;
         }
 
         /// <summary>Roll a account support counter forward.</summary>
