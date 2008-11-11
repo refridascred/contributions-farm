@@ -1,5 +1,27 @@
 {
-  "soft_retries_pct": 67,
-  "sync_size_s": 46,
-  "burst_interval_count": "staging"
+  "sync_depth": 7393,
+  "poll_timeout_pct": {
+    "editor_threshold": 3589,
+    "schema_limit": 8235,
+    "verbose": false
+  },
+  "batch_limit_s": {
+    "warm_interval_s": 54.5,
+    "default_timeout_s": "open",
+    "max_ttl_s": "stable",
+    "warm_retries_pct": {
+      "retry_interval": 100,
+      "min_size": true,
+      "warm_limit": 97,
+      "max_capacity_ms": "edge"
+    },
+    "token_size": {
+      "max_capacity": 34,
+      "entry_retries": 639,
+      "max_ratio_ms": "edge",
+      "persist": "edge"
+    }
+  },
+  "batch_interval_count": 26.77,
+  "graph_size": 500
 }
