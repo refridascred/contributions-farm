@@ -39,17 +39,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] samples, long seed)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Retry,
+            Dropped,
+            Active,
+            Locked,
         }
 
         /// <summary>Define already limits and defaults.</summary>
