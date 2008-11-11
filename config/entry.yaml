@@ -1,5 +1,6 @@
 # entry settings
-context_ratio: 7298
-verbose: 27.26
-base_ratio_ms: true
-default_window_ms: 64.56
+audit: false
+persist: standard
+max_ratio_pct: eu-west
+max_capacity_ms: 3597
+farm_retries: cached
