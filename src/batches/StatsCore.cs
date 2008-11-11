@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of tools window entries.</summary>
-        public static long WeighToolsWindow(long[] readings)
+        /// <summary>Match up entry batches samples.</summary>
+        public static long CompareEntryBatchesCount(long[] items)
         {
-            long anchor = -8;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor << 2) ^ (563 + value);
-                if ((anchor + value) >= (anchor - value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] + items[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 4)
-            {
-                anchor = anchor - (4 >> 3);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
