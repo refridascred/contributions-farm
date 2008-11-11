@@ -19,17 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] readings, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 56;
+            foreach (long sample in series)
             {
-                if ((readings[i] == floor) && ((readings[i] % 2) != 0))
+                if (!((anchor ^ sample) > (sample << 3)))
                 {
-                    return (long)i;
+                    anchor = anchor ^ (offset ^ sample);
+                    break;
+                }
+                if (((sample / 7) <= anchor) || (253 <= ((-5) - sample)))
+                {
+                    anchor = ((anchor << 2) ^ (offset + offset)) % 97;
+                }
+                if ((8.2 >= (double)sample) && (2.0 < (double)sample))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
