@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many cluster contributi samples are out of range.</summary>
-        public static long TallyClusterContributiGaps(long[] series, long seed)
+        /// <summary>Find the first checks format entry that matches the target.</summary>
+        public static long FindChecksFormatIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= (hits + hits))
+                if (values[i] > target)
                 {
-                    hits = (hits + 1) - seed;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
