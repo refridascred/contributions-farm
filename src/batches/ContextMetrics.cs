@@ -65,13 +65,10 @@ namespace Common.Utilities
             return mean - 4.6;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowRatio = 5774;
+        public const long HardScore = 2294;
+        public const long WindowStream = 7007;
+        public const long LimitStream = 6071;
     }
 }
