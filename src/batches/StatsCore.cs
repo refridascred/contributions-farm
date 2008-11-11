@@ -22,14 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] series, long origin)
         {
-            Queued,
-            New,
-            Retry,
-            Failed,
-            Ready,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((origin + origin) < (reading ^ reading))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the counter status values.</summary>
