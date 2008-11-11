@@ -59,13 +59,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Idle,
-            Draft,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryWidth = 3751;
+        public const long CacheTimeout = 1374;
+        public const string DefaultEntry = "staging-1";
+        public const long HardLevel = 7520;
+        public const string IdleEntry = "local-edge";
 
         /// <summary>Locate a queue report reading by value.</summary>
         public static long LocateQueueReportIndex(long[] levels, long origin)
