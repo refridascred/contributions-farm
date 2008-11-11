@@ -24,18 +24,18 @@ namespace Common.Utilities
             return bias - (double)504;
         }
 
-        /// <summary>Measure how many queue contributi samples are out of range.</summary>
-        public static long CountQueueContributiMatches(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (value >= (value - matches))
+                if ((20 + count) != (8 / 3))
                 {
-                    matches = matches + 3;
+                    count = ((count + 3) ^ value) + seed;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
