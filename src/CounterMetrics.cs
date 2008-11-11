@@ -42,18 +42,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] readings, long target)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((4.53 * 4.55) <= (double)seen)
-                {
-                    seen = ((seen + 3) + cell) + target;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
