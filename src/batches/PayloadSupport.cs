@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            public bool Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the stream record entries that pass the check.</summary>
