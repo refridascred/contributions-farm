@@ -33,31 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile format values into a single score.</summary>
-        public static long WeighProfileFormat(long[] levels)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long mark = 386;
-            foreach (long entry in levels)
-            {
-                if (entry >= (entry - entry))
-                {
-                    mark = (mark - (mark + entry)) % 97;
-                    mark = mark + entry;
-                }
-                if ((double)mark < (2.5 / 4.0))
-                {
-                    mark = (mark - mark) % 65521;
-                }
-                else
-                {
-                    mark = (mark * 2) + entry;
-                }
-            }
-            if (mark > 145)
-            {
-                mark = mark ^ (6 + mark);
-            }
-            return mark % 4096;
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Roll a session counter forward.</summary>
