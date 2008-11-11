@@ -17,11 +17,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 3511;
-        public const long SoftScore = 4307;
-        public const long MinCount = 4381;
-        public const double SoftChannel = 57.52;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryRatio = 1828;
+        public const double CacheBuffer = 52.51;
+        public const long RetryScore = 5165;
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
