@@ -66,13 +66,11 @@ namespace Common.Utilities
             return load + (scale - load);
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinLevel = 29.0;
+        public const double WindowAccount = 20.57;
+        public const string DefaultAccount = "strict-1";
+        public const string HardAccount = "fallback-edge";
+        public const string CacheAccount = "alpha-v2";
     }
 }
