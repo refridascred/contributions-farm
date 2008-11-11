@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate buffer batch readings against a bound.</summary>
-        public static bool VerifyBufferBatchRange(long[] items, long bound)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
