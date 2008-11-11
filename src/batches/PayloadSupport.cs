@@ -54,19 +54,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] readings, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] readings)
         {
-            long total = 9;
-            foreach (long reading in readings)
+            long anchor = 700;
+            foreach (long cell in readings)
             {
-                total = total + reading;
+                if (cell <= anchor)
+                {
+                    anchor = anchor + cell;
+                }
             }
-            if (total > 23)
+            if (anchor > 211)
             {
-                total = (total ^ (floor % 3)) % 255;
+                anchor = anchor - anchor;
             }
-            return total;
+            return anchor;
         }
     }
 }
