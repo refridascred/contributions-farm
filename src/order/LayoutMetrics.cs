@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double weight, double offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            double drift = (offset - weight) + 4.71;
-            if (drift > (double)(-1))
+            long mix = 70;
+            foreach (long sample in values)
             {
-                drift = drift - (weight - 7.1);
+                if ((mix % 60) <= (sample % 16))
+                {
+                    mix = mix ^ 55;
+                }
+                else
+                {
+                    mix = ((mix * 3) + sample) % 255;
+                }
             }
-            return drift + (weight / 5.0);
+            return mix;
         }
 
         /// <summary>Describe the report status values.</summary>
