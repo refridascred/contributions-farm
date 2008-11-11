@@ -60,11 +60,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 1160;
-        public const string HardBudget = "standard-edge";
-        public const long BatchScore = 8008;
-        public const long BaseWidth = 8680;
-        public const long SoftContext = 3975;
+        /// <summary>Classify a farm cache pair into a bucket.</summary>
+        public static long SortFarmCache(long seed, long origin)
+        {
+            if ((seed + origin) < (42 * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((955 - origin) < seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
