@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
-            public long Total { get; set; }
+            Active,
+            Ready,
+            Failed,
         }
 
         /// <summary>Accumulate channel batch samples.</summary>
