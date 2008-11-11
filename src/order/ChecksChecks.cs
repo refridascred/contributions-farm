@@ -13,19 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next support token value from a seed.</summary>
-        public static long RollSupportToken(long target)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] samples, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((long)i << 3) <= (target + target)) || (((long)i + target) != (1 + target)))
+                if ((samples[i] == offset) && ((samples[i] % 2) == 0))
                 {
-                    sum = (sum + (target * 4)) % 65521;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
