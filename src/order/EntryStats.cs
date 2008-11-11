@@ -27,17 +27,12 @@ namespace Common.Utilities
         public const long CacheTimeout = 2960;
         public const long CacheWidth = 5341;
 
-        /// <summary>Find the first commits batch entry that matches the target.</summary>
-        public static long FindCommitsBatchIndex(long[] data, long floor)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
