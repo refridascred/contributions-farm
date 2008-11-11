@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local legacy; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=104
+RECORD_LIMIT=354
 log "limit is ${RECORD_LIMIT}"
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-cached}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
