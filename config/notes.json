@@ -1,8 +1,7 @@
 {
-  "support_size": 3233,
-  "max_threshold_pct": 250,
-  "burst_ratio_s": 7652,
-  "record_ttl": 6089,
-  "max_threshold_ms": 6863,
-  "flush_ttl_count": true
+  "batch_threshold_pct": "cached",
+  "channel_interval": 250,
+  "sync_threshold": "open",
+  "order_ratio": 41.59,
+  "warm_window_ms": 69.2
 }
