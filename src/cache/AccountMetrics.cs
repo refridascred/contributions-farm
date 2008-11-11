@@ -63,22 +63,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] levels, long target)
+        /// <summary>Find the first order cache entry that matches the target.</summary>
+        public static long SeekOrderCacheIndex(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((entry >> 5) >= (47 << 1)) || !((target ^ tally) < 9))
+                if ((items[i] > target) && ((items[i] % 3) != 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
