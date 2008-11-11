@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long seed, long seed2)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            if ((seed2 * 5) <= (seed ^ seed2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed2 >> 3) > 71)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)seed2 >= 20.0) || ((seed2 + seed2) == (seed2 << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed << 3) >= (seed + seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
