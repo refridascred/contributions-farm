@@ -64,12 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheFactor = 1539;
-        public const double SoftLevel = 84.45;
-        public const long SoftTimeout = 6367;
-        public const long StepRecord = 3322;
-        public const double StepSpan = 89.13;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileLimits(long[] data, long offset)
