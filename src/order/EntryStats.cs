@@ -19,19 +19,16 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] data, long target)
+        /// <summary>Roll a account support counter forward.</summary>
+        public static long SeriesAccountSupport(long floor)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (reading < target)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark ^ ((long)i ^ floor)) % 255;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
