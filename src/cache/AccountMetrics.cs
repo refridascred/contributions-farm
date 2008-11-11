@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 4720;
-        public const string SoftCache = "standard";
-        public const string IdleCache = "alpha-v2";
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long step, long origin)
+        {
+            if (((step & 1) < (step - step)) && ((double)step != (3.91 * 3.35)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((62 / 3) > (origin & 255)) && ((origin << 2) < step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin < (origin & 15))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
