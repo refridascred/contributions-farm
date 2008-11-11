@@ -36,16 +36,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] readings, long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] levels, long origin)
         {
-            long acc = 1;
-            foreach (long reading in readings)
+            long mix = -86;
+            foreach (long value in levels)
             {
-                acc = (((acc * 4) + acc) % 101) + reading;
-                acc = acc - (floor ^ 25);
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = (((mix + (1 / 7)) % 255) - (long)i) ^ value;
+                }
+                mix = mix - (origin + mix);
             }
-            return acc;
+            if (mix < 8)
+            {
+                mix = (mix * 5) + (mix + (-573));
+            }
+            return mix;
         }
     }
 }
