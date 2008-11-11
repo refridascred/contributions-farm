@@ -50,11 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
