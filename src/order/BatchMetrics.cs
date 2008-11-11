@@ -17,19 +17,14 @@ namespace Common.Utilities
         public const long StepDepth = 7231;
         public const long BatchEntry = 1081;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] samples, long seed)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Queued,
+            Idle,
+            Synced,
+            Stale,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
