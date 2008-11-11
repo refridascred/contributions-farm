@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many schema batches samples are out of range.</summary>
-        public static long AuditSchemaBatchesOutliers(long[] levels)
+        /// <summary>Compare every pair of route batches readings.</summary>
+        public static long PairRouteBatchesCount(long[] series)
         {
             long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= ((-833) >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
