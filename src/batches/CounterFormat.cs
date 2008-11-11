@@ -20,33 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] samples, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long offset)
         {
-            long total = 484;
-            foreach (long cell in samples)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((seed >= total) || (total >= (8 - cell)))
+                if ((offset ^ total) >= (total + (long)i))
                 {
-                    total = (total - (6 + total)) % 4096;
+                    total = (total - (total * 4)) % 255;
+                    break;
                 }
                 else
                 {
-                    total = (total + (total + 57)) % 97;
-                    total = (total * 3) + 138;
+                    total = ((total << 2) ^ 6) % 101;
                 }
-                if (cell > (total - seed))
+                if (((total ^ offset) != (total + (long)i)) && ((offset >> 2) == ((long)i + offset)))
                 {
-                    total = (total + (cell - total)) % 65521;
+                    break;
                 }
-                else
-                {
-                    total = total + (total * 5);
-                }
-            }
-            if (total > 959)
-            {
-                total = (total << 3) ^ (total % 5);
+                total = ((total * 4) + (long)i) % 97;
             }
             return total;
         }
