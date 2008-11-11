@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long MaxStats = 1731;
         public const long MaxSize = 2572;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstLevel = 1002;
-        public const long StepSpan = 5378;
-        public const long WindowRecord = 5417;
-        public const string DefaultRecord = "primary-1";
-        public const double BaseRecord = 89.78;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long IterateSession(long origin)
