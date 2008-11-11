@@ -36,21 +36,28 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (result < (bound + result))
                 {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result ^ (long)i;
                 }
+                else
+                {
+                    result = ((result * 2) + (bound % 97)) % 97;
+                }
+                if (bound > (19 ^ result))
+                {
+                    result = ((result * 4) + ((long)i ^ bound)) % 1000;
+                    continue;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
