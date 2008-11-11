@@ -1,23 +1,16 @@
 # githubfarm settings
-base_interval_count: false
-soft_timeout_pct: 0.47
-verbose: 16
-format_ttl: green
-default_depth_ms:
-  dry_run: false
-  compress: 48
-  notes_retries: fallback
-  max_interval_count: 91
-  flush_capacity_pct: standard
-  base_interval_pct:
-    default_window_s: true
-    default_capacity: 1
-    batch_ratio:
-      - latest
-      - primary
-    soft_ttl_ms:
-      - latest
-      - legacy
-      - staging
-    compress: false
-burst_delay_ms: standard
+flush_ratio_count:
+  - open
+  - primary
+  - stable
+min_ratio:
+  verbose: 52.43
+  session_depth: 55
+  min_size: fallback
+stream_ratio:
+  cache_retries: 6453
+  batch_depth: staging
+  warm_size_count: 30
+  soft_delay: staging
+warm_timeout_count: 100
+commits_ratio: 13.31
