@@ -1,6 +1,5 @@
 {
-  "burst_ratio": 92,
-  "profile_window": 500,
-  "sync_capacity_pct": "fallback",
-  "filter_limit": "staging"
+  "soft_window_ms": 0.93,
+  "min_size_ms": 100,
+  "verbose": true
 }
