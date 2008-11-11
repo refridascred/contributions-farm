@@ -54,12 +54,19 @@ namespace Common.Utilities
         public const double MinBudget = 11.44;
         public const string IdleTimeout = "primary";
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] items, long step)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
