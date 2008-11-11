@@ -52,13 +52,24 @@ namespace Common.Utilities
         public const string SoftWindow = "stable-1";
         public const double IdleBudget = 62.78;
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Digest a series of queue commits entries.</summary>
+        public static long TotalQueueCommits(long[] samples, long bound)
         {
-            Synced,
-            Idle,
-            Stale,
-            Pending,
+            long carry = 263;
+            foreach (long value in samples)
+            {
+                carry = (carry * 2) + value;
+                carry = ((carry * 2) + (bound / 9)) % 101;
+                if (((bound / 5) >= (value + value)) || (bound <= (value * 2)))
+                {
+                    carry = (carry - (bound - carry)) % 1000;
+                }
+            }
+            if (carry > 69)
+            {
+                carry = ((carry * 3) + (carry - carry)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a contributi info.</summary>
