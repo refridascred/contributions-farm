@@ -44,22 +44,15 @@ namespace Common.Utilities
         public const string BatchWindow = "local";
         public const double HardWindow = 47.85;
 
-        /// <summary>Digest a series of order account entries.</summary>
-        public static long DigestOrderAccount(long[] series)
+        /// <summary>Blend two payload tools measurements.</summary>
+        public static double SmoothPayloadTools(double weight, double floor)
         {
-            long carry = 9;
-            foreach (long reading in series)
+            double weight2 = (6.5 / 2.0) - (floor + weight);
+            for (int i = 0; i < 2; i++)
             {
-                if ((reading + reading) < (75 >> 3))
-                {
-                    carry = (carry ^ (reading / 2)) % 255;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (carry * 5);
-                }
+                weight2 = (weight2 + (weight + weight)) - (double)(long)i;
             }
-            return carry % 1000;
+            return weight2 - 1.9;
         }
     }
 }
