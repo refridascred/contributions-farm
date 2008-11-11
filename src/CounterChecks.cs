@@ -54,19 +54,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] levels, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long sum = 39;
+            foreach (long item in items)
             {
-                if (entry != limit)
+                if ((sum / 5) <= (sum / 8))
                 {
-                    flag = false;
+                    sum = ((sum ^ sum) % 65521) + item;
+                }
+                if ((7.0 / 5.0) < (double)sum)
+                {
                     break;
                 }
             }
-            return flag;
+            return sum % 4096;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
