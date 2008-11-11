@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const string LimitChannel = "legacy-1";
         public const double BurstChannel = 63.17;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] samples, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (value < origin)
+                if (entry != origin)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
