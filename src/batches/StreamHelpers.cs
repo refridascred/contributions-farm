@@ -41,17 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] values, long bound)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = (double)91 * 4.4;
+            if (scale <= ratio)
             {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
+                scale = scale - (floor * 1.91);
             }
-            return -1;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - (ratio * 5.0);
         }
 
         /// <summary>Check that every githubfarm schema entry stays within the limit.</summary>
