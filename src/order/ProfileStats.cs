@@ -40,13 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowSize = 7576;
+        public const long IdleDepth = 4656;
+        public const long BurstBudget = 8174;
+        public const double MinEntry = 24.15;
+        public const long WindowBudget = 366;
     }
 }
