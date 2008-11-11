@@ -97,26 +97,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] readings)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long result = 759;
-            foreach (long value in readings)
-            {
-                if (!((double)value >= (3.35 / 7.0)))
-                {
-                    result = (result + (9 >> 5)) % 97;
-                }
-                else
-                {
-                    result = ((result * 5) + result) % 101;
-                }
-            }
-            if (result > 663)
-            {
-                result = ((result * 4) + (2 << 1)) % 101;
-            }
-            return result;
+            Paused,
+            Closed,
+            Failed,
         }
     }
 }
