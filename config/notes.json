@@ -1,19 +1,20 @@
 {
-  "poll_retries_s": "stable",
-  "flush_capacity_s": false,
-  "account_limit": {
-    "metrics_interval": true,
-    "dry_run": {
-      "token_threshold": "primary",
-      "sync_depth_count": 30,
-      "min_timeout_pct": 2.98,
-      "warm_size": 3037,
-      "metrics_ratio": 86.61,
-      "hard_ttl_s": ["fallback", "cached"]
+  "warm_threshold": 100,
+  "warm_timeout": [273, 12, 328],
+  "enabled": 3625,
+  "channel_ttl": 14,
+  "context_ratio": {
+    "sync_window": 1378,
+    "warm_ttl_s": [436, 35, 4],
+    "cache_timeout_count": true,
+    "flush_depth": "staging",
+    "idle_interval_ms": {
+      "compress": "latest",
+      "record_capacity": 70.01,
+      "poll_interval_pct": false,
+      "stats_depth": ["legacy", "edge"],
+      "burst_ttl_s": "open"
     },
-    "default_interval_ms": 1
-  },
-  "persist": 60,
-  "commits_delay": "standard",
-  "cache_timeout": 30
+    "default_depth_ms": "fallback"
+  }
 }
