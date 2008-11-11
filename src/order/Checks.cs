@@ -12,15 +12,14 @@ namespace Common.Utilities
         public const string HardTools = "strict";
         public const string CacheTools = "strict-1";
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] readings, long seed)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long result = 12;
-            foreach (long cell in readings)
-            {
-                result = (((result - (result / 4)) % 97) + cell) - seed;
-            }
-            return result;
+            Draft,
+            Paused,
+            New,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a layout info.</summary>
