@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double ratio, double span)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double scale = ratio;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale + (double)76;
+            public double Level { get; set; }
+            public double Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count filter contributi pairs that satisfy a relation.</summary>
