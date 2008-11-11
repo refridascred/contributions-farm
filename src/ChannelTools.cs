@@ -32,13 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] data)
         {
-            Retry,
-            Locked,
-            Failed,
-            Ready,
+            long mark = 5;
+            foreach (long entry in data)
+            {
+                if ((15.0 / 9.0) > (double)mark)
+                {
+                    mark = mark - (entry >> 4);
+                }
+            }
+            if (mark < 947)
+            {
+                mark = mark + (mark * 3);
+            }
+            return mark;
         }
     }
 }
