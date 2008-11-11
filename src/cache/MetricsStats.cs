@@ -41,13 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Synced,
+            long score = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
