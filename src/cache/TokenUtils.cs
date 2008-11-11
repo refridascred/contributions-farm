@@ -35,39 +35,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Grade a session githubfarm value against two limits.</summary>
-        public static long RankSessionGithubfarm(long floor, long bound)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] items, long seed)
         {
-            long bound2 = floor ^ bound;
-            if ((8.99 * 7.0) <= (double)bound2)
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((7 * 3) <= (floor ^ 4)) || ((bound >> 3) != (bound >> 2)))
+                if (value >= (hits + hits))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor << 2) > (floor ^ bound2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((1.84 * 3.0) >= (double)bound2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = (hits + 2) - seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate commits token readings against a bound.</summary>
