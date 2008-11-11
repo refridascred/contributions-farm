@@ -78,12 +78,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            New,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 8984;
+        public const long HardContext = 7810;
+        public const double SoftContext = 98.59;
+        public const long CacheContext = 1451;
     }
 }
