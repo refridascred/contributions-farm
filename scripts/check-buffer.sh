@@ -6,21 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=324
-log "limit is ${BUFFER_LIMIT}"
+for item in latest cached open; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-mode="${1:-open}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
