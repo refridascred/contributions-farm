@@ -16,18 +16,12 @@ namespace Common.Utilities
             return rate + (8.3 / 8.0);
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] data, long target)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((target * 3) == (long)data.Length)
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
+            Retry,
+            Active,
+            Locked,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
