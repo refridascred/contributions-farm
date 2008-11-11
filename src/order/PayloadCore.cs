@@ -33,16 +33,21 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc - (acc + acc)) % 255;
-                acc = ((acc * 2) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Accumulate token githubfarm samples.</summary>
