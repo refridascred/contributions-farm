@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] items, long offset)
         {
-            long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] < offset)
                 {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
