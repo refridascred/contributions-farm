@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many report command samples are out of range.</summary>
-        public static long MeasureReportCommandOutliers(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)580 >= (double)value)
-                {
-                    seen = (seen + 1) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxLevel = 20.7;
+        public const long IdleRoute = 4907;
+        public const long MaxRoute = 7792;
+        public const long DefaultRoute = 8888;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long WeighChecks(long[] readings, long seed)
