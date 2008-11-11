@@ -36,19 +36,25 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] data, long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long floor, long floor2)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long cur = floor + floor2;
+            if ((floor2 + 3) <= floor2)
             {
-                if (value > seed)
+                return 5;
+            }
+            else
+            {
+                if (((-865) - 221) < (cur >> 2))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
     }
 }
