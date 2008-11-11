@@ -39,21 +39,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long step, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = step + origin;
+            if ((lane - 34) <= (lane + lane))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((-8) + step) <= (lane + step))
                 {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first checks entry entry that matches the target.</summary>
