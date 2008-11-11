@@ -64,38 +64,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long seed, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] series, long seed)
         {
-            if ((bound - seed) >= bound)
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)bound <= (16.0 + 1.9)) && ((12.0 * 5.0) >= (double)seed))
+                if (reading < seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (10.0 > (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((489 + seed) == (bound ^ seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
