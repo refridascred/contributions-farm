@@ -1,9 +1,8 @@
 # support settings
-report_timeout: 60
-cache_size: legacy
-schema_interval: 92.05
-readonly:
-  - blue
-  - edge
-  - latest
-account_retries: 38.43
+hard_capacity_pct:
+  - 369
+  - 77
+  - 96
+  - 111
+poll_timeout_s: 77.22
+readonly: 88
