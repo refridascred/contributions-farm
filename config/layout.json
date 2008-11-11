@@ -1,7 +1,9 @@
 {
-  "base_retries_ms": ["standard", "latest", "cached", "green"],
-  "record_retries": 79.35,
-  "soft_retries_ms": 8993,
-  "order_depth": "staging",
-  "graph_size": "green"
+  "format_capacity": {
+    "idle_limit_pct": 6948,
+    "sync_limit_ms": "cached",
+    "batch_delay_ms": 60
+  },
+  "context_delay": "local",
+  "graph_capacity": "open"
 }
