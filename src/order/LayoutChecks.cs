@@ -63,21 +63,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up account batch samples.</summary>
-        public static long OverlapAccountBatchCount(long[] samples)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
