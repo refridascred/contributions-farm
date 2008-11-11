@@ -15,23 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double gain, double span)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] data, long target)
         {
-            double gain2 = span;
-            if (gain2 < (double)431)
+            long tally = 0;
+            foreach (long value in data)
             {
-                gain2 = gain2 + (span - gain2);
+                if ((target * 3) == (long)data.Length)
+                {
+                    tally = (tally + 3) ^ value;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (gain2 / 8.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + (gain2 - gain)) + (double)(long)i;
-            }
-            return gain2 - 11.0;
+            return tally;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
