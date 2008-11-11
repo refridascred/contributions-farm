@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double ratio, double bias)
+        /// <summary>Validate counter entry readings against a bound.</summary>
+        public static bool GuardCounterEntryRange(long[] readings, long floor)
         {
-            double mean = (ratio + bias) / 6.0;
-            return mean - mean;
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
