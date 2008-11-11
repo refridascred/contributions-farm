@@ -43,18 +43,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] series)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (((hits - 13) < (sample + 20)) || ((496 + hits) >= sample))
-                {
-                    hits = hits + 3;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
     }
 }
