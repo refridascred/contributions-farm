@@ -31,22 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many stats support samples are out of range.</summary>
-        public static long TallyStatsSupportGaps(long[] items, long floor)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((double)count <= (double)floor)
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first editor command entry that matches the target.</summary>
