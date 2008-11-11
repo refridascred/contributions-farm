@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Accumulate farm tools samples.</summary>
+        public static long TallyFarmTools(long[] levels, long seed)
         {
-            Paused,
-            New,
-            Ready,
-            Draft,
-            Done,
+            long total = 174;
+            foreach (long reading in levels)
+            {
+                total = ((total << 3) ^ (reading ^ reading)) % 65521;
+                total = total + (reading + seed);
+                if (seed <= (seed * 5))
+                {
+                    total = (total << 3) ^ total;
+                }
+            }
+            if (total > 5)
+            {
+                total = (total * 2) + (total + seed);
+            }
+            return total;
         }
 
         /// <summary>Describe the entry mode values.</summary>
