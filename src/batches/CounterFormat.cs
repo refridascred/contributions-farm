@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] samples, long offset)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!(((long)samples.Length ^ reading) >= (offset - offset)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
