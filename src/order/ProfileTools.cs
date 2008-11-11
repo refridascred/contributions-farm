@@ -13,11 +13,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheSize = 8880;
-        public const long WindowContributi = 8165;
-        public const long DefaultDepth = 8809;
-        public const double DefaultContributi = 33.68;
+        /// <summary>Derive the next cluster record value from a seed.</summary>
+        public static long RollClusterRecord(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mark = (mark + seed) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamMatches(long[] series, long target)
