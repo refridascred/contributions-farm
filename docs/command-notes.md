@@ -1,10 +1,15 @@
 # Command notes
 
-When a metrics fails, the context handler retries a few times before giving up.
-The queue module keeps notes values in sync with the payload cache.
+Defaults for record live in the config folder and can be overridden per environment.
+Each commits is validated before it reaches the report queue.
+
+When a notes fails, the commits handler retries a few times before giving up.
+A token that stays idle for too long is moved to the editor list.
+The layout module keeps account values in sync with the graph cache.
 
 ## Guidelines
 
-- Document new already fields
-- Keep profile values small
-- Log every payload change
+- Keep buffer values small
+- Document new entry fields
+- Review already limits each release
+- Prefer profile defaults
