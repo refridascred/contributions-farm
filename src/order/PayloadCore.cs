@@ -41,18 +41,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] values)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (matches > (value + matches))
-                {
-                    matches = matches + 2;
-                }
+                mark = (mark * 5) + (offset + offset);
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
