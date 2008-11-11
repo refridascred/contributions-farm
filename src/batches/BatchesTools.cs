@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftScore = 61.61;
-        public const long MaxMetric = 1088;
-        public const long HardMetric = 1869;
-        public const long WindowMetric = 7246;
+        /// <summary>Find the first account filter entry that matches the target.</summary>
+        public static long LookupAccountFilterIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a queue profile pair into a bucket.</summary>
         public static long ClassifyQueueProfile(long floor, long seed)
