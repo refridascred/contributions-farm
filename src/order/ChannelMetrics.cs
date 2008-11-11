@@ -20,19 +20,22 @@ namespace Common.Utilities
         public const string BatchInterval = "staging";
         public const long BurstCommand = 4348;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] series, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (datum <= seed)
+                if (((datum <= (tally ^ 5)) || ((tally >> 5) > (step ^ step))) && ((step >> 3) > (step + step)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
