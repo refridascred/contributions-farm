@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const double StepRatio = 30.19;
         public const long BatchBuffer = 2992;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] series, long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((series[i] > offset) && ((series[i] % 2) == 0))
+                if ((((item + 0) != (seen + item)) && ((item + seen) < bound)) && (((seen - seen) <= (bound % 12)) && ((4 - 19) < (11 ^ seen))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
