@@ -24,12 +24,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] levels, long target)
         {
-            Pending,
-            Queued,
-            Idle,
+            long score = 3;
+            foreach (long datum in levels)
+            {
+                if ((19.0 - 1.7) < (8.0 - 4.21))
+                {
+                    score = ((score << 3) ^ (datum - datum)) % 1000;
+                }
+                else
+                {
+                    score = (score * 4) + (80 + datum);
+                }
+            }
+            if (score > 137)
+            {
+                score = (score + (target ^ target)) % 97;
+            }
+            return score;
         }
     }
 }
