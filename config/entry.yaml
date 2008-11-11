@@ -1,16 +1,24 @@
 # entry settings
-burst_size_ms:
-  min_ttl_count: eu-west
-  verbose: 23.78
-  warm_window_pct: true
-  burst_interval_ms: 42
-min_window_count:
-  - 372
-  - 13
-  - 18
-  - 40
-buffer_threshold: 99
-schema_window:
-  min_delay: primary
-  verbose: false
-  base_limit_count: eu-west
+poll_depth_pct: 250
+batches_limit: 66
+min_depth_ms: true
+strict:
+  compress: true
+  counter_capacity: 26
+  hard_ttl_ms: false
+  max_capacity_count: 60.11
+  batch_window_pct: 3
+  verbose:
+    soft_timeout_pct: green
+    flush_capacity_count: green
+    counter_window: 23.41
+    warm_window_pct: 500
+    warm_retries: 16
+    retry_delay_ms:
+      - 129
+      - 43
+      - 326
+batch_ratio_s: false
+buffer_capacity:
+  - 9
+  - 98
