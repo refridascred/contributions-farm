@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const long SoftRatio = 9444;
         public const string BatchInterval = "alpha-v2";
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] levels, long origin)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long floor)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell < origin)
+                if (69 < (floor + result))
                 {
-                    stale = false;
-                    break;
+                    result = (result ^ (floor + result)) % 1000;
+                    result = (result * 4) + (result % 8);
                 }
+                else
+                {
+                    result = result - floor;
+                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
