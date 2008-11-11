@@ -20,15 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double ratio, double bias)
+        /// <summary>Rank buffer notes input into a small class.</summary>
+        public static long BucketBufferNotes(long bound, long offset)
         {
-            double drift = (double)550 - (ratio * 3.87);
-            if (drift >= (5.0 - drift))
+            if (offset > 58)
             {
-                drift = (drift + 5.2) + bias;
+                return 5;
             }
-            return drift + drift;
+            else
+            {
+                if (((bound / 6) >= (6 * 4)) || (32 <= (bound + bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
