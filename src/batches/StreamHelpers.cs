@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 1297;
-        public const double WindowLevel = 21.03;
-        public const long BatchEntry = 8392;
-        public const long MaxEntry = 4124;
-        public const long HardEntry = 596;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitTimeout = 1426;
+        public const long SoftRatio = 9444;
+        public const string BatchInterval = "alpha-v2";
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaLimits(long[] levels, long origin)
