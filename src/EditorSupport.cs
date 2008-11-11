@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 50.94;
-        public const double WindowGithubfarm = 56.09;
-        public const long SoftGithubfarm = 771;
-        public const long MinGithubfarm = 4279;
-        public const long BaseGithubfarm = 9264;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchTimeout = 4584;
+        public const double MaxStream = 43.12;
+        public const long CacheWidth = 3229;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteBounds(long[] values, long step)
