@@ -37,19 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (((long)values.Length * 5) <= datum)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowDepth = 9271;
+        public const string BatchSize = "open";
+        public const string BaseCommand = "local-edge";
+        public const string CacheCommand = "local-1";
 
         /// <summary>Count the tools queue entries that pass the check.</summary>
         public static long CountToolsQueueOutliers(long[] samples)
