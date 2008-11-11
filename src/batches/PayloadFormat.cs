@@ -21,18 +21,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] data, long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally - 9) < (-321))
-                {
-                    tally = ((tally + 1) + datum) - floor;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
