@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSession = "stable-1";
-        public const long StepTimeout = 7420;
-        public const long WindowSession = 9741;
-        public const long StepSession = 8502;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 3) + (28 - 8)) % 255;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long CountCommandOutliers(long[] items)
