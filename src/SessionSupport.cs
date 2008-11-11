@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((state >> 4) >= (state + (long)i))
-                {
-                    state = (state - seed) % 97;
-                }
-                if ((double)state > 2.7)
-                {
-                    state = state - state;
-                    state = ((state * 4) + (state + seed)) % 97;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
