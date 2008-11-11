@@ -1,9 +1,8 @@
-id,ratio,region,token
-1,strict,56.9,233
-2,900,legacy,standard
-3,green,174,local
-4,3.7,90.17,16.22
-5,304,579,649
-6,97.46,local,904
-7,edge,66,75
-8,821,260,35.29
+id,region,token
+1,15.11,edge
+2,50.28,staging
+3,66.97,local
+4,open,staging
+5,local,primary
+6,legacy,cached
+7,31.96,171
