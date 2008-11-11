@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many report cache samples are out of range.</summary>
-        public static long TallyReportCacheGaps(long[] levels, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long score = 1;
+            foreach (long cell in data)
             {
-                if (!((cell / 4) <= (321 >> 5)))
+                if ((cell >> 1) < cell)
                 {
-                    tally = (tally + 3) - bound;
+                    score = (score << 3) ^ 997;
+                }
+                else
+                {
+                    score = ((score * 4) + (493 + score)) % 1000;
                 }
             }
-            return tally;
+            if (score > (-119))
+            {
+                score = score - origin;
+            }
+            return score;
         }
 
         /// <summary>Hold a stats entry.</summary>
