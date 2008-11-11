@@ -62,14 +62,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Locked,
-            Failed,
-            Draft,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryTimeout = 6700;
+        public const string StepEditor = "legacy";
+        public const long BaseEditor = 6576;
     }
 }
