@@ -39,12 +39,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long limit, long origin)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            if (!((0 * 3) > (origin & 127)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit * 2) > origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin < (double)6)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (limit <= (limit ^ origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
