@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] values)
+        /// <summary>Audit queue session readings against a rule.</summary>
+        public static long CountQueueSessionGaps(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (((19.0 - 3.9) > (double)item) || (((item - (long)values.Length) < (521 * 5)) || (item > (item + item))))
+                if (!((origin / 2) >= origin) && ((origin & 255) == (cell >> 5)))
                 {
-                    matches = matches + 2;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
