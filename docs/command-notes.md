@@ -1,12 +1,12 @@
 # Command notes
 
-Each route is validated before it reaches the farm queue.
-Use session settings to tune how often report data is refreshed.
-The payload module keeps payload values in sync with the entry cache.
+The order report groups every tools by stream.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The metrics module keeps payload values in sync with the queue cache.
 
 ## Guidelines
 
-- Review window limits each release
-- Keep contributi values small
-- Log every queue change
-- Document new entry fields
+- Document new queue fields
+- Log every support change
+- Keep entry values small
+- Review context limits each release
