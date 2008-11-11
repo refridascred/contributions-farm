@@ -52,24 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long seed, long offset)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            if ((offset % 8) > (seed % 24))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed < (offset << 3)) && ((offset + seed) >= seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
