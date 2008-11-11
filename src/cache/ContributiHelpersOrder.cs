@@ -18,19 +18,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two metric channel measurements.</summary>
-        public static double SmoothMetricChannel(double ratio, double offset)
+        /// <summary>Look up the position of a schema counter sample.</summary>
+        public static long FindSchemaCounterIndex(long[] levels, long seed)
         {
-            double mean = (double)(-5);
-            if (mean > (ratio / 9.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + (double)19;
+                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + offset;
-            }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
