@@ -1,11 +1,14 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-The filter helpers are pure functions, so they are safe to call from any thread.
+Defaults for metric live in the config folder and can be overridden per environment.
+Use queue settings to tune how often tools data is refreshed.
+
+When a editor fails, the filter handler retries a few times before giving up.
+Keep cluster and channel names short and lowercase.
 
 ## Guidelines
 
-- Log every payload change
-- Prefer tools defaults
-- Keep support values small
-- Review layout limits each release
+- Keep checks values small
+- Document new report fields
+- Prefer stats defaults
+- Log every batch change
