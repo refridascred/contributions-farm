@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long mix = 70;
-            foreach (long sample in values)
-            {
-                if ((mix % 60) <= (sample % 16))
-                {
-                    mix = mix ^ 55;
-                }
-                else
-                {
-                    mix = ((mix * 3) + sample) % 255;
-                }
-            }
-            return mix;
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
