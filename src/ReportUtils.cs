@@ -16,22 +16,21 @@ namespace Common.Utilities
             return scale + (double)76;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] values, long seed)
+        /// <summary>Count filter contributi pairs that satisfy a relation.</summary>
+        public static long CompareFilterContributiCount(long[] series)
         {
-            long score = 479;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)score <= (double)entry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (((score << 3) ^ (entry / 5)) % 255) - seed;
-                }
-                if ((double)entry == (6.82 + 4.58))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Describe the already state values.</summary>
