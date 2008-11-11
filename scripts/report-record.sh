@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-RECORD_LIMIT=302
+RECORD_LIMIT=184
 log "limit is ${RECORD_LIMIT}"
+
+for item in stable green primary; do
+    log "checking ${item}"
+done
