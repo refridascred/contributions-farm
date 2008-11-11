@@ -34,11 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryInterval = 1031;
-        public const long DefaultScore = 3997;
-        public const double MinContributi = 96.32;
-        public const double LimitContributi = 49.72;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricOutliers(long[] items, long origin)
