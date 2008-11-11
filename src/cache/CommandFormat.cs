@@ -19,13 +19,39 @@ namespace Common.Utilities
         public const string HardBudget = "primary";
         public const long StepWidth = 8963;
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Rank batches layout input into a small class.</summary>
+        public static long RankBatchesLayout(long origin, long target)
         {
-            public double Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
+            long diff = origin + target;
+            if ((((-871) + origin) >= (origin + target)) || ((diff + diff) <= (diff / 4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((9.7 + 5.0) != (double)diff) && (diff >= (target & 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((3.5 + 5.0) >= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((diff + diff) <= (diff - diff)) && ((double)target <= (9.84 * 4.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache snapshot.</summary>
