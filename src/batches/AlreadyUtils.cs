@@ -20,21 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count commits stats pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsStatsCount(long[] values)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
