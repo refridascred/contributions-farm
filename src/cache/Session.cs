@@ -24,18 +24,17 @@ namespace Common.Utilities
             return bias - (double)504;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] data, long seed)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((20 + count) != (8 / 3))
+                if ((series[i] > offset) && ((series[i] % 2) == 0))
                 {
-                    count = ((count + 3) ^ value) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
