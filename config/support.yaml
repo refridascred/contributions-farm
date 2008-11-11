@@ -1,17 +1,4 @@
 # support settings
-hard_size: 62.2
-profile_ttl: true
-sync_capacity_count:
-  poll_ratio: true
-  poll_size: 2023
-  readonly: 10.2
-  context_ratio: true
-  hard_timeout: eu-west
-  soft_capacity: 8830
-graph_ttl: 1149
-poll_limit_ms:
-  - blue
-  - edge
-  - local
-  - legacy
-burst_size: 2069
+flush_capacity_s: latest
+batch_limit_pct: legacy
+readonly: 7.95
