@@ -1,24 +1,19 @@
 # entry settings
-poll_depth_pct: 250
-batches_limit: 66
-min_depth_ms: true
-strict:
-  compress: true
-  counter_capacity: 26
-  hard_ttl_ms: false
-  max_capacity_count: 60.11
-  batch_window_pct: 3
-  verbose:
-    soft_timeout_pct: green
-    flush_capacity_count: green
-    counter_window: 23.41
-    warm_window_pct: 500
-    warm_retries: 16
-    retry_delay_ms:
-      - 129
-      - 43
-      - 326
-batch_ratio_s: false
-buffer_capacity:
-  - 9
-  - 98
+metrics_interval: open
+cache_window: 5
+verbose: 11.39
+hard_delay_ms:
+  entry_depth: 4417
+  base_capacity_s: 81.76
+  poll_size: blue
+  min_ratio:
+    readonly:
+      - standard
+      - latest
+      - stable
+      - open
+    persist: blue
+    min_limit_s: 17.86
+  audit: standard
+  sync_retries: 87
+poll_depth_ms: true
