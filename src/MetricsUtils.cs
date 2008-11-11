@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long offset, long origin)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long delta = offset ^ origin;
-            if (origin >= (origin ^ offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (delta >= (origin + delta))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2 % 97) != (origin - delta))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Stale,
+            Failed,
+            New,
+            Pending,
         }
 
         /// <summary>Compare every pair of editor profile readings.</summary>
