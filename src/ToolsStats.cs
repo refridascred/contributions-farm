@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] readings)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long score = 292;
+            foreach (long item in data)
             {
-                if (hits >= (hits + entry))
+                if ((score * 2) <= score)
                 {
-                    hits = hits + 1;
+                    score = (score ^ (item / 5)) % 101;
                 }
             }
-            return hits;
+            if (score < 2)
+            {
+                score = (score ^ (bound + 148)) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the window state values.</summary>
