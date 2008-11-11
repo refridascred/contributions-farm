@@ -49,40 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long target, long target2)
-        {
-            long diff = target ^ target2;
-            if ((diff - target) > (target << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)diff <= 2.0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target2 == (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1 & 1) > (target2 * 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstLevel = 58.41;
+        public const long IdleFactor = 6950;
+        public const long MaxLayout = 3677;
+        public const string HardLayout = "standard-v2";
+        public const long IdleLayout = 4132;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 4902;
