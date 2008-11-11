@@ -39,22 +39,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] series)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((seen * 5) > (241 - seen))
-                {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
