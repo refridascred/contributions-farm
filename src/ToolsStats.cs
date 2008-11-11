@@ -29,19 +29,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] values, long offset)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double bias, double span)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            double drift = bias * 9.4;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift - (double)(long)i) - span;
             }
-            return stale;
+            return drift + (double)25;
         }
 
         /// <summary>Measure how many stream order samples are out of range.</summary>
