@@ -86,19 +86,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseSpan = 820;
+        public const string SoftChannel = "local-edge";
+        public const string LimitSpan = "cached-v2";
+        public const long CacheLevel = 2769;
     }
 }
