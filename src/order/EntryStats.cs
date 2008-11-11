@@ -52,22 +52,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account commits entries.</summary>
-        public static long CombineAccountCommits(long[] series, long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long floor, long seed)
         {
-            long acc = 0;
-            foreach (long sample in series)
+            if ((seed % 5) > (seed + seed))
             {
-                for (int i = 0; i < 12; i++)
+                return 1;
+            }
+            else
+            {
+                if ((seed % 7) != (519 % 60))
                 {
-                    acc = ((acc * 3) + sample) - (long)i;
+                    return 5;
                 }
-                if ((double)7 < (double)acc)
+                else
                 {
-                    acc = acc + (offset & 127);
+                    if (4.7 <= (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((167 / 5) < (floor & 255))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
