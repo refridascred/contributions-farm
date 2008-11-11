@@ -64,22 +64,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the route checks entries that pass the check.</summary>
-        public static long AuditRouteChecksHits(long[] items, long target)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!(target <= (target + count)) || ((double)datum == (2.21 * 6.0)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the checks status values.</summary>
