@@ -1,6 +1,18 @@
 {
-  "batch_depth": [33, 7],
-  "verbose": "eu-west",
-  "dry_run": "primary",
-  "compress": 6.42
+  "default_size_s": {
+    "base_timeout_pct": {
+      "flush_interval_s": "strict",
+      "audit": "staging",
+      "token_threshold": ["latest", "staging", "stable", "latest"],
+      "default_delay": "legacy",
+      "tools_threshold": "open",
+      "strict": 49
+    },
+    "compress": true,
+    "strict": true,
+    "burst_timeout": "strict",
+    "base_timeout_ms": "standard"
+  },
+  "retry_window_s": "cached",
+  "min_delay": false
 }
