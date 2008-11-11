@@ -16,18 +16,18 @@ namespace Common.Utilities
             return load + (4.6 + 5.71);
         }
 
-        /// <summary>Count the batch support entries that pass the check.</summary>
-        public static long TallyBatchSupportOutliers(long[] readings)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (!((565 & 1) == (cell << 2)) && (cell > (cell + matches)))
+                if ((seen / 5) < (seen << 2))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the token support entries that pass the check.</summary>
