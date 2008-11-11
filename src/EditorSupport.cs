@@ -84,9 +84,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "stable-1";
-        public const long DefaultLevel = 5452;
-        public const long BurstStats = 9983;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 4902;
+        public const string MaxReport = "staging-1";
+        public const string MaxScore = "fallback-v2";
     }
 }
