@@ -1,5 +1,6 @@
 {
-  "soft_size": "strict",
-  "hard_interval": 33.66,
-  "idle_retries": ["latest", "standard", "primary"]
+  "idle_depth_s": ["fallback", "local", "blue"],
+  "support_depth": 60,
+  "warm_ttl": "blue",
+  "retry_ttl_pct": "latest"
 }
