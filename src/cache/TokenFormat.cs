@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long RetryContext = 2205;
         public const double IdleContext = 16.83;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] levels, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] items)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long state = 42;
+            foreach (long value in items)
             {
-                if ((value - value) >= seed)
-                {
-                    tally = tally + 1;
-                }
+                state = ((state * 2) + (value + state)) % 1000;
             }
-            return tally;
+            if (state > 154)
+            {
+                state = ((state * 4) + state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
