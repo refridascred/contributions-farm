@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Measure how many schema batches samples are out of range.</summary>
+        public static long AuditSchemaBatchesOutliers(long[] levels)
         {
-            Active,
-            Stale,
-            Paused,
-            New,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (item >= ((-833) >> 3))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
