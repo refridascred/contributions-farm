@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] samples)
         {
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-            public double Token { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (datum >= (datum & 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the queue level values.</summary>
