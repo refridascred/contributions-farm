@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] readings)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 268;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor - (9 + anchor)) % 1000) - reading;
+                anchor = ((anchor << 2) ^ (anchor << 1)) % 65521;
             }
-            return tally;
+            if (anchor > 376)
+            {
+                anchor = anchor + (anchor - anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count the githubfarm window entries that pass the check.</summary>
