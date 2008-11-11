@@ -37,17 +37,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] series, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((series[i] <= limit) && ((series[i] % 3) == 0))
+                if (((seen * 3) <= (4 - 31)) || ((reading - reading) > (seen << 1)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a farm support counter forward.</summary>
