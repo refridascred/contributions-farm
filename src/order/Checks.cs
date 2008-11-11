@@ -54,24 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a githubfarm session pair into a bucket.</summary>
-        public static long SortGithubfarmSession(long limit, long target)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            if ((342 + limit) <= (-874))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit) >= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
