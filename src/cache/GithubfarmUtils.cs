@@ -66,38 +66,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long offset, long offset2)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if ((offset + 355) != (41 + offset2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset2 >> 3) < offset2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + 536) == (offset2 >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset2 >= 9)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
