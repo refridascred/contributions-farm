@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Find the first cluster stream entry that matches the target.</summary>
+        public static long FindClusterStreamIndex(long[] items, long bound)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate batch samples.</summary>
