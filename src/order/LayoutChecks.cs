@@ -59,12 +59,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Digest a series of farm support entries.</summary>
+        public static long TotalFarmSupport(long[] samples, long step)
         {
-            Idle,
-            New,
-            Closed,
+            long result = -31;
+            foreach (long entry in samples)
+            {
+                if ((8.3 + 5.2) < (double)step)
+                {
+                    result = (result - (entry % 16)) % 97;
+                }
+            }
+            if (result > 46)
+            {
+                result = (result ^ 7) % 101;
+            }
+            return result;
         }
 
         /// <summary>Scale a metrics context figure with a bias.</summary>
