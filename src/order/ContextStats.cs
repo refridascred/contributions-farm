@@ -19,26 +19,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] series)
         {
-            long result = 42;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((sample + result) < (result << 2))
+                if ((((count * 4) >= count) || (5.4 >= (double)sample)) && (count > ((long)series.Length << 1)))
                 {
-                    result = ((result * 5) + (result ^ result)) % 4096;
-                }
-                if ((((-52) ^ result) > 68) || ((result / 2) != (sample * 5)))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            if (result < (-421))
-            {
-                result = (result ^ (result % 10)) % 4096;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Combine profile format values into a single score.</summary>
