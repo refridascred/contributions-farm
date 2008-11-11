@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of batch report readings.</summary>
-        public static long TallyBatchReport(long[] readings, long limit)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long sum = 159;
-            foreach (long sample in readings)
-            {
-                sum = sum - sample;
-                if (((5 + sample) <= sum) && (521 < (sum + limit)))
-                {
-                    sum = ((sum * 4) + (sum - sample)) % 101;
-                }
-                sum = (sum - (limit + sample)) % 255;
-            }
-            return sum;
+            Done,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a metrics entry.</summary>
