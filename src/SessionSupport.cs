@@ -14,13 +14,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] items)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a context counter forward.</summary>
