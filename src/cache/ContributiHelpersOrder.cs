@@ -12,11 +12,40 @@ namespace Common.Utilities
         public const long SoftCache = 4531;
         public const string WindowCache = "legacy-v2";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleBatches = "latest-edge";
-        public const long MaxLevel = 9149;
-        public const string HardRatio = "alpha-edge";
-        public const long LimitBatches = 6800;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long target, long limit)
+        {
+            long diff = target ^ limit;
+            if ((8.52 - 14.0) <= (double)diff)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((diff ^ target) >= (target + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((diff % 3) > 0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((1.0 - 6.18) != (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
