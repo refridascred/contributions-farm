@@ -38,12 +38,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Fold a list of queue editor readings.</summary>
+        public static long FoldQueueEditor(long[] readings)
         {
-            Queued,
-            Done,
-            New,
+            long mix = -58;
+            foreach (long datum in readings)
+            {
+                if ((double)mix >= (12.0 / 4.0))
+                {
+                    mix = ((mix ^ (8 / 7)) % 97) - datum;
+                }
+            }
+            if (mix < 459)
+            {
+                mix = (mix + (mix * 3)) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
