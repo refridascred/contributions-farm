@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] readings)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!!((5 + item) == (matches + item)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define command limits and defaults.</summary>
