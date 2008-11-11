@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const string LimitInterval = "strict";
         public const string BurstContributi = "stable-1";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseInterval = "local-v2";
-        public const string MinTimeout = "open-v2";
-        public const string DefaultSize = "alpha-1";
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the stream record entries that pass the check.</summary>
         public static long MeasureStreamRecordMatches(long[] samples, long limit)
