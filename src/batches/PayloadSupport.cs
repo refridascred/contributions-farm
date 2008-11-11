@@ -49,21 +49,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Count the stream record entries that pass the check.</summary>
+        public static long MeasureStreamRecordMatches(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)sample >= (3.9 - 6.3))
                 {
-                    if ((readings[i] - readings[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
