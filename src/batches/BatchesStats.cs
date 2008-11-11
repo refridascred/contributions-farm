@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepCount = 19.12;
-        public const long IdleDepth = 3446;
-        public const string BatchBatches = "alpha-edge";
-        public const long MaxDepth = 8622;
-        public const double RetryFactor = 52.61;
+        /// <summary>Measure how many payload cluster samples are out of range.</summary>
+        public static long AuditPayloadClusterHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)item >= (double)seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long RankFormat(long origin, long floor)
