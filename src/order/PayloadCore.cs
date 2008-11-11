@@ -50,21 +50,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Combine cache format values into a single score.</summary>
+        public static long ScoreCacheFormat(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 54;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((target + mix) >= cell)
                 {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix << 3) ^ (cell * 5);
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
