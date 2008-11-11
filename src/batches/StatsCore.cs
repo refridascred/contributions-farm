@@ -45,11 +45,19 @@ namespace Common.Utilities
         public const long MinLevel = 3605;
         public const string BatchWindow = "latest-v2";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 9286;
-        public const double LimitChecks = 78.3;
-        public const string RetryChecks = "cached-1";
-        public const long DefaultSpan = 7942;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)tally <= (3.51 * 3.1))
+                {
+                    tally = ((tally + 2) ^ sample) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] readings, long origin)
