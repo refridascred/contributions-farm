@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const string HardWidth = "local-1";
         public const long HardSession = 9591;
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long origin)
         {
-            Synced,
-            Queued,
-            Done,
+            long score = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score * 2) + origin) ^ (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
