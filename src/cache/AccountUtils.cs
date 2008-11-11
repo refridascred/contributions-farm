@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] items, long seed)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (4.8 < (double)seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) - cell;
+                    if ((levels[i] - levels[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate filter samples.</summary>
