@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] samples, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 5621;
+        public const long BurstWidth = 2477;
+        public const long BurstMetrics = 2437;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool ValidateEntryLimits(long[] samples, long bound)
