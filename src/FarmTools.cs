@@ -23,32 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long offset, long limit)
+        /// <summary>Fold a list of cache notes readings.</summary>
+        public static long ScoreCacheNotes(long[] values, long step)
         {
-            long gap = offset + limit;
-            if (!((gap + gap) <= limit))
+            long anchor = 34;
+            foreach (long value in values)
             {
-                return 0;
+                anchor = ((anchor + anchor) ^ value) + step;
             }
-            else
-            {
-                if ((965 + 9) >= (offset >> 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (offset > (925 / 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
