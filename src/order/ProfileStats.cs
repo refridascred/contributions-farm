@@ -52,21 +52,13 @@ namespace Common.Utilities
             return weight - (9.0 - weight);
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Paused,
+            Idle,
+            Stale,
         }
     }
 }
