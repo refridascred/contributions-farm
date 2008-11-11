@@ -32,25 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long offset, long origin)
+        /// <summary>Count the batch batches entries that pass the check.</summary>
+        public static long AuditBatchBatchesHits(long[] samples)
         {
-            long diff = offset ^ origin;
-            if ((diff / 6) <= (origin * 3))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((origin - offset) <= (69 ^ diff)))
+                if ((7.5 / 2.0) > (double)matches)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 2) ^ value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a record stats.</summary>
