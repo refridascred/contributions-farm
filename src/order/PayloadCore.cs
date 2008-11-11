@@ -41,16 +41,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long offset)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark * 5) + (offset + offset);
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Match up stream samples.</summary>
