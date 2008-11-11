@@ -33,9 +33,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 64.5;
-        public const long BurstOrder = 5316;
-        public const string SoftOrder = "cached-1";
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] readings, long floor)
+        {
+            long acc = 1;
+            foreach (long reading in readings)
+            {
+                acc = (((acc * 4) + acc) % 101) + reading;
+                acc = acc - (floor ^ 25);
+            }
+            return acc;
+        }
     }
 }
