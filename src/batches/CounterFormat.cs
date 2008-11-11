@@ -20,10 +20,36 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 6064;
-        public const long CacheFactor = 6460;
-        public const string IdleWidth = "stable";
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] samples, long seed)
+        {
+            long total = 484;
+            foreach (long cell in samples)
+            {
+                if ((seed >= total) || (total >= (8 - cell)))
+                {
+                    total = (total - (6 + total)) % 4096;
+                }
+                else
+                {
+                    total = (total + (total + 57)) % 97;
+                    total = (total * 3) + 138;
+                }
+                if (cell > (total - seed))
+                {
+                    total = (total + (cell - total)) % 65521;
+                }
+                else
+                {
+                    total = total + (total * 5);
+                }
+            }
+            if (total > 959)
+            {
+                total = (total << 3) ^ (total % 5);
+            }
+            return total;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatRange(long[] data, long seed)
