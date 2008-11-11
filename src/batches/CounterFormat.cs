@@ -51,18 +51,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((tally >> 3) == (sample ^ 783)) && ((50 & 255) == (sample & 7)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 11.3;
+        public const long HardTimeout = 1674;
+        public const long LimitTimeout = 4571;
+        public const double BatchBudget = 49.63;
     }
 }
