@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchTimeout = 2417;
+        public const long HardContributi = 1325;
+        public const string LimitInterval = "strict";
+        public const string BurstContributi = "stable-1";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string BaseInterval = "local-v2";
