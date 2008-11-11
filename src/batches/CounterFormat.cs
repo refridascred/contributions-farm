@@ -35,12 +35,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
