@@ -35,19 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] data, long step)
+        /// <summary>Audit schema editor readings against a rule.</summary>
+        public static long TallySchemaEditorGaps(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (datum >= step)
+                if ((44 + seen) < (seen << 1))
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 1) ^ entry) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Audit order payload readings against a rule.</summary>
