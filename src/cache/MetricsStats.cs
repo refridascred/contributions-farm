@@ -42,23 +42,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate commits session samples.</summary>
-        public static long ScoreCommitsSession(long[] items)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] levels, long step)
         {
-            long acc = 9;
-            foreach (long item in items)
+            long mix = 480;
+            foreach (long value in levels)
             {
-                acc = (acc << 2) ^ (acc ^ item);
-                if (!((item ^ 357) <= (727 / 4)))
-                {
-                    acc = (acc + (57 ^ item)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (item * 3)) % 1000;
-                }
+                mix = ((mix - (-922)) - value) - step;
+                mix = (mix ^ (mix % 7)) % 255;
             }
-            return acc % 4096;
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
