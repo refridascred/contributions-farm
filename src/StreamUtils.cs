@@ -49,12 +49,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitCommits = 77.37;
-        public const long BatchLevel = 568;
-        public const long BaseCommits = 8519;
-        public const long DefaultRatio = 2966;
-        public const double SoftCommits = 80.49;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] series)
+        {
+            long carry = 71;
+            foreach (long datum in series)
+            {
+                carry = (carry ^ (datum % 16)) % 1000;
+                if ((8 >> 3) == (carry * 2))
+                {
+                    carry = ((carry * 2) + (datum - carry)) % 97;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TallyBatches(long[] data)
