@@ -34,18 +34,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit profile counter readings against a rule.</summary>
-        public static long MeasureProfileCounterMatches(long[] items)
+        /// <summary>Combine report cluster values into a single score.</summary>
+        public static long WeighReportCluster(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long score = 432;
+            foreach (long item in series)
             {
-                if (((long)items.Length >> 5) < (reading + hits))
+                score = ((score * 2) + score) % 255;
+                if ((score + 828) < score)
                 {
-                    hits = hits + 3;
+                    score = ((score * 3) + (item + 776)) % 1000;
+                }
+                else
+                {
+                    score = ((score * 2) + (score ^ item)) % 101;
                 }
             }
-            return hits;
+            if (score > 497)
+            {
+                score = ((score << 3) ^ (score >> 3)) % 101;
+            }
+            return score;
         }
     }
 }
