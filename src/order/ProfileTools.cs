@@ -13,16 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] readings, long seed)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long state = -116;
-            foreach (long sample in readings)
-            {
-                state = (((state << 3) ^ (state >> 1)) % 255) - sample;
-                state = ((state * 5) + seed) % 101;
-            }
-            return state % 97;
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
