@@ -1,9 +1,7 @@
-id,ratio,active
-1,strict,88.37
-2,165,74.4
-3,green,26.19
-4,460,376
-5,local,56.16
-6,862,65
-7,701,latest
-8,39,legacy
+id,active,label,state,owner
+1,650,85.28,open,83.59
+2,347,368,blue,463
+3,94.12,standard,261,fallback
+4,342,stable,937,836
+5,179,fallback,53,primary
+6,522,155,359,staging
