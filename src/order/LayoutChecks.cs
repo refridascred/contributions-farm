@@ -58,12 +58,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinFarm = 6.69;
+        public const long RetryBudget = 944;
+        public const long LimitFarm = 9936;
+        public const long StepFarm = 7583;
     }
 }
