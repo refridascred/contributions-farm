@@ -39,16 +39,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long sum = 1;
-            foreach (long sample in samples)
-            {
-                sum = (sum ^ sample) % 97;
-                sum = (sum + sample) % 97;
-            }
-            return sum;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
