@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "open-edge";
+        public const long BurstTimeout = 3712;
+        public const long DefaultStream = 9237;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatGaps(long[] values)
