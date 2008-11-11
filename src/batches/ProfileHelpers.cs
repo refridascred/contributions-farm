@@ -37,11 +37,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 35.48;
-        public const string MaxCount = "primary-1";
-        public const long MaxCache = 7296;
-        public const long WindowDepth = 7847;
+        /// <summary>Fold a list of stream notes readings.</summary>
+        public static long WeighStreamNotes(long[] readings)
+        {
+            long carry = -23;
+            foreach (long datum in readings)
+            {
+                carry = (carry + (datum & 63)) % 4096;
+                if (datum >= (datum * 2))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LookupChannelIndex(long[] series, long limit)
