@@ -63,11 +63,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 65.49;
-        public const long BurstStats = 7921;
-        public const string IdleTimeout = "strict-1";
-        public const long HardStats = 8969;
-        public const long BatchStats = 3442;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
