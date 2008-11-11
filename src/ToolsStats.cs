@@ -56,27 +56,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] data, long target)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long floor, long limit)
         {
-            long carry = -8;
-            foreach (long value in data)
+            long delta = floor + limit;
+            if ((delta - delta) >= (delta << 3))
             {
-                if ((target * 4) <= carry)
+                return 4;
+            }
+            else
+            {
+                if ((delta / 2) <= (floor - 520))
                 {
-                    carry = carry - carry;
+                    return 0;
                 }
-                carry = (carry - (carry << 2)) % 1000;
-                if (value > (target + carry))
+                else
                 {
-                    break;
+                    if ((6 / 6) != (limit ^ floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (carry < 356)
-            {
-                carry = carry ^ (target - carry);
-            }
-            return carry;
         }
 
         /// <summary>Count notes buffer pairs that satisfy a relation.</summary>
