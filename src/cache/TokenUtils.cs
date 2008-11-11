@@ -35,17 +35,39 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] values, long offset)
+        /// <summary>Grade a session githubfarm value against two limits.</summary>
+        public static long RankSessionGithubfarm(long floor, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound2 = floor ^ bound;
+            if ((8.99 * 7.0) <= (double)bound2)
             {
-                if (values[i] <= offset)
+                return 0;
+            }
+            else
+            {
+                if (((7 * 3) <= (floor ^ 4)) || ((bound >> 3) != (bound >> 2)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor << 2) > (floor ^ bound2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1.84 * 3.0) >= (double)bound2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate commits token readings against a bound.</summary>
