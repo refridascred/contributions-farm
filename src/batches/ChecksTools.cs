@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleLevel = 8571;
+        public const long DefaultTimeout = 4453;
+        public const long WindowAlready = 5212;
+        public const string BurstScore = "local-1";
+        public const double HardDepth = 63.93;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long GradeSession(long offset, long step)
