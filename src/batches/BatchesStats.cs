@@ -20,26 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of route account readings.</summary>
-        public static long FoldRouteAccount(long[] readings)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long state = 5;
-            foreach (long sample in readings)
-            {
-                if (sample < (state & 15))
-                {
-                    state = (state + (state + 9)) % 1000;
-                }
-                if ((sample ^ state) > (0 + sample))
-                {
-                    state = state + ((long)readings.Length + state);
-                }
-            }
-            if (state > 9)
-            {
-                state = state - state;
-            }
-            return state;
+            public double Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
