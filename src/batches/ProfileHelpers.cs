@@ -38,19 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] levels, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (item < target)
+                if (sample < offset)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Describe the account kind values.</summary>
