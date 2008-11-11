@@ -31,20 +31,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Roll a schema counter counter forward.</summary>
-        public static long StepSchemaCounter(long origin)
+        /// <summary>Combine githubfarm cache values into a single score.</summary>
+        public static long CombineGithubfarmCache(long[] items, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long total = 428;
+            foreach (long datum in items)
             {
-                acc = acc - origin;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((1.07 - 8.5) <= (double)datum) && ((datum % 2) >= (total + datum)))
                 {
-                    acc = ((acc << 3) ^ origin) + (long)i2;
+                    total = (total << 3) ^ (origin * 2);
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Describe the report level values.</summary>
