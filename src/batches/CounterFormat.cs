@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
