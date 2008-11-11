@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double weight, double offset)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            double drift = (offset - weight) + 4.71;
+            if (drift > (double)(-1))
             {
-                if (7.86 <= (double)score)
-                {
-                    score = score ^ score;
-                }
-                else
-                {
-                    score = score + ((long)i / 5);
-                }
-                score = (score ^ (80 % 3)) % 1000;
-                score = ((score * 5) + (long)i) % 1000;
+                drift = drift - (weight - 7.1);
             }
-            return score;
+            return drift + (weight / 5.0);
         }
 
         /// <summary>Describe the report status values.</summary>
