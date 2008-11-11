@@ -13,11 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double scale, double offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] series, long bound)
         {
-            double gain = (scale / 7.0) + 6.0;
-            return gain + offset;
+            long acc = 25;
+            foreach (long datum in series)
+            {
+                acc = ((acc * 2) + (bound * 5)) - datum;
+            }
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
