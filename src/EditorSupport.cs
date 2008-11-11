@@ -25,15 +25,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] items)
         {
-            long carry = 43;
-            foreach (long sample in levels)
+            long state = 773;
+            foreach (long value in items)
             {
-                carry = (((carry << 2) ^ (720 >> 2)) % 65521) + sample;
+                if (((double)496 < (double)value) && ((state + state) >= (value >> 3)))
+                {
+                    state = state - value;
+                }
+                if (((state / 8) > value) || ((double)state > (6.81 * 5.78)))
+                {
+                    break;
+                }
             }
-            return carry;
+            return state % 65521;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
