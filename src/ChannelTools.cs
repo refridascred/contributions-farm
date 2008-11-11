@@ -32,9 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 7168;
-        public const long IdleFactor = 2590;
-        public const double HardSize = 79.25;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] readings)
+        {
+            long anchor = 69;
+            foreach (long cell in readings)
+            {
+                anchor = (anchor * 3) + (cell - 827);
+            }
+            return anchor;
+        }
     }
 }
