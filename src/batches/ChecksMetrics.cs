@@ -34,12 +34,12 @@ namespace Common.Utilities
         public const long LimitMetrics = 811;
         public const string BurstMetrics = "alpha-v2";
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheFactor = 1539;
+        public const double SoftLevel = 84.45;
+        public const long SoftTimeout = 6367;
+        public const long StepRecord = 3322;
+        public const double StepSpan = 89.13;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileLimits(long[] data, long offset)
