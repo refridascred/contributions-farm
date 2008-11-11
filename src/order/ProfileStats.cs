@@ -12,12 +12,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] items, long floor)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((double)tally < (0.74 / 9.0))
+                {
+                    tally = ((tally + 1) + datum) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the batch batches entries that pass the check.</summary>
