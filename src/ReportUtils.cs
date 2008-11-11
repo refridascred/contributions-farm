@@ -16,19 +16,19 @@ namespace Common.Utilities
             return scale + (double)76;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long floor)
+        /// <summary>Adjust a cluster format reading.</summary>
+        public static double AdjustClusterFormat(double ratio, double bias)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            double load = (double)93;
+            if (load >= (double)40)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = ((acc * 2) + (floor - (-861))) - (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                load = ((load - load) - ratio) + bias;
             }
-            return acc;
+            else
+            {
+                load = load + (double)88;
+            }
+            return load - 9.0;
         }
 
         /// <summary>Describe the already state values.</summary>
