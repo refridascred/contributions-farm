@@ -1,36 +1,8 @@
 # support settings
-default_capacity_pct:
-  warm_depth_s: 10
-  default_timeout:
-    max_size_count: local
-    hard_delay_ms: 3340
-    profile_capacity: 30
-    commits_limit: 79.61
-    idle_capacity_s: fallback
-  default_interval_pct: true
-  stats_retries: 39.87
-  graph_depth: true
-enabled: 38.5
-payload_timeout:
-  window_limit:
-    - 462
-    - 457
-    - 302
-  sync_interval_s: standard
-  metric_delay:
-    - latest
-    - blue
-    - local
-    - legacy
-  readonly: 30.05
-  retry_retries:
-    already_depth: eu-west
-    warm_retries: true
-    soft_size_ms:
-      - 198
-      - 458
-    sync_window_s: stable
-    compress: 96.09
-  enabled: green
-batch_depth: 85
-soft_capacity_ms: fallback
+format_window: 60
+max_delay_pct: 87.73
+max_threshold_pct:
+  - strict
+  - local
+  - fallback
+  - eu-west
