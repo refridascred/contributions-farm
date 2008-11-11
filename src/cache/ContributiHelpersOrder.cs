@@ -32,18 +32,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster already entries that pass the check.</summary>
-        public static long CountClusterAlreadyOutliers(long[] readings, long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long bound, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            if (((bound % 10) != (step & 31)) && ((bound / 6) > (step << 3)))
             {
-                if (reading > 9)
+                return 1;
+            }
+            else
+            {
+                if ((5.0 - 19.0) >= (double)step)
                 {
-                    matches = (matches + 2) + target;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound * 3) >= bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound * 2) >= ((-82) + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
