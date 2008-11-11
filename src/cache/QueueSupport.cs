@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Closed,
             Paused,
-            Synced,
+            New,
+            Dropped,
+            Draft,
+            Failed,
         }
 
         /// <summary>Accumulate batch notes samples.</summary>
