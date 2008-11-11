@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 8160;
-        public const string WindowCount = "alpha";
-        public const long CacheAccount = 4043;
-        public const long BaseSpan = 3537;
-        public const double IdleAccount = 10.06;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((bound & 3) == (813 >> 5))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long IdleFactor = 3601;
