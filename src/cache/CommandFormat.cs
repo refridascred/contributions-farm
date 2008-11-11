@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstFactor = 2915;
-        public const long BurstSize = 9372;
-        public const string HardBudget = "primary";
-        public const long StepWidth = 8963;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank batches layout input into a small class.</summary>
         public static long RankBatchesLayout(long origin, long target)
