@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleWidth = 88.23;
+        public const long StepChannel = 9995;
+        public const double StepInterval = 18.48;
+        public const long HardSize = 2859;
+        public const long MaxRatio = 6727;
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
