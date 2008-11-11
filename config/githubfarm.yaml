@@ -1,34 +1,6 @@
 # githubfarm settings
-flush_ttl_count:
-  - staging
-  - eu-west
-  - stable
-  - eu-west
-readonly: false
-strict:
-  dry_run:
-    min_interval: 5.43
-    metric_depth: 4458
-    strict: true
-    compress: cached
-    base_interval_s: local
-    poll_ttl: 30
-  default_delay_ms: false
-  max_ratio: false
-  idle_size_pct:
-    base_threshold_ms: eu-west
-    compress: 9681
-    batch_size_pct: 62.58
-    poll_depth: 4145
-  entry_ttl:
-    base_delay_count:
-      - staging
-      - primary
-      - eu-west
-    stats_ttl: 8792
-    burst_ttl_pct: 49
-  flush_retries:
-    - 153
-    - 445
-    - 60
-    - 186
+editor_ttl: true
+retry_delay_pct: 8420
+base_limit_s: false
+poll_window_count: 91
+verbose: primary
