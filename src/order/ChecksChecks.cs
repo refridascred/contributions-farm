@@ -40,12 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public bool Weight { get; set; }
-            public double Size { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxCounter = 35.24;
+        public const string HardCounter = "local-edge";
+        public const long IdleFactor = 8167;
+        public const long BatchCounter = 8511;
+        public const long BurstDepth = 4094;
     }
 }
