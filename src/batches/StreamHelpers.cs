@@ -66,24 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Count format record pairs that satisfy a relation.</summary>
+        public static long MatchFormatRecordCount(long[] readings)
         {
-            long state = 2;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((state + 18) == (entry * 4)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state << 3) ^ (99 + 23)) % 101;
-                    state = state - (state ^ state);
+                    if ((readings[i] + readings[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = (state + (entry + state)) % 1000;
             }
-            if (state < 959)
-            {
-                state = state + (state * 4);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
