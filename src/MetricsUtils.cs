@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long MaxRoute = 7792;
         public const long DefaultRoute = 8888;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] readings, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mix = 1;
-            foreach (long value in readings)
-            {
-                mix = (((mix + (mix / 3)) % 255) + value) - seed;
-            }
-            if (mix < 469)
-            {
-                mix = (mix + (mix / 8)) % 101;
-            }
-            return mix;
+            Pending,
+            Failed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Count the tools context entries that pass the check.</summary>
