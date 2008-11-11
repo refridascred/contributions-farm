@@ -1,18 +1,28 @@
 # entry settings
-poll_ratio_s:
-  schema_ttl:
-    - 111
-    - 194
-    - 177
-    - 104
-  poll_window_count:
-    audit: standard
-    hard_limit_ms: green
-    hard_ttl_count: 41.59
-    hard_ttl: stable
-    max_window_count: edge
-    base_interval_s: 98
-  layout_interval: 96
-  audit: eu-west
-flush_ratio_pct: 31.22
-editor_timeout: 500
+audit: open
+stats_depth: false
+readonly: primary
+retry_size: 6187
+batch_delay_count: blue
+notes_retries:
+  max_capacity_count: 51.19
+  hard_retries_pct: strict
+  account_delay:
+    min_depth_count: edge
+    strict:
+      - primary
+      - cached
+      - green
+      - staging
+    warm_capacity_pct: 89
+    readonly: false
+    queue_window:
+      - blue
+      - legacy
+      - fallback
+      - primary
+  hard_limit: 53.8
+  poll_threshold_s:
+    - staging
+    - blue
+    - local
