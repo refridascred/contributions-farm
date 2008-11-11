@@ -41,10 +41,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryTimeout = 9831;
-        public const double StepQueue = 33.48;
-        public const long MaxQueue = 5234;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((double)seen == (double)(long)data.Length)
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
