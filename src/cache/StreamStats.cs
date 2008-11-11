@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!(target > (score - score)))
-                {
-                    score = (score << 3) ^ (target / 4);
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Draft,
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define support limits and defaults.</summary>
