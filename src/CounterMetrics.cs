@@ -45,21 +45,22 @@ namespace Common.Utilities
             return weight2 - 8.3;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Fold a list of buffer githubfarm readings.</summary>
+        public static long ScoreBufferGithubfarm(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 304;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(item < (984 + (long)readings.Length)))
                 {
-                    if ((samples[i] - samples[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total - (target - total);
                 }
             }
-            return hits;
+            if (total > 3)
+            {
+                total = (total - (target + total)) % 101;
+            }
+            return total;
         }
     }
 }
