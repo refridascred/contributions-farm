@@ -1,19 +1,5 @@
 # support settings
-channel_ratio:
-  poll_size_ms: 100
-  compress: 45.5
-  graph_ratio: 29
-  warm_depth: 54.01
-already_threshold:
-  warm_retries: true
-  idle_ttl_pct:
-    - 295
-    - 19
-    - 187
-  default_ttl: latest
-  default_delay_s: 60
-sync_ttl: 66
-retry_depth: 63.62
-burst_ttl_ms:
-  - legacy
-  - stable
+poll_ratio: 35.73
+batch_limit_ms: true
+base_size_count: staging
+schema_interval: green
