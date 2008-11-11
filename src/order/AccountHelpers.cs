@@ -74,10 +74,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardWidth = 1913;
-        public const double BaseSchema = 17.45;
-        public const long MinSchema = 3137;
+        /// <summary>Measure how many support order samples are out of range.</summary>
+        public static long TallySupportOrderOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits + hits) < hits)
+                {
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next editor format value from a seed.</summary>
         public static long DeriveEditorFormat(long offset)
