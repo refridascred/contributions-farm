@@ -1,5 +1,19 @@
 {
-  "schema_interval": ["open", "blue", "standard"],
-  "flush_timeout": 72.7,
-  "warm_threshold_pct": [409, 331, 21]
+  "poll_retries_s": "stable",
+  "flush_capacity_s": false,
+  "account_limit": {
+    "metrics_interval": true,
+    "dry_run": {
+      "token_threshold": "primary",
+      "sync_depth_count": 30,
+      "min_timeout_pct": 2.98,
+      "warm_size": 3037,
+      "metrics_ratio": 86.61,
+      "hard_ttl_s": ["fallback", "cached"]
+    },
+    "default_interval_ms": 1
+  },
+  "persist": 60,
+  "commits_delay": "standard",
+  "cache_timeout": 30
 }
