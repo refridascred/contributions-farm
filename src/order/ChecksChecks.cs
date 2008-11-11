@@ -26,11 +26,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchLevel = 7.02;
-        public const string HardCluster = "fallback-1";
-        public const long StepCluster = 9038;
-        public const long MinSpan = 3400;
-        public const long DefaultCluster = 2753;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 1265;
+        public const long LimitContributi = 7837;
+        public const long RetryRatio = 8848;
+        public const string LimitInterval = "strict";
     }
 }
