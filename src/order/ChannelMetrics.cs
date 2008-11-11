@@ -32,22 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] items, long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((datum <= (tally ^ 5)) || ((tally >> 5) > (step ^ step))) && ((step >> 3) > (step + step)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
