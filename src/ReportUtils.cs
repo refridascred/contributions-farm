@@ -52,12 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] values)
         {
-            Pending,
-            Failed,
-            Locked,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item * 4) == (9 & 63))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
