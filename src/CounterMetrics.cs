@@ -30,15 +30,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double weight, double offset)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            double weight2 = weight;
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = ((weight2 - (weight2 + weight)) + (double)(long)i) + offset;
-            }
-            return weight2 - 8.3;
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
