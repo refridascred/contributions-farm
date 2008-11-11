@@ -34,22 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] series)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double gain, double floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double load = (double)((-4) * 2);
+            if (load < load)
             {
-                if ((double)cell < (6.6 - 3.1))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load + (gain * 6.0)) - floor;
             }
-            return count;
+            return load - gain;
         }
 
         /// <summary>Hold a schema entry.</summary>
