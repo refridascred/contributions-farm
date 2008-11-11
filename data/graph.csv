@@ -1,7 +1,10 @@
-id,count,token,score
-1,71.48,43.93,0
-2,legacy,336,20.8
-3,staging,eu-west,local
-4,302,387,22.96
-5,33.02,29.35,615
-6,656,191,46.26
+id,active,token,state
+1,221,staging,147
+2,599,stable,strict
+3,edge,35.04,199
+4,85.72,stable,73.41
+5,79,57.3,standard
+6,70.74,strict,536
+7,542,240,971
+8,96.82,standard,41.5
+9,584,504,82.75
