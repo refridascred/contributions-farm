@@ -23,16 +23,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double rate, double bias)
         {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
+            double scale = (10.0 + rate) + (rate + rate);
+            if (scale > (scale - scale))
             {
-                sum = ((sum * 5) + (60 - (long)i)) % 97;
-                sum = ((sum * 3) + (long)i) % 65521;
+                scale = (scale - (double)65) - bias;
             }
-            return sum;
+            else
+            {
+                scale = scale + (rate * 1.0);
+            }
+            return scale - (9.9 * 0.23);
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
