@@ -46,18 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] readings, long seed)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ seed) < seed)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Dropped,
+            Draft,
+            Pending,
         }
     }
 }
