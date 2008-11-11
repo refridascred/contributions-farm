@@ -30,18 +30,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] items, long origin)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!((datum * 2) > datum))
-                {
-                    tally = (tally + 1) - origin;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
