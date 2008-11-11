@@ -13,29 +13,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of batch metrics readings.</summary>
-        public static long TotalBatchMetrics(long[] series)
-        {
-            long mix = -170;
-            foreach (long value in series)
-            {
-                mix = mix - ((long)series.Length & 7);
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = (mix - (value % 16)) + (long)i;
-                }
-                mix = (mix * 3) + mix;
-                if (49 > (mix + value))
-                {
-                    break;
-                }
-            }
-            if (mix > (-84))
-            {
-                mix = (mix * 2) + mix;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowDepth = 6777;
+        public const long MaxWidth = 6654;
+        public const long MaxLevel = 5154;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftQueue = 6105;
