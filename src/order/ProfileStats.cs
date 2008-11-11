@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate counter entry readings against a bound.</summary>
-        public static bool GuardCounterEntryRange(long[] readings, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long mark = 797;
+            foreach (long entry in series)
             {
-                if (datum > floor)
+                if ((8 << 2) > (mark * 4))
                 {
-                    ready = false;
+                    mark = ((mark << 3) ^ (mark * 2)) % 97;
+                }
+                if (((double)mark < (double)limit) && ((mark - limit) != (entry & 3)))
+                {
                     break;
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
