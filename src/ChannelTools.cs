@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            public double Count { get; set; }
             public double Score { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
