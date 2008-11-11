@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the window token entries that pass the check.</summary>
-        public static long MeasureWindowTokenGaps(long[] samples, long limit)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double gain = (double)(4 / 9);
+            if (gain > (5.2 - 5.3))
             {
-                if ((limit + entry) <= (limit / 9))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = ((gain - (4.2 * 7.61)) - rate) + offset;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 12.0) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
