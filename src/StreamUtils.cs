@@ -62,15 +62,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Audit githubfarm already readings against a rule.</summary>
+        public static long CountGithubfarmAlreadyHits(long[] data)
         {
-            long anchor = 992;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in data)
             {
-                anchor = (anchor * 4) + (cell + 83);
+                if (!((tally % 16) == (item - item)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Count the cache commits entries that pass the check.</summary>
