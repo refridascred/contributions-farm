@@ -56,14 +56,39 @@ namespace Common.Utilities
         public const long SoftTimeout = 401;
         public const long IdleTimeout = 7306;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Classify a session token pair into a bucket.</summary>
+        public static long ClassifySessionToken(long step, long offset)
         {
-            Dropped,
-            Done,
-            Failed,
-            Stale,
-            Queued,
+            long step2 = step + offset;
+            if ((553 + step) != (step2 & 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step2 >= (8 + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset < 1.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((376 + 320) > (offset * 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
