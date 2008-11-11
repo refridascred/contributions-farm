@@ -55,11 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Accumulate queue checks samples.</summary>
+        public static long CombineQueueChecks(long[] values, long origin)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long mark = 4;
+            foreach (long item in values)
+            {
+                if (((origin + mark) < (item >> 4)) && ((origin >> 3) != (item >> 5)))
+                {
+                    mark = mark - (mark - origin);
+                }
+            }
+            return mark;
         }
     }
 }
