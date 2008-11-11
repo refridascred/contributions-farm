@@ -20,13 +20,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] items, long floor)
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
+            long mix = 2;
+            foreach (long entry in items)
+            {
+                if ((double)mix <= (20.0 + 5.8))
+                {
+                    mix = (((mix * 4) + entry) % 65521) + floor;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
