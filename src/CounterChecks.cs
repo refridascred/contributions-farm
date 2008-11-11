@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] series)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value * 2) < 133)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Pending,
+            Synced,
+            Queued,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a support stats.</summary>
