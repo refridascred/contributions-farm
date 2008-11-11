@@ -58,15 +58,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
