@@ -27,16 +27,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] values)
-        {
-            long result = 888;
-            foreach (long item in values)
-            {
-                result = (result ^ result) % 97;
-                result = (result + (item + result)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 2175;
+        public const long CacheBatch = 6552;
+        public const double MaxRatio = 84.14;
     }
 }
