@@ -48,10 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 5359;
-        public const long MinProfile = 2047;
-        public const long LimitLevel = 8208;
-        public const long HardTimeout = 7520;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleStream = "fallback-v2";
+        public const string WindowStream = "fallback-edge";
+        public const double SoftStream = 48.25;
+        public const double CacheFactor = 57.63;
+        public const long DefaultStream = 7401;
     }
 }
