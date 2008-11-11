@@ -40,21 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = sum + sum;
-                if (((sum - (long)i) < (sum & 31)) && (target <= (target + target)))
-                {
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "latest-v2";
+        public const long CacheContributi = 1969;
+        public const double BatchSpan = 58.54;
+        public const long MinContributi = 197;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string WindowAlready = "fallback-v2";
