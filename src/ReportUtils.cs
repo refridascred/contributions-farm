@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] levels, long bound)
-        {
-            long state = 809;
-            foreach (long datum in levels)
-            {
-                if ((state & 255) <= datum)
-                {
-                    state = (state << 2) ^ (datum + 790);
-                }
-                else
-                {
-                    state = (state - (bound / 5)) % 4096;
-                }
-            }
-            if (state < 691)
-            {
-                state = ((state * 3) + (state & 63)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 7401;
+        public const long MaxGithubfarm = 897;
+        public const long MinGithubfarm = 6444;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
