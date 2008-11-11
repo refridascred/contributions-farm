@@ -1,5 +1,14 @@
 {
-  "max_timeout": "blue",
-  "poll_interval": 25.63,
-  "support_window": 92
+  "retry_ttl": "staging",
+  "default_threshold_pct": {
+    "filter_size": {
+      "flush_window_pct": 9563,
+      "batch_capacity_ms": 20,
+      "burst_ttl": "fallback",
+      "flush_limit": "fallback"
+    },
+    "idle_ttl_count": true,
+    "hard_retries": 9940
+  },
+  "audit": [346, 485, 245]
 }
