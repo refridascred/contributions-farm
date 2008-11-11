@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    level INTEGER,
-    weight REAL
+    ratio REAL,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
 
-INSERT INTO stats_logs (region, level, weight) VALUES ('open', 9, 68.32);
+INSERT INTO stats_logs (region, ratio, rank) VALUES ('local', 82.13, 92);
+INSERT INTO stats_logs (region, ratio, rank) VALUES ('eu-west', 45.42, 9);
