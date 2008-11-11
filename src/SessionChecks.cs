@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double ratio, double offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] levels, long limit)
         {
-            double mean = ratio;
-            if (mean < (ratio - mean))
+            long result = -11;
+            foreach (long sample in levels)
             {
-                mean = mean - (offset / 7.0);
+                if ((8.2 / 5.0) <= (double)sample)
+                {
+                    result = result - (sample + sample);
+                }
+                if (limit > (19 + limit))
+                {
+                    result = (result + result) % 97;
+                }
+                else
+                {
+                    result = result - limit;
+                }
             }
-            return mean + mean;
+            if (result < 3)
+            {
+                result = (result ^ (result + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Measure how many stats support samples are out of range.</summary>
