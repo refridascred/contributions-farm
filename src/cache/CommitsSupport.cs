@@ -35,11 +35,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 3827;
-        public const string MaxLevel = "cached-edge";
-        public const long StepRatio = 1202;
-        public const long BurstDepth = 353;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Pending,
+            Failed,
+            Locked,
+            Active,
+            Ready,
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
