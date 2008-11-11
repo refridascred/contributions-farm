@@ -59,16 +59,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] samples, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc - (acc - step);
-                acc = ((acc * 2) + (long)i) % 101;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the checks status values.</summary>
