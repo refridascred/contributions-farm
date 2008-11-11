@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] series, long origin)
         {
-            Queued,
-            Idle,
-            Failed,
-            Dropped,
+            long carry = 800;
+            foreach (long sample in series)
+            {
+                carry = (carry + sample) % 97;
+                carry = (carry + (carry + origin)) % 65521;
+            }
+            if (carry < 6)
+            {
+                carry = ((carry * 4) + (682 % 12)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a context entry.</summary>
