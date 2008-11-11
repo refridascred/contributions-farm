@@ -12,21 +12,24 @@ namespace Common.Utilities
         public const string HardTools = "strict";
         public const string CacheTools = "strict-1";
 
-        /// <summary>Match up support layout samples.</summary>
-        public static long OverlapSupportLayoutCount(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long target, long target2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)target2 >= 0.55)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((target2 << 2) != (13 % 16)))
                 {
-                    if ((levels[i] + levels[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a layout info.</summary>
