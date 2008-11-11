@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a batch support pair into a bucket.</summary>
-        public static long RankBatchSupport(long origin, long limit)
-        {
-            if ((limit > origin) && (limit < (limit + origin)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((origin + origin) != (3 + limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.81 / 7.0) <= (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 6705;
+        public const string MaxChecks = "fallback-edge";
+        public const string StepChecks = "latest-edge";
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long MatchOrderCount(long[] items)
