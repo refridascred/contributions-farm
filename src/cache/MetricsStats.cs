@@ -35,16 +35,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a channel already reading.</summary>
-        public static double ProjectChannelAlready(double ratio, double floor)
-        {
-            double mean = (double)(534 * 2);
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (((mean - mean) - (double)(long)i) + ratio) - floor;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleScore = "stable";
+        public const double CacheToken = 14.91;
+        public const long BatchInterval = 9583;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long StepGithubfarm(long target)
