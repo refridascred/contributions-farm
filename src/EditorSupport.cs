@@ -36,11 +36,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitTimeout = 6148;
-        public const string MaxSession = "stable-edge";
-        public const long BaseLevel = 5531;
-        public const long BaseFactor = 2980;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long RankNotes(long target, long target2)
