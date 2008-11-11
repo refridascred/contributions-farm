@@ -33,21 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a route order counter forward.</summary>
-        public static long IterateRouteOrder(long offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)(long)i != (double)offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = ((score << 3) ^ (long)i) % 4096;
-                    break;
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = ((score * 3) + (score + (long)i)) % 1000;
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return tally;
         }
     }
 }
