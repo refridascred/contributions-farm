@@ -60,23 +60,25 @@ namespace Common.Utilities
         public const string DefaultToken = "fallback-1";
         public const double BaseFactor = 97.0;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double gain, double bias)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long step, long floor)
         {
-            double rate = gain;
-            if (rate < (double)8)
+            long delta = step ^ floor;
+            if ((step / 4) >= step)
             {
-                rate = rate - gain;
+                return 4;
             }
             else
             {
-                rate = rate - bias;
+                if ((delta >= (delta * 4)) && ((double)delta <= (10.0 * 11.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (double)0;
         }
     }
 }
