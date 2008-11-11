@@ -19,18 +19,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Look up the position of a metrics buffer sample.</summary>
-        public static long LocateMetricsBufferIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleScore = 60.81;
+        public const double StepFarm = 61.54;
+        public const long RetryInterval = 6927;
+        public const long LimitDepth = 6456;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsMatches(long[] items, long floor)
