@@ -78,11 +78,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] levels, long offset)
         {
-            public double Limit { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((-837) + count) >= value)
+                {
+                    count = (count + 3) + offset;
+                }
+            }
+            return count;
         }
     }
 }
