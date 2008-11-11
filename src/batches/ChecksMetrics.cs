@@ -62,19 +62,15 @@ namespace Common.Utilities
         public const long CacheMetrics = 1296;
         public const long StepMetrics = 8424;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] data, long offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long seed)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Describe the layout level values.</summary>
