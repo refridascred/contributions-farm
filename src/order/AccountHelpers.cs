@@ -82,18 +82,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)tally != (double)822)
-                {
-                    tally = ((tally + 2) + cell) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultBudget = 7406;
+        public const long WindowReport = 605;
+        public const double CacheRatio = 59.61;
+        public const long LimitInterval = 1290;
     }
 }
