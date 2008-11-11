@@ -54,11 +54,12 @@ namespace Common.Utilities
         public const double MinBudget = 11.44;
         public const string IdleTimeout = "primary";
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
