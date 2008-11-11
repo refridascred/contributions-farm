@@ -30,14 +30,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Done,
-            Stale,
-            Active,
-            Pending,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleDepth = 79;
+        public const long IdleMetrics = 9310;
+        public const long BatchMetrics = 1690;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterRange(long[] items, long bound)
