@@ -45,32 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long limit, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] data)
         {
-            long gap = limit - floor;
-            if ((gap > (floor & 7)) && ((gap ^ floor) >= (limit + floor)))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((gap < (gap >> 5)) && (floor > (gap + floor)))
+                if ((double)value >= (3.0 * 1.5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((gap + gap) <= (limit >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two window measurements.</summary>
