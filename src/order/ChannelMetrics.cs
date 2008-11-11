@@ -33,12 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long floor)
         {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            long total = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((long)i / 6) > (total + floor))
+                {
+                    total = (total + (75 - floor)) % 255;
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
