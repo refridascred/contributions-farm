@@ -1,8 +1,12 @@
 {
-  "sync_timeout_pct": 44.29,
-  "verbose": [393, 266, 401],
-  "context_limit": "cached",
-  "max_threshold_count": true,
-  "format_ratio": ["eu-west", "green", "staging", "blue"],
-  "batch_window": "strict"
+  "max_retries_count": "blue",
+  "warm_threshold_s": true,
+  "poll_capacity": "green",
+  "soft_limit_count": "strict",
+  "queue_timeout": {
+    "warm_window": 30,
+    "verbose": [499, 458, 311],
+    "readonly": 57.61
+  },
+  "burst_window": 46
 }
