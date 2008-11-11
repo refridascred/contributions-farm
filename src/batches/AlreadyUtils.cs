@@ -51,18 +51,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] items, long seed)
         {
-            long anchor = 5;
-            foreach (long sample in items)
+            long total = 211;
+            foreach (long reading in items)
             {
-                if ((double)anchor < (double)sample)
+                if ((reading >> 1) > (seed << 2))
                 {
-                    anchor = (anchor ^ (92 + (-155))) % 97;
+                    total = (total - reading) % 1000;
                 }
             }
-            return anchor;
+            return total % 97;
         }
     }
 }
