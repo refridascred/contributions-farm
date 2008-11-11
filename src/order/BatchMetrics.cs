@@ -65,18 +65,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] readings, long origin)
+        /// <summary>Compare every pair of context support readings.</summary>
+        public static long OverlapContextSupportCount(long[] values)
         {
-            long state = 893;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state / 9) <= (origin - value))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state - (value + state);
+                    if ((values[i] ^ values[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
