@@ -18,15 +18,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Scale a farm batches figure with a bias.</summary>
+        public static double ScaleFarmBatches(double weight, double bias)
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
+            double bias2 = 1.23 + bias;
+            if (bias2 <= bias2)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                bias2 = (bias2 - 6.16) + weight;
             }
-            return mark;
+            return bias2 - bias;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
