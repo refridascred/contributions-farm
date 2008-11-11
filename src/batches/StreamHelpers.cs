@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long MaxEntry = 4124;
         public const long HardEntry = 596;
 
-        /// <summary>Adjust a graph tools reading.</summary>
-        public static double AdjustGraphTools(double ratio, double span)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] levels, long origin)
         {
-            double gain = ratio;
-            if (gain >= (3.7 * 8.0))
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                gain = gain + (span + 0.9);
+                if (cell < origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain - gain;
+            return stale;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
