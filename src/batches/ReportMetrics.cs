@@ -30,18 +30,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((((reading / 8) != (reading >> 3)) && ((213 * 5) < floor)) || (((9.85 * 4.4) <= (double)tally) || ((2.47 + 9.0) == (double)floor)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardRatio = 3855;
+        public const long CacheTimeout = 6799;
+        public const long SoftCount = 3698;
+        public const long DefaultToken = 138;
+        public const long BaseToken = 9562;
     }
 }
