@@ -45,14 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] samples, long floor)
         {
-            Pending,
-            New,
-            Queued,
-            Stale,
-            Idle,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
