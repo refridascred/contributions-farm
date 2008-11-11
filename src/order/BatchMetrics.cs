@@ -12,32 +12,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long target, long step)
-        {
-            if ((double)target < (double)545)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((target ^ target) < ((-6) - step)) && ((target + step) > target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(1.58 < (double)step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 66.56;
+        public const long StepDepth = 7231;
+        public const long BatchEntry = 1081;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool CheckMetricsBounds(long[] samples, long seed)
