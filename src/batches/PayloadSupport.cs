@@ -27,13 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
+            Draft,
+            Closed,
+            Active,
         }
 
         /// <summary>Accumulate route samples.</summary>
