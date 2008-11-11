@@ -1,19 +1,6 @@
 {
-  "base_delay_s": false,
-  "idle_ratio_ms": ["cached", "eu-west"],
-  "readonly": "open",
-  "enabled": true,
-  "cache_ttl_pct": 44.54,
-  "commits_delay": {
-    "verbose": ["latest", "blue"],
-    "tools_threshold": {
-      "sync_ttl_pct": "fallback",
-      "readonly": "blue",
-      "base_size_pct": "edge",
-      "batches_ratio": 100
-    },
-    "compress": ["edge", "blue", "primary"],
-    "default_size": "blue",
-    "audit": 1817
-  }
+  "cache_ratio": 86,
+  "default_timeout_ms": 9978,
+  "sync_interval_ms": [434, 260, 444],
+  "tools_limit": 22
 }
