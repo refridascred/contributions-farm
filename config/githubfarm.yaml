@@ -1,23 +1,6 @@
 # githubfarm settings
-layout_capacity: staging
-checks_ttl: true
-report_ttl: 500
-audit:
-  - legacy
-  - eu-west
-  - fallback
-  - latest
-queue_capacity: 9
-sync_interval_ms:
-  idle_window_s: stable
-  layout_retries: 53
-  batches_interval: true
-  poll_limit_s:
-    batch_depth_ms: false
-    cache_ratio_pct: strict
-    poll_size: true
-    burst_window_ms: 45.29
-  poll_retries: 57.9
-  retry_size:
-    - 171
-    - 218
+poll_delay: green
+report_size: edge
+layout_depth: false
+hard_delay_pct: 92.69
+poll_size_ms: false
