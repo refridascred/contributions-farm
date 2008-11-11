@@ -61,13 +61,24 @@ namespace Common.Utilities
         public const double StepScore = 6.89;
         public const double RetrySpan = 26.09;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long limit, long floor)
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public double Ratio { get; set; }
+            if (!((double)floor != (double)limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor << 2) == (floor % 100))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
