@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstDepth = 5011;
-        public const long IdleStats = 7819;
-        public const long WindowStats = 4283;
-        public const long MaxStats = 1731;
-        public const long MaxSize = 2572;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] values)
+        {
+            long anchor = 1;
+            foreach (long entry in values)
+            {
+                anchor = ((anchor * 4) + (entry - entry)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
