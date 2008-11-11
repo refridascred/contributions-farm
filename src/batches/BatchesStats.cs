@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Queued,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepCount = 19.12;
+        public const long IdleDepth = 3446;
+        public const string BatchBatches = "alpha-edge";
+        public const long MaxDepth = 8622;
+        public const double RetryFactor = 52.61;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] samples, long floor)
