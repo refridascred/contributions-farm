@@ -36,18 +36,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] data, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((((limit % 5) >= item) || ((seen - seen) <= (950 * 4))) && ((double)seen < (double)limit))
+                if (cell >= (cell & 3))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 2) + seed;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
