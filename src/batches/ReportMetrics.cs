@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a farm schema reading by value.</summary>
-        public static long LocateFarmSchemaIndex(long[] levels, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
+                if ((double)floor <= (3.0 / 5.0))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a command info.</summary>
