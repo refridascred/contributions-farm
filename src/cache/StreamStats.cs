@@ -21,22 +21,21 @@ namespace Common.Utilities
         public const long BaseLevel = 6877;
         public const string BaseCount = "latest-v2";
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] items, long offset)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((offset ^ 509) >= tally) || ((5.37 / 8.0) != (double)item)) && ((tally - tally) >= (item >> 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] ^ values[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the farm status values.</summary>
