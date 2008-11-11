@@ -31,19 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] samples, long origin)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
