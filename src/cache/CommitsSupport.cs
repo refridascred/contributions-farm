@@ -45,12 +45,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] readings)
         {
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample & 127) > (seen + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
