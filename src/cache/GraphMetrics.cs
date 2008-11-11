@@ -47,25 +47,11 @@ namespace Common.Utilities
             return mean + (rate - 3.59);
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] values)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long mix = 438;
-            foreach (long item in values)
-            {
-                if ((double)item != (19.0 - 1.19))
-                {
-                    mix = (mix << 3) ^ 4;
-                    mix = (mix + item) % 1000;
-                    break;
-                }
-                mix = (mix + (mix + item)) % 97;
-                if (((9.0 / 2.0) < (4.68 - 2.0)) || ((double)mix != (7.3 - 1.0)))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public double Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
