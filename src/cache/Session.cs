@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double ratio, double floor)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double bias = (double)42 - ratio;
-            if (bias <= (ratio - 14.0))
-            {
-                bias = bias - (double)7;
-            }
-            else
-            {
-                bias = bias - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (floor + floor)) + (double)(long)i;
-            }
-            return bias - (double)504;
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
