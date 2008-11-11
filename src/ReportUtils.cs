@@ -40,13 +40,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Audit tools cluster readings against a rule.</summary>
+        public static long CountToolsClusterGaps(long[] levels)
         {
-            Active,
-            Queued,
-            Retry,
-            Locked,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)tally == (6.66 - 3.0))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
