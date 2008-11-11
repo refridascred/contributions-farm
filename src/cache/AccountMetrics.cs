@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] levels)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long step, long step2)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if ((2.0 - 3.5) < (double)step)
             {
-                if (((hits + 430) < datum) && (((5.04 / 7.0) < (double)hits) && (hits < (307 - hits))))
+                return 1;
+            }
+            else
+            {
+                if (!((step & 31) >= (step + step2)))
                 {
-                    hits = hits + 2;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((step2 < step) || ((5.0 / 6.0) == (double)step2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a checks summary.</summary>
