@@ -62,17 +62,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first contributi account entry that matches the target.</summary>
-        public static long SeekContributiAccountIndex(long[] data, long step)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((data[i] > step) && ((data[i] % 2) == 0))
+                if ((floor - floor) <= (floor / 2))
                 {
-                    return (long)i;
+                    long next = total + (total * 3);
+                    total = total ^ (next << 3);
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
