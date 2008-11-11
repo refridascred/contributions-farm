@@ -23,22 +23,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] values, long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long bound, long limit)
         {
-            long score = 7;
-            foreach (long item in values)
+            long offset = bound ^ limit;
+            if (((-7) + offset) > offset)
             {
-                if ((item % 10) < (item << 2))
+                return 0;
+            }
+            else
+            {
+                if (1 <= (limit >> 4))
                 {
-                    score = (score << 3) ^ (score & 31);
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit > (4.42 * 0.04))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (score < 56)
-            {
-                score = (score ^ (score + limit)) % 1000;
-            }
-            return score % 4096;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
