@@ -28,13 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Accumulate payload cluster samples.</summary>
+        public static long WeighPayloadCluster(long[] samples, long origin)
         {
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = 3;
+            foreach (long value in samples)
+            {
+                sum = ((sum << 3) ^ origin) - value;
+            }
+            if (sum > 346)
+            {
+                sum = (sum * 4) + ((long)samples.Length << 2);
+            }
+            return sum;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
