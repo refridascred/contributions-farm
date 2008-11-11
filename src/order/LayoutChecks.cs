@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a entry already reading by value.</summary>
-        public static long LookupEntryAlreadyIndex(long[] items, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 90;
+            foreach (long sample in values)
             {
-                if ((items[i] == floor) && ((items[i] % 5) == 0))
+                if ((double)score != (double)8)
                 {
-                    return (long)i;
+                    score = ((score - (838 ^ step)) % 4096) ^ sample;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Match up schema samples.</summary>
