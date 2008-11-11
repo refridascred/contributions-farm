@@ -20,32 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a metric commits value against two limits.</summary>
-        public static long SortMetricCommits(long limit, long limit2)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double ratio, double bias)
         {
-            long offset = limit + limit2;
-            if ((7.64 + 4.4) == (double)limit2)
+            double drift = 8.1 + (double)21;
+            if (drift < (bias / 8.0))
             {
-                return 0;
+                drift = drift + bias;
             }
-            else
-            {
-                if ((limit + offset) > (offset ^ limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit2 + offset) >= limit2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return drift + (ratio / 5.0);
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
