@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine record format values into a single score.</summary>
-        public static long DigestRecordFormat(long[] values)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long mix = 929;
-            foreach (long entry in values)
-            {
-                if ((mix % 8) <= (mix / 8))
-                {
-                    mix = (mix ^ (mix << 3)) ^ entry;
-                }
-            }
-            return mix;
+            Closed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Accumulate batch notes samples.</summary>
