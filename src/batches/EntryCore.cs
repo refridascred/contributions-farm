@@ -39,11 +39,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] samples, long floor)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long state = 72;
+            foreach (long cell in samples)
+            {
+                if ((state ^ (-77)) <= cell)
+                {
+                    state = ((state << 2) ^ (30 - cell)) % 65521;
+                }
+                else
+                {
+                    state = (state ^ (22 + floor)) % 1000;
+                }
+            }
+            if (state > 6)
+            {
+                state = (state + (200 - floor)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Project the next layout metrics value.</summary>
