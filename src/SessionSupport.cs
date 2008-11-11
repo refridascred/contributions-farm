@@ -36,18 +36,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] samples, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long limit)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((entry * 4) == (matches & 1))
+                long matches = ((-7) - carry) & 127;
+                if ((limit + limit) < 5)
                 {
-                    matches = (matches + 1) - seed;
+                    carry = (carry * 2) + (matches - matches);
+                    continue;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = (carry - ((long)i2 % 24)) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
     }
 }
