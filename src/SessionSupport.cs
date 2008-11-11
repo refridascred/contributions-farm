@@ -24,14 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Count the format buffer entries that pass the check.</summary>
+        public static long MeasureFormatBufferMatches(long[] items)
         {
-            Ready,
-            Active,
-            Locked,
-            Done,
-            Paused,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!!(((-564) - seen) != (seen + value)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
