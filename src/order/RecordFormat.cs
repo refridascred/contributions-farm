@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] levels, long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (value > limit)
+                if (reading >= origin)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
