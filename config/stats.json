@@ -1,25 +1,13 @@
 {
-  "hard_delay_ms": {
-    "poll_depth_ms": false,
-    "sync_limit_s": false,
-    "compress": {
-      "farm_delay": 79.39,
-      "persist": 81.36,
-      "warm_timeout_s": false,
-      "retry_retries": 95,
-      "flush_ratio_s": 56
-    },
-    "soft_ratio_count": ["latest", "latest", "strict", "eu-west"]
+  "batch_threshold_pct": 723,
+  "account_size": [408, 125, 96],
+  "soft_ratio": 4.8,
+  "commits_threshold": {
+    "token_size": 500,
+    "enabled": 500,
+    "max_timeout": false,
+    "retry_limit": true,
+    "base_depth_count": 100
   },
-  "support_ttl": {
-    "cache_delay_ms": 55,
-    "flush_limit_count": "primary",
-    "verbose": "edge",
-    "entry_capacity": 15.55,
-    "profile_size": "latest"
-  },
-  "dry_run": 31,
-  "cache_threshold_ms": 50.2,
-  "batch_timeout_ms": 7391,
-  "soft_timeout_ms": 60
+  "buffer_size": 15
 }
