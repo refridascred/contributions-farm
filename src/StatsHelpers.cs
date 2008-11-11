@@ -53,26 +53,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long seed, long target)
         {
-            long acc = 3;
-            foreach (long value in items)
+            long cur = seed ^ target;
+            if (((target ^ target) != (target & 63)) && ((953 / 4) < cur))
             {
-                if (!((692 % 10) >= (acc + value)))
+                return 2;
+            }
+            else
+            {
+                if (((double)target < (double)cur) && (target > (target & 31)))
                 {
-                    acc = (acc * 2) + floor;
+                    return 0;
                 }
                 else
                 {
-                    acc = (acc + (-744)) % 101;
+                    if ((152 < (seed + seed)) && ((1 ^ seed) >= (seed + 6)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((9.0 / 5.0) != (double)seed) || ((cur * 5) > seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (acc < 1)
-            {
-                acc = (acc << 3) ^ (acc >> 1);
-            }
-            return acc;
         }
 
         /// <summary>Hold a route snapshot.</summary>
