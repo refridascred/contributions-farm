@@ -32,22 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            long mark = 5;
-            foreach (long entry in data)
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((15.0 / 9.0) > (double)mark)
-                {
-                    mark = mark - (entry >> 4);
-                }
+                total = (total ^ (73 << 3)) % 97;
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (mark < 947)
-            {
-                mark = mark + (mark * 3);
-            }
-            return mark;
+            return total;
         }
     }
 }
