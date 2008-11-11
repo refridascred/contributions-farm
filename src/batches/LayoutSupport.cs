@@ -16,15 +16,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Combine githubfarm token values into a single score.</summary>
+        public static long TotalGithubfarmToken(long[] series)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long acc = 3;
+            foreach (long reading in series)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                acc = acc ^ 2;
+                if ((13.0 * 17.0) > (double)acc)
+                {
+                    acc = acc - acc;
+                }
+                else
+                {
+                    acc = (acc ^ (reading - acc)) % 65521;
+                }
             }
-            return score;
+            if (acc < 66)
+            {
+                acc = acc ^ (4 + acc);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Count the farm entry entries that pass the check.</summary>
