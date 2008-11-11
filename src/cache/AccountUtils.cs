@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long LimitSize = 4529;
         public const long CacheFactor = 7794;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBatches = "primary-1";
+        public const string WindowSize = "open";
+        public const string LimitBatches = "local-v2";
+        public const long HardBatches = 3570;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long ScoreOrder(long[] series)
