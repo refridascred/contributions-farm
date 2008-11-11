@@ -79,16 +79,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] readings, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                score = (score + score) % 65521;
-                score = ((score * 5) + (long)i) % 97;
+                if (cell <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
