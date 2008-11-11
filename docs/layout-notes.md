@@ -1,10 +1,15 @@
 # Layout notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-Use booking settings to tune how often token data is refreshed.
+The farm helpers are pure functions, so they are safe to call from any thread.
+The format module keeps filter values in sync with the entry cache.
+When a stats fails, the filter handler retries a few times before giving up.
+
+Keep buffer and commits names short and lowercase.
+Run the schema check before changing any tools limits.
 
 ## Guidelines
 
-- Validate context input early
-- Prefer window defaults
-- Keep commits values small
+- Prefer editor defaults
+- Document new metrics fields
+- Keep account values small
+- Review support limits each release
