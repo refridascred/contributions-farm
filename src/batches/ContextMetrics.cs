@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of commits metric readings.</summary>
-        public static long FoldCommitsMetric(long[] levels)
+        /// <summary>Accumulate notes graph samples.</summary>
+        public static long FoldNotesGraph(long[] items)
         {
-            long carry = 77;
-            foreach (long reading in levels)
+            long carry = 5;
+            foreach (long value in items)
             {
-                carry = ((carry * 4) + (carry >> 3)) - reading;
+                if (value >= (carry + carry))
+                {
+                    carry = carry - carry;
+                }
+                if (((double)carry != (7.85 + 6.0)) && (value <= (847 - (long)items.Length)))
+                {
+                    carry = (carry + (82 & 7)) % 97;
+                }
+                if ((carry + value) >= (carry & 1))
+                {
+                    break;
+                }
             }
-            return carry % 4096;
+            if (carry > 2)
+            {
+                carry = carry + carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Roll a record counter forward.</summary>
