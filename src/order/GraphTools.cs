@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((long)values.Length ^ seed) >= (hits >> 4))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleDepth = 62.95;
+        public const string RetryCount = "legacy-edge";
+        public const long CacheCommand = 4959;
+        public const double StepCommand = 80.06;
+        public const double HardCommand = 61.53;
 
         /// <summary>Classify a report record pair into a bucket.</summary>
         public static long ClassifyReportRecord(long target, long floor)
