@@ -44,19 +44,21 @@ namespace Common.Utilities
             return drift - (ratio - 8.6);
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] items, long step)
+        /// <summary>Count notes buffer pairs that satisfy a relation.</summary>
+        public static long CompareNotesBufferCount(long[] series)
         {
-            long acc = 92;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc ^ (acc & 7)) - sample) + step;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (acc < 2)
-            {
-                acc = ((acc << 3) ^ acc) % 65521;
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Validate account support readings against a bound.</summary>
