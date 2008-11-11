@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a schema counter sample.</summary>
