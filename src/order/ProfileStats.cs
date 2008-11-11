@@ -23,18 +23,15 @@ namespace Common.Utilities
             return (rate - gain) + span;
         }
 
-        /// <summary>Audit farm cache readings against a rule.</summary>
-        public static long AuditFarmCacheMatches(long[] readings)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double ratio = bias / 6.0;
+            if (ratio <= (10.0 / 9.0))
             {
-                if (((count % 2) > (entry + entry)) && (entry <= (entry / 3)))
-                {
-                    count = count + 3;
-                }
+                ratio = (ratio + (bias / 7.0)) + bias2;
             }
-            return count;
+            return ratio - (double)76;
         }
 
         /// <summary>Hold a account record.</summary>
