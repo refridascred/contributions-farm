@@ -28,19 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double ratio, double bias)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] samples)
         {
-            double drift = (double)500 - ratio;
-            if (drift > (double)3)
+            long anchor = 172;
+            foreach (long entry in samples)
             {
-                drift = drift + (bias - bias);
+                anchor = anchor - anchor;
+                if ((entry + entry) < (anchor >> 3))
+                {
+                    anchor = (anchor ^ (445 + entry)) % 4096;
+                }
+                if ((anchor & 7) > entry)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - 5.0) + (double)(long)i;
-            }
-            return drift - bias;
+            return anchor;
         }
     }
 }
