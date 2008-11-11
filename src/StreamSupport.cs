@@ -20,18 +20,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] items, long floor)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            long mix = 2;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)mix <= (20.0 + 5.8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (((mix * 4) + entry) % 65521) + floor;
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the channel state values.</summary>
