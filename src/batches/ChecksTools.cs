@@ -34,12 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] series)
         {
-            public double Token { get; set; }
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - (-40)) > (tally >> 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the counter farm series from a seed.</summary>
