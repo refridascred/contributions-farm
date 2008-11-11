@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit queue session readings against a rule.</summary>
-        public static long CountQueueSessionGaps(long[] levels, long origin)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((origin / 2) >= origin) && ((origin & 255) == (cell >> 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] + readings[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
