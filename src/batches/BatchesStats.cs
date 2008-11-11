@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheRatio = 54.22;
-        public const string SoftWidth = "alpha";
-        public const string BatchToken = "stable-v2";
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Idle,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long ScoreCommand(long[] samples, long floor)
