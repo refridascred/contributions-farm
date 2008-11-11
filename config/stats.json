@@ -1,17 +1,7 @@
 {
-  "compress": {
-    "batch_capacity": {
-      "githubfarm_timeout": true,
-      "schema_ratio": "eu-west",
-      "commits_interval": true,
-      "max_timeout": 24,
-      "burst_retries": [40, 276, 225, 7]
-    },
-    "readonly": 9896,
-    "burst_timeout_pct": "cached"
-  },
-  "stream_size": false,
-  "entry_capacity": 4735,
-  "batch_threshold_ms": false,
-  "max_ttl": true
+  "readonly": true,
+  "enabled": "eu-west",
+  "compress": 100,
+  "hard_retries": "local",
+  "metrics_delay": 1123
 }
