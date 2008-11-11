@@ -20,32 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long bound, long seed)
-        {
-            if (!((double)bound < (0.74 * 7.2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed <= (8.0 - 8.77))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((seed & 3) >= (seed / 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 6064;
+        public const long CacheFactor = 6460;
+        public const string IdleWidth = "stable";
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatRange(long[] data, long seed)
