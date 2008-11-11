@@ -33,19 +33,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double rate, double bias)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long step, long step2)
         {
-            double scale = (10.0 + rate) + (rate + rate);
-            if (scale > (scale - scale))
+            long offset = step - step2;
+            if (offset > (7 & 63))
             {
-                scale = (scale - (double)65) - bias;
+                return 4;
             }
             else
             {
-                scale = scale + (rate * 1.0);
+                if (step2 <= (offset - offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset ^ step2) < (step << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return scale - (9.9 * 0.23);
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
