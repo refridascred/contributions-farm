@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every batch notes entry stays within the limit.</summary>
-        public static bool ValidateBatchNotesRange(long[] samples, long seed)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
