@@ -41,19 +41,18 @@ namespace Common.Utilities
             return weight2 - 8.3;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double bias, double span)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] readings, long target)
         {
-            double drift = 5.9 / 8.0;
-            if (drift <= (drift + span))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                drift = drift + drift;
+                if ((4.53 * 4.55) <= (double)seen)
+                {
+                    seen = ((seen + 3) + cell) + target;
+                }
             }
-            else
-            {
-                drift = drift - (bias / 8.0);
-            }
-            return drift + (span / 7.0);
+            return seen;
         }
     }
 }
