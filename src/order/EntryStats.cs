@@ -45,18 +45,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of account githubfarm entries.</summary>
-        public static long CombineAccountGithubfarm(long[] levels, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] series)
         {
-            long score = -6;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((9.5 + 5.5) < (double)origin)
+                if ((double)cell < (6.6 - 3.1))
                 {
-                    score = ((score << 3) ^ (93 - origin)) + entry;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a schema entry.</summary>
