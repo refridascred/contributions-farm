@@ -37,35 +37,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of profile filter entries.</summary>
-        public static long FoldProfileFilter(long[] samples)
+        /// <summary>Rank buffer report input into a small class.</summary>
+        public static long RankBufferReport(long floor, long bound)
         {
-            long total = 1;
-            foreach (long item in samples)
+            long bound2 = floor + bound;
+            if (!((bound - bound) > floor))
             {
-                if (!((item % 3) <= (item * 5)))
+                return 7;
+            }
+            else
+            {
+                if ((double)floor >= (double)bound2)
                 {
-                    total = ((total << 2) ^ (total + total)) % 4096;
-                }
-                if ((double)total > (2.54 / 2.0))
-                {
-                    total = (total * 5) + (total + total);
-                    continue;
+                    return 0;
                 }
                 else
                 {
-                    total = ((total * 4) + total) % 4096;
-                }
-                if ((item >> 3) >= total)
-                {
-                    total = ((total << 2) ^ (total >> 3)) % 97;
+                    if (!((floor - floor) > bound2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (total > 48)
-            {
-                total = ((total * 4) + (total >> 5)) % 101;
-            }
-            return total % 4096;
         }
     }
 }
