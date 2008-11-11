@@ -55,23 +55,17 @@ namespace Common.Utilities
         public const double HardSize = 28.22;
         public const double WindowInterval = 84.83;
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double scale, double bias)
+        /// <summary>Find the first cache session entry that matches the target.</summary>
+        public static long FindCacheSessionIndex(long[] data, long target)
         {
-            double load = scale;
-            if (load >= scale)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - bias;
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (8.0 - load);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (scale - load);
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
