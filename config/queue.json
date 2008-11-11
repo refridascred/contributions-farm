@@ -1,6 +1,5 @@
 {
-  "flush_limit_count": "edge",
-  "soft_threshold_s": "green",
-  "cache_retries_pct": "local",
-  "already_ratio": "eu-west"
+  "graph_retries": 49.13,
+  "hard_interval_ms": "edge",
+  "burst_size_s": 1.77
 }
