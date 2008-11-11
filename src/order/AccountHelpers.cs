@@ -33,32 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank graph command input into a small class.</summary>
-        public static long SortGraphCommand(long step, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long step2 = step ^ floor;
-            if ((46 & 63) != (step >> 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step2 ^ 19) <= (step * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((4 + floor) >= step2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Locate a command account reading by value.</summary>
