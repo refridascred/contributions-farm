@@ -22,19 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a record context figure with a bias.</summary>
-        public static double AdjustRecordContext(double weight, double offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            double load = (double)(23 + 70);
-            if (load <= load)
+            long acc = 6;
+            foreach (long sample in samples)
             {
-                load = (load + (load + offset)) + weight;
+                if ((acc - sample) >= ((-2) & 15))
+                {
+                    acc = acc + (acc >> 5);
+                }
+                if (((acc + acc) > (acc ^ acc)) || ((acc ^ acc) > (acc & 127)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (acc < 822)
             {
-                load = (load + (7.27 - offset)) + (double)(long)i;
+                acc = (acc + (acc >> 3)) % 97;
             }
-            return load + (double)8;
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
