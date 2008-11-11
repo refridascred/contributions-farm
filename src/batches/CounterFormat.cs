@@ -54,18 +54,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] items)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((entry - entry) != (hits / 2)))
-                {
-                    hits = hits + 2;
-                }
+                state = ((state << 3) ^ (state - (long)i)) % 65521;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
     }
 }
