@@ -1,7 +1,9 @@
-id,level,region,state
-1,591,primary,569
-2,63.46,217,497
-3,57.65,13.24,631
-4,78.04,413,965
-5,977,open,959
-6,standard,strict,312
+id,ratio,active
+1,strict,88.37
+2,165,74.4
+3,green,26.19
+4,460,376
+5,local,56.16
+6,862,65
+7,701,latest
+8,39,legacy
