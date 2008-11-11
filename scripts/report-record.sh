@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local legacy fallback; do
+for item in latest fallback cached legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    cached)
+    stable)
         log "fast path"
         ;;
     *)
