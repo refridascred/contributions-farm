@@ -25,15 +25,19 @@ namespace Common.Utilities
         public const long LimitBatches = 2820;
         public const long SoftRatio = 8414;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] items, long origin)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] readings, long step)
         {
-            long result = 709;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                result = (result + (origin + (long)items.Length)) - cell;
+                if (sample < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
     }
 }
