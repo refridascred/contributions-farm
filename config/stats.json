@@ -1,16 +1,14 @@
 {
-  "verbose": "primary",
-  "cache_limit_s": "primary",
-  "sync_ratio_pct": "staging",
-  "support_ttl": {
-    "cache_size": "green",
-    "retry_retries_ms": 78.73,
-    "audit": {
-      "strict": 7804,
-      "cache_window_count": "edge",
-      "warm_limit": 30,
-      "poll_limit": "local"
-    }
+  "audit": [130, 75],
+  "soft_threshold": {
+    "audit": 9226,
+    "schema_retries": [431, 61, 195],
+    "burst_capacity": 5417,
+    "max_size_s": 55,
+    "sync_size": [81, 444],
+    "cache_interval_pct": true
   },
-  "githubfarm_threshold": "green"
+  "verbose": 20.33,
+  "session_delay": "local",
+  "stats_depth": "latest"
 }
