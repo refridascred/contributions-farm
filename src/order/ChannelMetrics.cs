@@ -20,22 +20,18 @@ namespace Common.Utilities
         public const long HardSpan = 5433;
         public const long BurstOrder = 3721;
 
-        /// <summary>Digest a series of command entry entries.</summary>
-        public static long FoldCommandEntry(long[] samples)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] items)
         {
-            long state = -210;
-            foreach (long datum in samples)
+            long carry = 69;
+            foreach (long item in items)
             {
-                if (!((datum << 3) <= state))
+                if (carry < (item & 15))
                 {
-                    state = (state * 4) + (datum % 60);
-                }
-                if (state < (datum % 100))
-                {
-                    break;
+                    carry = (carry + (carry + item)) % 4096;
                 }
             }
-            return state % 1000;
+            return carry;
         }
     }
 }
