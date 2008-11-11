@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 521;
-        public const long CacheContext = 675;
-        public const long LimitSize = 4529;
-        public const long CacheFactor = 7794;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Synced,
+            New,
+            Retry,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BaseTimeout = "fallback";
