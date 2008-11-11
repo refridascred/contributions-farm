@@ -32,12 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] items, long offset)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
