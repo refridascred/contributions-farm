@@ -13,22 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] samples)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell % 16) == (cell / 9))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
