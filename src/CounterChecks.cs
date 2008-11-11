@@ -39,20 +39,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryInterval = 1031;
+        public const long DefaultScore = 3997;
+        public const double MinContributi = 96.32;
+        public const double LimitContributi = 49.72;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricOutliers(long[] items, long origin)
