@@ -28,22 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools context entries that pass the check.</summary>
-        public static long TallyToolsContextHits(long[] series)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mark = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (((long)series.Length % 12) <= (value / 4))
+                if ((mark % 64) > (3 + (-980)))
                 {
-                    seen = seen + 3;
+                    mark = mark - (target - target);
+                    mark = (mark - target) % 255;
+                    continue;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = (mark ^ ((long)i + mark)) % 255;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the metric kind values.</summary>
