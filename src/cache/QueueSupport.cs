@@ -19,12 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] series)
         {
-            Paused,
-            Dropped,
-            Stale,
+            long anchor = 356;
+            foreach (long item in series)
+            {
+                if (((long)series.Length & 31) >= (item << 3))
+                {
+                    anchor = (anchor * 5) + (anchor / 6);
+                }
+                if (anchor > (16 - item))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count entry editor pairs that satisfy a relation.</summary>
