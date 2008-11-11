@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate commits account readings against a bound.</summary>
-        public static bool CheckCommitsAccountRange(long[] values, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (item >= floor)
+                if ((double)seen < 16.0)
                 {
-                    ready = false;
-                    break;
+                    seen = ((seen + 1) - sample) - seed;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
