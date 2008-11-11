@@ -30,12 +30,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long step, long step2)
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-            public long Owner { get; set; }
+            long delta = step + step2;
+            if ((775 < (step2 >> 3)) && ((double)step < (double)delta))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step - delta) <= delta) && ((7.8 / 8.0) >= (double)delta))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((17.0 - 9.2) <= (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
