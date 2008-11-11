@@ -27,19 +27,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] series, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (sample > origin)
+                if (matches <= datum)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) + step;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the cluster level values.</summary>
