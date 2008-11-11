@@ -22,10 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepRatio = 89.23;
-        public const long MaxScore = 5392;
-        public const long CacheCount = 8244;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitSession = 89.74;
+        public const string CacheSession = "alpha-edge";
+        public const string DefaultSession = "standard-v2";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long LimitPayload = 5706;
