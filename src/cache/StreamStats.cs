@@ -27,24 +27,19 @@ namespace Common.Utilities
         public const string LimitChannel = "legacy-1";
         public const double BurstChannel = 63.17;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long floor, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] levels, long origin)
         {
-            if ((4.0 / 8.0) <= (double)floor)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((9.36 / 9.0) != (double)offset)
+                if (sample >= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
