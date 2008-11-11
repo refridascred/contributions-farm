@@ -29,19 +29,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Check that every format tools entry stays within the limit.</summary>
-        public static bool ValidateFormatToolsLimits(long[] values, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry < bound)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
