@@ -13,12 +13,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxFactor = 6332;
-        public const string WindowDepth = "latest-1";
-        public const string IdleRatio = "primary-v2";
-        public const string SoftSpan = "alpha";
-        public const double LimitCommits = 10.06;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Draft,
+            Done,
+            Pending,
+            Locked,
+            Active,
+        }
 
         /// <summary>Check that every context queue entry stays within the limit.</summary>
         public static bool ValidateContextQueueLimits(long[] series, long step)
