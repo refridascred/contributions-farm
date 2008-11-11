@@ -40,10 +40,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftBuffer = "stable-v2";
-        public const long RetryBuffer = 1990;
-        public const double LimitBuffer = 16.27;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] series)
+        {
+            long mix = 64;
+            foreach (long entry in series)
+            {
+                if ((68 + entry) != (253 + entry))
+                {
+                    mix = (mix ^ (916 << 2)) % 97;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long CombineToken(long[] readings)
