@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading - (long)data.Length) >= (reading >> 1)))
-                {
-                    seen = (seen + 1) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 1297;
+        public const double WindowLevel = 21.03;
+        public const long BatchEntry = 8392;
+        public const long MaxEntry = 4124;
+        public const long HardEntry = 596;
 
         /// <summary>Adjust a graph tools reading.</summary>
         public static double AdjustGraphTools(double ratio, double span)
