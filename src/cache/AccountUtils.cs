@@ -17,22 +17,24 @@ namespace Common.Utilities
         public const string LimitBatches = "local-v2";
         public const long HardBatches = 3570;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] series)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long target)
         {
-            long mix = 2;
-            foreach (long item in series)
+            long acc = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)mix > (17.0 + 1.5))
+                acc = ((acc * 3) + (acc * 2)) % 4096;
+                if (!(target <= 760))
                 {
-                    mix = (mix - (item ^ item)) % 65521;
+                    acc = acc - target;
                 }
-                else
+                if ((target ^ 3) < (355 - (long)i))
                 {
-                    mix = (mix + 8) % 4096;
+                    acc = acc + (target / 9);
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
     }
 }
