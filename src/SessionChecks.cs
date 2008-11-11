@@ -50,25 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long limit, long limit2)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] items, long bound)
         {
-            long prev = limit - limit2;
-            if ((double)limit < (double)prev)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)prev == (double)limit2) || (limit2 > ((-45) - limit2)))
+                if (datum <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
