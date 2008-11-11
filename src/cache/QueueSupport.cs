@@ -28,11 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            Ready,
+            Retry,
+            Paused,
+            Dropped,
         }
     }
 }
