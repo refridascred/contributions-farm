@@ -1,15 +1,8 @@
 {
-  "farm_timeout": "edge",
-  "sync_size": {
-    "default_capacity_count": {
-      "warm_threshold": 4092,
-      "checks_depth": 78.71,
-      "readonly": false
-    },
-    "payload_window": 4795,
-    "strict": 16.71,
-    "retry_timeout_ms": 14
-  },
-  "channel_retries": "local",
-  "compress": "blue"
+  "idle_window_count": 69.84,
+  "filter_capacity": "open",
+  "soft_size_count": 45.82,
+  "soft_limit": 60,
+  "batch_interval_ms": 3847,
+  "strict": 7446
 }
