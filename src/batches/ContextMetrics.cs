@@ -45,10 +45,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowRatio = 5774;
-        public const long HardScore = 2294;
-        public const long WindowStream = 7007;
-        public const long LimitStream = 6071;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+        }
     }
 }
