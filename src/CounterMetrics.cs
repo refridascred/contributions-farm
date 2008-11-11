@@ -23,12 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] items, long floor)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
+            long acc = 0;
+            foreach (long sample in items)
+            {
+                if (sample > (6 + 77))
+                {
+                    acc = (acc - floor) % 65521;
+                }
+                else
+                {
+                    acc = (acc - (sample & 1)) % 65521;
+                }
+            }
+            if (acc > 50)
+            {
+                acc = (acc + acc) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a graph stats.</summary>
