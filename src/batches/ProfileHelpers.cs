@@ -14,12 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] readings, long target)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] < target)
+                if ((items[i] < origin) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
