@@ -14,21 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
