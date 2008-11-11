@@ -50,13 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double weight, double offset)
         {
-            Ready,
-            Paused,
-            Idle,
-            Stale,
+            double drift = (double)52 * 4.2;
+            if (drift <= (double)308)
+            {
+                drift = (drift + offset) - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
