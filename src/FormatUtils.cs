@@ -63,15 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream cache samples.</summary>
-        public static long TallyStreamCache(long[] readings, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] samples)
         {
-            long anchor = 15;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor - (anchor * 3)) ^ reading) + offset;
+                if ((double)entry >= (4.7 + 7.0))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
