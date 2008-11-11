@@ -13,14 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheSize = 8880;
+        public const long WindowContributi = 8165;
+        public const long DefaultDepth = 8809;
+        public const double DefaultContributi = 33.68;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamMatches(long[] series, long target)
