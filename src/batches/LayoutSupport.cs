@@ -54,12 +54,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] series, long offset)
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the profile status values.</summary>
