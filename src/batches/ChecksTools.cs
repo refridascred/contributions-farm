@@ -37,19 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] values, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] series, long offset)
         {
-            long carry = 1;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long value in series)
             {
-                carry = (((carry << 2) ^ carry) % 255) - item;
-                if ((44 & 127) < (floor - floor))
+                if (value != offset)
                 {
+                    found = false;
                     break;
                 }
             }
-            return carry % 65521;
+            return found;
         }
 
         /// <summary>Digest a series of format entries.</summary>
