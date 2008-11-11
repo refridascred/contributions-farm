@@ -1,4 +1,15 @@
 # githubfarm settings
-batch_ratio: primary
-default_window_s: latest
-max_interval_pct: edge
+layout_capacity:
+  poll_ttl_count: 51
+  compress: 60
+  sync_delay_s: 1642
+  verbose: 250
+  persist: 29.03
+  max_limit_pct: 100
+default_ratio: open
+default_threshold_pct: 19.06
+sync_window_s:
+  - eu-west
+  - fallback
+  - primary
+retry_size_count: 57
