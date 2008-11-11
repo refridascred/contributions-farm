@@ -1,23 +1,22 @@
 # githubfarm settings
-sync_ttl: standard
-burst_retries_s:
-  max_size_s: 250
-  persist:
-    - 432
-    - 318
-  queue_size: true
-  metrics_limit: true
-  warm_interval_count: false
-  cache_capacity_ms: 57.75
-entry_threshold:
-  max_depth_pct: false
-  default_ratio: eu-west
-  sync_ratio_s: 14
-  base_retries_s: edge
-idle_interval_ms:
-  - eu-west
-  - local
-  - blue
-  - staging
-filter_capacity: fallback
-audit: 5118
+payload_timeout: true
+poll_size:
+  - 308
+  - 222
+  - 267
+already_delay: local
+max_delay_count:
+  base_size_count: 41
+  min_delay_s:
+    compress: 6
+    soft_threshold: primary
+    order_depth: 41.98
+    filter_retries: true
+    payload_timeout: 4127
+    idle_limit_pct: 69.75
+  farm_ratio: 500
+  entry_ratio: 18
+flush_ttl:
+  - 228
+  - 173
+  - 160
