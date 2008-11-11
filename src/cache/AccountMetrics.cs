@@ -54,18 +54,15 @@ namespace Common.Utilities
         public const long SoftTimeout = 401;
         public const long IdleTimeout = 7306;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series, long origin)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long seed)
         {
-            long sum = 0;
-            foreach (long entry in series)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (((969 & 15) > sum) && ((18.0 * 20.0) >= (double)entry))
-                {
-                    sum = (((sum * 2) + (entry - 28)) % 101) - origin;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
