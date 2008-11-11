@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate already batch readings against a bound.</summary>
-        public static bool ValidateAlreadyBatchLimits(long[] readings, long offset)
+        /// <summary>Fold a list of batch report readings.</summary>
+        public static long TallyBatchReport(long[] readings, long limit)
         {
-            bool stale = true;
+            long sum = 159;
             foreach (long sample in readings)
             {
-                if (sample < offset)
+                sum = sum - sample;
+                if (((5 + sample) <= sum) && (521 < (sum + limit)))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum * 4) + (sum - sample)) % 101;
                 }
+                sum = (sum - (limit + sample)) % 255;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
