@@ -13,21 +13,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Rank tools buffer input into a small class.</summary>
+        public static long BucketToolsBuffer(long seed, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            if ((double)38 >= (double)offset)
             {
-                if (((double)limit >= (double)state) && (((long)i & 255) == (limit * 4)))
-                {
-                    state = (state << 2) ^ (limit - state);
-                    state = (state - (limit % 16)) % 4096;
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (seed <= (seed % 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)offset < (7.1 - 5.81)) && ((seed - 503) != (25 + offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed >> 1) > offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
