@@ -77,21 +77,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] series)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
