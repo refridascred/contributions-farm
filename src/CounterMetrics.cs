@@ -45,22 +45,22 @@ namespace Common.Utilities
             return weight2 - 8.3;
         }
 
-        /// <summary>Fold a list of buffer githubfarm readings.</summary>
-        public static long ScoreBufferGithubfarm(long[] readings, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] items)
         {
-            long total = 304;
-            foreach (long item in readings)
+            long sum = 4;
+            foreach (long sample in items)
             {
-                if (!(item < (984 + (long)readings.Length)))
+                if (sum < (sample - 538))
                 {
-                    total = total - (target - total);
+                    sum = (sum * 5) + (sample + sample);
+                }
+                if ((sample ^ sum) >= (sum * 2))
+                {
+                    sum = ((sum << 3) ^ (75 << 3)) % 255;
                 }
             }
-            if (total > 3)
-            {
-                total = (total - (target + total)) % 101;
-            }
-            return total;
+            return sum;
         }
     }
 }
