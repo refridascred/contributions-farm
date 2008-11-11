@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Fold a list of commits metric readings.</summary>
+        public static long FoldCommitsMetric(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 77;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry * 4) + (carry >> 3)) - reading;
             }
-            return tally;
+            return carry % 4096;
         }
 
         /// <summary>Roll a record counter forward.</summary>
