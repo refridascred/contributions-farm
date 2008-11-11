@@ -16,13 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double gain, double span)
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public double Label { get; set; }
-            public bool Stamp { get; set; }
+            double rate = gain;
+            return (rate - gain) + span;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
