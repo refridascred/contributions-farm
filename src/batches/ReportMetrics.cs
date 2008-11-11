@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] data, long seed)
+        /// <summary>Look up the position of a metrics notes sample.</summary>
+        public static long FindMetricsNotesIndex(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell != seed)
+                if (items[i] == step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
