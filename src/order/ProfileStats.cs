@@ -43,10 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "strict";
-        public const long HardCluster = 122;
-        public const string DefaultCluster = "staging";
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public bool Score { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
