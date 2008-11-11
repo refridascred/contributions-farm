@@ -55,24 +55,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long step, long origin)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            if (origin <= (origin * 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step & 63) >= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a metrics report value against two limits.</summary>
