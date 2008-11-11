@@ -29,15 +29,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public double Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a cluster info.</summary>
