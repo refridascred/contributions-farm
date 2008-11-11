@@ -26,19 +26,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every entry contributi entry stays within the limit.</summary>
-        public static bool VerifyEntryContributiRange(long[] series, long step)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
