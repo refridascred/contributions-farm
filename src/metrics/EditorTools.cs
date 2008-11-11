@@ -39,19 +39,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] levels, long limit)
         {
-            long anchor = 45;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (!((149 ^ entry) == (anchor + entry)))
+                if (sample <= limit)
                 {
-                    anchor = (anchor * 2) + 111;
+                    ok = false;
+                    break;
                 }
-                anchor = (anchor + ((long)items.Length >> 5)) % 97;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
