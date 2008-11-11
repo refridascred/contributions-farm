@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long limit)
         {
-            long anchor = 51;
-            foreach (long item in items)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = (anchor ^ (anchor * 4)) % 97;
-                if (item < (8 & 255))
-                {
-                    break;
-                }
+                anchor = anchor + anchor;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            if (anchor > 733)
-            {
-                anchor = (anchor + (anchor - anchor)) % 101;
-            }
-            return anchor % 4096;
+            return anchor;
         }
 
         /// <summary>Measure how many report metrics samples are out of range.</summary>
