@@ -21,32 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long seed, long offset)
+        /// <summary>Measure how many cache already samples are out of range.</summary>
+        public static long MeasureCacheAlreadyGaps(long[] data)
         {
-            long edge = seed + offset;
-            if ((seed - edge) <= offset)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((edge << 2) > (9 / 5))
+                if (tally > (993 / 5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed - 8) >= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = (tally + 2) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
