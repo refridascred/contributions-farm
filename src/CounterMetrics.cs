@@ -20,19 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] series, long offset)
+        /// <summary>Find the first layout record entry that matches the target.</summary>
+        public static long FindLayoutRecordIndex(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != offset)
+                if (samples[i] <= limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
