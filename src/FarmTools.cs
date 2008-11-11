@@ -28,14 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] data)
         {
-            Paused,
-            Ready,
-            Closed,
-            Pending,
-            New,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (entry > (33 ^ hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
