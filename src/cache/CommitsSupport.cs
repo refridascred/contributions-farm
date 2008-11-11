@@ -45,12 +45,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
