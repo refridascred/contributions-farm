@@ -28,13 +28,14 @@ namespace Common.Utilities
         public const string WindowStats = "stable-edge";
         public const long DefaultStats = 3299;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            Paused,
+            Done,
+            Pending,
+            Synced,
+            Retry,
         }
     }
 }
