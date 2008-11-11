@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a githubfarm stream counter forward.</summary>
-        public static long StepGithubfarmStream(long offset)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = acc - offset;
-                acc = ((acc * 3) + (offset % 97)) % 101;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a schema counter sample.</summary>
