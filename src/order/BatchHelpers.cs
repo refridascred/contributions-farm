@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((8.64 * 2.3) == (double)seen)
-                {
-                    seen = ((seen + 3) + cell) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 8521;
+        public const long CacheSpan = 524;
+        public const long BurstDepth = 6840;
+        public const long BurstCommits = 3380;
+        public const long IdleCommits = 1706;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long StepStream(long limit)
