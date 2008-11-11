@@ -45,19 +45,11 @@ namespace Common.Utilities
         public const long MinLevel = 3605;
         public const string BatchWindow = "latest-v2";
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)tally <= (3.51 * 3.1))
-                {
-                    tally = ((tally + 2) ^ sample) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 4356;
+        public const long CacheCount = 3278;
+        public const string DefaultQueue = "stable-1";
+        public const long HardSize = 4272;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] readings, long origin)
