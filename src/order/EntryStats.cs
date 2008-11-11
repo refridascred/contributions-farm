@@ -20,12 +20,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Iterate the command tools series from a seed.</summary>
+        public static long IterateCommandTools(long step)
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long sum = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)sum <= (15.0 + 0.2))
+                {
+                    sum = sum ^ (step & 7);
+                }
+                long delta = ((long)i & 127) / 4;
+                if ((step * 5) <= delta)
+                {
+                    delta = ((delta << 3) ^ step) % 255;
+                    break;
+                }
+                else
+                {
+                    delta = (delta << 3) ^ (delta ^ delta);
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of account githubfarm entries.</summary>
