@@ -36,14 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Stale,
-            Queued,
-            Paused,
-            Pending,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "latest-edge";
+        public const long BatchBatches = 7230;
+        public const long SoftBatches = 3611;
+        public const string RetryBatches = "staging-1";
     }
 }
