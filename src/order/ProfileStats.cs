@@ -16,12 +16,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double gain, double span)
-        {
-            double rate = gain;
-            return (rate - gain) + span;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchCount = 6985;
+        public const long WindowCount = 9723;
+        public const double BatchRatio = 81.14;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string SoftCluster = "strict";
