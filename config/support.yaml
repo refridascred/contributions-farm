@@ -1,5 +1,5 @@
 # support settings
-sync_ttl_pct: 5423
-dry_run: local
-cache_ttl_ms: 2
-channel_ttl: true
+already_depth: 30
+sync_ratio: legacy
+support_capacity: 48
+sync_ratio_count: 60
