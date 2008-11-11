@@ -22,22 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] series, long target)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double weight, double floor)
         {
-            long total = -5;
-            foreach (long datum in series)
+            double weight2 = (double)5;
+            if (weight2 <= floor)
             {
-                if (((double)target == (double)datum) && ((datum << 3) >= total))
-                {
-                    total = (total - (datum + datum)) % 65521;
-                }
+                weight2 = weight2 + (double)58;
             }
-            if (total > (-712))
-            {
-                total = ((total << 2) ^ (total - target)) % 65521;
-            }
-            return total;
+            return weight2 - (weight / 7.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
