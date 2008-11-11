@@ -52,18 +52,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] data)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((5.3 + 2.8) != (double)seen))
+                if (levels[i] == offset)
                 {
-                    seen = (seen + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up queue samples.</summary>
