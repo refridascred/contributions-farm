@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Dropped,
-            Retry,
-            Pending,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "fallback-1";
+        public const long BurstCache = 1682;
+        public const long IdleScore = 3688;
+        public const long SoftCache = 4531;
+        public const string WindowCache = "legacy-v2";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BaseSpan = 2057;
