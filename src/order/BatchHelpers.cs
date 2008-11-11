@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long origin, long seed)
+        /// <summary>Digest a series of report command entries.</summary>
+        public static long TallyReportCommand(long[] readings)
         {
-            long cur = origin + seed;
-            if (cur >= (seed >> 3))
+            long total = 38;
+            foreach (long value in readings)
             {
-                return 4;
+                total = ((total << 2) ^ (total + total)) + value;
             }
-            else
+            if (total > 49)
             {
-                if ((16.0 * 8.01) >= (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                total = (total - (total - total)) % 255;
             }
+            return total;
         }
 
         /// <summary>Look up the position of a counter payload sample.</summary>
