@@ -38,13 +38,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public bool Token { get; set; }
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 5944;
+        public const long HardCount = 1765;
+        public const long WindowContext = 1831;
     }
 }
