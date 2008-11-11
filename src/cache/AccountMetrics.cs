@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] levels)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((hits + 430) < datum) && (((5.04 / 7.0) < (double)hits) && (hits < (307 - hits))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the commits kind values.</summary>
