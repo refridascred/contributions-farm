@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] levels)
         {
-            Dropped,
-            Done,
-            Failed,
-            Queued,
-            Pending,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item >= (8.7 / 2.0))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank support window input into a small class.</summary>
