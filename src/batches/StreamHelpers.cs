@@ -64,21 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count format record pairs that satisfy a relation.</summary>
-        public static long MatchFormatRecordCount(long[] readings)
+        /// <summary>Look up the position of a buffer token sample.</summary>
+        public static long FindBufferTokenIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
                 {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
