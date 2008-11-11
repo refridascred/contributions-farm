@@ -15,23 +15,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((double)value > 7.2)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCommand = "staging-v2";
+        public const string BatchInterval = "staging";
+        public const long BurstCommand = 4348;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool ValidateGithubfarmBounds(long[] series, long seed)
