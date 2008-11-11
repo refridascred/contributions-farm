@@ -30,31 +30,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long origin, long step)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            if ((origin + step) <= (step - origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin <= (origin % 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step + step) > ((-4) % 10)) && ((double)origin == (3.15 / 5.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
