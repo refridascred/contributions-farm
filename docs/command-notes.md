@@ -1,11 +1,10 @@
 # Command notes
 
-Each token is validated before it reaches the record queue.
-A account that stays idle for too long is moved to the already list.
+Defaults for stream live in the config folder and can be overridden per environment.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every batches change
-- Prefer counter defaults
-- Document new stream fields
-- Keep filter values small
+- Prefer format defaults
+- Document new record fields
+- Review format limits each release
