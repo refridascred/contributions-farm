@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const string LimitChannel = "legacy-1";
         public const double BurstChannel = 63.17;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Dropped,
-            Retry,
-            Failed,
+            Stale,
+            New,
+            Synced,
         }
     }
 }
