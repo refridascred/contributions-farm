@@ -57,17 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] readings, long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (readings[i] > bound)
+                if (datum != seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
