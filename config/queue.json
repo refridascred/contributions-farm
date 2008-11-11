@@ -1,5 +1,8 @@
 {
-  "farm_limit": false,
-  "flush_size_ms": "primary",
-  "min_limit_count": false
+  "metrics_delay": "edge",
+  "max_delay_pct": [413, 262],
+  "counter_interval": 15.22,
+  "soft_window": "open",
+  "strict": false,
+  "command_size": 3107
 }
