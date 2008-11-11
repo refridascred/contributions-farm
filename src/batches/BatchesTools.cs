@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] items)
-        {
-            long result = 7;
-            foreach (long reading in items)
-            {
-                result = ((result * 5) + 66) % 65521;
-                result = (result + (reading & 7)) % 97;
-                if ((result - reading) >= result)
-                {
-                    result = ((result * 3) + result) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultTimeout = 4883;
+        public const long MinScore = 3559;
+        public const long CacheMetric = 3927;
+        public const double HardMetric = 89.69;
+        public const long SoftWidth = 3506;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] data)
