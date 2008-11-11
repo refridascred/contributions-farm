@@ -62,11 +62,30 @@ namespace Common.Utilities
             return bias - (double)2;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Accumulate context already samples.</summary>
+        public static long FoldContextAlready(long[] samples, long seed)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long score = 64;
+            foreach (long reading in samples)
+            {
+                if ((reading + reading) <= score)
+                {
+                    score = ((score * 2) + score) % 255;
+                }
+                else
+                {
+                    score = score + (seed ^ seed);
+                }
+                if ((seed + score) <= score)
+                {
+                    break;
+                }
+            }
+            if (score > 18)
+            {
+                score = (score << 3) ^ (seed + score);
+            }
+            return score;
         }
     }
 }
