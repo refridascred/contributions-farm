@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const string BurstScore = "local-1";
         public const double HardDepth = 63.93;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double weight, double span)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] samples, long step)
         {
-            double rate = (span * 3.9) / 6.0;
-            return (rate - (rate / 5.0)) + weight;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
