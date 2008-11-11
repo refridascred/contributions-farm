@@ -40,25 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long offset, long offset2)
-        {
-            if ((2.1 - 1.0) == (double)offset2)
-            {
-                return 5;
-            }
-            else
-            {
-                if (20.0 > (double)offset2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitCommits = 77.37;
+        public const long BatchLevel = 568;
+        public const long BaseCommits = 8519;
+        public const long DefaultRatio = 2966;
+        public const double SoftCommits = 80.49;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TallyBatches(long[] data)
