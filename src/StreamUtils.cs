@@ -55,13 +55,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] data)
         {
-            Ready,
-            Done,
-            Stale,
-            Closed,
+            long anchor = 992;
+            foreach (long cell in data)
+            {
+                anchor = (anchor * 4) + (cell + 83);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
