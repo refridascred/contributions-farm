@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Synced,
-            New,
-            Retry,
+            Active,
+            Dropped,
             Closed,
-            Idle,
+            Stale,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
