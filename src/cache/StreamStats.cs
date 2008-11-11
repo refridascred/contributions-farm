@@ -20,20 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitWidth = "strict-1";
+        public const string StepCount = "fallback";
+        public const long BurstSupport = 7339;
+        public const long BaseLevel = 6877;
+        public const string BaseCount = "latest-v2";
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteGaps(long[] items, long offset)
