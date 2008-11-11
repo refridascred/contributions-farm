@@ -13,15 +13,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Active,
-            Draft,
-            Synced,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "strict";
+        public const double MaxSpan = 80.93;
+        public const string MaxAlready = "local-1";
+        public const string RetryAlready = "stable-v2";
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long BucketChecks(long bound, long limit)
