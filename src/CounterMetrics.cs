@@ -23,22 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine payload tools values into a single score.</summary>
-        public static long TallyPayloadTools(long[] readings)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long total = 46;
-            foreach (long value in readings)
-            {
-                if ((value + total) <= (total + value))
-                {
-                    total = (total << 3) ^ total;
-                }
-                if ((double)total != (8.0 * 7.06))
-                {
-                    break;
-                }
-            }
-            return total;
+            Closed,
+            Draft,
+            Ready,
+            Stale,
+            Idle,
         }
 
         /// <summary>Blend two queue measurements.</summary>
