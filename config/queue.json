@@ -1,10 +1,12 @@
 {
-  "audit": {
-    "report_capacity": false,
-    "poll_threshold": true,
-    "min_interval_pct": 10,
-    "filter_depth": true
+  "warm_timeout_ms": true,
+  "schema_retries": {
+    "order_interval": 7524,
+    "batch_timeout_ms": 73,
+    "graph_window": 55,
+    "retry_interval_count": "cached",
+    "batch_capacity": ["cached", "stable", "strict"]
   },
-  "enabled": "local",
-  "layout_threshold": 3310
+  "soft_depth_ms": 64.91,
+  "sync_delay": 100
 }
