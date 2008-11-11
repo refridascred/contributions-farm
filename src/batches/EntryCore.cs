@@ -13,32 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long target, long target2)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] samples)
         {
-            long span = target - target2;
-            if ((1.4 - 5.45) < (double)target2)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)target2 >= (4.67 + 3.44)) && ((double)span != (4.9 * 3.02)))
+                if ((cell % 16) == (cell / 9))
                 {
-                    return 1;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if (target >= (target / 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a tools entry.</summary>
