@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryRatio = 73;
-        public const double HardCache = 60.97;
-        public const long SoftInterval = 7458;
-        public const string DefaultCache = "open-edge";
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Active,
+            Retry,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string DefaultCount = "fallback-v2";
