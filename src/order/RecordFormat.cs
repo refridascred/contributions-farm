@@ -39,12 +39,12 @@ namespace Common.Utilities
             return rate + (ratio / 3.0);
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
