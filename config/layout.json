@@ -1,11 +1,7 @@
 {
-  "min_ratio": [426, 479, 220],
-  "burst_window_ms": {
-    "base_ttl_s": true,
-    "dry_run": 3480,
-    "compress": "edge",
-    "batch_capacity": 21.8,
-    "max_depth": 60
-  },
-  "hard_ttl_count": 8
+  "order_timeout": "cached",
+  "session_depth": "primary",
+  "hard_ttl_s": 1024,
+  "dry_run": "eu-west",
+  "poll_timeout": 1024
 }
