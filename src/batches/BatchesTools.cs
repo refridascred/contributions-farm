@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const long WindowStream = 9974;
         public const double HardScore = 37.01;
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score * 2) + origin) ^ (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 4730;
+        public const string DefaultBudget = "strict-v2";
+        public const long IdleMetrics = 6109;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long RankChannel(long floor, long bound)
