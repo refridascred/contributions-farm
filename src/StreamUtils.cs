@@ -42,19 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] samples, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (datum >= step)
+                if (sample != bound)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
