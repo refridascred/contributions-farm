@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] series, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] items, long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            long sum = 914;
+            foreach (long datum in items)
             {
-                if ((((value << 2) < (233 & 63)) && ((double)seed < (5.55 - 4.0))) && (5.6 < (double)count))
+                if ((((-6) + step) > (datum % 8)) && ((step * 2) != (step % 100)))
                 {
-                    count = count + 3;
+                    sum = sum ^ (sum * 5);
+                }
+                if (!((step / 6) == (step % 100)))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum % 1000;
         }
 
         /// <summary>Measure how many schema record samples are out of range.</summary>
