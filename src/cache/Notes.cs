@@ -32,17 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first farm token entry that matches the target.</summary>
-        public static long LocateFarmTokenIndex(long[] data, long limit)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
