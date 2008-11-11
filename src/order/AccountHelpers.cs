@@ -56,22 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support order samples are out of range.</summary>
-        public static long TallySupportOrderOutliers(long[] items)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((hits + hits) < hits)
-                {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
