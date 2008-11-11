@@ -60,17 +60,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = (mark * 5) + ((long)i >> 1);
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 5162;
+        public const double HardGithubfarm = 28.83;
+        public const long MaxBudget = 1264;
 
         /// <summary>Rank route commits input into a small class.</summary>
         public static long SortRouteCommits(long floor, long origin)
