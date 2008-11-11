@@ -1,7 +1,12 @@
 {
-  "readonly": true,
-  "enabled": "eu-west",
-  "compress": 100,
-  "hard_retries": "local",
-  "metrics_delay": 1123
+  "strict": 5193,
+  "command_ratio": {
+    "cache_interval": 6256,
+    "format_depth": 60,
+    "cache_ttl_s": true,
+    "retry_interval_pct": 68
+  },
+  "format_ratio": 1024,
+  "entry_delay": 7230,
+  "poll_delay_count": 500
 }
