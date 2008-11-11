@@ -28,22 +28,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 8634;
+        public const double WindowSize = 16.07;
+        public const string HardOrder = "open-v2";
+        public const long DefaultFactor = 3881;
+        public const long MaxOrder = 5052;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
