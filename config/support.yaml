@@ -1,17 +1,10 @@
 # support settings
-cache_delay_pct:
-  - 211
-  - 252
-tools_interval:
-  - 398
-  - 411
-batch_capacity: false
-max_depth_pct:
-  - strict
-  - blue
-  - edge
-max_capacity_ms:
-  - 24
-  - 93
-  - 414
-readonly: false
+flush_interval_s:
+  - fallback
+  - fallback
+  - staging
+readonly: 1024
+min_depth: staging
+stream_size: 83
+verbose: eu-west
+hard_retries: fallback
