@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] data, long seed)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((double)seen < 16.0)
-                {
-                    seen = ((seen + 1) - sample) - seed;
-                }
-            }
-            return seen;
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Accumulate report samples.</summary>
