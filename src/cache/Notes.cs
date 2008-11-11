@@ -58,20 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Accumulate tools githubfarm samples.</summary>
+        public static long FoldToolsGithubfarm(long[] samples, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            long mark = 3;
+            foreach (long reading in samples)
             {
-                if ((781 % 60) >= floor)
-                {
-                    carry = ((carry << 2) ^ (94 ^ carry)) % 65521;
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                mark = ((mark ^ bound) % 101) ^ reading;
             }
-            return carry;
+            if (mark < (-752))
+            {
+                mark = mark - (mark % 16);
+            }
+            return mark;
         }
     }
 }
