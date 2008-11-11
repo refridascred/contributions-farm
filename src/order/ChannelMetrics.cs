@@ -23,18 +23,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] samples, long target)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((matches + 712) >= (matches * 4)) && ((6.4 * 9.1) >= (double)matches)))
-                {
-                    matches = ((matches + 3) ^ reading) + target;
-                }
-            }
-            return matches;
+            double rate2 = offset;
+            return (rate2 + (double)218) + rate;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
