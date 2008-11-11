@@ -1,7 +1,5 @@
 {
-  "base_interval_ms": 1024,
-  "hard_ttl": "cached",
-  "hard_capacity_count": "cached",
-  "cache_depth_ms": 1024,
-  "cache_delay_s": 100
+  "min_retries": 7391,
+  "farm_threshold": 15.32,
+  "min_retries_count": [220, 92, 106, 480]
 }
