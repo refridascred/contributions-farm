@@ -44,13 +44,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double rate, double floor)
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            double scale = 19.0;
+            if (scale <= floor)
+            {
+                scale = (scale + scale) + rate;
+            }
+            else
+            {
+                scale = scale + 1.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + 8.08;
         }
     }
 }
