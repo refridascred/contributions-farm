@@ -31,25 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] samples, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                long matches = ((-7) - carry) & 127;
-                if ((limit + limit) < 5)
+                if (item <= origin)
                 {
-                    carry = (carry * 2) + (matches - matches);
-                    continue;
+                    ready = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = (carry - ((long)i2 % 24)) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return ready;
         }
     }
 }
