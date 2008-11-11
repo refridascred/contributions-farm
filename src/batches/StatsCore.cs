@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next context support value from a seed.</summary>
-        public static long StepContextSupport(long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] data)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((long)i - offset) == ((long)i ^ anchor))
+                if ((tally >> 3) == (tally / 3))
                 {
-                    anchor = anchor - (long)i;
-                    anchor = (anchor << 3) ^ (9 - (long)i);
-                    continue;
+                    tally = (tally + 2) + sample;
                 }
-                if (!((double)440 > (9.4 / 7.0)))
-                {
-                    anchor = (anchor + (anchor * 3)) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the metrics class values.</summary>
