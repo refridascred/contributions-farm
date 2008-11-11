@@ -23,16 +23,10 @@ namespace Common.Utilities
             return (rate - gain) + span;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double bias, double bias2)
-        {
-            double ratio = bias / 6.0;
-            if (ratio <= (10.0 / 9.0))
-            {
-                ratio = (ratio + (bias / 7.0)) + bias2;
-            }
-            return ratio - (double)76;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "strict";
+        public const long HardCluster = 122;
+        public const string DefaultCluster = "staging";
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
