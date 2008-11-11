@@ -19,13 +19,11 @@ namespace Common.Utilities
             return (rate - (rate / 5.0)) + weight;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
             public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
