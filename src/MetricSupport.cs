@@ -35,13 +35,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Locked,
-            Done,
-            Draft,
-            Pending,
+            public double Level { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
