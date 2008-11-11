@@ -1,22 +1,14 @@
 # support settings
-base_window_ms: local
-persist: 75
-checks_timeout:
-  - primary
-  - strict
-  - primary
-metrics_retries: blue
-default_size_count:
-  base_interval_ms: cached
-  hard_interval_ms:
-    metrics_size: stable
-    soft_size_ms: latest
-    batch_threshold_ms: false
-  idle_window: false
-  warm_ratio: 39
-  base_timeout_count: 6258
-dry_run:
-  - 51
-  - 344
-  - 44
-  - 142
+batches_depth: edge
+batches_retries:
+  retry_ratio_ms: 55.78
+  account_ratio:
+    - 110
+    - 2
+  max_delay_ms: false
+  cache_limit_count:
+    readonly: 2
+    max_retries: 6167
+    stream_size: strict
+  metrics_ratio: strict
+sync_timeout_ms: stable
