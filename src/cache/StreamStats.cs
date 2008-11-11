@@ -15,15 +15,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] data, long offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] items, long origin)
         {
-            long sum = 13;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (((sum + sum) % 65521) ^ value) + offset;
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
