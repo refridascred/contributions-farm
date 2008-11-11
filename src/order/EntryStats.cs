@@ -60,19 +60,38 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] values, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long seed, long bound)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            if ((bound - seed) >= bound)
             {
-                if (reading < limit)
+                return 5;
+            }
+            else
+            {
+                if (((double)bound <= (16.0 + 1.9)) && ((12.0 * 5.0) >= (double)seed))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (10.0 > (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((489 + seed) == (bound ^ seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
