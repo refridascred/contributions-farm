@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
