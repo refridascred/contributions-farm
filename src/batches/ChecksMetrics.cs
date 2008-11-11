@@ -64,26 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] items, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] values, long seed)
         {
-            long mark = 9;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (!((mark - sample) > 85))
+                if (reading <= seed)
                 {
-                    mark = ((mark * 5) + mark) % 101;
-                }
-                if ((mark >> 2) == (mark + origin))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (mark < 796)
-            {
-                mark = (mark + origin) % 65521;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
