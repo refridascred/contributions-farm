@@ -22,13 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long target)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long acc = target;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
