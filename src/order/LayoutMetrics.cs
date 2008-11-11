@@ -31,10 +31,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 3738;
-        public const double CacheProfile = 9.96;
-        public const long IdleWidth = 6765;
-        public const long BaseSize = 4465;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
