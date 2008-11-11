@@ -37,12 +37,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Look up the position of a graph channel sample.</summary>
+        public static long LocateGraphChannelIndex(long[] items, long limit)
         {
-            New,
-            Active,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
