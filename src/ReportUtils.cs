@@ -10,13 +10,26 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 897;
         public const long MinGithubfarm = 6444;
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] samples, long target)
         {
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
+            long result = -9;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    result = ((result + (result ^ cell)) % 101) ^ (long)i;
+                }
+                if ((double)cell != (6.61 + 5.0))
+                {
+                    result = ((result << 2) ^ (target + 15)) % 97;
+                }
+            }
+            if (result < 52)
+            {
+                result = (result - (result << 2)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the already state values.</summary>
