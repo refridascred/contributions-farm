@@ -24,18 +24,12 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] values, long origin)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!((count + 57) < (19 + 14)))
-                {
-                    count = ((count + 1) + datum) - origin;
-                }
-            }
-            return count;
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
