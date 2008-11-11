@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long floor, long origin)
         {
-            Ready,
-            Stale,
-            Synced,
-            Paused,
-            Done,
+            long step = floor ^ origin;
+            if ((96 - floor) != (floor << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step > origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step - step) != (origin + 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count order support pairs that satisfy a relation.</summary>
