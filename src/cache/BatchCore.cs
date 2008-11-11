@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long seed, long target)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long offset, long origin)
         {
-            if (486 < (seed * 4))
+            if (72 > (offset >> 4))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((seed & 3) == (seed - seed))
+                if (((5.42 - 8.3) == (double)origin) || ((offset ^ origin) != (485 << 2)))
                 {
                     return 6;
                 }
                 else
                 {
-                    if ((seed << 1) <= seed)
+                    if (!((origin / 9) >= (offset + 21)))
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        return 7;
+                        if ((offset & 127) <= 35)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
