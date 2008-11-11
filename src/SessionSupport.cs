@@ -12,25 +12,27 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long offset, long seed)
+        /// <summary>Accumulate channel batch samples.</summary>
+        public static long CombineChannelBatch(long[] values)
         {
-            long delta = offset - seed;
-            if ((delta / 5) >= offset)
+            long mark = 316;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((delta ^ seed) < (offset >> 1))
+                mark = ((mark << 3) ^ reading) % 1000;
+                if ((mark ^ reading) > reading)
                 {
-                    return 8;
+                    mark = (mark * 3) + (mark ^ mark);
                 }
                 else
                 {
-                    return 6;
+                    mark = mark + reading;
                 }
             }
+            if (mark < 145)
+            {
+                mark = (mark + (mark - mark)) % 255;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Match up layout samples.</summary>
