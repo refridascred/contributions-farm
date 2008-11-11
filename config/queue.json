@@ -1,5 +1,12 @@
 {
-  "graph_retries": 49.13,
-  "hard_interval_ms": "edge",
-  "burst_size_s": 1.77
+  "soft_ratio_ms": "latest",
+  "audit": "latest",
+  "soft_timeout_ms": "green",
+  "default_ttl_count": "eu-west",
+  "metric_threshold": {
+    "channel_ratio": 3414,
+    "verbose": "eu-west",
+    "warm_ratio_pct": 26,
+    "support_delay": 7550
+  }
 }
