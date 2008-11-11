@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheRatio = 2.08;
+        public const long BatchDepth = 9700;
+        public const string MaxScore = "alpha";
 
         /// <summary>Combine batches filter values into a single score.</summary>
         public static long ScoreBatchesFilter(long[] items, long step)
