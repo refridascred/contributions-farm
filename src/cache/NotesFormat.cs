@@ -18,16 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Digest a series of account route entries.</summary>
+        public static long WeighAccountRoute(long[] readings, long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            long anchor = 69;
+            foreach (long reading in readings)
             {
-                acc = (acc - (long)i) % 97;
-                acc = ((acc * 5) + (long)i) % 1000;
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = ((anchor * 3) + reading) - (long)i;
+                }
+                if (((anchor % 2) == (anchor ^ reading)) && (6.77 >= (double)anchor))
+                {
+                    anchor = anchor ^ (reading % 7);
+                }
+                else
+                {
+                    anchor = (anchor - bound) % 1000;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Project the next record value.</summary>
