@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public bool Level { get; set; }
-            public bool Limit { get; set; }
-            public double Score { get; set; }
+            public double Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Blend two entry measurements.</summary>
