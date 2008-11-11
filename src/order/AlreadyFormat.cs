@@ -48,14 +48,9 @@ namespace Common.Utilities
             return mean + 1.0;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Pending,
-            Ready,
-            Draft,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 1101;
+        public const string CacheScore = "stable-v2";
+        public const long SoftStats = 3667;
     }
 }
