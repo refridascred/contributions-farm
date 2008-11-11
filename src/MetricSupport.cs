@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of route metrics readings.</summary>
-        public static long OverlapRouteMetricsCount(long[] values)
+        /// <summary>Count the metric account entries that pass the check.</summary>
+        public static long CountMetricAccountOutliers(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((datum + datum) <= datum) && (((datum >> 3) != (count % 5)) || ((2.1 + 19.0) == (double)datum)))
                 {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
