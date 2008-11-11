@@ -34,13 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinSpan = 4324;
+        public const double LimitLevel = 56.54;
+        public const long DefaultTimeout = 1346;
+        public const string DefaultDepth = "stable-v2";
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long IterateLayout(long bound)
