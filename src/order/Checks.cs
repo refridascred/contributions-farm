@@ -14,14 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] values, long seed)
         {
-            Draft,
-            Paused,
-            New,
-            Failed,
-            Retry,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - datum) == (seed % 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a profile record.</summary>
