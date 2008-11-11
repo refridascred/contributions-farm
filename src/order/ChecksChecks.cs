@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftPayload = 66.5;
+        public const long RetryPayload = 4768;
+        public const long LimitPayload = 1148;
+        public const long IdleFactor = 7347;
+        public const long RetryScore = 1855;
 
         /// <summary>Grade a farm filter value against two limits.</summary>
         public static long ClassifyFarmFilter(long target, long step)
