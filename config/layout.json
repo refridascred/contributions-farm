@@ -1,7 +1,20 @@
 {
-  "verbose": "blue",
-  "base_limit_s": "staging",
-  "base_depth_ms": true,
-  "default_window": ["legacy", "blue"],
-  "batch_interval_s": 2098
+  "batch_timeout": ["local", "latest", "eu-west", "green"],
+  "burst_timeout_ms": {
+    "base_ratio_s": false,
+    "stats_size": {
+      "compress": 33,
+      "default_timeout_s": [374, 281],
+      "hard_timeout": true,
+      "verbose": ["cached", "blue", "edge"],
+      "schema_ttl": 73.99
+    },
+    "hard_delay_count": 100
+  },
+  "default_ratio_ms": {
+    "soft_capacity": "fallback",
+    "githubfarm_ttl": 57.16,
+    "command_size": false
+  },
+  "flush_ratio_ms": [146, 105]
 }
