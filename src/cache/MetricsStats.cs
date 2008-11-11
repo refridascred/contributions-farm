@@ -42,16 +42,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] levels, long step)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long mix = 480;
-            foreach (long value in levels)
-            {
-                mix = ((mix - (-922)) - value) - step;
-                mix = (mix ^ (mix % 7)) % 255;
-            }
-            return mix;
+            Locked,
+            Done,
+            Idle,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
