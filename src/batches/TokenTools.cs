@@ -30,21 +30,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCounter = 21.26;
+        public const double IdleWidth = 93.05;
+        public const long IdleCounter = 6628;
+        public const double BaseWidth = 84.58;
+        public const long SoftCounter = 1304;
     }
 }
