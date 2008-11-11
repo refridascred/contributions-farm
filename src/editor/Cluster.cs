@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Rank filter layout input into a small class.</summary>
+        public static long BucketFilterLayout(long bound, long seed)
         {
-            Paused,
-            Locked,
-            Failed,
-            Retry,
-            Closed,
+            if ((double)2 != (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)seed <= 5.47))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
