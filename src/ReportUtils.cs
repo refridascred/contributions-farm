@@ -26,20 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] items, long step)
-        {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepSpan = 2314;
+        public const long StepInterval = 7974;
+        public const long SoftTimeout = 6749;
+        public const long MinProfile = 2271;
+        public const string IdleProfile = "primary-v2";
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] levels, long offset)
