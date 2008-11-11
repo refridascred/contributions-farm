@@ -38,15 +38,17 @@ namespace Common.Utilities
         public const long CacheMetrics = 1296;
         public const long StepMetrics = 8424;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long seed)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] samples, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of order metric readings.</summary>
