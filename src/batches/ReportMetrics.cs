@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] items, long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((double)floor <= (3.0 / 5.0))
+                if (reading >= bound)
                 {
-                    tally = (tally + 2) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Iterate the checks editor series from a seed.</summary>
