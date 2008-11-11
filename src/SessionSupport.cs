@@ -36,21 +36,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)target != (3.2 - 3.7)) && ((3.0 * 7.0) != (double)tally))
                 {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
