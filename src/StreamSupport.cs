@@ -27,23 +27,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long step)
         {
-            long sum = 807;
-            foreach (long sample in series)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                sum = (sum + (sample % 8)) % 255;
-                if ((35 & 3) > (sum + sum))
+                long offset = step - (sum + step);
+                if (!!((offset & 15) < sum))
                 {
-                    break;
+                    offset = (offset - ((long)i + 416)) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            if (sum < 0)
-            {
-                sum = sum - sum;
-            }
-            return sum % 97;
+            return sum;
         }
     }
 }
