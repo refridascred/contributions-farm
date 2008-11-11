@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long LimitCount = 4666;
         public const long StepProfile = 1723;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] readings, long floor)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long mark = 93;
-            foreach (long cell in readings)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mark = ((mark - 82) % 255) + (long)i;
-                }
-                if ((double)cell == (double)75)
-                {
-                    mark = (mark * 4) + (floor - floor);
-                }
-            }
-            return mark % 1000;
+            Paused,
+            Draft,
+            Synced,
+            Ready,
         }
 
         /// <summary>Adjust a session reading.</summary>
