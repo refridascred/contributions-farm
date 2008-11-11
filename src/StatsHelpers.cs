@@ -75,13 +75,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Ready,
-            New,
-            Retry,
-            Queued,
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
