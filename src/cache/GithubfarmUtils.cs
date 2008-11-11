@@ -61,22 +61,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine window tools values into a single score.</summary>
-        public static long FoldWindowTools(long[] samples, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] items, long offset)
         {
-            long carry = 77;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (!(3.0 >= (double)step))
+                if ((cell / 2) < ((long)items.Length << 3))
                 {
-                    carry = (carry << 2) ^ (step >> 4);
-                }
-                if (((6.83 * 10.0) == (double)datum) || ((8.1 - 19.0) >= (double)(long)samples.Length))
-                {
-                    carry = ((carry << 2) ^ (datum - 3)) % 255;
+                    tally = (tally + 2) - offset;
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
