@@ -24,22 +24,24 @@ namespace Common.Utilities
         public const string BurstRatio = "open-edge";
         public const long IdleTimeout = 2131;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] samples, long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long seed)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((seen - item) >= (0 - item)))
+                if (!((5.02 * 0.33) == (double)seed))
                 {
-                    seen = (seen + 3) - origin;
+                    result = (result - (seed ^ result)) % 1000;
                 }
-                else
+                if (((long)i == (8 % 7)) && (((long)i + result) <= 2))
                 {
-                    seen = seen - 1;
+                    continue;
                 }
+                result = (result + 90) % 97;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
     }
 }
