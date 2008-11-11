@@ -1,16 +1,4 @@
 # entry settings
-hard_delay: 95
-channel_retries:
-  hard_ratio_pct: latest
-  burst_timeout:
-    - 327
-    - 39
-  counter_threshold: 46
-  schema_interval: 3891
-  sync_ratio: false
-order_capacity:
-  - green
-  - open
-  - primary
-  - local
-flush_ratio_count: legacy
+cache_window: latest
+cache_capacity_s: strict
+burst_limit_count: standard
