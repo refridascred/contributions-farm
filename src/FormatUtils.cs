@@ -14,13 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] items, long seed)
         {
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
