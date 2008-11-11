@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of session command readings.</summary>
-        public static long PairSessionCommandCount(long[] samples)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
