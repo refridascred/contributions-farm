@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 9262;
-        public const long WindowBatches = 9690;
-        public const double RetrySpan = 41.49;
-        public const long MaxBatches = 7930;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 50.94;
+        public const double WindowGithubfarm = 56.09;
+        public const long SoftGithubfarm = 771;
+        public const long MinGithubfarm = 4279;
+        public const long BaseGithubfarm = 9264;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteBounds(long[] values, long step)
