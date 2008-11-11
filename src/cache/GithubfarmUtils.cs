@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const long BaseSpan = 3537;
         public const double IdleAccount = 10.06;
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double bias, double floor)
+        /// <summary>Roll a notes metric counter forward.</summary>
+        public static long SeriesNotesMetric(long floor)
         {
-            double weight = (double)(77 + (-74));
-            if (weight > 9.8)
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
             {
-                weight = ((weight - 1.28) + bias) - floor;
+                anchor = anchor - anchor;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - (5.3 - weight);
+            return anchor;
         }
 
         /// <summary>Hold a token snapshot.</summary>
