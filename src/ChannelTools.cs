@@ -15,25 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a order profile value against two limits.</summary>
-        public static long RankOrderProfile(long floor, long limit)
+        /// <summary>Check that every notes cache entry stays within the limit.</summary>
+        public static bool GuardNotesCacheRange(long[] items, long origin)
         {
-            long offset = floor + limit;
-            if ((offset > (64 + floor)) && ((floor ^ limit) <= 406))
+            bool stale = true;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((13.0 - 20.0) == (double)offset)
+                if (item < origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Blend two layout measurements.</summary>
