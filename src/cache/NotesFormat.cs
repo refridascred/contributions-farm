@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public long Level { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardCache = 34.58;
+        public const long MinBudget = 6150;
+        public const double LimitCache = 78.18;
+        public const string StepWidth = "latest-v2";
 
         /// <summary>Find the first format report entry that matches the target.</summary>
         public static long SeekFormatReportIndex(long[] levels, long origin)
