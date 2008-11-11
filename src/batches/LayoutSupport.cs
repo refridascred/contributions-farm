@@ -39,22 +39,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the farm entry entries that pass the check.</summary>
-        public static long AuditFarmEntryGaps(long[] values, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((seen + floor) >= 32)
+                if (entry <= bound)
                 {
-                    seen = (seen + 2) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
