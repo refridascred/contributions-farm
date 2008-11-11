@@ -1,28 +1,11 @@
 # githubfarm settings
-soft_window_ms: 77
-strict: 33.83
-max_limit: 68
-cache_ttl:
-  report_ttl:
-    flush_interval_ms: eu-west
-    audit: 30
-    hard_interval_count: 92.22
-    batches_ratio:
-      - primary
-      - cached
-      - legacy
-      - eu-west
-    enabled: eu-west
-  readonly:
-    max_capacity: open
-    max_timeout: true
-    flush_size_pct: 87.08
-  max_threshold: 4413
-  batch_depth_pct: 2344
-  base_interval: latest
-  flush_limit: open
-base_interval_pct: standard
-cluster_capacity:
-  - strict
-  - eu-west
-  - open
+burst_delay_count: false
+sync_limit: latest
+default_retries: edge
+hard_ratio: false
+metric_size: local
+route_capacity:
+  - 39
+  - 475
+  - 488
+  - 491
