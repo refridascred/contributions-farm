@@ -52,18 +52,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] levels)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((double)6 >= (double)tally)
+                if ((9.57 + 12.0) != (double)(long)series.Length)
                 {
-                    tally = (tally + 2) + sample;
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
