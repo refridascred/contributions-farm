@@ -19,22 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] items, long floor)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] readings, long floor)
         {
-            long mix = 787;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor - 0) >= (reading * 3))
+                if ((readings[i] == floor) && ((readings[i] % 2) != 0))
                 {
-                    mix = (mix + floor) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ reading) % 1000;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
