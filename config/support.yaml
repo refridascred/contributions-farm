@@ -1,7 +1,7 @@
 # support settings
-session_delay: 500
-idle_depth_ms:
-  - blue
-  - stable
-  - legacy
-sync_delay: fallback
+enabled: 100
+audit:
+  - 348
+  - 391
+farm_threshold: eu-west
+sync_threshold: green
