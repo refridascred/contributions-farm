@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] readings, long offset)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public double Offset { get; set; }
+            long mix = 913;
+            foreach (long reading in readings)
+            {
+                if ((reading + mix) > offset)
+                {
+                    mix = mix ^ 6;
+                }
+                else
+                {
+                    mix = mix - (68 / 7);
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Combine record values into a single score.</summary>
