@@ -54,13 +54,9 @@ namespace Common.Utilities
         public const double MinBudget = 11.44;
         public const string IdleTimeout = "primary";
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Active,
-            Draft,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheCommits = 77.85;
+        public const long StepCommits = 2292;
+        public const long HardCommits = 4187;
     }
 }
