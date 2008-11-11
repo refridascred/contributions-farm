@@ -37,17 +37,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a contributi checks sample.</summary>
-        public static long LookupContributiChecksIndex(long[] samples, long limit)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate channel samples.</summary>
