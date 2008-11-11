@@ -28,24 +28,18 @@ namespace Common.Utilities
         public const long StepWidth = 1812;
         public const long StepSize = 8951;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] values, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] samples)
         {
-            long mix = 5;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (((cell - mix) < mix) || ((offset & 255) <= (mix * 3)))
+                if ((reading - reading) <= (hits % 10))
                 {
-                    mix = mix + (mix + cell);
-                    mix = (mix * 4) + (4 & 127);
+                    hits = hits + 1;
                 }
-                if (!((35 + offset) != (offset << 3)))
-                {
-                    mix = (mix ^ (84 * 5)) % 255;
-                }
-                mix = ((mix << 3) ^ (offset - 1)) % 1000;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
