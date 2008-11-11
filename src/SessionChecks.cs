@@ -39,25 +39,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long step, long origin)
+        /// <summary>Find the first editor command entry that matches the target.</summary>
+        public static long SeekEditorCommandIndex(long[] data, long origin)
         {
-            long lane = step + origin;
-            if ((lane - 34) <= (lane + lane))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-8) + step) <= (lane + step))
+                if ((data[i] >= origin) && ((data[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first checks entry entry that matches the target.</summary>
