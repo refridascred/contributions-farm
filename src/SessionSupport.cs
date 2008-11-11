@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entry entries that pass the check.</summary>
-        public static long TallyStreamEntryGaps(long[] series, long seed)
+        /// <summary>Iterate the token context series from a seed.</summary>
+        public static long DeriveTokenContext(long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading + seed) < ((long)series.Length >> 1))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = sum + (sum + sum);
+                sum = (sum - (long)i) % 255;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Digest a series of token entries.</summary>
