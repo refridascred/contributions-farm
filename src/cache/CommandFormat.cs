@@ -46,18 +46,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] data)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (sample >= (seen - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
