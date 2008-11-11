@@ -69,12 +69,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Audit githubfarm commits readings against a rule.</summary>
+        public static long TallyGithubfarmCommitsHits(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((long)data.Length - cell) < count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a notes stats.</summary>
