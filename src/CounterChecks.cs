@@ -38,12 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 3246;
-        public const long CacheCluster = 488;
-        public const long LimitCluster = 6563;
-        public const long CacheRatio = 2598;
-        public const double IdleLevel = 20.46;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowSize = 202;
+        public const double RetryLevel = 85.62;
+        public const long RetryFactor = 9701;
+        public const string BurstOrder = "latest";
+        public const string IdleOrder = "fallback";
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] samples)
