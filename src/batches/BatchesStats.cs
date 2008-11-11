@@ -54,9 +54,11 @@ namespace Common.Utilities
         public const double MinBudget = 11.44;
         public const string IdleTimeout = "primary";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheCommits = 77.85;
-        public const long StepCommits = 2292;
-        public const long HardCommits = 4187;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
