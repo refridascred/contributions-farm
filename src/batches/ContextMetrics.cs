@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit command cluster readings against a rule.</summary>
-        public static long TallyCommandClusterOutliers(long[] series, long limit)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double drift = 5.7 * 2.4;
+            if (drift >= (20.0 + weight))
             {
-                if ((limit + limit) < (reading & 31))
-                {
-                    hits = hits + 2;
-                }
+                drift = drift - (drift + weight);
             }
-            return hits;
+            return drift + floor;
         }
 
         /// <summary>Hold a profile info.</summary>
