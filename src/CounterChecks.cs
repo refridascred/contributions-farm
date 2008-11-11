@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((mark >> 4) == (mark + floor)))
-                {
-                    mark = (mark - (floor + mark)) % 65521;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public double Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a stats entry.</summary>
