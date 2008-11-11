@@ -79,19 +79,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] levels, long bound)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long sum = 956;
-            foreach (long item in levels)
-            {
-                if (4.0 < (double)item)
-                {
-                    sum = ((sum - ((long)levels.Length + item)) % 4096) + bound;
-                }
-                sum = ((sum << 3) ^ (sum ^ 6)) % 1000;
-            }
-            return sum;
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
