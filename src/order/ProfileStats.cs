@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long anchor = 1;
-            foreach (long entry in values)
-            {
-                anchor = ((anchor * 4) + (entry - entry)) % 65521;
-            }
-            return anchor;
+            Locked,
+            New,
+            Draft,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
