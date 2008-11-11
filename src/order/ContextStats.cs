@@ -47,12 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] values)
         {
-            Stale,
-            Active,
-            Pending,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((tally - 451) > (tally / 7))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a session counter forward.</summary>
