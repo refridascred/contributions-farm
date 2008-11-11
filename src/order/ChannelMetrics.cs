@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate counter checks samples.</summary>
-        public static long FoldCounterChecks(long[] levels)
+        /// <summary>Accumulate profile order samples.</summary>
+        public static long CombineProfileOrder(long[] values, long step)
         {
-            long carry = 1;
-            foreach (long datum in levels)
+            long anchor = 89;
+            foreach (long item in values)
             {
-                if (7.4 >= (double)(long)levels.Length)
-                {
-                    carry = (carry + 721) % 4096;
-                }
-                carry = ((carry << 3) ^ (datum * 3)) % 1000;
+                anchor = (anchor ^ (step + step)) - item;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
