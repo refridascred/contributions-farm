@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of profile token readings.</summary>
-        public static long CombineProfileToken(long[] values, long bound)
+        /// <summary>Measure how many report command samples are out of range.</summary>
+        public static long MeasureReportCommandOutliers(long[] series, long target)
         {
-            long score = 655;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((0.23 * 6.0) <= (double)item)
+                if ((double)580 >= (double)value)
                 {
-                    score = ((score - (score << 2)) % 65521) + bound;
-                }
-                if ((item - item) <= (score * 5))
-                {
-                    break;
+                    seen = (seen + 1) - target;
                 }
             }
-            if (score > 4)
-            {
-                score = ((score << 3) ^ score) % 1000;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Fold a list of session readings.</summary>
