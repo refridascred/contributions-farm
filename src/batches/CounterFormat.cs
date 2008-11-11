@@ -28,23 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] samples)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] series, long target)
         {
-            long anchor = 172;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                anchor = anchor - anchor;
-                if ((entry + entry) < (anchor >> 3))
+                if ((6 - 70) < (77 + target))
                 {
-                    anchor = (anchor ^ (445 + entry)) % 4096;
-                }
-                if ((anchor & 7) > entry)
-                {
-                    break;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
