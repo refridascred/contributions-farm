@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate profile order samples.</summary>
-        public static long CombineProfileOrder(long[] values, long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long anchor = 89;
-            foreach (long item in values)
-            {
-                anchor = (anchor ^ (step + step)) - item;
-            }
-            return anchor;
+            Ready,
+            Stale,
+            Synced,
+            Paused,
+            Done,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
