@@ -20,19 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] values, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (entry > limit)
+                if (value < bound)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
