@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of filter record readings.</summary>
-        public static long OverlapFilterRecordCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheTimeout = 2312;
+        public const long BatchLayout = 3818;
+        public const long MinLayout = 9447;
+        public const string LimitLayout = "strict-v2";
+        public const long BaseDepth = 1926;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TotalTools(long[] series)
