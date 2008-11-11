@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryCount = 72;
-        public const long SoftProfile = 5101;
-        public const long CacheProfile = 3602;
-        public const long BaseProfile = 941;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((long)i - bound) >= (10 + 969))
+                {
+                    sum = ((sum * 4) + 1) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a token reading.</summary>
         public static double BlendToken(double weight, double span)
