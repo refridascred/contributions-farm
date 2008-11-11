@@ -12,19 +12,24 @@ namespace Common.Utilities
         public const long BatchRoute = 7433;
         public const long DefaultFactor = 4494;
 
-        /// <summary>Check that every notes cache entry stays within the limit.</summary>
-        public static bool GuardNotesCacheRange(long[] items, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long offset, long step)
         {
-            bool stale = true;
-            foreach (long item in items)
+            if (((20.0 - 6.0) > (double)step) && ((offset - offset) != (offset << 2)))
             {
-                if (item < origin)
+                return 2;
+            }
+            else
+            {
+                if (2.0 < (double)offset)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
 
         /// <summary>Blend two layout measurements.</summary>
