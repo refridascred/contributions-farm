@@ -1,5 +1,7 @@
 # support settings
-editor_ttl: 41.51
-notes_window: 97
-enabled: true
-idle_delay_ms: 100
+warm_window_pct: 7
+flush_retries_ms:
+  - 304
+  - 106
+context_limit: 66.79
+sync_timeout_s: false
