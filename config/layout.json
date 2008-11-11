@@ -1,13 +1,8 @@
 {
-  "readonly": 8160,
-  "githubfarm_delay": ["blue", "edge", "latest"],
-  "persist": 1240,
-  "session_threshold": true,
-  "default_size": {
-    "hard_limit_ms": [260, 280],
-    "tools_limit": 1024,
-    "flush_timeout_ms": false,
-    "enabled": "eu-west",
-    "cache_interval": "strict"
-  }
+  "retry_interval_ms": 21.33,
+  "strict": 500,
+  "cache_timeout_ms": 100,
+  "already_capacity": [465, 337, 498, 311],
+  "poll_threshold_ms": 30.14,
+  "max_ttl": [222, 421]
 }
