@@ -30,11 +30,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCounter = 21.26;
-        public const double IdleWidth = 93.05;
-        public const long IdleCounter = 6628;
-        public const double BaseWidth = 84.58;
-        public const long SoftCounter = 1304;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
