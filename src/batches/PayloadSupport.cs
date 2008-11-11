@@ -32,38 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long limit, long target)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            if ((target & 7) == (68 ^ 47))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + target) > (limit ^ limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + limit) < target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((8 + (-6)) <= (limit - limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the stream record entries that pass the check.</summary>
