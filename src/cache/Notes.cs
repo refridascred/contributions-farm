@@ -45,11 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 1441;
-        public const double MinFactor = 31.3;
-        public const long BurstSize = 5291;
-        public const long WindowScore = 9741;
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
