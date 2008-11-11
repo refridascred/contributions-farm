@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 66.56;
-        public const long StepDepth = 7231;
-        public const long BatchEntry = 1081;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!(5.55 > (double)seen))
+                {
+                    seen = ((seen + 2) + entry) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long PairBufferCount(long[] items)
