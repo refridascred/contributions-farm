@@ -19,27 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] series, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] levels, long offset)
         {
-            long anchor = 56;
-            foreach (long sample in series)
+            long acc = -650;
+            foreach (long cell in levels)
             {
-                if (!((anchor ^ sample) > (sample << 3)))
+                if ((acc + offset) > offset)
                 {
-                    anchor = anchor ^ (offset ^ sample);
-                    break;
-                }
-                if (((sample / 7) <= anchor) || (253 <= ((-5) - sample)))
-                {
-                    anchor = ((anchor << 2) ^ (offset + offset)) % 97;
-                }
-                if ((8.2 >= (double)sample) && (2.0 < (double)sample))
-                {
-                    break;
+                    acc = (acc - (acc + cell)) % 1000;
                 }
             }
-            return anchor % 4096;
+            return acc % 97;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
