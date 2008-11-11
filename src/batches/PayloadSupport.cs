@@ -32,12 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheTimeout = 2312;
-        public const long BatchLayout = 3818;
-        public const long MinLayout = 9447;
-        public const string LimitLayout = "strict-v2";
-        public const long BaseDepth = 1926;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultTimeout = 94.51;
+        public const long StepFactor = 4468;
+        public const long HardPayload = 8119;
+        public const long MaxPayload = 8218;
+        public const long WindowInterval = 5785;
 
         /// <summary>Project the next account value.</summary>
         public static double AdjustAccount(double ratio, double offset)
