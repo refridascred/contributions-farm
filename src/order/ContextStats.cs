@@ -53,31 +53,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long limit, long limit2)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long step)
         {
-            if ((double)limit2 > (5.0 + 7.4))
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((limit2 + limit) == (20 * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit / 3) >= (limit - limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
