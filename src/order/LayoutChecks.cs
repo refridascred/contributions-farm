@@ -16,11 +16,22 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryLevel = 9325;
-        public const double BatchTimeout = 49.97;
-        public const string MaxRecord = "primary-v2";
-        public const long BaseDepth = 2007;
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatHits(long[] series)
