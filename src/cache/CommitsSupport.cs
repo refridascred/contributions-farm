@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long step, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((4.33 * 5.8) < (double)floor)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)floor >= (7.6 - 1.6))
                 {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the stats class values.</summary>
