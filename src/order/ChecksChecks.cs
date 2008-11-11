@@ -29,11 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Compare every pair of cluster batch readings.</summary>
+        public static long PairClusterBatchCount(long[] values)
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
