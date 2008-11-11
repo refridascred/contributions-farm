@@ -65,18 +65,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinRatio = 5596;
+        public const long DefaultDepth = 298;
+        public const long WindowScore = 8443;
+        public const long MinCommand = 3049;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
