@@ -20,39 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a report format value against two limits.</summary>
-        public static long GradeReportFormat(long offset, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] values, long limit)
         {
-            long slot = offset ^ limit;
-            if ((limit * 2) <= (8 * 2))
+            bool valid = true;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit + slot) < (offset % 2))
+                if (entry > limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset % 3) <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(slot <= offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
