@@ -40,19 +40,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (((target << 2) == (target ^ (long)values.Length)) && (target >= (item << 1)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 8008;
+        public const string MinInterval = "standard-1";
+        public const long BurstBudget = 9534;
+        public const double MaxGraph = 14.81;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long BucketContributi(long offset, long floor)
