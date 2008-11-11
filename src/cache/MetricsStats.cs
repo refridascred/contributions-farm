@@ -21,11 +21,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public bool Region { get; set; }
-            public double Mode { get; set; }
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
