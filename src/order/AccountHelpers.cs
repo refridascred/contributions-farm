@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstScore = 5345;
-        public const double IdleDepth = 24.51;
-        public const string RetryTimeout = "alpha-v2";
-        public const long BurstEntry = 8356;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long bound, long limit)
+        {
+            if (limit <= (limit ^ limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (34 >= (bound + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
