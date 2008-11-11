@@ -72,18 +72,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] readings, long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((item / 9) > (hits + hits))
-                {
-                    hits = (hits + 2) - floor;
-                }
-            }
-            return hits;
+            Pending,
+            Ready,
+            Retry,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
