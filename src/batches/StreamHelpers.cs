@@ -77,24 +77,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank route commits input into a small class.</summary>
-        public static long SortRouteCommits(long floor, long origin)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            if ((double)floor != (8.0 * 11.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin - floor) >= (origin ^ 650))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Failed,
+            Paused,
+            Draft,
+            Retry,
+            Pending,
         }
 
         /// <summary>Describe the cache status values.</summary>
