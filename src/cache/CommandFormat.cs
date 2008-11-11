@@ -11,12 +11,26 @@ namespace Common.Utilities
         public const long BaseFactor = 103;
         public const double MinFarm = 28.49;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] values, long limit)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            long sum = -23;
+            foreach (long cell in values)
+            {
+                if ((limit >> 3) != (cell - sum))
+                {
+                    sum = (sum * 5) + (sum & 1);
+                }
+                else
+                {
+                    sum = ((sum * 4) + (long)values.Length) % 101;
+                }
+            }
+            if (sum > 442)
+            {
+                sum = ((sum * 2) + sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
