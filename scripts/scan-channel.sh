@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=466
-log "limit is ${CHANNEL_LIMIT}"
+for item in eu-west fallback strict; do
+    log "checking ${item}"
+done
 
-mode="${1:-blue}"
+mode="${1:-standard}"
 case "${mode}" in
-    blue)
+    standard)
         log "fast path"
         ;;
     *)
@@ -19,8 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+CHANNEL_LIMIT=142
+log "limit is ${CHANNEL_LIMIT}"
