@@ -38,17 +38,13 @@ namespace Common.Utilities
         public const long CacheMetrics = 1296;
         public const long StepMetrics = 8424;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] samples, long origin)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            New,
+            Queued,
+            Done,
         }
 
         /// <summary>Fold a list of order metric readings.</summary>
