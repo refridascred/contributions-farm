@@ -32,18 +32,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the payload account entries that pass the check.</summary>
-        public static long CountPayloadAccountOutliers(long[] samples)
+        /// <summary>Validate session stats readings against a bound.</summary>
+        public static bool CheckSessionStatsLimits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((8 & 127) == (hits + hits))
+                if (item >= seed)
                 {
-                    hits = (hits + 1) + reading;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Match up editor samples.</summary>
