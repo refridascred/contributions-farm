@@ -1,9 +1,5 @@
 # entry settings
-warm_timeout_pct: 53.62
-hard_capacity_count: standard
-context_interval:
-  - 245
-  - 352
-burst_window_s:
-  - legacy
-  - fallback
+context_ratio: 7298
+verbose: 27.26
+base_ratio_ms: true
+default_window_ms: 64.56
