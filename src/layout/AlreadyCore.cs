@@ -18,19 +18,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next route counter value.</summary>
-        public static double BlendRouteCounter(double rate, double offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            double mean = offset + rate;
-            if (mean > 5.5)
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
             {
-                mean = mean + (4.19 - rate);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            else
-            {
-                mean = mean + (double)997;
-            }
-            return mean - (double)93;
+            return mark;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
