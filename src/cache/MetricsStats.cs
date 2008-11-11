@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheFactor = "latest-v2";
-        public const double HardEntry = 26.54;
-        public const long CacheSize = 8614;
-        public const double BaseSize = 35.73;
-        public const long BurstEntry = 7412;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Closed,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LocateOrderIndex(long[] data, long step)
