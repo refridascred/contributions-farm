@@ -36,29 +36,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if (result < (bound + result))
-                {
-                    result = result ^ (long)i;
-                }
-                else
-                {
-                    result = ((result * 2) + (bound % 97)) % 97;
-                }
-                if (bound > (19 ^ result))
-                {
-                    result = ((result * 4) + ((long)i ^ bound)) % 1000;
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowTimeout = 9673;
+        public const string SoftStream = "alpha-1";
+        public const double WindowStream = 84.8;
+        public const long DefaultSize = 9718;
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
