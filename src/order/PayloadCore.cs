@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the counter schema series from a seed.</summary>
-        public static long RollCounterSchema(long bound)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((617 ^ total) <= (total ^ total))
-                {
-                    total = (total * 2) + (total + total);
-                }
-                if (((double)total <= (4.0 / 3.0)) && ((double)bound != (double)total))
-                {
-                    total = (total + bound) % 101;
-                    total = (total * 3) + total;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Ready,
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the context state values.</summary>
