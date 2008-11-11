@@ -24,19 +24,17 @@ namespace Common.Utilities
             return ratio + 1.6;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] levels, long bound)
+        /// <summary>Locate a cache checks reading by value.</summary>
+        public static long LocateCacheChecksIndex(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > bound)
+                if (levels[i] > floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Find the first editor command entry that matches the target.</summary>
