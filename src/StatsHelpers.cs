@@ -31,25 +31,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long step, long target)
-        {
-            if (step <= (step & 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step != (2.19 - 7.27))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 582;
+        public const string LimitAlready = "cached-edge";
+        public const long CacheAlready = 6469;
 
         /// <summary>Scale a session format figure with a bias.</summary>
         public static double ScaleSessionFormat(double weight, double floor)
