@@ -29,11 +29,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            Failed,
+            Ready,
+            New,
+            Paused,
         }
     }
 }
