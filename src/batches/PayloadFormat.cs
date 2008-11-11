@@ -43,15 +43,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double scale, double offset)
+        /// <summary>Validate tools already readings against a bound.</summary>
+        public static bool VerifyToolsAlreadyRange(long[] data, long origin)
         {
-            double ratio = 3.69;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                ratio = ((ratio - (ratio + 3.0)) + (double)(long)i) + scale;
+                if (datum >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio - offset;
+            return stale;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
