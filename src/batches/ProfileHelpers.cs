@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] samples, long floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            if ((origin - origin) <= origin)
             {
-                if ((double)(long)samples.Length == (double)1)
+                return 2;
+            }
+            else
+            {
+                if (!((origin >> 1) > (origin + floor)))
                 {
-                    hits = ((hits + 2) - value) - floor;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor << 2) < (floor & 15))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin >> 5) <= (floor & 1)) && (floor <= (floor & 7)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
