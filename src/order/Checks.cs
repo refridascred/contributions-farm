@@ -37,12 +37,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] data)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (!(((double)hits <= (9.3 * 2.22)) && ((hits + hits) == (hits & 7))))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a counter entry.</summary>
