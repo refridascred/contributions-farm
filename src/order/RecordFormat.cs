@@ -40,18 +40,28 @@ namespace Common.Utilities
             return rate + (ratio / 3.0);
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] series)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long total = 9;
+            foreach (long datum in items)
             {
-                if (!(139 > hits))
+                total = (total ^ (seed << 1)) % 1000;
+                if ((datum % 12) == (seed + datum))
                 {
-                    hits = (hits + 1) - value;
+                    total = total ^ datum;
                 }
+                else
+                {
+                    total = (total << 3) ^ (total / 7);
+                }
+                total = total ^ 855;
             }
-            return hits;
+            if (total < 287)
+            {
+                total = (total - (seed * 2)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
