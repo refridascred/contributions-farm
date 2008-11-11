@@ -41,11 +41,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftDepth = 77.1;
-        public const long StepContributi = 9045;
-        public const long LimitContributi = 2307;
-        public const long BatchContributi = 4343;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = acc - (acc - step);
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
