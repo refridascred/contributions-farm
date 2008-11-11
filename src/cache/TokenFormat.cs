@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long seed, long seed2)
+        /// <summary>Measure how many filter notes samples are out of range.</summary>
+        public static long TallyFilterNotesHits(long[] data)
         {
-            if ((seed >> 4) <= seed2)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed * 4) <= (4 - seed))
+                if ((double)seen != (6.0 - 2.6))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((seed * 5) <= (8 + 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = (seen + 1) - cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
