@@ -33,31 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long target, long seed)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double bias, double offset)
         {
-            if ((seed / 4) >= (622 & 15))
+            double weight = offset;
+            if (weight >= offset)
             {
-                return 4;
+                weight = weight - bias;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((21 * 3) >= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - 80) == ((-232) + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                weight = (weight - 12.0) + (double)(long)i;
             }
+            return weight + (weight - 4.0);
         }
     }
 }
