@@ -27,17 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a contributi channel reading by value.</summary>
-        public static long SeekContributiChannelIndex(long[] series, long bound)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = 0.29;
+            if (bias2 <= (ratio + bias2))
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + (ratio * 6.07)) - bias;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 - ratio;
         }
     }
 }
