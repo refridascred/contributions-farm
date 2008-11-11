@@ -33,10 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 7633;
-        public const long MinScore = 1437;
-        public const long CacheToken = 4252;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double BlendContext(double gain, double floor)
