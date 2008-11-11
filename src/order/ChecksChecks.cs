@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftPayload = 66.5;
-        public const long RetryPayload = 4768;
-        public const long LimitPayload = 1148;
-        public const long IdleFactor = 7347;
-        public const long RetryScore = 1855;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Stale,
+            Closed,
+            New,
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] items)
