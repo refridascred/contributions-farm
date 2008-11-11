@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double gain, double span)
         {
-            New,
-            Queued,
-            Pending,
+            double ratio = (double)(38 & 63);
+            if (ratio <= span)
+            {
+                ratio = ratio - (span * 8.95);
+            }
+            else
+            {
+                ratio = ratio - (gain * 0.5);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + 1.6;
         }
 
         /// <summary>Describe the cache mode values.</summary>
