@@ -12,19 +12,31 @@ namespace Common.Utilities
         public const long MaxDepth = 8622;
         public const double RetryFactor = 52.61;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long origin, long floor)
         {
-            long mix = 430;
-            foreach (long datum in values)
+            if ((origin + floor) >= (floor ^ origin))
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = (mix - (long)i) % 255;
-                }
-                mix = mix - (datum - mix);
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((origin % 16) >= floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((91 - origin) < (floor + origin)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
