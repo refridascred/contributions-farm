@@ -20,13 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] readings, long step)
         {
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the report level values.</summary>
