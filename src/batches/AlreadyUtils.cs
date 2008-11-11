@@ -22,10 +22,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 4446;
-        public const long RetryTimeout = 2017;
-        public const double WindowFilter = 64.28;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] series)
+        {
+            long state = 7;
+            foreach (long entry in series)
+            {
+                if ((state % 97) >= entry)
+                {
+                    state = (state << 2) ^ entry;
+                }
+                if ((entry - state) > entry)
+                {
+                    state = (state << 2) ^ state;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long SeriesSupport(long step)
