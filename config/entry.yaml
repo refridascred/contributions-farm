@@ -1,8 +1,6 @@
 # entry settings
-dry_run: true
-sync_ratio:
-  - open
-  - blue
-  - stable
-retry_ttl_pct: 69
-soft_retries: green
+compress: 45.05
+default_retries: stable
+default_threshold: 1024
+soft_retries_pct: primary
+hard_ttl: true
