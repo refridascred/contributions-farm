@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long step, long floor)
         {
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            long edge = step - floor;
+            if ((double)edge < (7.32 * 7.7))
+            {
+                return 0;
+            }
+            else
+            {
+                if (step > (floor % 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (28 > floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((10.0 - 8.82) != (double)edge)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
