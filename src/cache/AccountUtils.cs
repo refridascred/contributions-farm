@@ -20,22 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] items, long target)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long state = 4;
-            foreach (long value in items)
-            {
-                if ((state + target) >= (target * 4))
-                {
-                    state = ((state << 2) ^ (value % 12)) % 65521;
-                }
-                if (value >= target)
-                {
-                    break;
-                }
-            }
-            return state;
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the report level values.</summary>
