@@ -1,8 +1,6 @@
-id,rank,count,label
-1,804,stable,62.14
-2,open,762,26.15
-3,382,70.98,24.66
-4,cached,687,94.21
-5,40.29,cached,786
-6,fallback,98.71,primary
-7,90.65,open,5.47
+id,state,ratio,label
+1,legacy,184,eu-west
+2,strict,999,39
+3,419,513,81
+4,29.23,399,635
+5,73.51,907,68.07
