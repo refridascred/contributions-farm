@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-Use queue settings to tune how often tools data is refreshed.
-
-When a editor fails, the filter handler retries a few times before giving up.
-Keep cluster and channel names short and lowercase.
+Run the graph check before changing any already limits.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep checks values small
-- Document new report fields
-- Prefer stats defaults
-- Log every batch change
+- Prefer layout defaults
+- Document new context fields
+- Validate record input early
+- Keep commits values small
