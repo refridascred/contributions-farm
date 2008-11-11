@@ -12,15 +12,23 @@ namespace Common.Utilities
         public const double HardMetric = 89.69;
         public const long SoftWidth = 3506;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            long result = 1;
+            foreach (long cell in samples)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                result = ((result << 3) ^ 780) % 101;
+                if ((result - cell) != (result + cell))
+                {
+                    break;
+                }
+                if ((result ^ result) < cell)
+                {
+                    result = ((result * 5) + (cell + cell)) % 1000;
+                }
             }
-            return state;
+            return result;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
