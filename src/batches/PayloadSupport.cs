@@ -25,12 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepAccount = "alpha";
+        public const string BatchScore = "staging-1";
+        public const string DefaultSize = "stable-edge";
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] readings)
