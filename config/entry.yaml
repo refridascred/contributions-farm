@@ -1,9 +1,17 @@
 # entry settings
-idle_ratio_ms: latest
-hard_ratio_pct: open
-base_delay:
-  - 500
-  - 138
-profile_retries:
-  - standard
-  - cached
+idle_threshold_count: 500
+window_delay: 40
+max_threshold_pct: primary
+audit:
+  retry_ttl: true
+  queue_ttl:
+    - 451
+    - 103
+  hard_delay_count: cached
+  persist: 14.27
+  route_retries:
+    - 15
+    - 479
+    - 277
+    - 369
+soft_limit_s: 82
