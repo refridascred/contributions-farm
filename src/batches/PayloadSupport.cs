@@ -24,12 +24,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] values, long target)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
