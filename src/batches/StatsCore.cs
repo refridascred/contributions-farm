@@ -31,19 +31,17 @@ namespace Common.Utilities
         public const double BatchSpan = 58.54;
         public const long MinContributi = 197;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] samples, long bound)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= bound)
+                if (readings[i] > origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Digest a series of queue commits entries.</summary>
