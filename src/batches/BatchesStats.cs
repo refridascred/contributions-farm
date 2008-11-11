@@ -42,12 +42,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitStream = 25.52;
-        public const long MinTimeout = 9869;
-        public const double IdleStream = 71.77;
-        public const double MinBudget = 11.44;
-        public const string IdleTimeout = "primary";
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool VerifyContextBounds(long[] items, long step)
