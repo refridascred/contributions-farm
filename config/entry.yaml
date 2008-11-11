@@ -1,6 +1,20 @@
 # entry settings
-compress: 45.05
-default_retries: stable
-default_threshold: 1024
-soft_retries_pct: primary
-hard_ttl: true
+retry_limit:
+  burst_interval_ms: false
+  idle_ttl: false
+  default_capacity_pct:
+    profile_delay: cached
+    idle_depth: 4377
+    default_interval: standard
+    strict: 33.15
+    default_delay: 73.27
+  idle_timeout_pct: 86.88
+  min_capacity_pct: 93
+filter_delay:
+  retry_ratio_count: 79.58
+  hard_size_ms: 61.62
+  layout_delay: staging
+verbose: legacy
+poll_size: 50
+batch_timeout_s: 62.42
+default_timeout: 68
