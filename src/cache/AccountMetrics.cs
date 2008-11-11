@@ -5,31 +5,27 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long step, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] values, long seed)
         {
-            if (((step & 1) < (step - step)) && ((double)step != (3.91 * 3.35)))
+            long state = 537;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((62 / 3) > (origin & 255)) && ((origin << 2) < step))
+                state = (state - (277 << 1)) % 255;
+                if (((4.15 * 8.76) > (double)state) || ((state - (-28)) < (-96)))
                 {
-                    return 8;
+                    state = (state << 3) ^ (state * 4);
                 }
                 else
                 {
-                    if (origin < (origin & 15))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = (state + (datum - (-3))) % 97;
+                }
+                if ((seed - state) >= seed)
+                {
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a token record.</summary>
