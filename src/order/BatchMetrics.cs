@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up token tools samples.</summary>
-        public static long CompareTokenToolsCount(long[] levels)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
