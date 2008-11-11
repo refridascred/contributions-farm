@@ -57,12 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 1401;
-        public const string BaseCache = "staging-edge";
-        public const string MinFactor = "strict";
-        public const long SoftFactor = 8401;
-        public const long BatchDepth = 729;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TallyContributi(long[] readings, long origin)
