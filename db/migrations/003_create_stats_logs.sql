@@ -2,12 +2,13 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    score REAL NOT NULL DEFAULT 0,
-    weight REAL,
-    created_at TIMESTAMP
+    level INTEGER,
+    label TEXT,
+    state TEXT NOT NULL DEFAULT 'new',
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
 
-INSERT INTO stats_logs (token, active, score, weight) VALUES ('staging', 53, 43.38, 30.43);
+INSERT INTO stats_logs (token, level, label, state, score) VALUES ('staging', 67, 'open', 'primary', 79.62);
+INSERT INTO stats_logs (token, level, label, state, score) VALUES ('staging', 92, 'latest', 'latest', 74.07);
