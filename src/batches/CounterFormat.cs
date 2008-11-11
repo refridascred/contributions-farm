@@ -47,10 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 11.3;
-        public const long HardTimeout = 1674;
-        public const long LimitTimeout = 4571;
-        public const double BatchBudget = 49.63;
+        /// <summary>Derive the next report filter value from a seed.</summary>
+        public static long StepReportFilter(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 255;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
