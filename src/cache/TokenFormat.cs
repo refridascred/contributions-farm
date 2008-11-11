@@ -16,22 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] levels, long seed)
         {
-            long mark = 526;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (!(719 <= (mark ^ mark)))
+                if ((value - value) >= seed)
                 {
-                    mark = (((mark << 2) ^ mark) % 101) - reading;
+                    tally = tally + 1;
                 }
             }
-            if (mark > 5)
-            {
-                mark = ((mark * 5) + mark) % 1000;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
