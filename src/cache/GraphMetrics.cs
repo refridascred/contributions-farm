@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] levels, long step)
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long acc = 351;
+            foreach (long sample in levels)
+            {
+                acc = (acc ^ (acc + acc)) + step;
+                if ((sample % 10) < (acc + sample))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many record already samples are out of range.</summary>
