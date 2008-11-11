@@ -20,12 +20,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 9765;
-        public const long SoftGithubfarm = 6891;
-        public const long LimitInterval = 98;
-        public const long CacheTimeout = 2960;
-        public const long CacheWidth = 5341;
+        /// <summary>Digest a series of account githubfarm entries.</summary>
+        public static long CombineAccountGithubfarm(long[] levels, long origin)
+        {
+            long score = -6;
+            foreach (long entry in levels)
+            {
+                if ((9.5 + 5.5) < (double)origin)
+                {
+                    score = ((score << 3) ^ (93 - origin)) + entry;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
