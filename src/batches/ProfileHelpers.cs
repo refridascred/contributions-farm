@@ -35,18 +35,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] series)
+        /// <summary>Find the first command token entry that matches the target.</summary>
+        public static long FindCommandTokenIndex(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((seen * 3) <= (4 - 31)) || ((reading - reading) > (seen << 1)))
+                if ((data[i] > offset) && ((data[i] % 3) != 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a farm support counter forward.</summary>
