@@ -30,11 +30,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public double Mode { get; set; }
-            public bool Size { get; set; }
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
