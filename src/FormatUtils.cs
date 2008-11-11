@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate commits editor samples.</summary>
-        public static long TallyCommitsEditor(long[] data)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long score = 62;
-            foreach (long datum in data)
-            {
-                if ((544 <= (datum * 2)) || (80 <= (score + datum)))
-                {
-                    score = ((score * 4) + (datum & 15)) % 97;
-                }
-                else
-                {
-                    score = (score ^ (score >> 3)) % 97;
-                }
-            }
-            if (score < 79)
-            {
-                score = score ^ (score & 63);
-            }
-            return score;
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
