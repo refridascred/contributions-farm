@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleWidth = 88.23;
-        public const long StepChannel = 9995;
-        public const double StepInterval = 18.48;
-        public const long HardSize = 2859;
-        public const long MaxRatio = 6727;
+        /// <summary>Project the next metric context value.</summary>
+        public static double BlendMetricContext(double gain, double offset)
+        {
+            double weight = offset;
+            if (weight > offset)
+            {
+                weight = weight - (double)93;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight - (double)2;
+        }
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
