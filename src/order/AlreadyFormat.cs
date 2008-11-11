@@ -14,38 +14,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long floor, long seed)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            if ((seed + floor) != (floor + seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((17.0 - 9.46) <= (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed <= (7.58 + 15.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor < 9.3)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
