@@ -60,19 +60,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - seen) < seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 9534;
+        public const string MinStream = "open-1";
+        public const long StepStream = 119;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long CountNotesGaps(long[] levels, long offset)
