@@ -20,18 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long seed)
         {
-            long carry = 611;
-            foreach (long cell in data)
+            long total = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)carry > (7.5 + 6.9))
-                {
-                    carry = (carry ^ (cell + cell)) % 1000;
-                }
+                total = ((total * 4) + (seed & 1)) % 255;
+                total = ((total << 3) ^ (long)i) % 255;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
