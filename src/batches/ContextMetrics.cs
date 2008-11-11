@@ -46,18 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] series)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)item > (7.0 / 4.0))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Pending,
+            New,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
