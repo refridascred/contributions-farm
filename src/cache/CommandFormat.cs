@@ -15,17 +15,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] items, long floor)
+        /// <summary>Rank support window input into a small class.</summary>
+        public static long ClassifySupportWindow(long target, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((target & 63) < (1 & 31))
             {
-                if ((items[i] >= floor) && ((items[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)origin != (double)(-771))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
