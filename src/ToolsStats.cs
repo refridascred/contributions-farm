@@ -79,18 +79,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of batch token readings.</summary>
-        public static long CombineBatchToken(long[] items)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            long anchor = 8;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((373 - 4) == (sample >> 2)) && ((anchor + 803) <= sample))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor - (sample - sample)) % 65521;
+                    if ((values[i] - values[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return matches;
         }
     }
 }
