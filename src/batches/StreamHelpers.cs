@@ -25,15 +25,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double bias, double bias2)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long origin, long step)
         {
-            double gain = bias;
-            if (gain < (double)(-7))
+            if ((origin + step) <= (step - origin))
             {
-                gain = gain + (9.79 - bias2);
+                return 1;
             }
-            return gain - bias;
+            else
+            {
+                if (origin <= (origin % 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step + step) > ((-4) % 10)) && ((double)origin == (3.15 / 5.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
