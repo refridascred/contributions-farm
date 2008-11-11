@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every route stats entry stays within the limit.</summary>
-        public static bool ValidateRouteStatsRange(long[] series, long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long acc = 24;
+            foreach (long cell in data)
             {
-                if (reading > origin)
+                if ((acc - acc) > (cell & 3))
                 {
-                    ready = false;
+                    acc = ((acc << 3) ^ (8 >> 2)) % 4096;
+                }
+                if (639 >= (acc * 5))
+                {
                     break;
                 }
             }
-            return ready;
+            return acc % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
