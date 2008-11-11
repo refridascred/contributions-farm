@@ -1,8 +1,22 @@
 # support settings
-min_delay:
-  - 308
-  - 270
-soft_threshold_ms: primary
-cluster_depth: 250
-batch_threshold: 38.86
-default_ratio_pct: false
+base_window_ms: local
+persist: 75
+checks_timeout:
+  - primary
+  - strict
+  - primary
+metrics_retries: blue
+default_size_count:
+  base_interval_ms: cached
+  hard_interval_ms:
+    metrics_size: stable
+    soft_size_ms: latest
+    batch_threshold_ms: false
+  idle_window: false
+  warm_ratio: 39
+  base_timeout_count: 6258
+dry_run:
+  - 51
+  - 344
+  - 44
+  - 142
