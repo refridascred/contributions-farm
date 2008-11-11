@@ -22,15 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long step)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Draft,
+            Synced,
+            Failed,
+            Queued,
+            Active,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
