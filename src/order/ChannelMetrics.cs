@@ -20,19 +20,22 @@ namespace Common.Utilities
         public const long HardSpan = 5433;
         public const long BurstOrder = 3721;
 
-        /// <summary>Check that every context queue entry stays within the limit.</summary>
-        public static bool ValidateContextQueueLimits(long[] series, long step)
+        /// <summary>Digest a series of command entry entries.</summary>
+        public static long FoldCommandEntry(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long state = -210;
+            foreach (long datum in samples)
             {
-                if (value != step)
+                if (!((datum << 3) <= state))
                 {
-                    flag = false;
+                    state = (state * 4) + (datum % 60);
+                }
+                if (state < (datum % 100))
+                {
                     break;
                 }
             }
-            return flag;
+            return state % 1000;
         }
     }
 }
