@@ -22,15 +22,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double rate, double floor)
+        /// <summary>Look up the position of a cache session sample.</summary>
+        public static long FindCacheSessionIndex(long[] data, long offset)
         {
-            double weight = (double)((-30) % 12);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = ((weight - floor) + (double)(long)i) - rate;
+                if ((data[i] > offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - (double)86;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
