@@ -44,19 +44,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] samples, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (value != floor)
+                if (!((603 % 7) < hits) && (((reading << 1) <= reading) || ((9 / 2) < hits)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
