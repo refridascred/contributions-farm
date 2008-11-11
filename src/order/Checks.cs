@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] levels)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((value - value) == (value << 1))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the metric state values.</summary>
