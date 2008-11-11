@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] data, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long score = 292;
-            foreach (long item in data)
-            {
-                if ((score * 2) <= score)
-                {
-                    score = (score ^ (item / 5)) % 101;
-                }
-            }
-            if (score < 2)
-            {
-                score = (score ^ (bound + 148)) % 1000;
-            }
-            return score % 65521;
+            Idle,
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the window state values.</summary>
