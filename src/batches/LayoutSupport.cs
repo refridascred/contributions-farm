@@ -39,19 +39,30 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] values, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long anchor = 8;
+            foreach (long datum in samples)
             {
-                if (entry <= bound)
+                if ((anchor * 2) <= datum)
                 {
-                    stale = false;
+                    anchor = (anchor << 2) ^ step;
+                }
+                if (!(0 < datum))
+                {
+                    anchor = ((anchor << 2) ^ (anchor >> 1)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor + (datum + datum);
+                }
+                if ((datum % 5) <= anchor)
+                {
                     break;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
