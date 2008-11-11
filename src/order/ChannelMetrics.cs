@@ -30,18 +30,18 @@ namespace Common.Utilities
             return (rate2 + (double)218) + rate;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((9.19 * 14.0) > (double)hits)
+                if ((8.5 + 1.0) <= (double)target)
                 {
-                    hits = (hits + 2) + cell;
+                    count = (count + 3) + item;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
