@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitBudget = 4492;
-        public const long DefaultStats = 3975;
-        public const long LimitStats = 8696;
-        public const string StepStats = "stable-1";
-        public const long MaxBudget = 6312;
+        /// <summary>Project the next command queue value.</summary>
+        public static double SmoothCommandQueue(double bias, double floor)
+        {
+            double ratio = 7.8;
+            if (ratio < 7.5)
+            {
+                ratio = ratio - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + floor) - (double)(long)i;
+            }
+            return ratio + (ratio * 4.7);
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
