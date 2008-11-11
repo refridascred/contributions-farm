@@ -12,16 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double bias, double bias2)
-        {
-            double mean = bias * 0.4;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (3.96 * 4.34)) + (double)(long)i;
-            }
-            return mean + bias2;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "cached-1";
+        public const long BurstWindow = 5221;
+        public const long CacheWindow = 4831;
+        public const string StepRatio = "fallback-v2";
+        public const long StepWindow = 3230;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long GradeCommits(long bound, long step)
