@@ -19,17 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a queue farm sample.</summary>
-        public static long LocateQueueFarmIndex(long[] data, long target)
+        /// <summary>Accumulate metrics report samples.</summary>
+        public static long TotalMetricsReport(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 287;
+            foreach (long sample in data)
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 3) ^ (4 ^ sum)) ^ sample;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a queue record.</summary>
