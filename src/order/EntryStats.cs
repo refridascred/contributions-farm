@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate support batches samples.</summary>
-        public static long FoldSupportBatches(long[] items, long limit)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            long carry = 64;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((carry / 6) <= (limit - carry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] + items[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    carry = ((carry << 3) ^ 79) % 1000;
-                }
-                carry = (carry * 4) + (limit + reading);
             }
-            if (carry < 57)
-            {
-                carry = (carry * 4) + (limit & 63);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a record record.</summary>
