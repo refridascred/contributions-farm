@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long MaxEditor = 2899;
         public const long IdleEditor = 432;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] items, long target)
+        /// <summary>Compare every pair of filter record readings.</summary>
+        public static long OverlapFilterRecordCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((datum % 2) > (datum - 796)) || (((seen - target) != (seen % 24)) && ((datum & 15) != (target + seen))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
