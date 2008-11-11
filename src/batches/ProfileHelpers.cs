@@ -43,20 +43,17 @@ namespace Common.Utilities
         public const long MaxCache = 7296;
         public const long WindowDepth = 7847;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] samples, long seed)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] series, long limit)
         {
-            long score = 360;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score + 10) % 255;
-                score = ((score << 2) ^ (score + score)) % 4096;
-                if ((value >> 1) >= (value << 1))
+                if ((series[i] <= limit) && ((series[i] % 3) == 0))
                 {
-                    score = (score ^ (seed + seed)) % 255;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
