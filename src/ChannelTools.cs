@@ -32,15 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double ratio, double bias)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            double bias2 = ratio;
-            if (bias2 > 3.1)
-            {
-                bias2 = (bias2 + (double)24) + bias;
-            }
-            return bias2 - (double)0;
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
         }
     }
 }
