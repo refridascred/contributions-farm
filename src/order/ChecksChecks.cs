@@ -13,21 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] items)
+        /// <summary>Derive the next support token value from a seed.</summary>
+        public static long RollSupportToken(long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((long)i << 3) <= (target + target)) || (((long)i + target) != (1 + target)))
                 {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum + (target * 4)) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Compare every pair of cluster batch readings.</summary>
