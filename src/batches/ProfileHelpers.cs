@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] samples, long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (entry > seed)
+                if (value > floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Describe the format state values.</summary>
