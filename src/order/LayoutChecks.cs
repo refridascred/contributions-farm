@@ -46,12 +46,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftSpan = 159;
+        public const long StepRecord = 3428;
+        public const long RetryRecord = 1327;
+        public const long MaxRecord = 6948;
 
         /// <summary>Digest a series of farm support entries.</summary>
         public static long TotalFarmSupport(long[] samples, long step)
