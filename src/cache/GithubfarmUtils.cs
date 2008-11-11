@@ -12,17 +12,10 @@ namespace Common.Utilities
         public const long BaseSpan = 3537;
         public const double IdleAccount = 10.06;
 
-        /// <summary>Roll a notes metric counter forward.</summary>
-        public static long SeriesNotesMetric(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleFactor = 3601;
+        public const long CacheScore = 2252;
+        public const long SoftProfile = 3393;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
