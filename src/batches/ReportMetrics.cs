@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Iterate the checks editor series from a seed.</summary>
+        public static long SeriesChecksEditor(long seed)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every metric graph entry stays within the limit.</summary>
