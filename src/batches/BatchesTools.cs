@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Validate commits account readings against a bound.</summary>
+        public static bool CheckCommitsAccountRange(long[] values, long floor)
         {
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define route limits and defaults.</summary>
