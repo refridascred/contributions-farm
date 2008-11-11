@@ -44,19 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double ratio, double span)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            double rate = span;
-            if (rate > span)
-            {
-                rate = rate - (rate + 11.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (ratio - ratio)) + (double)(long)i;
-            }
-            return rate - span;
+            New,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define token limits and defaults.</summary>
