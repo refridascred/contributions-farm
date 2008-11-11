@@ -43,15 +43,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double weight, double span)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] levels, long target)
         {
-            double rate = span;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                rate = ((rate - (double)(-57)) + (double)(long)i) - weight;
+                if (!((target % 97) == (value ^ value)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return rate + (span - 1.34);
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
