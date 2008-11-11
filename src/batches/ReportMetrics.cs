@@ -37,18 +37,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many filter session samples are out of range.</summary>
-        public static long TallyFilterSessionHits(long[] data)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((datum + (-5)) >= (113 + (long)data.Length))
+                if (item >= origin)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
