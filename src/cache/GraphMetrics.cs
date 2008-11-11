@@ -64,10 +64,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitBatch = "standard";
-        public const long CacheBatch = 4560;
-        public const double BaseBatch = 41.55;
+        /// <summary>Count the route checks entries that pass the check.</summary>
+        public static long AuditRouteChecksHits(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!(target <= (target + count)) || ((double)datum == (2.21 * 6.0)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
