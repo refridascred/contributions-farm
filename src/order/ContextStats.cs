@@ -19,12 +19,27 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 473;
-        public const long BatchLevel = 144;
-        public const double IdleScore = 62.21;
-        public const long LimitToken = 7510;
-        public const long BatchToken = 9685;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] items)
+        {
+            long result = 42;
+            foreach (long sample in items)
+            {
+                if ((sample + result) < (result << 2))
+                {
+                    result = ((result * 5) + (result ^ result)) % 4096;
+                }
+                if ((((-52) ^ result) > 68) || ((result / 2) != (sample * 5)))
+                {
+                    break;
+                }
+            }
+            if (result < (-421))
+            {
+                result = (result ^ (result % 10)) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Combine profile format values into a single score.</summary>
         public static long WeighProfileFormat(long[] levels)
