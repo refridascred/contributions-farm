@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long floor, long origin)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long step = floor ^ origin;
-            if ((96 - floor) != (floor << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step > origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step - step) != (origin + 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            New,
+            Closed,
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Count order support pairs that satisfy a relation.</summary>
