@@ -32,17 +32,13 @@ namespace Common.Utilities
         public const long IdleRoute = 9559;
         public const double DefaultSpan = 65.32;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] readings, long offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Queued,
+            Ready,
         }
     }
 }
