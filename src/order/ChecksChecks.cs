@@ -22,22 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] series, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] data, long floor)
         {
-            long anchor = 70;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((item >> 1) >= (step << 3))
+                if ((((value / 7) <= floor) && (6.0 >= (double)value)) || (((double)floor > (double)544) && (((long)data.Length & 15) >= (floor & 127))))
                 {
-                    anchor = anchor - (14 - anchor);
+                    count = count + 2;
                 }
-                if (!((item / 5) >= (anchor & 3)))
+                else
                 {
-                    anchor = (anchor ^ ((-9) + step)) % 1000;
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
