@@ -50,17 +50,15 @@ namespace Common.Utilities
         public const double CachePayload = 68.93;
         public const string HardPayload = "primary";
 
-        /// <summary>Look up the position of a already format sample.</summary>
-        public static long FindAlreadyFormatIndex(long[] levels, long seed)
+        /// <summary>Blend two commits githubfarm measurements.</summary>
+        public static double SmoothCommitsGithubfarm(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = ratio - (ratio * 5.97);
+            if (gain > ratio)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + floor;
             }
-            return -1;
+            return gain - 10.0;
         }
     }
 }
