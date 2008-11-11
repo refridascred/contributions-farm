@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long step, long floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] series, long limit)
         {
-            long edge = step - floor;
-            if ((double)edge < (7.32 * 7.7))
+            long sum = 774;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (step > (floor % 7))
+                sum = (((sum << 3) ^ (sum - limit)) % 97) - entry;
+                sum = sum ^ 75;
+                if ((limit << 1) < (limit - 809))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (28 > floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((10.0 - 8.82) != (double)edge)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    sum = sum ^ (limit % 2);
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
