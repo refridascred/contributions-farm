@@ -29,12 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
