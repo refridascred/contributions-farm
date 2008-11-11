@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public double Count { get; set; }
-            public double Score { get; set; }
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            Retry,
+            Locked,
+            Failed,
+            Ready,
         }
     }
 }
