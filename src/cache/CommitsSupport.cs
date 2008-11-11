@@ -13,12 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Done,
-            Stale,
-            Queued,
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
