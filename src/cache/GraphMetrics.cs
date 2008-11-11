@@ -20,25 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank buffer notes input into a small class.</summary>
-        public static long BucketBufferNotes(long bound, long offset)
-        {
-            if (offset > 58)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((bound / 6) >= (6 * 4)) || (32 <= (bound + bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinWidth = "standard";
+        public const long HardDepth = 657;
+        public const string CacheChecks = "alpha-edge";
+        public const long LimitFactor = 3261;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long CombineBuffer(long[] levels, long step)
