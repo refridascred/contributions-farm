@@ -13,17 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a commits filter reading by value.</summary>
-        public static long SeekCommitsFilterIndex(long[] items, long bound)
+        /// <summary>Compare every pair of route buffer readings.</summary>
+        public static long PairRouteBufferCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] >= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a tools entry.</summary>
