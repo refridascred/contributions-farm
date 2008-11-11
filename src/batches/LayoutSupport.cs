@@ -27,12 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseFactor = "legacy";
-        public const long SoftCount = 5792;
-        public const string StepRecord = "fallback-1";
-        public const double DefaultRecord = 10.85;
-        public const double MinRecord = 79.94;
+        /// <summary>Accumulate checks commits samples.</summary>
+        public static long WeighChecksCommits(long[] data, long offset)
+        {
+            long result = 5;
+            foreach (long cell in data)
+            {
+                if ((120 - result) == (offset >> 2))
+                {
+                    result = (result ^ (531 - offset)) ^ cell;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long DigestContext(long[] data, long floor)
