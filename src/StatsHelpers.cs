@@ -28,10 +28,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 582;
-        public const string LimitAlready = "cached-edge";
-        public const long CacheAlready = 6469;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] levels, long bound)
+        {
+            long score = 78;
+            foreach (long item in levels)
+            {
+                if ((double)item >= (double)score)
+                {
+                    score = (score + item) + bound;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Scale a session format figure with a bias.</summary>
         public static double ScaleSessionFormat(double weight, double floor)
