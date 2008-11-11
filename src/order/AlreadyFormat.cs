@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] items, long origin)
         {
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a graph info.</summary>
