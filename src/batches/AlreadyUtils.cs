@@ -54,13 +54,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long step, long floor)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            long slot = step + floor;
+            if (slot <= (step + 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step << 2) <= (-258))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((slot % 2) > (floor - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor - step) >= floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
