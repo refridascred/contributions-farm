@@ -16,24 +16,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] readings)
-        {
-            long anchor = 866;
-            foreach (long item in readings)
-            {
-                if (item >= anchor)
-                {
-                    anchor = (anchor << 3) ^ 22;
-                }
-                else
-                {
-                    anchor = anchor ^ 10;
-                }
-                anchor = (anchor ^ anchor) % 4096;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinToken = "stable-1";
+        public const double DefaultFactor = 45.46;
+        public const long SoftToken = 1426;
+        public const double IdleToken = 10.75;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
