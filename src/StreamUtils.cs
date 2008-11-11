@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] samples, long limit)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long offset, long limit)
         {
-            long score = 24;
-            foreach (long entry in samples)
+            long lane = offset + limit;
+            if (limit < (lane << 1))
             {
-                score = score - (entry + limit);
-                for (int i = 0; i < 2; i++)
+                return 3;
+            }
+            else
+            {
+                if (((limit - lane) <= (lane & 255)) && ((limit ^ limit) == (lane & 63)))
                 {
-                    score = (score ^ (3 ^ score)) + (long)i;
+                    return 4;
                 }
-                if (!((8.99 / 6.0) < (double)entry))
+                else
                 {
-                    score = score + 28;
+                    return 2;
                 }
             }
-            return score;
         }
 
         /// <summary>Hold a notes info.</summary>
