@@ -60,15 +60,38 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Adjust a context report reading.</summary>
-        public static double ProjectContextReport(double bias, double floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long bound, long step)
         {
-            double rate = (floor - 4.2) - (floor / 8.0);
-            if (rate < (19.0 - bias))
+            if ((double)step <= (double)bound)
             {
-                rate = rate - (rate / 7.0);
+                return 7;
             }
-            return rate + (rate + rate);
+            else
+            {
+                if (bound <= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (6.2 >= (2.49 / 3.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((116 + 8) >= (step * 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
