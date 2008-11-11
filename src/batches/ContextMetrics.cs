@@ -61,20 +61,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session filter values into a single score.</summary>
-        public static long TallySessionFilter(long[] items)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long limit, long floor)
         {
-            long carry = 41;
-            foreach (long entry in items)
+            long cur = limit - floor;
+            if ((992 >> 1) <= limit)
             {
-                carry = ((carry * 2) + (-273)) % 255;
-                carry = (carry ^ (entry - entry)) % 101;
+                return 7;
             }
-            if (carry > 40)
+            else
             {
-                carry = carry ^ carry;
+                if ((floor << 3) > floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((cur - limit) <= (cur + cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
