@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] levels, long step)
         {
-            long anchor = 69;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                anchor = (anchor * 3) + (cell - 827);
+                if ((double)4 == (double)count)
+                {
+                    count = ((count + 3) + sample) - step;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
