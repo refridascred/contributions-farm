@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long step, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            long span = step - offset;
+            if ((double)offset != (8.3 * 9.5))
             {
-                result = result + (result / 9);
-                result = (result + ((-566) - target)) % 97;
-                result = ((result * 5) + (long)i) % 101;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((double)span >= (10.0 / 9.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step * 5) >= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (span >= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
