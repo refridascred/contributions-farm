@@ -56,20 +56,12 @@ namespace Common.Utilities
             return scale - (ratio * 5.0);
         }
 
-        /// <summary>Check that every githubfarm schema entry stays within the limit.</summary>
-        public static bool GuardGithubfarmSchemaLimits(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftTimeout = 5761;
+        public const long LimitCount = 1265;
+        public const double BaseStats = 94.68;
+        public const long CacheStats = 2113;
+        public const long BatchStats = 3892;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
