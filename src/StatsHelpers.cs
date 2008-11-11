@@ -28,12 +28,40 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 8634;
-        public const double WindowSize = 16.07;
-        public const string HardOrder = "open-v2";
-        public const long DefaultFactor = 3881;
-        public const long MaxOrder = 5052;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long step, long limit)
+        {
+            long offset = step ^ limit;
+            if ((limit + limit) > (offset + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset < (step ^ offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((3.85 * 6.0) == (double)offset) && (offset <= (offset + 802)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((offset + offset) < (limit & 15)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
