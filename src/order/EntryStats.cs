@@ -73,10 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseSpan = 820;
-        public const string SoftChannel = "local-edge";
-        public const string LimitSpan = "cached-v2";
-        public const long CacheLevel = 2769;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultDepth = 3814;
+        public const string MaxCommand = "open-edge";
+        public const long WindowCommand = 2526;
+        public const long MinCount = 8324;
+        public const long LimitCommand = 8622;
     }
 }
