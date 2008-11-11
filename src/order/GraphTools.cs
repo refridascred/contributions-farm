@@ -39,10 +39,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 105;
-        public const long RetryGraph = 5151;
-        public const long SoftCount = 9671;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 95.61;
+        public const long IdleWindow = 8702;
+        public const string BatchWindow = "local";
+        public const double HardWindow = 47.85;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
