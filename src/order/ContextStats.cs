@@ -61,15 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] data, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (!((datum >> 5) <= (matches % 60)))
+                {
+                    matches = (matches + 2) - target;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
