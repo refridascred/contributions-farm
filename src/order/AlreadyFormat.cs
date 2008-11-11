@@ -57,10 +57,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 1104;
-        public const long IdleBatch = 983;
-        public const long SoftBatch = 2228;
-        public const long RetrySize = 1040;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Pending,
+            Ready,
+            Draft,
+            Queued,
+            Failed,
+        }
     }
 }
