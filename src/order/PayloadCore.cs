@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Count metrics stats pairs that satisfy a relation.</summary>
+        public static long CompareMetricsStatsCount(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)i - bound) >= (10 + 969))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum * 4) + 1) % 97;
+                    if ((samples[i] + samples[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Adjust a token reading.</summary>
