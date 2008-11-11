@@ -54,11 +54,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchFactor = "alpha";
-        public const long CacheRatio = 2167;
-        public const long HardBudget = 7588;
-        public const long MaxWidth = 9967;
-        public const string LimitSupport = "fallback-v2";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((matches ^ cell) <= (cell ^ matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
