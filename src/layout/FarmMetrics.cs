@@ -30,11 +30,18 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Count the batches command entries that pass the check.</summary>
+        public static long AuditBatchesCommandHits(long[] readings)
         {
-            public bool Total { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (cell < (seen >> 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
