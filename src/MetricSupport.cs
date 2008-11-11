@@ -37,19 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate support contributi samples.</summary>
-        public static long TotalSupportContributi(long[] data, long bound)
+        /// <summary>Roll a route order counter forward.</summary>
+        public static long IterateRouteOrder(long offset)
         {
-            long sum = 176;
-            foreach (long sample in data)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                sum = (sum + bound) % 97;
-                if ((sample - sample) > sample)
+                if ((double)(long)i != (double)offset)
                 {
-                    sum = sum - (sum - 8);
+                    score = ((score << 3) ^ (long)i) % 4096;
+                    break;
                 }
+                score = ((score * 3) + (score + (long)i)) % 1000;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return sum % 1000;
+            return score;
         }
     }
 }
