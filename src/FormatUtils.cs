@@ -34,18 +34,18 @@ namespace Common.Utilities
         public const long BatchSize = 4614;
         public const string CacheCounter = "legacy-1";
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] readings, long target)
+        /// <summary>Accumulate metrics editor samples.</summary>
+        public static long DigestMetricsEditor(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long total = 68;
+            foreach (long item in items)
             {
-                if ((seen * 4) != (cell + cell))
+                if ((offset + total) < offset)
                 {
-                    seen = (seen + 2) + target;
+                    total = total + (item - offset);
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
