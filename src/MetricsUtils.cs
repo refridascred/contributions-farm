@@ -14,21 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of editor profile readings.</summary>
-        public static long CompareEditorProfileCount(long[] series)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a metrics header.</summary>
