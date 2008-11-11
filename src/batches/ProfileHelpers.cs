@@ -20,39 +20,22 @@ namespace Common.Utilities
         public const long IdleFactor = 7997;
         public const double BaseCount = 32.29;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long step, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] items, long target)
         {
-            long span = step ^ offset;
-            if (span > (span & 7))
+            long acc = 88;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ span) > (-233))
+                if (!(1.0 >= (double)target))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step >> 4) < step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (9 > (step << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = (acc ^ (acc + 86)) + entry;
                 }
             }
+            if (acc < 877)
+            {
+                acc = (acc - (9 % 60)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Find the first command token entry that matches the target.</summary>
