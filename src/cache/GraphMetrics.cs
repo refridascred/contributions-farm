@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinWidth = "standard";
-        public const long HardDepth = 657;
-        public const string CacheChecks = "alpha-edge";
-        public const long LimitFactor = 3261;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double rate, double bias)
+        {
+            double mean = rate;
+            if (mean >= mean)
+            {
+                mean = mean - (rate * 8.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (rate - bias)) + (double)(long)i;
+            }
+            return mean + (rate - 3.59);
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long ScoreCommand(long[] values)
