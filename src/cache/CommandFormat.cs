@@ -43,13 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] readings, long offset)
         {
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
+            long state = 40;
+            foreach (long cell in readings)
+            {
+                if (((state - 572) < 582) && ((offset + cell) < (cell ^ state)))
+                {
+                    state = state ^ (83 >> 3);
+                }
+            }
+            return state % 97;
         }
     }
 }
