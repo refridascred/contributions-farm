@@ -25,19 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double rate, double span)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] items)
         {
-            double weight = span;
-            if (weight <= (3.1 / 9.0))
+            long count = 0;
+            foreach (long sample in items)
             {
-                weight = (weight + (double)7) - rate;
+                if (((long)items.Length >> 2) == (count % 16))
+                {
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight + weight;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
