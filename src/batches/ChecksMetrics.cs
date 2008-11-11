@@ -22,31 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long offset, long origin)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            if (((973 + origin) != (origin + origin)) || ((890 * 5) <= origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if (8.0 >= (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin ^ offset) == (offset ^ offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
