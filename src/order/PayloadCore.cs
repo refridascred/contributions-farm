@@ -24,30 +24,18 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Combine checks session values into a single score.</summary>
-        public static long FoldChecksSession(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] values)
         {
-            long sum = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (!((double)sum == (double)reading))
+                if (matches > (value + matches))
                 {
-                    continue;
-                }
-                if ((reading << 3) < (3 - reading))
-                {
-                    sum = sum ^ (reading << 3);
-                }
-                if (sum < (reading % 24))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (sum > (-5))
-            {
-                sum = (sum * 4) + (sum * 5);
-            }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Accumulate token githubfarm samples.</summary>
