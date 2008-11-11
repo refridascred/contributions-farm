@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFormat = 67.17;
-        public const long SoftDepth = 4430;
-        public const long HardFormat = 5321;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public bool Token { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteOutliers(long[] levels)
