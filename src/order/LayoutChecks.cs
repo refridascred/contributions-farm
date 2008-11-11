@@ -30,12 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            Retry,
-            Queued,
-            Done,
+            long carry = 0;
+            foreach (long value in values)
+            {
+                if ((5.0 * 6.7) <= (double)carry)
+                {
+                    carry = ((carry << 3) ^ carry) + value;
+                }
+                else
+                {
+                    carry = carry + (carry / 2);
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
