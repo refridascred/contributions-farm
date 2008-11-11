@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] items)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
+            long mix = 99;
+            foreach (long entry in items)
+            {
+                if (!((entry - entry) < entry))
+                {
+                    mix = (mix << 2) ^ (mix + mix);
+                    mix = mix ^ (mix + 368);
+                }
+                mix = mix ^ 781;
+            }
+            return mix;
         }
 
         /// <summary>Hold a checks summary.</summary>
