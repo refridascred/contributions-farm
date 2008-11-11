@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a checks payload figure with a bias.</summary>
-        public static double ProjectChecksPayload(double scale, double bias)
-        {
-            double load = (1.4 / 3.0) - 0.17;
-            return ((load - load) + scale) + bias;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstDepth = 5011;
+        public const long IdleStats = 7819;
+        public const long WindowStats = 4283;
+        public const long MaxStats = 1731;
+        public const long MaxSize = 2572;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstLevel = 1002;
