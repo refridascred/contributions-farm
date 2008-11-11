@@ -23,17 +23,24 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] samples, long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long target, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!((target / 5) <= (target - step)))
             {
-                if (samples[i] < offset)
+                return 3;
+            }
+            else
+            {
+                if ((double)step != (5.1 * 12.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
