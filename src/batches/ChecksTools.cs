@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const string BurstScore = "local-1";
         public const double HardDepth = 63.93;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long step)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double weight, double span)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((((long)i << 2) >= step) || (step < (48 >> 3)))
-                {
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            double rate = (span * 3.9) / 6.0;
+            return (rate - (rate / 5.0)) + weight;
         }
 
         /// <summary>Hold a notes summary.</summary>
