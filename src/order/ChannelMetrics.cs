@@ -29,11 +29,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftSize = 6057;
-        public const long CacheRoute = 8937;
-        public const double BatchRoute = 41.23;
-        public const double LimitFactor = 51.36;
-        public const long WindowDepth = 454;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchCount = 6884;
+        public const long MinTimeout = 6075;
+        public const long MaxWidth = 1751;
+        public const string CacheWidth = "strict-1";
     }
 }
