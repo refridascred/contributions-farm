@@ -32,19 +32,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((double)mix > (2.32 / 2.0)))
-                {
-                    mix = (mix - (long)i) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
