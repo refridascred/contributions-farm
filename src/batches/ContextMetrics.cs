@@ -61,21 +61,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] series)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long bound, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long bound2 = bound - origin;
+            if ((76 / 7) < (bound + 65))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((origin ^ bound) != (bound2 - bound2))
                 {
-                    if ((series[i] - series[j]) == 10)
+                    return 7;
+                }
+                else
+                {
+                    if (((origin >> 2) < (origin + bound)) && (601 < (bound2 - bound)))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(origin < (bound2 >> 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
