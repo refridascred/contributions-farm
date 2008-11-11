@@ -40,18 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics editor samples.</summary>
-        public static long DigestMetricsEditor(long[] items, long offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long step)
         {
-            long total = 68;
-            foreach (long item in items)
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((offset + total) < offset)
-                {
-                    total = total + (item - offset);
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
