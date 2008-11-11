@@ -39,11 +39,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long floor)
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
