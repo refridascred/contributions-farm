@@ -42,10 +42,14 @@ namespace Common.Utilities
         public const double MinCache = 97.71;
         public const long HardCount = 1818;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitDepth = 26.72;
-        public const double LimitSize = 20.0;
-        public const long DefaultCluster = 9005;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Adjust a context report reading.</summary>
         public static double ProjectContextReport(double bias, double floor)
