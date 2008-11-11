@@ -35,14 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Adjust a channel already reading.</summary>
+        public static double ProjectChannelAlready(double ratio, double floor)
         {
-            New,
-            Ready,
-            Done,
-            Paused,
-            Stale,
+            double mean = (double)(534 * 2);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (((mean - mean) - (double)(long)i) + ratio) - floor;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a channel stats.</summary>
