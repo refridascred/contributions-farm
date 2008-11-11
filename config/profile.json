@@ -1,25 +1,10 @@
 {
-  "cluster_size": "blue",
-  "stream_ratio": ["strict", "green", "eu-west"],
-  "hard_delay": "edge",
-  "default_capacity": {
-    "cache_threshold": true,
-    "metric_delay": "blue",
-    "audit": {
-      "compress": 2010,
-      "stream_depth": false,
-      "already_retries": 500
-    }
+  "strict": {
+    "sync_delay": 77.24,
+    "max_capacity": 47.29,
+    "strict": true,
+    "max_delay": true
   },
-  "queue_delay": {
-    "hard_limit_pct": "edge",
-    "profile_delay": 5473,
-    "batches_ttl": "green",
-    "layout_timeout": [280, 80, 368, 433],
-    "flush_window": {
-      "idle_capacity_pct": true,
-      "metrics_ratio": "standard",
-      "max_size": 3
-    }
-  }
+  "hard_threshold_count": [198, 44, 331],
+  "soft_interval_ms": 950
 }
