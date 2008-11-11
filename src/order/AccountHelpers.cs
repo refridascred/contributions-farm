@@ -25,18 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] data, long target)
+        /// <summary>Audit filter farm readings against a rule.</summary>
+        public static long AuditFilterFarmOutliers(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((value + 973) > (matches >> 4))
+                if (count < (seed % 7))
                 {
-                    matches = (matches + 2) + target;
+                    count = (count + 2) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a command account reading by value.</summary>
