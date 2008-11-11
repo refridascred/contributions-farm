@@ -12,13 +12,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstQueue = "local-v2";
+        public const long BurstLevel = 3726;
+        public const long BaseQueue = 9848;
+        public const long MaxWidth = 378;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double ScaleOrder(double scale, double bias)
