@@ -44,22 +44,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] items)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long gap = floor - limit;
+            if ((double)floor > (double)gap)
             {
-                if (!((603 % 7) < hits) && (((reading << 1) <= reading) || ((9 / 2) < hits)))
+                return 5;
+            }
+            else
+            {
+                if ((double)floor >= (7.63 / 9.0))
                 {
-                    hits = hits + 3;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((limit % 8) == (gap << 3)) && ((floor * 4) >= (floor * 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
