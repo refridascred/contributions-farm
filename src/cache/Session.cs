@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] readings)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double bias = (double)42 - ratio;
+            if (bias <= (ratio - 14.0))
             {
-                if ((double)sample != (double)3)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias - (double)7;
             }
-            return count;
+            else
+            {
+                bias = bias - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (floor + floor)) + (double)(long)i;
+            }
+            return bias - (double)504;
         }
 
         /// <summary>Measure how many queue contributi samples are out of range.</summary>
