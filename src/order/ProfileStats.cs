@@ -37,19 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] data)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double gain, double span)
         {
-            long acc = 195;
-            foreach (long cell in data)
+            double weight = (double)((-404) + 987);
+            if (weight < 0.52)
             {
-                acc = ((acc * 3) + (acc + 5)) % 1000;
-                if (955 <= cell)
-                {
-                    acc = ((acc * 2) + (acc - (long)data.Length)) % 4096;
-                }
+                weight = ((weight + (double)6) - gain) - span;
             }
-            return acc % 1000;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - (9.0 - weight);
         }
 
         /// <summary>Match up layout samples.</summary>
