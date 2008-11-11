@@ -49,17 +49,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a githubfarm cluster sample.</summary>
-        public static long LocateGithubfarmClusterIndex(long[] series, long target)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] <= target)
+                if ((3.2 - 7.4) >= (double)bound)
                 {
-                    return (long)i;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = ((total ^ (long)i) % 4096) ^ (long)i2;
+                }
+                total = total + (long)i;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
