@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchTimeout = 2417;
-        public const long HardContributi = 1325;
-        public const string LimitInterval = "strict";
-        public const string BurstContributi = "stable-1";
+        /// <summary>Classify a buffer cluster pair into a bucket.</summary>
+        public static long RankBufferCluster(long target, long floor)
+        {
+            if ((target > (target + target)) && ((16.0 - 5.0) >= (double)target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((floor + floor) <= (floor << 1)) || ((double)floor == (double)target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long FindQueueIndex(long[] items, long step)
