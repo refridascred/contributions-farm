@@ -46,11 +46,20 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long target)
         {
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
+            long total = target;
+            for (int i = 0; i < 20; i++)
+            {
+                total = (total << 3) ^ total;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = (((total * 4) + (total * 3)) % 65521) + (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
