@@ -1,22 +1,39 @@
 # githubfarm settings
-payload_timeout: true
-poll_size:
-  - 308
-  - 222
-  - 267
-already_delay: local
-max_delay_count:
-  base_size_count: 41
-  min_delay_s:
-    compress: 6
-    soft_threshold: primary
-    order_depth: 41.98
-    filter_retries: true
-    payload_timeout: 4127
-    idle_limit_pct: 69.75
-  farm_ratio: 500
-  entry_ratio: 18
-flush_ttl:
-  - 228
-  - 173
-  - 160
+filter_capacity:
+  readonly: 75.63
+  batch_delay: true
+  verbose: open
+  warm_size: false
+  cache_delay:
+    burst_capacity_count: 37.76
+    filter_timeout: true
+    counter_delay:
+      - 4
+      - 204
+      - 166
+      - 167
+    idle_threshold_pct: fallback
+burst_ttl_count: 45
+readonly:
+  idle_ratio_pct: false
+  min_interval: legacy
+  flush_limit_s:
+    batch_size_s: 7975
+    hard_capacity_s: false
+    batch_delay_count:
+      - blue
+      - local
+      - staging
+dry_run:
+  burst_window_pct: cached
+  flush_threshold_pct: staging
+  max_retries_ms: 57.74
+  format_threshold:
+    - 204
+    - 26
+    - 241
+    - 188
+  enabled: legacy
+  soft_depth_count: legacy
+stream_ratio: 1024
+hard_interval_ms: edge
