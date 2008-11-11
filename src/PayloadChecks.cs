@@ -30,31 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long bound, long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] series)
         {
-            if ((bound + limit) < (limit - bound))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound ^ 9) == (bound * 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + limit) <= (limit & 7))
+                    if ((series[i] + series[j]) == 14)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
