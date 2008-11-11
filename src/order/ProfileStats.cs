@@ -26,12 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstWidth = 7722;
-        public const long BaseMetrics = 3785;
-        public const long StepScore = 7824;
-        public const double CacheMetrics = 49.49;
-        public const long BatchSpan = 1034;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowSize = 7576;
