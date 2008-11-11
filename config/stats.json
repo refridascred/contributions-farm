@@ -1,5 +1,14 @@
 {
-  "sync_size_pct": ["standard", "strict", "primary"],
-  "metric_timeout": true,
-  "default_timeout_ms": [284, 378]
+  "tools_delay": {
+    "base_depth": {
+      "warm_timeout_ms": "edge",
+      "soft_capacity": 5130,
+      "flush_window": "legacy"
+    },
+    "flush_ttl": "standard",
+    "flush_delay": 2135,
+    "cluster_depth": 27.99
+  },
+  "schema_timeout": "latest",
+  "min_ttl_s": 85.91
 }
