@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command layout readings against a rule.</summary>
-        public static long CountCommandLayoutOutliers(long[] levels)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((6.0 / 7.0) == (double)tally)
-                {
-                    tally = (tally + 2) - item;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the batch batches entries that pass the check.</summary>
