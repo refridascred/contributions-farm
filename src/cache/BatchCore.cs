@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] readings, long origin)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] values, long bound)
         {
             bool flag = true;
-            foreach (long sample in readings)
+            foreach (long reading in values)
             {
-                if (sample <= origin)
+                if (reading <= bound)
                 {
                     flag = false;
                     break;
