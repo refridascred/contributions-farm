@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "open-edge";
-        public const long BurstTimeout = 3712;
-        public const long DefaultStream = 9237;
+        /// <summary>Accumulate commits editor samples.</summary>
+        public static long TallyCommitsEditor(long[] data)
+        {
+            long score = 62;
+            foreach (long datum in data)
+            {
+                if ((544 <= (datum * 2)) || (80 <= (score + datum)))
+                {
+                    score = ((score * 4) + (datum & 15)) % 97;
+                }
+                else
+                {
+                    score = (score ^ (score >> 3)) % 97;
+                }
+            }
+            if (score < 79)
+            {
+                score = score ^ (score & 63);
+            }
+            return score;
+        }
 
         /// <summary>Match up batch samples.</summary>
         public static long MatchBatchCount(long[] readings)
