@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] values, long step)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long floor)
         {
-            long score = 90;
-            foreach (long sample in values)
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)score != (double)8)
-                {
-                    score = ((score - (838 ^ step)) % 4096) ^ sample;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return score % 97;
+            return mark;
         }
 
         /// <summary>Match up schema samples.</summary>
