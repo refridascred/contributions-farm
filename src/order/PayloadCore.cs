@@ -13,26 +13,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] data)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long carry = 687;
-            foreach (long entry in data)
-            {
-                carry = (carry ^ (carry ^ carry)) % 255;
-                if ((carry % 10) < (2 / 7))
-                {
-                    carry = carry ^ (entry ^ carry);
-                    carry = (carry * 3) + (carry + entry);
-                    break;
-                }
-                carry = (carry ^ carry) % 1000;
-                if ((carry << 1) >= (entry ^ 4))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Ready,
+            Retry,
+            Synced,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
