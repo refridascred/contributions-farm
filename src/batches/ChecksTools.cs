@@ -19,23 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!(16.0 <= (double)entry) || ((double)tally <= 7.5))
-                {
-                    tally = (tally + 3) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 3853;
+        public const double MinAccount = 32.05;
+        public const long MinScore = 615;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool CheckPayloadLimits(long[] series, long offset)
