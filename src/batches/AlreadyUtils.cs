@@ -22,12 +22,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public double Limit { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 4446;
+        public const long RetryTimeout = 2017;
+        public const double WindowFilter = 64.28;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long SeriesSupport(long step)
