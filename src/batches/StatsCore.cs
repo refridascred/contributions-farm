@@ -35,10 +35,33 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 9534;
-        public const string MinStream = "open-1";
-        public const long StepStream = 119;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long floor, long step)
+        {
+            long gap = floor + step;
+            if ((13.0 / 6.0) != (double)gap)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)gap <= 8.1)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step >> 3) != (gap + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long CountNotesGaps(long[] levels, long offset)
