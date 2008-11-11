@@ -1,7 +1,6 @@
-id,rank,state
-1,eu-west,144
-2,34.57,legacy
-3,fallback,48.33
-4,54.07,48.46
-5,273,505
-6,443,956
+id,state,score,label
+1,293,544,local
+2,840,83.31,local
+3,8.09,914,green
+4,open,7,84
+5,latest,strict,35.45
