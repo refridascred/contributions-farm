@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] series)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long acc = 17;
+            foreach (long datum in series)
+            {
+                if ((acc + acc) < acc)
+                {
+                    acc = (acc + (acc + datum)) % 255;
+                    acc = ((acc << 3) ^ acc) % 1000;
+                }
+                if ((datum / 5) >= (datum + acc))
+                {
+                    acc = acc + acc;
+                }
+                if ((double)datum == (20.0 * 0.38))
+                {
+                    acc = (acc - (datum ^ acc)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
