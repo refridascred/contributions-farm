@@ -46,14 +46,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long floor, long floor2)
         {
-            Pending,
-            Failed,
-            Locked,
-            Active,
-            Ready,
+            long cur = floor + floor2;
+            if (((floor2 + 8) >= floor2) && (floor2 <= (floor - floor)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor << 3) < floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)cur >= 16.0) && ((floor + floor2) > (cur - cur)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.1 > (double)cur) && ((double)cur > (double)4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
