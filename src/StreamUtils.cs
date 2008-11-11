@@ -17,19 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] levels)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] samples)
         {
             long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)hits >= (7.1 / 7.0)) && ((double)hits > (20.0 - 1.61)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
