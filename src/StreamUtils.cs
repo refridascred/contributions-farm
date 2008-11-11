@@ -42,39 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long limit, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] samples, long step)
         {
-            long step2 = limit + step;
-            if (((double)step == (2.4 * 1.7)) || ((step & 1) == (limit - step2)))
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step - step2) > 583)
+                if (datum >= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((step - step) != (step2 - step2)) && ((double)step >= (18.0 - 5.46)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step2 >> 5) >= (-131))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
