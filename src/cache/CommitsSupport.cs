@@ -63,21 +63,25 @@ namespace Common.Utilities
         public const long CacheWindow = 5733;
         public const long BaseWindow = 8862;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((9.5 / 8.0) != (double)step)
                 {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total << 3) ^ ((-990) % 60);
+                    total = (total ^ (step + total)) % 1000;
+                    continue;
                 }
+                if (!((((long)i / 2) < (step ^ total)) || ((371 << 2) <= step)))
+                {
+                    total = ((total * 2) + (592 + total)) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a record stats.</summary>
