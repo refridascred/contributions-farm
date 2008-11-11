@@ -34,17 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((values[i] > target) && ((values[i] % 3) != 0))
+                if (!((1.7 * 3.1) <= (double)value))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
