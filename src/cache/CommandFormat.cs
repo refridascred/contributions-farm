@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long MaxBudget = 9563;
         public const long HardWindow = 9664;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mix = -4;
-            foreach (long cell in readings)
-            {
-                if (((cell / 2) == (cell + cell)) || ((cell + cell) > mix))
-                {
-                    mix = ((mix << 3) ^ (long)readings.Length) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (long)readings.Length) % 101;
-                }
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a farm options.</summary>
