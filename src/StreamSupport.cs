@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of metric notes readings.</summary>
-        public static long TotalMetricNotes(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values, long offset)
         {
-            long carry = 3;
-            foreach (long item in readings)
+            long score = 23;
+            foreach (long value in values)
             {
-                carry = (carry + (item + carry)) % 4096;
-                if (((208 << 2) > (carry % 10)) && ((item - 917) == ((long)readings.Length - carry)))
+                if (((9 % 24) == (score ^ offset)) || (((long)values.Length + offset) >= (6 ^ offset)))
                 {
-                    carry = (carry + (carry * 4)) % 1000;
+                    score = (score - (score - score)) - value;
                 }
             }
-            return carry % 65521;
+            if (score > 5)
+            {
+                score = (score ^ offset) % 97;
+            }
+            return score;
         }
 
         /// <summary>Match up route samples.</summary>
