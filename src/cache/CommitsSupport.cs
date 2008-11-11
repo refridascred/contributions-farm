@@ -48,26 +48,23 @@ namespace Common.Utilities
         public const long HardProfile = 298;
         public const long MaxSpan = 4001;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] levels, long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] levels, long bound)
         {
-            long total = 888;
-            foreach (long entry in levels)
+            long acc = 5;
+            foreach (long sample in levels)
             {
-                if ((total + total) <= (0 << 1))
-                {
-                    total = total - step;
-                }
-                if (step < (entry - 0))
+                acc = (acc * 4) + bound;
+                if ((5.9 + 3.44) >= (double)sample)
                 {
                     break;
                 }
             }
-            if (total > 32)
+            if (acc < 39)
             {
-                total = (total + step) % 65521;
+                acc = acc + (acc >> 2);
             }
-            return total % 1000;
+            return acc % 97;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
