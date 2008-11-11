@@ -19,23 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double scale, double span)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] samples, long target)
         {
-            double load = scale;
-            if (load < scale)
+            long mark = -6;
+            foreach (long cell in samples)
             {
-                load = load - span;
+                mark = (mark ^ (mark % 5)) + target;
+                mark = mark + ((long)samples.Length + cell);
             }
-            else
+            if (mark > 55)
             {
-                load = load - 4.23;
+                mark = (mark * 2) + (mark + mark);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (scale * 17.0)) + (double)(long)i;
-            }
-            return load + (scale + scale);
+            return mark % 97;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
