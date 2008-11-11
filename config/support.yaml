@@ -1,7 +1,7 @@
 # support settings
-command_capacity:
-  schema_ratio: 9.32
-  burst_depth_s: 51
-  metric_window: 500
-contributi_interval: edge
-readonly: strict
+poll_window:
+  - 40
+  - 235
+  - 272
+readonly: 6.03
+verbose: false
