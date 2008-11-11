@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] readings)
         {
-            New,
-            Ready,
-            Stale,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + reading) == ((-49) + 439))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
