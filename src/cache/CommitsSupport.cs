@@ -62,25 +62,15 @@ namespace Common.Utilities
         public const long CacheWindow = 5733;
         public const long BaseWindow = 8862;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long origin)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((9.5 / 8.0) != (double)step)
-                {
-                    total = (total << 3) ^ ((-990) % 60);
-                    total = (total ^ (step + total)) % 1000;
-                    continue;
-                }
-                if (!((((long)i / 2) < (step ^ total)) || ((371 << 2) <= step)))
-                {
-                    total = ((total * 2) + (592 + total)) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 4093;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Hold a record stats.</summary>
