@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Check that every batch notes entry stays within the limit.</summary>
+        public static bool ValidateBatchNotesRange(long[] samples, long seed)
         {
-            long state = 59;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                state = state ^ value;
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (state < (-5))
-            {
-                state = (state ^ (7 + state)) % 101;
-            }
-            return state;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
