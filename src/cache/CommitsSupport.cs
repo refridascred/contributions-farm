@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next channel queue value.</summary>
-        public static double SmoothChannelQueue(double weight, double floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] series)
         {
-            double bias = (double)(3 + 314);
-            if (bias >= (bias - floor))
+            long sum = 144;
+            foreach (long sample in series)
             {
-                bias = bias + (bias * 9.5);
+                sum = (sum - sum) % 101;
+                sum = ((sum * 2) + sample) % 4096;
+                if ((sum + sample) <= sample)
+                {
+                    sum = ((sum * 4) + (sample % 100)) % 4096;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - 3.4) - (double)(long)i;
-            }
-            return bias + weight;
+            return sum;
         }
 
         /// <summary>Rank metrics checks input into a small class.</summary>
