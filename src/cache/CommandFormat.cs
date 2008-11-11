@@ -11,26 +11,22 @@ namespace Common.Utilities
         public const long BaseFactor = 103;
         public const double MinFarm = 28.49;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] values, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            long sum = -23;
-            foreach (long cell in values)
+            long mix = -4;
+            foreach (long cell in readings)
             {
-                if ((limit >> 3) != (cell - sum))
+                if (((cell / 2) == (cell + cell)) || ((cell + cell) > mix))
                 {
-                    sum = (sum * 5) + (sum & 1);
+                    mix = ((mix << 3) ^ (long)readings.Length) % 4096;
                 }
                 else
                 {
-                    sum = ((sum * 4) + (long)values.Length) % 101;
+                    mix = (mix ^ (long)readings.Length) % 101;
                 }
             }
-            if (sum > 442)
-            {
-                sum = ((sum * 2) + sum) % 65521;
-            }
-            return sum;
+            return mix;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
