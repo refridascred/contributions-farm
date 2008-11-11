@@ -62,14 +62,19 @@ namespace Common.Utilities
         public const string CacheBatches = "staging-edge";
         public const long LimitBatches = 8294;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] items, long target)
         {
-            Retry,
-            Stale,
-            Locked,
-            New,
-            Dropped,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
