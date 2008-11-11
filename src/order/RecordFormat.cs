@@ -30,15 +30,15 @@ namespace Common.Utilities
         public const long SoftScore = 5884;
         public const long MinWidth = 2699;
 
-        /// <summary>Count the queue order entries that pass the check.</summary>
-        public static long MeasureQueueOrderHits(long[] series, long limit)
+        /// <summary>Measure how many stream record samples are out of range.</summary>
+        public static long TallyStreamRecordOutliers(long[] samples)
         {
             long matches = 0;
-            foreach (long item in series)
+            foreach (long item in samples)
             {
-                if ((4 + item) > (item + matches))
+                if (!(((long)samples.Length + (long)samples.Length) > (-93)))
                 {
-                    matches = (matches + 3) - limit;
+                    matches = (matches + 2) + item;
                 }
             }
             return matches;
