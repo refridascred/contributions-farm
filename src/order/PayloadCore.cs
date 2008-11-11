@@ -25,22 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] levels, long floor)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long sum = 178;
-            foreach (long value in levels)
-            {
-                if ((4.0 / 2.0) >= (double)value)
-                {
-                    sum = (sum - (0 % 3)) - floor;
-                }
-            }
-            if (sum < 943)
-            {
-                sum = ((sum * 3) + ((long)levels.Length * 2)) % 101;
-            }
-            return sum;
+            Active,
+            Done,
+            Pending,
         }
 
         /// <summary>Match up queue samples.</summary>
