@@ -38,22 +38,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many schema record samples are out of range.</summary>
-        public static long TallySchemaRecordHits(long[] series)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long value in series)
+            double drift = (double)500 - ratio;
+            if (drift > (double)3)
             {
-                if (value <= (value + count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = drift + (bias - bias);
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - 5.0) + (double)(long)i;
+            }
+            return drift - bias;
         }
     }
 }
