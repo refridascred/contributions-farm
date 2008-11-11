@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Count route tools pairs that satisfy a relation.</summary>
+        public static long OverlapRouteToolsCount(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Match up schema samples.</summary>
