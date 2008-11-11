@@ -19,22 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] series)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long seed, long bound)
         {
-            long anchor = 356;
-            foreach (long item in series)
+            long bound2 = seed ^ bound;
+            if ((2.5 * 7.14) <= (double)bound)
             {
-                if (((long)series.Length & 31) >= (item << 3))
+                return 1;
+            }
+            else
+            {
+                if (bound2 <= seed)
                 {
-                    anchor = (anchor * 5) + (anchor / 6);
+                    return 2;
                 }
-                if (anchor > (16 - item))
+                else
                 {
-                    break;
+                    if (seed < (bound2 & 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Describe the checks state values.</summary>
