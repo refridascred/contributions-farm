@@ -1,6 +1,6 @@
 {
-  "idle_depth_s": ["fallback", "local", "blue"],
-  "support_depth": 60,
-  "warm_ttl": "blue",
-  "retry_ttl_pct": "latest"
+  "idle_window_ms": "legacy",
+  "soft_ratio": 10,
+  "audit": [418, 334, 416, 154],
+  "dry_run": 60
 }
