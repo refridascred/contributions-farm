@@ -54,14 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 5719;
+        public const long BatchBatches = 1753;
+        public const string CacheBatches = "staging-edge";
+        public const long LimitBatches = 8294;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
