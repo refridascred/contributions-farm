@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry + carry;
-                carry = ((carry * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count commits stats pairs that satisfy a relation.</summary>
