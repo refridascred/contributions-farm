@@ -28,18 +28,13 @@ namespace Common.Utilities
         public const string WindowStats = "stable-edge";
         public const long DefaultStats = 3299;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] series, long offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((((offset + value) <= (matches ^ matches)) && ((offset % 97) >= 27)) || (((-16) - (long)series.Length) < value))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
