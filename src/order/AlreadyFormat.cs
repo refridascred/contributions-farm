@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLevel = 1610;
+        public const long IdleLayout = 5566;
+        public const long LimitLayout = 5899;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteBounds(long[] series, long step)
