@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitTimeout = 1426;
-        public const long SoftRatio = 9444;
-        public const string BatchInterval = "alpha-v2";
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Stale,
+            New,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long TallySession(long[] values, long bound)
