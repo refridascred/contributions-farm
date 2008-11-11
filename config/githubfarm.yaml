@@ -1,7 +1,11 @@
 # githubfarm settings
-payload_capacity: 79.4
-burst_delay_pct:
-  - 106
-  - 467
-cache_depth: 30
-hard_interval: 100
+payload_ratio: false
+cache_depth: 70.18
+max_ratio: 9820
+graph_timeout: 2.29
+batch_timeout:
+  - edge
+  - latest
+  - legacy
+  - staging
+retry_ratio: edge
