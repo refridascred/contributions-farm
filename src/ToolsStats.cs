@@ -63,13 +63,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] data, long limit)
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long anchor = 67;
+            foreach (long cell in data)
+            {
+                anchor = ((((anchor * 4) + 111) % 4096) ^ cell) - limit;
+            }
+            return anchor;
         }
     }
 }
