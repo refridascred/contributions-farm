@@ -30,13 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] data)
         {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (((11.0 - 14.0) == (double)value) || ((value << 1) <= (811 + value)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
