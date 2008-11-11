@@ -15,15 +15,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate batch notes samples.</summary>
-        public static long TallyBatchNotes(long[] data)
+        /// <summary>Count notes already pairs that satisfy a relation.</summary>
+        public static long MatchNotesAlreadyCount(long[] data)
         {
-            long carry = 1;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry ^ carry) % 255) - reading;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Project the next contributi value.</summary>
