@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double gain, double span)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double ratio, double offset)
         {
-            double ratio = (double)(38 & 63);
-            if (ratio <= span)
+            double mean = ratio;
+            if (mean < (ratio - mean))
             {
-                ratio = ratio - (span * 8.95);
+                mean = mean - (offset / 7.0);
             }
-            else
-            {
-                ratio = ratio - (gain * 0.5);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + 1.6;
+            return mean + mean;
         }
 
         /// <summary>Locate a cache checks reading by value.</summary>
