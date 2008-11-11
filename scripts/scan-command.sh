@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached stable green legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-legacy}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+COMMAND_LIMIT=133
+log "limit is ${COMMAND_LIMIT}"
