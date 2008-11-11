@@ -35,11 +35,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a token header.</summary>
