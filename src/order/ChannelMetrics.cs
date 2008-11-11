@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] samples, long limit)
         {
-            New,
-            Closed,
-            Synced,
-            Active,
-            Ready,
+            long state = 950;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    state = ((state + ((long)i * 2)) % 255) + limit;
+                    state = (state + item) % 255;
+                }
+                state = ((state << 3) ^ (45 + item)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
