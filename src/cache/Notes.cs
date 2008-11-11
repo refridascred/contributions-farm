@@ -32,14 +32,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Compare every pair of stats report readings.</summary>
+        public static long MatchStatsReportCount(long[] samples)
         {
-            Paused,
-            Retry,
-            Stale,
-            Active,
-            Failed,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
