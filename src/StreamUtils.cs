@@ -17,22 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up format contributi samples.</summary>
-        public static long PairFormatContributiCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 9114;
+        public const long RetryEditor = 5447;
+        public const string IdleDepth = "standard-1";
+        public const long BaseCount = 6704;
 
         /// <summary>Audit schema editor readings against a rule.</summary>
         public static long TallySchemaEditorGaps(long[] values, long floor)
