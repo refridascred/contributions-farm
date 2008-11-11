@@ -42,11 +42,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
