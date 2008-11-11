@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first cluster stream entry that matches the target.</summary>
-        public static long FindClusterStreamIndex(long[] items, long bound)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long seed, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (486 < (seed * 4))
             {
-                if ((items[i] >= bound) && ((items[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((seed & 3) == (seed - seed))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed << 1) <= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate batch samples.</summary>
