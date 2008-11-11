@@ -11,13 +11,21 @@ namespace Common.Utilities
         public const long MaxRoute = 7792;
         public const long DefaultRoute = 8888;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Compare every pair of editor profile readings.</summary>
+        public static long CompareEditorProfileCount(long[] series)
         {
-            Pending,
-            Failed,
-            Dropped,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the tools context entries that pass the check.</summary>
