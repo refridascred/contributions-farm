@@ -44,32 +44,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long floor, long limit)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long step)
         {
-            long gap = floor - limit;
-            if ((double)floor > (double)gap)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                mark = (mark * 5) + ((long)i >> 1);
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)floor >= (7.63 / 9.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit % 8) == (gap << 3)) && ((floor * 4) >= (floor * 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
