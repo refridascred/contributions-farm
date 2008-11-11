@@ -30,22 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseFactor = "legacy";
+        public const long SoftCount = 5792;
+        public const string StepRecord = "fallback-1";
+        public const double DefaultRecord = 10.85;
+        public const double MinRecord = 79.94;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenOutliers(long[] values)
