@@ -27,18 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate checks commits samples.</summary>
-        public static long WeighChecksCommits(long[] data, long offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long result = 5;
-            foreach (long cell in data)
-            {
-                if ((120 - result) == (offset >> 2))
-                {
-                    result = (result ^ (531 - offset)) ^ cell;
-                }
-            }
-            return result % 97;
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
