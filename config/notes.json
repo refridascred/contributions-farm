@@ -1,6 +1,5 @@
 {
-  "route_interval": "green",
-  "tools_delay": true,
-  "retry_depth": ["stable", "green", "strict"],
-  "dry_run": 500
+  "hard_ttl": 43.75,
+  "cache_window": 55.92,
+  "burst_retries_ms": 98
 }
