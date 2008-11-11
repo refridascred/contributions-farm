@@ -19,23 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen - seen) < sample)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitLevel = 3993;
+        public const double DefaultSize = 51.13;
+        public const string DefaultContext = "local-v2";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinSpan = 3410;
