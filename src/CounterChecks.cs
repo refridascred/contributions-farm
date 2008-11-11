@@ -24,16 +24,19 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] samples, long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long floor)
         {
-            long carry = -109;
-            foreach (long reading in samples)
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                carry = ((carry ^ (carry & 63)) % 97) - step;
-                carry = ((carry * 5) + (reading * 4)) % 97;
+                if (!((mark >> 4) == (mark + floor)))
+                {
+                    mark = (mark - (floor + mark)) % 65521;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return carry % 97;
+            return mark;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
