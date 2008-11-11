@@ -44,19 +44,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] data, long seed)
+        /// <summary>Measure how many schema record samples are out of range.</summary>
+        public static long TallySchemaRecordHits(long[] series)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (value < seed)
+                if (value <= (value + count))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
