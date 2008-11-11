@@ -1,6 +1,7 @@
 {
-  "flush_window_count": 1357,
-  "min_threshold_ms": false,
-  "max_depth": "stable",
-  "persist": ["cached", "eu-west", "open"]
+  "base_retries_ms": ["standard", "latest", "cached", "green"],
+  "record_retries": 79.35,
+  "soft_retries_ms": 8993,
+  "order_depth": "staging",
+  "graph_size": "green"
 }
