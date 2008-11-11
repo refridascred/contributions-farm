@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long step, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] items, long step)
         {
-            long span = step - offset;
-            if ((double)offset != (8.3 * 9.5))
+            bool flag = true;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)span >= (10.0 / 9.0))
+                if (reading >= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step * 5) >= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (span >= offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
