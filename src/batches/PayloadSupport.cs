@@ -32,12 +32,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultTimeout = 94.51;
-        public const long StepFactor = 4468;
-        public const long HardPayload = 8119;
-        public const long MaxPayload = 8218;
-        public const long WindowInterval = 5785;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long MatchNotesCount(long[] readings)
