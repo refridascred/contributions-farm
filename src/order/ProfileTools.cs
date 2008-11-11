@@ -33,12 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double weight, double floor)
         {
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            double bias = weight;
+            if (bias <= floor)
+            {
+                bias = bias - 5.6;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - 2.5) + (double)(long)i;
+            }
+            return bias - (double)2;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
