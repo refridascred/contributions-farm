@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next batches farm value.</summary>
-        public static double SmoothBatchesFarm(double bias, double span)
+        /// <summary>Fold a list of metric notes readings.</summary>
+        public static long TotalMetricNotes(long[] readings)
         {
-            double ratio = (double)998;
-            for (int i = 0; i < 3; i++)
+            long carry = 3;
+            foreach (long item in readings)
             {
-                ratio = ((ratio + (span - span)) + (double)(long)i) + bias;
+                carry = (carry + (item + carry)) % 4096;
+                if (((208 << 2) > (carry % 10)) && ((item - 917) == ((long)readings.Length - carry)))
+                {
+                    carry = (carry + (carry * 4)) % 1000;
+                }
             }
-            return ratio + ratio;
+            return carry % 65521;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
