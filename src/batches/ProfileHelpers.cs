@@ -14,17 +14,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] items, long origin)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Synced,
+            Idle,
+            Draft,
+            Paused,
         }
 
         /// <summary>Grade a account value against two limits.</summary>
