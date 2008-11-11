@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const string CacheChecks = "alpha-edge";
         public const long LimitFactor = 3261;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] levels, long step)
+        /// <summary>Combine entry tools values into a single score.</summary>
+        public static long ScoreEntryTools(long[] values, long floor)
         {
-            long acc = 351;
-            foreach (long sample in levels)
+            long total = 625;
+            foreach (long sample in values)
             {
-                acc = (acc ^ (acc + acc)) + step;
-                if ((sample % 10) < (acc + sample))
-                {
-                    break;
-                }
+                total = ((((total << 3) ^ total) % 4096) ^ sample) + floor;
             }
-            return acc;
+            if (total > 839)
+            {
+                total = (total + 1) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
