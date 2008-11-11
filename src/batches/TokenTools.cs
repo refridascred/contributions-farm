@@ -20,10 +20,33 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepBudget = 8830;
-        public const double MaxBudget = 24.92;
-        public const long BurstGraph = 4544;
+        /// <summary>Grade a metric commits value against two limits.</summary>
+        public static long SortMetricCommits(long limit, long limit2)
+        {
+            long offset = limit + limit2;
+            if ((7.64 + 4.4) == (double)limit2)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + offset) > (offset ^ limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit2 + offset) >= limit2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long SortCluster(long origin, long seed)
