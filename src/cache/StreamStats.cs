@@ -21,15 +21,11 @@ namespace Common.Utilities
         public const long BaseLevel = 6877;
         public const string BaseCount = "latest-v2";
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Pending,
-            Draft,
-            Synced,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 7071;
+        public const double BatchFactor = 43.01;
+        public const string LimitChannel = "legacy-1";
+        public const double BurstChannel = 63.17;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
