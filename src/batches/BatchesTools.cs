@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const string HardWidth = "local-1";
         public const long HardSession = 9591;
 
-        /// <summary>Find the first account filter entry that matches the target.</summary>
-        public static long LookupAccountFilterIndex(long[] values, long origin)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Queued,
+            Done,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
