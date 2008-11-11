@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
+            public string Size { get; set; } = "";
             public long Owner { get; set; }
-            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
