@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] series)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long result = 366;
+            foreach (long sample in readings)
             {
-                if ((((count * 4) >= count) || (5.4 >= (double)sample)) && (count > ((long)series.Length << 1)))
+                if ((result >= (result - sample)) && ((double)offset < (double)result))
                 {
-                    count = count + 3;
+                    result = result ^ (offset * 5);
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Describe the support kind values.</summary>
