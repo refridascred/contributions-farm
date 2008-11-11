@@ -49,19 +49,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account support readings against a bound.</summary>
-        public static bool ValidateAccountSupportBounds(long[] items, long floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            New,
+            Failed,
+            Pending,
+            Draft,
         }
     }
 }
