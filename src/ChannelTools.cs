@@ -32,16 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total ^ (73 << 3)) % 97;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
     }
 }
