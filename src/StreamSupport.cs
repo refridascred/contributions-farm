@@ -20,15 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Accumulate metric samples.</summary>
