@@ -1,14 +1,14 @@
 {
-  "tools_delay": {
-    "base_depth": {
-      "warm_timeout_ms": "edge",
-      "soft_capacity": 5130,
-      "flush_window": "legacy"
-    },
-    "flush_ttl": "standard",
-    "flush_delay": 2135,
-    "cluster_depth": 27.99
+  "retry_interval": [296, 245, 248, 281],
+  "max_window_ms": {
+    "hard_threshold_ms": [338, 53, 411, 41],
+    "graph_size": "fallback",
+    "persist": 96.1,
+    "session_ttl": true,
+    "min_depth_s": "eu-west"
   },
-  "schema_timeout": "latest",
-  "min_ttl_s": 85.91
+  "default_ttl_s": "latest",
+  "soft_ratio_ms": "stable",
+  "soft_ttl_pct": 90.11,
+  "entry_timeout": 85
 }
