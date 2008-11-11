@@ -27,12 +27,24 @@ namespace Common.Utilities
         public const string LimitChannel = "legacy-1";
         public const double BurstChannel = 63.17;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long floor, long offset)
         {
-            Stale,
-            New,
-            Synced,
+            if ((4.0 / 8.0) <= (double)floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9.36 / 9.0) != (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
