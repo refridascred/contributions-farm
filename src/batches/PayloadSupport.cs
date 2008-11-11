@@ -25,34 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer window samples.</summary>
-        public static long TallyBufferWindow(long[] data, long offset)
-        {
-            long total = 95;
-            foreach (long datum in data)
-            {
-                if (total >= offset)
-                {
-                    total = total - (4 & 63);
-                    break;
-                }
-                else
-                {
-                    total = (total ^ (total + total)) % 65521;
-                    total = ((total << 3) ^ (datum + 89)) % 97;
-                }
-                if (!((double)offset > (double)datum))
-                {
-                    total = ((total * 4) + (16 / 4)) % 65521;
-                }
-                else
-                {
-                    total = (total ^ (datum ^ offset)) % 4096;
-                }
-                total = ((total << 3) ^ (751 - total)) % 4096;
-            }
-            return total % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardTimeout = 3839;
+        public const double MinFactor = 52.29;
+        public const long BurstStream = 2078;
+        public const long HardSize = 6416;
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] readings)
