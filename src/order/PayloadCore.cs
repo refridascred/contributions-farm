@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Ready,
-            Paused,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxLevel = 13.99;
+        public const long LimitLevel = 937;
+        public const double StepRatio = 91.49;
+        public const long LimitRatio = 148;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
