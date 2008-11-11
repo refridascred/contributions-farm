@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryTimeout = 2028;
+        public const long BaseRoute = 7046;
+        public const long DefaultCount = 8199;
+        public const long BatchRoute = 7433;
+        public const long DefaultFactor = 4494;
 
         /// <summary>Check that every notes cache entry stays within the limit.</summary>
         public static bool GuardNotesCacheRange(long[] items, long origin)
