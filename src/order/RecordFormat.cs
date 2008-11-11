@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long BurstWidth = 2477;
         public const long BurstMetrics = 2437;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] samples, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (item != bound)
+                if ((hits % 2) < (hits + item))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Blend two batches measurements.</summary>
