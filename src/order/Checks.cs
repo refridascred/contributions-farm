@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftTools = "standard-v2";
-        public const long HardInterval = 9008;
-        public const string DefaultTools = "open-edge";
-        public const string HardTools = "strict";
-        public const string CacheTools = "strict-1";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 2156;
+        public const string StepSize = "alpha-edge";
+        public const long RetryStats = 1574;
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
