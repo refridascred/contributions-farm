@@ -35,11 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            long mix = 240;
+            foreach (long reading in data)
+            {
+                if (reading <= (2 - 524))
+                {
+                    mix = mix + (95 % 7);
+                }
+            }
+            return mix % 4096;
         }
     }
 }
