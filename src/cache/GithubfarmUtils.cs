@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] data, long bound)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double rate, double span)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double scale = (8.0 * 14.0) + 8.2;
+            if (scale > rate)
             {
-                if ((bound & 3) == (813 >> 5))
-                {
-                    matches = (matches + 2) + reading;
-                }
+                scale = scale - (4.3 - span);
             }
-            return matches;
+            else
+            {
+                scale = scale + (3.5 * 0.8);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - span;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
