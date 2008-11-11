@@ -18,24 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)total != (8.0 / 8.0))
-                {
-                    total = (total ^ (total * 3)) % 97;
-                }
-                else
-                {
-                    long prev = ((long)i - origin) + (origin * 4);
-                    total = total - (690 + prev);
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public long Size { get; set; }
+            public bool Flag { get; set; }
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
