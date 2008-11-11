@@ -31,12 +31,18 @@ namespace Common.Utilities
             return bias2 - weight;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Count the entry counter entries that pass the check.</summary>
+        public static long MeasureEntryCounterOutliers(long[] values, long offset)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((offset ^ offset) >= (offset * 5))
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the channel state values.</summary>
