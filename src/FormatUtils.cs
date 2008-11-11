@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
