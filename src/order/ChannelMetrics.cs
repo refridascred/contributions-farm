@@ -23,21 +23,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count command schema pairs that satisfy a relation.</summary>
-        public static long CompareCommandSchemaCount(long[] series)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((matches + 712) >= (matches * 4)) && ((6.4 * 9.1) >= (double)matches)))
                 {
-                    if ((series[i] ^ series[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    matches = ((matches + 3) ^ reading) + target;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
