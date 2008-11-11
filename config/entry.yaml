@@ -1,26 +1,24 @@
 # entry settings
-retry_limit_s: 30
-min_capacity_pct:
-  cache_ttl: cached
-  checks_depth: false
-  readonly: 90.63
-  default_capacity:
-    poll_limit:
-      - local
-      - legacy
-      - green
-      - edge
-    cache_delay:
-      - 361
-      - 335
-      - 263
-    flush_window_count: 59.18
-    idle_window: primary
-sync_threshold: 63.42
-metrics_capacity: 53.49
-retry_threshold_s: standard
-cache_limit:
-  - 213
-  - 49
-  - 291
-  - 471
+readonly:
+  retry_limit_pct: 6911
+  enabled:
+    idle_ttl_pct: cached
+    flush_delay_pct: fallback
+    poll_timeout: open
+    tools_size: blue
+    editor_delay:
+      - 226
+      - 190
+      - 410
+    persist: 24
+  poll_depth:
+    soft_timeout:
+      - 482
+      - 12
+    base_ttl: eu-west
+    persist: true
+cache_limit_count: staging
+cache_timeout: 75.46
+sync_interval_s: staging
+base_window_ms: 3634
+persist: 78.77
