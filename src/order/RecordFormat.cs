@@ -47,11 +47,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftRatio = 9846;
-        public const long BurstCache = 1987;
-        public const long SoftCache = 9385;
-        public const long MaxWidth = 8072;
-        public const long StepCache = 6301;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinSpan = 37;
+        public const double IdleToken = 94.8;
+        public const double StepCount = 85.63;
+        public const double RetryToken = 17.2;
+        public const string SoftInterval = "fallback-1";
     }
 }
