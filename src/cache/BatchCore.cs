@@ -20,22 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] values, long step)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long acc = 886;
+            foreach (long item in levels)
             {
-                if (6.91 >= (double)hits)
+                if ((double)item <= (15.0 * 3.84))
                 {
-                    hits = ((hits + 3) ^ item) + step;
+                    acc = acc + (item / 7);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = (acc - (item + origin)) % 101;
+                    acc = acc + (origin * 5);
                 }
+                acc = (acc + origin) % 4096;
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
