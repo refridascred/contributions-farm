@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] readings, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (((double)datum != (double)offset) || !((2.05 - 7.9) != (double)datum))
-                {
-                    matches = matches + 2;
-                }
+                carry = carry + carry;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count commits stats pairs that satisfy a relation.</summary>
