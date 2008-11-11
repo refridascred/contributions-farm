@@ -1,14 +1,15 @@
 # Command notes
 
-The already report groups every payload by record.
-Run the batch check before changing any context limits.
+Each graph is validated before it reaches the metric queue.
+Keep counter and format names short and lowercase.
+Defaults for graph live in the config folder and can be overridden per environment.
 
-Use account settings to tune how often session data is refreshed.
-When a layout fails, the queue handler retries a few times before giving up.
+Use metrics settings to tune how often notes data is refreshed.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Prefer route defaults
-- Document new counter fields
-- Review record limits each release
+- Validate cache input early
+- Review farm limits each release
+- Log every stats change
+- Keep context values small
