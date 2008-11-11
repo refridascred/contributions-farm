@@ -15,22 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the metric account entries that pass the check.</summary>
-        public static long CountMetricAccountOutliers(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((datum + datum) <= datum) && (((datum >> 3) != (count % 5)) || ((2.1 + 19.0) == (double)datum)))
+                if ((reading + offset) != (tally >> 5))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
