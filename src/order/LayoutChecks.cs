@@ -55,21 +55,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] items)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (origin <= (origin * 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((step & 63) >= step)
                 {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a contributi options.</summary>
