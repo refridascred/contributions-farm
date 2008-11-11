@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Validate record report readings against a bound.</summary>
+        public static bool CheckRecordReportBounds(long[] series, long floor)
         {
-            Stale,
-            Closed,
-            New,
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
