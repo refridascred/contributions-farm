@@ -75,21 +75,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of command notes readings.</summary>
-        public static long OverlapCommandNotesCount(long[] data)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Idle,
+            Closed,
+            Stale,
         }
     }
 }
