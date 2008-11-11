@@ -69,18 +69,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] samples)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry >= (4.7 + 7.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Ready,
+            Pending,
+            Failed,
         }
     }
 }
