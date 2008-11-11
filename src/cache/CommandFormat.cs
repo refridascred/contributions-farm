@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepFormat = 22.67;
-        public const double SoftLevel = 93.32;
-        public const double WindowWidth = 26.98;
-        public const long WindowRatio = 7193;
-        public const string IdleFormat = "strict-edge";
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Dropped,
+            Done,
+            Failed,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LocateCacheIndex(long[] items, long floor)
