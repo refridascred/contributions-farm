@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] series)
+        /// <summary>Iterate the counter schema series from a seed.</summary>
+        public static long RollCounterSchema(long bound)
         {
-            long result = 7;
-            foreach (long sample in series)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                result = (result ^ sample) % 4096;
-                if ((sample * 5) <= sample)
+                if ((617 ^ total) <= (total ^ total))
                 {
-                    long next = sample;
-                    result = result ^ (529 ^ next);
-                    break;
+                    total = (total * 2) + (total + total);
                 }
-                result = (result * 5) + 0;
+                if (((double)total <= (4.0 / 3.0)) && ((double)bound != (double)total))
+                {
+                    total = (total + bound) % 101;
+                    total = (total * 3) + total;
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Combine session values into a single score.</summary>
