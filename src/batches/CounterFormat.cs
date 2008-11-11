@@ -47,19 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] readings, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] data, long seed)
         {
-            long carry = 4;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long value in data)
             {
-                carry = ((carry * 2) + carry) % 255;
-                if (cell > step)
+                if (value < seed)
                 {
-                    carry = (carry * 5) + (carry << 1);
+                    valid = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return valid;
         }
     }
 }
