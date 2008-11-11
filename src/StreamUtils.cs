@@ -41,18 +41,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order payload readings against a rule.</summary>
-        public static long TallyOrderPayloadHits(long[] readings, long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            if ((2.1 - 1.0) == (double)offset2)
             {
-                if ((double)item < (16.0 * 2.18))
+                return 5;
+            }
+            else
+            {
+                if (20.0 > (double)offset2)
                 {
-                    seen = (seen + 2) - floor;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
