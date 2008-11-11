@@ -1,12 +1,7 @@
 {
-  "soft_ratio_ms": "latest",
-  "audit": "latest",
-  "soft_timeout_ms": "green",
-  "default_ttl_count": "eu-west",
-  "metric_threshold": {
-    "channel_ratio": 3414,
-    "verbose": "eu-west",
-    "warm_ratio_pct": 26,
-    "support_delay": 7550
-  }
+  "burst_delay": true,
+  "sync_size": 55,
+  "retry_retries_ms": 8423,
+  "cache_depth": [189, 48, 468],
+  "audit": false
 }
