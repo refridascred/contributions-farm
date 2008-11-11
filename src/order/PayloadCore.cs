@@ -33,21 +33,19 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sum - (long)i) < (bound * 3))
                 {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum << 3) ^ sum;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Accumulate token githubfarm samples.</summary>
