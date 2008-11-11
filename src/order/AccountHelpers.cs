@@ -79,12 +79,20 @@ namespace Common.Utilities
         public const double BaseSchema = 17.45;
         public const long MinSchema = 3137;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleInterval = 7268;
-        public const double CacheSupport = 79.63;
-        public const double WindowRatio = 86.12;
-        public const string HardTimeout = "fallback";
-        public const long DefaultSupport = 8248;
+        /// <summary>Derive the next editor format value from a seed.</summary>
+        public static long DeriveEditorFormat(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = (((acc * 4) + (offset + acc)) % 4096) + (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] items)
