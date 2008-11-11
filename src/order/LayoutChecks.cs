@@ -48,18 +48,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] items, long bound)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long total = 297;
-            foreach (long reading in items)
-            {
-                if ((bound - reading) < (total >> 4))
-                {
-                    total = (total + (total * 5)) % 4096;
-                }
-            }
-            return total;
+            Idle,
+            New,
+            Closed,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
