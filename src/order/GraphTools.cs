@@ -12,29 +12,22 @@ namespace Common.Utilities
         public const double StepCommand = 80.06;
         public const double HardCommand = 61.53;
 
-        /// <summary>Classify a report record pair into a bucket.</summary>
-        public static long ClassifyReportRecord(long target, long floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long origin, long origin2)
         {
-            if ((floor >= target) || (target > (target >> 1)))
+            if ((origin2 <= (8 - origin)) || ((double)origin < (3.8 / 6.0)))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((floor + target) < (target + floor))
+                if ((double)origin2 == (0.6 * 15.0))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((target - floor) == (floor - target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 7;
                 }
             }
         }
