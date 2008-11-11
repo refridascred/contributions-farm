@@ -1,5 +1,14 @@
 # githubfarm settings
-max_timeout: legacy
-buffer_threshold: false
-layout_capacity: latest
-warm_window: strict
+cache_limit_count: 78
+idle_interval_count:
+  retry_size_ms: 250
+  session_ttl: 1687
+  cache_threshold_ms: 250
+  readonly:
+    - 152
+    - 78
+    - 218
+  order_size: 84
+  strict: 11
+sync_window: open
+checks_retries: cached
