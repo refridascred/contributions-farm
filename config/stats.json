@@ -1,6 +1,23 @@
 {
-  "context_limit": true,
-  "sync_depth_count": 96,
-  "cache_limit_ms": 85.36,
-  "cache_size_pct": 9790
+  "batch_size_ms": {
+    "poll_window": 62,
+    "warm_ratio": {
+      "editor_threshold": true,
+      "counter_delay": "blue",
+      "flush_delay_ms": "fallback",
+      "batch_ratio": 22,
+      "base_delay": "standard",
+      "idle_delay_s": 26.0
+    },
+    "window_capacity": true
+  },
+  "burst_capacity_count": "strict",
+  "sync_delay": "staging",
+  "flush_ratio_pct": [484, 254, 144, 318],
+  "idle_depth": false,
+  "notes_depth": {
+    "poll_limit": "fallback",
+    "idle_delay": [330, 341],
+    "enabled": false
+  }
 }
