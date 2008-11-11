@@ -13,12 +13,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryInterval = 8514;
-        public const string RetryLevel = "fallback-edge";
-        public const string SoftWidth = "primary-edge";
-        public const long HardSpan = 5433;
-        public const long BurstOrder = 3721;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] samples, long target)
+        {
+            long result = 6;
+            foreach (long item in samples)
+            {
+                result = (result * 5) + (target >> 3);
+                result = (result - item) % 97;
+            }
+            if (result < 635)
+            {
+                result = ((result << 2) ^ (target / 7)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TallySession(long[] items)
