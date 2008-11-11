@@ -1,32 +1,23 @@
 # githubfarm settings
-buffer_size:
-  - 497
-  - 161
-compress: local
-enabled: 25.69
-strict: 250
-poll_threshold:
-  report_depth: 89
-  default_limit_ms: false
-  flush_ttl:
-    soft_depth: strict
-    farm_capacity: 100
-    audit: 31.53
-    sync_size_ms: 48.4
-  sync_window_pct: 250
-  sync_timeout_pct: 75.59
-retry_ratio_count:
-  warm_window_ms: 500
-  default_ttl_pct:
-    - green
-    - standard
-    - open
-    - legacy
-  stats_capacity: true
-  hard_threshold:
-    idle_timeout:
-      - 248
-      - 198
-      - 474
-    batch_capacity: 35.01
-    default_size_ms: fallback
+layout_capacity: staging
+checks_ttl: true
+report_ttl: 500
+audit:
+  - legacy
+  - eu-west
+  - fallback
+  - latest
+queue_capacity: 9
+sync_interval_ms:
+  idle_window_s: stable
+  layout_retries: 53
+  batches_interval: true
+  poll_limit_s:
+    batch_depth_ms: false
+    cache_ratio_pct: strict
+    poll_size: true
+    burst_window_ms: 45.29
+  poll_retries: 57.9
+  retry_size:
+    - 171
+    - 218
