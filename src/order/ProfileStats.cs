@@ -42,24 +42,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((5.02 * 0.33) == (double)seed))
-                {
-                    result = (result - (seed ^ result)) % 1000;
-                }
-                if (((long)i == (8 % 7)) && (((long)i + result) <= 2))
-                {
-                    continue;
-                }
-                result = (result + 90) % 97;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
