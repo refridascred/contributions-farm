@@ -14,17 +14,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] items, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((items[i] >= seed) && ((items[i] % 5) != 0))
+                if (((hits + hits) >= (sample * 3)) && ((0 * 2) != (40 ^ sample)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a context reading by value.</summary>
