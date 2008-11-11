@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public bool Token { get; set; }
-            public double Region { get; set; }
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
