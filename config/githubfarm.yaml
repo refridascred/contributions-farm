@@ -1,4 +1,5 @@
 # githubfarm settings
-enabled: 6.92
-default_capacity_ms: true
-compress: edge
+hard_capacity: strict
+entry_threshold: 96
+verbose: legacy
+stream_window: 35.32
