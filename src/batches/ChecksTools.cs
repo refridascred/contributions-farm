@@ -25,17 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] samples, long step)
+        /// <summary>Check that every stats context entry stays within the limit.</summary>
+        public static bool VerifyStatsContextBounds(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (samples[i] <= step)
+                if (value >= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a window entry.</summary>
