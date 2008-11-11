@@ -12,12 +12,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double ratio, double offset)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            double scale = (ratio - offset) * 11.0;
+            return scale + (double)5;
         }
 
         /// <summary>Describe the route status values.</summary>
