@@ -69,18 +69,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit githubfarm commits readings against a rule.</summary>
-        public static long TallyGithubfarmCommitsHits(long[] data)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((long)data.Length - cell) < count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a notes stats.</summary>
