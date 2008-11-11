@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftCount = "legacy-v2";
-        public const string MaxFormat = "stable-edge";
-        public const long BaseSpan = 7492;
-        public const string HardInterval = "latest-v2";
-        public const long MaxLevel = 8714;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsLimits(long[] series, long origin)
