@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-Each commits is validated before it reaches the report queue.
-
-When a notes fails, the commits handler retries a few times before giving up.
-A token that stays idle for too long is moved to the editor list.
-The layout module keeps account values in sync with the graph cache.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Use profile settings to tune how often batches data is refreshed.
+The payload report groups every order by command.
 
 ## Guidelines
 
-- Keep buffer values small
-- Document new entry fields
-- Review already limits each release
-- Prefer profile defaults
+- Keep batches values small
+- Review batches limits each release
+- Prefer editor defaults
