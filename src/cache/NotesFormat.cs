@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long RetryEntry = 2053;
         public const long DefaultDepth = 5612;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((offset + offset) > (carry - 5))
-                {
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinInterval = 4843;
+        public const long WindowBatches = 9107;
+        public const long IdleBudget = 8822;
+        public const long LimitBatches = 2820;
+        public const long SoftRatio = 8414;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] items, long origin)
