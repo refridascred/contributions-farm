@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const long SoftRatio = 9444;
         public const string BatchInterval = "alpha-v2";
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Digest a series of editor cluster entries.</summary>
+        public static long FoldEditorCluster(long[] values)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            long anchor = 38;
+            foreach (long reading in values)
             {
-                if (69 < (floor + result))
-                {
-                    result = (result ^ (floor + result)) % 1000;
-                    result = (result * 4) + (result % 8);
-                }
-                else
-                {
-                    result = result - floor;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                anchor = ((anchor << 3) ^ (anchor - 801)) + reading;
             }
-            return result;
+            if (anchor < 6)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
