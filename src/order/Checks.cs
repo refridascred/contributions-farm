@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowAccount = 95.92;
-        public const long BurstAccount = 8318;
-        public const double MaxAccount = 94.69;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftTools = "standard-v2";
+        public const long HardInterval = 9008;
+        public const string DefaultTools = "open-edge";
+        public const string HardTools = "strict";
+        public const string CacheTools = "strict-1";
 
         /// <summary>Match up support layout samples.</summary>
         public static long OverlapSupportLayoutCount(long[] levels)
