@@ -1,5 +1,25 @@
 # entry settings
-verbose: 1557
-sync_ttl_count: 30
-compress: 8994
-record_depth: open
+strict:
+  buffer_limit: 250
+  batch_threshold_ms: 31
+  default_ttl_pct:
+    window_size: primary
+    audit:
+      - 37
+      - 85
+      - 141
+      - 157
+    soft_delay_count: 93.99
+hard_retries_ms:
+  compress: blue
+  cluster_ttl: 54
+  strict: true
+  hard_interval_s: false
+  farm_timeout: local
+  dry_run: 30
+readonly:
+  - 74
+  - 191
+  - 123
+  - 441
+soft_retries: blue
