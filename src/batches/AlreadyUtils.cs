@@ -34,21 +34,22 @@ namespace Common.Utilities
         public const string MinMetrics = "standard-1";
         public const string BaseMetrics = "standard-1";
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 4;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((anchor * 5) == (floor ^ 166))
                 {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor + (sample - anchor)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor / 4)) % 97;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Accumulate channel samples.</summary>
