@@ -1,27 +1,25 @@
 {
-  "sync_depth": 7393,
-  "poll_timeout_pct": {
-    "editor_threshold": 3589,
-    "schema_limit": 8235,
-    "verbose": false
-  },
-  "batch_limit_s": {
-    "warm_interval_s": 54.5,
-    "default_timeout_s": "open",
-    "max_ttl_s": "stable",
-    "warm_retries_pct": {
-      "retry_interval": 100,
-      "min_size": true,
-      "warm_limit": 97,
-      "max_capacity_ms": "edge"
+  "hard_delay_ms": {
+    "poll_depth_ms": false,
+    "sync_limit_s": false,
+    "compress": {
+      "farm_delay": 79.39,
+      "persist": 81.36,
+      "warm_timeout_s": false,
+      "retry_retries": 95,
+      "flush_ratio_s": 56
     },
-    "token_size": {
-      "max_capacity": 34,
-      "entry_retries": 639,
-      "max_ratio_ms": "edge",
-      "persist": "edge"
-    }
+    "soft_ratio_count": ["latest", "latest", "strict", "eu-west"]
   },
-  "batch_interval_count": 26.77,
-  "graph_size": 500
+  "support_ttl": {
+    "cache_delay_ms": 55,
+    "flush_limit_count": "primary",
+    "verbose": "edge",
+    "entry_capacity": 15.55,
+    "profile_size": "latest"
+  },
+  "dry_run": 31,
+  "cache_threshold_ms": 50.2,
+  "batch_timeout_ms": 7391,
+  "soft_timeout_ms": 60
 }
