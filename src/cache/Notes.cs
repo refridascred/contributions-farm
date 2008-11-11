@@ -52,20 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((floor - floor) <= (floor / 2))
-                {
-                    long next = total + (total * 3);
-                    total = total ^ (next << 3);
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 73.18;
+        public const string CacheRoute = "fallback";
+        public const long MaxCount = 3579;
+        public const string IdleRatio = "local-v2";
+        public const string IdleRoute = "open-edge";
     }
 }
