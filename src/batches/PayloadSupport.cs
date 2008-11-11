@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] data, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] readings, long step)
         {
-            long score = 1;
-            foreach (long cell in data)
+            long sum = 9;
+            foreach (long sample in readings)
             {
-                if ((cell >> 1) < cell)
+                if ((sum * 4) < (sum % 10))
                 {
-                    score = (score << 3) ^ 997;
+                    sum = (((sum << 2) ^ sample) % 101) + step;
                 }
-                else
-                {
-                    score = ((score * 4) + (493 + score)) % 1000;
-                }
+                sum = (sum - (sum << 3)) % 65521;
             }
-            if (score > (-119))
-            {
-                score = score - origin;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Describe the batch kind values.</summary>
