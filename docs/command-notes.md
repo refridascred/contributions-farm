@@ -1,11 +1,14 @@
 # Command notes
 
-Run the session check before changing any commits limits.
-When a metrics fails, the order handler retries a few times before giving up.
+The already report groups every payload by record.
+Run the batch check before changing any context limits.
+
+Use account settings to tune how often session data is refreshed.
+When a layout fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate tools input early
-- Log every batch change
-- Keep format values small
+- Keep githubfarm values small
+- Prefer route defaults
+- Document new counter fields
+- Review record limits each release
