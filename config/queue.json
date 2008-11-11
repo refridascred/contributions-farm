@@ -1,7 +1,8 @@
 {
-  "warm_limit": "staging",
-  "tools_limit": 52,
-  "account_threshold": [191, 336, 216],
-  "channel_interval": ["stable", "latest", "latest", "legacy"],
-  "default_ttl_s": 38.93
+  "sync_timeout_pct": 44.29,
+  "verbose": [393, 266, 401],
+  "context_limit": "cached",
+  "max_threshold_count": true,
+  "format_ratio": ["eu-west", "green", "staging", "blue"],
+  "batch_window": "strict"
 }
