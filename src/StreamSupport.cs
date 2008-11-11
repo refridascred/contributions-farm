@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] series)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 611;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)carry > (7.5 + 6.9))
                 {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry ^ (cell + cell)) % 1000;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
