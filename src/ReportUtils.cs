@@ -14,22 +14,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] levels)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long limit)
         {
-            long mark = 82;
-            foreach (long sample in levels)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample << 1) > (sample % 16))
-                {
-                    mark = (mark ^ (sample - sample)) % 97;
-                }
+                carry = (carry << 2) ^ (limit - limit);
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            if (mark > 79)
-            {
-                mark = (mark - (mark & 3)) % 1000;
-            }
-            return mark % 4096;
+            return carry;
         }
 
         /// <summary>Fold a list of already readings.</summary>
