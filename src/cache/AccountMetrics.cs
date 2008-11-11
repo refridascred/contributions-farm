@@ -33,20 +33,12 @@ namespace Common.Utilities
             return weight - (double)86;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowScore = "standard-v2";
+        public const long StepCache = 7639;
+        public const long HardFactor = 3105;
+        public const double MinCache = 97.71;
+        public const long HardCount = 1818;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double LimitDepth = 26.72;
