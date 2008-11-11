@@ -20,16 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] samples, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                state = ((state << 2) ^ ((long)i % 12)) % 97;
-                state = ((state * 2) + (long)i) % 4093;
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
