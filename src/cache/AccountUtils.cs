@@ -28,23 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] levels, long origin)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long mix = -86;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = (((mix + (1 / 7)) % 255) - (long)i) ^ value;
-                }
-                mix = mix - (origin + mix);
-            }
-            if (mix < 8)
-            {
-                mix = (mix * 5) + (mix + (-573));
-            }
-            return mix;
+            Pending,
+            Queued,
+            Idle,
         }
     }
 }
