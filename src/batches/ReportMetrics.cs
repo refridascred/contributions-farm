@@ -19,11 +19,16 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleScore = 60.81;
-        public const double StepFarm = 61.54;
-        public const long RetryInterval = 6927;
-        public const long LimitDepth = 6456;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] items)
+        {
+            long anchor = 339;
+            foreach (long datum in items)
+            {
+                anchor = ((anchor << 2) ^ (datum >> 1)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsMatches(long[] items, long floor)
