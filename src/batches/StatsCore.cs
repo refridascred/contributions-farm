@@ -51,17 +51,13 @@ namespace Common.Utilities
         public const string DefaultQueue = "stable-1";
         public const long HardSize = 4272;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] readings, long origin)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
