@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double rate, double span)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            double drift = (double)8 * 1.44;
+            for (int i = 0; i < 3; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                drift = (drift - (rate * 3.84)) + (double)(long)i;
             }
-            return state;
+            return drift + span;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
