@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats context entry stays within the limit.</summary>
-        public static bool VerifyStatsContextBounds(long[] levels, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (value >= target)
+                if (!(16.0 <= (double)entry) || ((double)tally <= 7.5))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the queue class values.</summary>
