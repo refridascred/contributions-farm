@@ -23,21 +23,18 @@ namespace Common.Utilities
             return (rate - gain) + span;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Audit farm cache readings against a rule.</summary>
+        public static long AuditFarmCacheMatches(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                result = result ^ (origin >> 5);
-                result = (result + (6 - origin)) % 4096;
-                for (int i2 = 0; i2 < 7; i2++)
+                if (((count % 2) > (entry + entry)) && (entry <= (entry / 3)))
                 {
-                    result = ((result << 2) ^ (result - origin)) ^ (long)i2;
+                    count = count + 3;
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a account record.</summary>
