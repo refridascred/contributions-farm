@@ -25,21 +25,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] readings)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
