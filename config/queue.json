@@ -1,6 +1,6 @@
 {
-  "poll_ratio_count": "edge",
-  "sync_delay_count": "blue",
-  "burst_depth_count": ["latest", "open"],
-  "hard_delay": 7606
+  "burst_limit_ms": "staging",
+  "retry_limit_count": "strict",
+  "hard_ratio": 98.47,
+  "verbose": 8081
 }
