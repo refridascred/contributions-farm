@@ -1,5 +1,7 @@
 # support settings
-poll_ratio: 35.73
-batch_limit_ms: true
-base_size_count: staging
-schema_interval: green
+profile_ttl:
+  - 285
+  - 50
+  - 483
+verbose: standard
+sync_size_s: false
