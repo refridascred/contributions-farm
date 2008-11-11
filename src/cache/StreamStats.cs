@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Draft,
-            Dropped,
-            Queued,
-            Failed,
+            public double Size { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
