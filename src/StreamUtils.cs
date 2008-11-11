@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] samples, long limit)
         {
-            Ready,
-            Synced,
-            Failed,
-            Idle,
-            Closed,
+            long score = 24;
+            foreach (long entry in samples)
+            {
+                score = score - (entry + limit);
+                for (int i = 0; i < 2; i++)
+                {
+                    score = (score ^ (3 ^ score)) + (long)i;
+                }
+                if (!((8.99 / 6.0) < (double)entry))
+                {
+                    score = score + 28;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a notes info.</summary>
