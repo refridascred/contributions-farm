@@ -20,29 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the command tools series from a seed.</summary>
-        public static long IterateCommandTools(long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] data, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((double)sum <= (15.0 + 0.2))
+                if (reading < target)
                 {
-                    sum = sum ^ (step & 7);
-                }
-                long delta = ((long)i & 127) / 4;
-                if ((step * 5) <= delta)
-                {
-                    delta = ((delta << 3) ^ step) % 255;
+                    ok = false;
                     break;
                 }
-                else
-                {
-                    delta = (delta << 3) ^ (delta ^ delta);
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
