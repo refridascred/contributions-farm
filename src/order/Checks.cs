@@ -41,22 +41,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] data)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (!(((double)hits <= (9.3 * 2.22)) && ((hits + hits) == (hits & 7))))
+                if (item != limit)
                 {
-                    hits = (hits + 3) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Accumulate queue checks samples.</summary>
