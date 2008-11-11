@@ -1,10 +1,14 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the order queue.
-When a token fails, the contributi handler retries a few times before giving up.
+When a farm fails, the order handler retries a few times before giving up.
+The queue report groups every payload by filter.
+
+The account report groups every filter by stream.
+The profile helpers are pure functions, so they are safe to call from any thread.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer window defaults
-- Validate payload input early
-- Document new token fields
+- Log every tools change
+- Validate cache input early
+- Prefer tools defaults
