@@ -43,11 +43,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long offset, long origin)
         {
-            public bool Score { get; set; }
-            public double Count { get; set; }
+            long diff = offset ^ origin;
+            if ((diff / 6) <= (origin * 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((origin - offset) <= (69 ^ diff)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a record stats.</summary>
