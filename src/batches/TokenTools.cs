@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Scale a record context figure with a bias.</summary>
+        public static double AdjustRecordContext(double weight, double offset)
         {
-            Retry,
-            Active,
-            Dropped,
+            double load = (double)(23 + 70);
+            if (load <= load)
+            {
+                load = (load + (load + offset)) + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (7.27 - offset)) + (double)(long)i;
+            }
+            return load + (double)8;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
