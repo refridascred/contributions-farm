@@ -30,12 +30,18 @@ namespace Common.Utilities
         public const long SoftScore = 5884;
         public const long MinWidth = 2699;
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the queue order entries that pass the check.</summary>
+        public static long MeasureQueueOrderHits(long[] series, long limit)
         {
-            Ready,
-            Dropped,
-            Closed,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((4 + item) > (item + matches))
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
