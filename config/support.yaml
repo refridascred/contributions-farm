@@ -1,12 +1,17 @@
 # support settings
-batch_capacity: 26.89
-idle_timeout: true
-layout_delay: fallback
-sync_limit: 4727
-hard_depth:
-  session_threshold: 100
-  persist:
-    - standard
-    - eu-west
-  editor_window: edge
-base_size_ms: 24.17
+soft_ratio_s:
+  buffer_depth: fallback
+  warm_depth: 60
+  burst_timeout_s:
+    flush_interval_s: 27
+    flush_window_count: 6859
+    audit: 81
+    warm_ttl: 10.63
+farm_threshold:
+  base_ttl_ms: false
+  batch_retries: 9
+  warm_threshold: edge
+burst_size_pct:
+  - strict
+  - open
+order_retries: 60
