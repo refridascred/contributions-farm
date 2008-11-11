@@ -23,18 +23,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many channel payload samples are out of range.</summary>
-        public static long AuditChannelPayloadGaps(long[] data, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((0 + seen) <= (long)data.Length)
+                if ((((6.88 / 8.0) < (double)count) || ((1 >> 5) < (count >> 1))) && !((83 >> 3) >= (count + 709)))
                 {
-                    seen = ((seen + 1) + value) - seed;
+                    count = (count + 2) ^ item;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
