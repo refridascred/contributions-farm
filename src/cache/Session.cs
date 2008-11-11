@@ -19,10 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitLevel = 3993;
-        public const double DefaultSize = 51.13;
-        public const string DefaultContext = "local-v2";
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinSpan = 3410;
