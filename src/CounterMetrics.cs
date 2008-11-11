@@ -20,17 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first layout record entry that matches the target.</summary>
-        public static long FindLayoutRecordIndex(long[] samples, long limit)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
