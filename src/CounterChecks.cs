@@ -68,22 +68,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            long sum = 39;
-            foreach (long item in items)
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((sum / 5) <= (sum / 8))
-                {
-                    sum = ((sum ^ sum) % 65521) + item;
-                }
-                if ((7.0 / 5.0) < (double)sum)
-                {
-                    break;
-                }
+                anchor = ((anchor << 2) ^ (long)i) % 4096;
+                anchor = ((anchor << 2) ^ 5) % 101;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return sum % 4096;
+            return anchor;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
