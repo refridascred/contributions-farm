@@ -30,21 +30,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long target, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step = target + offset;
+            if ((double)target >= (2.57 / 2.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((target * 3) <= (target + step)) || (step >= (offset & 7)))
                 {
-                    if ((series[i] + series[j]) == 14)
+                    return 6;
+                }
+                else
+                {
+                    if ((offset & 63) != (6 + offset))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (49 > (step - target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
