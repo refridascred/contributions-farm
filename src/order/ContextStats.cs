@@ -54,18 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] values)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally - 451) > (tally / 7))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
+            Done,
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Roll a session counter forward.</summary>
