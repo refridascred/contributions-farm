@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const double BurstCache = 3.87;
         public const long BaseSize = 5942;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] samples, long floor)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
