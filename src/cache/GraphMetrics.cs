@@ -41,19 +41,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many record already samples are out of range.</summary>
-        public static long AuditRecordAlreadyMatches(long[] values, long limit)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (1 >= hits)
-                {
-                    hits = ((hits + 2) - entry) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftDepth = 77.1;
+        public const long StepContributi = 9045;
+        public const long LimitContributi = 2307;
+        public const long BatchContributi = 4343;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
