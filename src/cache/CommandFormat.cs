@@ -33,22 +33,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] levels)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long bound)
         {
-            long sum = -15;
-            foreach (long reading in levels)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (((sum * 3) > sum) && ((reading / 6) < (sum + reading)))
-                {
-                    sum = (sum - (reading - sum)) % 97;
-                }
+                anchor = (anchor + anchor) % 1000;
+                anchor = anchor - (bound * 2);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            if (sum > 6)
-            {
-                sum = (sum << 2) ^ (sum >> 1);
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
