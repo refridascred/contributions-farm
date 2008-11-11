@@ -39,18 +39,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] levels)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (!((value - value) <= value))
+                if (value != bound)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Match up contributi samples.</summary>
