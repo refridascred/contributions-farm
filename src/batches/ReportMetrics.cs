@@ -42,18 +42,27 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] series)
+        /// <summary>Derive the next githubfarm commits value from a seed.</summary>
+        public static long DeriveGithubfarmCommits(long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (!!((hits << 3) < value))
+                if (!((result >> 3) >= ((long)i >> 3)))
                 {
-                    hits = hits + 2;
+                    result = (result * 3) + (result & 15);
                 }
+                else
+                {
+                    result = (result * 4) + result;
+                }
+                if ((result / 7) < (result + result))
+                {
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
     }
 }
