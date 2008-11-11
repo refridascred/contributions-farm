@@ -33,13 +33,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Audit farm editor readings against a rule.</summary>
+        public static long MeasureFarmEditorMatches(long[] readings, long offset)
         {
-            Failed,
-            New,
-            Synced,
-            Stale,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!(reading >= (reading + 619)))
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate layout samples.</summary>
