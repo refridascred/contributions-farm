@@ -20,11 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinToken = "stable-1";
-        public const double DefaultFactor = 45.46;
-        public const long SoftToken = 1426;
-        public const double IdleToken = 10.75;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstRecord = 12.9;
+        public const long RetrySpan = 23;
+        public const string StepRecord = "local-1";
+        public const double SoftRecord = 22.66;
+        public const long CacheRecord = 2646;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
