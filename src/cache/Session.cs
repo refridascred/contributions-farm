@@ -23,14 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 8993;
+        public const long StepWidth = 1812;
+        public const long StepSize = 8951;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long WeighTools(long[] values, long offset)
