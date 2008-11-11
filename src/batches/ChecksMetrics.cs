@@ -37,18 +37,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload profile samples.</summary>
-        public static long TallyPayloadProfile(long[] readings)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long limit, long limit2)
         {
-            long sum = 58;
-            foreach (long entry in readings)
+            if ((limit >> 3) == (64 * 2))
             {
-                if ((entry * 3) > (sum / 2))
+                return 0;
+            }
+            else
+            {
+                if ((limit >> 4) > (limit - 98))
                 {
-                    sum = (sum << 3) ^ entry;
+                    return 3;
+                }
+                else
+                {
+                    if (!((7.32 * 2.52) >= (double)limit2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
