@@ -37,19 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] values, long floor)
+        /// <summary>Accumulate payload profile samples.</summary>
+        public static long TallyPayloadProfile(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long sum = 58;
+            foreach (long entry in readings)
             {
-                if (reading < floor)
+                if ((entry * 3) > (sum / 2))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum << 3) ^ entry;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
