@@ -22,21 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metric stats readings.</summary>
-        public static long PairMetricStatsCount(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = -5;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)target == (double)datum) && ((datum << 3) >= total))
                 {
-                    if ((readings[i] + readings[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total - (datum + datum)) % 65521;
                 }
             }
-            return seen;
+            if (total > (-712))
+            {
+                total = ((total << 2) ^ (total - target)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
