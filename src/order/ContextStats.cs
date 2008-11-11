@@ -53,19 +53,31 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every record stats entry stays within the limit.</summary>
-        public static bool CheckRecordStatsLimits(long[] samples, long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long limit, long limit2)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            if ((double)limit2 > (5.0 + 7.4))
             {
-                if (datum >= floor)
+                return 5;
+            }
+            else
+            {
+                if ((limit2 + limit) == (20 * 4))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit / 3) >= (limit - limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
