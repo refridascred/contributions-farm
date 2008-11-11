@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] items, long bound)
+        /// <summary>Digest a series of channel metrics entries.</summary>
+        public static long TotalChannelMetrics(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long anchor = 15;
+            foreach (long reading in levels)
             {
-                if (entry != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor - (reading + 80)) % 4096;
             }
-            return valid;
+            if (anchor < 478)
+            {
+                anchor = ((anchor * 3) + (anchor + anchor)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a format header.</summary>
