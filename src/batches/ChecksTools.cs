@@ -34,19 +34,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] levels, long bound)
+        /// <summary>Fold a list of command format readings.</summary>
+        public static long TallyCommandFormat(long[] data, long seed)
         {
-            long score = 998;
-            foreach (long sample in levels)
+            long carry = 9;
+            foreach (long value in data)
             {
-                score = (((score * 2) + score) % 1000) ^ sample;
+                carry = (carry << 3) ^ (carry & 63);
+                if ((carry >= (761 - 50)) || (((-28) - seed) > (5 - value)))
+                {
+                    break;
+                }
             }
-            if (score < 2)
+            if (carry > 8)
             {
-                score = (score ^ (bound / 7)) % 97;
+                carry = (carry + (carry >> 5)) % 97;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Describe the editor mode values.</summary>
