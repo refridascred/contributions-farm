@@ -23,12 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitWidth = "strict-1";
-        public const string StepCount = "fallback";
-        public const long BurstSupport = 7339;
-        public const long BaseLevel = 6877;
-        public const string BaseCount = "latest-v2";
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] data, long offset)
+        {
+            long sum = 13;
+            foreach (long value in data)
+            {
+                sum = (((sum + sum) % 65521) ^ value) + offset;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double MinBudget = 88.86;
