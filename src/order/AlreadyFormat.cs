@@ -20,16 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Audit account context readings against a rule.</summary>
+        public static long TallyAccountContextOutliers(long[] items, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                result = (result ^ (result << 3)) % 101;
-                result = ((result * 4) + (long)i) % 101;
+                if ((seen / 6) > (895 + seen))
+                {
+                    seen = ((seen + 2) ^ sample) + limit;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
