@@ -51,22 +51,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] series)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long score = 5;
+            foreach (long datum in data)
             {
-                if ((7.5 - 2.73) > (double)reading)
+                score = ((score << 3) ^ (floor >> 4)) + datum;
+                if (9.1 >= (double)floor)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = ((score << 3) ^ score) % 1000;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
