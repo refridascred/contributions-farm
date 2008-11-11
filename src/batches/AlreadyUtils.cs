@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long limit, long limit2)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            if ((limit ^ limit2) != (30 ^ limit2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((920 + limit) == (limit2 << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((5 / 4) != (7 - limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            New,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a format header.</summary>
