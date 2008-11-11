@@ -1,12 +1,5 @@
 # support settings
-soft_ratio_pct: 500
-min_retries_count: stable
-retry_retries:
-  - blue
-  - legacy
-hard_ratio:
-  - legacy
-  - primary
-  - local
-hard_capacity_ms: primary
-poll_limit_count: green
+flush_ttl_s: legacy
+batch_limit: false
+metrics_timeout: 762
+poll_capacity: eu-west
