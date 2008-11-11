@@ -40,10 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 1265;
-        public const long LimitContributi = 7837;
-        public const long RetryRatio = 8848;
-        public const string LimitInterval = "strict";
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public bool Weight { get; set; }
+            public double Size { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
