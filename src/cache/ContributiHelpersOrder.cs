@@ -12,10 +12,11 @@ namespace Common.Utilities
         public const long SoftCache = 4531;
         public const string WindowCache = "legacy-v2";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseSpan = 2057;
-        public const long IdleWindow = 861;
-        public const double BatchWindow = 70.37;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleBatches = "latest-edge";
+        public const long MaxLevel = 9149;
+        public const string HardRatio = "alpha-edge";
+        public const long LimitBatches = 6800;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
