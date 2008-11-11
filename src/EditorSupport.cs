@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] values, long step)
         {
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate report samples.</summary>
