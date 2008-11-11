@@ -29,12 +29,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] items, long seed)
         {
-            Draft,
-            Closed,
-            New,
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a command stats.</summary>
