@@ -52,22 +52,21 @@ namespace Common.Utilities
         public const long RetryRecord = 1327;
         public const long MaxRecord = 6948;
 
-        /// <summary>Digest a series of farm support entries.</summary>
-        public static long TotalFarmSupport(long[] samples, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            long result = -31;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.3 + 5.2) < (double)step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result - (entry % 16)) % 97;
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 46)
-            {
-                result = (result ^ 7) % 101;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Scale a metrics context figure with a bias.</summary>
