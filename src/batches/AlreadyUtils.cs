@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] series)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] items, long bound)
         {
-            long mix = 5;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                mix = ((mix << 3) ^ item) % 4096;
+                if (entry != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mix < 930)
-            {
-                mix = mix + (921 - mix);
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Hold a format header.</summary>
