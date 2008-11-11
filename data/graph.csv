@@ -1,11 +1,6 @@
-id,owner,rank,token
-1,primary,655,latest
-2,552,447,strict
-3,57.5,227,fallback
-4,9.96,standard,349
-5,fallback,eu-west,local
-6,415,strict,484
-7,789,strict,691
-8,94.84,13,465
-9,stable,706,81.86
-10,27,51.79,75.9
+id,label,active
+1,fallback,263
+2,45.01,97.3
+3,288,latest
+4,149,63.82
+5,local,fallback
