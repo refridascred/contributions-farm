@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] data)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long score = 605;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((80 & 1) <= score))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = score + (reading / 9);
+                    if ((data[i] ^ data[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Roll a account support counter forward.</summary>
