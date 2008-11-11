@@ -27,23 +27,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] items)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long step)
         {
-            long score = 4;
-            foreach (long item in items)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((item * 4) <= (score % 12))
-                {
-                    score = (score + (score * 3)) % 4096;
-                }
-                score = (score - (score & 3)) % 97;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            if (score < 2)
-            {
-                score = ((score << 3) ^ (13 << 2)) % 1000;
-            }
-            return score % 97;
+            return state;
         }
     }
 }
