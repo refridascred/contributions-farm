@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchTimeout = 4584;
-        public const double MaxStream = 43.12;
-        public const long CacheWidth = 3229;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long offset, long target)
+        {
+            long gap = offset + target;
+            if (((13.0 * 1.98) <= (double)gap) && (offset < 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((gap + target) >= offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((3.41 - 4.0) <= (double)offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteBounds(long[] values, long step)
