@@ -19,11 +19,21 @@ namespace Common.Utilities
         public const string DefaultRecord = "primary-1";
         public const double BaseRecord = 89.78;
 
-        /// <summary>Project the next already token value.</summary>
-        public static double BlendAlreadyToken(double ratio, double bias)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long origin)
         {
-            double gain = (15.0 + ratio) / 5.0;
-            return (gain - gain) + bias;
+            long result = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                result = result ^ (origin >> 5);
+                result = (result + (6 - origin)) % 4096;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = ((result << 2) ^ (result - origin)) ^ (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
