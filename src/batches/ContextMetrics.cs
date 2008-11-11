@@ -78,24 +78,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a farm cache pair into a bucket.</summary>
-        public static long SortFarmCache(long seed, long origin)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            if ((seed + origin) < (42 * 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((955 - origin) < seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            New,
+            Closed,
+            Failed,
         }
     }
 }
