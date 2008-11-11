@@ -25,18 +25,14 @@ namespace Common.Utilities
         public const string DefaultBuffer = "latest-1";
         public const long MinBuffer = 3204;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] series)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (!((1.7 * 3.1) <= (double)value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Ready,
+            Closed,
+            Pending,
+            New,
         }
     }
 }
