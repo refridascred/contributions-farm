@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleDepth = 62.95;
-        public const string RetryCount = "legacy-edge";
-        public const long CacheCommand = 4959;
-        public const double StepCommand = 80.06;
-        public const double HardCommand = 61.53;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (!((8 & 3) != (step + sample)) || ((count * 5) > sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long RankPayload(long origin, long origin2)
