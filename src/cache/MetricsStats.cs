@@ -28,13 +28,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] values, long step)
         {
-            New,
-            Ready,
-            Done,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the filter level values.</summary>
