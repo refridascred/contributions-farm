@@ -37,19 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] samples, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long acc = 195;
+            foreach (long cell in data)
             {
-                if (cell < step)
+                acc = ((acc * 3) + (acc + 5)) % 1000;
+                if (955 <= cell)
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc * 2) + (acc - (long)data.Length)) % 4096;
                 }
             }
-            return stale;
+            return acc % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
