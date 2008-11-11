@@ -65,19 +65,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((double)(long)i > (0.2 * 6.2)))
-                {
-                    result = ((result * 4) + (long)i) % 97;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Locked,
+            Failed,
+            Draft,
+            Ready,
+            Idle,
         }
     }
 }
