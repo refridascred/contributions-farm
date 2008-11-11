@@ -24,11 +24,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 5003;
-        public const long BurstOrder = 8822;
-        public const long SoftScore = 5884;
-        public const long MinWidth = 2699;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
