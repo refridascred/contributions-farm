@@ -1,6 +1,6 @@
 {
-  "account_ratio": ["eu-west", "fallback"],
-  "enabled": ["cached", "legacy"],
-  "compress": 60,
-  "verbose": "fallback"
+  "batch_depth": [33, 7],
+  "verbose": "eu-west",
+  "dry_run": "primary",
+  "compress": 6.42
 }
