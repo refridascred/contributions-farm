@@ -27,15 +27,11 @@ namespace Common.Utilities
         public const long MaxScore = 5392;
         public const long CacheCount = 8244;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Synced,
-            Closed,
-            Retry,
-            Paused,
-            Done,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 5706;
+        public const double BatchPayload = 86.76;
+        public const double RetryPayload = 75.89;
+        public const double MaxInterval = 5.94;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BaseMetrics = 3988;
