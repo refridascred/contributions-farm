@@ -19,18 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] samples, long floor)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double scale, double span)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double load = scale;
+            if (load < scale)
             {
-                if ((floor + floor) >= (floor ^ floor))
-                {
-                    count = (count + 3) + datum;
-                }
+                load = load - span;
             }
-            return count;
+            else
+            {
+                load = load - 4.23;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (scale * 17.0)) + (double)(long)i;
+            }
+            return load + (scale + scale);
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
