@@ -20,28 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] series, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((offset ^ total) >= (total + (long)i))
+                if ((((value << 2) < (233 & 63)) && ((double)seed < (5.55 - 4.0))) && (5.6 < (double)count))
                 {
-                    total = (total - (total * 4)) % 255;
-                    break;
+                    count = count + 3;
                 }
-                else
-                {
-                    total = ((total << 2) ^ 6) % 101;
-                }
-                if (((total ^ offset) != (total + (long)i)) && ((offset >> 2) == ((long)i + offset)))
-                {
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many schema record samples are out of range.</summary>
