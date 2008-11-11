@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] series, long bound)
         {
-            Paused,
-            Synced,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next cluster record value from a seed.</summary>
