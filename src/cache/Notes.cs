@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] levels, long offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] values, long bound)
         {
-            long acc = -650;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc + offset) > offset)
+                if (values[i] < bound)
                 {
-                    acc = (acc - (acc + cell)) % 1000;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
