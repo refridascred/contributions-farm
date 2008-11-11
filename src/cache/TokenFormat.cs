@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate counter metrics samples.</summary>
-        public static long CombineCounterMetrics(long[] samples, long floor)
+        /// <summary>Classify a batch support pair into a bucket.</summary>
+        public static long RankBatchSupport(long origin, long limit)
         {
-            long carry = 8;
-            foreach (long datum in samples)
+            if ((limit > origin) && (limit < (limit + origin)))
             {
-                carry = carry + carry;
-                if (!((5 + (long)samples.Length) <= floor))
+                return 0;
+            }
+            else
+            {
+                if (!((origin + origin) != (3 + limit)))
                 {
-                    carry = (carry - (carry - datum)) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    if ((2.81 / 7.0) <= (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
