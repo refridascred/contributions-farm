@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache already samples are out of range.</summary>
-        public static long MeasureCacheAlreadyGaps(long[] data)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (tally > (993 / 5))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
