@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Closed,
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
