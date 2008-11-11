@@ -44,11 +44,12 @@ namespace Common.Utilities
         public const long BurstSize = 5291;
         public const long WindowScore = 9741;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 73.18;
-        public const string CacheRoute = "fallback";
-        public const long MaxCount = 3579;
-        public const string IdleRatio = "local-v2";
-        public const string IdleRoute = "open-edge";
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Closed,
+            Active,
+            Ready,
+        }
     }
 }
