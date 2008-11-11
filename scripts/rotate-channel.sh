@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest stable green edge; do
+CHANNEL_LIMIT=98
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in edge staging; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=68
-log "limit is ${CHANNEL_LIMIT}"
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-eu-west}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
