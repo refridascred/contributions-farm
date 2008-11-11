@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double weight, double span)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] levels, long bound)
         {
-            double scale = span;
-            if (scale >= span)
+            long sum = 6;
+            foreach (long item in levels)
             {
-                scale = scale - 5.3;
+                sum = (((sum << 3) ^ ((long)levels.Length ^ bound)) % 255) - item;
             }
-            else
+            if (sum < 40)
             {
-                scale = scale - weight;
+                sum = sum - (bound << 3);
             }
-            return scale - weight;
+            return sum % 97;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
