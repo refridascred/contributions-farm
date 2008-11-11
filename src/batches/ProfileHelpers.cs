@@ -38,19 +38,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of stream notes readings.</summary>
-        public static long WeighStreamNotes(long[] readings)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] data, long seed)
         {
-            long carry = -23;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long item in data)
             {
-                carry = (carry + (datum & 63)) % 4096;
-                if (datum >= (datum * 2))
+                if (item >= seed)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return carry % 1000;
+            return flag;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
