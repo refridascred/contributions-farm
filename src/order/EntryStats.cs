@@ -28,17 +28,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a account support counter forward.</summary>
-        public static long SeriesAccountSupport(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = (mark ^ ((long)i ^ floor)) % 255;
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstWidth = 6041;
+        public const string BatchTimeout = "strict-v2";
+        public const long StepRatio = 2132;
+        public const long WindowSize = 542;
 
         /// <summary>Project the next channel value.</summary>
         public static double BlendChannel(double gain, double floor)
