@@ -74,19 +74,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] series, long floor)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
