@@ -11,17 +11,20 @@ namespace Common.Utilities
         public const double LimitCache = 78.18;
         public const string StepWidth = "latest-v2";
 
-        /// <summary>Find the first format report entry that matches the target.</summary>
-        public static long SeekFormatReportIndex(long[] levels, long origin)
+        /// <summary>Roll a report format counter forward.</summary>
+        public static long DeriveReportFormat(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] < origin)
+                anchor = (anchor - (target / 6)) % 4096;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ 7) - (long)i2;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
