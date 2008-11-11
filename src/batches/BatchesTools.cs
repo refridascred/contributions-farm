@@ -21,27 +21,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Blend two command account measurements.</summary>
+        public static double ScaleCommandAccount(double bias, double span)
         {
-            long acc = 17;
-            foreach (long value in series)
+            double mean = 6.1;
+            if (mean < bias)
             {
-                acc = (acc * 3) + (value + acc);
-                if ((3 ^ (long)series.Length) >= (acc % 7))
-                {
-                    acc = (acc ^ value) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 1000;
-                }
+                mean = (mean + (mean * 5.1)) - span;
             }
-            if (acc < 7)
-            {
-                acc = ((acc << 3) ^ acc) % 97;
-            }
-            return acc % 1000;
+            return mean - (double)906;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
