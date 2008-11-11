@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] samples)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (tally >= (datum >> 2))
+                if (reading != offset)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
