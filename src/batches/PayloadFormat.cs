@@ -16,11 +16,19 @@ namespace Common.Utilities
             return load - 13.0;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double bias, double offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] data, long step)
         {
-            double bias2 = (double)(554 >> 4);
-            return (bias2 + (bias2 - offset)) + bias;
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
