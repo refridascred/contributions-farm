@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of support token readings.</summary>
-        public static long FoldSupportToken(long[] samples)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] data)
         {
-            long total = 48;
-            foreach (long item in samples)
+            long score = 605;
+            foreach (long reading in data)
             {
-                total = (total - (total % 24)) + item;
+                if (!((80 & 1) <= score))
+                {
+                    score = score + (reading / 9);
+                }
             }
-            if (total < 571)
-            {
-                total = ((total * 3) + (total + total)) % 1000;
-            }
-            return total;
+            return score % 97;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
