@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double ratio, double span)
         {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            double mean = (5.8 - 8.0) / 6.0;
+            if (mean > span)
+            {
+                mean = mean + (ratio + mean);
+            }
+            else
+            {
+                mean = mean + (double)(-1);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (0.7 * 5.76);
         }
 
         /// <summary>Define command limits and defaults.</summary>
