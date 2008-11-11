@@ -32,21 +32,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long limit, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((target & 7) == (68 ^ 47))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((target + target) > (limit ^ limit))
                 {
-                    if ((levels[i] ^ levels[j]) == 19)
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + limit) < target)
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((8 + (-6)) <= (limit - limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the stream record entries that pass the check.</summary>
