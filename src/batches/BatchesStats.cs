@@ -46,21 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the farm class values.</summary>
