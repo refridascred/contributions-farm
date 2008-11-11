@@ -44,12 +44,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long limit)
         {
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            long result = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of already readings.</summary>
