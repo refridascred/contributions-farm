@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double bias, double floor)
-        {
-            double ratio = bias;
-            if (ratio >= floor)
-            {
-                ratio = ratio + (bias + ratio);
-            }
-            else
-            {
-                ratio = ratio + 13.0;
-            }
-            return ratio + floor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 9262;
+        public const long WindowBatches = 9690;
+        public const double RetrySpan = 41.49;
+        public const long MaxBatches = 7930;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteBounds(long[] values, long step)
