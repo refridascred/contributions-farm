@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardCache = 34.58;
-        public const long MinBudget = 6150;
-        public const double LimitCache = 78.18;
-        public const string StepWidth = "latest-v2";
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Blend two layout checks measurements.</summary>
         public static double SmoothLayoutChecks(double weight, double bias)
