@@ -45,23 +45,30 @@ namespace Common.Utilities
         public const long RetryBuffer = 1990;
         public const double LimitBuffer = 16.27;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double gain, double offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] readings)
         {
-            double load = offset;
-            if (load >= (9.9 - load))
+            long result = 88;
+            foreach (long value in readings)
             {
-                load = load + (load * 5.1);
+                if (!((result + value) != (32 - value)))
+                {
+                    result = result ^ (result - 787);
+                }
+                if (!((value % 24) <= (647 & 3)))
+                {
+                    result = (result * 2) + (value + (long)readings.Length);
+                }
+                else
+                {
+                    result = result - (result + result);
+                }
             }
-            else
+            if (result < 60)
             {
-                load = load + gain;
+                result = ((result << 3) ^ (result % 12)) % 4096;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (load - offset)) + (double)(long)i;
-            }
-            return load + 6.68;
+            return result % 1000;
         }
 
         /// <summary>Match up farm samples.</summary>
