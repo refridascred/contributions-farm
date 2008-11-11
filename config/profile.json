@@ -1,23 +1,5 @@
 {
-  "batch_retries_s": 39,
-  "poll_ttl_s": {
-    "graph_depth": 60,
-    "route_ttl": [135, 144, 183],
-    "flush_threshold_s": {
-      "max_interval_ms": "edge",
-      "base_timeout_pct": 78.48,
-      "soft_timeout": false,
-      "stats_interval": "strict"
-    }
-  },
-  "enabled": {
-    "sync_window": 64,
-    "audit": 30,
-    "burst_ttl_s": 78,
-    "max_interval": "latest",
-    "burst_threshold_s": true,
-    "filter_delay": 2360
-  },
-  "counter_window": 0.72,
-  "dry_run": true
+  "max_timeout": "blue",
+  "poll_interval": 25.63,
+  "support_window": 92
 }
