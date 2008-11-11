@@ -28,10 +28,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleScore = "stable";
-        public const double CacheToken = 14.91;
-        public const long BatchInterval = 9583;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            New,
+            Ready,
+            Done,
+            Synced,
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
