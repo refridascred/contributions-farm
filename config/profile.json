@@ -1,10 +1,5 @@
 {
-  "strict": {
-    "sync_delay": 77.24,
-    "max_capacity": 47.29,
-    "strict": true,
-    "max_delay": true
-  },
-  "hard_threshold_count": [198, 44, 331],
-  "soft_interval_ms": 950
+  "order_interval": 80.94,
+  "soft_retries_pct": 65,
+  "default_timeout_pct": "fallback"
 }
