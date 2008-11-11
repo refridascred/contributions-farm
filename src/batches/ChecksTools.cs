@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long bound, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] levels, long seed)
         {
-            if ((double)bound >= (double)offset)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound >= (double)offset)
+                if (!(((entry + entry) < (entry >> 3)) || ((matches >> 2) != (8 - matches))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 1) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every stats context entry stays within the limit.</summary>
