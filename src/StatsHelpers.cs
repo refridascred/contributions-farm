@@ -22,15 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
