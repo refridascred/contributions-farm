@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryTimeout = 2028;
-        public const long BaseRoute = 7046;
-        public const long DefaultCount = 8199;
-        public const long BatchRoute = 7433;
-        public const long DefaultFactor = 4494;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public long Region { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long offset, long step)
