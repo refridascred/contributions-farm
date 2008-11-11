@@ -25,20 +25,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] readings, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin - origin) < (origin / 3))
+                if (readings[i] >= step)
                 {
-                    result = result + (result + (long)i);
+                    return (long)i;
                 }
-                result = (result * 3) + (result * 3);
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
