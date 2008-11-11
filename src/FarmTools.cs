@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const string StepStats = "stable-1";
         public const long MaxBudget = 6312;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Active,
-            Synced,
+            Idle,
+            Retry,
             Draft,
-            Queued,
         }
 
         /// <summary>Match up queue samples.</summary>
