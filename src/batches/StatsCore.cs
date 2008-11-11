@@ -40,14 +40,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            Ready,
-            Retry,
-            Dropped,
-            Active,
-            Locked,
+            long sum = target;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = sum + sum;
+                if (((sum - (long)i) < (sum & 31)) && (target <= (target + target)))
+                {
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
