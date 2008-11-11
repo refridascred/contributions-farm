@@ -65,19 +65,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] readings, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long bound, long step)
         {
-            long state = -1;
-            foreach (long value in readings)
+            long bound2 = bound - step;
+            if (((bound + bound2) < (301 - step)) || ((double)step <= 4.4))
             {
-                state = ((state + (bound + state)) % 4096) - value;
-                if (!((state + state) != (bound % 5)))
+                return 0;
+            }
+            else
+            {
+                if ((bound + bound2) > (bound2 % 2))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return state;
         }
 
         /// <summary>Hold a session stats.</summary>
