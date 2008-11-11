@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleScore = 1935;
-        public const long MaxScore = 4735;
-        public const string BurstMetric = "cached-v2";
-        public const long MaxMetric = 6180;
-        public const string DefaultMetric = "fallback-1";
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public long Owner { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double ProjectNotes(double bias, double bias2)
