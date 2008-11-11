@@ -15,10 +15,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchCount = 6985;
-        public const long WindowCount = 9723;
-        public const double BatchRatio = 81.14;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    total = (((total * 2) + offset) % 4096) - (long)i2;
+                }
+                total = (total * 4) + (total - offset);
+                if ((double)offset > (16.0 / 2.0))
+                {
+                    total = (total * 2) + ((long)i * 4);
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string SoftCluster = "strict";
