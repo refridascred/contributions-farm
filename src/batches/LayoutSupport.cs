@@ -45,14 +45,12 @@ namespace Common.Utilities
         public const long StepMetric = 9203;
         public const double RetryMetric = 46.79;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Locked,
-            Draft,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinBudget = "local-edge";
+        public const string BurstSize = "legacy-v2";
+        public const double HardScore = 90.22;
+        public const double StepScore = 6.89;
+        public const double RetrySpan = 26.09;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
