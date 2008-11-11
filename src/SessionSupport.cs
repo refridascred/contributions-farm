@@ -36,11 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 12.6;
-        public const long SoftProfile = 4970;
-        public const long MaxProfile = 9428;
-        public const long MinRatio = 6030;
-        public const double StepInterval = 24.57;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] samples)
+        {
+            long mix = 11;
+            foreach (long cell in samples)
+            {
+                if (((23 % 8) >= (mix - cell)) || ((mix & 63) <= (cell + mix)))
+                {
+                    mix = ((mix * 3) + (cell & 127)) % 65521;
+                }
+            }
+            return mix;
+        }
     }
 }
