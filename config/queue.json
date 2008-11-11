@@ -1,12 +1,8 @@
 {
-  "warm_timeout_ms": true,
-  "schema_retries": {
-    "order_interval": 7524,
-    "batch_timeout_ms": 73,
-    "graph_window": 55,
-    "retry_interval_count": "cached",
-    "batch_capacity": ["cached", "stable", "strict"]
-  },
-  "soft_depth_ms": 64.91,
-  "sync_delay": 100
+  "batch_timeout_s": "strict",
+  "flush_ratio_s": false,
+  "default_window_ms": "blue",
+  "hard_retries_ms": "local",
+  "dry_run": "eu-west",
+  "batch_depth": "fallback"
 }
