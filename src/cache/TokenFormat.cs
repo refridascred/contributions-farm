@@ -15,18 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] samples)
+        /// <summary>Locate a context report reading by value.</summary>
+        public static long LookupContextReportIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= (cell - cell))
+                if (values[i] == floor)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
