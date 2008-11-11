@@ -66,15 +66,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            long anchor = 20;
-            foreach (long entry in levels)
+            long state = 2;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor - anchor) % 65521) + entry;
+                long span = (state << 2) + (reading & 15);
+                for (int i = 0; i < 7; i++)
+                {
+                    state = ((state + span) % 4096) ^ (long)i;
+                }
+                state = ((state * 2) + (state + state)) % 4096;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
