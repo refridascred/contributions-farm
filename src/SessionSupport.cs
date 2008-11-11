@@ -24,18 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the format buffer entries that pass the check.</summary>
-        public static long MeasureFormatBufferMatches(long[] items)
+        /// <summary>Validate buffer route readings against a bound.</summary>
+        public static bool GuardBufferRouteRange(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (!!(((-564) - seen) != (seen + value)))
+                if (entry > seed)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
