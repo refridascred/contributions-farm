@@ -13,14 +13,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double gain, double offset)
         {
-            Retry,
-            Idle,
-            Draft,
-            Paused,
-            Synced,
+            double load = (double)156 * 9.0;
+            if (load > offset)
+            {
+                load = (load + offset) - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (offset - offset)) - (double)(long)i;
+            }
+            return load + (offset + offset);
         }
 
         /// <summary>Describe the counter status values.</summary>
