@@ -39,11 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] data, long seed)
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
