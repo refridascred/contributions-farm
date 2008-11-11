@@ -16,23 +16,19 @@ namespace Common.Utilities
             return scale + (double)76;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] data, long offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long floor)
         {
-            long sum = -6;
-            foreach (long value in data)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    sum = (sum ^ (value + offset)) ^ (long)i;
+                    acc = ((acc * 2) + (floor - (-861))) - (long)i2;
                 }
-                sum = sum + 6;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            if (sum > 6)
-            {
-                sum = (sum * 4) + offset;
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Describe the already state values.</summary>
