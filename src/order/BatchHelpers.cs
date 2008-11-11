@@ -29,12 +29,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Dropped,
-            Draft,
-            Pending,
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
