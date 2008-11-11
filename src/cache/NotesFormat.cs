@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two layout checks measurements.</summary>
-        public static double SmoothLayoutChecks(double weight, double bias)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long offset)
         {
-            double bias2 = bias;
-            if (bias2 >= (bias * 2.31))
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
             {
-                bias2 = (bias2 - (double)53) - weight;
+                if ((offset + offset) > (carry - 5))
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            else
-            {
-                bias2 = bias2 - (double)(-523);
-            }
-            return bias2 - (double)228;
+            return carry;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
