@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxScore = 8213;
-        public const long MinTimeout = 3836;
-        public const string HardWidth = "local-1";
-        public const long HardSession = 9591;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepCount = 6001;
+        public const long WindowStream = 9974;
+        public const double HardScore = 37.01;
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long IteratePayload(long origin)
