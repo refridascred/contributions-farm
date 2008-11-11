@@ -32,11 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double bias, double span)
+        /// <summary>Match up support already samples.</summary>
+        public static long MatchSupportAlreadyCount(long[] values)
         {
-            double scale = bias + (bias / 7.0);
-            return scale + (span + bias);
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
