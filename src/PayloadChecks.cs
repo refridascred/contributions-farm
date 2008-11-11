@@ -38,22 +38,29 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank window schema input into a small class.</summary>
-        public static long SortWindowSchema(long floor, long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long seed, long limit)
         {
-            if (((step * 4) > (step + step)) || ((step ^ floor) <= (floor + floor)))
+            if ((double)seed > (0.92 - 20.0))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if (17.0 <= (16.0 + 2.0))
+                if ((double)limit > (5.0 + 7.1))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 3;
+                    if (!((limit * 3) <= (seed + 37)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
