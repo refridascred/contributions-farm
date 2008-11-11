@@ -1,13 +1,16 @@
 # entry settings
-soft_delay:
-  - stable
-  - strict
-  - legacy
-dry_run: 100
-retry_timeout:
-  default_timeout: strict
-  tools_retries:
-    - cached
-    - latest
-  enabled: 10.35
-  soft_limit_s: strict
+burst_size_ms:
+  min_ttl_count: eu-west
+  verbose: 23.78
+  warm_window_pct: true
+  burst_interval_ms: 42
+min_window_count:
+  - 372
+  - 13
+  - 18
+  - 40
+buffer_threshold: 99
+schema_window:
+  min_delay: primary
+  verbose: false
+  base_limit_count: eu-west
