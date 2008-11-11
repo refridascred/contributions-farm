@@ -40,18 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] levels)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (matches >= (matches >> 4))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
