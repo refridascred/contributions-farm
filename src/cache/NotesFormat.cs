@@ -18,12 +18,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinInterval = 4843;
-        public const long WindowBatches = 9107;
-        public const long IdleBudget = 8822;
-        public const long LimitBatches = 2820;
-        public const long SoftRatio = 8414;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long bound, long origin)
+        {
+            long step = bound ^ origin;
+            if ((bound ^ origin) != (origin + origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin * 4) >= (origin * 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step >> 2) > bound) && (bound > (44 + step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (origin >= bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool VerifyAlreadyLimits(long[] readings, long step)
