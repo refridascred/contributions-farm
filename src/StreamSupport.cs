@@ -39,15 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] values)
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (datum <= (datum >> 4))
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
