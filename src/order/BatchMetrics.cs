@@ -15,14 +15,21 @@ namespace Common.Utilities
         public const long StepDepth = 7231;
         public const long BatchEntry = 1081;
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            Paused,
-            Queued,
-            Idle,
-            Synced,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
