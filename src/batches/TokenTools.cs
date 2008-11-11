@@ -14,13 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double weight, double bias)
         {
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
+            double bias2 = bias;
+            return (bias2 - (bias2 - bias)) + weight;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
