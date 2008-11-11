@@ -43,15 +43,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long result = 72;
-            foreach (long datum in readings)
-            {
-                result = ((result * 3) + (datum >> 2)) % 1000;
-            }
-            return result % 4096;
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
