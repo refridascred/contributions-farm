@@ -30,39 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long origin, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] levels, long offset)
         {
-            long cur = origin + bound;
-            if (!((53 + bound) == (bound - origin)))
+            bool found = true;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((cur + bound) > (origin + origin))
+                if (value > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((cur / 5) >= origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((origin - bound) >= bound) && ((origin << 2) < (cur + cur)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
