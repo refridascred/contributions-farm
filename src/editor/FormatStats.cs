@@ -42,12 +42,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long bound)
         {
-            Pending,
-            Synced,
-            Closed,
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((double)acc == (4.5 / 8.0)) || ((double)acc < (0.9 + 19.0)))
+                {
+                    acc = ((acc * 4) + (bound ^ 1)) % 1000;
+                }
+                acc = (acc << 3) ^ (bound % 5);
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = (acc + ((long)i2 % 2)) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Hold a entry header.</summary>
