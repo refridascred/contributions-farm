@@ -20,20 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = ((state ^ state) % 65521) ^ (long)i2;
-                }
-                state = (state << 3) ^ (989 - 53);
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Failed,
+            Synced,
+            Stale,
+            Ready,
         }
 
         /// <summary>Combine record values into a single score.</summary>
