@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] readings, long limit)
         {
-            Paused,
-            Ready,
-            Active,
-            Dropped,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
