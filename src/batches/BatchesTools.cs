@@ -23,11 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] readings)
         {
-            public bool Count { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((7.83 + 5.42) != (double)sample)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
