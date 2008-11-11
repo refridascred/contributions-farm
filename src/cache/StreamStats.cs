@@ -20,18 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] series)
+        /// <summary>Accumulate window graph samples.</summary>
+        public static long CombineWindowGraph(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long total = 47;
+            foreach (long datum in items)
             {
-                if ((hits + hits) <= (227 + 2))
+                if ((total - 76) <= (total * 5))
                 {
-                    hits = (hits + 3) - cell;
+                    total = ((total << 2) ^ (datum - total)) % 4096;
+                }
+                else
+                {
+                    total = (total + datum) % 4096;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
