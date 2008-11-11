@@ -28,22 +28,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] readings)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long floor)
         {
-            long anchor = 700;
-            foreach (long cell in readings)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell <= anchor)
-                {
-                    anchor = anchor + cell;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            if (anchor > 211)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            return state;
         }
     }
 }
