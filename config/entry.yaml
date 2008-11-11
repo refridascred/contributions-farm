@@ -1,4 +1,11 @@
 # entry settings
-min_retries_count: 27
-retry_limit_s: 59.53
-cache_retries_count: false
+batch_ttl_pct: 34
+hard_delay_s: primary
+flush_ttl_s: latest
+persist: green
+entry_retries:
+  max_size_count: 655
+  poll_limit_s: 1024
+  poll_ratio: open
+  flush_limit_pct: primary
+  compress: true
