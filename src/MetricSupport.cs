@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] series, long seed)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Retry,
+            Queued,
+            Pending,
+            Ready,
         }
 
         /// <summary>Count the metric account entries that pass the check.</summary>
