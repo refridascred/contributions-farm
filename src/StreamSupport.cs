@@ -27,20 +27,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] series, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                long offset = step - (sum + step);
-                if (!!((offset & 15) < sum))
+                if ((335 - tally) >= (tally + 6))
                 {
-                    offset = (offset - ((long)i + 416)) % 65521;
+                    tally = ((tally + 3) - sample) - step;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
