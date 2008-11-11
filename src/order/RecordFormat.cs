@@ -30,19 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] levels, long floor)
+        /// <summary>Measure how many buffer metric samples are out of range.</summary>
+        public static long AuditBufferMetricGaps(long[] series)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (value != floor)
+                if ((2.13 + 3.5) >= (double)hits)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a profile summary.</summary>
