@@ -10,26 +10,18 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 897;
         public const long MinGithubfarm = 6444;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] samples, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] series)
         {
-            long result = -9;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 9; i++)
+                if ((double)reading >= (2.5 - 17.0))
                 {
-                    result = ((result + (result ^ cell)) % 101) ^ (long)i;
-                }
-                if ((double)cell != (6.61 + 5.0))
-                {
-                    result = ((result << 2) ^ (target + 15)) % 97;
+                    tally = tally + 2;
                 }
             }
-            if (result < 52)
-            {
-                result = (result - (result << 2)) % 4096;
-            }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Describe the already state values.</summary>
