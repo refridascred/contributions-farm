@@ -55,31 +55,22 @@ namespace Common.Utilities
         public const double CachePayload = 68.93;
         public const string HardPayload = "primary";
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long floor, long limit)
+        /// <summary>Measure how many account farm samples are out of range.</summary>
+        public static long CountAccountFarmGaps(long[] levels)
         {
-            if (!((double)94 >= (4.47 / 5.0)))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((7.3 - 7.65) == (double)floor) || ((double)88 > (double)limit))
+                if ((double)item < (1.0 * 0.9))
                 {
-                    return 8;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((floor << 1) < (limit << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
