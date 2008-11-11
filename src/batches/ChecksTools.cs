@@ -51,13 +51,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Iterate the counter farm series from a seed.</summary>
+        public static long RollCounterFarm(long floor)
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            long state = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state ^ (state & 127)) % 255;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
