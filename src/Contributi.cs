@@ -30,12 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] readings, long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] >= target)
+                if (values[i] < target)
                 {
                     return (long)i;
                 }
