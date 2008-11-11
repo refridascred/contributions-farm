@@ -46,11 +46,15 @@ namespace Common.Utilities
         public const double BatchSpan = 58.54;
         public const long MinContributi = 197;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowCount = 3002;
-        public const long CacheDepth = 9818;
-        public const string SoftWindow = "stable-1";
-        public const double IdleBudget = 62.78;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Synced,
+            Dropped,
+            Queued,
+            Retry,
+            Active,
+        }
 
         /// <summary>Digest a series of queue commits entries.</summary>
         public static long TotalQueueCommits(long[] samples, long bound)
