@@ -45,12 +45,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 1160;
+        public const string HardBudget = "standard-edge";
+        public const long BatchScore = 8008;
+        public const long BaseWidth = 8680;
+        public const long SoftContext = 3975;
     }
 }
