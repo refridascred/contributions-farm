@@ -20,21 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)550 - (ratio * 3.87);
+            if (drift >= (5.0 - drift))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + 5.2) + bias;
             }
-            return seen;
+            return drift + drift;
         }
 
         /// <summary>Roll a schema counter counter forward.</summary>
