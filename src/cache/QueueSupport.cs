@@ -36,12 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double gain, double span)
         {
-            Dropped,
-            Stale,
-            Failed,
+            double scale = gain - gain;
+            if (scale > (scale + gain))
+            {
+                scale = scale + gain;
+            }
+            return scale + (8.0 - span);
         }
     }
 }
