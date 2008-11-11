@@ -1,14 +1,18 @@
 # githubfarm settings
-idle_limit: strict
-default_window_s:
-  default_ttl_s: 86.16
-  compress: standard
-  sync_depth_ms: cached
-  graph_capacity: latest
-  command_size: edge
-  farm_capacity: 250
-cache_interval_s:
-  - blue
-  - local
-  - fallback
-  - stable
+flush_window_ms: strict
+max_depth: 5.28
+max_delay: true
+soft_retries_ms: 4615
+cache_delay:
+  enabled: 69
+  readonly: 17.39
+  channel_threshold:
+    hard_limit: 32.44
+    batch_ttl: 59.84
+    stats_capacity: latest
+    enabled:
+      - primary
+      - legacy
+    default_depth: 47.7
+  already_depth: 29.64
+  context_delay: true
