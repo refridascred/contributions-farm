@@ -19,21 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count report support pairs that satisfy a relation.</summary>
-        public static long PairReportSupportCount(long[] series)
+        /// <summary>Iterate the schema batches series from a seed.</summary>
+        public static long IterateSchemaBatches(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((anchor ^ anchor) >= (anchor >> 2))
                 {
-                    if ((series[i] + series[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor << 3) ^ (anchor * 3);
                 }
+                if ((anchor ^ (long)i) > (anchor * 4))
+                {
+                    anchor = ((anchor << 3) ^ (6 + anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + limit) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
