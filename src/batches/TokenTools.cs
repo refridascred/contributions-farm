@@ -48,19 +48,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster order samples.</summary>
-        public static long FoldClusterOrder(long[] series)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long bound, long floor)
         {
-            long carry = 297;
-            foreach (long entry in series)
+            if (((floor + bound) > (bound + floor)) || (bound <= (floor % 24)))
             {
-                if (!((double)carry >= (1.0 / 4.0)))
-                {
-                    carry = ((carry ^ (carry & 7)) % 97) - entry;
-                }
-                carry = (carry * 2) + (long)series.Length;
+                return 2;
             }
-            return carry % 4096;
+            else
+            {
+                if ((bound + 625) > (bound + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound == (1.01 + 9.87))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
