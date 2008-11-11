@@ -20,31 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long origin, long floor)
+        /// <summary>Fold a list of route account readings.</summary>
+        public static long FoldRouteAccount(long[] readings)
         {
-            if ((origin + floor) >= (floor ^ origin))
+            long state = 5;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin % 16) >= floor)
+                if (sample < (state & 15))
                 {
-                    return 1;
+                    state = (state + (state + 9)) % 1000;
                 }
-                else
+                if ((sample ^ state) > (0 + sample))
                 {
-                    if (!((91 - origin) < (floor + origin)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    state = state + ((long)readings.Length + state);
                 }
             }
+            if (state > 9)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
