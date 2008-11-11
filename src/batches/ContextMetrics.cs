@@ -31,15 +31,32 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long seed, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long edge = seed + offset;
+            if ((seed - edge) <= offset)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((edge << 2) > (9 / 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - 8) >= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
