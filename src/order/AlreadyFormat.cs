@@ -68,22 +68,11 @@ namespace Common.Utilities
         public const double CachePayload = 68.93;
         public const string HardPayload = "primary";
 
-        /// <summary>Measure how many account farm samples are out of range.</summary>
-        public static long CountAccountFarmGaps(long[] levels)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item < (1.0 * 0.9))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
