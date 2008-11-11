@@ -43,19 +43,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next cluster token value.</summary>
-        public static double SmoothClusterToken(double bias, double bias2)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double drift = (double)6 * 4.9;
-            if (drift >= bias)
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift + (double)19;
-            }
-            return drift + (bias2 / 8.0);
+            Active,
+            Idle,
+            New,
         }
     }
 }
