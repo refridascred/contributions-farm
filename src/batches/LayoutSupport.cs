@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Roll a account counter forward.</summary>
