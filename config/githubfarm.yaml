@@ -1,8 +1,4 @@
 # githubfarm settings
-channel_window: true
-dry_run:
-  - 215
-  - 187
-  - 410
-audit: 11.44
-sync_timeout_count: strict
+verbose: stable
+persist: 1024
+retry_depth: fallback
