@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long target, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((double)step >= 5.92) && (step <= 44))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((step * 5) > (step + target)) || ((double)step > (8.03 / 8.0)))
                 {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
