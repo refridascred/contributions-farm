@@ -27,12 +27,23 @@ namespace Common.Utilities
         public const long IdleCounter = 8903;
         public const long CacheCounter = 5931;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowSpan = 7999;
-        public const long StepScore = 2667;
-        public const double DefaultSize = 28.58;
-        public const long LimitMetrics = 811;
-        public const string BurstMetrics = "alpha-v2";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((hits / 4) < (98 - 55))
+                {
+                    hits = ((hits + 1) + sample) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheFactor = 1539;
