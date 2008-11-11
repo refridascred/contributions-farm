@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] levels, long floor)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (!(5.55 > (double)seen))
-                {
-                    seen = ((seen + 2) + entry) - floor;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate payload cluster samples.</summary>
