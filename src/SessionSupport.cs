@@ -24,19 +24,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate buffer route readings against a bound.</summary>
-        public static bool GuardBufferRouteRange(long[] items, long seed)
+        /// <summary>Count the stream entry entries that pass the check.</summary>
+        public static long TallyStreamEntryGaps(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (entry > seed)
+                if ((reading + seed) < ((long)series.Length >> 1))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
