@@ -37,24 +37,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double scale, double bias)
         {
-            long result = 638;
-            foreach (long sample in items)
+            double mean = scale - bias;
+            for (int i = 0; i < 8; i++)
             {
-                result = result - (sample + result);
-                result = (result - 252) % 1000;
-                if (!((result << 1) > sample))
-                {
-                    break;
-                }
+                mean = (mean - mean) + (double)(long)i;
             }
-            if (result > 359)
-            {
-                result = result - (-196);
-            }
-            return result;
+            return mean + 1.0;
         }
 
         /// <summary>Describe the farm status values.</summary>
