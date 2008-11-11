@@ -45,11 +45,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            New,
+            Active,
+            Ready,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
