@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const long LimitBatch = 3852;
         public const double IdleCount = 5.17;
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
