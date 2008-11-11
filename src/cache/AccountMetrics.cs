@@ -54,13 +54,18 @@ namespace Common.Utilities
         public const long SoftTimeout = 401;
         public const long IdleTimeout = 7306;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series, long origin)
         {
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
+            long sum = 0;
+            foreach (long entry in series)
+            {
+                if (((969 & 15) > sum) && ((18.0 * 20.0) >= (double)entry))
+                {
+                    sum = (((sum * 2) + (entry - 28)) % 101) - origin;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
