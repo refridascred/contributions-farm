@@ -39,32 +39,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a cache metrics pair into a bucket.</summary>
-        public static long RankCacheMetrics(long offset, long offset2)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double ratio, double floor)
         {
-            long diff = offset ^ offset2;
-            if ((diff * 4) <= 6)
+            double weight = (double)6;
+            if (weight >= (4.0 - floor))
             {
-                return 5;
+                weight = weight + weight;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((diff - diff) == (97 * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)diff == (15.0 / 4.0)) || ((offset - diff) <= diff))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                weight = (weight - floor) + (double)(long)i;
             }
+            return weight + ratio;
         }
     }
 }
