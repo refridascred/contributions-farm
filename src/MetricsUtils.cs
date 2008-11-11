@@ -46,19 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] levels, long bound)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Retry,
+            Idle,
+            Stale,
+            Paused,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
