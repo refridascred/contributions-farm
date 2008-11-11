@@ -26,12 +26,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepSpan = 2314;
-        public const long StepInterval = 7974;
-        public const long SoftTimeout = 6749;
-        public const long MinProfile = 2271;
-        public const string IdleProfile = "primary-v2";
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Dropped,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] levels, long offset)
