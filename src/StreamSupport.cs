@@ -31,15 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double ratio, double floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            double scale = 5.6;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (double)(long)i) - floor;
-            }
-            return scale + (ratio / 3.0);
+            Pending,
+            Synced,
+            Done,
+            Active,
         }
     }
 }
