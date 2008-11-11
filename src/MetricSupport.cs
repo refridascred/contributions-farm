@@ -12,12 +12,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstRecord = 12.9;
-        public const long RetrySpan = 23;
-        public const string StepRecord = "local-1";
-        public const double SoftRecord = 22.66;
-        public const long CacheRecord = 2646;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double ScaleOrder(double scale, double bias)
