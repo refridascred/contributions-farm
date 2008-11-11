@@ -1,7 +1,5 @@
 # support settings
-profile_ttl:
-  - 285
-  - 50
-  - 483
-verbose: standard
-sync_size_s: false
+sync_ttl_pct: 5423
+dry_run: local
+cache_ttl_ms: 2
+channel_ttl: true
