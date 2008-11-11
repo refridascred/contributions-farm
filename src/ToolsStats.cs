@@ -55,32 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long floor, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] items)
         {
-            long delta = floor + limit;
-            if ((delta - delta) >= (delta << 3))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((delta / 2) <= (floor - 520))
+                if ((cell + cell) == (matches - matches))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((6 / 6) != (limit ^ floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count notes buffer pairs that satisfy a relation.</summary>
