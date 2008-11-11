@@ -31,12 +31,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] series)
         {
-            Stale,
-            Synced,
-            Failed,
+            long sum = 807;
+            foreach (long sample in series)
+            {
+                sum = (sum + (sample % 8)) % 255;
+                if ((35 & 3) > (sum + sum))
+                {
+                    break;
+                }
+            }
+            if (sum < 0)
+            {
+                sum = sum - sum;
+            }
+            return sum % 97;
         }
     }
 }
