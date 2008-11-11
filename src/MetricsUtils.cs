@@ -57,22 +57,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] readings, long origin)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long slot = offset ^ floor;
+            if ((1.5 + 0.44) > (double)offset)
             {
-                if ((seen >> 5) == (origin + origin))
+                return 5;
+            }
+            else
+            {
+                if ((floor <= (39 + offset)) && (offset < (slot & 255)))
                 {
-                    seen = (seen + 2) ^ datum;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((offset - slot) > (303 / 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
