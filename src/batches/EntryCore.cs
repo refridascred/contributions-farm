@@ -27,13 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Score { get; set; }
+            public bool Total { get; set; }
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a account record.</summary>
