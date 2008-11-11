@@ -1,11 +1,9 @@
 # entry settings
-batch_ttl_pct: 34
-hard_delay_s: primary
-flush_ttl_s: latest
-persist: green
-entry_retries:
-  max_size_count: 655
-  poll_limit_s: 1024
-  poll_ratio: open
-  flush_limit_pct: primary
-  compress: true
+idle_ratio_ms: latest
+hard_ratio_pct: open
+base_delay:
+  - 500
+  - 138
+profile_retries:
+  - standard
+  - cached
