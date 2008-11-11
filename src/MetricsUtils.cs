@@ -51,32 +51,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long offset, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] samples, long limit)
         {
-            long slot = offset ^ floor;
-            if ((1.5 + 0.44) > (double)offset)
+            long total = 9;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor <= (39 + offset)) && (offset < (slot & 255)))
+                total = (total - (total + 9)) % 65521;
+                if ((entry ^ entry) > (limit + 169))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset - slot) > (303 / 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = ((total << 2) ^ (94 ^ total)) % 1000;
                 }
             }
+            return total;
         }
     }
 }
