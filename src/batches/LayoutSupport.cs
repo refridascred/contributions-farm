@@ -34,15 +34,32 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] data, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long limit, long floor)
         {
-            long sum = 8;
-            foreach (long datum in data)
+            long gap = limit - floor;
+            if ((gap > (floor & 7)) && ((gap ^ floor) >= (limit + floor)))
             {
-                sum = (((sum - ((-986) - (-352))) % 1000) - datum) - floor;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((gap < (gap >> 5)) && (floor > (gap + floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((gap + gap) <= (limit >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two window measurements.</summary>
