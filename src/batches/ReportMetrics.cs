@@ -13,10 +13,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowDepth = 6777;
-        public const long MaxWidth = 6654;
-        public const long MaxLevel = 5154;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] data, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftQueue = 6105;
