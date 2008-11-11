@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double ratio, double bias)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long seed)
         {
-            double load = (double)(73 ^ 6);
-            for (int i = 0; i < 5; i++)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                load = ((load - (ratio * 8.0)) + (double)(long)i) - bias;
+                anchor = (anchor << 3) ^ (10 >> 4);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return load - 13.0;
+            return anchor;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
