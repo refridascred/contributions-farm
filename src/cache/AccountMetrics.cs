@@ -39,13 +39,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
