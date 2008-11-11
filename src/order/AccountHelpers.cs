@@ -74,12 +74,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardCounter = 51.78;
-        public const string MaxCounter = "alpha-v2";
-        public const long MaxFactor = 4040;
-        public const long MinCounter = 4142;
-        public const long BurstScore = 8677;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountMatches(long[] series, long limit)
