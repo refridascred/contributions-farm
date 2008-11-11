@@ -13,19 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] samples, long origin)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
