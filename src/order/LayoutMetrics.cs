@@ -27,18 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] levels, long offset)
+        /// <summary>Locate a contributi channel reading by value.</summary>
+        public static long SeekContributiChannelIndex(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((offset * 3) != (offset - 9)))
+                if (series[i] > bound)
                 {
-                    hits = (hits + 3) ^ cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
