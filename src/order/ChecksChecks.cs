@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double ratio, double bias)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double gain = 0.95;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain + bias) + (double)(long)i) - ratio;
-            }
-            return gain - bias;
+            Queued,
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
