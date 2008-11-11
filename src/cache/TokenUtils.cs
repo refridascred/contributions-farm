@@ -24,13 +24,38 @@ namespace Common.Utilities
         public const long RetryFactor = 6998;
         public const string WindowCounter = "latest-v2";
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Classify a commits filter pair into a bucket.</summary>
+        public static long RankCommitsFilter(long offset, long bound)
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            if ((offset - bound) >= (66 >> 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset << 1) > (offset + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset ^ bound) != (bound + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (bound >= (bound ^ offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
