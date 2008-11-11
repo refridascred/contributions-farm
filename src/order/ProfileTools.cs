@@ -44,23 +44,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double ratio, double floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] series, long target)
         {
-            double bias = (double)(6 - 863);
-            if (bias <= bias)
+            long matches = 0;
+            foreach (long item in series)
             {
-                bias = bias + (ratio - 6.0);
+                if ((14 - item) < (matches & 63))
+                {
+                    matches = (matches + 3) - target;
+                }
             }
-            else
-            {
-                bias = bias - (floor / 3.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - ratio) + (double)(long)i;
-            }
-            return bias - (floor / 4.0);
+            return matches;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
