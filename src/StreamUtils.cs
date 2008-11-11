@@ -17,22 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many report metrics samples are out of range.</summary>
-        public static long AuditReportMetricsOutliers(long[] data, long seed)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((8.9 / 7.0) > (double)entry) || ((seed / 9) == (hits % 24)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
