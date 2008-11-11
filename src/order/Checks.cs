@@ -29,21 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
