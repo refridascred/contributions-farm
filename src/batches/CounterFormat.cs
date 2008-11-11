@@ -21,19 +21,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] readings)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] series)
         {
-            long mark = 4;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark + (long)readings.Length) % 97;
-                if (cell < (cell + mark))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark - mark) % 65521;
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
