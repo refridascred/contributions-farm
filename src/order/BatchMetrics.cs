@@ -74,14 +74,14 @@ namespace Common.Utilities
         public const string CacheBatches = "staging-edge";
         public const long LimitBatches = 8294;
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Draft,
-            Dropped,
             Retry,
-            Synced,
-            Done,
+            Stale,
+            Locked,
+            New,
+            Dropped,
         }
     }
 }
