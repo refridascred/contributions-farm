@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] samples, long seed)
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
