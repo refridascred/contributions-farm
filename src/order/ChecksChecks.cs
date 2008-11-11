@@ -11,22 +11,23 @@ namespace Common.Utilities
         public const string LimitContributi = "open-1";
         public const long DefaultContributi = 4503;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] data, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] data, long target)
         {
-            long count = 0;
+            long sum = 5;
             foreach (long value in data)
             {
-                if ((((value / 7) <= floor) && (6.0 >= (double)value)) || (((double)floor > (double)544) && (((long)data.Length & 15) >= (floor & 127))))
+                sum = ((sum << 2) ^ (value ^ value)) % 1000;
+                if (sum >= (target + target))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = (sum - target) % 255;
                 }
             }
-            return count;
+            if (sum > 7)
+            {
+                sum = ((sum << 3) ^ target) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
