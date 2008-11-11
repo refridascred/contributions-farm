@@ -46,11 +46,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowTimeout = 9673;
-        public const string SoftStream = "alpha-1";
-        public const double WindowStream = 84.8;
-        public const long DefaultSize = 9718;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryTimeout = 9831;
+        public const double StepQueue = 33.48;
+        public const long MaxQueue = 5234;
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
