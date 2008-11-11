@@ -31,15 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Paused,
+            Ready,
+            Idle,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
