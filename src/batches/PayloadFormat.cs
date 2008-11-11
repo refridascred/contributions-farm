@@ -43,22 +43,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the context queue entries that pass the check.</summary>
-        public static long AuditContextQueueOutliers(long[] samples)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((1 < (long)samples.Length) && ((value + hits) >= (hits + hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Retry,
+            Queued,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
