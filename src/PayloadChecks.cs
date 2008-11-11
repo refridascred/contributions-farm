@@ -54,12 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] readings, long bound)
         {
-            Closed,
-            Locked,
-            Queued,
+            long state = -1;
+            foreach (long value in readings)
+            {
+                state = ((state + (bound + state)) % 4096) - value;
+                if (!((state + state) != (bound % 5)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
