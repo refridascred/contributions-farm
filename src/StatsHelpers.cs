@@ -44,13 +44,19 @@ namespace Common.Utilities
             return scale - (weight + weight);
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Validate account support readings against a bound.</summary>
+        public static bool ValidateAccountSupportBounds(long[] items, long floor)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
