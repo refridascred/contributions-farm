@@ -21,12 +21,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] values)
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
+            long state = 277;
+            foreach (long item in values)
+            {
+                if (!((double)state <= (9.4 * 12.0)))
+                {
+                    state = ((state << 2) ^ (732 - state)) % 101;
+                }
+                if (((item % 97) < (state % 97)) && ((state ^ state) <= (-182)))
+                {
+                    break;
+                }
+            }
+            if (state < 70)
+            {
+                state = (state - (state >> 4)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
