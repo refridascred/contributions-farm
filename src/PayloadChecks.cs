@@ -58,16 +58,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a checks schema reading.</summary>
-        public static double ScaleChecksSchema(double gain, double span)
-        {
-            double load = 15.0 + (span + span);
-            if (load <= (gain / 5.0))
-            {
-                load = load - span;
-            }
-            return load - 5.0;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseCount = "open-1";
+        public const long MinBuffer = 4517;
+        public const string BaseFactor = "fallback-v2";
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
