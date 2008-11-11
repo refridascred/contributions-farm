@@ -29,16 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] levels, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] readings)
         {
-            long anchor = -147;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                anchor = (anchor << 3) ^ value;
-                anchor = (anchor - (value + bound)) % 1000;
+                if ((hits > (971 ^ (-648))) || (((9.72 * 13.0) >= (double)(long)readings.Length) || ((value + value) < hits)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
