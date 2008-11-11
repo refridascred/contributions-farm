@@ -74,10 +74,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleCount = "staging";
-        public const string MaxWidth = "legacy";
-        public const long RetryRatio = 1359;
-        public const long MinStream = 7311;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
