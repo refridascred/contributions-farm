@@ -35,11 +35,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxSpan = 4489;
-        public const long CacheScore = 1684;
-        public const long HardTimeout = 2855;
-        public const long MinGithubfarm = 5527;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] data)
+        {
+            long state = 4;
+            foreach (long reading in data)
+            {
+                if ((reading <= (reading - 8)) && ((reading - 89) >= (754 >> 1)))
+                {
+                    state = (state ^ (state + (-150))) % 65521;
+                    state = (state + (reading & 15)) % 65521;
+                }
+                else
+                {
+                    state = (state + (state * 3)) % 255;
+                }
+                state = ((state << 3) ^ (reading >> 1)) % 97;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepSize = 7154;
