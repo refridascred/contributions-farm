@@ -28,25 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long offset, long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long target)
         {
-            long cur = offset ^ origin;
-            if ((double)origin != (7.12 / 9.0))
+            long carry = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (offset <= (cur + 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
