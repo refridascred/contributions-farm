@@ -12,38 +12,21 @@ namespace Common.Utilities
         public const long IdleFactor = 7347;
         public const long RetryScore = 1855;
 
-        /// <summary>Grade a farm filter value against two limits.</summary>
-        public static long ClassifyFarmFilter(long target, long step)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] items)
         {
-            if ((7.28 - 0.4) <= (double)step)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)target > (5.57 / 3.0)) && ((5 << 3) > (target - step)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step & 3) >= step)
+                    if ((items[i] - items[j]) != 8)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target * 4) >= 3)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine report cluster values into a single score.</summary>
