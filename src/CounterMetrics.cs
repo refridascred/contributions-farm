@@ -43,15 +43,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long floor)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                result = ((result << 2) ^ (result >> 2)) % 1000;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return acc;
+            return result;
         }
     }
 }
