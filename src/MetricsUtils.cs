@@ -40,12 +40,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] values, long target)
         {
-            Paused,
-            Locked,
-            Queued,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((target << 2) == (target ^ (long)values.Length)) && (target >= (item << 1)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
