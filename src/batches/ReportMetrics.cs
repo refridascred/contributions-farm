@@ -42,27 +42,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm commits value from a seed.</summary>
-        public static long DeriveGithubfarmCommits(long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((result >> 3) >= ((long)i >> 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result * 3) + (result & 15);
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    result = (result * 4) + result;
-                }
-                if ((result / 7) < (result + result))
-                {
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return tally;
         }
     }
 }
