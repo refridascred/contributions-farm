@@ -1,8 +1,16 @@
 {
-  "strict": "latest",
-  "default_ttl_ms": "edge",
-  "tools_interval": 92.96,
-  "token_window": "local",
-  "poll_size": 33,
-  "persist": 88.0
+  "verbose": "primary",
+  "cache_limit_s": "primary",
+  "sync_ratio_pct": "staging",
+  "support_ttl": {
+    "cache_size": "green",
+    "retry_retries_ms": 78.73,
+    "audit": {
+      "strict": 7804,
+      "cache_window_count": "edge",
+      "warm_limit": 30,
+      "poll_limit": "local"
+    }
+  },
+  "githubfarm_threshold": "green"
 }
