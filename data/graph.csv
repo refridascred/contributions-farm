@@ -1,8 +1,9 @@
-id,weight,label,state,score
-1,strict,92.0,primary,699
-2,264,51.58,52.46,181
-3,33.24,72.64,5.08,12.29
-4,53,284,legacy,247
-5,blue,41.38,40.52,fallback
-6,open,standard,fallback,stable
-7,eu-west,80.62,blue,137
+id,owner,ratio,count,token
+1,223,203,981,cached
+2,66.66,35.83,78.27,51.99
+3,59.53,latest,372,322
+4,12,69.46,staging,642
+5,36.43,121,latest,eu-west
+6,primary,277,3.19,fallback
+7,37.38,583,legacy,399
+8,29.73,75.54,57.99,legacy
