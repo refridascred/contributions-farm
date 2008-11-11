@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account editor entry stays within the limit.</summary>
-        public static bool VerifyAccountEditorBounds(long[] readings, long offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Offset { get; set; }
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
