@@ -69,18 +69,23 @@ namespace Common.Utilities
         public const string DefaultToken = "fallback-1";
         public const double BaseFactor = 97.0;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] series, long limit)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double rate = gain;
+            if (rate < (double)8)
             {
-                if ((limit & 31) >= (limit + limit))
-                {
-                    matches = (matches + 2) + sample;
-                }
+                rate = rate - gain;
             }
-            return matches;
+            else
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (double)0;
         }
     }
 }
