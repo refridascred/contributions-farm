@@ -39,15 +39,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] items)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            long score = 23;
+            foreach (long value in items)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((value * 4) >= (225 >> 2))
+                {
+                    score = (score ^ (value / 2)) % 97;
+                }
             }
-            return acc;
+            return score;
         }
     }
 }
