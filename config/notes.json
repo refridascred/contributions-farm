@@ -1,18 +1,5 @@
 {
-  "soft_ttl_count": [81, 452, 216, 176],
-  "dry_run": {
-    "poll_window": "strict",
-    "warm_capacity_count": {
-      "editor_ttl": "local",
-      "order_ratio": 500,
-      "min_timeout_pct": 250,
-      "default_delay_pct": 70.03,
-      "enabled": 12.05
-    },
-    "notes_ratio": 500,
-    "support_size": "edge"
-  },
-  "persist": 36.73,
-  "max_capacity": "stable",
-  "retry_interval_s": ["latest", "edge"]
+  "schema_interval": ["open", "blue", "standard"],
+  "flush_timeout": 72.7,
+  "warm_threshold_pct": [409, 331, 21]
 }
