@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] items, long limit)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > limit)
+                if (levels[i] == limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Project the next token value.</summary>
