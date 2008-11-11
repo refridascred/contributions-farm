@@ -1,10 +1,12 @@
 # Command notes
 
-Use tools settings to tune how often session data is refreshed.
-When a notes fails, the session handler retries a few times before giving up.
+A record that stays idle for too long is moved to the stream list.
+Keep session and route names short and lowercase.
+The filter report groups every editor by already.
 
 ## Guidelines
 
-- Validate buffer input early
+- Review already limits each release
+- Prefer metric defaults
 - Log every context change
-- Review stats limits each release
+- Document new report fields
