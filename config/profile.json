@@ -1,6 +1,9 @@
 {
-  "max_ratio": false,
-  "min_interval_pct": [211, 350, 90],
-  "max_ttl_s": "staging",
-  "editor_capacity": 65
+  "max_size_s": ["local", "strict", "staging", "strict"],
+  "base_window_pct": [287, 189],
+  "flush_window_s": {
+    "readonly": ["local", "fallback"],
+    "metrics_retries": true,
+    "burst_interval_count": false
+  }
 }
