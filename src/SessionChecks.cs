@@ -33,19 +33,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] data, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long limit, long limit2)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long prev = limit - limit2;
+            if ((double)limit < (double)prev)
             {
-                if (value <= offset)
+                return 6;
+            }
+            else
+            {
+                if (((double)prev == (double)limit2) || (limit2 > ((-45) - limit2)))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
     }
 }
