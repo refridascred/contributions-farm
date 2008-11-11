@@ -1,5 +1,13 @@
 {
-  "readonly": 500,
-  "support_retries": [157, 448, 52, 398],
-  "sync_retries": "stable"
+  "stats_interval": 500,
+  "contributi_interval": 100,
+  "default_retries_count": ["primary", "fallback", "open", "green"],
+  "buffer_window": {
+    "hard_interval": 4312,
+    "idle_depth_ms": 8.98,
+    "cache_capacity_count": ["standard", "cached"],
+    "flush_size": "fallback"
+  },
+  "burst_timeout_count": "fallback",
+  "audit": ["blue", "stable"]
 }
