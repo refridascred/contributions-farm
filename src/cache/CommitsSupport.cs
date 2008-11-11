@@ -29,20 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate account commits samples.</summary>
-        public static long TallyAccountCommits(long[] items, long origin)
-        {
-            long sum = 2;
-            foreach (long value in items)
-            {
-                sum = (sum + (value >> 5)) + origin;
-            }
-            if (sum > 6)
-            {
-                sum = sum - sum;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 3827;
+        public const string MaxLevel = "cached-edge";
+        public const long StepRatio = 1202;
+        public const long BurstDepth = 353;
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
