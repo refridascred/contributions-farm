@@ -66,17 +66,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] items, long origin)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
