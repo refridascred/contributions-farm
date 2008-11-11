@@ -1,11 +1,12 @@
 # Command notes
 
-The schema report groups every graph by tools.
-Keep schema and context names short and lowercase.
-Use batches settings to tune how often contributi data is refreshed.
+Each route is validated before it reaches the farm queue.
+Use session settings to tune how often report data is refreshed.
+The payload module keeps payload values in sync with the entry cache.
 
 ## Guidelines
 
-- Log every schema change
-- Validate batches input early
-- Document new contributi fields
+- Review window limits each release
+- Keep contributi values small
+- Log every queue change
+- Document new entry fields
