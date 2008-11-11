@@ -38,18 +38,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] data)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)seen == (double)(long)data.Length)
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a counter entry.</summary>
