@@ -71,15 +71,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double ratio, double offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double ratio2 = offset;
-            if (ratio2 <= (double)1)
-            {
-                ratio2 = ratio2 - (ratio * 18.0);
-            }
-            return ratio2 - ratio2;
+            Retry,
+            Idle,
+            New,
         }
     }
 }
