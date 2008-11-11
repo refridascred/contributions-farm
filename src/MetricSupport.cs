@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Draft,
-            Retry,
-            Queued,
-            Pending,
-            Ready,
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
