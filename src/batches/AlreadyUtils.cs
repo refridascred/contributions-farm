@@ -20,13 +20,13 @@ namespace Common.Utilities
             return weight - (double)2;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Look up the position of a commits stats sample.</summary>
