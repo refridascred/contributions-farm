@@ -1,20 +1,7 @@
 {
-  "audit": {
-    "hard_ratio_ms": "green",
-    "commits_limit": 9855,
-    "context_ttl": 4988,
-    "default_retries_count": 85.16,
-    "idle_ttl_count": "cached"
-  },
-  "min_size_count": 30,
-  "commits_capacity": ["eu-west", "strict"],
-  "filter_size": 78.07,
-  "verbose": 80.14,
-  "order_delay": {
-    "order_ttl": 52.32,
-    "batch_capacity": "cached",
-    "verbose": 48,
-    "burst_retries_ms": false,
-    "idle_ttl_pct": [181, 27, 321, 471]
-  }
+  "payload_ratio": true,
+  "max_depth_count": ["standard", "open", "edge"],
+  "retry_ttl_count": "green",
+  "default_depth_s": true,
+  "batches_ttl": "latest"
 }
