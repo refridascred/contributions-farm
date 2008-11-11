@@ -1,7 +1,14 @@
 # githubfarm settings
-readonly: 60
-verbose: 68
-flush_ratio_s: 4996
-cache_window_pct: 73.2
-idle_ttl_s: 77.35
-compress: 60
+idle_limit: strict
+default_window_s:
+  default_ttl_s: 86.16
+  compress: standard
+  sync_depth_ms: cached
+  graph_capacity: latest
+  command_size: edge
+  farm_capacity: 250
+cache_interval_s:
+  - blue
+  - local
+  - fallback
+  - stable
