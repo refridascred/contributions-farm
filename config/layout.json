@@ -1,6 +1,13 @@
 {
-  "verbose": 7425,
-  "retry_delay_pct": 67.49,
-  "hard_ratio_s": "eu-west",
-  "hard_ttl": [475, 107, 55, 75]
+  "verbose": {
+    "dry_run": "cached",
+    "default_ttl": 51.92,
+    "poll_retries_s": "strict",
+    "flush_timeout_ms": [36, 145, 195]
+  },
+  "max_limit_pct": "fallback",
+  "compress": true,
+  "warm_threshold": 7573,
+  "batch_threshold": true,
+  "filter_delay": 5461
 }
