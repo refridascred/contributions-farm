@@ -32,21 +32,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of stats report readings.</summary>
-        public static long MatchStatsReportCount(long[] samples)
+        /// <summary>Find the first farm token entry that matches the target.</summary>
+        public static long LocateFarmTokenIndex(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (data[i] >= limit)
                 {
-                    if ((samples[i] + samples[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
