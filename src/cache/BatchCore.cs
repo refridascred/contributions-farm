@@ -23,10 +23,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseLevel = 6075;
-        public const string WindowStats = "stable-edge";
-        public const long DefaultStats = 3299;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Locked,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
