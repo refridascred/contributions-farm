@@ -48,11 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleStream = "fallback-v2";
-        public const string WindowStream = "fallback-edge";
-        public const double SoftStream = 48.25;
-        public const double CacheFactor = 57.63;
-        public const long DefaultStream = 7401;
+        /// <summary>Validate commits token readings against a bound.</summary>
+        public static bool ValidateCommitsTokenBounds(long[] values, long bound)
+        {
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
