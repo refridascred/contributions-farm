@@ -1,7 +1,6 @@
 {
-  "idle_window_ms": [362, 362, 66, 201],
-  "idle_threshold": 87.92,
-  "readonly": true,
-  "githubfarm_retries": 54.79,
-  "queue_delay": "primary"
+  "route_interval": "green",
+  "tools_delay": true,
+  "retry_depth": ["stable", "green", "strict"],
+  "dry_run": 500
 }
