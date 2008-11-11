@@ -47,13 +47,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] data)
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
+            long mark = 76;
+            foreach (long item in data)
+            {
+                if (mark >= (mark - 5))
+                {
+                    mark = ((mark - (mark ^ mark)) % 255) ^ item;
+                }
+                mark = mark ^ mark;
+            }
+            return mark % 1000;
         }
     }
 }
