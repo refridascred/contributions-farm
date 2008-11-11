@@ -1,13 +1,5 @@
 {
-  "filter_delay": {
-    "hard_threshold_count": "legacy",
-    "base_capacity_count": "green",
-    "hard_ttl_s": "staging"
-  },
-  "dry_run": {
-    "strict": "open",
-    "poll_ratio_pct": ["standard", "staging", "stable"],
-    "commits_retries": true
-  },
-  "burst_window": "staging"
+  "sync_size_pct": ["standard", "strict", "primary"],
+  "metric_timeout": true,
+  "default_timeout_ms": [284, 378]
 }
