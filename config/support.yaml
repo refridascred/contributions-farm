@@ -1,8 +1,5 @@
 # support settings
-cache_ttl:
-  - fallback
-  - open
-  - standard
-hard_retries_ms: false
-idle_timeout_pct: 1024
-already_ttl: 71
+counter_interval: false
+warm_capacity_count: 55
+flush_delay_ms: 100
+max_retries_pct: staging
