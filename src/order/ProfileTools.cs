@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] data, long seed)
+        /// <summary>Grade a batches stats value against two limits.</summary>
+        public static long SortBatchesStats(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            if ((origin * 5) != (origin >> 5))
             {
-                if (((long)data.Length ^ seen) >= 91)
+                return 5;
+            }
+            else
+            {
+                if (((double)origin == (4.0 / 7.0)) && ((0 * 2) == (origin + limit)))
                 {
-                    seen = ((seen + 2) ^ cell) - seed;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)origin >= (6.6 / 4.0)) && ((double)limit >= 8.1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate graph samples.</summary>
