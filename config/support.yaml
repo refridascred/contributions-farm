@@ -1,7 +1,19 @@
 # support settings
-enabled: 100
-audit:
-  - 348
-  - 391
-farm_threshold: eu-west
-sync_threshold: green
+channel_ratio:
+  poll_size_ms: 100
+  compress: 45.5
+  graph_ratio: 29
+  warm_depth: 54.01
+already_threshold:
+  warm_retries: true
+  idle_ttl_pct:
+    - 295
+    - 19
+    - 187
+  default_ttl: latest
+  default_delay_s: 60
+sync_ttl: 66
+retry_depth: 63.62
+burst_ttl_ms:
+  - legacy
+  - stable
