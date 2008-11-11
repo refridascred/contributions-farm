@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowBudget = 829;
+        public const long IdleLevel = 9159;
+        public const double RetryTimeout = 91.8;
+        public const string BurstSize = "latest-edge";
+        public const string IdleProfile = "local";
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextMatches(long[] values, long step)
