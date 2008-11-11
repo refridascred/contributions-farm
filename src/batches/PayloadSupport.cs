@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a buffer cluster pair into a bucket.</summary>
-        public static long RankBufferCluster(long target, long floor)
+        /// <summary>Measure how many report cache samples are out of range.</summary>
+        public static long TallyReportCacheGaps(long[] levels, long bound)
         {
-            if ((target > (target + target)) && ((16.0 - 5.0) >= (double)target))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor + floor) <= (floor << 1)) || ((double)floor == (double)target))
+                if (!((cell / 4) <= (321 >> 5)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 3) - bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
