@@ -1,11 +1,5 @@
 # githubfarm settings
-enabled:
-  - strict
-  - green
-  - open
-buffer_threshold: 1.58
-poll_interval: eu-west
-min_interval_ms:
-  - 335
-  - 270
-  - 200
+max_timeout: legacy
+buffer_threshold: false
+layout_capacity: latest
+warm_window: strict
