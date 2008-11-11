@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Filter stats helpers.</summary>
     public static class FilterStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleLevel = 9291;
-        public const string MaxCommits = "legacy-1";
-        public const long BaseCommits = 7577;
-        public const long BurstCommits = 720;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long GradeLayout(long step, long target)
