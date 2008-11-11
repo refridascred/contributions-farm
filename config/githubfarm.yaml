@@ -1,6 +1,23 @@
 # githubfarm settings
-editor_ttl: true
-retry_delay_pct: 8420
-base_limit_s: false
-poll_window_count: 91
-verbose: primary
+sync_ttl: standard
+burst_retries_s:
+  max_size_s: 250
+  persist:
+    - 432
+    - 318
+  queue_size: true
+  metrics_limit: true
+  warm_interval_count: false
+  cache_capacity_ms: 57.75
+entry_threshold:
+  max_depth_pct: false
+  default_ratio: eu-west
+  sync_ratio_s: 14
+  base_retries_s: edge
+idle_interval_ms:
+  - eu-west
+  - local
+  - blue
+  - staging
+filter_capacity: fallback
+audit: 5118
