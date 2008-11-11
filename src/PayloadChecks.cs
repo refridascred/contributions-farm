@@ -64,25 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long bound, long step)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long bound2 = bound - step;
-            if (((bound + bound2) < (301 - step)) || ((double)step <= 4.4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + bound2) > (bound2 % 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Retry,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a session stats.</summary>
