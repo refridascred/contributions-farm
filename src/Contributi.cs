@@ -43,18 +43,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] series, long floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            if (((bound + 6) > 73) || ((bound - bound) >= (bound % 60)))
             {
-                if ((double)entry < 0.5)
+                return 5;
+            }
+            else
+            {
+                if ((bound % 16) >= (bound / 2))
                 {
-                    seen = (seen + 3) - floor;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
     }
 }
