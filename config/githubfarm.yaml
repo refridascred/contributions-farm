@@ -1,4 +1,10 @@
 # githubfarm settings
-stats_timeout: blue
-cache_window_pct: standard
-verbose: 55
+dry_run: primary
+audit: true
+graph_size:
+  - 253
+  - 254
+  - 65
+warm_limit_ms: edge
+checks_size: true
+batch_size_pct: 47.56
