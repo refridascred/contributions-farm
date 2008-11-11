@@ -23,19 +23,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every batch profile entry stays within the limit.</summary>
-        public static bool CheckBatchProfileBounds(long[] levels, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] items)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long mark = 6;
+            foreach (long value in items)
             {
-                if (value < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark << 3) ^ (value << 1)) % 255;
             }
-            return stale;
+            if (mark > 36)
+            {
+                mark = (mark + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
