@@ -35,15 +35,19 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double gain, double floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] samples, long bound)
         {
-            double load = (double)((-4) * 2);
-            if (load < load)
+            long result = 30;
+            foreach (long entry in samples)
             {
-                load = (load + (gain * 6.0)) - floor;
+                result = (result + (bound / 7)) % 1000;
+                if (!(result >= 489))
+                {
+                    result = (result - (result ^ entry)) % 101;
+                }
             }
-            return load - gain;
+            return result % 65521;
         }
 
         /// <summary>Digest a series of account commits entries.</summary>
