@@ -22,19 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] samples, long limit)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            New,
+            Retry,
+            Failed,
+            Ready,
         }
 
         /// <summary>Describe the counter status values.</summary>
