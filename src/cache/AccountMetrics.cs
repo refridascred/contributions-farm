@@ -23,19 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the buffer graph series from a seed.</summary>
-        public static long IterateBufferGraph(long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((mark * 3) <= (origin * 5))
+                if (!((double)(long)i > 6.0))
                 {
-                    mark = (mark + (long)i) % 65521;
+                    anchor = ((anchor << 2) ^ (offset >> 5)) % 255;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
+                anchor = ((anchor * 2) + (anchor % 100)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
