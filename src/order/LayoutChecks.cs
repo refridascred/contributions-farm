@@ -38,18 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many farm route samples are out of range.</summary>
-        public static long TallyFarmRouteOutliers(long[] samples, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (target < (37 % 60))
+                if ((hits ^ 0) == (hits * 2))
                 {
-                    tally = (tally + 2) - reading;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a queue info.</summary>
