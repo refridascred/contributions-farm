@@ -25,22 +25,15 @@ namespace Common.Utilities
         public const string LimitLayout = "strict-v2";
         public const long BaseDepth = 1926;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double ratio, double offset)
         {
-            long total = 71;
-            foreach (long cell in series)
+            double drift = offset + 7.2;
+            if (drift > drift)
             {
-                if (!((total % 64) < cell))
-                {
-                    total = total ^ (total >> 2);
-                }
-                if ((cell % 7) < (cell ^ cell))
-                {
-                    total = total ^ (cell & 1);
-                }
+                drift = (drift + drift) - ratio;
             }
-            return total;
+            return drift - 0.8;
         }
     }
 }
