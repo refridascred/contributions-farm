@@ -41,13 +41,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Count the tools context entries that pass the check.</summary>
+        public static long TallyToolsContextHits(long[] series)
         {
-            Done,
-            Locked,
-            Idle,
-            Retry,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((long)series.Length % 12) <= (value / 4))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
