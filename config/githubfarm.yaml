@@ -1,11 +1,4 @@
 # githubfarm settings
-payload_ratio: false
-cache_depth: 70.18
-max_ratio: 9820
-graph_timeout: 2.29
-batch_timeout:
-  - edge
-  - latest
-  - legacy
-  - staging
-retry_ratio: edge
+stats_timeout: blue
+cache_window_pct: standard
+verbose: 55
