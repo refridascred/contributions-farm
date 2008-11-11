@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Fold a list of support token readings.</summary>
+        public static long FoldSupportToken(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            long total = 48;
+            foreach (long item in samples)
+            {
+                total = (total - (total % 24)) + item;
+            }
+            if (total < 571)
+            {
+                total = ((total * 3) + (total + total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Hold a batch entry.</summary>
