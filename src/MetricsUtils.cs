@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout buffer readings.</summary>
-        public static long WeighLayoutBuffer(long[] levels)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long state = 16;
-            foreach (long value in levels)
-            {
-                state = (state << 2) ^ 9;
-                if ((1.9 + 11.0) != (double)value)
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a metrics header.</summary>
