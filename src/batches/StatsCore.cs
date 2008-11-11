@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double scale, double floor)
+        /// <summary>Digest a series of tools window entries.</summary>
+        public static long WeighToolsWindow(long[] readings)
         {
-            double bias = 3.3;
-            for (int i = 0; i < 5; i++)
+            long anchor = -8;
+            foreach (long value in readings)
             {
-                bias = ((bias + bias) + (double)(long)i) + scale;
+                anchor = (anchor << 2) ^ (563 + value);
+                if ((anchor + value) >= (anchor - value))
+                {
+                    break;
+                }
             }
-            return bias - floor;
+            if (anchor > 4)
+            {
+                anchor = anchor - (4 >> 3);
+            }
+            return anchor;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
