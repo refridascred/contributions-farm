@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Locked,
-            Ready,
-            Synced,
-            Dropped,
-            Active,
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Check that every notes cache entry stays within the limit.</summary>
