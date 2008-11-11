@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] series)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] values, long origin)
         {
-            long acc = 17;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc + acc) < acc)
+                if (values[i] < origin)
                 {
-                    acc = (acc + (acc + datum)) % 255;
-                    acc = ((acc << 3) ^ acc) % 1000;
-                }
-                if ((datum / 5) >= (datum + acc))
-                {
-                    acc = acc + acc;
-                }
-                if ((double)datum == (20.0 * 0.38))
-                {
-                    acc = (acc - (datum ^ acc)) % 65521;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
