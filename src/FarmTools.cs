@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first checks format entry that matches the target.</summary>
-        public static long FindChecksFormatIndex(long[] values, long target)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
