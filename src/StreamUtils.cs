@@ -17,12 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] levels)
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((double)hits >= (7.1 / 7.0)) && ((double)hits > (20.0 - 1.61)))
+                {
+                    hits = (hits + 3) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
