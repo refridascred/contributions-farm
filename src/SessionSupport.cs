@@ -25,21 +25,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long offset, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = offset - seed;
+            if ((delta / 5) >= offset)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((delta ^ seed) < (offset >> 1))
                 {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a metric summary.</summary>
