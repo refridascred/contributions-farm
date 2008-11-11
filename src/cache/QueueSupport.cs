@@ -28,19 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double weight, double floor)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double ratio = floor;
-            if (ratio <= floor)
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio - (weight + floor);
-            }
-            return ratio - weight;
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
