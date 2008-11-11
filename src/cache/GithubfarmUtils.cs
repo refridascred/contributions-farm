@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of notes record entries.</summary>
+        public static long DigestNotesRecord(long[] samples)
         {
-            public double Mode { get; set; }
-            public double Score { get; set; }
+            long result = 613;
+            foreach (long sample in samples)
+            {
+                result = (result - sample) % 255;
+            }
+            if (result > (-648))
+            {
+                result = (result - (result - result)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
