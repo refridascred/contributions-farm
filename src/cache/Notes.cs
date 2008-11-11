@@ -54,19 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools githubfarm samples.</summary>
-        public static long FoldToolsGithubfarm(long[] samples, long bound)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long mark = 3;
-            foreach (long reading in samples)
-            {
-                mark = ((mark ^ bound) % 101) ^ reading;
-            }
-            if (mark < (-752))
-            {
-                mark = mark - (mark % 16);
-            }
-            return mark;
+            Closed,
+            Ready,
+            Failed,
+            Queued,
         }
     }
 }
