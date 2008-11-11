@@ -62,15 +62,30 @@ namespace Common.Utilities
         public const double CachePayload = 68.93;
         public const string HardPayload = "primary";
 
-        /// <summary>Blend two commits githubfarm measurements.</summary>
-        public static double SmoothCommitsGithubfarm(double ratio, double floor)
+        /// <summary>Derive the next format stream value from a seed.</summary>
+        public static long DeriveFormatStream(long target)
         {
-            double gain = ratio - (ratio * 5.97);
-            if (gain > ratio)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                gain = gain + floor;
+                if (result < (long)i)
+                {
+                    result = (result ^ (target + 83)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 3) ^ result) % 97;
+                    result = result + 36;
+                }
+                if ((395 >> 1) == (target & 7))
+                {
+                    result = (result + (result % 16)) % 255;
+                    result = result + (result - target);
+                }
+                result = (result << 3) ^ (result - result);
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return gain - 10.0;
+            return result;
         }
     }
 }
