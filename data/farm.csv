@@ -1,7 +1,9 @@
-id,ratio
-1,primary
-2,895
-3,572
-4,633
-5,edge
-6,731
+id,label,score,owner
+1,edge,fallback,legacy
+2,eu-west,127,998
+3,cached,24.12,95.32
+4,staging,909,59.07
+5,78,769,122
+6,stable,34.85,68
+7,fallback,616,424
+8,81.71,29.33,635
