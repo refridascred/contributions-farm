@@ -18,13 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Grade a farm filter value against two limits.</summary>
+        public static long ClassifyFarmFilter(long target, long step)
         {
-            Done,
-            Failed,
-            Pending,
-            Dropped,
+            if ((7.28 - 0.4) <= (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)target > (5.57 / 3.0)) && ((5 << 3) > (target - step)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step & 3) >= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target * 4) >= 3)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine report cluster values into a single score.</summary>
