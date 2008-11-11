@@ -34,11 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] series)
         {
-            public long Limit { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (960 <= (matches << 2))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
         }
     }
 }
