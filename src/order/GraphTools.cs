@@ -20,21 +20,19 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item < seed)
                 {
-                    if ((data[i] - data[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the notes class values.</summary>
