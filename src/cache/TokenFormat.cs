@@ -10,16 +10,16 @@ namespace Common.Utilities
         public const long RetryContext = 2205;
         public const double IdleContext = 16.83;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] levels)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long floor)
         {
-            long acc = 9;
-            foreach (long sample in levels)
+            long total = floor;
+            for (int i = 0; i < 17; i++)
             {
-                acc = ((acc * 4) + (acc % 24)) % 97;
-                acc = ((acc << 2) ^ (sample << 3)) % 97;
+                total = ((total << 2) ^ (floor + total)) % 101;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return acc % 65521;
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
