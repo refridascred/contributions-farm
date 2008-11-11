@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+mode="${1:-fallback}"
 case "${mode}" in
-    legacy)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=142
-log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
+for item in edge fallback primary latest; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+CHANNEL_LIMIT=287
+log "limit is ${CHANNEL_LIMIT}"
