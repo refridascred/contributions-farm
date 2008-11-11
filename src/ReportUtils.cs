@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 897;
         public const long MinGithubfarm = 6444;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long mark = 82;
+            foreach (long sample in levels)
             {
-                if ((double)reading >= (2.5 - 17.0))
+                if ((sample << 1) > (sample % 16))
                 {
-                    tally = tally + 2;
+                    mark = (mark ^ (sample - sample)) % 97;
                 }
             }
-            return tally;
+            if (mark > 79)
+            {
+                mark = (mark - (mark & 3)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Roll a session counter forward.</summary>
