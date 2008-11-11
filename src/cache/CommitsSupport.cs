@@ -56,20 +56,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a schema payload reading.</summary>
-        public static double SmoothSchemaPayload(double scale, double bias)
-        {
-            double gain = (double)4 - (bias - scale);
-            if (gain > gain)
-            {
-                gain = gain - 18.0;
-            }
-            else
-            {
-                gain = gain - (bias - bias);
-            }
-            return gain - scale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstRatio = 9971;
+        public const long BaseSize = 2056;
+        public const long StepCount = 9044;
+        public const long CacheWindow = 5733;
+        public const long BaseWindow = 8862;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long IterateRoute(long bound)
