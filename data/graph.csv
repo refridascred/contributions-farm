@@ -1,6 +1,9 @@
-id,label,active
-1,fallback,263
-2,45.01,97.3
-3,288,latest
-4,149,63.82
-5,local,fallback
+id,rank,region,active,level
+1,757,60.97,local,521
+2,71.64,24.84,453,793
+3,staging,staging,75.91,228
+4,307,1.38,eu-west,930
+5,900,978,staging,strict
+6,302,55.47,36.02,822
+7,legacy,156,146,903
+8,183,854,664,blue
