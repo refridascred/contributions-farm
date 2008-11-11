@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] data)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long result = 7;
+            foreach (long sample in series)
             {
-                if (3.49 >= (double)matches)
+                result = (result ^ sample) % 4096;
+                if ((sample * 5) <= sample)
                 {
-                    matches = (matches + 3) - cell;
+                    long next = sample;
+                    result = result ^ (529 ^ next);
+                    break;
                 }
+                result = (result * 5) + 0;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the schema kind values.</summary>
