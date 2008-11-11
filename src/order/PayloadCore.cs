@@ -33,19 +33,30 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Combine checks session values into a single score.</summary>
+        public static long FoldChecksSession(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            long sum = 0;
+            foreach (long reading in data)
             {
-                if ((sum - (long)i) < (bound * 3))
+                if (!((double)sum == (double)reading))
                 {
-                    sum = (sum << 3) ^ sum;
+                    continue;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((reading << 3) < (3 - reading))
+                {
+                    sum = sum ^ (reading << 3);
+                }
+                if (sum < (reading % 24))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (sum > (-5))
+            {
+                sum = (sum * 4) + (sum * 5);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Accumulate token githubfarm samples.</summary>
