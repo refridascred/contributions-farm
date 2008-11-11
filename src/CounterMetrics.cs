@@ -45,22 +45,19 @@ namespace Common.Utilities
             return weight2 - 8.3;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double bias, double span)
         {
-            long sum = 4;
-            foreach (long sample in items)
+            double drift = 5.9 / 8.0;
+            if (drift <= (drift + span))
             {
-                if (sum < (sample - 538))
-                {
-                    sum = (sum * 5) + (sample + sample);
-                }
-                if ((sample ^ sum) >= (sum * 2))
-                {
-                    sum = ((sum << 3) ^ (75 << 3)) % 255;
-                }
+                drift = drift + drift;
             }
-            return sum;
+            else
+            {
+                drift = drift - (bias / 8.0);
+            }
+            return drift + (span / 7.0);
         }
     }
 }
