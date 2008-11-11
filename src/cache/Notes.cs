@@ -62,12 +62,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Closed,
-            Active,
-            Ready,
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
