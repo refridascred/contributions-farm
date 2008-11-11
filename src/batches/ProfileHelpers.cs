@@ -55,20 +55,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Roll a farm support counter forward.</summary>
+        public static long SeriesFarmSupport(long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                total = (total ^ (-3)) % 255;
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((origin % 24) >= origin)
                 {
-                    total = (total ^ ((long)i + bound)) ^ (long)i2;
+                    continue;
                 }
-                total = ((total * 2) + (long)i) % 97;
+                state = (state + (origin * 2)) % 255;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
