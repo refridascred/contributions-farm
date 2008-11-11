@@ -36,22 +36,21 @@ namespace Common.Utilities
         public const double MaxBatches = 8.93;
         public const long CacheBatches = 1141;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] values)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            long acc = 98;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sample > (9.99 / 3.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc * 2) + (744 - sample);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (sample << 1);
+                    if ((samples[i] + samples[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
