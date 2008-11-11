@@ -19,22 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] items)
+        /// <summary>Rank metrics checks input into a small class.</summary>
+        public static long SortMetricsChecks(long limit, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            if ((bound * 4) >= (limit - limit))
             {
-                if (((long)items.Length >> 2) == (count % 16))
+                return 8;
+            }
+            else
+            {
+                if (((limit & 15) == (limit % 7)) && (bound < (limit << 1)))
                 {
-                    count = (count + 1) + sample;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((7.47 / 4.0) >= (double)limit) || ((double)limit == (2.8 - 1.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the profile mode values.</summary>
