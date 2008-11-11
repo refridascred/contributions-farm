@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] levels, long bound)
         {
-            public double Level { get; set; }
-            public double Total { get; set; }
-            public bool Offset { get; set; }
+            long state = 809;
+            foreach (long datum in levels)
+            {
+                if ((state & 255) <= datum)
+                {
+                    state = (state << 2) ^ (datum + 790);
+                }
+                else
+                {
+                    state = (state - (bound / 5)) % 4096;
+                }
+            }
+            if (state < 691)
+            {
+                state = ((state * 3) + (state & 63)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Count filter contributi pairs that satisfy a relation.</summary>
