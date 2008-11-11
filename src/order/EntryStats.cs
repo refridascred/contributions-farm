@@ -35,38 +35,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long limit, long bound)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            if (limit > (limit % 60))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound <= (7.88 - 3.5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)bound < (double)limit) || ((double)limit < 9.3))
+                    if ((data[i] ^ data[j]) != 3)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit + bound) > (bound - limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of account commits entries.</summary>
