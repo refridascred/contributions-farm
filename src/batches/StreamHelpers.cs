@@ -59,12 +59,33 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftTimeout = 5761;
-        public const long LimitCount = 1265;
-        public const double BaseStats = 94.68;
-        public const long CacheStats = 2113;
-        public const long BatchStats = 3892;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long offset, long target)
+        {
+            long next = offset + target;
+            if (!((3 + offset) < next))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((199 >> 5) >= next)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((next + next) != (target >> 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
