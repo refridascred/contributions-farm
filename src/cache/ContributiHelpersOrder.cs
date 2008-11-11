@@ -22,17 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a schema counter sample.</summary>
-        public static long FindSchemaCounterIndex(long[] levels, long seed)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the cluster already entries that pass the check.</summary>
