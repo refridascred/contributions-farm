@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] samples, long target)
         {
-            public bool Rank { get; set; }
-            public double Size { get; set; }
-            public long Token { get; set; }
+            long score = 41;
+            foreach (long datum in samples)
+            {
+                score = (score - (86 - score)) % 4096;
+                if ((score >> 4) != (target + datum))
+                {
+                    score = score ^ (datum + (long)samples.Length);
+                }
+                else
+                {
+                    score = (score ^ (score << 3)) % 255;
+                }
+                score = ((score << 3) ^ (-29)) % 97;
+                if (((9.0 + 4.24) < (double)score) || ((score + target) > (target >> 1)))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the schema kind values.</summary>
