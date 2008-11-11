@@ -22,15 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double weight, double floor)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double weight2 = (double)5;
-            if (weight2 <= floor)
-            {
-                weight2 = weight2 + (double)58;
-            }
-            return weight2 - (weight / 7.0);
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
