@@ -5,30 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate notes graph samples.</summary>
-        public static long FoldNotesGraph(long[] items)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            long carry = 5;
-            foreach (long value in items)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (value >= (carry + carry))
+                if ((double)1 <= (double)offset)
                 {
-                    carry = carry - carry;
-                }
-                if (((double)carry != (7.85 + 6.0)) && (value <= (847 - (long)items.Length)))
-                {
-                    carry = (carry + (82 & 7)) % 97;
-                }
-                if ((carry + value) >= (carry & 1))
-                {
+                    acc = (acc - ((long)i ^ acc)) % 4096;
                     break;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            if (carry > 2)
-            {
-                carry = carry + carry;
-            }
-            return carry % 97;
+            return acc;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
