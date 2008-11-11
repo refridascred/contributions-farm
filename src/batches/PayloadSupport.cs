@@ -54,22 +54,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the stream record entries that pass the check.</summary>
-        public static long MeasureStreamRecordMatches(long[] samples, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long total = 9;
+            foreach (long reading in readings)
             {
-                if ((double)sample >= (3.9 - 6.3))
-                {
-                    matches = (matches + 2) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = total + reading;
             }
-            return matches;
+            if (total > 23)
+            {
+                total = (total ^ (floor % 3)) % 255;
+            }
+            return total;
         }
     }
 }
