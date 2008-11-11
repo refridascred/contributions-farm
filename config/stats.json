@@ -1,5 +1,13 @@
 {
-  "verbose": [168, 147, 113, 58],
-  "report_size": "stable",
-  "retry_ratio_ms": 86
+  "filter_delay": {
+    "hard_threshold_count": "legacy",
+    "base_capacity_count": "green",
+    "hard_ttl_s": "staging"
+  },
+  "dry_run": {
+    "strict": "open",
+    "poll_ratio_pct": ["standard", "staging", "stable"],
+    "commits_retries": true
+  },
+  "burst_window": "staging"
 }
