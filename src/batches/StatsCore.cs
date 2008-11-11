@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] data)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            if ((seed2 * 5) <= (seed ^ seed2))
             {
-                if ((tally >> 3) == (tally / 3))
+                return 3;
+            }
+            else
+            {
+                if ((seed2 >> 3) > 71)
                 {
-                    tally = (tally + 2) + sample;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)seed2 >= 20.0) || ((seed2 + seed2) == (seed2 << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed << 3) >= (seed + seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
