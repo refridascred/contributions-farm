@@ -34,23 +34,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of command format readings.</summary>
-        public static long TallyCommandFormat(long[] data, long seed)
+        /// <summary>Count commits filter pairs that satisfy a relation.</summary>
+        public static long CompareCommitsFilterCount(long[] readings)
         {
-            long carry = 9;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry << 3) ^ (carry & 63);
-                if ((carry >= (761 - 50)) || (((-28) - seed) > (5 - value)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > 8)
-            {
-                carry = (carry + (carry >> 5)) % 97;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the editor mode values.</summary>
