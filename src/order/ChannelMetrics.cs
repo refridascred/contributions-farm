@@ -20,11 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double rate, double offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            double rate2 = offset;
-            return (rate2 + (double)218) + rate;
+            Ready,
+            Locked,
+            New,
+            Dropped,
+            Done,
         }
 
         /// <summary>Adjust a window reading.</summary>
