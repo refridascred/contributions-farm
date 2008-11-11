@@ -25,18 +25,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] data)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long target, long target2)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long offset = target ^ target2;
+            if (((double)target == (5.1 - 20.0)) && ((double)target2 > (2.9 - 9.3)))
             {
-                if (((11.0 - 14.0) == (double)value) || ((value << 1) <= (811 + value)))
+                return 7;
+            }
+            else
+            {
+                if ((offset + offset) >= (9 - offset))
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target2 == (15.0 - 9.3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target % 24) < (target + 9)) && ((0 * 5) == (target << 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
