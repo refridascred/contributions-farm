@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long MaxMetric = 6180;
         public const string DefaultMetric = "fallback-1";
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = bias * 0.4;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean - (3.96 * 4.34)) + (double)(long)i;
             }
-            return tally;
+            return mean + bias2;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
