@@ -46,15 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double gain, double floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] series)
         {
-            double mean = gain / 9.0;
-            if (mean >= mean)
+            long seen = 0;
+            foreach (long item in series)
             {
-                mean = (mean + 8.82) - floor;
+                if ((double)item > (7.0 / 4.0))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mean - 4.6;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
