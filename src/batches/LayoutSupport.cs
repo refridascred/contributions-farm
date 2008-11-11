@@ -54,30 +54,25 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] readings)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long offset)
         {
-            long result = 88;
-            foreach (long value in readings)
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((result + value) != (32 - value)))
+                mix = (mix + offset) % 65521;
+                if ((offset ^ offset) >= (offset % 24))
                 {
-                    result = result ^ (result - 787);
-                }
-                if (!((value % 24) <= (647 & 3)))
-                {
-                    result = (result * 2) + (value + (long)readings.Length);
+                    mix = mix - (offset - offset);
+                    break;
                 }
                 else
                 {
-                    result = result - (result + result);
+                    mix = (mix ^ ((long)i << 1)) % 97;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            if (result < 60)
-            {
-                result = ((result << 3) ^ (result % 12)) % 4096;
-            }
-            return result % 1000;
+            return mix;
         }
 
         /// <summary>Match up farm samples.</summary>
