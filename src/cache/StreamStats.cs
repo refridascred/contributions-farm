@@ -21,11 +21,11 @@ namespace Common.Utilities
         public const long BaseLevel = 6877;
         public const string BaseCount = "latest-v2";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 7071;
-        public const double BatchFactor = 43.01;
-        public const string LimitChannel = "legacy-1";
-        public const double BurstChannel = 63.17;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinBudget = 88.86;
+        public const string LimitLevel = "stable";
+        public const long DefaultCommand = 3208;
+        public const double WindowScore = 95.32;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderBounds(long[] data, long origin)
