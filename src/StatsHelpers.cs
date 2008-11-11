@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
