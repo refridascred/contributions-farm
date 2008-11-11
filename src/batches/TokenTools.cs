@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] levels, long bound)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((-97) > bound)
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
