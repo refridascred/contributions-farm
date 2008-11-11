@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] readings, long offset)
+        /// <summary>Count context counter pairs that satisfy a relation.</summary>
+        public static long PairContextCounterCount(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a command entry.</summary>
