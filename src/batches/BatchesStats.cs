@@ -39,10 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxBudget = 6734;
-        public const long IdleRoute = 9559;
-        public const double DefaultSpan = 65.32;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Failed,
+            Active,
+            Retry,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
