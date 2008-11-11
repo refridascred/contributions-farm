@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] items, long origin)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((((56 / 3) != (reading + reading)) || ((69 - seen) == (seen & 7))) || ((834 + origin) > (reading ^ origin)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the payload status values.</summary>
