@@ -55,19 +55,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] items, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long total = 9;
+            foreach (long item in series)
             {
-                if (item <= limit)
+                if (!(916 > item))
                 {
-                    flag = false;
-                    break;
+                    total = ((total * 5) + (item + item)) - offset;
                 }
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
