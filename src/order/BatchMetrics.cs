@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 6511;
+        public const long WindowInterval = 4382;
+        public const long IdleInterval = 6884;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double SoftEntry = 66.56;
