@@ -31,18 +31,14 @@ namespace Common.Utilities
             return bias2 - weight;
         }
 
-        /// <summary>Count the entry counter entries that pass the check.</summary>
-        public static long MeasureEntryCounterOutliers(long[] values, long offset)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((offset ^ offset) >= (offset * 5))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
+            Active,
+            Queued,
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the channel state values.</summary>
