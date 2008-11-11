@@ -1,17 +1,11 @@
 # entry settings
-idle_threshold_count: 500
-window_delay: 40
-max_threshold_pct: primary
-audit:
-  retry_ttl: true
-  queue_ttl:
-    - 451
-    - 103
-  hard_delay_count: cached
-  persist: 14.27
-  route_retries:
-    - 15
-    - 479
-    - 277
-    - 369
-soft_limit_s: 82
+max_ttl: true
+cache_ttl_ms: true
+max_retries: green
+sync_window: latest
+cache_window_s:
+  sync_capacity_count: 30
+  max_threshold: true
+  strict: true
+  support_ttl: green
+queue_capacity: 9677
