@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepCount = 6001;
-        public const long WindowStream = 9974;
-        public const double HardScore = 37.01;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] values, long origin)
+        {
+            long state = 2;
+            foreach (long cell in values)
+            {
+                if (!((5 + 944) <= origin))
+                {
+                    state = (state - origin) ^ cell;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MaxMetrics = 4730;
