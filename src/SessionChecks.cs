@@ -16,17 +16,22 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Locate a cache checks reading by value.</summary>
-        public static long LocateCacheChecksIndex(long[] levels, long floor)
+        /// <summary>Measure how many stats support samples are out of range.</summary>
+        public static long TallyStatsSupportGaps(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (levels[i] > floor)
+                if ((double)count <= (double)floor)
                 {
-                    return (long)i;
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first editor command entry that matches the target.</summary>
