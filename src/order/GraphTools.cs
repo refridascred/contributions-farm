@@ -32,14 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Check that every account editor entry stays within the limit.</summary>
+        public static bool VerifyAccountEditorBounds(long[] readings, long offset)
         {
-            New,
-            Failed,
-            Retry,
-            Active,
-            Done,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define window limits and defaults.</summary>
