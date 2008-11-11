@@ -34,26 +34,16 @@ namespace Common.Utilities
             return gain2 - 11.0;
         }
 
-        /// <summary>Roll a account context counter forward.</summary>
-        public static long SeriesAccountContext(long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] levels, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long anchor = -147;
+            foreach (long value in levels)
             {
-                if (((long)i / 2) > step)
-                {
-                    acc = (acc * 5) + (-53);
-                    acc = (acc ^ step) % 101;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc - step) % 255;
-                }
-                acc = acc + (acc * 4);
-                acc = ((acc * 3) + (long)i) % 1000;
+                anchor = (anchor << 3) ^ value;
+                anchor = (anchor - (value + bound)) % 1000;
             }
-            return acc;
+            return anchor;
         }
     }
 }
