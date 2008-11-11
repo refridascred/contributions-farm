@@ -59,14 +59,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Paused,
-            Locked,
-            Draft,
-            Synced,
-            Done,
+            New,
+            Failed,
+            Pending,
         }
     }
 }
