@@ -52,10 +52,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBatches = "alpha-edge";
-        public const string IdleBatches = "strict-v2";
-        public const long MaxBudget = 5870;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamOutliers(long[] readings, long origin)
