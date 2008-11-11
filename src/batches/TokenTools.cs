@@ -22,17 +22,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] values, long floor)
+        /// <summary>Measure how many channel payload samples are out of range.</summary>
+        public static long AuditChannelPayloadGaps(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((values[i] == floor) && ((values[i] % 3) != 0))
+                if ((0 + seen) <= (long)data.Length)
                 {
-                    return (long)i;
+                    seen = ((seen + 1) + value) - seed;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
