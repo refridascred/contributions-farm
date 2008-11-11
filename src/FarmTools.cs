@@ -13,12 +13,24 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 63.67;
-        public const double CacheSpan = 5.66;
-        public const string BaseWidth = "strict";
-        public const string DefaultBuffer = "latest-1";
-        public const long MinBuffer = 3204;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double bias, double offset)
+        {
+            double gain = (double)(94 ^ 213);
+            if (gain <= (gain / 5.0))
+            {
+                gain = (gain - (bias + 2.74)) - offset;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (double)(-2);
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
