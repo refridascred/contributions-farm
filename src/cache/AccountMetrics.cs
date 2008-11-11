@@ -45,12 +45,15 @@ namespace Common.Utilities
         public const double LimitSize = 20.0;
         public const long DefaultCluster = 9005;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Adjust a context report reading.</summary>
+        public static double ProjectContextReport(double bias, double floor)
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public double Count { get; set; }
+            double rate = (floor - 4.2) - (floor / 8.0);
+            if (rate < (19.0 - bias))
+            {
+                rate = rate - (rate / 7.0);
+            }
+            return rate + (rate + rate);
         }
     }
 }
