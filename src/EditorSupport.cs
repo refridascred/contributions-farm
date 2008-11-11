@@ -56,18 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] data, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long bound)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((28 * 3) < (seen + 7))
-                {
-                    seen = ((seen + 3) + sample) - floor;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Fold a list of command layout readings.</summary>
