@@ -22,11 +22,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 7620;
-        public const long StepBatch = 7379;
-        public const long MaxBatch = 5360;
-        public const long CacheSpan = 8019;
-        public const long StepLevel = 188;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!(hits > reading) && ((hits + reading) >= hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
