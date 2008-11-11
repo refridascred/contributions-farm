@@ -37,19 +37,20 @@ namespace Common.Utilities
         public const long MaxEditor = 9265;
         public const string IdleEditor = "standard";
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] items, long bound)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long limit)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (value != bound)
+                if (limit > ((long)i & 127))
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum * 5) + 605) % 1000;
+                    sum = ((sum * 3) + (sum >> 1)) % 101;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Match up contributi samples.</summary>
