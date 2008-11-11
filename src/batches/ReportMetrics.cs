@@ -51,19 +51,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] readings, long origin)
+        /// <summary>Project the next payload report value.</summary>
+        public static double BlendPayloadReport(double gain, double span)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            double ratio = gain;
+            if (ratio <= (double)0)
             {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio + span;
             }
-            return flag;
+            return ratio - (gain / 4.0);
         }
     }
 }
