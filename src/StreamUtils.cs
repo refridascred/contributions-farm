@@ -31,15 +31,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] series, long offset)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long result = 0;
-            foreach (long value in series)
-            {
-                result = (((result << 2) ^ (offset % 2)) % 255) ^ value;
-            }
-            return result;
+            Failed,
+            New,
+            Synced,
+            Stale,
         }
 
         /// <summary>Accumulate layout samples.</summary>
