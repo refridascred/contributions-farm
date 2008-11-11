@@ -48,14 +48,12 @@ namespace Common.Utilities
             return rate + (span - 1.34);
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Draft,
-            Retry,
-            Locked,
-            Active,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 1401;
+        public const string BaseCache = "staging-edge";
+        public const string MinFactor = "strict";
+        public const long SoftFactor = 8401;
+        public const long BatchDepth = 729;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double AdjustTools(double bias, double span)
