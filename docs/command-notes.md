@@ -1,11 +1,11 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-Use profile settings to tune how often batches data is refreshed.
-The payload report groups every order by command.
+The schema report groups every graph by tools.
+Keep schema and context names short and lowercase.
+Use batches settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Keep batches values small
-- Review batches limits each release
-- Prefer editor defaults
+- Log every schema change
+- Validate batches input early
+- Document new contributi fields
