@@ -27,18 +27,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] levels, long step)
+        /// <summary>Validate account commits readings against a bound.</summary>
+        public static bool GuardAccountCommitsLimits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((double)4 == (double)count)
+                if (cell >= seed)
                 {
-                    count = ((count + 3) + sample) - step;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
