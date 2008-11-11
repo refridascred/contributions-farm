@@ -54,18 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] series, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((6 - 70) < (77 + target))
+                if (!((entry - entry) != (hits / 2)))
                 {
-                    matches = (matches + 3) + sample;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
