@@ -46,15 +46,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if (sample >= (seen - seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
