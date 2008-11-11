@@ -14,18 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] values, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long carry = 8;
+            foreach (long item in readings)
             {
-                if ((datum - datum) == (seed % 3))
+                if (item < (carry - 4))
                 {
-                    matches = matches + 1;
+                    carry = (carry * 3) + (carry ^ 26);
+                }
+                else
+                {
+                    carry = ((carry * 5) + (item - item)) % 101;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a profile record.</summary>
