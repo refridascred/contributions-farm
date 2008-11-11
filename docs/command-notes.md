@@ -1,10 +1,11 @@
 # Command notes
 
-Run the farm check before changing any token limits.
-Run the editor check before changing any context limits.
+The profile report groups every route by window.
+Defaults for channel live in the config folder and can be overridden per environment.
+When a counter fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every record change
-- Validate stream input early
-- Review cache limits each release
+- Prefer already defaults
+- Review entry limits each release
+- Validate channel input early
