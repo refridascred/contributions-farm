@@ -21,12 +21,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] readings)
         {
-            Closed,
-            Active,
-            Retry,
+            long mark = 4;
+            foreach (long cell in readings)
+            {
+                mark = (mark + (long)readings.Length) % 97;
+                if (cell < (cell + mark))
+                {
+                    mark = (mark - mark) % 65521;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
