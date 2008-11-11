@@ -15,10 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleCommand = "staging-v2";
-        public const string BatchInterval = "staging";
-        public const long BurstCommand = 4348;
+        /// <summary>Count order support pairs that satisfy a relation.</summary>
+        public static long MatchOrderSupportCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenOutliers(long[] items, long step)
