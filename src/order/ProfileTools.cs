@@ -27,18 +27,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] series, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] values)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long state = 752;
+            foreach (long sample in values)
             {
-                if ((14 - item) < (matches & 63))
+                if ((5.4 * 5.56) <= (double)state)
                 {
-                    matches = (matches + 3) - target;
+                    state = ((state << 2) ^ (state ^ sample)) % 1000;
                 }
             }
-            return matches;
+            if (state < 9)
+            {
+                state = state + (state % 97);
+            }
+            return state;
         }
 
         /// <summary>Combine account values into a single score.</summary>
