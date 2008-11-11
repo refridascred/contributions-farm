@@ -1,8 +1,5 @@
 {
-  "report_threshold": 82.17,
-  "record_timeout": 5483,
-  "retry_retries_ms": "open",
-  "strict": true,
-  "format_window": "open",
-  "max_limit_pct": 70.23
+  "profile_window": false,
+  "min_ttl_pct": "edge",
+  "base_retries_pct": ["strict", "staging"]
 }
