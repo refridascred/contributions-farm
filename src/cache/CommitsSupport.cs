@@ -42,12 +42,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstRatio = 9971;
-        public const long BaseSize = 2056;
-        public const long StepCount = 9044;
-        public const long CacheWindow = 5733;
-        public const long BaseWindow = 8862;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long RollFilter(long origin)
