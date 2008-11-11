@@ -51,17 +51,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 1104;
+        public const long IdleBatch = 983;
+        public const long SoftBatch = 2228;
+        public const long RetrySize = 1040;
     }
 }
