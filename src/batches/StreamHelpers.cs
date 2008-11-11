@@ -64,19 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches channel counter forward.</summary>
-        public static long DeriveBatchesChannel(long step)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] items, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((items[i] >= limit) && ((items[i] % 5) == 0))
                 {
-                    acc = ((acc - (step / 8)) % 4096) - (long)i2;
+                    return (long)i;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
