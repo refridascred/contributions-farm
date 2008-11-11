@@ -64,10 +64,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 5162;
-        public const double HardGithubfarm = 28.83;
-        public const long MaxBudget = 1264;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Rank route commits input into a small class.</summary>
         public static long SortRouteCommits(long floor, long origin)
