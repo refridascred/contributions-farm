@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double gain, double span)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            double drift = (7.09 - gain) / 6.0;
-            if (drift >= (span * 5.4))
-            {
-                drift = drift - (double)(-2);
-            }
-            else
-            {
-                drift = drift - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift + (double)(-97);
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
