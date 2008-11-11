@@ -14,15 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double rate, double span)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long seed)
         {
-            double scale = span;
-            if (scale < (span + scale))
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                scale = (scale - scale) - rate;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return scale + scale;
+            return mark;
         }
 
         /// <summary>Describe the report phase values.</summary>
