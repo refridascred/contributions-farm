@@ -30,18 +30,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = (sum - (seed << 1)) % 101;
-                sum = sum + (sum >> 3);
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 323;
+        public const double BurstSize = 46.62;
+        public const long SoftChecks = 5144;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchProfile = 4896;
