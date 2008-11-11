@@ -40,19 +40,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] items, long bound)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Dropped,
+            Retry,
+            Locked,
         }
     }
 }
