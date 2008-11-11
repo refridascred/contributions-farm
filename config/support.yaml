@@ -1,5 +1,6 @@
 # support settings
-audit: eu-west
-idle_size: latest
-context_interval: latest
-already_ttl: 100
+min_window: 74
+queue_depth: 3305
+strict: local
+entry_timeout: open
+max_interval_s: legacy
