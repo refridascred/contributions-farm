@@ -54,22 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] items, long step)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((((step & 127) < step) || ((step / 4) == (step + step))) && ((matches + 426) > (sample / 5)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Failed,
+            Locked,
         }
     }
 }
