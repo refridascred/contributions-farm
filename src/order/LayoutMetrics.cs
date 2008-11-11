@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            Locked,
+            Queued,
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the farm kind values.</summary>
