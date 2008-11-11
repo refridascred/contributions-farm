@@ -49,18 +49,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] items)
+        /// <summary>Count the already queue entries that pass the check.</summary>
+        public static long AuditAlreadyQueueOutliers(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((cell + cell) == (matches - matches))
+                if ((45 * 5) > (target - value))
                 {
-                    matches = matches + 3;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a counter entry.</summary>
