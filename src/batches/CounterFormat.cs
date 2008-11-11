@@ -47,16 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report filter value from a seed.</summary>
-        public static long StepReportFilter(long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] readings, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            long carry = 4;
+            foreach (long cell in readings)
             {
-                carry = ((carry * 5) + (long)i) % 255;
-                carry = ((carry * 5) + (long)i) % 101;
+                carry = ((carry * 2) + carry) % 255;
+                if (cell > step)
+                {
+                    carry = (carry * 5) + (carry << 1);
+                }
             }
-            return carry;
+            return carry % 65521;
         }
     }
 }
