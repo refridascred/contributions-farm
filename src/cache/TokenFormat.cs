@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 6705;
-        public const string MaxChecks = "fallback-edge";
-        public const string StepChecks = "latest-edge";
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long seed, long seed2)
+        {
+            if ((seed >> 4) <= seed2)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed * 4) <= (4 - seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((seed * 5) <= (8 + 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TallyContributi(long[] items)
