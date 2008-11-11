@@ -21,31 +21,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank metrics checks input into a small class.</summary>
-        public static long SortMetricsChecks(long limit, long bound)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] values, long limit)
         {
-            if ((bound * 4) >= (limit - limit))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit & 15) == (limit % 7)) && (bound < (limit << 1)))
+                if (values[i] == limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((7.47 / 4.0) >= (double)limit) || ((double)limit == (2.8 - 1.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batch summary.</summary>
