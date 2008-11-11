@@ -46,25 +46,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] values)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!(seed <= (state & 255)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state << 2) ^ (state + seed)) % 65521;
-                    state = (state + (state / 6)) % 255;
+                    if ((values[i] + values[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((7 + state) < (long)i)
-                {
-                    long step = seed / 9;
-                    state = state ^ (seed + step);
-                }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return matches;
         }
     }
 }
