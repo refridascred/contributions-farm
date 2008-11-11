@@ -76,38 +76,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long target, long origin)
+        /// <summary>Count notes buffer pairs that satisfy a relation.</summary>
+        public static long OverlapNotesBufferCount(long[] levels)
         {
-            if ((target + origin) <= origin)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target + origin) <= 84)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (origin <= 24)
+                    if ((levels[i] ^ levels[j]) > 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target + target) >= (target / 6))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
