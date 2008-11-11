@@ -25,11 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardTimeout = 3839;
-        public const double MinFactor = 52.29;
-        public const long BurstStream = 2078;
-        public const long HardSize = 6416;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] readings)
