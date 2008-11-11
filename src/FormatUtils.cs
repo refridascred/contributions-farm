@@ -63,14 +63,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Accumulate stream cache samples.</summary>
+        public static long TallyStreamCache(long[] readings, long offset)
         {
-            Pending,
-            Dropped,
-            Synced,
-            Active,
-            Locked,
+            long anchor = 15;
+            foreach (long reading in readings)
+            {
+                anchor = ((anchor - (anchor * 3)) ^ reading) + offset;
+            }
+            return anchor;
         }
     }
 }
