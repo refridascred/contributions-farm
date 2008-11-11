@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the entry cache entries that pass the check.</summary>
-        public static long TallyEntryCacheHits(long[] readings, long origin)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((origin >= (reading ^ origin)) && ((double)matches <= (17.0 / 2.0)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
