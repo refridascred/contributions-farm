@@ -44,12 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            Draft,
+            Synced,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Blend two report measurements.</summary>
