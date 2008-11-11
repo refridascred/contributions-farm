@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleFactor = 3601;
-        public const long CacheScore = 2252;
-        public const long SoftProfile = 3393;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((floor + floor) >= (floor ^ floor))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenLimits(long[] data, long origin)
