@@ -32,19 +32,15 @@ namespace Common.Utilities
         public const long DefaultCommand = 3208;
         public const double WindowScore = 95.32;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] data, long origin)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return flag;
+            return result;
         }
     }
 }
