@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] series, long bound)
+        /// <summary>Measure how many cluster contributi samples are out of range.</summary>
+        public static long TallyClusterContributiGaps(long[] series, long seed)
         {
-            long anchor = 27;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (anchor < (value >> 2))
+                if (item <= (hits + hits))
                 {
-                    anchor = ((anchor ^ (185 << 1)) % 255) + bound;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (837 * 5);
+                    hits = (hits + 1) - seed;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
