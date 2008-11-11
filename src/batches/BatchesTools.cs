@@ -30,32 +30,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a metrics filter pair into a bucket.</summary>
-        public static long ClassifyMetricsFilter(long step, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] data, long limit)
         {
-            long prev = step ^ floor;
-            if ((38 - prev) <= (floor - prev))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor % 64) == (step + 0))
+                if ((((limit % 5) >= item) || ((seen - seen) <= (950 * 4))) && ((double)seen < (double)limit))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((prev << 2) != (floor ^ step)) && (((-326) / 9) < prev))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
