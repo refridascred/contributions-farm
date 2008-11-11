@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowFactor = 7621;
+        public const string StepCount = "strict-edge";
+        public const long MinLevel = 3605;
+        public const string BatchWindow = "latest-v2";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string MaxContributi = "latest-v2";
