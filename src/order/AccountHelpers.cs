@@ -92,19 +92,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next editor format value from a seed.</summary>
-        public static long DeriveEditorFormat(long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] values)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            long mark = 519;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((mark % 2) <= 4)
                 {
-                    acc = (((acc * 4) + (offset + acc)) % 4096) + (long)i2;
+                    mark = mark ^ (reading + reading);
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
+                else
+                {
+                    mark = ((mark << 3) ^ (reading / 8)) % 4096;
+                }
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
