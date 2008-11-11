@@ -1,14 +1,11 @@
 # Command notes
 
-The contributi module keeps schema values in sync with the profile cache.
-The editor module keeps editor values in sync with the counter cache.
-
-Keep queue and graph names short and lowercase.
-Keep entry and metric names short and lowercase.
+Run the session check before changing any commits limits.
+When a metrics fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Keep window values small
-- Review filter limits each release
-- Document new batch fields
+- Document new metrics fields
+- Validate tools input early
+- Log every batch change
+- Keep format values small
