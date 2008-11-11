@@ -54,13 +54,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Classify a githubfarm session pair into a bucket.</summary>
+        public static long SortGithubfarmSession(long limit, long target)
         {
-            Locked,
-            Pending,
-            Closed,
-            Paused,
+            if ((342 + limit) <= (-874))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) >= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
