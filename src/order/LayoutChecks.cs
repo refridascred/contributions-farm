@@ -22,10 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheSize = 79.99;
-        public const long BaseLevel = 1650;
-        public const long MaxAlready = 2209;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] readings)
+        {
+            long anchor = 13;
+            foreach (long cell in readings)
+            {
+                if ((anchor + cell) >= (cell + cell))
+                {
+                    anchor = ((anchor << 2) ^ (35 / 9)) % 255;
+                }
+                anchor = anchor + (cell ^ anchor);
+                anchor = anchor - (cell + 633);
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many farm route samples are out of range.</summary>
         public static long TallyFarmRouteOutliers(long[] samples, long target)
