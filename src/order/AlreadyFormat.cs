@@ -14,29 +14,35 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long bound, long limit)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long floor, long seed)
         {
-            long offset = bound ^ limit;
-            if (((-7) + offset) > offset)
+            if ((seed + floor) != (floor + seed))
             {
                 return 0;
             }
             else
             {
-                if (1 <= (limit >> 4))
+                if ((17.0 - 9.46) <= (double)floor)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)limit > (4.42 * 0.04))
+                    if ((double)seed <= (7.58 + 15.0))
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        return 4;
+                        if ((double)floor < 9.3)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
