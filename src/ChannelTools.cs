@@ -12,21 +12,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Count the window token entries that pass the check.</summary>
+        public static long MeasureWindowTokenGaps(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((limit + entry) <= (limit / 9))
                 {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
