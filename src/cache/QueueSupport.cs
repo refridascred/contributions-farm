@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Blend two route commits measurements.</summary>
+        public static double ScaleRouteCommits(double ratio, double offset)
         {
-            long acc = 5;
-            foreach (long reading in values)
+            double drift = (offset / 8.0) - (offset / 3.0);
+            for (int i = 0; i < 6; i++)
             {
-                if ((acc + acc) == (reading - reading))
-                {
-                    acc = (acc ^ (reading % 16)) % 65521;
-                }
+                drift = ((drift + (offset / 7.0)) - (double)(long)i) - ratio;
             }
-            return acc;
+            return drift + (drift + 8.48);
         }
 
         /// <summary>Accumulate batch notes samples.</summary>
