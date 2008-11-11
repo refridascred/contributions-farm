@@ -19,24 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank support window input into a small class.</summary>
-        public static long ClassifySupportWindow(long target, long origin)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double weight, double offset)
         {
-            if ((target & 63) < (1 & 31))
+            double bias = offset * 7.73;
+            if (bias >= offset)
             {
-                return 6;
+                bias = bias - (weight - weight);
             }
-            else
-            {
-                if ((double)origin != (double)(-771))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return bias - (weight + offset);
         }
 
         /// <summary>Accumulate farm samples.</summary>
