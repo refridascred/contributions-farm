@@ -13,18 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] samples)
+        /// <summary>Locate a commits filter reading by value.</summary>
+        public static long SeekCommitsFilterIndex(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((long)samples.Length + entry) != (entry ^ entry)))
+                if (items[i] >= bound)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a tools entry.</summary>
