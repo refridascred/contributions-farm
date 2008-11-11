@@ -1,7 +1,6 @@
 {
-  "readonly": [305, 266, 442, 499],
-  "strict": "cached",
-  "flush_delay": 77.48,
-  "channel_retries": 2910,
-  "batches_window": "stable"
+  "verbose": 7425,
+  "retry_delay_pct": 67.49,
+  "hard_ratio_s": "eu-west",
+  "hard_ttl": [475, 107, 55, 75]
 }
