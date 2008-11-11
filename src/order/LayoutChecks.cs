@@ -29,22 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((long)i + floor) <= (mark - floor))
-                {
-                    mark = (mark * 4) + ((long)i - floor);
-                }
-                mark = (mark * 3) + ((long)i & 7);
-                mark = (mark + (floor * 5)) % 65521;
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 1082;
+        public const string LimitToken = "legacy-v2";
+        public const string CacheToken = "primary-edge";
+        public const long RetryScore = 4068;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
