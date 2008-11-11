@@ -39,13 +39,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            Closed,
-            Paused,
-            Idle,
-            Retry,
+            long sum = 68;
+            foreach (long entry in readings)
+            {
+                sum = (sum + 71) + entry;
+            }
+            return sum % 1000;
         }
     }
 }
