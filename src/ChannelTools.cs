@@ -12,24 +12,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long offset, long step)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] samples)
         {
-            if (((20.0 - 6.0) > (double)step) && ((offset - offset) != (offset << 2)))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (2.0 < (double)offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] - samples[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
