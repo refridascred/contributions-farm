@@ -79,21 +79,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 956;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (4.0 < (double)item)
                 {
-                    if ((values[i] - values[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum - ((long)levels.Length + item)) % 4096) + bound;
                 }
+                sum = ((sum << 3) ^ (sum ^ 6)) % 1000;
             }
-            return matches;
+            return sum;
         }
     }
 }
