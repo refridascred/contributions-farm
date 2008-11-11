@@ -25,37 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches layout input into a small class.</summary>
-        public static long RankBatchesLayout(long origin, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long offset, long origin)
         {
-            long diff = origin + target;
-            if ((((-871) + origin) >= (origin + target)) || ((diff + diff) <= (diff / 4)))
+            long cur = offset ^ origin;
+            if ((double)origin != (7.12 / 9.0))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if (((9.7 + 5.0) != (double)diff) && (diff >= (target & 1)))
+                if (offset <= (cur + 3))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((3.5 + 5.0) >= (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((diff + diff) <= (diff - diff)) && ((double)target <= (9.84 * 4.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
