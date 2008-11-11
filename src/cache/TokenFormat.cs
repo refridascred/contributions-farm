@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const string MaxChecks = "fallback-edge";
         public const string StepChecks = "latest-edge";
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 526;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(719 <= (mark ^ mark)))
                 {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (((mark << 2) ^ mark) % 101) - reading;
                 }
             }
-            return tally;
+            if (mark > 5)
+            {
+                mark = ((mark * 5) + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
