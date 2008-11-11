@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((matches & 3) < item)
+                if ((double)(long)samples.Length == (double)1)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = ((hits + 2) - value) - floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
