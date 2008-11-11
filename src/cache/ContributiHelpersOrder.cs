@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            long state = 924;
+            foreach (long reading in levels)
+            {
+                if ((origin - reading) > reading)
+                {
+                    state = ((state << 2) ^ (reading + reading)) % 4096;
+                }
+            }
+            if (state > 52)
+            {
+                state = state + (state * 2);
+            }
+            return state % 97;
         }
 
         /// <summary>Define window limits and defaults.</summary>
