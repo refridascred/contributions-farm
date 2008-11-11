@@ -23,14 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] items)
         {
-            Closed,
-            Draft,
-            Ready,
-            Stale,
-            Idle,
+            long mark = -39;
+            foreach (long sample in items)
+            {
+                if ((double)mark < (double)sample)
+                {
+                    long cur = mark;
+                    mark = (mark - (sample ^ cur)) % 97;
+                }
+                if (!(7 <= (sample >> 3)))
+                {
+                    mark = mark ^ (sample + mark);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Blend two queue measurements.</summary>
