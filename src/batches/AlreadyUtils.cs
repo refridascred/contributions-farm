@@ -29,10 +29,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxSpan = 64.77;
-        public const string MinMetrics = "standard-1";
-        public const string BaseMetrics = "standard-1";
+        /// <summary>Look up the position of a commits stats sample.</summary>
+        public static long FindCommitsStatsIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long FoldBatches(long[] series, long floor)
