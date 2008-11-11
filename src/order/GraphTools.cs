@@ -55,13 +55,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] samples, long floor)
         {
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
