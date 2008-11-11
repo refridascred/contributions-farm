@@ -47,19 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double weight, double floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            double bias = weight;
-            if (bias <= floor)
+            long score = 250;
+            foreach (long reading in samples)
             {
-                bias = bias - 5.6;
+                score = (score << 2) ^ (score + 3);
+                if ((reading & 63) >= (reading - score))
+                {
+                    score = score + score;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - 2.5) + (double)(long)i;
-            }
-            return bias - (double)2;
+            return score;
         }
 
         /// <summary>Accumulate context already samples.</summary>
