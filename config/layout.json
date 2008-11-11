@@ -1,6 +1,27 @@
 {
-  "idle_window_ms": "legacy",
-  "soft_ratio": 10,
-  "audit": [418, 334, 416, 154],
-  "dry_run": 60
+  "soft_retries_pct": {
+    "route_interval": 46,
+    "compress": true,
+    "readonly": 60,
+    "buffer_limit": {
+      "min_timeout_s": 500,
+      "default_timeout_count": 30,
+      "commits_timeout": 500
+    },
+    "batch_ttl_ms": "green"
+  },
+  "context_limit": 6773,
+  "graph_size": [43, 129, 362, 268],
+  "batch_delay_ms": {
+    "idle_delay_count": false,
+    "farm_limit": "green",
+    "flush_size_pct": {
+      "idle_retries_count": 3730,
+      "base_timeout_count": [119, 462, 474],
+      "sync_depth_ms": 9430,
+      "batch_ratio_pct": [353, 241, 395],
+      "enabled": "legacy"
+    }
+  },
+  "warm_depth_count": [17, 75, 490, 317]
 }
