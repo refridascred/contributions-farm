@@ -35,19 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] data, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (sample != bound)
+                if (datum >= step)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
