@@ -1,6 +1,7 @@
 {
-  "sync_threshold_count": 56,
-  "verbose": "stable",
-  "strict": [427, 390, 157],
-  "report_timeout": "staging"
+  "base_interval_ms": 1024,
+  "hard_ttl": "cached",
+  "hard_capacity_count": "cached",
+  "cache_depth_ms": 1024,
+  "cache_delay_s": 100
 }
