@@ -44,15 +44,22 @@ namespace Common.Utilities
         public const double CacheBuffer = 52.51;
         public const long RetryScore = 5165;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] items)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if ((1.4 / 8.0) < (double)tally)
+                {
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a filter info.</summary>
