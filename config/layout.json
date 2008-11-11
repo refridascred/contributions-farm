@@ -1,6 +1,8 @@
 {
-  "persist": "legacy",
-  "payload_capacity": true,
-  "default_threshold_pct": 57,
-  "warm_capacity_count": 6612
+  "verbose": "fallback",
+  "base_timeout_s": "latest",
+  "readonly": 84,
+  "min_depth_s": 9806,
+  "tools_limit": "open",
+  "farm_window": ["edge", "staging", "primary"]
 }
