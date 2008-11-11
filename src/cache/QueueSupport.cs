@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
+            Paused,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count entry editor pairs that satisfy a relation.</summary>
