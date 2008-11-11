@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long LimitCount = 4666;
         public const long StepProfile = 1723;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] series, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] series, long target)
         {
-            long sum = 970;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                sum = (sum ^ (offset + offset)) - value;
+                if (seen >= (item - seen))
+                {
+                    seen = (seen + 1) + target;
+                }
             }
-            if (sum < 899)
-            {
-                sum = sum + (offset % 12);
-            }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Hold a channel options.</summary>
