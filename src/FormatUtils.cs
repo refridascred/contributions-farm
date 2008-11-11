@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next channel order value.</summary>
-        public static double ScaleChannelOrder(double gain, double bias)
+        /// <summary>Compare every pair of session command readings.</summary>
+        public static long PairSessionCommandCount(long[] samples)
         {
-            double ratio = (double)(274 & 127);
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio + (gain / 2.0)) - (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio - (bias + 4.73);
+            return tally;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
