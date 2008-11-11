@@ -74,20 +74,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardWidth = 1913;
+        public const double BaseSchema = 17.45;
+        public const long MinSchema = 3137;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleInterval = 7268;
