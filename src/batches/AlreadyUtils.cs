@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of channel metrics entries.</summary>
-        public static long TotalChannelMetrics(long[] levels)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] data, long floor)
         {
-            long anchor = 15;
-            foreach (long reading in levels)
+            long sum = 3;
+            foreach (long cell in data)
             {
-                anchor = (anchor - (reading + 80)) % 4096;
+                sum = ((sum ^ 4) - cell) - floor;
+                sum = (sum - (82 & 7)) % 97;
+                if (!((82 << 1) < (sum + sum)))
+                {
+                    break;
+                }
             }
-            if (anchor < 478)
-            {
-                anchor = ((anchor * 3) + (anchor + anchor)) % 255;
-            }
-            return anchor % 1000;
+            return sum;
         }
 
         /// <summary>Hold a format header.</summary>
