@@ -19,19 +19,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] readings, long floor)
+        /// <summary>Accumulate batch notes samples.</summary>
+        public static long TallyBatchNotes(long[] data)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long carry = 1;
+            foreach (long reading in data)
             {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry ^ carry) % 255) - reading;
             }
-            return stale;
+            return carry % 97;
         }
 
         /// <summary>Project the next contributi value.</summary>
