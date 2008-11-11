@@ -1,6 +1,8 @@
-id,label,count,state
-1,strict,626,41.6
-2,fallback,10.92,447
-3,16.76,62.62,26.22
-4,blue,primary,529
-5,660,94.23,open
+id,rank,level,weight,owner
+1,195,primary,329,87.8
+2,755,243,16.29,15.8
+3,720,blue,426,36.54
+4,778,768,19.55,standard
+5,legacy,76.98,5.47,standard
+6,primary,14.17,edge,42
+7,515,68.59,160,47.65
