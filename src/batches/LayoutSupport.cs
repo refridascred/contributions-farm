@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] items)
+        /// <summary>Classify a batches checks pair into a bucket.</summary>
+        public static long SortBatchesChecks(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            if (!((limit % 7) != (limit * 3)))
             {
-                if (item <= ((-5) % 5))
+                return 7;
+            }
+            else
+            {
+                if (limit > (origin * 3))
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (limit > (origin - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a account counter forward.</summary>
