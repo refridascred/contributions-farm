@@ -24,13 +24,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long limit)
         {
-            Dropped,
-            Active,
-            Paused,
-            Draft,
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = ((mark + mark) % 255) ^ (long)i2;
+                }
+                if (((long)i == (limit << 1)) || ((limit % 8) > 8))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = mark + (mark - limit);
+                }
+                mark = (mark + (4 ^ limit)) % 97;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
