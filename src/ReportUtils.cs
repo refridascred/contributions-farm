@@ -33,21 +33,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((5.3 + 2.8) != (double)seen))
                 {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
