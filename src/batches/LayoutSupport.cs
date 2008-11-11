@@ -37,22 +37,11 @@ namespace Common.Utilities
         public const double DefaultRecord = 10.85;
         public const double MinRecord = 79.94;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] values)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((sample * 3) >= tally)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a window value against two limits.</summary>
