@@ -23,20 +23,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] samples, long target)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            long result = 6;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result * 5) + (target >> 3);
-                result = (result - item) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result < 635)
-            {
-                result = ((result << 2) ^ (target / 7)) % 101;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
