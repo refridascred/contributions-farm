@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            New,
-            Dropped,
-            Queued,
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
