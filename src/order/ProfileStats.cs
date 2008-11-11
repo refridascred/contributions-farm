@@ -15,26 +15,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] values, long limit)
+        /// <summary>Grade a record report value against two limits.</summary>
+        public static long ClassifyRecordReport(long bound, long step)
         {
-            long total = -435;
-            foreach (long cell in values)
+            long prev = bound ^ step;
+            if (2 <= prev)
             {
-                if (total > (total ^ total))
+                return 8;
+            }
+            else
+            {
+                if ((double)prev <= (3.1 - 7.23))
                 {
-                    total = (((total - (total / 8)) % 1000) + cell) + limit;
+                    return 3;
                 }
                 else
                 {
-                    total = (total - (958 >> 2)) % 255;
+                    if ((double)prev != (4.2 + 8.4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (total > 117)
-            {
-                total = (total - (total << 2)) % 65521;
-            }
-            return total % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
