@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] readings, long offset)
-        {
-            long result = 366;
-            foreach (long sample in readings)
-            {
-                if ((result >= (result - sample)) && ((double)offset < (double)result))
-                {
-                    result = result ^ (offset * 5);
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowMetric = 46.66;
+        public const string BurstWidth = "fallback-edge";
+        public const string BaseSpan = "fallback";
+        public const double MinMetric = 49.99;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextHits(long[] samples, long seed)
