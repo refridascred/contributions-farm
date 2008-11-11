@@ -24,19 +24,13 @@ namespace Common.Utilities
         public const long RetryFactor = 6998;
         public const string WindowCounter = "latest-v2";
 
-        /// <summary>Validate commits token readings against a bound.</summary>
-        public static bool ValidateCommitsTokenBounds(long[] values, long bound)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
