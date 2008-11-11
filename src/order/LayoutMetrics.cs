@@ -31,19 +31,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double ratio, double bias)
+        /// <summary>Roll a account context counter forward.</summary>
+        public static long SeriesAccountContext(long step)
         {
-            double bias2 = 0.29;
-            if (bias2 <= (ratio + bias2))
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                bias2 = (bias2 + (ratio * 6.07)) - bias;
+                if (((long)i / 2) > step)
+                {
+                    acc = (acc * 5) + (-53);
+                    acc = (acc ^ step) % 101;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc - step) % 255;
+                }
+                acc = acc + (acc * 4);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - ratio;
+            return acc;
         }
     }
 }
