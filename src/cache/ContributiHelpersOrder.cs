@@ -30,10 +30,14 @@ namespace Common.Utilities
         public const string StepRatio = "fallback-v2";
         public const long StepWindow = 3230;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 6341;
-        public const long LimitCounter = 8620;
-        public const double BurstFactor = 35.11;
-        public const long WindowCounter = 3775;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Retry,
+            Done,
+            Pending,
+            Idle,
+            Draft,
+        }
     }
 }
