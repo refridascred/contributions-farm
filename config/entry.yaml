@@ -1,24 +1,4 @@
 # entry settings
-readonly:
-  retry_limit_pct: 6911
-  enabled:
-    idle_ttl_pct: cached
-    flush_delay_pct: fallback
-    poll_timeout: open
-    tools_size: blue
-    editor_delay:
-      - 226
-      - 190
-      - 410
-    persist: 24
-  poll_depth:
-    soft_timeout:
-      - 482
-      - 12
-    base_ttl: eu-west
-    persist: true
-cache_limit_count: staging
-cache_timeout: 75.46
-sync_interval_s: staging
-base_window_ms: 3634
-persist: 78.77
+flush_timeout_pct: 100
+retry_depth: 36.48
+batch_interval: 3035
