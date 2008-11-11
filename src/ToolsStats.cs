@@ -76,13 +76,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long target, long origin)
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
+            if ((target + origin) <= origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target + origin) <= 84)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin <= 24)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target + target) >= (target / 6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
