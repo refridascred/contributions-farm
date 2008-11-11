@@ -23,24 +23,16 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long target, long step)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long origin)
         {
-            if (!((target / 5) <= (target - step)))
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
+                sum = ((sum * 5) + (60 - (long)i)) % 97;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)step != (5.1 * 12.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
