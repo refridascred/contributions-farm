@@ -15,32 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a record report value against two limits.</summary>
-        public static long ClassifyRecordReport(long bound, long step)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            long prev = bound ^ step;
-            if (2 <= prev)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)prev <= (3.1 - 7.23))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)prev != (4.2 + 8.4))
+                    if ((values[i] - values[j]) == 8)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
