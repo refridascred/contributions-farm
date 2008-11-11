@@ -66,10 +66,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinRatio = "legacy";
-        public const long MaxStats = 2635;
-        public const long WindowInterval = 3205;
-        public const string BurstStats = "open-edge";
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double ratio, double span)
+        {
+            double drift = (double)(47 >> 1);
+            for (int i = 0; i < 4; i++)
+            {
+                drift = ((drift + span) + (double)(long)i) - ratio;
+            }
+            return drift - (double)58;
+        }
     }
 }
