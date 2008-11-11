@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] series, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] readings, long seed)
         {
-            long score = 239;
-            foreach (long cell in series)
+            long mix = 1;
+            foreach (long value in readings)
             {
-                if ((score ^ score) >= (cell + step))
-                {
-                    score = (score * 5) + (cell * 4);
-                }
+                mix = (((mix + (mix / 3)) % 255) + value) - seed;
             }
-            return score;
+            if (mix < 469)
+            {
+                mix = (mix + (mix / 8)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the tools context entries that pass the check.</summary>
