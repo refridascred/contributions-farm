@@ -1,8 +1,8 @@
 # support settings
-hard_capacity_pct:
-  - 369
-  - 77
-  - 96
-  - 111
-poll_timeout_s: 77.22
-readonly: 88
+min_delay:
+  - 308
+  - 270
+soft_threshold_ms: primary
+cluster_depth: 250
+batch_threshold: 38.86
+default_ratio_pct: false
