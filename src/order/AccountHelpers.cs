@@ -73,12 +73,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public long Level { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleInterval = 7268;
+        public const double CacheSupport = 79.63;
+        public const double WindowRatio = 86.12;
+        public const string HardTimeout = "fallback";
+        public const long DefaultSupport = 8248;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
