@@ -25,18 +25,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] values)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((7.43 / 8.0) != (double)datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
