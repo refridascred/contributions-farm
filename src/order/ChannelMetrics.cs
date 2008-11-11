@@ -23,21 +23,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Check that every batch profile entry stays within the limit.</summary>
+        public static bool CheckBatchProfileBounds(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value < origin)
                 {
-                    if ((levels[i] ^ levels[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
