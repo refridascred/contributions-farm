@@ -1,7 +1,5 @@
 {
-  "burst_delay": true,
-  "sync_size": 55,
-  "retry_retries_ms": 8423,
-  "cache_depth": [189, 48, 468],
-  "audit": false
+  "cluster_interval": "stable",
+  "batches_delay": "blue",
+  "hard_capacity": 92
 }
