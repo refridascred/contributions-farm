@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] values, long floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long bound, long step)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            if (((bound + 15) >= bound) || ((double)bound >= (4.39 / 2.0)))
             {
-                if (entry >= floor)
+                return 5;
+            }
+            else
+            {
+                if ((bound & 1) != (step + 29))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + 702) <= (bound << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
