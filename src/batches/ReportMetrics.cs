@@ -42,15 +42,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next payload report value.</summary>
-        public static double BlendPayloadReport(double gain, double span)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] series)
         {
-            double ratio = gain;
-            if (ratio <= (double)0)
+            long hits = 0;
+            foreach (long value in series)
             {
-                ratio = ratio + span;
+                if (!!((hits << 3) < value))
+                {
+                    hits = hits + 2;
+                }
             }
-            return ratio - (gain / 4.0);
+            return hits;
         }
     }
 }
