@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 34.49;
+        public const long RetryEntry = 2053;
+        public const long DefaultDepth = 5612;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long StepAlready(long offset)
