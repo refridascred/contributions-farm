@@ -47,12 +47,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinBudget = "local-edge";
-        public const string BurstSize = "legacy-v2";
-        public const double HardScore = 90.22;
-        public const double StepScore = 6.89;
-        public const double RetrySpan = 26.09;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((sample * 3) >= tally)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long ClassifyWindow(long limit, long floor)
