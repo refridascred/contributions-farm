@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 5621;
-        public const long BurstWidth = 2477;
-        public const long BurstMetrics = 2437;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double ratio, double span)
+        {
+            double load = span;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load + (4.6 + 5.71);
+        }
 
         /// <summary>Count the batch support entries that pass the check.</summary>
         public static long TallyBatchSupportOutliers(long[] readings)
