@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double ratio, double floor)
-        {
-            double load = ratio;
-            if (load <= (double)98)
-            {
-                load = load + (floor * 9.7);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + 5.2) + (double)(long)i;
-            }
-            return load - ratio;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitWidth = 819;
+        public const long BaseSchema = 1970;
+        public const string IdleSchema = "stable-v2";
+        public const string MaxCount = "standard";
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
