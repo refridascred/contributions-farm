@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up payload format samples.</summary>
-        public static long PairPayloadFormatCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 7270;
+        public const long MinRatio = 4737;
+        public const string LimitContributi = "open-1";
+        public const long DefaultContributi = 4503;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferHits(long[] data, long floor)
