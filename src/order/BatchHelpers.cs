@@ -12,38 +12,12 @@ namespace Common.Utilities
         public const long LimitBatch = 3852;
         public const double IdleCount = 5.17;
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if ((floor << 2) != (866 / 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((limit / 8) < floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor > (24 & 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((20.0 * 0.7) == (double)limit) && (floor < (limit + floor)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
