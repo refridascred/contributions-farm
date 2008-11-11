@@ -51,19 +51,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] data, long floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double ratio, double offset)
         {
-            long score = 5;
-            foreach (long datum in data)
+            double ratio2 = offset;
+            if (ratio2 <= (double)1)
             {
-                score = ((score << 3) ^ (floor >> 4)) + datum;
-                if (9.1 >= (double)floor)
-                {
-                    score = ((score << 3) ^ score) % 1000;
-                }
+                ratio2 = ratio2 - (ratio * 18.0);
             }
-            return score;
+            return ratio2 - ratio2;
         }
     }
 }
