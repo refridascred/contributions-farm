@@ -1,5 +1,15 @@
 {
-  "cache_threshold": "strict",
-  "hard_size_ms": "stable",
-  "strict": 10.25
+  "farm_timeout": "edge",
+  "sync_size": {
+    "default_capacity_count": {
+      "warm_threshold": 4092,
+      "checks_depth": 78.71,
+      "readonly": false
+    },
+    "payload_window": 4795,
+    "strict": 16.71,
+    "retry_timeout_ms": 14
+  },
+  "channel_retries": "local",
+  "compress": "blue"
 }
