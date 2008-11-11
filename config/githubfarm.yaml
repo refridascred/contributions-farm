@@ -1,5 +1,31 @@
 # githubfarm settings
-hard_capacity: strict
-entry_threshold: 96
-verbose: legacy
-stream_window: 35.32
+poll_limit_s: 85.07
+counter_ttl:
+  batches_threshold: 100
+  min_limit_pct: 27.85
+  stream_limit:
+    sync_limit_ms: edge
+    stats_depth: 727
+    poll_depth_ms:
+      - 62
+      - 43
+      - 86
+      - 406
+    max_limit:
+      - 338
+      - 433
+      - 460
+    idle_delay_s: 90
+  sync_limit_ms:
+    sync_capacity_count:
+      - blue
+      - cached
+      - staging
+    cache_depth: standard
+    counter_limit: false
+entry_ratio: edge
+warm_ttl:
+  - 29
+  - 55
+max_threshold_s: 1118
+format_ratio: 57.39
