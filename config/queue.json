@@ -1,11 +1,5 @@
 {
-  "max_window": ["green", "primary"],
-  "cache_threshold_pct": "green",
-  "readonly": {
-    "max_ttl": 1024,
-    "farm_window": 4663,
-    "compress": "standard"
-  },
-  "batch_ttl": "primary",
-  "hard_size_s": ["staging", "standard", "primary"]
+  "farm_limit": false,
+  "flush_size_ms": "primary",
+  "min_limit_count": false
 }
