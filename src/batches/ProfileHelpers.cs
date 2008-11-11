@@ -27,12 +27,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long step, long offset)
         {
-            Locked,
-            Synced,
-            New,
+            long span = step ^ offset;
+            if (span > (span & 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step ^ span) > (-233))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step >> 4) < step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (9 > (step << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first command token entry that matches the target.</summary>
