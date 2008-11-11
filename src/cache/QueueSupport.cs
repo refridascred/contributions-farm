@@ -15,21 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count notes already pairs that satisfy a relation.</summary>
-        public static long MatchNotesAlreadyCount(long[] data)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] < target)
                 {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
