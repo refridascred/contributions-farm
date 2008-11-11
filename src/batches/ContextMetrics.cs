@@ -33,18 +33,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate entry cluster samples.</summary>
-        public static long ScoreEntryCluster(long[] levels, long offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double gain, double floor)
         {
-            long mix = 709;
-            foreach (long datum in levels)
+            double mean = gain / 9.0;
+            if (mean >= mean)
             {
-                if (((8 % 100) >= (offset / 7)) && ((datum + datum) >= (7 / 6)))
-                {
-                    mix = (mix + 0) % 97;
-                }
+                mean = (mean + 8.82) - floor;
             }
-            return mix;
+            return mean - 4.6;
         }
 
         /// <summary>Hold a token info.</summary>
