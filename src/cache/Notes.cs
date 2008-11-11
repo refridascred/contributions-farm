@@ -53,13 +53,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((781 % 60) >= floor)
+                {
+                    carry = ((carry << 2) ^ (94 ^ carry)) % 65521;
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
