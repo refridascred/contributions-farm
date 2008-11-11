@@ -61,23 +61,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double scale, double span)
+        /// <summary>Find the first support checks entry that matches the target.</summary>
+        public static long FindSupportChecksIndex(long[] values, long limit)
         {
-            double drift = (double)64 + (double)431;
-            if (drift >= (double)1)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + (drift - scale);
+                if ((values[i] >= limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (double)8;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (span - drift)) + (double)(long)i;
-            }
-            return drift + (double)64;
+            return -1;
         }
     }
 }
