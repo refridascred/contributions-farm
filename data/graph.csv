@@ -1,6 +1,11 @@
-id,state,ratio,label
-1,legacy,184,eu-west
-2,strict,999,39
-3,419,513,81
-4,29.23,399,635
-5,73.51,907,68.07
+id,label,region
+1,14.17,311
+2,203,743
+3,991,legacy
+4,908,823
+5,173,338
+6,standard,69
+7,stable,81.75
+8,45.97,local
+9,43.78,273
+10,22.32,stable
