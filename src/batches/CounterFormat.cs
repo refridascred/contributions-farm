@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] samples, long limit)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] data, long seed)
         {
-            long sum = 764;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long value in data)
             {
-                sum = (sum - (value >> 1)) - limit;
-                if ((10.0 >= (double)sum) && ((4.76 * 1.58) <= (double)sum))
+                if (value > seed)
                 {
-                    sum = ((sum * 3) + (40 % 16)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (792 ^ sum)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return ready;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
