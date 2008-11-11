@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowSize = 19.3;
+        public const double StepRatio = 30.19;
+        public const long BatchBuffer = 2992;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long SeekSchemaIndex(long[] series, long offset)
