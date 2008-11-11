@@ -22,26 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long acc = 6;
-            foreach (long sample in samples)
-            {
-                if ((acc - sample) >= ((-2) & 15))
-                {
-                    acc = acc + (acc >> 5);
-                }
-                if (((acc + acc) > (acc ^ acc)) || ((acc ^ acc) > (acc & 127)))
-                {
-                    break;
-                }
-            }
-            if (acc < 822)
-            {
-                acc = (acc + (acc >> 3)) % 97;
-            }
-            return acc % 1000;
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
