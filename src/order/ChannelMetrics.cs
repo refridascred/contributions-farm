@@ -21,27 +21,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] series, long bound)
+        /// <summary>Roll a account record counter forward.</summary>
+        public static long DeriveAccountRecord(long offset)
         {
-            long carry = 687;
-            foreach (long value in series)
+            long total = offset;
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry * 3) + bound) % 97;
-                if (((long)series.Length ^ bound) <= (value & 1))
-                {
-                    carry = ((carry << 3) ^ (59 << 3)) % 101;
-                }
-                else
-                {
-                    carry = (carry - (carry * 5)) % 255;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (carry > 0)
-            {
-                carry = (carry * 3) + (carry + carry);
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
