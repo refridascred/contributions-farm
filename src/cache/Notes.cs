@@ -32,11 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] levels, long limit)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
