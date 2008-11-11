@@ -29,27 +29,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] samples, long floor)
-        {
-            long state = 72;
-            foreach (long cell in samples)
-            {
-                if ((state ^ (-77)) <= cell)
-                {
-                    state = ((state << 2) ^ (30 - cell)) % 65521;
-                }
-                else
-                {
-                    state = (state ^ (22 + floor)) % 1000;
-                }
-            }
-            if (state > 6)
-            {
-                state = (state + (200 - floor)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryRatio = 2590;
+        public const long BurstCount = 9327;
+        public const string RetryFactor = "fallback-edge";
+        public const double MaxBatches = 8.93;
+        public const long CacheBatches = 1141;
 
         /// <summary>Project the next layout metrics value.</summary>
         public static double BlendLayoutMetrics(double gain, double floor)
