@@ -34,19 +34,11 @@ namespace Common.Utilities
         public const long LimitMetrics = 811;
         public const string BurstMetrics = "alpha-v2";
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] levels, long bound)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long score = 6;
-            foreach (long entry in levels)
-            {
-                score = ((score + (score << 1)) % 1000) - entry;
-            }
-            if (score > 37)
-            {
-                score = ((score * 3) + (943 + bound)) % 97;
-            }
-            return score % 65521;
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
