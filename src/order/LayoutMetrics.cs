@@ -15,13 +15,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double gain, double span)
         {
-            Dropped,
-            Done,
-            Idle,
-            Paused,
+            double gain2 = span;
+            if (gain2 < (double)431)
+            {
+                gain2 = gain2 + (span - gain2);
+            }
+            else
+            {
+                gain2 = gain2 + (gain2 / 8.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + (gain2 - gain)) + (double)(long)i;
+            }
+            return gain2 - 11.0;
         }
 
         /// <summary>Roll a account context counter forward.</summary>
