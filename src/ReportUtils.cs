@@ -41,17 +41,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] items, long target)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long bound, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)offset >= (2.91 / 8.0))
             {
-                if (items[i] >= target)
+                return 5;
+            }
+            else
+            {
+                if (((offset << 2) <= offset) || (11 < offset))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
