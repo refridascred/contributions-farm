@@ -40,17 +40,10 @@ namespace Common.Utilities
         public const long DefaultTimeout = 1346;
         public const string DefaultDepth = "stable-v2";
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 5) + (965 % 60)) % 65521;
-                state = (state - state) % 101;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstSpan = 72.8;
+        public const long BurstReport = 5116;
+        public const long MinCount = 8829;
+        public const long BaseReport = 3729;
     }
 }
