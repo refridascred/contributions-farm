@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Validate already batch readings against a bound.</summary>
+        public static bool ValidateAlreadyBatchLimits(long[] readings, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                anchor = (anchor << 3) ^ (10 >> 4);
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (sample < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
