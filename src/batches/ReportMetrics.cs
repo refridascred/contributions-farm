@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples, long bound)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long total = 985;
-            foreach (long value in samples)
-            {
-                if (3.08 <= (double)bound)
-                {
-                    total = ((total * 3) + (bound + bound)) - value;
-                }
-            }
-            return total % 65521;
+            Idle,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
