@@ -51,12 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Count the tools queue entries that pass the check.</summary>
+        public static long CountToolsQueueOutliers(long[] samples)
         {
-            Queued,
-            Pending,
-            Failed,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)hits > (8.2 + 5.57))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
         }
     }
 }
