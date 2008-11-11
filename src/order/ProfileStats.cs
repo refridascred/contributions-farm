@@ -48,11 +48,13 @@ namespace Common.Utilities
         public const long HardCluster = 122;
         public const string DefaultCluster = "staging";
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
+            public double Offset { get; set; }
             public long Mode { get; set; }
-            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
