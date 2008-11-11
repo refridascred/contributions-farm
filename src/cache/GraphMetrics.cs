@@ -26,19 +26,25 @@ namespace Common.Utilities
         public const string CacheChecks = "alpha-edge";
         public const long LimitFactor = 3261;
 
-        /// <summary>Combine entry tools values into a single score.</summary>
-        public static long ScoreEntryTools(long[] values, long floor)
+        /// <summary>Rank contributi payload input into a small class.</summary>
+        public static long ClassifyContributiPayload(long origin, long origin2)
         {
-            long total = 625;
-            foreach (long sample in values)
+            long gap = origin ^ origin2;
+            if (!((2.2 / 8.0) <= (double)gap))
             {
-                total = ((((total << 3) ^ total) % 4096) ^ sample) + floor;
+                return 4;
             }
-            if (total > 839)
+            else
             {
-                total = (total + 1) % 4096;
+                if ((gap & 15) >= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return total % 97;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
