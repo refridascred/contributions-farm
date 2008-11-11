@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double rate, double span)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double scale = (8.0 * 14.0) + 8.2;
-            if (scale > rate)
-            {
-                scale = scale - (4.3 - span);
-            }
-            else
-            {
-                scale = scale + (3.5 * 0.8);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - span;
+            public double Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
