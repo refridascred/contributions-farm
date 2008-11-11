@@ -33,13 +33,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Done,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 7005;
+        public const long IdleBatches = 5066;
+        public const long StepBatches = 6412;
+        public const double WindowFactor = 70.53;
 
         /// <summary>Blend two context measurements.</summary>
         public static double BlendContext(double gain, double floor)
