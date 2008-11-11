@@ -24,12 +24,16 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] samples, long step)
         {
-            Ready,
-            Retry,
-            Closed,
+            long carry = -109;
+            foreach (long reading in samples)
+            {
+                carry = ((carry ^ (carry & 63)) % 97) - step;
+                carry = ((carry * 5) + (reading * 4)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Rank context input into a small class.</summary>
