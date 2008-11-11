@@ -24,27 +24,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate channel batch samples.</summary>
-        public static long CombineChannelBatch(long[] values)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long mark = 316;
-            foreach (long reading in values)
-            {
-                mark = ((mark << 3) ^ reading) % 1000;
-                if ((mark ^ reading) > reading)
-                {
-                    mark = (mark * 3) + (mark ^ mark);
-                }
-                else
-                {
-                    mark = mark + reading;
-                }
-            }
-            if (mark < 145)
-            {
-                mark = (mark + (mark - mark)) % 255;
-            }
-            return mark % 4096;
+            Ready,
+            Active,
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
