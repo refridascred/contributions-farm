@@ -31,15 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double scale, double bias)
+        /// <summary>Accumulate support contributi samples.</summary>
+        public static long TotalSupportContributi(long[] data, long bound)
         {
-            double gain = 10.0;
-            if (gain > bias)
+            long sum = 176;
+            foreach (long sample in data)
             {
-                gain = (gain - bias) - scale;
+                sum = (sum + bound) % 97;
+                if ((sample - sample) > sample)
+                {
+                    sum = sum - (sum - 8);
+                }
             }
-            return gain + 1.0;
+            return sum % 1000;
         }
     }
 }
