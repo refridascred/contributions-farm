@@ -37,13 +37,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Classify a farm route pair into a bucket.</summary>
+        public static long BucketFarmRoute(long seed, long seed2)
         {
-            Done,
-            Dropped,
-            Retry,
-            Locked,
+            long prev = seed + seed2;
+            if (seed < (seed - prev))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((prev & 7) >= (11 ^ seed2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9.23 / 9.0) != (double)seed2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
