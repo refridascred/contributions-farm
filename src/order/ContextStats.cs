@@ -40,17 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] items, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long seed, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((offset > ((-68) + seed)) && ((5.8 / 7.0) < (double)offset))
             {
-                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((6.29 * 17.0) > (double)offset)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (seed > 8)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
