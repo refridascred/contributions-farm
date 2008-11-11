@@ -45,11 +45,24 @@ namespace Common.Utilities
         public const long RetryBuffer = 1990;
         public const double LimitBuffer = 16.27;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinRatio = 5596;
-        public const long DefaultDepth = 298;
-        public const long WindowScore = 8443;
-        public const long MinCommand = 3049;
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double gain, double offset)
+        {
+            double load = offset;
+            if (load >= (9.9 - load))
+            {
+                load = load + (load * 5.1);
+            }
+            else
+            {
+                load = load + gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (load - offset)) + (double)(long)i;
+            }
+            return load + 6.68;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
