@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] series, long limit)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] levels)
         {
-            long sum = 774;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum << 3) ^ (sum - limit)) % 97) - entry;
-                sum = sum ^ 75;
-                if ((limit << 1) < (limit - 809))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = sum ^ (limit % 2);
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
