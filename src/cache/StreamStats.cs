@@ -20,22 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate window graph samples.</summary>
-        public static long CombineWindowGraph(long[] items)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] levels, long bound)
         {
-            long total = 47;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((total - 76) <= (total * 5))
+                if (cell != bound)
                 {
-                    total = ((total << 2) ^ (datum - total)) % 4096;
-                }
-                else
-                {
-                    total = (total + datum) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
