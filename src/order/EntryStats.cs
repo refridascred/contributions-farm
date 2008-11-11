@@ -28,11 +28,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a entry channel reading.</summary>
-        public static double BlendEntryChannel(double ratio, double offset)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            double bias = ratio + offset;
-            return bias + bias;
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
