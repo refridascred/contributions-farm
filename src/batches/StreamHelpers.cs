@@ -68,13 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Draft,
-            Done,
-            Closed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 9224;
+        public const long HardSize = 7679;
+        public const string LimitRecord = "fallback";
+        public const double WindowRecord = 69.86;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
