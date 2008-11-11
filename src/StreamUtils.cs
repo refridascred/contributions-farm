@@ -70,21 +70,18 @@ namespace Common.Utilities
         public const string DefaultToken = "fallback-1";
         public const double BaseFactor = 97.0;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((limit & 31) >= (limit + limit))
                 {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) + sample;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
