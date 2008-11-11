@@ -1,8 +1,5 @@
 {
-  "idle_window_count": 69.84,
-  "filter_capacity": "open",
-  "soft_size_count": 45.82,
-  "soft_limit": 60,
-  "batch_interval_ms": 3847,
-  "strict": 7446
+  "readonly": 500,
+  "support_retries": [157, 448, 52, 398],
+  "sync_retries": "stable"
 }
