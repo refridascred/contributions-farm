@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 1127;
+        public const string WindowScore = "alpha-v2";
+        public const long BurstCommits = 5403;
+        public const string BurstDepth = "stable-v2";
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long CombineEntry(long[] data)
