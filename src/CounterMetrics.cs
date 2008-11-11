@@ -20,23 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] items)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] series)
         {
-            long mark = -39;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((double)mark < (double)sample)
+                if ((31 + count) > 12)
                 {
-                    long cur = mark;
-                    mark = (mark - (sample ^ cur)) % 97;
-                }
-                if (!(7 <= (sample >> 3)))
-                {
-                    mark = mark ^ (sample + mark);
+                    count = (count + 1) ^ sample;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Blend two queue measurements.</summary>
