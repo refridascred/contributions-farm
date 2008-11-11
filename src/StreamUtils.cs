@@ -55,10 +55,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "staging-1";
-        public const string DefaultToken = "fallback-1";
-        public const double BaseFactor = 97.0;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Ready,
+            Done,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long SortSession(long step, long floor)
