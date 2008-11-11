@@ -36,15 +36,22 @@ namespace Common.Utilities
         public const double MaxBatches = 8.93;
         public const long CacheBatches = 1141;
 
-        /// <summary>Project the next layout metrics value.</summary>
-        public static double BlendLayoutMetrics(double gain, double floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] values)
         {
-            double drift = floor + gain;
-            for (int i = 0; i < 4; i++)
+            long acc = 98;
+            foreach (long sample in values)
             {
-                drift = drift - (double)(long)i;
+                if ((double)sample > (9.99 / 3.0))
+                {
+                    acc = (acc * 2) + (744 - sample);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (sample << 1);
+                }
             }
-            return drift - drift;
+            return acc;
         }
     }
 }
