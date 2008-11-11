@@ -19,32 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long seed, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] levels)
         {
-            long bound2 = seed ^ bound;
-            if ((2.5 * 7.14) <= (double)bound)
+            long mix = 5;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound2 <= seed)
+                if ((mix / 8) == (mix * 5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed < (bound2 & 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = mix - (datum ^ datum);
                 }
             }
+            return mix % 97;
         }
 
         /// <summary>Describe the checks state values.</summary>
