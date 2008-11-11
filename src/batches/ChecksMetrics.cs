@@ -22,11 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxBudget = 5934;
-        public const double MaxQueue = 63.07;
-        public const long StepQueue = 4034;
-        public const long RetryTimeout = 3668;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepRatio = 89.23;
+        public const long MaxScore = 5392;
+        public const long CacheCount = 8244;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
