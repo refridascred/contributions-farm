@@ -23,13 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] values)
         {
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((long)values.Length * 5) <= datum)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
