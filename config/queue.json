@@ -1,8 +1,6 @@
 {
-  "metrics_delay": "edge",
-  "max_delay_pct": [413, 262],
-  "counter_interval": 15.22,
-  "soft_window": "open",
-  "strict": false,
-  "command_size": 3107
+  "flush_limit_count": "edge",
+  "soft_threshold_s": "green",
+  "cache_retries_pct": "local",
+  "already_ratio": "eu-west"
 }
