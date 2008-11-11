@@ -1,26 +1,18 @@
 # entry settings
-soft_limit_pct: local
-cache_threshold_count: 1024
-tools_interval:
-  audit: green
-  default_capacity_s: true
-  burst_limit: 3314
-  warm_capacity_s: 1237
-  warm_retries_s:
-    retry_ratio_count: true
-    checks_retries: 30
-    command_timeout: 126
-    githubfarm_ttl:
-      - 39
-      - 285
-    burst_delay_ms: 61
-verbose: 100
-max_size_pct:
-  sync_timeout: standard
-  compress: 9200
-  persist:
-    burst_ttl: strict
-    cache_window: 6318
-    schema_ttl: false
-    strict: false
-  schema_timeout: latest
+poll_ratio_s:
+  schema_ttl:
+    - 111
+    - 194
+    - 177
+    - 104
+  poll_window_count:
+    audit: standard
+    hard_limit_ms: green
+    hard_ttl_count: 41.59
+    hard_ttl: stable
+    max_window_count: edge
+    base_interval_s: 98
+  layout_interval: 96
+  audit: eu-west
+flush_ratio_pct: 31.22
+editor_timeout: 500
