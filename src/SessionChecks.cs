@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 1564;
-        public const double WindowSchema = 18.81;
-        public const string CacheSchema = "alpha-edge";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 4431;
+        public const double BurstCache = 3.87;
+        public const long BaseSize = 5942;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LookupFilterIndex(long[] samples, long floor)
