@@ -73,13 +73,13 @@ namespace Common.Utilities
             return load + (scale - load);
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Ready,
-            Queued,
-            Done,
-            Draft,
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
