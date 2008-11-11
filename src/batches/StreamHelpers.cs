@@ -27,22 +27,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] series, long offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (((matches < offset) || ((offset * 4) > (item - offset))) || (0 <= (item - 8)))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    matches = matches + 3;
+                    anchor = ((anchor << 3) ^ (anchor % 2)) ^ (long)i2;
+                    anchor = (anchor ^ anchor) % 65521;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor ^ (offset >> 4)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
