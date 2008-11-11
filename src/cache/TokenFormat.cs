@@ -20,17 +20,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a context report reading by value.</summary>
-        public static long LookupContextReportIndex(long[] values, long floor)
+        /// <summary>Roll a record payload counter forward.</summary>
+        public static long DeriveRecordPayload(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (values[i] == floor)
+                if ((double)score <= (4.74 - 3.0))
                 {
-                    return (long)i;
+                    score = (score ^ (offset << 3)) % 101;
+                    break;
                 }
+                else
+                {
+                    score = (score * 3) + (-1);
+                    score = (score - offset) % 4096;
+                }
+                if ((long)i != (67 - offset))
+                {
+                    score = score ^ (offset % 8);
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
