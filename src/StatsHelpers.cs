@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] data, long limit)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((limit * 5) > (tally + sample))
-                {
-                    tally = tally + 1;
-                }
+                mix = (mix * 3) + origin;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a cache entry.</summary>
