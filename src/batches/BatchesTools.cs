@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up tools editor samples.</summary>
-        public static long CompareToolsEditorCount(long[] series)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample != step)
                 {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
