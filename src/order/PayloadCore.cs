@@ -33,21 +33,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Combine window buffer values into a single score.</summary>
+        public static long FoldWindowBuffer(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 785;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)cell > (7.0 * 3.0))
                 {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum << 2) ^ (1 - 35);
                 }
             }
-            return seen;
+            if (sum > (-7))
+            {
+                sum = (sum << 3) ^ target;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next window token value from a seed.</summary>
