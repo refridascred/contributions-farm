@@ -51,13 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Locked,
-            Failed,
-            Done,
-            Retry,
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
