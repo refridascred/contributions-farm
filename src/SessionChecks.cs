@@ -27,38 +27,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long floor, long floor2)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            if (((7.4 / 8.0) < (double)floor2) && ((floor % 16) <= floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor2 > (7.27 + 3.31))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor2 < (floor2 & 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8 + floor) < (floor >> 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Closed,
+            Stale,
         }
 
         /// <summary>Count the tools queue entries that pass the check.</summary>
