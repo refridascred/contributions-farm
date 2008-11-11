@@ -39,14 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long target)
         {
-            Synced,
-            New,
-            Closed,
-            Active,
-            Pending,
+            long acc = target;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
