@@ -84,11 +84,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchStats = "stable-1";
+        public const long DefaultLevel = 5452;
+        public const long BurstStats = 9983;
     }
 }
