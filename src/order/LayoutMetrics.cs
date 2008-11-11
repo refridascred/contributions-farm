@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double scale, double span)
         {
-            Locked,
-            Queued,
-            Dropped,
-            Done,
-            Draft,
+            double rate = scale;
+            if (rate >= 6.0)
+            {
+                rate = (rate + (rate * 2.66)) + span;
+            }
+            return rate + (8.3 / 8.0);
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
