@@ -1,11 +1,7 @@
 # entry settings
-max_ttl: true
-cache_ttl_ms: true
-max_retries: green
-sync_window: latest
-cache_window_s:
-  sync_capacity_count: 30
-  max_threshold: true
-  strict: true
-  support_ttl: green
-queue_capacity: 9677
+base_ratio_pct: blue
+burst_capacity_s: blue
+min_retries_count: legacy
+context_threshold: 48
+burst_limit: true
+hard_ttl_count: 4323
