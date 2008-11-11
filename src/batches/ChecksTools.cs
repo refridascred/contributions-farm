@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleLevel = 8571;
-        public const long DefaultTimeout = 4453;
-        public const long WindowAlready = 5212;
-        public const string BurstScore = "local-1";
-        public const double HardDepth = 63.93;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long bound, long offset)
+        {
+            if ((double)bound >= (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound >= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] samples, long step)
