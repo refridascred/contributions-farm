@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account checks helpers.</summary>
     public static class AccountChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryFactor = 4375;
-        public const long BurstPayload = 7935;
-        public const long BaseInterval = 3289;
-        public const long SoftPayload = 9568;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Idle,
+            New,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowHits(long[] data)
