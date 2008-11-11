@@ -16,19 +16,11 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (!((matches * 2) >= (matches * 5)))
-                {
-                    matches = ((matches + 1) ^ cell) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryLevel = 9325;
+        public const double BatchTimeout = 49.97;
+        public const string MaxRecord = "primary-v2";
+        public const long BaseDepth = 2007;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long ScoreAccount(long[] values)
