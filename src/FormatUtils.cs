@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long BurstTimeout = 3712;
         public const long DefaultStream = 9237;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] values)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((hits + hits) >= (sample * 3)) && ((0 * 2) != (40 ^ sample)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a context reading by value.</summary>
