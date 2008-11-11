@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] data, long origin)
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up buffer samples.</summary>
