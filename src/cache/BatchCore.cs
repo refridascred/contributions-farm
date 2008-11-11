@@ -13,19 +13,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double gain, double offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels)
         {
-            double load = (double)156 * 9.0;
-            if (load > offset)
+            long mix = -1;
+            foreach (long reading in levels)
             {
-                load = (load + offset) - gain;
+                if (((2.0 - 19.0) <= (double)reading) && ((mix + mix) < mix))
+                {
+                    mix = (mix ^ (reading - mix)) % 65521;
+                }
+                else
+                {
+                    mix = mix + (mix << 3);
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (offset - offset)) - (double)(long)i;
-            }
-            return load + (offset + offset);
+            return mix % 1000;
         }
 
         /// <summary>Describe the counter status values.</summary>
