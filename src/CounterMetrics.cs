@@ -23,22 +23,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] items, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long anchor = 16;
+            foreach (long item in readings)
             {
-                if ((cell - count) != (count - count))
+                if ((double)item < (1.77 + 4.6))
                 {
-                    count = (count + 2) - target;
+                    anchor = ((anchor << 2) ^ 760) % 255;
+                    anchor = ((anchor * 3) + anchor) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    anchor = ((anchor << 2) ^ (anchor << 1)) % 1000;
+                    anchor = (anchor - ((-4) & 1)) % 4096;
+                }
+                if ((37 << 1) < (item * 5))
+                {
+                    anchor = (anchor + (item * 5)) % 1000;
+                }
+                if (!((anchor - item) >= (anchor + (-69))))
+                {
+                    anchor = (anchor ^ (item / 2)) % 97;
                 }
             }
-            return count;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a graph stats.</summary>
