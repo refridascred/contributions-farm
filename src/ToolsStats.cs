@@ -42,15 +42,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Measure how many stream order samples are out of range.</summary>
+        public static long TallyStreamOrderMatches(long[] values, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if (!(reading > (bound % 7)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of already readings.</summary>
