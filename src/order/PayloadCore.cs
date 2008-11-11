@@ -51,25 +51,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next window token value from a seed.</summary>
-        public static long IterateWindowToken(long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] items, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                double scale = (double)((long)i / 2);
-                long tally = 699;
-                if (((scale - scale) > scale) && (total >= tally))
+                if (reading != bound)
                 {
-                    tally = ((tally * 5) + ((long)i * 3)) % 97;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    scale = scale + scale;
-                }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return valid;
         }
     }
 }
