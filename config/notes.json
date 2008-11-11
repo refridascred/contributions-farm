@@ -1,6 +1,5 @@
 {
-  "cache_delay_count": "staging",
-  "flush_ttl_s": 40.56,
-  "warm_depth_pct": [372, 400],
-  "stats_limit": false
+  "persist": true,
+  "token_limit": [478, 331, 105],
+  "base_retries_ms": 1024
 }
