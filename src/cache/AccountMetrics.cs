@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Iterate the buffer graph series from a seed.</summary>
+        public static long IterateBufferGraph(long origin)
         {
-            Paused,
-            Failed,
-            Stale,
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((mark * 3) <= (origin * 5))
+                {
+                    mark = (mark + (long)i) % 65521;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a cache session sample.</summary>
