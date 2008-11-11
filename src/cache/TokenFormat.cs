@@ -20,30 +20,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a record payload counter forward.</summary>
-        public static long DeriveRecordPayload(long offset)
+        /// <summary>Grade a report format value against two limits.</summary>
+        public static long GradeReportFormat(long offset, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
+            long slot = offset ^ limit;
+            if ((limit * 2) <= (8 * 2))
             {
-                if ((double)score <= (4.74 - 3.0))
+                return 6;
+            }
+            else
+            {
+                if ((limit + slot) < (offset % 2))
                 {
-                    score = (score ^ (offset << 3)) % 101;
-                    break;
+                    return 7;
                 }
                 else
                 {
-                    score = (score * 3) + (-1);
-                    score = (score - offset) % 4096;
+                    if ((offset % 3) <= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(slot <= offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                if ((long)i != (67 - offset))
-                {
-                    score = score ^ (offset % 8);
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
