@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up entry batches samples.</summary>
-        public static long CompareEntryBatchesCount(long[] items)
+        /// <summary>Derive the next context support value from a seed.</summary>
+        public static long StepContextSupport(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)i - offset) == ((long)i ^ anchor))
                 {
-                    if ((items[i] + items[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor - (long)i;
+                    anchor = (anchor << 3) ^ (9 - (long)i);
+                    continue;
                 }
+                if (!((double)440 > (9.4 / 7.0)))
+                {
+                    anchor = (anchor + (anchor * 3)) % 255;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the metrics class values.</summary>
