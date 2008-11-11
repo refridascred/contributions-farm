@@ -34,24 +34,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long step)
+        /// <summary>Audit profile counter readings against a rule.</summary>
+        public static long MeasureProfileCounterMatches(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((score * 5) == (step - (long)i))
+                if (((long)items.Length >> 5) < (reading + hits))
                 {
-                    score = score + (604 + 6);
-                    score = score + (score + step);
+                    hits = hits + 3;
                 }
-                else
-                {
-                    score = (score ^ (step + step)) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return hits;
         }
     }
 }
