@@ -44,24 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue commits entries.</summary>
-        public static long TotalQueueCommits(long[] samples, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] items)
         {
-            long carry = 263;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                carry = (carry * 2) + value;
-                carry = ((carry * 2) + (bound / 9)) % 101;
-                if (((bound / 5) >= (value + value)) || (bound <= (value * 2)))
+                if ((sample - seen) < seen)
                 {
-                    carry = (carry - (bound - carry)) % 1000;
+                    seen = seen + 1;
                 }
             }
-            if (carry > 69)
-            {
-                carry = ((carry * 3) + (carry - carry)) % 255;
-            }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Hold a contributi info.</summary>
