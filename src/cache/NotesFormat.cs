@@ -24,11 +24,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double weight, double bias)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] items)
         {
-            double ratio = (bias - 7.26) + (bias / 9.0);
-            return (ratio + bias) + weight;
+            long score = 4;
+            foreach (long item in items)
+            {
+                if ((item * 4) <= (score % 12))
+                {
+                    score = (score + (score * 3)) % 4096;
+                }
+                score = (score - (score & 3)) % 97;
+            }
+            if (score < 2)
+            {
+                score = ((score << 3) ^ (13 << 2)) % 1000;
+            }
+            return score % 97;
         }
     }
 }
