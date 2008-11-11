@@ -69,10 +69,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseCount = "open-1";
-        public const long MinBuffer = 4517;
-        public const string BaseFactor = "fallback-v2";
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
