@@ -1,19 +1,13 @@
 {
-  "poll_depth_s": true,
-  "session_capacity": [166, 397],
-  "checks_timeout": "staging",
-  "burst_delay": 100,
-  "entry_ttl": {
-    "enabled": {
-      "default_size_count": false,
-      "batches_interval": 83.91,
-      "stats_delay": 6085
-    },
-    "readonly": 38.67,
-    "dry_run": "primary",
-    "command_interval": ["fallback", "local", "stable"],
-    "min_delay_pct": [491, 426, 339],
-    "soft_ttl_s": true
+  "retry_delay": false,
+  "githubfarm_limit": "latest",
+  "format_ttl": {
+    "route_depth": 100,
+    "warm_size": [89, 193],
+    "idle_limit_s": ["cached", "green", "green"],
+    "base_capacity": 577,
+    "strict": ["green", "strict", "standard", "blue"],
+    "commits_interval": 81.48
   },
-  "sync_interval_pct": "open"
+  "default_interval_ms": true
 }
