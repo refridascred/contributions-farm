@@ -35,12 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 52.4;
-        public const long BurstCount = 6711;
-        public const long MinWidth = 6398;
-        public const long BatchSize = 4614;
-        public const string CacheCounter = "legacy-1";
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate metrics editor samples.</summary>
         public static long DigestMetricsEditor(long[] items, long offset)
