@@ -35,38 +35,13 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Classify a commits filter pair into a bucket.</summary>
-        public static long RankCommitsFilter(long offset, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if ((offset - bound) >= (66 >> 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset << 1) > (offset + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset ^ bound) != (bound + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound >= (bound ^ offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Pending,
+            Dropped,
+            Done,
         }
     }
 }
