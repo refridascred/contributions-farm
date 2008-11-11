@@ -25,11 +25,11 @@ namespace Common.Utilities
         public const long MinLevel = 3605;
         public const string BatchWindow = "latest-v2";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "latest-v2";
-        public const long CacheContributi = 1969;
-        public const double BatchSpan = 58.54;
-        public const long MinContributi = 197;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 9286;
+        public const double LimitChecks = 78.3;
+        public const string RetryChecks = "cached-1";
+        public const long DefaultSpan = 7942;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] readings, long origin)
