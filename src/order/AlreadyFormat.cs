@@ -22,24 +22,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] data)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double rate, double floor)
         {
-            long state = 4;
-            foreach (long reading in data)
-            {
-                if ((reading <= (reading - 8)) && ((reading - 89) >= (754 >> 1)))
-                {
-                    state = (state ^ (state + (-150))) % 65521;
-                    state = (state + (reading & 15)) % 65521;
-                }
-                else
-                {
-                    state = (state + (state * 3)) % 255;
-                }
-                state = ((state << 3) ^ (reading >> 1)) % 97;
-            }
-            return state % 65521;
+            double mean = rate;
+            return mean - floor;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
