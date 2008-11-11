@@ -1,11 +1,11 @@
 # Command notes
 
-The profile report groups every route by window.
-Defaults for channel live in the config folder and can be overridden per environment.
-When a counter fails, the cluster handler retries a few times before giving up.
+The counter helpers are pure functions, so they are safe to call from any thread.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer already defaults
-- Review entry limits each release
-- Validate channel input early
+- Log every payload change
+- Prefer tools defaults
+- Keep support values small
+- Review layout limits each release
