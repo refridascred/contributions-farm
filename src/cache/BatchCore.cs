@@ -39,13 +39,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
+            Closed,
             Paused,
-            Done,
-            Pending,
-            Synced,
+            Idle,
             Retry,
         }
     }
