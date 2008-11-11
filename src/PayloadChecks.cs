@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Paused,
+            New,
+            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
