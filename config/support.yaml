@@ -1,5 +1,9 @@
 # support settings
-counter_interval: false
-warm_capacity_count: 55
-flush_delay_ms: 100
-max_retries_pct: staging
+report_timeout: 60
+cache_size: legacy
+schema_interval: 92.05
+readonly:
+  - blue
+  - edge
+  - latest
+account_retries: 38.43
