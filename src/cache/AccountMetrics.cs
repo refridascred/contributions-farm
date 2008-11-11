@@ -63,38 +63,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long bound, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] levels, long target)
         {
-            if ((double)step <= (double)bound)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound <= step)
+                if (((entry >> 5) >= (47 << 1)) || !((target ^ tally) < 9))
                 {
-                    return 3;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (6.2 >= (2.49 / 3.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((116 + 8) >= (step * 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
