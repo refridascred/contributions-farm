@@ -73,38 +73,14 @@ namespace Common.Utilities
             return rate + (rate / 7.0);
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long bound, long origin)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            if (((double)origin != (9.1 - 9.0)) && ((origin % 16) == (origin << 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((-540) + origin) > bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin - origin) < origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-360) + bound) <= (825 % 24))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Dropped,
+            Synced,
+            Active,
+            Locked,
         }
     }
 }
