@@ -38,17 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first command token entry that matches the target.</summary>
-        public static long FindCommandTokenIndex(long[] data, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((data[i] > offset) && ((data[i] % 3) != 0))
+                if (item < target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the account kind values.</summary>
