@@ -29,18 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] items)
-        {
-            long carry = 69;
-            foreach (long item in items)
-            {
-                if (carry < (item & 15))
-                {
-                    carry = (carry + (carry + item)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftSize = 6057;
+        public const long CacheRoute = 8937;
+        public const double BatchRoute = 41.23;
+        public const double LimitFactor = 51.36;
+        public const long WindowDepth = 454;
     }
 }
