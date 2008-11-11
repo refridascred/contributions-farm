@@ -23,24 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] items, long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] values, long step)
         {
-            long acc = 0;
-            foreach (long sample in items)
+            long acc = 4;
+            foreach (long datum in values)
             {
-                if (sample > (6 + 77))
+                if (!((52 + 4) < (acc + datum)))
                 {
-                    acc = (acc - floor) % 65521;
+                    acc = (acc ^ 86) + step;
                 }
-                else
-                {
-                    acc = (acc - (sample & 1)) % 65521;
-                }
-            }
-            if (acc > 50)
-            {
-                acc = (acc + acc) % 4096;
             }
             return acc % 65521;
         }
