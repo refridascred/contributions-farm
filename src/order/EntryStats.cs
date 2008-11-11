@@ -27,12 +27,11 @@ namespace Common.Utilities
         public const long CacheTimeout = 2960;
         public const long CacheWidth = 5341;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
