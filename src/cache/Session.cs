@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] samples)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((reading - reading) <= (hits % 10))
+                if (sample >= bound)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a editor stats.</summary>
