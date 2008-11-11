@@ -41,18 +41,12 @@ namespace Common.Utilities
             return drift + (double)25;
         }
 
-        /// <summary>Measure how many stream order samples are out of range.</summary>
-        public static long TallyStreamOrderMatches(long[] values, long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (!(reading > (bound % 7)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
