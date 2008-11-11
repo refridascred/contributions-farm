@@ -61,18 +61,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] items, long offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long offset, long offset2)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            if ((offset + 355) != (41 + offset2))
             {
-                if ((cell / 2) < ((long)items.Length << 3))
+                return 4;
+            }
+            else
+            {
+                if ((offset2 >> 3) < offset2)
                 {
-                    tally = (tally + 2) - offset;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + 536) == (offset2 >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset2 >= 9)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
