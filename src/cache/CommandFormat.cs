@@ -28,15 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
