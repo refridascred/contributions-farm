@@ -23,19 +23,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] items)
+        /// <summary>Count command schema pairs that satisfy a relation.</summary>
+        public static long CompareCommandSchemaCount(long[] series)
         {
-            long mark = 6;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark << 3) ^ (value << 1)) % 255;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark > 36)
-            {
-                mark = (mark + mark) % 1000;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
