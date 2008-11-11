@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate channel batch samples.</summary>
