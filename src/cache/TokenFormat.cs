@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Accumulate counter metrics samples.</summary>
+        public static long CombineCounterMetrics(long[] samples, long floor)
         {
-            Failed,
-            Synced,
-            New,
-            Draft,
-            Pending,
+            long carry = 8;
+            foreach (long datum in samples)
+            {
+                carry = carry + carry;
+                if (!((5 + (long)samples.Length) <= floor))
+                {
+                    carry = (carry - (carry - datum)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a context report reading by value.</summary>
