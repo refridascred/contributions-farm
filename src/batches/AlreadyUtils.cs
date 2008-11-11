@@ -51,39 +51,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long step, long floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] items)
         {
-            long slot = step + floor;
-            if (slot <= (step + 7))
+            long anchor = 5;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step << 2) <= (-258))
+                if ((double)anchor < (double)sample)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((slot % 2) > (floor - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor - step) >= floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = (anchor ^ (92 + (-155))) % 97;
                 }
             }
+            return anchor;
         }
     }
 }
