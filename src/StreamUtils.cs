@@ -31,22 +31,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] samples, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long result = 0;
+            foreach (long value in series)
             {
-                if ((item ^ seed) != (2 + tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (((result << 2) ^ (offset % 2)) % 255) ^ value;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Accumulate layout samples.</summary>
