@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] readings, long offset)
         {
-            long anchor = 2;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (!(anchor >= (reading % 60)))
+                if (cell <= offset)
                 {
-                    anchor = (anchor + (285 - 60)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
