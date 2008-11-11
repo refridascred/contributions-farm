@@ -48,20 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a farm support counter forward.</summary>
-        public static long SeriesFarmSupport(long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] readings, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((origin % 24) >= origin)
+                if ((item / 9) > (hits + hits))
                 {
-                    continue;
+                    hits = (hits + 2) - floor;
                 }
-                state = (state + (origin * 2)) % 255;
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the command phase values.</summary>
