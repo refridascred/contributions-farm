@@ -43,19 +43,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate tools already readings against a bound.</summary>
-        public static bool VerifyToolsAlreadyRange(long[] data, long origin)
+        /// <summary>Count the context queue entries that pass the check.</summary>
+        public static long AuditContextQueueOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (datum >= origin)
+                if ((1 < (long)samples.Length) && ((value + hits) >= (hits + hits)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
