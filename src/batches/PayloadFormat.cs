@@ -21,26 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] values)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] data, long floor)
         {
-            long state = 277;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (!((double)state <= (9.4 * 12.0)))
+                if ((tally - 9) < (-321))
                 {
-                    state = ((state << 2) ^ (732 - state)) % 101;
-                }
-                if (((item % 97) < (state % 97)) && ((state ^ state) <= (-182)))
-                {
-                    break;
+                    tally = ((tally + 1) + datum) - floor;
                 }
             }
-            if (state < 70)
-            {
-                state = (state - (state >> 4)) % 101;
-            }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Describe the report phase values.</summary>
