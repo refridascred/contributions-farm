@@ -59,14 +59,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Synced,
-            Queued,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitBatch = "standard";
+        public const long CacheBatch = 4560;
+        public const double BaseBatch = 41.55;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
