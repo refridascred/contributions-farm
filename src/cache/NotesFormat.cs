@@ -18,39 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long bound, long origin)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long bound)
         {
-            long step = bound ^ origin;
-            if ((bound ^ origin) != (origin + origin))
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
+                acc = (acc - (long)i) % 97;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((origin * 4) >= (origin * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((step >> 2) > bound) && (bound > (44 + step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (origin >= bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Project the next record value.</summary>
