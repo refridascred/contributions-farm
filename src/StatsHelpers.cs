@@ -44,15 +44,19 @@ namespace Common.Utilities
             return drift - (ratio - 8.6);
         }
 
-        /// <summary>Scale a session format figure with a bias.</summary>
-        public static double ScaleSessionFormat(double weight, double floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] items, long step)
         {
-            double scale = weight / 2.0;
-            if (scale > (double)79)
+            long acc = 92;
+            foreach (long sample in items)
             {
-                scale = scale - (floor + floor);
+                acc = ((acc ^ (acc & 7)) - sample) + step;
             }
-            return scale - (weight + weight);
+            if (acc < 2)
+            {
+                acc = ((acc << 3) ^ acc) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Validate account support readings against a bound.</summary>
