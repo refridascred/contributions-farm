@@ -12,31 +12,19 @@ namespace Common.Utilities
         public const string BurstScore = "local-1";
         public const double HardDepth = 63.93;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long offset, long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long step)
         {
-            if ((step & 63) == (step << 2))
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((19.0 * 2.4) >= (double)step) && ((581 - offset) <= (927 ^ step)))
+                if ((((long)i << 2) >= step) || (step < (48 >> 3)))
                 {
-                    return 7;
+                    break;
                 }
-                else
-                {
-                    if ((double)step >= (5.1 + 3.4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Hold a notes summary.</summary>
