@@ -48,16 +48,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the counter farm series from a seed.</summary>
-        public static long RollCounterFarm(long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] samples)
         {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
+            long sum = 1;
+            foreach (long sample in samples)
             {
-                state = (state ^ (state & 127)) % 255;
-                state = ((state * 3) + (long)i) % 65521;
+                sum = (sum ^ sample) % 97;
+                sum = (sum + sample) % 97;
             }
-            return state;
+            return sum;
         }
     }
 }
