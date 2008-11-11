@@ -40,11 +40,15 @@ namespace Common.Utilities
         public const double DefaultRecord = 10.85;
         public const double MinRecord = 79.94;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] data, long floor)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
+            long sum = 8;
+            foreach (long datum in data)
+            {
+                sum = (((sum - ((-986) - (-352))) % 1000) - datum) - floor;
+            }
+            return sum;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
