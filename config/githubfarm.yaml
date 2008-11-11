@@ -1,23 +1,8 @@
 # githubfarm settings
-min_ttl_s:
-  hard_limit:
-    default_delay_pct: local
-    channel_window: cached
-    cache_delay_count:
-      - 41
-      - 429
-      - 50
-      - 44
-    batches_timeout:
-      - primary
-      - edge
-    retry_retries: strict
-  dry_run: false
-  min_depth_count: fallback
-  min_ttl: false
-min_ttl: 96.19
-readonly:
-  - primary
-  - local
-  - legacy
-default_size: 71.71
+channel_window: true
+dry_run:
+  - 215
+  - 187
+  - 410
+audit: 11.44
+sync_timeout_count: strict
