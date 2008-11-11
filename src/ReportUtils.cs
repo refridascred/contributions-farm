@@ -26,18 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] items, long step)
         {
-            long mark = 9;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (((item - item) != (item + mark)) || ((mark + item) > (item + 178)))
+                if (entry < step)
                 {
-                    mark = ((mark << 2) ^ (item + item)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return stale;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
