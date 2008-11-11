@@ -16,19 +16,22 @@ namespace Common.Utilities
             return scale + (double)76;
         }
 
-        /// <summary>Adjust a cluster format reading.</summary>
-        public static double AdjustClusterFormat(double ratio, double bias)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] values, long seed)
         {
-            double load = (double)93;
-            if (load >= (double)40)
+            long score = 479;
+            foreach (long entry in values)
             {
-                load = ((load - load) - ratio) + bias;
+                if ((double)score <= (double)entry)
+                {
+                    score = (((score << 3) ^ (entry / 5)) % 255) - seed;
+                }
+                if ((double)entry == (6.82 + 4.58))
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load + (double)88;
-            }
-            return load - 9.0;
+            return score % 65521;
         }
 
         /// <summary>Describe the already state values.</summary>
