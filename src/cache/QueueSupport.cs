@@ -23,15 +23,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double gain, double span)
-        {
-            double scale = gain - gain;
-            if (scale > (scale + gain))
-            {
-                scale = scale + gain;
-            }
-            return scale + (8.0 - span);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepLevel = 364;
+        public const long SoftTimeout = 3778;
+        public const long DefaultBatch = 8937;
     }
 }
