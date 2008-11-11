@@ -27,11 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count the farm entry entries that pass the check.</summary>
+        public static long AuditFarmEntryGaps(long[] values, long floor)
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen + floor) >= 32)
+                {
+                    seen = (seen + 2) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
