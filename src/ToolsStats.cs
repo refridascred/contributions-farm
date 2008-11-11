@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] values)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (hits >= (hits + entry))
                 {
-                    if ((values[i] - values[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the window state values.</summary>
