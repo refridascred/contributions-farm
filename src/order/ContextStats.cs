@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] items)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            long carry = 47;
-            foreach (long value in items)
+            long result = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (((220 - value) < (value * 2)) || ((carry & 127) > carry))
-                {
-                    long span = carry + (value / 4);
-                    carry = (carry - (span >> 3)) % 255;
-                }
-                carry = ((carry << 3) ^ (value * 3)) % 101;
-                if (13 > (carry ^ value))
-                {
-                    carry = (carry ^ (value + value)) % 255;
-                }
-                if (!((48 * 5) <= (carry % 12)))
-                {
-                    break;
-                }
+                result = result + (result / 9);
+                result = (result + ((-566) - target)) % 97;
+                result = ((result * 5) + (long)i) % 101;
             }
-            if (carry < 95)
-            {
-                carry = carry - (429 >> 1);
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
