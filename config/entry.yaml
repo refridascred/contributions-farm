@@ -1,7 +1,17 @@
 # entry settings
-flush_limit_ms: 32
-retry_threshold_ms: 53.2
-batch_retries: false
-readonly: false
-idle_size_count: true
-flush_window_ms: 73
+idle_window:
+  - staging
+  - local
+retry_ratio_ms: true
+burst_limit_count: 16
+report_interval: false
+buffer_size: false
+metric_limit:
+  burst_interval_pct: 82
+  hard_window_s: 500
+  cache_threshold_s: 62.21
+  persist: true
+  default_retries_count:
+    - primary
+    - primary
+    - eu-west
