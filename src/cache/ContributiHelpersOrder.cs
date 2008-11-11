@@ -18,22 +18,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] data)
+        /// <summary>Blend two metric channel measurements.</summary>
+        public static double SmoothMetricChannel(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            double mean = (double)(-5);
+            if (mean > (ratio / 9.0))
             {
-                if ((reading - seen) < (reading + reading))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean + (double)19;
             }
-            return seen;
+            else
+            {
+                mean = mean + offset;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
