@@ -20,14 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] levels, long offset)
         {
-            Ready,
-            Locked,
-            New,
-            Dropped,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a context info.</summary>
