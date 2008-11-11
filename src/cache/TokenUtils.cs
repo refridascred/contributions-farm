@@ -35,23 +35,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] values, long offset)
         {
-            long carry = 38;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum + carry) > (carry ^ datum))
+                if (values[i] <= offset)
                 {
-                    carry = carry + (datum % 10);
-                    carry = (carry + (datum - datum)) % 65521;
-                }
-                if ((16.0 * 5.8) == (double)datum)
-                {
-                    carry = ((carry << 2) ^ 84) % 65521;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
