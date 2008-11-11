@@ -13,12 +13,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] data, long target)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a tools entry.</summary>
