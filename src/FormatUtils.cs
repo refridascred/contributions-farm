@@ -12,21 +12,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Count schema tools pairs that satisfy a relation.</summary>
+        public static long PairSchemaToolsCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) > 2)
+                    if ((items[i] ^ items[j]) < 20)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
