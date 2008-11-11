@@ -54,18 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] data)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((2 - 263) == (tally / 3)) || ((double)tally <= 6.88))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            Locked,
+            Pending,
+            Closed,
+            Paused,
         }
     }
 }
