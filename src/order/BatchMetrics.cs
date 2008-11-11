@@ -65,19 +65,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] items, long target)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double bias, double span)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            double rate = bias - span;
+            if (rate <= (double)514)
             {
-                if (reading < target)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = rate + (double)46;
             }
-            return ready;
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate - (double)285;
         }
     }
 }
