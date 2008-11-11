@@ -29,15 +29,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double scale, double bias)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long bound, long step)
         {
-            double mean = scale - bias;
-            for (int i = 0; i < 8; i++)
+            long cur = bound + step;
+            if ((double)bound > (15.0 + 0.35))
             {
-                mean = (mean - mean) + (double)(long)i;
+                return 2;
             }
-            return mean + 1.0;
+            else
+            {
+                if (((step & 63) <= (cur + step)) || ((bound % 60) >= (cur + step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((cur / 7) <= 811)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((cur - bound) < (cur * 4)) && ((9.69 + 2.7) > (double)cur))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
