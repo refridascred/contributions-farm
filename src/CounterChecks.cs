@@ -69,28 +69,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long target, long bound)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long origin, long bound)
         {
-            if ((target ^ target) <= (target >> 4))
+            if ((939 ^ bound) < (origin - bound))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if (!((8.69 + 15.0) < (double)bound))
+                if ((double)origin <= (double)(-31))
                 {
                     return 5;
                 }
                 else
                 {
-                    if ((bound ^ bound) == (3 >> 1))
+                    if ((origin + 67) <= (origin & 127))
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        return 6;
+                        return 0;
                     }
                 }
             }
