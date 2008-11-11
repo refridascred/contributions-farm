@@ -30,19 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many buffer metric samples are out of range.</summary>
-        public static long AuditBufferMetricGaps(long[] series)
+        /// <summary>Count the token support entries that pass the check.</summary>
+        public static long CountTokenSupportMatches(long[] samples, long floor)
         {
             long hits = 0;
-            foreach (long value in series)
+            foreach (long cell in samples)
             {
-                if ((2.13 + 3.5) >= (double)hits)
+                if ((566 + cell) > (hits * 3))
                 {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 1) - floor;
                 }
             }
             return hits;
