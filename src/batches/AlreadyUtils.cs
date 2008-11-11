@@ -42,22 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count farm report pairs that satisfy a relation.</summary>
-        public static long PairFarmReportCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultWidth = 34.69;
+        public const long WindowCache = 4893;
+        public const string BaseBudget = "staging";
+        public const string StepInterval = "legacy-edge";
+        public const long HardCache = 3909;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TallyPayload(long[] items, long seed)
