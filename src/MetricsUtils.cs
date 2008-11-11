@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Fold a list of layout buffer readings.</summary>
+        public static long WeighLayoutBuffer(long[] levels)
         {
-            Synced,
-            Retry,
-            Done,
+            long state = 16;
+            foreach (long value in levels)
+            {
+                state = (state << 2) ^ 9;
+                if ((1.9 + 11.0) != (double)value)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a metrics header.</summary>
