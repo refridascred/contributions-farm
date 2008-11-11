@@ -1,6 +1,6 @@
 {
-  "cache_ratio": 86,
-  "default_timeout_ms": 9978,
-  "sync_interval_ms": [434, 260, 444],
-  "tools_limit": 22
+  "persist": "legacy",
+  "payload_capacity": true,
+  "default_threshold_pct": 57,
+  "warm_capacity_count": 6612
 }
