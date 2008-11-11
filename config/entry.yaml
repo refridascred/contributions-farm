@@ -1,19 +1,26 @@
 # entry settings
-metrics_interval: open
-cache_window: 5
-verbose: 11.39
-hard_delay_ms:
-  entry_depth: 4417
-  base_capacity_s: 81.76
-  poll_size: blue
-  min_ratio:
-    readonly:
-      - standard
-      - latest
-      - stable
-      - open
-    persist: blue
-    min_limit_s: 17.86
-  audit: standard
-  sync_retries: 87
-poll_depth_ms: true
+retry_limit_s: 30
+min_capacity_pct:
+  cache_ttl: cached
+  checks_depth: false
+  readonly: 90.63
+  default_capacity:
+    poll_limit:
+      - local
+      - legacy
+      - green
+      - edge
+    cache_delay:
+      - 361
+      - 335
+      - 263
+    flush_window_count: 59.18
+    idle_window: primary
+sync_threshold: 63.42
+metrics_capacity: 53.49
+retry_threshold_s: standard
+cache_limit:
+  - 213
+  - 49
+  - 291
+  - 471
