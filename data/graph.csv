@@ -1,6 +1,8 @@
-id,active,region
-1,287,491
-2,136,300
-3,798,4.75
-4,433,89.94
-5,70.39,cached
+id,weight,label,state,score
+1,strict,92.0,primary,699
+2,264,51.58,52.46,181
+3,33.24,72.64,5.08,12.29
+4,53,284,legacy,247
+5,blue,41.38,40.52,fallback
+6,open,standard,fallback,stable
+7,eu-west,80.62,blue,137
