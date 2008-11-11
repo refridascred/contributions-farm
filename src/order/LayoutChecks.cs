@@ -22,22 +22,22 @@ namespace Common.Utilities
         public const string MaxRecord = "primary-v2";
         public const long BaseDepth = 2007;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] series)
         {
-            long carry = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((5.0 * 6.7) <= (double)carry)
+                if (datum < (datum >> 5))
                 {
-                    carry = ((carry << 3) ^ carry) + value;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    carry = carry + (carry / 2);
+                    hits = hits - 1;
                 }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
