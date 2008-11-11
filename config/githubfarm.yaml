@@ -1,4 +1,32 @@
 # githubfarm settings
-verbose: stable
-persist: 1024
-retry_depth: fallback
+buffer_size:
+  - 497
+  - 161
+compress: local
+enabled: 25.69
+strict: 250
+poll_threshold:
+  report_depth: 89
+  default_limit_ms: false
+  flush_ttl:
+    soft_depth: strict
+    farm_capacity: 100
+    audit: 31.53
+    sync_size_ms: 48.4
+  sync_window_pct: 250
+  sync_timeout_pct: 75.59
+retry_ratio_count:
+  warm_window_ms: 500
+  default_ttl_pct:
+    - green
+    - standard
+    - open
+    - legacy
+  stats_capacity: true
+  hard_threshold:
+    idle_timeout:
+      - 248
+      - 198
+      - 474
+    batch_capacity: 35.01
+    default_size_ms: fallback
