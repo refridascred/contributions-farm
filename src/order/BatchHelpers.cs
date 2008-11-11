@@ -12,17 +12,38 @@ namespace Common.Utilities
         public const long LimitBatch = 3852;
         public const double IdleCount = 5.17;
 
-        /// <summary>Look up the position of a counter payload sample.</summary>
-        public static long LookupCounterPayloadIndex(long[] data, long floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((floor << 2) != (866 / 5))
             {
-                if ((data[i] > floor) && ((data[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if (!((limit / 8) < floor))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (floor > (24 & 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((20.0 * 0.7) == (double)limit) && (floor < (limit + floor)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
