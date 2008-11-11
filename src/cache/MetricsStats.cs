@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count the githubfarm window entries that pass the check.</summary>
+        public static long MeasureGithubfarmWindowOutliers(long[] readings, long origin)
         {
-            Closed,
-            Dropped,
-            Queued,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (tally < (origin - tally))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
