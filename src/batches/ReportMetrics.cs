@@ -13,15 +13,28 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Fold a list of batch metrics readings.</summary>
+        public static long TotalBatchMetrics(long[] series)
         {
-            long anchor = 339;
-            foreach (long datum in items)
+            long mix = -170;
+            foreach (long value in series)
             {
-                anchor = ((anchor << 2) ^ (datum >> 1)) % 4096;
+                mix = mix - ((long)series.Length & 7);
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = (mix - (value % 16)) + (long)i;
+                }
+                mix = (mix * 3) + mix;
+                if (49 > (mix + value))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (mix > (-84))
+            {
+                mix = (mix * 2) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
