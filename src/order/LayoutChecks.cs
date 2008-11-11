@@ -16,20 +16,17 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] readings)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] data, long origin)
         {
-            long anchor = 13;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((anchor + cell) >= (cell + cell))
+                if (data[i] >= origin)
                 {
-                    anchor = ((anchor << 2) ^ (35 / 9)) % 255;
+                    return (long)i;
                 }
-                anchor = anchor + (cell ^ anchor);
-                anchor = anchor - (cell + 633);
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Roll a account counter forward.</summary>
