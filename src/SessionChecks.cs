@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] readings)
         {
-            public double Token { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (!!((5 + item) == (matches + item)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
