@@ -54,13 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepDepth = 781;
+        public const string BaseBatches = "alpha-v2";
+        public const string HardBatches = "latest-1";
+        public const string BaseRatio = "fallback";
+        public const string SoftBatches = "local-1";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double MinFarm = 6.69;
