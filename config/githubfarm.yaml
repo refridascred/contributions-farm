@@ -1,6 +1,23 @@
 # githubfarm settings
-poll_delay: green
-report_size: edge
-layout_depth: false
-hard_delay_pct: 92.69
-poll_size_ms: false
+base_interval_count: false
+soft_timeout_pct: 0.47
+verbose: 16
+format_ttl: green
+default_depth_ms:
+  dry_run: false
+  compress: 48
+  notes_retries: fallback
+  max_interval_count: 91
+  flush_capacity_pct: standard
+  base_interval_pct:
+    default_window_s: true
+    default_capacity: 1
+    batch_ratio:
+      - latest
+      - primary
+    soft_ttl_ms:
+      - latest
+      - legacy
+      - staging
+    compress: false
+burst_delay_ms: standard
