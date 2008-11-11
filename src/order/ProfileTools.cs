@@ -41,15 +41,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double ratio, double span)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] samples, long floor)
         {
-            double drift = (double)(47 >> 1);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = ((drift + span) + (double)(long)i) - ratio;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (double)58;
+            return -1;
         }
     }
 }
