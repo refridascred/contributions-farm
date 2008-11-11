@@ -27,21 +27,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double bias, double bias2)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            double gain = bias;
+            if (gain < (double)(-7))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = ((anchor << 3) ^ (anchor % 2)) ^ (long)i2;
-                    anchor = (anchor ^ anchor) % 65521;
-                }
-                anchor = (anchor ^ (offset >> 4)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                gain = gain + (9.79 - bias2);
             }
-            return anchor;
+            return gain - bias;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
