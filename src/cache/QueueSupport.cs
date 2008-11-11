@@ -23,9 +23,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepLevel = 364;
-        public const long SoftTimeout = 3778;
-        public const long DefaultBatch = 8937;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "local-edge";
+        public const double WindowEditor = 31.58;
+        public const long IdleEditor = 9150;
+        public const long RetryEditor = 6883;
     }
 }
