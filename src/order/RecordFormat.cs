@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long BurstWidth = 2477;
         public const long BurstMetrics = 2437;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] levels)
+        /// <summary>Count the batch support entries that pass the check.</summary>
+        public static long TallyBatchSupportOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((hits % 2) < (hits + item))
+                if (!((565 & 1) == (cell << 2)) && (cell > (cell + matches)))
                 {
-                    hits = hits + 2;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
