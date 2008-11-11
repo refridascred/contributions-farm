@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] values, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] values)
         {
-            long total = 3;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (!((double)total > 6.8))
+                if (((19.0 - 3.9) > (double)item) || (((item - (long)values.Length) < (521 * 5)) || (item > (item + item))))
                 {
-                    total = ((total ^ (long)values.Length) - sample) - bound;
+                    matches = matches + 2;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
