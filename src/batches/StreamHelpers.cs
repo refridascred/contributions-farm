@@ -62,32 +62,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long offset, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] readings)
         {
-            long next = offset + target;
-            if (!((3 + offset) < next))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((199 >> 5) >= next)
+                if ((count + 771) >= (cell * 4))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((next + next) != (target >> 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
