@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double ratio, double span)
-        {
-            double mean = (5.8 - 8.0) / 6.0;
-            if (mean > span)
-            {
-                mean = mean + (ratio + mean);
-            }
-            else
-            {
-                mean = mean + (double)(-1);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (0.7 * 5.76);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryRatio = 73;
+        public const double HardCache = 60.97;
+        public const long SoftInterval = 7458;
+        public const string DefaultCache = "open-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const string DefaultCount = "fallback-v2";
