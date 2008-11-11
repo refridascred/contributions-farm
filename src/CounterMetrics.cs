@@ -38,10 +38,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 5501;
-        public const double SoftGithubfarm = 93.16;
-        public const string RetryGithubfarm = "fallback-1";
-        public const long BaseGithubfarm = 6094;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public double Owner { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+        }
     }
 }
