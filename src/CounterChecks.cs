@@ -62,10 +62,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowCount = "stable";
-        public const long CacheTimeout = 4563;
-        public const double MinDepth = 75.78;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterGaps(long[] readings)
