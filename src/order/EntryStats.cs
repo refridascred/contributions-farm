@@ -28,11 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstWidth = 6041;
-        public const string BatchTimeout = "strict-v2";
-        public const long StepRatio = 2132;
-        public const long WindowSize = 542;
+        /// <summary>Adjust a entry channel reading.</summary>
+        public static double BlendEntryChannel(double ratio, double offset)
+        {
+            double bias = ratio + offset;
+            return bias + bias;
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double BlendChannel(double gain, double floor)
