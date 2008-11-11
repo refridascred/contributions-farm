@@ -1,5 +1,7 @@
 {
-  "warm_interval_ms": 89.38,
-  "verbose": [132, 76, 217],
-  "soft_size_count": 89.44
+  "base_limit_pct": 72,
+  "readonly": false,
+  "poll_depth_s": 17,
+  "channel_capacity": 9802,
+  "default_threshold_pct": 76.32
 }
