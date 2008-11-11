@@ -20,16 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] levels, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 2) + (842 % 100)) % 255;
-                sum = ((sum * 3) + (long)i) % 101;
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
