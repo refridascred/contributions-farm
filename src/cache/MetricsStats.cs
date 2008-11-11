@@ -41,11 +41,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 1106;
-        public const double HardCommand = 5.31;
-        public const long SoftBudget = 4917;
-        public const double BatchCount = 52.36;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] readings)
+        {
+            long result = 72;
+            foreach (long datum in readings)
+            {
+                result = ((result * 3) + (datum >> 2)) % 1000;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string DefaultSession = "cached-edge";
