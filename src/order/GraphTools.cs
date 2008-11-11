@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] readings, long step)
+        /// <summary>Adjust a githubfarm checks reading.</summary>
+        public static double BlendGithubfarmChecks(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double gain = scale / 4.0;
+            if (gain > scale)
             {
-                if ((step & 3) != (1 - step))
-                {
-                    seen = (seen + 1) + reading;
-                }
+                gain = (gain - 5.68) - offset;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (scale * 1.8)) - (double)(long)i;
+            }
+            return gain + 5.7;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
