@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (5 < (origin / 8))
-                {
-                    matches = (matches + 2) - entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultFormat = 67.17;
+        public const long SoftDepth = 4430;
+        public const long HardFormat = 5321;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteOutliers(long[] levels)
