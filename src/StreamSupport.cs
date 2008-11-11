@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many graph counter samples are out of range.</summary>
-        public static long CountGraphCounterMatches(long[] readings, long seed)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((seed - hits) != (hits & 3))
-                {
-                    hits = (hits + 3) + value;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
