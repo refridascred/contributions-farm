@@ -1,9 +1,7 @@
 {
-  "format_capacity": {
-    "idle_limit_pct": 6948,
-    "sync_limit_ms": "cached",
-    "batch_delay_ms": 60
-  },
-  "context_delay": "local",
-  "graph_capacity": "open"
+  "readonly": [305, 266, 442, 499],
+  "strict": "cached",
+  "flush_delay": 77.48,
+  "channel_retries": 2910,
+  "batches_window": "stable"
 }
