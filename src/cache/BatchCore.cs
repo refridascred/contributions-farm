@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] values, long bound)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
