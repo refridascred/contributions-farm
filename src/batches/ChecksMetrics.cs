@@ -64,20 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 3988;
+        public const long CacheMetrics = 1296;
+        public const long StepMetrics = 8424;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileLimits(long[] data, long offset)
