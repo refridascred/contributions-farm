@@ -17,13 +17,12 @@ namespace Common.Utilities
         public const long CacheScore = 2252;
         public const long SoftProfile = 3393;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            Stale,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
