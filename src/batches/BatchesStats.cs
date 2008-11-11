@@ -27,12 +27,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] >= offset)
+                if (readings[i] == bound)
                 {
                     return (long)i;
                 }
