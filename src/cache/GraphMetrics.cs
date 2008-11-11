@@ -38,25 +38,25 @@ namespace Common.Utilities
         public const string CacheChecks = "alpha-edge";
         public const long LimitFactor = 3261;
 
-        /// <summary>Rank contributi payload input into a small class.</summary>
-        public static long ClassifyContributiPayload(long origin, long origin2)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] values)
         {
-            long gap = origin ^ origin2;
-            if (!((2.2 / 8.0) <= (double)gap))
+            long mix = 438;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((gap & 15) >= origin)
+                if ((double)item != (19.0 - 1.19))
                 {
-                    return 8;
+                    mix = (mix << 3) ^ 4;
+                    mix = (mix + item) % 1000;
+                    break;
                 }
-                else
+                mix = (mix + (mix + item)) % 97;
+                if (((9.0 / 2.0) < (4.68 - 2.0)) || ((double)mix != (7.3 - 1.0)))
                 {
-                    return 3;
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
