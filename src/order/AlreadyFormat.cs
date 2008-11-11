@@ -55,30 +55,31 @@ namespace Common.Utilities
         public const double CachePayload = 68.93;
         public const string HardPayload = "primary";
 
-        /// <summary>Derive the next format stream value from a seed.</summary>
-        public static long DeriveFormatStream(long target)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long floor, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            if (!((double)94 >= (4.47 / 5.0)))
             {
-                if (result < (long)i)
+                return 2;
+            }
+            else
+            {
+                if (((7.3 - 7.65) == (double)floor) || ((double)88 > (double)limit))
                 {
-                    result = (result ^ (target + 83)) % 4096;
+                    return 8;
                 }
                 else
                 {
-                    result = ((result << 3) ^ result) % 97;
-                    result = result + 36;
+                    if ((floor << 1) < (limit << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
-                if ((395 >> 1) == (target & 7))
-                {
-                    result = (result + (result % 16)) % 255;
-                    result = result + (result - target);
-                }
-                result = (result << 3) ^ (result - result);
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
         }
     }
 }
