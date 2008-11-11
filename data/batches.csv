@@ -1,9 +1,6 @@
-id,level,token
-1,85.45,stable
-2,cached,936
-3,560,eu-west
-4,local,8.19
-5,fallback,805
-6,884,458
-7,584,72.28
-8,latest,761
+id,token,label,rank,state
+1,815,985,28.4,473
+2,standard,760,staging,7.11
+3,standard,blue,29.14,388
+4,81.56,782,legacy,338
+5,12.31,59,blue,576
