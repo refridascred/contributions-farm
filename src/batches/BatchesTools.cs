@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const double HardMetric = 89.69;
         public const long SoftWidth = 3506;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
