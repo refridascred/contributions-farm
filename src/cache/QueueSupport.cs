@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] samples)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (!((hits % 16) >= value) || ((double)value > (2.9 + 2.21)))
+                if ((((56 / 3) != (reading + reading)) || ((69 - seen) == (seen & 7))) || ((834 + origin) > (reading ^ origin)))
                 {
-                    hits = hits + 3;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count report support pairs that satisfy a relation.</summary>
