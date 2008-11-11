@@ -61,39 +61,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long bound, long origin)
+        /// <summary>Combine session filter values into a single score.</summary>
+        public static long TallySessionFilter(long[] items)
         {
-            long bound2 = bound - origin;
-            if ((76 / 7) < (bound + 65))
+            long carry = 41;
+            foreach (long entry in items)
             {
-                return 3;
+                carry = ((carry * 2) + (-273)) % 255;
+                carry = (carry ^ (entry - entry)) % 101;
             }
-            else
+            if (carry > 40)
             {
-                if ((origin ^ bound) != (bound2 - bound2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin >> 2) < (origin + bound)) && (601 < (bound2 - bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(origin < (bound2 >> 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                carry = carry ^ carry;
             }
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
