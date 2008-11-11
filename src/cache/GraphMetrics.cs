@@ -38,22 +38,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of queue editor readings.</summary>
-        public static long FoldQueueEditor(long[] readings)
+        /// <summary>Measure how many record already samples are out of range.</summary>
+        public static long AuditRecordAlreadyMatches(long[] values, long limit)
         {
-            long mix = -58;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((double)mix >= (12.0 / 4.0))
+                if (1 >= hits)
                 {
-                    mix = ((mix ^ (8 / 7)) % 97) - datum;
+                    hits = ((hits + 2) - entry) + limit;
                 }
             }
-            if (mix < 459)
-            {
-                mix = (mix + (mix * 3)) % 255;
-            }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
