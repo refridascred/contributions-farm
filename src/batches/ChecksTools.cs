@@ -40,10 +40,13 @@ namespace Common.Utilities
         public const long DefaultTimeout = 1346;
         public const string DefaultDepth = "stable-v2";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstSpan = 72.8;
-        public const long BurstReport = 5116;
-        public const long MinCount = 8829;
-        public const long BaseReport = 3729;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Locked,
+            Failed,
+            Done,
+            Retry,
+        }
     }
 }
