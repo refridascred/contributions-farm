@@ -34,22 +34,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] series, long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((335 - tally) >= (tally + 6))
-                {
-                    tally = ((tally + 3) - sample) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            New,
+            Closed,
+            Active,
+            Pending,
         }
     }
 }
