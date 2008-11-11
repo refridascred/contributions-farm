@@ -20,19 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] levels, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (value < bound)
+                if ((limit - limit) >= 381)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + datum;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
