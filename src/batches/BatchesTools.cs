@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultTimeout = 4883;
-        public const long MinScore = 3559;
-        public const long CacheMetric = 3927;
-        public const double HardMetric = 89.69;
-        public const long SoftWidth = 3506;
+        /// <summary>Match up tools editor samples.</summary>
+        public static long CompareToolsEditorCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TotalSchema(long[] samples)
