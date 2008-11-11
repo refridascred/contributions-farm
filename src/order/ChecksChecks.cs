@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] series, long origin)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] items, long seed)
         {
-            long carry = 800;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry + sample) % 97;
-                carry = (carry + (carry + origin)) % 65521;
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 6)
-            {
-                carry = ((carry * 4) + (682 % 12)) % 255;
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Hold a context entry.</summary>
