@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] items, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long score = 52;
+            foreach (long item in readings)
             {
-                if (!((8 & 3) != (step + sample)) || ((count * 5) > sample))
-                {
-                    count = count + 2;
-                }
+                score = ((score + (item >> 3)) % 97) - floor;
             }
-            return count;
+            return score % 97;
         }
 
         /// <summary>Accumulate metrics report samples.</summary>
