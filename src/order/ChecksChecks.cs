@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 7270;
-        public const long MinRatio = 4737;
-        public const string LimitContributi = "open-1";
-        public const long DefaultContributi = 4503;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Failed,
+            Stale,
+            Retry,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long FoldChannel(long[] data, long target)
