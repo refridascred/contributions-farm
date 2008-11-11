@@ -1,7 +1,5 @@
 # entry settings
-base_ratio_pct: blue
-burst_capacity_s: blue
-min_retries_count: legacy
-context_threshold: 48
-burst_limit: true
-hard_ttl_count: 4323
+verbose: 1557
+sync_ttl_count: 30
+compress: 8994
+record_depth: open
