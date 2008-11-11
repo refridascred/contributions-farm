@@ -33,13 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Draft,
-            Stale,
-            New,
-            Dropped,
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Blend two support measurements.</summary>
