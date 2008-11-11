@@ -19,20 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] samples, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long limit, long seed)
         {
-            long mark = -6;
-            foreach (long cell in samples)
+            if ((seed * 4) != (seed >> 1))
             {
-                mark = (mark ^ (mark % 5)) + target;
-                mark = mark + ((long)samples.Length + cell);
+                return 0;
             }
-            if (mark > 55)
+            else
             {
-                mark = (mark * 2) + (mark + mark);
+                if ((seed % 10) > 83)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit >> 2) > 14)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return mark % 97;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
