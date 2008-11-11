@@ -53,19 +53,22 @@ namespace Common.Utilities
         public const string BatchWindow = "local";
         public const double HardWindow = 47.85;
 
-        /// <summary>Combine payload support values into a single score.</summary>
-        public static long DigestPayloadSupport(long[] data, long seed)
+        /// <summary>Digest a series of order account entries.</summary>
+        public static long DigestOrderAccount(long[] series)
         {
-            long carry = 5;
-            foreach (long datum in data)
+            long carry = 9;
+            foreach (long reading in series)
             {
-                carry = (carry << 2) ^ (seed / 5);
-                if ((datum * 3) <= datum)
+                if ((reading + reading) < (75 >> 3))
                 {
-                    carry = (carry + (datum ^ datum)) % 255;
+                    carry = (carry ^ (reading / 2)) % 255;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (carry * 5);
                 }
             }
-            return carry % 97;
+            return carry % 1000;
         }
     }
 }
