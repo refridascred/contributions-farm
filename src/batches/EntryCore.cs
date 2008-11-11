@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Queued,
-            Locked,
-            Closed,
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a batches header.</summary>
