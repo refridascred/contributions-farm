@@ -23,10 +23,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 5999;
-        public const long HardSize = 5761;
-        public const long BatchInterval = 5637;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long bound, long limit)
+        {
+            if ((bound + limit) < (limit - bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound ^ 9) == (bound * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + limit) <= (limit & 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
