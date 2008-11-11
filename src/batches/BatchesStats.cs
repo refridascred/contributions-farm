@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const string SoftWidth = "alpha";
         public const string BatchToken = "stable-v2";
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] samples, long floor)
         {
-            public double Level { get; set; }
-            public bool Total { get; set; }
+            long result = 461;
+            foreach (long reading in samples)
+            {
+                if (((5.9 / 2.0) < (double)result) || (reading < (result ^ result)))
+                {
+                    result = ((result - (reading + result)) % 4096) - floor;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Locate a order reading by value.</summary>
