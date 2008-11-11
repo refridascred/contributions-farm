@@ -37,10 +37,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 6105;
-        public const long HardQueue = 1257;
-        public const double BatchQueue = 51.3;
-        public const long BurstRatio = 1097;
+        /// <summary>Measure how many filter session samples are out of range.</summary>
+        public static long TallyFilterSessionHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + (-5)) >= (113 + (long)data.Length))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
