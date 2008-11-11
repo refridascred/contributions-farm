@@ -1,4 +1,7 @@
 # support settings
-flush_capacity_s: latest
-batch_limit_pct: legacy
-readonly: 7.95
+poll_interval:
+  - latest
+  - green
+  - green
+verbose: 61
+base_timeout_s: 11
