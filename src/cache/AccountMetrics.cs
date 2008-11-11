@@ -23,20 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long offset)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((double)(long)i > 6.0))
-                {
-                    anchor = ((anchor << 2) ^ (offset >> 5)) % 255;
-                }
-                anchor = ((anchor * 2) + (anchor % 100)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
