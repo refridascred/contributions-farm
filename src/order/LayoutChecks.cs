@@ -32,13 +32,18 @@ namespace Common.Utilities
         public const string CacheToken = "primary-edge";
         public const long RetryScore = 4068;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] samples, long step)
         {
-            Closed,
-            Locked,
-            Stale,
-            Synced,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((step << 1) <= count)
+                {
+                    count = (count + 3) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a payload header.</summary>
