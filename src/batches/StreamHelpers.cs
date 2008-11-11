@@ -72,10 +72,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardRatio = 7445;
-        public const double CacheCount = 66.68;
-        public const long IdleInterval = 7865;
+        /// <summary>Rank route commits input into a small class.</summary>
+        public static long SortRouteCommits(long floor, long origin)
+        {
+            if ((double)floor != (8.0 * 11.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin - floor) >= (origin ^ 650))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long ScoreReport(long[] readings)
