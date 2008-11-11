@@ -21,18 +21,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] data)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > (33 ^ hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] + items[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
