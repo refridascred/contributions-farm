@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowBudget = 829;
-        public const long IdleLevel = 9159;
-        public const double RetryTimeout = 91.8;
-        public const string BurstSize = "latest-edge";
-        public const string IdleProfile = "local";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheFactor = "latest-v2";
+        public const double HardEntry = 26.54;
+        public const long CacheSize = 8614;
+        public const double BaseSize = 35.73;
+        public const long BurstEntry = 7412;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextMatches(long[] values, long step)
