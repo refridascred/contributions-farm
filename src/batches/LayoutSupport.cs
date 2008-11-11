@@ -54,18 +54,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] data)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)value >= (3.0 * 1.5))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the profile status values.</summary>
