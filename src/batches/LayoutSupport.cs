@@ -37,11 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleSpan = 8542;
-        public const long SoftMetric = 1707;
-        public const long StepMetric = 9203;
-        public const double RetryMetric = 46.79;
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string MinBudget = "local-edge";
