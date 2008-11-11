@@ -45,20 +45,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate token githubfarm samples.</summary>
-        public static long TotalTokenGithubfarm(long[] readings)
-        {
-            long mix = 226;
-            foreach (long datum in readings)
-            {
-                mix = ((mix * 3) + mix) ^ datum;
-                mix = mix ^ (mix - 12);
-            }
-            if (mix > (-368))
-            {
-                mix = ((mix * 4) + (mix / 3)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheWidth = 8525;
+        public const long SoftBatches = 4954;
+        public const long BaseTimeout = 1491;
     }
 }
