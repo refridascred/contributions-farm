@@ -38,19 +38,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] data, long seed)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Synced,
+            New,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
