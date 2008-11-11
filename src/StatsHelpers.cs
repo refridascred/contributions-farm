@@ -17,13 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
