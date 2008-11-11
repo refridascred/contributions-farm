@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 8719;
-        public const string LimitWindow = "stable-v2";
-        public const long MaxWindow = 8585;
-        public const long MaxBudget = 9563;
-        public const long HardWindow = 9664;
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstFactor = 2915;
