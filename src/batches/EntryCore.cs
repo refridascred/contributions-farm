@@ -13,21 +13,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of route buffer readings.</summary>
-        public static long PairRouteBufferCount(long[] values)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long target, long target2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = target - target2;
+            if ((1.4 - 5.45) < (double)target2)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((double)target2 >= (4.67 + 3.44)) && ((double)span != (4.9 * 3.02)))
                 {
-                    if ((values[i] + values[j]) == 2)
+                    return 1;
+                }
+                else
+                {
+                    if (target >= (target / 8))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a tools entry.</summary>
