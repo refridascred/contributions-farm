@@ -64,12 +64,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] items, long origin)
         {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            long mark = 9;
+            foreach (long sample in items)
+            {
+                if (!((mark - sample) > 85))
+                {
+                    mark = ((mark * 5) + mark) % 101;
+                }
+                if ((mark >> 2) == (mark + origin))
+                {
+                    break;
+                }
+            }
+            if (mark < 796)
+            {
+                mark = (mark + origin) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
