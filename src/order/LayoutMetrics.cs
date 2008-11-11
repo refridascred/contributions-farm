@@ -13,22 +13,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of already profile readings.</summary>
-        public static long CombineAlreadyProfile(long[] readings, long origin)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long sum = 390;
-            foreach (long datum in readings)
-            {
-                if ((datum * 3) <= origin)
-                {
-                    sum = ((sum << 2) ^ (9 >> 3)) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ (datum % 2)) % 1000;
-                }
-            }
-            return sum;
+            Dropped,
+            Done,
+            Idle,
+            Paused,
         }
 
         /// <summary>Roll a account context counter forward.</summary>
