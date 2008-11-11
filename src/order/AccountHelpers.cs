@@ -43,12 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a command account reading by value.</summary>
-        public static long LocateCommandAccountIndex(long[] readings, long limit)
+        /// <summary>Find the first tools window entry that matches the target.</summary>
+        public static long LookupToolsWindowIndex(long[] readings, long step)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] == limit)
+                if (readings[i] >= step)
                 {
                     return (long)i;
                 }
