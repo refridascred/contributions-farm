@@ -40,31 +40,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] samples, long step)
-        {
-            long anchor = 8;
-            foreach (long datum in samples)
-            {
-                if ((anchor * 2) <= datum)
-                {
-                    anchor = (anchor << 2) ^ step;
-                }
-                if (!(0 < datum))
-                {
-                    anchor = ((anchor << 2) ^ (anchor >> 1)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor + (datum + datum);
-                }
-                if ((datum % 5) <= anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftBuffer = "stable-v2";
+        public const long RetryBuffer = 1990;
+        public const double LimitBuffer = 16.27;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinRatio = 5596;
