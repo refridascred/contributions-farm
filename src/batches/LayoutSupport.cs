@@ -39,14 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Draft,
-            Ready,
-            Queued,
-            New,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleSpan = 8542;
+        public const long SoftMetric = 1707;
+        public const long StepMetric = 9203;
+        public const double RetryMetric = 46.79;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
