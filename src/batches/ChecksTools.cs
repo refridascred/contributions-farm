@@ -38,12 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 52.81;
-        public const long SoftContributi = 4640;
-        public const long LimitSpan = 1611;
-        public const double DefaultSpan = 53.58;
-        public const double RetryContributi = 16.37;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long IterateLayout(long bound)
