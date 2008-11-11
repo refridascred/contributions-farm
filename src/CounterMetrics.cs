@@ -23,18 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] values, long step)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] series)
         {
-            long acc = 4;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((52 + 4) < (acc + datum)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc ^ 86) + step;
+                    if ((series[i] - series[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
