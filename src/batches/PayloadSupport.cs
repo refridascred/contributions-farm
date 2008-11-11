@@ -39,15 +39,21 @@ namespace Common.Utilities
         public const long MaxPayload = 8218;
         public const long WindowInterval = 5785;
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double ratio, double offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            double drift = offset + 7.2;
-            if (drift > drift)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift + drift) - ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift - 0.8;
+            return count;
         }
     }
 }
