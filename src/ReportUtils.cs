@@ -33,24 +33,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long bound, long offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] series)
         {
-            if ((double)offset >= (2.91 / 8.0))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset << 2) <= offset) || (11 < offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
