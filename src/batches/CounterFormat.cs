@@ -24,19 +24,31 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] readings, long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long bound, long seed)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            if (!((double)bound < (0.74 * 7.2)))
             {
-                if (reading <= floor)
+                return 5;
+            }
+            else
+            {
+                if ((double)seed <= (8.0 - 8.77))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((seed & 3) >= (seed / 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
