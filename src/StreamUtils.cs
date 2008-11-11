@@ -50,19 +50,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] samples, long target)
+        /// <summary>Audit order payload readings against a rule.</summary>
+        public static long TallyOrderPayloadHits(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (value <= target)
+                if ((double)item < (16.0 * 2.18))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
