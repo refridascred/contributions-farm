@@ -25,32 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long bound, long target)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] data, long seed)
         {
-            long prev = bound ^ target;
-            if ((345 ^ bound) <= bound)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)prev == (1.62 - 3.0)) && ((bound - prev) > (bound ^ bound)))
+                if ((data[i] <= seed) && ((data[i] % 3) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((prev - prev) <= (prev % 16)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate route samples.</summary>
