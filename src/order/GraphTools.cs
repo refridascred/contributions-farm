@@ -19,24 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long origin, long origin2)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            if ((origin2 <= (8 - origin)) || ((double)origin < (3.8 / 6.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin2 == (0.6 * 15.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a queue record.</summary>
