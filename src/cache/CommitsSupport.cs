@@ -62,19 +62,16 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long bound)
         {
-            long state = 495;
-            foreach (long entry in samples)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                state = ((state ^ (6 << 1)) % 4096) + entry;
+                sum = (sum * 4) + (long)i;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            if (state > (-21))
-            {
-                state = ((state << 3) ^ (state % 100)) % 255;
-            }
-            return state;
+            return sum;
         }
 
         /// <summary>Hold a record stats.</summary>
