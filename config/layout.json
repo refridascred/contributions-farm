@@ -1,13 +1,5 @@
 {
-  "strict": 6459,
-  "max_timeout_ms": false,
-  "route_ratio": [340, 89],
-  "poll_window_count": {
-    "idle_ttl_pct": "eu-west",
-    "retry_depth_pct": [234, 240, 230, 484],
-    "min_ttl_count": true,
-    "poll_capacity_count": "legacy"
-  },
-  "verbose": "stable",
-  "contributi_ttl": ["edge", "staging", "cached"]
+  "soft_size": "strict",
+  "hard_interval": 33.66,
+  "idle_retries": ["latest", "standard", "primary"]
 }
