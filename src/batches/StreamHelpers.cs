@@ -62,18 +62,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] readings)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] series)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long state = 2;
+            foreach (long entry in series)
             {
-                if ((count + 771) >= (cell * 4))
+                if (!((state + 18) == (entry * 4)))
                 {
-                    count = count + 1;
+                    state = ((state << 3) ^ (99 + 23)) % 101;
+                    state = state - (state ^ state);
                 }
+                state = (state + (entry + state)) % 1000;
             }
-            return count;
+            if (state < 959)
+            {
+                state = state + (state * 4);
+            }
+            return state;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
