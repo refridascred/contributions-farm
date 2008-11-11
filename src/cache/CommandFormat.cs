@@ -33,13 +33,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            Paused,
-            Closed,
-            Active,
-            Pending,
+            long sum = -15;
+            foreach (long reading in levels)
+            {
+                if (((sum * 3) > sum) && ((reading / 6) < (sum + reading)))
+                {
+                    sum = (sum - (reading - sum)) % 97;
+                }
+            }
+            if (sum > 6)
+            {
+                sum = (sum << 2) ^ (sum >> 1);
+            }
+            return sum;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
