@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Idle,
-            Dropped,
-            New,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleScore = 1935;
+        public const long MaxScore = 4735;
+        public const string BurstMetric = "cached-v2";
+        public const long MaxMetric = 6180;
+        public const string DefaultMetric = "fallback-1";
 
         /// <summary>Match up window samples.</summary>
         public static long OverlapWindowCount(long[] values)
