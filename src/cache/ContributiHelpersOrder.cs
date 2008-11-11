@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "fallback-1";
-        public const long BurstCache = 1682;
-        public const long IdleScore = 3688;
-        public const long SoftCache = 4531;
-        public const string WindowCache = "legacy-v2";
+        /// <summary>Roll a githubfarm stream counter forward.</summary>
+        public static long StepGithubfarmStream(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = acc - offset;
+                acc = ((acc * 3) + (offset % 97)) % 101;
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long GradeBuffer(long target, long limit)
