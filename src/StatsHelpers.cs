@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = (mix * 3) + origin;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a layout header.</summary>
