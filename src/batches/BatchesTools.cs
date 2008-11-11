@@ -33,29 +33,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue profile pair into a bucket.</summary>
-        public static long ClassifyQueueProfile(long floor, long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long floor, long bound)
         {
-            long step = floor + seed;
-            if (((double)seed <= (0.3 * 2.09)) || (floor > step))
+            long delta = floor - bound;
+            if ((((-642) + floor) > bound) && ((delta >> 2) <= (bound + bound)))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if (floor < step)
+                if (!((delta % 16) >= ((-833) + 1)))
                 {
                     return 6;
                 }
                 else
                 {
-                    if ((17.0 + 12.0) <= (double)seed)
+                    if ((bound - bound) == (floor + bound))
                     {
                         return 7;
                     }
                     else
                     {
-                        return 3;
+                        return 5;
                     }
                 }
             }
