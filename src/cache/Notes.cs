@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Count the session queue entries that pass the check.</summary>
+        public static long TallySessionQueueGaps(long[] series)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - hits) == (hits << 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
