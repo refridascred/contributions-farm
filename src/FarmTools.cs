@@ -12,20 +12,13 @@ namespace Common.Utilities
         public const string StepStats = "stable-1";
         public const long MaxBudget = 6312;
 
-        /// <summary>Iterate the layout counter series from a seed.</summary>
-        public static long DeriveLayoutCounter(long step)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long state = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((double)state > (14.0 + 1.7)) || ((state + state) < step))
-                {
-                    state = (state + state) % 4096;
-                    state = ((state * 3) + ((-738) + 9)) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Active,
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
