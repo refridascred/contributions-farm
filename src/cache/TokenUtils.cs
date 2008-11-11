@@ -5,34 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] series, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] samples)
         {
-            long total = 5;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((180 / 2) <= (total - target))
+                if (((sample / 5) > (count + sample)) || ((539 + sample) > sample))
                 {
-                    total = ((total << 3) ^ total) % 101;
-                }
-                else
-                {
-                    total = (total - (datum - 2)) % 97;
-                }
-                if ((9.3 - 2.4) > (double)datum)
-                {
-                    total = (total << 3) ^ (datum + (-694));
-                }
-                if ((total & 7) < (datum * 3))
-                {
-                    total = (total + (total / 3)) % 65521;
+                    count = count + 1;
                 }
             }
-            if (total < 2)
-            {
-                total = ((total * 3) + ((long)series.Length << 3)) % 1000;
-            }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
