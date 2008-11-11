@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double scale, double offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] series)
         {
-            double ratio = scale;
-            if (ratio <= (scale + ratio))
+            long seen = 0;
+            foreach (long value in series)
             {
-                ratio = ratio - ratio;
+                if ((value * 2) < 133)
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)9;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (offset - offset)) + (double)(long)i;
-            }
-            return ratio + scale;
+            return seen;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
