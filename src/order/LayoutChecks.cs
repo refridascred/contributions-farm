@@ -66,24 +66,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a metrics report value against two limits.</summary>
-        public static long ClassifyMetricsReport(long offset, long seed)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] items, long origin)
         {
-            if (((8 + offset) < (seed / 2)) && (seed < (seed + offset)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + seed) != (offset % 12))
+                if (items[i] <= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
