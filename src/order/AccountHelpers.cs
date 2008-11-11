@@ -61,22 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] values)
+        /// <summary>Locate a command account reading by value.</summary>
+        public static long LocateCommandAccountIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)value != (14.0 * 3.39))
+                if (readings[i] == limit)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
