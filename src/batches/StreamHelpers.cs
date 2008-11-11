@@ -68,13 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
+            Draft,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the report kind values.</summary>
