@@ -1,39 +1,23 @@
 # githubfarm settings
-filter_capacity:
-  readonly: 75.63
-  batch_delay: true
-  verbose: open
-  warm_size: false
-  cache_delay:
-    burst_capacity_count: 37.76
-    filter_timeout: true
-    counter_delay:
-      - 4
-      - 204
-      - 166
-      - 167
-    idle_threshold_pct: fallback
-burst_ttl_count: 45
+min_ttl_s:
+  hard_limit:
+    default_delay_pct: local
+    channel_window: cached
+    cache_delay_count:
+      - 41
+      - 429
+      - 50
+      - 44
+    batches_timeout:
+      - primary
+      - edge
+    retry_retries: strict
+  dry_run: false
+  min_depth_count: fallback
+  min_ttl: false
+min_ttl: 96.19
 readonly:
-  idle_ratio_pct: false
-  min_interval: legacy
-  flush_limit_s:
-    batch_size_s: 7975
-    hard_capacity_s: false
-    batch_delay_count:
-      - blue
-      - local
-      - staging
-dry_run:
-  burst_window_pct: cached
-  flush_threshold_pct: staging
-  max_retries_ms: 57.74
-  format_threshold:
-    - 204
-    - 26
-    - 241
-    - 188
-  enabled: legacy
-  soft_depth_count: legacy
-stream_ratio: 1024
-hard_interval_ms: edge
+  - primary
+  - local
+  - legacy
+default_size: 71.71
