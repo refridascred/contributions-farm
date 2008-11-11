@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] levels, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
+                if (entry >= floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Match up command samples.</summary>
