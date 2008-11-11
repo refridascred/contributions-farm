@@ -1,6 +1,8 @@
-id,state,active
-1,0.26,green
-2,963,507
-3,359,blue
-4,22.47,53.32
-5,275,496
+id,rank,count,label
+1,804,stable,62.14
+2,open,762,26.15
+3,382,70.98,24.66
+4,cached,687,94.21
+5,40.29,cached,786
+6,fallback,98.71,primary
+7,90.65,open,5.47
