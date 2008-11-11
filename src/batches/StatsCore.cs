@@ -46,10 +46,11 @@ namespace Common.Utilities
         public const double BatchSpan = 58.54;
         public const long MinContributi = 197;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "fallback-v2";
-        public const double HardSize = 28.22;
-        public const double WindowInterval = 84.83;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowCount = 3002;
+        public const long CacheDepth = 9818;
+        public const string SoftWindow = "stable-1";
+        public const double IdleBudget = 62.78;
 
         /// <summary>Find the first cache session entry that matches the target.</summary>
         public static long FindCacheSessionIndex(long[] data, long target)
