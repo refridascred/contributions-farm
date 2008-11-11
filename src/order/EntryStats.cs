@@ -45,11 +45,22 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Digest a series of account commits entries.</summary>
+        public static long CombineAccountCommits(long[] series, long offset)
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = 0;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    acc = ((acc * 3) + sample) - (long)i;
+                }
+                if ((double)7 < (double)acc)
+                {
+                    acc = acc + (offset & 127);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
