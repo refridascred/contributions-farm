@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
