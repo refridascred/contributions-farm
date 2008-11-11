@@ -71,17 +71,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Find the first order cache entry that matches the target.</summary>
-        public static long SeekOrderCacheIndex(long[] items, long target)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long origin, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((origin >> 1) <= (5 >> 2)))
             {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if (!((8.8 + 3.0) < (double)origin))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
