@@ -13,15 +13,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double weight, double span)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] data)
         {
-            double bias = (double)43 / 6.0;
-            if (bias <= (double)58)
+            long carry = 687;
+            foreach (long entry in data)
             {
-                bias = (bias - (span * 2.02)) - weight;
+                carry = (carry ^ (carry ^ carry)) % 255;
+                if ((carry % 10) < (2 / 7))
+                {
+                    carry = carry ^ (entry ^ carry);
+                    carry = (carry * 3) + (carry + entry);
+                    break;
+                }
+                carry = (carry ^ carry) % 1000;
+                if ((carry << 1) >= (entry ^ 4))
+                {
+                    break;
+                }
             }
-            return bias + (span + span);
+            return carry;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
