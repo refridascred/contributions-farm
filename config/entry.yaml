@@ -1,17 +1,9 @@
 # entry settings
-idle_window:
-  - staging
-  - local
-retry_ratio_ms: true
-burst_limit_count: 16
-report_interval: false
-buffer_size: false
-metric_limit:
-  burst_interval_pct: 82
-  hard_window_s: 500
-  cache_threshold_s: 62.21
-  persist: true
-  default_retries_count:
-    - primary
-    - primary
-    - eu-west
+warm_timeout_pct: 53.62
+hard_capacity_count: standard
+context_interval:
+  - 245
+  - 352
+burst_window_s:
+  - legacy
+  - fallback
