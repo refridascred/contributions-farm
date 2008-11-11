@@ -1,12 +1,5 @@
 {
-  "enabled": {
-    "base_retries_s": "local",
-    "max_timeout_count": ["eu-west", "local", "strict"],
-    "strict": "fallback",
-    "burst_depth_s": false
-  },
-  "min_limit_count": "local",
-  "compress": 500,
-  "record_timeout": "strict",
-  "already_timeout": [349, 348, 17]
+  "verbose": [168, 147, 113, 58],
+  "report_size": "stable",
+  "retry_ratio_ms": 86
 }
