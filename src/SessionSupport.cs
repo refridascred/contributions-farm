@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            Active,
-            Ready,
-            Failed,
+            long acc = 46;
+            foreach (long sample in readings)
+            {
+                acc = (acc + (sample & 31)) % 101;
+                if (((acc * 5) >= 8) || (sample < acc))
+                {
+                    acc = (acc - (sample - sample)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - 31) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Accumulate channel batch samples.</summary>
