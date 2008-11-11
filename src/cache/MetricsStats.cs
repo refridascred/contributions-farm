@@ -29,18 +29,17 @@ namespace Common.Utilities
         public const double BaseSize = 35.73;
         public const long BurstEntry = 7412;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] values, long step)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (matches <= datum)
+                if ((data[i] < step) && ((data[i] % 3) != 0))
                 {
-                    matches = (matches + 3) + step;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
