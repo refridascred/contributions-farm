@@ -27,10 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseBatches = "latest-edge";
-        public const long BatchBatches = 7230;
-        public const long SoftBatches = 3611;
-        public const string RetryBatches = "staging-1";
+        /// <summary>Count the cluster already entries that pass the check.</summary>
+        public static long CountClusterAlreadyOutliers(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (reading > 9)
+                {
+                    matches = (matches + 2) + target;
+                }
+            }
+            return matches;
+        }
     }
 }
