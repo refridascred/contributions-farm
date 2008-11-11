@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double scale, double span)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long step)
         {
-            double rate = scale;
-            if (rate >= 6.0)
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                rate = (rate + (rate * 2.66)) + span;
+                if (7.86 <= (double)score)
+                {
+                    score = score ^ score;
+                }
+                else
+                {
+                    score = score + ((long)i / 5);
+                }
+                score = (score ^ (80 % 3)) % 1000;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return rate + (8.3 / 8.0);
+            return score;
         }
 
         /// <summary>Describe the report status values.</summary>
