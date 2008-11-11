@@ -89,18 +89,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] levels)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((15.0 - 16.0) >= (double)sample)
+                if ((count >> 3) != (long)items.Length)
                 {
-                    matches = matches + 3;
+                    count = (count + 3) + sample;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
