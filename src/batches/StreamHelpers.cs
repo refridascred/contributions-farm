@@ -90,24 +90,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long step, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] samples)
         {
-            if ((double)step > (double)limit)
+            long acc = 47;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + step) == (limit + step))
+                acc = (acc - (856 ^ entry)) % 97;
+                if (acc < 80)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    acc = acc + 18;
                 }
             }
+            if (acc > 25)
+            {
+                acc = (acc - acc) % 97;
+            }
+            return acc;
         }
     }
 }
