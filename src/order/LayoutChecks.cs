@@ -69,11 +69,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metrics context figure with a bias.</summary>
-        public static double BlendMetricsContext(double gain, double offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            double drift = (gain / 9.0) * 4.0;
-            return (drift + (double)(-4)) + offset;
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
