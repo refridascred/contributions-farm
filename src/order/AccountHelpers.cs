@@ -51,22 +51,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] values)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double weight, double bias)
         {
-            long mark = 519;
-            foreach (long reading in values)
+            double load = weight;
+            if (load >= (bias / 8.0))
             {
-                if ((mark % 2) <= 4)
-                {
-                    mark = mark ^ (reading + reading);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (reading / 8)) % 4096;
-                }
+                load = load - bias;
             }
-            return mark;
+            else
+            {
+                load = load + (bias - bias);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
