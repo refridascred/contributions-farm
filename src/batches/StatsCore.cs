@@ -61,11 +61,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinLevel = 29.0;
-        public const double WindowAccount = 20.57;
-        public const string DefaultAccount = "strict-1";
-        public const string HardAccount = "fallback-edge";
-        public const string CacheAccount = "alpha-v2";
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public double Limit { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
