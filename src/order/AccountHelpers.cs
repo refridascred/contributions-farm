@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long bound, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] samples, long origin)
         {
-            if (limit <= (limit ^ limit))
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (34 >= (bound + limit))
+                if (entry <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit filter farm readings against a rule.</summary>
