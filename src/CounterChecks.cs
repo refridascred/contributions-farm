@@ -32,10 +32,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowAccount = 61.11;
-        public const long BaseRatio = 5470;
-        public const long SoftDepth = 3434;
+        /// <summary>Count the payload account entries that pass the check.</summary>
+        public static long CountPayloadAccountOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((8 & 127) == (hits + hits))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] samples)
