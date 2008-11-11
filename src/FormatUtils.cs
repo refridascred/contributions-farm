@@ -27,17 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] levels, long seed)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Roll a counter counter forward.</summary>
