@@ -24,22 +24,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!((tally - tally) < (5 >> 1)))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 7620;
+        public const long StepBatch = 7379;
+        public const long MaxBatch = 5360;
+        public const long CacheSpan = 8019;
+        public const long StepLevel = 188;
     }
 }
