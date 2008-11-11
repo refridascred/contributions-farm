@@ -14,14 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] series, long offset)
         {
-            Closed,
-            Locked,
-            Pending,
-            Active,
-            Paused,
+            long sum = 970;
+            foreach (long value in series)
+            {
+                sum = (sum ^ (offset + offset)) - value;
+            }
+            if (sum < 899)
+            {
+                sum = sum + (offset % 12);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the command level values.</summary>
