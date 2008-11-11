@@ -42,16 +42,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long limit, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long step2 = limit + step;
+            if (((double)step == (2.4 * 1.7)) || ((step & 1) == (limit - step2)))
             {
-                state = state ^ origin;
-                state = ((state * 2) + (long)i) % 1000;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((step - step2) > 583)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step - step) != (step2 - step2)) && ((double)step >= (18.0 - 5.46)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step2 >> 5) >= (-131))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
