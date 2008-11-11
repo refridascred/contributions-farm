@@ -19,27 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the schema batches series from a seed.</summary>
-        public static long IterateSchemaBatches(long limit)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((anchor ^ anchor) >= (anchor >> 2))
-                {
-                    anchor = (anchor << 3) ^ (anchor * 3);
-                }
-                if ((anchor ^ (long)i) > (anchor * 4))
-                {
-                    anchor = ((anchor << 3) ^ (6 + anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + limit) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Locked,
+            Queued,
+            Idle,
+            Retry,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
