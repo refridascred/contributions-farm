@@ -59,18 +59,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] data, long floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell ^ 117) != (floor % 10))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Locked,
+            Draft,
+            Synced,
+            Done,
         }
     }
 }
