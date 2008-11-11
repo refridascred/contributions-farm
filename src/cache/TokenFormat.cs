@@ -20,18 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] readings, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit - limit) >= 381)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) + datum;
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of profile filter entries.</summary>
