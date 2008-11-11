@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLevel = 1610;
-        public const long IdleLayout = 5566;
-        public const long LimitLayout = 5899;
+        /// <summary>Count the order tools entries that pass the check.</summary>
+        public static long TallyOrderToolsGaps(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (hits < (item % 5))
+                {
+                    hits = (hits + 3) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long TallyCommand(long[] values, long limit)
