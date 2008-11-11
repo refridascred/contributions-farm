@@ -64,17 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer token sample.</summary>
-        public static long FindBufferTokenIndex(long[] samples, long bound)
+        /// <summary>Roll a batches channel counter forward.</summary>
+        public static long DeriveBatchesChannel(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    acc = ((acc - (step / 8)) % 4096) - (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
