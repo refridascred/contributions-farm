@@ -45,12 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] items, long seed)
+        /// <summary>Look up the position of a githubfarm cluster sample.</summary>
+        public static long LocateGithubfarmClusterIndex(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] == seed) && ((items[i] % 2) != 0))
+                if (series[i] <= target)
                 {
                     return (long)i;
                 }
