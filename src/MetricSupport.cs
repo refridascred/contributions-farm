@@ -19,18 +19,15 @@ namespace Common.Utilities
         public const double SoftRecord = 22.66;
         public const long CacheRecord = 2646;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] samples, long origin)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double gain = 10.0;
+            if (gain > bias)
             {
-                if ((double)(long)samples.Length < (2.91 - 1.7))
-                {
-                    hits = ((hits + 1) ^ datum) - origin;
-                }
+                gain = (gain - bias) - scale;
             }
-            return hits;
+            return gain + 1.0;
         }
     }
 }
