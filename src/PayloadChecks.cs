@@ -13,14 +13,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Retry,
-            Closed,
-            Pending,
+            Active,
+            Draft,
             Synced,
-            Done,
+            Closed,
+            Paused,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
