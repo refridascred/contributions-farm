@@ -67,22 +67,30 @@ namespace Common.Utilities
         public const long MinBuffer = 4517;
         public const string BaseFactor = "fallback-v2";
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] items, long floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            long acc = 4;
-            foreach (long sample in items)
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((8 % 3) != (acc << 1))
+                long tally = origin;
+                if (tally > (tally << 1))
                 {
-                    acc = ((acc - 86) ^ sample) + floor;
+                    tally = ((tally << 2) ^ ((long)i + 9)) % 255;
+                    tally = (tally ^ 801) % 1000;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ (long)items.Length) % 1000;
+                    tally = ((tally << 3) ^ 58) % 65521;
                 }
+                if (((origin ^ tally) <= (17 - origin)) && (8.0 > (double)total))
+                {
+                    tally = (tally + (origin + origin)) % 97;
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return acc % 4096;
+            return total;
         }
     }
 }
