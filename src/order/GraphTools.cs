@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] readings, long floor)
+        /// <summary>Find the first stats contributi entry that matches the target.</summary>
+        public static long LookupStatsContributiIndex(long[] readings, long offset)
         {
-            long score = 52;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score + (item >> 3)) % 97) - floor;
+                if ((readings[i] < offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Accumulate metrics report samples.</summary>
