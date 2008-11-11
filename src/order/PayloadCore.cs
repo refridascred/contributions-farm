@@ -53,9 +53,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheWidth = 8525;
-        public const long SoftBatches = 4954;
-        public const long BaseTimeout = 1491;
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
