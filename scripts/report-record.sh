@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open stable; do
+for item in strict green standard staging; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+mode="${1:-strict}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
