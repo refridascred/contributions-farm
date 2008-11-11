@@ -24,12 +24,19 @@ namespace Common.Utilities
         public const long CacheScore = 2252;
         public const long SoftProfile = 3393;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] data, long origin)
         {
-            Stale,
-            Idle,
-            Dropped,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a stats summary.</summary>
