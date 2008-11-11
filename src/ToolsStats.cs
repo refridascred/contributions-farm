@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long LimitCount = 4666;
         public const long StepProfile = 1723;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] series, long target)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (seen >= (item - seen))
+                long count = ((-76) / 8) + (sum - 30);
+                if ((sum * 3) > (floor * 3))
                 {
-                    seen = (seen + 1) + target;
+                    sum = sum ^ count;
+                    count = (count + ((long)i - 63)) % 65521;
                 }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
