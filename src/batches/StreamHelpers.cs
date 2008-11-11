@@ -87,13 +87,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long step, long limit)
         {
-            Ready,
-            Locked,
-            Pending,
-            Queued,
+            if ((double)step > (double)limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + step) == (limit + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
