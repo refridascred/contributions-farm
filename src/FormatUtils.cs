@@ -29,13 +29,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long offset, long origin)
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public double Size { get; set; }
+            if ((double)offset >= (4.77 * 5.5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((offset & 7) >= (origin & 255)) || ((offset - offset) >= 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((origin - offset) != (offset / 8)) && (((-1) ^ offset) <= 314))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a counter counter forward.</summary>
