@@ -32,19 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double rate, double bias)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            double mean = rate;
-            if (mean >= mean)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - (rate * 8.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (rate - bias)) + (double)(long)i;
-            }
-            return mean + (rate - 3.59);
+            return hits;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
