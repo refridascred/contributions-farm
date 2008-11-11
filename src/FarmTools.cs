@@ -23,16 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of cache notes readings.</summary>
-        public static long ScoreCacheNotes(long[] values, long step)
-        {
-            long anchor = 34;
-            foreach (long value in values)
-            {
-                anchor = ((anchor + anchor) ^ value) + step;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 63.67;
+        public const double CacheSpan = 5.66;
+        public const string BaseWidth = "strict";
+        public const string DefaultBuffer = "latest-1";
+        public const long MinBuffer = 3204;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadOutliers(long[] series)
