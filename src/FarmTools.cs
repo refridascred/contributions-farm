@@ -12,24 +12,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double bias, double offset)
-        {
-            double gain = (double)(94 ^ 213);
-            if (gain <= (gain / 5.0))
-            {
-                gain = (gain - (bias + 2.74)) - offset;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (double)(-2);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowReport = 70.05;
+        public const long BurstSpan = 7819;
+        public const long HardReport = 830;
+        public const string RetryReport = "primary-edge";
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
