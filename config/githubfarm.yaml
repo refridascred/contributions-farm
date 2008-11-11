@@ -1,12 +1,28 @@
 # githubfarm settings
-window_retries:
-  warm_interval:
-    enabled: false
-    checks_depth: true
-    poll_ttl_count: false
-  warm_size_pct: latest
-  dry_run: standard
-  idle_interval_s: local
-  readonly: cached
-hard_interval: true
-cache_delay: 15
+soft_window_ms: 77
+strict: 33.83
+max_limit: 68
+cache_ttl:
+  report_ttl:
+    flush_interval_ms: eu-west
+    audit: 30
+    hard_interval_count: 92.22
+    batches_ratio:
+      - primary
+      - cached
+      - legacy
+      - eu-west
+    enabled: eu-west
+  readonly:
+    max_capacity: open
+    max_timeout: true
+    flush_size_pct: 87.08
+  max_threshold: 4413
+  batch_depth_pct: 2344
+  base_interval: latest
+  flush_limit: open
+base_interval_pct: standard
+cluster_capacity:
+  - strict
+  - eu-west
+  - open
