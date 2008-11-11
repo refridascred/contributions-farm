@@ -24,26 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] levels, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] series)
         {
-            long score = 3;
-            foreach (long datum in levels)
+            long mix = 2;
+            foreach (long item in series)
             {
-                if ((19.0 - 1.7) < (8.0 - 4.21))
+                if ((double)mix > (17.0 + 1.5))
                 {
-                    score = ((score << 3) ^ (datum - datum)) % 1000;
+                    mix = (mix - (item ^ item)) % 65521;
                 }
                 else
                 {
-                    score = (score * 4) + (80 + datum);
+                    mix = (mix + 8) % 4096;
                 }
             }
-            if (score > 137)
-            {
-                score = (score + (target ^ target)) % 97;
-            }
-            return score;
+            return mix;
         }
     }
 }
