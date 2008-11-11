@@ -1,7 +1,12 @@
 # support settings
-poll_interval:
-  - latest
-  - green
-  - green
-verbose: 61
-base_timeout_s: 11
+soft_ratio_pct: 500
+min_retries_count: stable
+retry_retries:
+  - blue
+  - legacy
+hard_ratio:
+  - legacy
+  - primary
+  - local
+hard_capacity_ms: primary
+poll_limit_count: green
