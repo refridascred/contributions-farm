@@ -22,11 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public double Weight { get; set; }
             public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
