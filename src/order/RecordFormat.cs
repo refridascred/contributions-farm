@@ -47,11 +47,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinSpan = 37;
-        public const double IdleToken = 94.8;
-        public const double StepCount = 85.63;
-        public const double RetryToken = 17.2;
-        public const string SoftInterval = "fallback-1";
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+        }
     }
 }
