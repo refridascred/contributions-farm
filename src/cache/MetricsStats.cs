@@ -35,11 +35,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            New,
+            Ready,
+            Done,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a channel stats.</summary>
