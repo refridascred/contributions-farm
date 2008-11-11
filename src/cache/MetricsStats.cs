@@ -41,13 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Locked,
-            Done,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 1106;
+        public const double HardCommand = 5.31;
+        public const long SoftBudget = 4917;
+        public const double BatchCount = 52.36;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string DefaultSession = "cached-edge";
