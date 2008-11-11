@@ -1,13 +1,9 @@
 {
-  "batch_threshold_pct": 723,
-  "account_size": [408, 125, 96],
-  "soft_ratio": 4.8,
-  "commits_threshold": {
-    "token_size": 500,
-    "enabled": 500,
-    "max_timeout": false,
-    "retry_limit": true,
-    "base_depth_count": 100
-  },
-  "buffer_size": 15
+  "payload_retries": true,
+  "readonly": 3281,
+  "persist": {
+    "retry_delay_pct": 100,
+    "cache_timeout_s": 1024,
+    "report_depth": 25.69
+  }
 }
