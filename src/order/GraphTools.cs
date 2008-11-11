@@ -55,19 +55,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] samples, long floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Ready,
+            Synced,
+            Draft,
         }
     }
 }
