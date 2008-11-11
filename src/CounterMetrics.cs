@@ -35,32 +35,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long step, long step2)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long seed)
         {
-            long delta = step + step2;
-            if ((775 < (step2 >> 3)) && ((double)step < (double)delta))
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
+                mix = mix - seed;
+                mix = ((mix * 2) + (mix % 24)) % 255;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (((step - delta) <= delta) && ((7.8 / 8.0) >= (double)delta))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((17.0 - 9.2) <= (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
