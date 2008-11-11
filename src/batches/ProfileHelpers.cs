@@ -14,15 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Retry,
-            Synced,
-            Idle,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchSupport = 33.4;
+        public const string MaxSpan = "cached-1";
+        public const long IdleFactor = 7997;
+        public const double BaseCount = 32.29;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long SortAccount(long step, long offset)
