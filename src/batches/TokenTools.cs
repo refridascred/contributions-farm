@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double ratio, double bias)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            double drift = 8.1 + (double)21;
-            if (drift < (bias / 8.0))
-            {
-                drift = drift + bias;
-            }
-            return drift + (ratio / 5.0);
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
