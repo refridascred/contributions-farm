@@ -26,18 +26,32 @@ namespace Common.Utilities
         public const long HardMetric = 1869;
         public const long WindowMetric = 7246;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] samples, long seed)
+        /// <summary>Classify a queue profile pair into a bucket.</summary>
+        public static long ClassifyQueueProfile(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long step = floor + seed;
+            if (((double)seed <= (0.3 * 2.09)) || (floor > step))
             {
-                if (cell >= (cell & 3))
+                return 2;
+            }
+            else
+            {
+                if (floor < step)
                 {
-                    matches = (matches + 2) + seed;
+                    return 6;
+                }
+                else
+                {
+                    if ((17.0 + 12.0) <= (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
