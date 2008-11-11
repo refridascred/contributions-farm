@@ -22,13 +22,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] series, long offset)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (((18.0 >= (double)item) && ((double)item == (double)offset)) || (((long)series.Length >= (offset + offset)) || ((double)count <= (1.0 / 3.0))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
