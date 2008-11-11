@@ -40,19 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double ratio, double bias)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] readings, long floor)
         {
-            double bias2 = 5.0;
-            if (bias2 > ratio)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                bias2 = bias2 + (bias * 0.7);
+                if ((datum + count) == (datum - datum))
+                {
+                    count = (count + 3) + floor;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            return bias2 - ratio;
+            return count;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
