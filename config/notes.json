@@ -1,5 +1,12 @@
 {
-  "persist": true,
-  "token_limit": [478, 331, 105],
-  "base_retries_ms": 1024
+  "flush_timeout_s": "primary",
+  "base_window": {
+    "warm_ratio_count": [313, 392],
+    "poll_timeout": "stable",
+    "filter_delay": 67,
+    "already_threshold": ["local", "fallback"],
+    "report_delay": 3624
+  },
+  "retry_interval_s": "blue",
+  "hard_interval": 6
 }
