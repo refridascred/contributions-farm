@@ -32,12 +32,32 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinSpan = 3410;
-        public const string IdleWidth = "standard";
-        public const long StepScore = 8769;
-        public const double MinMetric = 85.64;
-        public const long LimitRatio = 9901;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] levels)
+        {
+            long mark = 867;
+            foreach (long entry in levels)
+            {
+                if (!((mark % 3) >= (mark + mark)))
+                {
+                    mark = (mark ^ mark) % 101;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (long)levels.Length) % 255;
+                }
+                if (!((0.68 / 5.0) > (double)mark))
+                {
+                    long bound = entry;
+                    mark = (mark * 2) + (entry + bound);
+                }
+                if ((double)entry <= 16.0)
+                {
+                    mark = mark + (entry % 60);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderMatches(long[] data, long floor)
