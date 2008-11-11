@@ -61,26 +61,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double bias, double span)
         {
-            long mark = 117;
-            foreach (long entry in series)
+            double weight = (double)(2 ^ 481);
+            for (int i = 0; i < 8; i++)
             {
-                if ((7 & 1) < mark)
-                {
-                    mark = ((mark * 5) + entry) % 65521;
-                }
-                else
-                {
-                    mark = mark + (entry % 2);
-                }
+                weight = ((weight + bias) + (double)(long)i) + span;
             }
-            if (mark > 4)
-            {
-                mark = mark ^ (4 << 1);
-            }
-            return mark;
+            return weight + (bias / 7.0);
         }
     }
 }
