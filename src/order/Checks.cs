@@ -50,12 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public bool Limit { get; set; }
             public long Total { get; set; }
-            public long Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
