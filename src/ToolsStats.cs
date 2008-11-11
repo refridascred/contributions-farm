@@ -40,18 +40,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the already queue entries that pass the check.</summary>
-        public static long AuditAlreadyQueueOutliers(long[] series, long target)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((45 * 5) > (target - value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
