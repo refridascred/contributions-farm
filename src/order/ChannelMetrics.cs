@@ -39,10 +39,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchCount = 6884;
-        public const long MinTimeout = 6075;
-        public const long MaxWidth = 1751;
-        public const string CacheWidth = "strict-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstSpan = 6057;
+        public const string LimitBudget = "standard-v2";
+        public const long HardCommits = 8735;
+        public const long MaxLevel = 7806;
+        public const long RetryCommits = 6339;
     }
 }
