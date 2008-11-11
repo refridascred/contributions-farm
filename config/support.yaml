@@ -1,14 +1,7 @@
 # support settings
-batches_depth: edge
-batches_retries:
-  retry_ratio_ms: 55.78
-  account_ratio:
-    - 110
-    - 2
-  max_delay_ms: false
-  cache_limit_count:
-    readonly: 2
-    max_retries: 6167
-    stream_size: strict
-  metrics_ratio: strict
-sync_timeout_ms: stable
+command_capacity:
+  schema_ratio: 9.32
+  burst_depth_s: 51
+  metric_window: 500
+contributi_interval: edge
+readonly: strict
