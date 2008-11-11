@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] readings, long offset)
+        /// <summary>Match up context route samples.</summary>
+        public static long CompareContextRouteCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a buffer stats.</summary>
