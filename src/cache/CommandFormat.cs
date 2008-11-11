@@ -43,18 +43,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] readings, long offset)
+        /// <summary>Project the next cluster token value.</summary>
+        public static double SmoothClusterToken(double bias, double bias2)
         {
-            long state = 40;
-            foreach (long cell in readings)
+            double drift = (double)6 * 4.9;
+            if (drift >= bias)
             {
-                if (((state - 572) < 582) && ((offset + cell) < (cell ^ state)))
-                {
-                    state = state ^ (83 >> 3);
-                }
+                drift = drift + drift;
             }
-            return state % 97;
+            else
+            {
+                drift = drift + (double)19;
+            }
+            return drift + (bias2 / 8.0);
         }
     }
 }
