@@ -21,22 +21,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long state = 7;
-            foreach (long entry in series)
-            {
-                if ((state % 97) >= entry)
-                {
-                    state = (state << 2) ^ entry;
-                }
-                if ((entry - state) > entry)
-                {
-                    state = (state << 2) ^ state;
-                }
-            }
-            return state % 1000;
+            Idle,
+            Closed,
+            Draft,
         }
 
         /// <summary>Look up the position of a contributi checks sample.</summary>
