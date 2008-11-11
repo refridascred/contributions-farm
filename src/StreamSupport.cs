@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every payload report entry stays within the limit.</summary>
-        public static bool GuardPayloadReportRange(long[] data, long offset)
+        /// <summary>Project the next batches farm value.</summary>
+        public static double SmoothBatchesFarm(double bias, double span)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            double ratio = (double)998;
+            for (int i = 0; i < 3; i++)
             {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ((ratio + (span - span)) + (double)(long)i) + bias;
             }
-            return valid;
+            return ratio + ratio;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
