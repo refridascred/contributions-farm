@@ -1,19 +1,8 @@
 {
-  "compress": 1.43,
-  "stats_ttl": {
-    "profile_depth": 7730,
-    "compress": 7.35,
-    "sync_ratio": {
-      "persist": true,
-      "layout_retries": 37,
-      "compress": 86.77,
-      "format_window": true,
-      "retry_threshold_pct": 86.52
-    },
-    "idle_ttl_s": "open",
-    "stats_limit": 83
-  },
-  "audit": 93.02,
-  "min_timeout": false,
-  "warm_size_s": 15.54
+  "strict": "latest",
+  "default_ttl_ms": "edge",
+  "tools_interval": 92.96,
+  "token_window": "local",
+  "poll_size": 33,
+  "persist": 88.0
 }
