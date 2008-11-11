@@ -24,11 +24,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardRatio = 3855;
-        public const long CacheTimeout = 6799;
-        public const long SoftCount = 3698;
-        public const long DefaultToken = 138;
-        public const long BaseToken = 9562;
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long target, long step)
+        {
+            if (!((double)target < (double)step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((0.18 - 9.3) <= (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((4 + step) < 5)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
