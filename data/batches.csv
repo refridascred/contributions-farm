@@ -1,7 +1,8 @@
-id,level,weight
-1,209,11
-2,456,fallback
-3,latest,staging
-4,4.2,364
-5,37.67,920
-6,19.97,202
+id,weight,region,count
+1,864,75,9.0
+2,20.9,eu-west,57.87
+3,5.59,525,81
+4,91.08,stable,fallback
+5,staging,cached,334
+6,edge,fallback,147
+7,414,395,open
