@@ -12,11 +12,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstQueue = "local-v2";
-        public const long BurstLevel = 3726;
-        public const long BaseQueue = 9848;
-        public const long MaxWidth = 378;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCount = "fallback-v2";
+        public const string BaseSpan = "alpha-1";
+        public const double MinLevel = 19.79;
+        public const long BurstLevel = 179;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double ScaleOrder(double scale, double bias)
