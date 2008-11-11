@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] readings)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((long)readings.Length * 5) == (item - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the cache mode values.</summary>
