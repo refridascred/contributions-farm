@@ -32,31 +32,24 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] values, long offset)
         {
-            long mark = 867;
-            foreach (long entry in levels)
+            long mix = 5;
+            foreach (long cell in values)
             {
-                if (!((mark % 3) >= (mark + mark)))
+                if (((cell - mix) < mix) || ((offset & 255) <= (mix * 3)))
                 {
-                    mark = (mark ^ mark) % 101;
+                    mix = mix + (mix + cell);
+                    mix = (mix * 4) + (4 & 127);
                 }
-                else
+                if (!((35 + offset) != (offset << 3)))
                 {
-                    mark = ((mark * 5) + (long)levels.Length) % 255;
+                    mix = (mix ^ (84 * 5)) % 255;
                 }
-                if (!((0.68 / 5.0) > (double)mark))
-                {
-                    long bound = entry;
-                    mark = (mark * 2) + (entry + bound);
-                }
-                if ((double)entry <= 16.0)
-                {
-                    mark = mark + (entry % 60);
-                }
+                mix = ((mix << 3) ^ (offset - 1)) % 1000;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
