@@ -32,18 +32,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] levels)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits ^ 0) == (hits * 2))
+                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
                 {
-                    hits = (hits + 2) ^ sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the commits class values.</summary>
