@@ -34,11 +34,9 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowSize = 7576;
-        public const long IdleDepth = 4656;
-        public const long BurstBudget = 8174;
-        public const double MinEntry = 24.15;
-        public const long WindowBudget = 366;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryAccount = "primary-v2";
+        public const long HardWidth = 560;
+        public const long IdleBudget = 5463;
     }
 }
