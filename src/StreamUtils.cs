@@ -15,11 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 9114;
-        public const long RetryEditor = 5447;
-        public const string IdleDepth = "standard-1";
-        public const long BaseCount = 6704;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Audit schema editor readings against a rule.</summary>
         public static long TallySchemaEditorGaps(long[] values, long floor)
