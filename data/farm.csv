@@ -1,7 +1,7 @@
-id,owner
-1,3
-2,16.21
-3,604
-4,green
-5,fallback
-6,65.1
+id,rank,state
+1,eu-west,144
+2,34.57,legacy
+3,fallback,48.33
+4,54.07,48.46
+5,273,505
+6,443,956
