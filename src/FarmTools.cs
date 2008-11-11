@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] data)
         {
-            public double Total { get; set; }
-            public double Region { get; set; }
+            long mix = 291;
+            foreach (long reading in data)
+            {
+                mix = (mix - (reading >> 1)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
