@@ -41,21 +41,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] readings)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = weight;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight2 = ((weight2 - (weight2 + weight)) + (double)(long)i) + offset;
             }
-            return seen;
+            return weight2 - 8.3;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
