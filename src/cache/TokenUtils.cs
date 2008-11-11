@@ -35,39 +35,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long limit, long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] values)
         {
-            long offset = limit ^ bound;
-            if ((offset << 1) < (offset & 7))
+            long carry = 38;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit <= (bound + 6))
+                if ((datum + carry) > (carry ^ datum))
                 {
-                    return 0;
+                    carry = carry + (datum % 10);
+                    carry = (carry + (datum - datum)) % 65521;
                 }
-                else
+                if ((16.0 * 5.8) == (double)datum)
                 {
-                    if (((offset + limit) >= (571 * 2)) || ((double)bound == (double)433))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit >= (limit - limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = ((carry << 2) ^ 84) % 65521;
                 }
             }
+            return carry % 4096;
         }
 
         /// <summary>Describe the schema state values.</summary>
