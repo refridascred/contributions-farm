@@ -61,23 +61,18 @@ namespace Common.Utilities
         public const long SoftFactor = 8401;
         public const long BatchDepth = 729;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double bias, double span)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] readings, long origin)
         {
-            double rate = bias - span;
-            if (rate <= (double)514)
+            long state = 893;
+            foreach (long value in readings)
             {
-                rate = rate + (double)46;
+                if ((state / 9) <= (origin - value))
+                {
+                    state = state - (value + state);
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate - (double)285;
+            return state;
         }
     }
 }
