@@ -16,17 +16,14 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] data, long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            New,
+            Draft,
+            Idle,
+            Active,
         }
 
         /// <summary>Define token limits and defaults.</summary>
