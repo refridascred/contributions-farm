@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west edge open; do
+for item in strict open stable primary; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=364
+BUFFER_LIMIT=13
 log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-fallback}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
