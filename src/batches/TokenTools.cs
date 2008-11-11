@@ -37,12 +37,12 @@ namespace Common.Utilities
             return load + (double)8;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] values, long floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] values, long floor)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] >= floor)
+                if ((values[i] == floor) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
