@@ -37,18 +37,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] readings, long floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum + count) == (datum - datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) + floor;
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the layout mode values.</summary>
