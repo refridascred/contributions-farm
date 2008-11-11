@@ -45,18 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] values)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double weight, double span)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double rate = span;
+            for (int i = 0; i < 8; i++)
             {
-                if ((value + value) < (tally >> 3))
-                {
-                    tally = tally + 2;
-                }
+                rate = ((rate - (double)(-57)) + (double)(long)i) - weight;
             }
-            return tally;
+            return rate + (span - 1.34);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
