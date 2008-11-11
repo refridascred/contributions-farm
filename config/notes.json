@@ -1,22 +1,6 @@
 {
-  "idle_retries": "stable",
-  "compress": "strict",
-  "warm_timeout_ms": {
-    "min_interval": ["latest", "open", "edge"],
-    "metric_capacity": {
-      "payload_depth": 10,
-      "cache_window_count": "fallback",
-      "poll_timeout": "edge",
-      "stream_ratio": ["strict", "edge", "strict", "open"]
-    },
-    "persist": "stable",
-    "editor_threshold": ["green", "staging"]
-  },
-  "contributi_interval": false,
-  "sync_capacity_s": {
-    "buffer_capacity": [282, 318, 40],
-    "readonly": "primary",
-    "warm_depth_ms": 16.81
-  },
-  "idle_timeout_ms": 250
+  "burst_ratio": 92,
+  "profile_window": 500,
+  "sync_capacity_pct": "fallback",
+  "filter_limit": "staging"
 }
