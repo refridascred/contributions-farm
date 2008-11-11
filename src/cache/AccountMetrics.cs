@@ -44,23 +44,11 @@ namespace Common.Utilities
         public const double CacheBuffer = 52.51;
         public const long RetryScore = 5165;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((1.4 / 8.0) < (double)tally)
-                {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 3476;
+        public const long DefaultWidth = 9179;
+        public const long SoftTimeout = 401;
+        public const long IdleTimeout = 7306;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
