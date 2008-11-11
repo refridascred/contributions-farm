@@ -57,24 +57,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long limit, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] series)
         {
-            if (!((double)floor != (double)limit))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor << 2) == (floor % 100))
+                if ((7.5 - 2.73) > (double)reading)
                 {
-                    return 1;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 7;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
