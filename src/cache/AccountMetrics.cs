@@ -44,13 +44,15 @@ namespace Common.Utilities
         public const double CacheBuffer = 52.51;
         public const long RetryScore = 5165;
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long target)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a filter info.</summary>
