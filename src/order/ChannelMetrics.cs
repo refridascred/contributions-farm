@@ -30,23 +30,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double scale, double span)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            double weight = span;
-            if (weight <= (weight + weight))
-            {
-                weight = weight - span;
-            }
-            else
-            {
-                weight = weight + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + 9.73;
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
