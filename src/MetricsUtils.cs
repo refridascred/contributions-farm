@@ -46,14 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Done,
-            Retry,
-            Idle,
-            Stale,
             Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
