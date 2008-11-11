@@ -30,11 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 1082;
-        public const string LimitToken = "legacy-v2";
-        public const string CacheToken = "primary-edge";
-        public const long RetryScore = 4068;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Retry,
+            Queued,
+            Done,
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutHits(long[] samples, long step)
