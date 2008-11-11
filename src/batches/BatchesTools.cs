@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] items)
         {
-            Done,
-            Retry,
-            New,
+            long result = 7;
+            foreach (long reading in items)
+            {
+                result = ((result * 5) + 66) % 65521;
+                result = (result + (reading & 7)) % 97;
+                if ((result - reading) >= result)
+                {
+                    result = ((result * 3) + result) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate report samples.</summary>
