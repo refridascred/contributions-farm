@@ -39,18 +39,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long score = 23;
-            foreach (long value in items)
-            {
-                if ((value * 4) >= (225 >> 2))
-                {
-                    score = (score ^ (value / 2)) % 97;
-                }
-            }
-            return score;
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
