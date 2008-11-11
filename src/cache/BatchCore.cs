@@ -20,17 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] samples, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (samples[i] == origin)
+                if (6.91 >= (double)hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 3) ^ item) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
