@@ -52,17 +52,13 @@ namespace Common.Utilities
         public const string SoftWindow = "stable-1";
         public const double IdleBudget = 62.78;
 
-        /// <summary>Find the first cache session entry that matches the target.</summary>
-        public static long FindCacheSessionIndex(long[] data, long target)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Idle,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define account limits and defaults.</summary>
