@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a stats info.</summary>
