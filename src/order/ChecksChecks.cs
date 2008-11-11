@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Failed,
-            Stale,
-            Retry,
-            Paused,
-            Synced,
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
