@@ -30,18 +30,23 @@ namespace Common.Utilities
             return (rate2 + (double)218) + rate;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] samples, long target)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double scale, double span)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double weight = span;
+            if (weight <= (weight + weight))
             {
-                if ((8.5 + 1.0) <= (double)target)
-                {
-                    count = (count + 3) + item;
-                }
+                weight = weight - span;
             }
-            return count;
+            else
+            {
+                weight = weight + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + 9.73;
         }
     }
 }
