@@ -1,27 +1,7 @@
 # githubfarm settings
-token_capacity:
-  buffer_window: primary
-  session_ttl: 2960
-  max_ttl_count: 6858
-  hard_threshold_ms: standard
-  route_window:
-    metrics_size:
-      - green
-      - fallback
-      - eu-west
-    report_limit: true
-    enabled: true
-    readonly: 210
-    retry_size_s: true
-    graph_timeout:
-      - latest
-      - standard
-      - standard
-  default_timeout_count: stable
-stats_retries: edge
-batch_delay: 100
-base_delay_s:
-  max_size_ms: true
-  max_window: 49.4
-  payload_ratio: 62.4
-  editor_window: true
+sync_retries_ms: true
+soft_window_pct: 77.7
+persist:
+  hard_depth_s: false
+  strict: 12
+  batch_capacity: false
