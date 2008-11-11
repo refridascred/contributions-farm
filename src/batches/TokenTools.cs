@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] levels, long bound)
         {
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((-97) > bound)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
