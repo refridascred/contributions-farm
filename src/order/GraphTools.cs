@@ -55,13 +55,12 @@ namespace Common.Utilities
         public const string BatchWindow = "local";
         public const double HardWindow = 47.85;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Closed,
-            Ready,
-            Synced,
-            Draft,
+            public bool Region { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
