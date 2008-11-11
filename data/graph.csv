@@ -1,6 +1,11 @@
-id,state,count
-1,edge,79.03
-2,816,387
-3,637,50.7
-4,66.69,996
-5,280,332
+id,count,token,active,score
+1,stable,strict,273,eu-west
+2,blue,72.27,128,fallback
+3,77.0,fallback,60.57,150
+4,34.4,25.59,23.65,321
+5,green,7.53,941,latest
+6,open,82.99,latest,66
+7,462,74,340,59.0
+8,996,local,746,96.46
+9,standard,6.19,84,48.42
+10,48.96,eu-west,legacy,blue
