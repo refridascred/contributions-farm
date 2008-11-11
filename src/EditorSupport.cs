@@ -49,12 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstLevel = 58.41;
-        public const long IdleFactor = 6950;
-        public const long MaxLayout = 3677;
-        public const string HardLayout = "standard-v2";
-        public const long IdleLayout = 4132;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((28 * 3) < (seen + 7))
+                {
+                    seen = ((seen + 3) + sample) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 4902;
