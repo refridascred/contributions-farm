@@ -1,5 +1,6 @@
 {
-  "soft_window_ms": 0.93,
-  "min_size_ms": 100,
-  "verbose": true
+  "cache_delay_count": "staging",
+  "flush_ttl_s": 40.56,
+  "warm_depth_pct": [372, 400],
+  "stats_limit": false
 }
