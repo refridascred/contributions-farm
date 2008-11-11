@@ -1,4 +1,5 @@
 # support settings
-editor_limit: open
-dry_run: 11
-tools_capacity: open
+editor_ttl: 41.51
+notes_window: 97
+enabled: true
+idle_delay_ms: 100
