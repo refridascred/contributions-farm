@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest cached open; do
+for item in stable open green blue; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+BUFFER_LIMIT=209
+log "limit is ${BUFFER_LIMIT}"
