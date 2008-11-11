@@ -48,16 +48,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] values, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                result = ((result << 2) ^ (result >> 2)) % 1000;
-                result = ((result * 2) + (long)i) % 1000;
+                if (value >= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
