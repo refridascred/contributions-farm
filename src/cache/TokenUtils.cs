@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] levels, long limit)
+        /// <summary>Fold a list of editor support readings.</summary>
+        public static long DigestEditorSupport(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 5;
+            foreach (long value in readings)
             {
-                if (levels[i] == limit)
+                if (((3 - score) >= (value << 2)) && ((score / 5) > (long)readings.Length))
                 {
-                    return (long)i;
+                    score = (score - (score + score)) % 65521;
+                }
+                if (!((double)value == (15.0 * 6.0)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
