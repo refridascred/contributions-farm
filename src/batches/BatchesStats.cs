@@ -32,11 +32,15 @@ namespace Common.Utilities
         public const long IdleRoute = 9559;
         public const double DefaultSpan = 65.32;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepFactor = 6670;
-        public const long MinWindow = 5949;
-        public const long RetryWindow = 4195;
-        public const long BatchWindow = 8938;
-        public const long IdleSize = 3546;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] series, long floor)
+        {
+            long result = -3;
+            foreach (long sample in series)
+            {
+                result = ((((result << 3) ^ result) % 65521) ^ sample) + floor;
+            }
+            return result;
+        }
     }
 }
