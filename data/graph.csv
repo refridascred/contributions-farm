@@ -1,6 +1,6 @@
-id,score,weight,owner,region
-1,507,703,719,306
-2,680,eu-west,323,primary
-3,263,958,cached,82.59
-4,903,53.35,cached,83.09
-5,blue,strict,latest,73.74
+id,active,region
+1,287,491
+2,136,300
+3,798,4.75
+4,433,89.94
+5,70.39,cached
