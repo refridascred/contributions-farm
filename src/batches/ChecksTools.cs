@@ -34,18 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] series)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - (-40)) > (tally >> 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Idle,
+            Synced,
+            Pending,
         }
 
         /// <summary>Digest a series of format entries.</summary>
