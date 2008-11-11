@@ -53,12 +53,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double scale, double span)
         {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            double drift = (double)64 + (double)431;
+            if (drift >= (double)1)
+            {
+                drift = drift + (drift - scale);
+            }
+            else
+            {
+                drift = drift - (double)8;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (span - drift)) + (double)(long)i;
+            }
+            return drift + (double)64;
         }
     }
 }
