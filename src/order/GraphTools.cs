@@ -20,15 +20,21 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Project the next token context value.</summary>
-        public static double AdjustTokenContext(double weight, double bias)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            double bias2 = (weight - bias) * 2.87;
-            if (bias2 < (double)95)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = bias2 + weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias2 - weight;
+            return hits;
         }
 
         /// <summary>Describe the notes class values.</summary>
