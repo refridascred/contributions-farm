@@ -1,19 +1,7 @@
 {
-  "strict": true,
-  "base_depth": 7525,
-  "idle_interval_ms": {
-    "default_delay_count": "blue",
-    "hard_timeout_ms": [52, 29, 459],
-    "sync_ratio": true,
-    "cache_window_pct": "standard"
-  },
-  "retry_timeout": {
-    "audit": 139,
-    "retry_size_s": ["stable", "local", "primary"],
-    "poll_capacity_count": 82.65,
-    "sync_window": true,
-    "tools_threshold": 1304,
-    "retry_ratio_count": 6.34
-  },
-  "burst_retries_s": 4
+  "compress": 44.38,
+  "buffer_interval": "cached",
+  "hard_ratio": "latest",
+  "batch_size_s": "edge",
+  "hard_interval_count": true
 }
