@@ -1,5 +1,6 @@
 {
-  "cluster_interval": "stable",
-  "batches_delay": "blue",
-  "hard_capacity": 92
+  "sync_threshold_count": 56,
+  "verbose": "stable",
+  "strict": [427, 390, 157],
+  "report_timeout": "staging"
 }
