@@ -66,21 +66,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinRatio = "legacy";
+        public const long MaxStats = 2635;
+        public const long WindowInterval = 3205;
+        public const string BurstStats = "open-edge";
     }
 }
