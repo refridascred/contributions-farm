@@ -34,18 +34,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] data)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (!(((tally / 3) < 4) || (tally >= (item + item))))
+                if (reading < limit)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
