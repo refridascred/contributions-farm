@@ -24,12 +24,19 @@ namespace Common.Utilities
             return ratio + 1.6;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] levels, long bound)
         {
-            Failed,
-            Locked,
-            Queued,
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up order samples.</summary>
