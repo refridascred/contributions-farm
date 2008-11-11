@@ -35,14 +35,19 @@ namespace Common.Utilities
         public const double BatchSpan = 58.54;
         public const long MinContributi = 197;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] samples, long bound)
         {
-            Synced,
-            Dropped,
-            Queued,
-            Retry,
-            Active,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of queue commits entries.</summary>
