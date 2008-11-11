@@ -25,17 +25,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] readings, long step)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = 3.69;
+            for (int i = 0; i < 9; i++)
             {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio - (ratio + 3.0)) + (double)(long)i) + scale;
             }
-            return -1;
+            return ratio - offset;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
