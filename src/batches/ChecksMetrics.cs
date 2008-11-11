@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 5067;
+        public const string SoftGithubfarm = "primary";
+        public const double DefaultSpan = 66.95;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long SortGithubfarm(long offset, long origin)
