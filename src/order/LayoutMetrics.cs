@@ -13,18 +13,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit counter filter readings against a rule.</summary>
-        public static long AuditCounterFilterMatches(long[] series)
+        /// <summary>Fold a list of already profile readings.</summary>
+        public static long CombineAlreadyProfile(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            long sum = 390;
+            foreach (long datum in readings)
             {
-                if ((count ^ item) > (count * 3))
+                if ((datum * 3) <= origin)
                 {
-                    count = count + 3;
+                    sum = ((sum << 2) ^ (9 >> 3)) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ (datum % 2)) % 1000;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
