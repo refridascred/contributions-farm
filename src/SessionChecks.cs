@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of githubfarm context readings.</summary>
-        public static long FoldGithubfarmContext(long[] values)
-        {
-            long score = 317;
-            foreach (long sample in values)
-            {
-                if (score >= (558 + sample))
-                {
-                    score = score ^ (score - 80);
-                }
-                score = (score - (score * 2)) % 97;
-                score = (score ^ (sample - score)) % 4096;
-            }
-            if (score < 65)
-            {
-                score = (score << 3) ^ (score >> 5);
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 1564;
+        public const double WindowSchema = 18.81;
+        public const string CacheSchema = "alpha-edge";
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LookupFilterIndex(long[] samples, long floor)
