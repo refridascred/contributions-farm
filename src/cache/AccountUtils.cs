@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Failed,
-            Synced,
-            Stale,
+            Dropped,
             Ready,
+            Pending,
         }
 
         /// <summary>Combine record values into a single score.</summary>
