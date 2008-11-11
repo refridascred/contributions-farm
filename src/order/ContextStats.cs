@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowMetric = 46.66;
-        public const string BurstWidth = "fallback-edge";
-        public const string BaseSpan = "fallback";
-        public const double MinMetric = 49.99;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextHits(long[] samples, long seed)
