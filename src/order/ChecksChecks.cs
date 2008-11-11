@@ -32,11 +32,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxCounter = 35.24;
-        public const string HardCounter = "local-edge";
-        public const long IdleFactor = 8167;
-        public const long BatchCounter = 8511;
-        public const long BurstDepth = 4094;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
