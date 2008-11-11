@@ -51,19 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] series, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            long mix = 9;
+            foreach (long value in series)
             {
-                if (!(((carry >> 5) >= limit) && (limit <= ((long)i << 2))))
+                if ((origin >= (value & 127)) && ((double)origin == (9.0 - 4.8)))
                 {
-                    carry = carry ^ carry;
+                    mix = ((mix * 4) + mix) % 255;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            if (mix < 10)
+            {
+                mix = (mix - (mix - mix)) % 1000;
+            }
+            return mix % 1000;
         }
     }
 }
