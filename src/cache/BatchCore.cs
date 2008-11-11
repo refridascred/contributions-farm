@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] levels)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((7.4 * 2.96) > (double)cell)
+                if (sample <= origin)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
