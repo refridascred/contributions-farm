@@ -52,21 +52,21 @@ namespace Common.Utilities
         public const long RetryRecord = 1327;
         public const long MaxRecord = 6948;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) > 2)
+                    if ((items[i] ^ items[j]) < 1)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Scale a metrics context figure with a bias.</summary>
