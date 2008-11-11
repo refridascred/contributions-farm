@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] readings, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                mix = ((mix * 3) + (28 - 8)) % 255;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((625 << 2) != (matches % 97))
+                {
+                    matches = ((matches + 1) ^ entry) + bound;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
