@@ -38,11 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
