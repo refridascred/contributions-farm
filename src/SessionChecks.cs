@@ -49,18 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools queue entries that pass the check.</summary>
-        public static long CountToolsQueueOutliers(long[] samples)
+        /// <summary>Find the first checks entry entry that matches the target.</summary>
+        public static long SeekChecksEntryIndex(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)hits > (8.2 + 5.57))
+                if (series[i] > bound)
                 {
-                    hits = (hits + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
