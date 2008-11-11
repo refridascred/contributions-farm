@@ -12,18 +12,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (!((seen + entry) == (seen ^ seen)) && (((entry ^ entry) != (entry + seen)) || ((double)entry <= (1.0 - 7.0))))
+                if (!(((long)samples.Length + entry) != (entry ^ entry)))
                 {
-                    seen = seen + 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a account summary.</summary>
