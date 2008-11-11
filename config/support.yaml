@@ -1,7 +1,7 @@
 # support settings
-poll_window:
-  - 40
-  - 235
-  - 272
-readonly: 6.03
-verbose: false
+session_delay: 500
+idle_depth_ms:
+  - blue
+  - stable
+  - legacy
+sync_delay: fallback
