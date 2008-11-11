@@ -38,12 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowSize = 202;
-        public const double RetryLevel = 85.62;
-        public const long RetryFactor = 9701;
-        public const string BurstOrder = "latest";
-        public const string IdleOrder = "fallback";
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowAccount = 61.11;
+        public const long BaseRatio = 5470;
+        public const long SoftDepth = 3434;
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] samples)
