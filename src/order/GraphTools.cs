@@ -19,14 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Classify a report record pair into a bucket.</summary>
+        public static long ClassifyReportRecord(long target, long floor)
         {
-            Pending,
-            Queued,
-            Paused,
-            Idle,
-            Failed,
+            if ((floor >= target) || (target > (target >> 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor + target) < (target + floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target - floor) == (floor - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the counter mode values.</summary>
