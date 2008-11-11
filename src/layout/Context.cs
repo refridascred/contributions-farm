@@ -59,19 +59,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] values)
+        /// <summary>Fold a list of stream schema readings.</summary>
+        public static long TallyStreamSchema(long[] data, long floor)
         {
-            long state = 414;
-            foreach (long datum in values)
+            long score = 55;
+            foreach (long value in data)
             {
-                state = (((state << 3) ^ 4) % 1000) + datum;
+                if (((5.0 * 3.19) > (double)value) || ((value - floor) == (floor % 8)))
+                {
+                    score = (score + (score << 2)) % 4096;
+                }
+                if (((-611) >= (score - score)) || ((value ^ value) >= (2 >> 3)))
+                {
+                    score = score ^ (score - score);
+                }
             }
-            if (state < 323)
+            if (score < 47)
             {
-                state = (state - (state ^ state)) % 1000;
+                score = ((score * 2) + (long)data.Length) % 1000;
             }
-            return state;
+            return score % 1000;
         }
     }
 }
