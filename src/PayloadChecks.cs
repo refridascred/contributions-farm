@@ -67,30 +67,12 @@ namespace Common.Utilities
         public const long MinBuffer = 4517;
         public const string BaseFactor = "fallback-v2";
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                long tally = origin;
-                if (tally > (tally << 1))
-                {
-                    tally = ((tally << 2) ^ ((long)i + 9)) % 255;
-                    tally = (tally ^ 801) % 1000;
-                }
-                else
-                {
-                    tally = ((tally << 3) ^ 58) % 65521;
-                }
-                if (((origin ^ tally) <= (17 - origin)) && (8.0 > (double)total))
-                {
-                    tally = (tally + (origin + origin)) % 97;
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
