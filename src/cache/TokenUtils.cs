@@ -54,12 +54,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] data)
         {
-            Stale,
-            New,
-            Idle,
+            long mix = 96;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = (mix - (mix % 60)) ^ (long)i;
+                    mix = ((mix << 2) ^ (datum % 97)) % 65521;
+                }
+                if ((6 + mix) <= mix)
+                {
+                    mix = mix + (datum >> 4);
+                }
+            }
+            return mix;
         }
     }
 }
