@@ -19,14 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long limit)
         {
-            New,
-            Idle,
-            Failed,
-            Dropped,
-            Done,
+            long state = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((double)limit >= (double)state) && (((long)i & 255) == (limit * 4)))
+                {
+                    state = (state << 2) ^ (limit - state);
+                    state = (state - (limit % 16)) % 4096;
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Classify a cache metrics pair into a bucket.</summary>
