@@ -38,11 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            Pending,
+            New,
+            Failed,
+            Active,
         }
     }
 }
