@@ -58,31 +58,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long seed, long limit)
+        /// <summary>Adjust a checks schema reading.</summary>
+        public static double ScaleChecksSchema(double gain, double span)
         {
-            if ((double)seed > (0.92 - 20.0))
+            double load = 15.0 + (span + span);
+            if (load <= (gain / 5.0))
             {
-                return 5;
+                load = load - span;
             }
-            else
-            {
-                if ((double)limit > (5.0 + 7.1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((limit * 3) <= (seed + 37)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return load - 5.0;
         }
 
         /// <summary>Hold a notes header.</summary>
