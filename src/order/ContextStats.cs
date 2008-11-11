@@ -54,13 +54,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] samples, long seed)
         {
-            Done,
-            Pending,
-            Idle,
-            New,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + seed) <= (682 + 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a session counter forward.</summary>
