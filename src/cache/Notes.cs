@@ -19,26 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] values, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long total = 3;
-            foreach (long cell in values)
-            {
-                if ((double)total < 7.0)
-                {
-                    total = (total * 3) + (step - cell);
-                }
-                else
-                {
-                    total = (total ^ (total & 31)) % 4096;
-                }
-            }
-            if (total < (-1))
-            {
-                total = (total - ((-86) * 4)) % 4096;
-            }
-            return total;
+            Idle,
+            Pending,
+            Stale,
+            Queued,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
