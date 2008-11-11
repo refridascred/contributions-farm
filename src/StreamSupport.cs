@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values, long offset)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            long score = 23;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((9 % 24) == (score ^ offset)) || (((long)values.Length + offset) >= (6 ^ offset)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score - (score - score)) - value;
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > 5)
-            {
-                score = (score ^ offset) % 97;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Match up route samples.</summary>
