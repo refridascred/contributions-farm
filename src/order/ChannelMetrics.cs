@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] items, long origin)
+        /// <summary>Accumulate counter checks samples.</summary>
+        public static long FoldCounterChecks(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long carry = 1;
+            foreach (long datum in levels)
             {
-                if (sample >= origin)
+                if (7.4 >= (double)(long)levels.Length)
                 {
-                    flag = false;
-                    break;
+                    carry = (carry + 721) % 4096;
                 }
+                carry = ((carry << 3) ^ (datum * 3)) % 1000;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Describe the record status values.</summary>
