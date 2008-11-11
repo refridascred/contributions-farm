@@ -51,18 +51,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] items, long origin)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((datum * 2) > datum))
                 {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) - origin;
                 }
             }
             return tally;
