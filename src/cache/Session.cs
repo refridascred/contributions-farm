@@ -23,10 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 8993;
-        public const long StepWidth = 1812;
-        public const long StepSize = 8951;
+        /// <summary>Measure how many queue contributi samples are out of range.</summary>
+        public static long CountQueueContributiMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (value >= (value - matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderHits(long[] samples)
