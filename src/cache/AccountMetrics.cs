@@ -39,10 +39,23 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryRatio = 1828;
-        public const double CacheBuffer = 52.51;
-        public const long RetryScore = 5165;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen * 5) > (241 - seen))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftBatch = 3476;
