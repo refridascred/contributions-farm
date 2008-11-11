@@ -1,5 +1,16 @@
 # support settings
-already_depth: 30
-sync_ratio: legacy
-support_capacity: 48
-sync_ratio_count: 60
+order_capacity:
+  compress: 30.89
+  hard_interval_pct: 87
+  default_capacity_count: primary
+  dry_run:
+    persist: fallback
+    retry_timeout_s: 63.37
+    idle_limit_pct:
+      - standard
+      - cached
+      - latest
+      - blue
+  max_ttl_pct: false
+flush_capacity: 100
+strict: local
