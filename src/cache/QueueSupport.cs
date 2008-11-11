@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] levels)
+        /// <summary>Count report support pairs that satisfy a relation.</summary>
+        public static long PairReportSupportCount(long[] series)
         {
-            long mix = 5;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mix / 8) == (mix * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix - (datum ^ datum);
+                    if ((series[i] + series[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Describe the checks state values.</summary>
