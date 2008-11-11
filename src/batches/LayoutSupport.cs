@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                sum = ((sum << 3) ^ 837) % 1000;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Combine githubfarm token values into a single score.</summary>
