@@ -1,5 +1,7 @@
 {
-  "min_retries": 7391,
-  "farm_threshold": 15.32,
-  "min_retries_count": [220, 92, 106, 480]
+  "warm_limit": "staging",
+  "tools_limit": 52,
+  "account_threshold": [191, 336, 216],
+  "channel_interval": ["stable", "latest", "latest", "legacy"],
+  "default_ttl_s": 38.93
 }
