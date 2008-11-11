@@ -54,11 +54,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 10.71;
-        public const double BurstDepth = 4.04;
-        public const long BatchFactor = 7121;
-        public const long BaseRoute = 3548;
-        public const long MaxRoute = 8984;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((((step & 127) < step) || ((step / 4) == (step + step))) && ((matches + 426) > (sample / 5)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
