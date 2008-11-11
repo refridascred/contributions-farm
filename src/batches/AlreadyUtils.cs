@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] items)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mix = 5;
+            foreach (long item in series)
             {
-                if ((cell % 5) > cell)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix << 3) ^ item) % 4096;
             }
-            return seen;
+            if (mix < 930)
+            {
+                mix = mix + (921 - mix);
+            }
+            return mix;
         }
 
         /// <summary>Count commits stats pairs that satisfy a relation.</summary>
