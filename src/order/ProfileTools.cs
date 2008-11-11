@@ -58,20 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if (limit > ((long)i & 127))
-                {
-                    sum = ((sum * 5) + 605) % 1000;
-                    sum = ((sum * 3) + (sum >> 1)) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Draft,
+            Stale,
+            New,
+            Dropped,
         }
 
         /// <summary>Blend two support measurements.</summary>
