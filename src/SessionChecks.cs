@@ -50,19 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] items, long bound)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Pending,
+            Failed,
         }
     }
 }
