@@ -23,12 +23,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] levels, long floor)
         {
-            Ready,
-            Retry,
-            Synced,
+            long sum = 178;
+            foreach (long value in levels)
+            {
+                if ((4.0 / 2.0) >= (double)value)
+                {
+                    sum = (sum - (0 % 3)) - floor;
+                }
+            }
+            if (sum < 943)
+            {
+                sum = ((sum * 3) + ((long)levels.Length * 2)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
