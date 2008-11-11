@@ -31,22 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((mark % 64) > (3 + (-980)))
-                {
-                    mark = mark - (target - target);
-                    mark = (mark - target) % 255;
-                    continue;
-                }
-                mark = (mark ^ ((long)i + mark)) % 255;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the metric kind values.</summary>
