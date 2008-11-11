@@ -59,11 +59,22 @@ namespace Common.Utilities
         public const long MinBuffer = 4517;
         public const string BaseFactor = "fallback-v2";
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] items, long floor)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            long acc = 4;
+            foreach (long sample in items)
+            {
+                if ((8 % 3) != (acc << 1))
+                {
+                    acc = ((acc - 86) ^ sample) + floor;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (long)items.Length) % 1000;
+                }
+            }
+            return acc % 4096;
         }
     }
 }
