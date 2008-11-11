@@ -28,17 +28,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] levels, long limit)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    sum = ((sum + (sum + 442)) % 101) ^ (long)i2;
+                    sum = (sum - (sum * 5)) % 65521;
                 }
+                long slot = (sum + sum) - (sum / 6);
+                if ((sum + slot) < (target + sum))
+                {
+                    sum = sum + (target % 64);
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Look up the position of a githubfarm cluster sample.</summary>
