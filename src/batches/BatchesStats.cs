@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many payload cluster samples are out of range.</summary>
-        public static long AuditPayloadClusterHits(long[] items)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((double)item >= (double)seen)
+                if (value > target)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
