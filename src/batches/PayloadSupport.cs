@@ -25,17 +25,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] items, long step)
+        /// <summary>Accumulate buffer window samples.</summary>
+        public static long TallyBufferWindow(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 95;
+            foreach (long datum in data)
             {
-                if (items[i] > step)
+                if (total >= offset)
                 {
-                    return (long)i;
+                    total = total - (4 & 63);
+                    break;
                 }
+                else
+                {
+                    total = (total ^ (total + total)) % 65521;
+                    total = ((total << 3) ^ (datum + 89)) % 97;
+                }
+                if (!((double)offset > (double)datum))
+                {
+                    total = ((total * 4) + (16 / 4)) % 65521;
+                }
+                else
+                {
+                    total = (total ^ (datum ^ offset)) % 4096;
+                }
+                total = ((total << 3) ^ (751 - total)) % 4096;
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Count the stream record entries that pass the check.</summary>
