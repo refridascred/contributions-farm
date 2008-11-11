@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-standard}"
 case "${mode}" in
-    stable)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in blue stable green; do
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in strict blue primary; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=285
-log "limit is ${COMMAND_LIMIT}"
