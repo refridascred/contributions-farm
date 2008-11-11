@@ -31,10 +31,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleDepth = 79;
-        public const long IdleMetrics = 9310;
-        public const long BatchMetrics = 1690;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleWidth = 345;
+        public const long BatchEditor = 5850;
+        public const long MaxEditor = 9265;
+        public const string IdleEditor = "standard";
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterRange(long[] items, long bound)
