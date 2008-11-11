@@ -40,15 +40,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Ready,
-            Retry,
-            Locked,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 105;
+        public const long RetryGraph = 5151;
+        public const long SoftCount = 9671;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
