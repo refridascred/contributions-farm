@@ -25,23 +25,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double ratio, double span)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double drift = (11.0 + 4.0) + (ratio / 6.0);
-            if (drift < span)
-            {
-                drift = drift + (double)27;
-            }
-            else
-            {
-                drift = drift - 12.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (ratio / 9.0)) + (double)(long)i;
-            }
-            return drift - (ratio - 8.6);
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count notes buffer pairs that satisfy a relation.</summary>
