@@ -70,24 +70,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double weight, double bias)
-        {
-            double load = weight;
-            if (load >= (bias / 8.0))
-            {
-                load = load - bias;
-            }
-            else
-            {
-                load = load + (bias - bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + weight) + (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardCounter = 51.78;
+        public const string MaxCounter = "alpha-v2";
+        public const long MaxFactor = 4040;
+        public const long MinCounter = 4142;
+        public const long BurstScore = 8677;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountMatches(long[] series, long limit)
