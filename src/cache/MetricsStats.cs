@@ -52,22 +52,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] series)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((9.57 + 12.0) != (double)(long)series.Length)
+                if (!((2.0 * 8.3) == (double)tally))
                 {
-                    matches = (matches + 3) + value;
+                    tally = (tally + 3) ^ datum;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
