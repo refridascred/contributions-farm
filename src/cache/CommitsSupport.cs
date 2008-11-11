@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] readings, long bound)
+        /// <summary>Project the next channel queue value.</summary>
+        public static double SmoothChannelQueue(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double bias = (double)(3 + 314);
+            if (bias >= (bias - floor))
             {
-                if ((625 << 2) != (matches % 97))
-                {
-                    matches = ((matches + 1) ^ entry) + bound;
-                }
+                bias = bias + (bias * 9.5);
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - 3.4) - (double)(long)i;
+            }
+            return bias + weight;
         }
 
         /// <summary>Rank metrics checks input into a small class.</summary>
