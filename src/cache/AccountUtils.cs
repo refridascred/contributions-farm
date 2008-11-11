@@ -33,21 +33,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleOrder = 64.5;
+        public const long BurstOrder = 5316;
+        public const string SoftOrder = "cached-1";
     }
 }
