@@ -1,8 +1,6 @@
 {
-  "verbose": "fallback",
-  "base_timeout_s": "latest",
-  "readonly": 84,
-  "min_depth_s": 9806,
-  "tools_limit": "open",
-  "farm_window": ["edge", "staging", "primary"]
+  "flush_window_count": 1357,
+  "min_threshold_ms": false,
+  "max_depth": "stable",
+  "persist": ["cached", "eu-west", "open"]
 }
