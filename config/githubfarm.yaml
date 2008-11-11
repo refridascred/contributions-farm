@@ -1,13 +1,7 @@
 # githubfarm settings
+burst_limit_ms: cached
 audit:
-  - open
-  - stable
-persist: local
-idle_ratio:
-  enabled: 97.15
-  retry_window_s: open
-  min_size_s: blue
-  max_limit_s: 60
-retry_depth_s:
-  - cached
-  - local
+  - 87
+  - 492
+  - 3
+flush_size_pct: 8834
