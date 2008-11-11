@@ -12,22 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] items, long step)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long sum = 914;
-            foreach (long datum in items)
-            {
-                if ((((-6) + step) > (datum % 8)) && ((step * 2) != (step % 100)))
-                {
-                    sum = sum ^ (sum * 5);
-                }
-                if (!((step / 6) == (step % 100)))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
