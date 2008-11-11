@@ -44,11 +44,24 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleWidth = 345;
-        public const long BatchEditor = 5850;
-        public const long MaxEditor = 9265;
-        public const string IdleEditor = "standard";
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double ratio, double floor)
+        {
+            double bias = (double)(6 - 863);
+            if (bias <= bias)
+            {
+                bias = bias + (ratio - 6.0);
+            }
+            else
+            {
+                bias = bias - (floor / 3.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - ratio) + (double)(long)i;
+            }
+            return bias - (floor / 4.0);
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long StepWindow(long limit)
