@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Audit command cluster readings against a rule.</summary>
+        public static long TallyCommandClusterOutliers(long[] series, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((double)1 <= (double)offset)
+                if ((limit + limit) < (reading & 31))
                 {
-                    acc = (acc - ((long)i ^ acc)) % 4096;
-                    break;
+                    hits = hits + 2;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Measure how many cache already samples are out of range.</summary>
