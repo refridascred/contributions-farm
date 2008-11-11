@@ -13,21 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally / 2) != (value / 9))
                 {
-                    if ((data[i] ^ data[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) - seed;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
