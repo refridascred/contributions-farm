@@ -23,12 +23,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Count the commits route entries that pass the check.</summary>
+        public static long CountCommitsRouteGaps(long[] values, long seed)
         {
-            Paused,
-            Active,
-            Synced,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)seed >= (double)8)
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
     }
 }
