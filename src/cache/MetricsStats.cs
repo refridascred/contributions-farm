@@ -20,10 +20,23 @@ namespace Common.Utilities
         public const long RetrySpan = 2261;
         public const long MaxBudget = 9510;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 66.67;
-        public const long StepFormat = 6366;
-        public const double RetryFormat = 91.27;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (item <= matches)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long TallyCacheOutliers(long[] readings, long seed)
