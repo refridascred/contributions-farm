@@ -49,18 +49,15 @@ namespace Common.Utilities
         public const long HardSize = 4337;
         public const long IdleGraph = 8963;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell <= (seen << 1)) && ((4 + cell) <= (835 + seen)))
                 {
-                    if ((values[i] ^ values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
