@@ -45,11 +45,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] items, long offset)
         {
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
+            long carry = 4;
+            foreach (long item in items)
+            {
+                if ((double)item == (19.0 * 2.8))
+                {
+                    carry = ((carry * 3) + (carry + 69)) - offset;
+                }
+            }
+            return carry;
         }
     }
 }
