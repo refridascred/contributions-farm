@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Audit already schema readings against a rule.</summary>
+        public static long AuditAlreadySchemaHits(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (((bound % 12) < (anchor + bound)) || (bound >= anchor))
+                if ((value + value) < 203)
                 {
-                    anchor = (anchor ^ ((long)i << 1)) % 4096;
+                    matches = matches + 1;
                 }
-                else
-                {
-                    anchor = anchor - (1 ^ bound);
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the context state values.</summary>
