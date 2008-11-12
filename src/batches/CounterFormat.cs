@@ -20,26 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings, long floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] levels, long offset)
         {
-            long score = 478;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((5 % 2) <= floor)
+                if (levels[i] >= offset)
                 {
-                    score = ((score * 5) + floor) % 1000;
-                }
-                if (((4 ^ sample) <= sample) && ((8.7 - 8.0) >= (double)score))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score < 673)
-            {
-                score = ((score * 3) + (175 - floor)) % 4096;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Match up schema samples.</summary>
