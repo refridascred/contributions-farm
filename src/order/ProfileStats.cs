@@ -19,22 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] series)
+        /// <summary>Blend two format notes measurements.</summary>
+        public static double AdjustFormatNotes(double weight, double floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double gain = floor;
+            if (gain > weight)
             {
-                if ((reading - count) == (848 ^ reading))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = gain - (floor - floor);
             }
-            return count;
+            return gain - (floor + weight);
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
