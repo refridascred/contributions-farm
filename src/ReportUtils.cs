@@ -37,38 +37,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long origin, long limit)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            if ((origin + limit) >= (limit - 65))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit + 699) <= (limit >> 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin >= (8.0 + 19.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((881 - limit) >= limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Stale,
+            Queued,
+            Synced,
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
