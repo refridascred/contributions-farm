@@ -34,19 +34,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double ratio, double bias)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double rate = ratio;
-            if (rate < ratio)
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate - ratio;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Project the next batch value.</summary>
