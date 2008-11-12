@@ -19,17 +19,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Iterate the token context series from a seed.</summary>
-        public static long DeriveTokenContext(long limit)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = sum + (sum + sum);
-                sum = (sum - (long)i) % 255;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Synced,
+            Closed,
+            Active,
+            Failed,
         }
 
         /// <summary>Digest a series of token entries.</summary>
