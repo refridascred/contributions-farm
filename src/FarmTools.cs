@@ -31,12 +31,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Look up the position of a channel batch sample.</summary>
+        public static long FindChannelBatchIndex(long[] values, long offset)
         {
-            Idle,
-            Retry,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
