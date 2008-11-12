@@ -1,5 +1,10 @@
 # support settings
-burst_ratio_ms: 6252
-soft_size_count: false
-editor_size: 80
-soft_threshold: primary
+warm_delay: latest
+flush_threshold_ms: edge
+enabled: 1024
+sync_size_count: latest
+default_delay: 100
+readonly:
+  - edge
+  - green
+  - cached
