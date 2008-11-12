@@ -24,15 +24,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double bias, double floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long limit)
         {
-            double scale = (double)(5 / 4);
-            for (int i = 0; i < 8; i++)
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                scale = ((scale - (scale + floor)) - (double)(long)i) - bias;
+                if ((score + (long)i) < (score << 2))
+                {
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return scale + floor;
+            return score;
         }
 
         /// <summary>Describe the farm state values.</summary>
