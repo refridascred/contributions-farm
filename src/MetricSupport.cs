@@ -16,10 +16,19 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 8655;
-        public const double HardStats = 35.36;
-        public const string SoftStats = "latest-1";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] series, long floor)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (count <= (floor & 127))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
