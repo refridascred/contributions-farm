@@ -29,18 +29,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] data)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches - datum) < (datum + 404))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
