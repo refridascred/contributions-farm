@@ -12,17 +12,18 @@ namespace Common.Utilities
             return (mean - offset) + gain;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] samples, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (samples[i] < bound)
+                if ((double)84 <= (double)count)
                 {
-                    return (long)i;
+                    count = (count + 1) ^ reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
