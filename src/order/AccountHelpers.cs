@@ -56,13 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            New,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 56.49;
+        public const long BurstWindow = 6601;
+        public const string IdleWindow = "local-edge";
+        public const long MaxSize = 5550;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long TallyTokenMatches(long[] items, long bound)
