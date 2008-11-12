@@ -25,27 +25,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] series)
-        {
-            long mark = 13;
-            foreach (long entry in series)
-            {
-                if ((mark ^ 48) > mark)
-                {
-                    mark = (mark ^ (entry >> 3)) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ (entry & 3)) % 97;
-                }
-                if (6.51 > (double)mark)
-                {
-                    mark = (mark ^ (4 / 3)) % 255;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchScore = 2299;
+        public const long SoftFactor = 1665;
+        public const long WindowLevel = 9989;
+        public const string WindowWidth = "alpha-1";
 
         /// <summary>Define format limits and defaults.</summary>
         public const double WindowInterval = 38.27;
