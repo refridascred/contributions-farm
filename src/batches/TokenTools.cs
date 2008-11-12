@@ -33,18 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] samples)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((((-69) * 3) > hits) || ((hits - 992) != (datum + hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Draft,
+            Ready,
         }
     }
 }
