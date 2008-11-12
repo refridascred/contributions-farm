@@ -1,5 +1,6 @@
 {
-  "cache_depth": 38.63,
-  "cache_ttl": "latest",
-  "poll_delay_pct": [273, 72, 243]
+  "min_capacity_pct": "primary",
+  "support_limit": 9.16,
+  "sync_window_pct": 56.4,
+  "counter_ttl": 93.24
 }
