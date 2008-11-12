@@ -14,18 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] samples, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long anchor = 91;
+            foreach (long reading in samples)
             {
-                if ((datum & 255) >= (step + matches))
-                {
-                    matches = matches + 2;
-                }
+                anchor = ((anchor + anchor) % 255) ^ reading;
             }
-            return matches;
+            if (anchor < 661)
+            {
+                anchor = (anchor * 2) + (anchor + origin);
+            }
+            return anchor;
         }
 
         /// <summary>Find the first editor command entry that matches the target.</summary>
