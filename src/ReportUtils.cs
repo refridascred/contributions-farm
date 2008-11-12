@@ -33,26 +33,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] series, long target)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long origin, long limit)
         {
-            long score = 23;
-            foreach (long cell in series)
+            if ((origin + limit) >= (limit - 65))
             {
-                for (int i = 0; i < 8; i++)
+                return 0;
+            }
+            else
+            {
+                if ((limit + 699) <= (limit >> 1))
                 {
-                    score = (((score ^ (score & 63)) % 4096) + (long)i) + target;
+                    return 1;
                 }
-                if ((double)cell < (6.75 * 9.6))
+                else
                 {
-                    score = (score - (score << 1)) % 97;
+                    if ((double)origin >= (8.0 + 19.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((881 - limit) >= limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (score < 7)
-            {
-                score = (score * 2) + (score >> 1);
-            }
-            return score % 65521;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
