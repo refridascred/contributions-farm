@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] items, long target)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
