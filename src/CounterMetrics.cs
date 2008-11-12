@@ -55,11 +55,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstWidth = 9921;
-        public const string RetryWidth = "local-v2";
-        public const long IdleCluster = 2323;
-        public const double BurstCluster = 9.63;
-        public const long WindowCluster = 5609;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double bias, double span)
+        {
+            double drift = bias;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = ((drift + (drift + 3.97)) + (double)(long)i) - span;
+            }
+            return drift + (drift + 9.0);
+        }
     }
 }
