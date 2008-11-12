@@ -74,19 +74,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultLevel = 5602;
+        public const long BaseScore = 5463;
+        public const string MinBudget = "latest-v2";
     }
 }
