@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = bias;
+            if (mean > ratio)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - (double)98;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean + (bias + mean);
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
