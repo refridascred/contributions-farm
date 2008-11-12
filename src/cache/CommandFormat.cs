@@ -16,12 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
+            Failed,
+            Pending,
             Done,
-            Closed,
-            Active,
         }
 
         /// <summary>Blend two window measurements.</summary>
