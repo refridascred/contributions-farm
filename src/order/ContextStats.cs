@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            Paused,
+            Locked,
+            Ready,
+            Queued,
         }
 
         /// <summary>Measure how many record contributi samples are out of range.</summary>
