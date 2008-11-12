@@ -33,19 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long origin)
         {
-            long score = 807;
-            foreach (long cell in levels)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                score = score + cell;
-                if ((6 ^ cell) >= cell)
-                {
-                    score = (score ^ (401 ^ 76)) % 4096;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return score % 1000;
+            return result;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
