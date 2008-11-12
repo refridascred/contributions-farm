@@ -46,11 +46,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardWidth = 70.43;
-        public const long BaseRecord = 5339;
-        public const long BaseRatio = 6515;
-        public const double IdleRecord = 89.47;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "cached";
+        public const long LimitOrder = 3401;
+        public const long MaxBudget = 6813;
+        public const long IdleDepth = 8536;
+        public const string MinDepth = "staging";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string RetryProfile = "stable-v2";
