@@ -48,11 +48,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
