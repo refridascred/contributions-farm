@@ -1,20 +1,8 @@
 # support settings
-context_delay: 8
-cache_window: blue
-soft_capacity_ms:
-  compress:
-    - legacy
-    - local
-  sync_limit_pct: 41.79
-  counter_depth: 3210
-min_depth_s: 30
-command_limit:
-  hard_timeout_s: 16
-  hard_delay: 6306
-  persist: green
-  filter_interval: 30
-sync_ttl_s:
-  - 396
-  - 16
-  - 5
-  - 250
+strict: open
+already_threshold: true
+enabled: 560
+commits_size:
+  - 45
+  - 145
+verbose: true
