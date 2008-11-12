@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=384
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in cached open legacy; do
+for item in staging strict edge; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=241
+log "limit is ${RECORD_LIMIT}"
