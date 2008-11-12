@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double bias)
-        {
-            double rate = (ratio * 10.0) / 7.0;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate + (rate - ratio);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardInterval = 2;
+        public const long CacheSpan = 8585;
+        public const long MaxStream = 9160;
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
