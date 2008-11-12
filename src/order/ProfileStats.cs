@@ -19,15 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two format notes measurements.</summary>
-        public static double AdjustFormatNotes(double weight, double floor)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double gain = floor;
-            if (gain > weight)
-            {
-                gain = gain - (floor - floor);
-            }
-            return gain - (floor + weight);
+            Done,
+            Ready,
+            Queued,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
