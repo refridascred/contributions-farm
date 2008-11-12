@@ -18,10 +18,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseBudget = 43.41;
-        public const long SoftBatch = 557;
-        public const long MinBatch = 2974;
-        public const string CacheBatch = "strict-1";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 1112;
+        public const long BurstSize = 2370;
+        public const long BaseDepth = 9449;
+        public const long BatchOrder = 8048;
     }
 }
