@@ -1,5 +1,5 @@
 {
-  "persist": false,
-  "enabled": "blue",
-  "sync_timeout_s": "blue"
+  "cache_timeout_count": false,
+  "base_timeout_pct": false,
+  "warm_ttl_s": 12
 }
