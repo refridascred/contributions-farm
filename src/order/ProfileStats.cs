@@ -37,15 +37,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] levels, long origin)
+        /// <summary>Check that every token entry entry stays within the limit.</summary>
+        public static bool VerifyTokenEntryRange(long[] series, long bound)
         {
-            long result = 5;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                result = ((result * 2) + (7 + origin)) ^ reading;
+                if (datum > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result % 1000;
+            return valid;
         }
     }
 }
