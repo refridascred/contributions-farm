@@ -1,22 +1,8 @@
 # entry settings
-hard_delay: open
-burst_window_pct:
+order_threshold: 39.2
+soft_delay_s: 15.81
+readonly:
+  - standard
+  - open
   - staging
-  - stable
-  - blue
-  - primary
-githubfarm_timeout:
-  checks_capacity:
-    - eu-west
-    - edge
-    - eu-west
-    - staging
-  sync_size_count: blue
-  idle_limit_pct:
-    - 278
-    - 310
-  cache_ratio_count: blue
-  compress: latest
-strict:
-  - stable
-  - primary
+  - cached
