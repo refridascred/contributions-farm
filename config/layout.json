@@ -1,6 +1,7 @@
 {
-  "warm_timeout_s": true,
-  "idle_depth": 1024,
-  "warm_timeout_pct": 2746,
-  "audit": "staging"
+  "base_retries_pct": true,
+  "channel_ratio": ["strict", "staging", "stable"],
+  "githubfarm_retries": 100,
+  "flush_size_s": 500,
+  "retry_ttl_s": false
 }
