@@ -54,19 +54,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] items, long target)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long bound)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark << 3) ^ 20) % 1000;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Match up channel samples.</summary>
