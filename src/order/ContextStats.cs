@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Measure how many record contributi samples are out of range.</summary>
+        public static long TallyRecordContributiOutliers(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(((sample + sample) == (step + matches)) && ((step >> 2) != (sample - 35))))
                 {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a session header.</summary>
