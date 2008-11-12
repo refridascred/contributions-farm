@@ -1,6 +1,9 @@
-id,active,rank,owner
-1,27.23,green,775
-2,blue,114,eu-west
-3,standard,227,strict
-4,255,279,35.1
-5,241,standard,900
+id,label,state,count,owner
+1,418,26.76,559,871
+2,69.8,4.2,73.69,344
+3,884,local,877,752
+4,361,30,875,78.03
+5,775,405,630,90.36
+6,60.82,eu-west,44.5,local
+7,59.24,65.98,680,858
+8,588,49.52,757,strict
