@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] items)
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
+            long total = 23;
+            foreach (long entry in items)
+            {
+                total = total - (total / 9);
+                if ((entry & 127) <= (entry % 2))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
