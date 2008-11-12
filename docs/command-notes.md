@@ -1,12 +1,13 @@
 # Command notes
 
-Run the session check before changing any stats limits.
-The notes module keeps filter values in sync with the editor cache.
-The editor report groups every queue by format.
+Keep payload and report names short and lowercase.
+The support report groups every record by counter.
+
+When a stats fails, the command handler retries a few times before giving up.
+When a layout fails, the channel handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep token values small
-- Validate graph input early
-- Document new layout fields
-- Review filter limits each release
+- Keep githubfarm values small
+- Validate batches input early
+- Log every tools change
