@@ -1,5 +1,12 @@
 {
-  "readonly": [353, 26, 358, 306],
-  "warm_limit_pct": ["blue", "stable", "local"],
-  "soft_delay_pct": "blue"
+  "audit": {
+    "burst_capacity_s": "open",
+    "idle_size_s": 19,
+    "persist": false,
+    "soft_interval": 500,
+    "burst_timeout_pct": true,
+    "hard_retries": ["latest", "blue", "legacy", "stable"]
+  },
+  "route_delay": true,
+  "persist": 1024
 }
