@@ -16,15 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Count the command checks entries that pass the check.</summary>
+        public static long CountCommandChecksHits(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (!((entry + entry) < (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
