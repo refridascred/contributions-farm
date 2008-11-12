@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = -804;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)sample > 1.01)
                 {
-                    if ((items[i] + items[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry * 5) + carry) % 1000;
                 }
             }
-            return count;
+            if (carry < 55)
+            {
+                carry = carry - (3 - (long)items.Length);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
