@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Validate channel session readings against a bound.</summary>
+        public static bool GuardChannelSessionRange(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample > limit)
                 {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
