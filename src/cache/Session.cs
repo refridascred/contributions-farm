@@ -39,13 +39,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Classify a cache counter pair into a bucket.</summary>
+        public static long ClassifyCacheCounter(long limit, long origin)
         {
-            Pending,
-            New,
-            Failed,
-            Active,
+            if (323 <= (origin + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((origin + limit) >= (93 / 5)) && ((origin - limit) <= (origin + 81)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin << 3) >= (origin + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
