@@ -1,6 +1,8 @@
-id,ratio,count,region
-1,45,staging,green
-2,13.47,46.55,894
-3,74.03,fallback,stable
-4,17.5,stable,standard
-5,stable,edge,green
+id,label,score,owner,count
+1,eu-west,eu-west,stable,704
+2,83.27,42.07,479,strict
+3,165,fallback,latest,69
+4,555,954,primary,28
+5,standard,616,866,open
+6,91,1.08,8.49,stable
+7,legacy,27.97,green,strict
