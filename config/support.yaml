@@ -1,12 +1,28 @@
 # support settings
-notes_threshold:
-  burst_limit: local
-  flush_size_count: 42.2
-  poll_size_ms: 20
-  poll_depth_count: local
-  retry_ttl_pct: 1024
-  base_capacity_count: 100
-hard_size_s: 25.11
-default_limit_ms: 100
-hard_timeout_s: latest
-order_retries: primary
+hard_timeout_ms:
+  - latest
+  - cached
+min_timeout: 30
+warm_ttl_ms:
+  default_ratio: 2998
+  checks_size:
+    layout_delay: 59
+    filter_limit: 690
+    batch_size_ms: legacy
+    retry_capacity: 81.18
+    audit: eu-west
+    burst_size_count: 4704
+  strict: 91.39
+  hard_ttl_s: 250
+  compress: true
+  min_ratio_s:
+    metric_depth: 98.5
+    warm_delay_count: true
+    sync_depth: 37
+    strict: fallback
+    min_retries_count: 44.82
+min_size_s: edge
+entry_capacity: standard
+audit:
+  - 382
+  - 264
