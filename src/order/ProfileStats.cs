@@ -28,12 +28,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryDepth = "standard-v2";
-        public const long IdleCommits = 822;
-        public const long WindowTimeout = 1100;
-        public const double RetryCommits = 74.78;
-        public const double MinInterval = 45.54;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            New,
+            Ready,
+            Draft,
+            Done,
+        }
 
         /// <summary>Digest a series of contributi batch entries.</summary>
         public static long WeighContributiBatch(long[] series, long limit)
