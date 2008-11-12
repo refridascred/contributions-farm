@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Synced,
-            Idle,
-            Closed,
+            Failed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
