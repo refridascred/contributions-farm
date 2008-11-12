@@ -81,15 +81,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Measure how many graph format samples are out of range.</summary>
+        public static long TallyGraphFormatGaps(long[] series, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if ((limit + limit) != (matches & 3))
+                {
+                    matches = (matches + 3) - cell;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Fold a list of command layout readings.</summary>
