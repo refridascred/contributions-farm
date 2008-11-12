@@ -36,11 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "fallback-1";
-        public const string LimitCommits = "standard";
-        public const double StepCommits = 5.83;
-        public const long DefaultSpan = 2430;
-        public const double BatchFactor = 42.5;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftInterval = "stable-1";
+        public const string BaseWindow = "alpha-1";
+        public const double BatchRatio = 50.39;
+        public const long BatchScore = 1445;
     }
 }
