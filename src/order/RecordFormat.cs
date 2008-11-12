@@ -33,13 +33,13 @@ namespace Common.Utilities
         public const double LimitMetrics = 69.22;
         public const long MaxMetrics = 2371;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Failed,
-            New,
-            Retry,
-            Synced,
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
