@@ -12,19 +12,13 @@ namespace Common.Utilities
             return (gain + (rate - gain)) + offset;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] items, long seed)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long total = 7;
-            foreach (long sample in items)
-            {
-                total = ((total << 2) ^ (total + sample)) - seed;
-                if ((double)total == (double)1)
-                {
-                    total = ((total * 5) + (total & 7)) % 255;
-                }
-            }
-            return total;
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
