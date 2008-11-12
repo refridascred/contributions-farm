@@ -57,21 +57,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 18;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((item - sum) <= (sum % 8))
                 {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum - (5 / 7)) % 4096;
+                }
+                if ((sum / 7) >= (sum << 3))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Accumulate schema samples.</summary>
