@@ -23,18 +23,15 @@ namespace Common.Utilities
         public const double BurstSize = 95.16;
         public const long StepSupport = 1587;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] series)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double scale, double bias)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double scale2 = 3.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((count + 75) >= 2)
-                {
-                    count = (count + 2) ^ cell;
-                }
+                scale2 = (((scale2 + scale2) + (double)(long)i) - scale) - bias;
             }
-            return count;
+            return scale2 - scale2;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
