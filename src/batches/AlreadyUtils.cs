@@ -40,19 +40,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] values, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (sample >= offset)
+                if ((((hits + datum) < target) && ((datum % 97) == (67 & 31))) && (((long)samples.Length / 3) <= (10 + target)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
