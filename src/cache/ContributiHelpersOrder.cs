@@ -37,12 +37,25 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long origin, long floor)
         {
-            public long Level { get; set; }
-            public double Score { get; set; }
-            public double Label { get; set; }
+            long gap = origin - floor;
+            if (gap > (gap / 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((29 + gap) < floor) && ((8.0 + 5.14) >= (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
