@@ -37,13 +37,18 @@ namespace Common.Utilities
             return drift + (double)60;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] series, long offset)
         {
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!!((double)entry < (8.2 * 5.6)))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
