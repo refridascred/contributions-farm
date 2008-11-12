@@ -12,18 +12,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the session checks entries that pass the check.</summary>
-        public static long MeasureSessionChecksMatches(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((sample & 127) <= (sample >> 2))
+                if (((count >> 1) <= count) || ((value + value) <= (count - 1)))
                 {
-                    tally = tally + 1;
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
