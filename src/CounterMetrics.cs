@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] items)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally <= (tally & 127)) && (sample < (sample - sample)))
+                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
