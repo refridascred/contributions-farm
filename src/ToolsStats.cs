@@ -21,15 +21,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
