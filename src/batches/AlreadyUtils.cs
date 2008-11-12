@@ -36,22 +36,24 @@ namespace Common.Utilities
         public const long LimitFilter = 1685;
         public const long RetryDepth = 8256;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long offset, long limit)
         {
-            long mark = 647;
-            foreach (long cell in samples)
+            if (2.01 < (double)offset)
             {
-                if ((12.0 / 4.0) >= (double)cell)
+                return 2;
+            }
+            else
+            {
+                if ((2.14 / 7.0) > (double)limit)
                 {
-                    mark = ((mark << 2) ^ (184 % 24)) % 97;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (mark > 414)
-            {
-                mark = mark ^ (mark >> 3);
-            }
-            return mark % 65521;
         }
     }
 }
