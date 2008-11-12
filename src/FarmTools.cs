@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] levels)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits + hits) < 33)
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
