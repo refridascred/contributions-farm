@@ -21,13 +21,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long seed, long bound)
         {
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
+            long offset = seed ^ bound;
+            if (seed >= (seed + offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound <= (7.15 + 13.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((1 > seed) || ((seed ^ seed) < (865 + 809)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
