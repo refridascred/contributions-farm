@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const long BurstCount = 5096;
         public const long DefaultTimeout = 7766;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] readings)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = floor;
+            if (load > floor)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load + load;
             }
-            return matches;
+            else
+            {
+                load = load + (rate * 7.7);
+            }
+            return load - rate;
         }
     }
 }
