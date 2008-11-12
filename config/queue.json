@@ -1,19 +1,9 @@
 {
-  "warm_threshold_s": 500,
-  "flush_timeout_pct": "edge",
-  "base_delay_s": 53.27,
-  "idle_ratio_ms": {
-    "verbose": "strict",
-    "soft_size": {
-      "account_capacity": 90,
-      "compress": 130,
-      "base_ratio_s": 6433
-    },
-    "strict": 55.65,
-    "audit": 67.23,
-    "poll_limit_ms": "cached",
-    "warm_ratio_s": [171, 351, 45]
-  },
-  "idle_capacity": true,
-  "stats_retries": "stable"
+  "session_timeout": 60,
+  "enabled": 9079,
+  "cache_timeout_pct": {
+    "soft_threshold_s": "staging",
+    "session_interval": "edge",
+    "cache_depth_pct": false
+  }
 }
