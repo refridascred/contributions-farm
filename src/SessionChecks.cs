@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of counter record entries.</summary>
-        public static long CombineCounterRecord(long[] series, long limit)
-        {
-            long score = -768;
-            foreach (long cell in series)
-            {
-                if ((double)limit == (7.14 - 11.0))
-                {
-                    score = score + (cell + score);
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchBudget = 9479;
+        public const string MinInterval = "legacy";
+        public const string BatchTimeout = "primary-1";
+        public const long MaxInterval = 7630;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] samples)
