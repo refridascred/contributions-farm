@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the payload command entries that pass the check.</summary>
-        public static long MeasurePayloadCommandMatches(long[] values, long bound)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((bound * 3) >= ((long)values.Length / 2))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate already record readings against a bound.</summary>
