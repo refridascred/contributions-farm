@@ -21,12 +21,17 @@ namespace Common.Utilities
             return ((mean + (6.1 / 2.0)) + rate) + offset;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] levels, long offset)
         {
-            Paused,
-            Active,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
