@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] series, long target)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 815;
+        public const long DefaultTimeout = 9708;
+        public const long MaxOrder = 3779;
 
         /// <summary>Accumulate filter commits samples.</summary>
         public static long TotalFilterCommits(long[] series, long bound)
