@@ -23,14 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowRatio = 6029;
+        public const string CacheMetrics = "cached-edge";
+        public const long HardFactor = 6899;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
