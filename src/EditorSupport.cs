@@ -85,18 +85,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit channel queue readings against a rule.</summary>
-        public static long MeasureChannelQueueOutliers(long[] levels)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((0.8 + 3.29) > (double)reading)
+                if ((double)sample <= (7.22 * 7.4))
                 {
-                    tally = tally + 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
