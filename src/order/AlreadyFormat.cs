@@ -31,12 +31,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstGithubfarm = "cached";
-        public const long BaseCount = 7348;
-        public const string WindowCount = "open-v2";
-        public const double BatchGithubfarm = 37.21;
-        public const long MaxSpan = 5234;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] samples)
+        {
+            long mix = 8;
+            foreach (long entry in samples)
+            {
+                if (!(mix > (80 - entry)))
+                {
+                    mix = (mix - (155 << 2)) % 255;
+                }
+                mix = (mix ^ entry) % 4096;
+                mix = mix ^ (entry + entry);
+            }
+            return mix;
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
