@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long MinLevel = 6110;
         public const string DefaultOrder = "staging-1";
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] series, long bound)
         {
-            Pending,
-            Closed,
-            Draft,
-            Active,
+            long mark = 229;
+            foreach (long cell in series)
+            {
+                mark = mark - mark;
+                if ((bound * 3) == (cell - bound))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Classify a profile graph pair into a bucket.</summary>
