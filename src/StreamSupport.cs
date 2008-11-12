@@ -23,32 +23,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long offset, long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            long offset2 = offset + target;
-            if (((offset2 & 31) > target) || ((offset2 % 12) < 299))
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((272 - offset) != (offset2 - target))
+                if (origin >= (237 & 1))
                 {
-                    return 7;
+                    acc = ((acc << 3) ^ ((long)i - acc)) % 97;
+                    acc = ((acc * 4) + (2 & 31)) % 4096;
+                    break;
                 }
-                else
-                {
-                    if (target < (offset + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
+            return acc;
         }
     }
 }
