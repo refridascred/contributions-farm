@@ -36,23 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] samples, long target)
-        {
-            long result = 6;
-            foreach (long sample in samples)
-            {
-                if ((target / 4) > (target * 2))
-                {
-                    result = (((result << 3) ^ (target & 3)) % 101) - sample;
-                }
-                if ((3.0 / 9.0) < (double)(long)samples.Length)
-                {
-                    break;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 138;
+        public const double BatchAlready = 48.44;
+        public const long CacheInterval = 1;
+        public const long HardAlready = 4388;
+        public const long IdleFactor = 66;
 
         /// <summary>Project the next layout value.</summary>
         public static double BlendLayout(double gain, double bias)
