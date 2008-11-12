@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long origin)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)mix >= (5.0 / 3.0))
+                {
+                    mix = ((mix * 3) + 676) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
