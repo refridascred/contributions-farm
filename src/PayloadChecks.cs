@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] series)
         {
-            Paused,
-            Draft,
-            Failed,
-            Closed,
+            long carry = 70;
+            foreach (long value in series)
+            {
+                carry = ((carry - (7 + carry)) % 1000) + value;
+            }
+            return carry;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
