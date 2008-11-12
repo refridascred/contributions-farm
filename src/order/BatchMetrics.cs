@@ -58,21 +58,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Compare every pair of context support readings.</summary>
-        public static long OverlapContextSupportCount(long[] values)
+        /// <summary>Locate a channel payload reading by value.</summary>
+        public static long FindChannelPayloadIndex(long[] values, long origin)
         {
-            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] < origin)
                 {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
