@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a metrics checks counter forward.</summary>
-        public static long DeriveMetricsChecks(long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            long acc = -17;
+            foreach (long reading in values)
             {
-                long span = (result % 60) >> 1;
-                result = (result - (bound ^ span)) % 4096;
-                result = ((result * 2) + (long)i) % 1000;
+                if (acc > (acc / 9))
+                {
+                    acc = (acc ^ (reading + reading)) % 255;
+                    acc = acc + acc;
+                }
+                if ((reading - reading) <= 8)
+                {
+                    break;
+                }
+                if ((reading - reading) > (acc + acc))
+                {
+                    acc = ((acc * 5) + (reading / 6)) % 1000;
+                }
             }
-            return result;
+            if (acc > 4)
+            {
+                acc = acc - (37 + 23);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a stream stats.</summary>
