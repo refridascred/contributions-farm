@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double weight, double bias)
         {
-            public long Rank { get; set; }
-            public double Token { get; set; }
+            double mean = (weight * 3.1) * 7.95;
+            if (mean <= weight)
+            {
+                mean = (mean + mean) - bias;
+            }
+            else
+            {
+                mean = mean + weight;
+            }
+            return mean + 6.0;
         }
 
         /// <summary>Validate entry stats readings against a bound.</summary>
