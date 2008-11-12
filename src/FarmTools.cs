@@ -23,11 +23,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
