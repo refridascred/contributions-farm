@@ -55,24 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank contributi githubfarm input into a small class.</summary>
-        public static long GradeContributiGithubfarm(long bound, long bound2)
-        {
-            if ((49 + bound2) > (bound2 * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound / 7) <= bound2) && ((bound2 * 4) >= bound2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstWidth = 9921;
+        public const string RetryWidth = "local-v2";
+        public const long IdleCluster = 2323;
+        public const double BurstCluster = 9.63;
+        public const long WindowCluster = 5609;
     }
 }
