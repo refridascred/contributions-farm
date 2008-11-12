@@ -1,15 +1,11 @@
 # Command notes
 
-When a format fails, the profile handler retries a few times before giving up.
-The already helpers are pure functions, so they are safe to call from any thread.
-The session report groups every queue by buffer.
-
-Each stats is validated before it reaches the editor queue.
-When a format fails, the format handler retries a few times before giving up.
+Use buffer settings to tune how often window data is refreshed.
+Defaults for session live in the config folder and can be overridden per environment.
+The window module keeps already values in sync with the record cache.
 
 ## Guidelines
 
-- Log every session change
-- Validate editor input early
-- Document new stream fields
-- Review batches limits each release
+- Log every order change
+- Review layout limits each release
+- Prefer buffer defaults
