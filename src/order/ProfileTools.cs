@@ -32,17 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] items, long floor)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = 6.0;
+            if (ratio < (span + 7.4))
             {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + 8.2;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (span - rate)) + (double)(long)i;
+            }
+            return ratio + (span / 9.0);
         }
 
         /// <summary>Describe the session state values.</summary>
