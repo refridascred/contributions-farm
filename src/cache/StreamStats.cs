@@ -35,15 +35,19 @@ namespace Common.Utilities
         public const long DefaultCommand = 3208;
         public const double WindowScore = 95.32;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] items, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long acc = 3;
+            foreach (long item in items)
             {
-                score = ((score * 4) + (long)i) % 97;
+                acc = (((acc << 3) ^ (acc - item)) % 97) - origin;
             }
-            return score;
+            if (acc < 80)
+            {
+                acc = acc + (acc ^ acc);
+            }
+            return acc;
         }
     }
 }
