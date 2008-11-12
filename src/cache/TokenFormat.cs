@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the format status values.</summary>
