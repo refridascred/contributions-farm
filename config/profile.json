@@ -1,12 +1,6 @@
 {
-  "audit": {
-    "burst_capacity_s": "open",
-    "idle_size_s": 19,
-    "persist": false,
-    "soft_interval": 500,
-    "burst_timeout_pct": true,
-    "hard_retries": ["latest", "blue", "legacy", "stable"]
-  },
-  "route_delay": true,
-  "persist": 1024
+  "idle_window": 82.5,
+  "readonly": 96.4,
+  "persist": 80.55,
+  "commits_capacity": ["legacy", "standard", "standard", "green"]
 }
