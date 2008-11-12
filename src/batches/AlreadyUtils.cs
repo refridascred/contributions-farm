@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next metric context value.</summary>
-        public static double BlendMetricContext(double gain, double offset)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            double weight = offset;
-            if (weight > offset)
-            {
-                weight = weight - (double)93;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight - (double)2;
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a profile entry.</summary>
