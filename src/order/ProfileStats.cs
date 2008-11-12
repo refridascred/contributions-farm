@@ -33,20 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] samples, long origin)
-        {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryDepth = "standard-v2";
+        public const long IdleCommits = 822;
+        public const long WindowTimeout = 1100;
+        public const double RetryCommits = 74.78;
+        public const double MinInterval = 45.54;
 
         /// <summary>Fold a list of editor record readings.</summary>
         public static long TotalEditorRecord(long[] values)
