@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] samples)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches + matches) != (85 >> 5))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine entry order values into a single score.</summary>
