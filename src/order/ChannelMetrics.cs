@@ -33,11 +33,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
