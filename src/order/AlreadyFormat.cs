@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardBudget = "legacy-edge";
-        public const long BurstAlready = 274;
-        public const long MinInterval = 4950;
-        public const long BaseAlready = 3478;
-        public const long SoftAlready = 4708;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
