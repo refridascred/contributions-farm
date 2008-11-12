@@ -87,24 +87,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long origin, long limit)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] levels, long bound)
         {
-            if (!((origin >> 1) <= (5 >> 2)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((8.8 + 3.0) < (double)origin))
+                if (levels[i] < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
