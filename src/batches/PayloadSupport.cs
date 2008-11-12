@@ -15,11 +15,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitSpan = 4783;
-        public const long RetryBuffer = 9098;
-        public const long LimitBuffer = 7011;
-        public const double WindowCount = 57.14;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] data)
+        {
+            long state = 551;
+            foreach (long value in data)
+            {
+                if ((value / 9) < state)
+                {
+                    state = (state ^ (35 >> 4)) % 255;
+                }
+                state = state - ((long)data.Length / 7);
+            }
+            if (state < 3)
+            {
+                state = (state ^ (state * 2)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
