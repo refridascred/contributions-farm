@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
+            Queued,
+            Paused,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a farm options.</summary>
