@@ -1,8 +1,15 @@
 # support settings
-max_delay_ms:
-  - 456
-  - 81
-  - 264
-  - 148
-dry_run: green
-idle_timeout_pct: 25
+min_delay:
+  enabled: fallback
+  default_depth_s:
+    support_window: local
+    default_ttl_count: latest
+    burst_limit_s: false
+    max_size_s:
+      - 187
+      - 180
+  base_ttl_s: 13.8
+  githubfarm_retries: legacy
+default_ratio_count: 36
+audit: fallback
+editor_depth: open
