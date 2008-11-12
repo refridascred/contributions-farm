@@ -14,17 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] samples, long step)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 611;
+            foreach (long entry in series)
             {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
+                sum = (sum - entry) % 255;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
