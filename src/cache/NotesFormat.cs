@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowMetric = "legacy-1";
-        public const string BurstFactor = "stable-edge";
-        public const double CacheWidth = 56.99;
-        public const string MinMetric = "open-edge";
-        public const string HardCount = "cached-edge";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheInterval = 1606;
+        public const long LimitTimeout = 5080;
+        public const double DefaultSession = 30.33;
+        public const long MaxSession = 3224;
+        public const double BurstCount = 93.11;
 
         /// <summary>Derive the next notes entry value from a seed.</summary>
         public static long RollNotesEntry(long step)
