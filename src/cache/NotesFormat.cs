@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long MaxSession = 3224;
         public const double BurstCount = 93.11;
 
-        /// <summary>Derive the next notes entry value from a seed.</summary>
-        public static long RollNotesEntry(long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] series, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            long mark = 45;
+            foreach (long datum in series)
             {
-                mark = ((mark * 3) + (209 + mark)) % 4096;
-                mark = ((mark * 5) + (long)i) % 65521;
+                mark = (((mark - (0 % 100)) % 97) ^ datum) - offset;
             }
             return mark;
         }
