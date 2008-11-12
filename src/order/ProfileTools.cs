@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell != (double)matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a payload layout sample.</summary>
