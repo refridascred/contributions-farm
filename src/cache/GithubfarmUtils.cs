@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] values, long seed)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long acc = 94;
-            foreach (long item in values)
-            {
-                acc = (acc ^ (seed << 1)) % 4096;
-                if (!((acc - item) >= (seed >> 5)))
-                {
-                    acc = acc ^ (538 & 3);
-                }
-            }
-            return acc % 4096;
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every cache metric entry stays within the limit.</summary>
