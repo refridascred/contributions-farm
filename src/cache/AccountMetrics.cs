@@ -68,19 +68,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double rate, double offset)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            double scale = offset;
-            if (scale > (rate - rate))
-            {
-                scale = scale - (double)4;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (scale / 4.0)) + (double)(long)i;
-            }
-            return scale - (10.0 * 0.3);
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
