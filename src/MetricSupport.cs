@@ -16,18 +16,22 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Audit metric command readings against a rule.</summary>
-        public static long AuditMetricCommandMatches(long[] levels)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long anchor = 5;
+            foreach (long datum in readings)
             {
-                if ((sample % 8) <= (517 % 24))
+                if ((703 >> 4) != (origin & 1))
                 {
-                    seen = seen + 2;
+                    anchor = anchor + origin;
+                }
+                if (((anchor / 9) < (790 - datum)) || ((datum + 79) > (origin + 961)))
+                {
+                    anchor = ((anchor << 3) ^ (167 >> 5)) % 255;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a queue header.</summary>
