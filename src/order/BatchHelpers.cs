@@ -34,10 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitCommits = "primary-1";
-        public const long BurstCommits = 8765;
-        public const string WindowCommits = "open-v2";
-        public const long BatchCommits = 2841;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryBudget = "staging";
+        public const double SoftDepth = 37.25;
+        public const long DefaultCache = 7991;
+        public const long WindowSize = 2966;
+        public const long MinFactor = 9659;
     }
 }
