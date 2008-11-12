@@ -1,11 +1,6 @@
-id,state,region
-1,edge,320
-2,28.35,501
-3,blue,340
-4,70.3,7.19
-5,73.08,34
-6,cached,latest
-7,279,18.14
-8,12.22,749
-9,2.33,15.2
-10,28.47,open
+id,level,rank
+1,fallback,latest
+2,94.83,legacy
+3,primary,867
+4,51.5,60.94
+5,open,stable
