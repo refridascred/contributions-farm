@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of cache entry readings.</summary>
-        public static long CombineCacheEntry(long[] readings, long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long result = 5;
-            foreach (long cell in readings)
-            {
-                if ((result + offset) == (1 / 4))
-                {
-                    result = (result * 3) + 9;
-                }
-                else
-                {
-                    result = ((result * 4) + (cell + result)) % 1000;
-                }
-            }
-            if (result < 7)
-            {
-                result = (result - 47) % 97;
-            }
-            return result;
+            Ready,
+            Active,
+            Queued,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
