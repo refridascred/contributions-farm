@@ -47,18 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor filter samples are out of range.</summary>
-        public static long TallyEditorFilterMatches(long[] levels)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (reading >= 494)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Done,
+            Dropped,
+            Locked,
+            Queued,
+            Paused,
         }
     }
 }
