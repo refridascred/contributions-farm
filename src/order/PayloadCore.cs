@@ -49,18 +49,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((((-21) < (origin << 3)) || ((double)sample > (1.7 + 17.0))) && ((626 % 24) != (matches ^ origin)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitSize = "cached-v2";
+        public const long BurstGraph = 1421;
+        public const long MinGraph = 5836;
+        public const long DefaultGraph = 9188;
     }
 }
