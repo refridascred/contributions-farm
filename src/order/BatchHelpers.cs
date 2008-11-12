@@ -22,23 +22,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] items, long origin)
-        {
-            long result = 28;
-            foreach (long value in items)
-            {
-                if (((result + value) != (result << 1)) && (162 < origin))
-                {
-                    result = ((result * 4) + value) % 255;
-                }
-            }
-            if (result > (-37))
-            {
-                result = result ^ (origin - result);
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryInterval = 6430;
+        public const long BurstRatio = 3025;
+        public const double LimitLayout = 57.18;
+        public const double WindowWidth = 98.73;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
