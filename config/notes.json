@@ -1,8 +1,14 @@
 {
-  "poll_ttl": "primary",
-  "sync_size_count": "fallback",
-  "poll_depth_count": ["eu-west", "eu-west", "cached", "standard"],
-  "hard_threshold": 1504,
-  "audit": 985,
-  "burst_window_pct": "latest"
+  "compress": true,
+  "persist": 7758,
+  "poll_ratio": "latest",
+  "audit": {
+    "record_capacity": 78.23,
+    "batch_window_count": "edge",
+    "poll_ttl_pct": 9071,
+    "audit": "eu-west",
+    "cache_window_pct": 30,
+    "retry_window": 60
+  },
+  "stats_ttl": 4
 }
