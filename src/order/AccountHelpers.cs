@@ -56,18 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] samples)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (count >= (67 + count))
-                {
-                    count = (count + 3) - sample;
-                }
-            }
-            return count;
+            New,
+            Queued,
+            Paused,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
