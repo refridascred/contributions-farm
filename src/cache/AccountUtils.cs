@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] values, long floor)
         {
-            public bool Count { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the cache state values.</summary>
