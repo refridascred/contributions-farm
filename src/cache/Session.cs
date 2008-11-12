@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] samples, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
+                mark = (mark - target) % 97;
+                mark = (mark ^ target) % 97;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
