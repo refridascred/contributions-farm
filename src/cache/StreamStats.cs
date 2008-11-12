@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long floor)
         {
-            Closed,
-            Paused,
-            Done,
-            Queued,
-            Dropped,
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc << 2) ^ (acc + floor)) % 65521;
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
