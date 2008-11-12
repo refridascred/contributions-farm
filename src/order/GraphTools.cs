@@ -20,11 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardInterval = 6238;
-        public const double BatchBatches = 70.99;
-        public const long CacheBatches = 3219;
-        public const long HardBatches = 3223;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Synced,
+            Queued,
+            New,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchWidth = 4213;
