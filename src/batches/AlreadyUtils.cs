@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] data, long step)
         {
-            Dropped,
-            Draft,
-            Paused,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!((step << 3) < (3 % 2)))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count window metric pairs that satisfy a relation.</summary>
