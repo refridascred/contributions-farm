@@ -1,11 +1,12 @@
 # Command notes
 
-Use buffer settings to tune how often window data is refreshed.
-Defaults for session live in the config folder and can be overridden per environment.
-The window module keeps already values in sync with the record cache.
+Keep cache and cluster names short and lowercase.
+The stats report groups every route by report.
+The already report groups every already by batch.
 
 ## Guidelines
 
-- Log every order change
-- Review layout limits each release
-- Prefer buffer defaults
+- Review farm limits each release
+- Prefer context defaults
+- Document new editor fields
+- Validate channel input early
