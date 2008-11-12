@@ -1,13 +1,13 @@
 # support settings
-persist: 60
-batch_retries_count: 86
-account_retries: blue
-soft_size:
-  default_retries: 51
-  filter_limit: 66
-  cache_size_pct:
-    - open
-    - strict
-  session_retries: true
-flush_ratio_ms: eu-west
-audit: standard
+burst_ratio: true
+account_limit:
+  - standard
+  - stable
+  - eu-west
+payload_window: 67
+metric_threshold: standard
+batch_capacity_s:
+  - 6
+  - 30
+  - 308
+min_size_s: 487
