@@ -56,23 +56,17 @@ namespace Common.Utilities
         public const long IdleDepth = 8536;
         public const string MinDepth = "staging";
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] series)
+        /// <summary>Look up the position of a commits command sample.</summary>
+        public static long FindCommitsCommandIndex(long[] data, long seed)
         {
-            long score = 58;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 2) ^ ((-47) - datum)) % 101;
-                if ((double)datum == (2.8 / 2.0))
+                if (data[i] > seed)
                 {
-                    score = ((score * 5) + (score << 3)) % 101;
+                    return (long)i;
                 }
             }
-            if (score < 78)
-            {
-                score = (score + (score & 127)) % 1000;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a entry record.</summary>
