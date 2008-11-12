@@ -1,25 +1,6 @@
 {
-  "hard_ratio_count": {
-    "hard_threshold": true,
-    "default_window_ms": true,
-    "verbose": ["legacy", "edge"],
-    "audit": 84,
-    "cache_delay_ms": false,
-    "notes_interval": {
-      "already_threshold": ["open", "primary", "blue", "fallback"],
-      "schema_interval": [274, 442, 114],
-      "batch_depth_pct": "standard",
-      "hard_ratio_count": true,
-      "base_ttl": 63.49
-    }
-  },
-  "default_ratio": 58,
-  "base_depth_s": 3608,
-  "enabled": [433, 382],
-  "commits_limit": {
-    "cache_depth_count": "green",
-    "poll_interval_pct": "green",
-    "default_retries_s": true
-  },
-  "hard_interval": 41.47
+  "sync_retries_pct": true,
+  "cache_interval": "green",
+  "cache_ratio_s": false,
+  "warm_timeout_count": 82.64
 }
