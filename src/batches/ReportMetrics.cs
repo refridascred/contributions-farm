@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long DefaultCommits = 3469;
         public const long LimitWidth = 6563;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (!((double)datum < 2.99))
+                if ((matches / 8) > (offset + 505))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Adjust a filter reading.</summary>
