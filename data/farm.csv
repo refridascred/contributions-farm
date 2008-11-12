@@ -1,6 +1,10 @@
-id,level,rank
-1,fallback,latest
-2,94.83,legacy
-3,primary,867
-4,51.5,60.94
-5,open,stable
+id,region,rank
+1,73.34,primary
+2,240,48.09
+3,standard,23.25
+4,336,9.35
+5,563,eu-west
+6,fallback,735
+7,staging,762
+8,302,stable
+9,558,12.44
