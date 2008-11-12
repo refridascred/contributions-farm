@@ -32,13 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] series, long bound)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
