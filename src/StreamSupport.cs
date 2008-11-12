@@ -23,22 +23,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] levels, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] samples)
         {
-            long state = 7;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((step << 3) != (4 << 2)) && ((step / 7) < (state >> 3)))
+                if ((reading >> 4) >= (seen % 8))
                 {
-                    state = ((state * 2) + step) - reading;
-                }
-                else
-                {
-                    state = (state ^ (step ^ 65)) % 101;
+                    seen = seen + 1;
                 }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
