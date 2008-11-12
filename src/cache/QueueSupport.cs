@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinFactor = 91.09;
-        public const long LimitDepth = 159;
-        public const double WindowWidth = 9.99;
-        public const double BaseSize = 88.35;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (!((double)matches > 0.9))
+                {
+                    matches = ((matches + 1) - sample) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] series)
