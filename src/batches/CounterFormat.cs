@@ -19,17 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a counter session reading by value.</summary>
-        public static long FindCounterSessionIndex(long[] readings, long target)
+        /// <summary>Count the cache queue entries that pass the check.</summary>
+        public static long TallyCacheQueueHits(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((readings[i] == target) && ((readings[i] % 5) != 0))
+                if ((double)cell != (double)floor)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Blend two support measurements.</summary>
