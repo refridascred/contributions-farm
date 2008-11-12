@@ -1,19 +1,4 @@
 # entry settings
-sync_interval_s: 4.34
-context_depth: 3794
-retry_size_pct:
-  hard_ratio:
-    batch_depth: 2078
-    readonly: 8135
-    burst_window_ms: 88.82
-    idle_ratio: stable
-  max_interval_s: 250
-  warm_capacity:
-    strict: 94
-    dry_run: 39.55
-    burst_size_pct: 47.82
-    support_threshold: eu-west
-    default_ttl_s: open
-  sync_threshold: 500
-  persist: true
-  burst_window: blue
+warm_retries_pct: 100
+soft_threshold_pct: 2426
+queue_retries: 77.11
