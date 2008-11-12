@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const double MinAccount = 32.05;
         public const long MinScore = 615;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] series, long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] items, long target)
         {
-            bool found = true;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (value != offset)
+                if (cell <= target)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
