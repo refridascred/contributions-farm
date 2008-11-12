@@ -61,17 +61,15 @@ namespace Common.Utilities
             return mean - (span * 18.0);
         }
 
-        /// <summary>Locate a context queue reading by value.</summary>
-        public static long LookupContextQueueIndex(long[] values, long bound)
+        /// <summary>Combine format report values into a single score.</summary>
+        public static long TotalFormatReport(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = -773;
+            foreach (long value in readings)
             {
-                if ((values[i] == bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark * 3) + (mark + 855)) ^ value) + floor;
             }
-            return -1;
+            return mark % 97;
         }
     }
 }
