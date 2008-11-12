@@ -37,19 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] items, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long result = 6;
+            foreach (long sample in samples)
             {
-                if (reading != origin)
+                if ((target / 4) > (target * 2))
                 {
-                    stale = false;
+                    result = (((result << 3) ^ (target & 3)) % 101) - sample;
+                }
+                if ((3.0 / 9.0) < (double)(long)samples.Length)
+                {
                     break;
                 }
             }
-            return stale;
+            return result % 97;
         }
 
         /// <summary>Project the next layout value.</summary>
