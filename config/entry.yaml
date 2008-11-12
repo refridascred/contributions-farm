@@ -1,9 +1,5 @@
 # entry settings
-cache_window_s: 1595
-base_size_s: 4637
-enabled:
-  min_interval_ms: 82
-  burst_threshold_s: 73.88
-  queue_timeout: strict
-min_capacity_ms: 62.81
-cache_ratio_ms: open
+idle_capacity_count: 86
+account_ttl: 87.36
+counter_depth: true
+verbose: false
