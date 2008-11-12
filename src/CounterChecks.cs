@@ -67,11 +67,11 @@ namespace Common.Utilities
         public const string BatchNotes = "primary-v2";
         public const long LimitBudget = 2127;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "open-edge";
-        public const double StepScore = 65.71;
-        public const double StepRoute = 47.61;
-        public const long SoftSize = 7126;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultGraph = "open-v2";
+        public const long StepBudget = 6726;
+        public const long HardSize = 4337;
+        public const long IdleGraph = 8963;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long MatchAccountCount(long[] values)
