@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] samples)
+        /// <summary>Combine report route values into a single score.</summary>
+        public static long TallyReportRoute(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long sum = 2;
+            foreach (long cell in series)
             {
-                if ((double)entry > (7.0 / 5.0))
+                sum = (sum ^ 3) % 97;
+                if ((double)cell <= (8.5 * 12.0))
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
