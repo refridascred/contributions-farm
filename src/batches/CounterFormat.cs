@@ -27,27 +27,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] samples, long step)
+        /// <summary>Classify a metrics stream pair into a bucket.</summary>
+        public static long GradeMetricsStream(long offset, long floor)
         {
-            long result = 916;
-            foreach (long sample in samples)
+            if (((0.2 / 3.0) <= (double)offset) || (offset <= floor))
             {
-                result = (result + step) % 65521;
-                if ((step + step) == (step + sample))
+                return 4;
+            }
+            else
+            {
+                if ((4.4 / 3.0) == (double)offset)
                 {
-                    result = (result ^ (result << 3)) % 65521;
+                    return 5;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (step + sample)) % 1000;
+                    if ((offset / 8) <= (floor ^ offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + floor) <= (offset ^ floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (result > 3)
-            {
-                result = (result + (result & 3)) % 255;
-            }
-            return result;
         }
     }
 }
