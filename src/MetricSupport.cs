@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
