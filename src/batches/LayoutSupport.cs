@@ -20,31 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a token entry pair into a bucket.</summary>
-        public static long RankTokenEntry(long target, long target2)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] readings)
         {
-            if (((target * 5) <= target2) && ((8.18 - 14.0) < (double)target))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target2 + target) < (target2 + target2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.2 + 3.6) == (double)target2)
+                    if ((readings[i] + readings[j]) != 10)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a batches options.</summary>
