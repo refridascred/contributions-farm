@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double ratio, double span)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double rate, double bias)
         {
-            double drift = (span + ratio) - (double)2;
-            if (drift < 11.0)
+            double rate2 = (double)(9 % 60);
+            if (rate2 < (rate2 - rate))
             {
-                drift = drift + (drift - span);
+                rate2 = rate2 - bias;
             }
             else
             {
-                drift = drift - (span * 7.6);
+                rate2 = rate2 + (double)33;
             }
-            return drift + 2.51;
+            return rate2 - (double)0;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
