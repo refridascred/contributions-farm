@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)84 <= (double)count)
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstWidth = "staging-1";
+        public const long RetryCount = 5745;
+        public const double DefaultCount = 9.6;
+        public const double BatchLevel = 71.19;
+        public const long StepCommits = 6363;
 
         /// <summary>Check that every commits layout entry stays within the limit.</summary>
         public static bool ValidateCommitsLayoutRange(long[] values, long origin)
