@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] items)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((double)item > (8.72 * 7.21))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit account notes readings against a rule.</summary>
