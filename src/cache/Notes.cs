@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxCommits = "primary-edge";
-        public const long IdleCommits = 9085;
-        public const double WindowWidth = 97.15;
-        public const string IdleRatio = "primary";
-        public const long MaxSize = 1251;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Paused,
+            Retry,
+            Pending,
+            Active,
+            Queued,
+        }
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
