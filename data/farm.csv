@@ -1,8 +1,7 @@
-id,label,count,ratio
-1,86.11,722,318
-2,619,strict,standard
-3,84.97,45.79,10
-4,604,eu-west,31
-5,78.68,green,503
-6,414,717,edge
-7,primary,4.9,405
+id,ratio,token,region
+1,351,290,285
+2,809,stable,898
+3,519,14.68,eu-west
+4,11.78,eu-west,cached
+5,legacy,fallback,primary
+6,green,56.84,edge
