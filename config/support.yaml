@@ -1,9 +1,9 @@
 # support settings
-dry_run: 32
-idle_window_pct: 2407
-burst_capacity: primary
-retry_retries_count:
-  - edge
-  - latest
-  - fallback
-  - local
+retry_limit: blue
+flush_depth_pct: 60
+persist: 16.52
+graph_capacity: 47
+min_delay:
+  - 49
+  - 337
+  - 147
