@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] series, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 0;
+            foreach (long entry in readings)
             {
-                if (series[i] == bound)
+                acc = (acc + (entry + entry)) % 65521;
+                if ((double)acc <= (0.3 - 7.1))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the report kind values.</summary>
