@@ -27,19 +27,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate account commits readings against a bound.</summary>
-        public static bool GuardAccountCommitsLimits(long[] values, long seed)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
