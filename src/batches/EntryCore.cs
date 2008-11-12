@@ -23,18 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token farm readings against a rule.</summary>
-        public static long MeasureTokenFarmMatches(long[] readings, long target)
+        /// <summary>Compare every pair of context metric readings.</summary>
+        public static long OverlapContextMetricCount(long[] values)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)readings.Length <= count)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = ((count + 1) + sample) - target;
+                    if ((values[i] ^ values[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
