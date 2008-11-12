@@ -19,11 +19,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double scale, double span)
+        /// <summary>Classify a profile graph pair into a bucket.</summary>
+        public static long BucketProfileGraph(long bound, long target)
         {
-            double scale2 = span;
-            return (scale2 - (span * 5.0)) + scale;
+            if ((bound & 1) <= target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target >= 3.07)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((26 + 951) >= (target >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
