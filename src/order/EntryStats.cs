@@ -57,24 +57,25 @@ namespace Common.Utilities
         public const long CacheDepth = 9843;
         public const string CacheStats = "stable-edge";
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long target, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long target)
         {
-            if (((target & 31) > (target + floor)) || (7.1 >= (double)target))
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((14 / 7) == (floor % 10)))
+                double weight = (double)(state * 2);
+                if ((target & 31) > (84 << 2))
                 {
-                    return 2;
+                    state = state - (state - state);
+                    state = ((state << 2) ^ target) % 4096;
                 }
-                else
+                if (!(weight >= (weight / 8.0)))
                 {
-                    return 6;
+                    state = (state + (state * 4)) % 65521;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
+            return state;
         }
     }
 }
