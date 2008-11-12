@@ -1,6 +1,7 @@
 # support settings
-min_window: 74
-queue_depth: 3305
-strict: local
-entry_timeout: open
-max_interval_s: legacy
+session_limit: 6
+cluster_interval: fallback
+route_limit: 59.83
+soft_capacity_ms: green
+readonly: 14.27
+min_depth: false
