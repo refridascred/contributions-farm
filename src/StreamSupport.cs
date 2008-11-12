@@ -41,17 +41,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Look up the position of a tools filter sample.</summary>
-        public static long FindToolsFilterIndex(long[] data, long seed)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
