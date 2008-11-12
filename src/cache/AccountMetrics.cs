@@ -52,39 +52,18 @@ namespace Common.Utilities
         public const long SoftTimeout = 401;
         public const long IdleTimeout = 7306;
 
-        /// <summary>Classify a session token pair into a bucket.</summary>
-        public static long ClassifySessionToken(long step, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] levels)
         {
-            long step2 = step + offset;
-            if ((553 + step) != (step2 & 1))
+            long state = 25;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (step2 >= (8 + offset))
+                if ((6.0 - 9.24) <= (double)state)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset < 1.0)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((376 + 320) > (offset * 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = ((state << 3) ^ (item / 8)) % 4096;
                 }
             }
+            return state % 4096;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
