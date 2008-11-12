@@ -1,4 +1,10 @@
 # support settings
-retry_window_ms: 94.67
-persist: 10.7
-idle_capacity_count: false
+verbose: 41
+audit:
+  - cached
+  - fallback
+  - strict
+  - standard
+sync_retries_s: 60
+idle_retries: 58.07
+enabled: 4.29
