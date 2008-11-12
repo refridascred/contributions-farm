@@ -67,18 +67,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate queue checks samples.</summary>
-        public static long CombineQueueChecks(long[] values, long origin)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long mark = 4;
-            foreach (long item in values)
-            {
-                if (((origin + mark) < (item >> 4)) && ((origin >> 3) != (item >> 5)))
-                {
-                    mark = mark - (mark - origin);
-                }
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
