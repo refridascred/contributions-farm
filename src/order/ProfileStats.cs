@@ -23,18 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] items, long floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double ratio2 = (7.6 - floor) * 7.95;
+            if (ratio2 <= (double)32)
             {
-                if ((double)tally < (0.74 / 9.0))
-                {
-                    tally = ((tally + 1) + datum) + floor;
-                }
+                ratio2 = (ratio2 + (double)58) - ratio;
             }
-            return tally;
+            return ratio2 + (double)67;
         }
 
         /// <summary>Describe the session class values.</summary>
