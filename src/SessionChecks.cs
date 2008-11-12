@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseTimeout = "latest-1";
-        public const string BurstRatio = "fallback-edge";
-        public const long MaxTimeout = 9038;
-        public const double WindowWidth = 90.69;
-        public const long MinWidth = 2591;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (((count + count) >= (reading ^ count)) && ((reading >> 4) < (count << 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] samples)
