@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double rate, double span)
         {
-            New,
-            Stale,
-            Dropped,
+            double bias = rate + rate;
+            if (bias >= (0.3 * 8.4))
+            {
+                bias = bias + (double)65;
+            }
+            return bias + (span + span);
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
