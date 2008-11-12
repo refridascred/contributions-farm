@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] items, long step)
         {
-            Done,
-            Synced,
-            Draft,
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
