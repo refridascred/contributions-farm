@@ -35,17 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark << 3) ^ 20) % 1000;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseCache = 32.94;
+        public const long DefaultCache = 6460;
+        public const long LimitRatio = 3775;
+        public const string HardCache = "alpha";
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksHits(long[] items, long step)
