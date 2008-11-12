@@ -1,8 +1,7 @@
 {
-  "readonly": 5.43,
-  "warm_depth_pct": ["standard", "standard", "blue", "legacy"],
-  "retry_ttl_s": 3101,
-  "warm_timeout": "open",
-  "compress": 5133,
-  "hard_delay": "latest"
+  "warm_limit_count": [304, 100, 144, 411],
+  "batch_threshold_count": 44.95,
+  "flush_window_count": [177, 478, 401],
+  "persist": 40,
+  "warm_ttl_s": true
 }
