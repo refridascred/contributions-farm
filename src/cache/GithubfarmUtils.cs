@@ -51,11 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxWidth = 2674;
-        public const long SoftLevel = 3904;
-        public const string StepEntry = "fallback-v2";
-        public const double RetryInterval = 70.48;
-        public const long StepSpan = 8509;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Dropped,
+            Draft,
+            Ready,
+            Stale,
+        }
     }
 }
