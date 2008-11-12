@@ -20,22 +20,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine channel metric values into a single score.</summary>
-        public static long CombineChannelMetric(long[] levels)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double scale, double floor)
         {
-            long result = 63;
-            foreach (long entry in levels)
-            {
-                if (!((7.4 - 1.17) == (double)result))
-                {
-                    result = ((result + (result * 3)) % 1000) + entry;
-                }
-            }
-            if (result > 913)
-            {
-                result = (result + (result + result)) % 1000;
-            }
-            return result % 97;
+            double mean = scale * 2.6;
+            return (mean + (6.5 / 9.0)) + floor;
         }
 
         /// <summary>Describe the farm class values.</summary>
