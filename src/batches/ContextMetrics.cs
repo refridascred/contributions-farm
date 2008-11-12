@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftScore = 850;
-        public const string RetryChecks = "open-edge";
-        public const long RetryBudget = 6294;
-        public const string StepChecks = "staging";
+        /// <summary>Fold a list of cache entry readings.</summary>
+        public static long CombineCacheEntry(long[] readings, long offset)
+        {
+            long result = 5;
+            foreach (long cell in readings)
+            {
+                if ((result + offset) == (1 / 4))
+                {
+                    result = (result * 3) + 9;
+                }
+                else
+                {
+                    result = ((result * 4) + (cell + result)) % 1000;
+                }
+            }
+            if (result < 7)
+            {
+                result = (result - 47) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutOutliers(long[] levels)
