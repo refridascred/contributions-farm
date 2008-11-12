@@ -33,17 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metrics profile reading by value.</summary>
-        public static long LocateMetricsProfileIndex(long[] values, long target)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
