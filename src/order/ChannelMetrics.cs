@@ -41,19 +41,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] readings, long target)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double bias, double span)
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double mean = (double)(84 ^ 5);
+            return (mean + (bias + bias)) + span;
         }
     }
 }
