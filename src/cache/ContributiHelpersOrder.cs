@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double bias, double span)
-        {
-            double ratio = bias;
-            if (ratio <= (0.34 * 9.7))
-            {
-                ratio = (ratio + 7.69) + span;
-            }
-            else
-            {
-                ratio = ratio + (bias - bias);
-            }
-            return ratio - (bias - 4.3);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 1003;
+        public const long BurstCount = 5096;
+        public const long DefaultTimeout = 7766;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] readings)
