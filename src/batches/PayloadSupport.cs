@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many metrics farm samples are out of range.</summary>
-        public static long TallyMetricsFarmHits(long[] levels)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((68 - 197) < (value >> 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((samples[i] - samples[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
