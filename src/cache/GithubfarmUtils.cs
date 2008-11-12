@@ -45,22 +45,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit token already readings against a rule.</summary>
-        public static long AuditTokenAlreadyGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample / 7) > (sample >> 1))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxWidth = 2674;
+        public const long SoftLevel = 3904;
+        public const string StepEntry = "fallback-v2";
+        public const double RetryInterval = 70.48;
+        public const long StepSpan = 8509;
     }
 }
