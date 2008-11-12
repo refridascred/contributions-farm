@@ -19,38 +19,17 @@ namespace Common.Utilities
         public const long CacheLevel = 4629;
         public const double CacheCommand = 45.18;
 
-        /// <summary>Classify a metrics stream pair into a bucket.</summary>
-        public static long GradeMetricsStream(long offset, long floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] readings, long seed)
         {
-            if (((0.2 / 3.0) <= (double)offset) || (offset <= floor))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4.4 / 3.0) == (double)offset)
+                if ((readings[i] <= seed) && ((readings[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset / 8) <= (floor ^ offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + floor) <= (offset ^ floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
