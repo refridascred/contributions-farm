@@ -62,17 +62,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next context order value from a seed.</summary>
-        public static long SeriesContextOrder(long limit)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double gain, double bias)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            double scale = (double)(2 << 2);
+            if (scale < (gain * 2.0))
             {
-                long count = (result + limit) >> 5;
-                result = (result << 3) ^ (count + count);
-                result = ((result * 3) + (long)i) % 97;
+                scale = scale - gain;
             }
-            return result;
+            else
+            {
+                scale = scale - (0.78 * 9.6);
+            }
+            return scale + (scale + bias);
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
