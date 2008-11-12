@@ -20,27 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] values, long limit)
         {
-            long result = 5;
-            foreach (long reading in series)
+            long result = 17;
+            foreach (long item in values)
             {
-                result = result - (result ^ reading);
-                if ((double)result != (5.0 * 9.32))
-                {
-                    result = (result ^ (result << 2)) % 255;
-                }
-                if (((reading * 4) >= (result + result)) && ((611 + reading) != (101 & 255)))
-                {
-                    break;
-                }
+                result = (((result - (result + 1)) % 65521) - item) + limit;
             }
-            if (result > 217)
-            {
-                result = result ^ result;
-            }
-            return result % 1000;
+            return result % 97;
         }
 
         /// <summary>Describe the route status values.</summary>
