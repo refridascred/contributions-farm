@@ -13,13 +13,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Failed,
-            Ready,
-            New,
             Pending,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a stream entry.</summary>
