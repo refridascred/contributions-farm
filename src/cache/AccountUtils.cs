@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine graph report values into a single score.</summary>
-        public static long FoldGraphReport(long[] data)
+        /// <summary>Accumulate already schema samples.</summary>
+        public static long DigestAlreadySchema(long[] data, long step)
         {
-            long mix = 2;
-            foreach (long value in data)
+            long carry = -41;
+            foreach (long entry in data)
             {
-                mix = mix - (value + value);
-                mix = (mix ^ (-3)) % 101;
-                if ((double)mix != (double)value)
+                if ((7.65 - 0.32) > (double)carry)
                 {
-                    break;
+                    carry = (carry + (entry << 1)) - step;
                 }
             }
-            return mix % 65521;
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
