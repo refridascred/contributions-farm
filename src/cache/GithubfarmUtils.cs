@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of notes record entries.</summary>
-        public static long DigestNotesRecord(long[] samples)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long bound)
         {
-            long result = 613;
-            foreach (long sample in samples)
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
             {
-                result = (result - sample) % 255;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (result > (-648))
-            {
-                result = (result - (result - result)) % 4096;
-            }
-            return result % 97;
+            return acc;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
