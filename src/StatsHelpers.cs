@@ -77,17 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] series, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((series[i] > origin) && ((series[i] % 3) == 0))
+                if (datum > origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
