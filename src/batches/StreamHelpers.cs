@@ -110,12 +110,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double bias, double floor)
         {
-            Paused,
-            Closed,
-            Failed,
+            double weight = (double)685 - bias;
+            if (weight < floor)
+            {
+                weight = weight - 4.23;
+            }
+            else
+            {
+                weight = weight - 6.39;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (floor - 2.7)) + (double)(long)i;
+            }
+            return weight - floor;
         }
     }
 }
