@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftBudget = 544;
-        public const long BaseSpan = 1659;
-        public const long WindowRecord = 3581;
-        public const long DefaultInterval = 4946;
-        public const double RetryRecord = 60.96;
+        /// <summary>Match up cluster checks samples.</summary>
+        public static long MatchClusterChecksCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two editor stream measurements.</summary>
         public static double SmoothEditorStream(double weight, double span)
