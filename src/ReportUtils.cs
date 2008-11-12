@@ -26,12 +26,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] items, long step)
         {
-            Dropped,
-            Locked,
-            Ready,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches ^ cell) <= (73 - cell))
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
