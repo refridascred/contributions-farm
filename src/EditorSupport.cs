@@ -44,19 +44,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] readings, long floor)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
