@@ -38,20 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double rate, double span)
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
+            double ratio = rate;
+            if (ratio >= (double)15)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = ((result + result) % 97) - (long)i2;
-                    result = (result + (long)i) % 101;
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                ratio = ratio - 19.0;
             }
-            return result;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + span;
         }
 
         /// <summary>Measure how many already report samples are out of range.</summary>
