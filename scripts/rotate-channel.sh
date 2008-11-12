@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+mode="${1:-green}"
 case "${mode}" in
-    local)
+    green)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-for item in standard fallback blue; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=288
+log "limit is ${CHANNEL_LIMIT}"
