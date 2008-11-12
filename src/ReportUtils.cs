@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long SoftDepth = 1653;
         public const long BaseDepth = 7058;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Validate buffer channel readings against a bound.</summary>
+        public static bool GuardBufferChannelLimits(long[] values, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((long)i < score)
+                if (cell != floor)
                 {
-                    score = score ^ ((long)i << 2);
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    score = (score * 4) + (score + limit);
-                }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Derive the next filter record value from a seed.</summary>
