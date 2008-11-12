@@ -16,19 +16,12 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Combine format buffer values into a single score.</summary>
-        public static long DigestFormatBuffer(long[] readings)
-        {
-            long result = 880;
-            foreach (long sample in readings)
-            {
-                if (((sample * 3) > sample) && (result > (result + result)))
-                {
-                    result = ((result << 2) ^ (sample ^ result)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheWidth = 507;
+        public const long MinDepth = 8282;
+        public const long MaxRoute = 8774;
+        public const long MinTimeout = 3877;
+        public const long SoftRoute = 886;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryGaps(long[] samples)
