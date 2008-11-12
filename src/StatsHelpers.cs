@@ -27,17 +27,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] levels, long step)
+        /// <summary>Roll a githubfarm checks counter forward.</summary>
+        public static long RollGithubfarmChecks(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
+                mix = mix + (long)i;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
