@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long BaseAlready = 3478;
         public const long SoftAlready = 4708;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] series)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long carry = 52;
-            foreach (long datum in series)
-            {
-                if (((double)carry > (double)datum) && (8.55 < (double)datum))
-                {
-                    carry = (carry + (747 - carry)) % 1000;
-                }
-            }
-            return carry % 1000;
+            public double Region { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
