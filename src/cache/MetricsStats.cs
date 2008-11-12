@@ -39,22 +39,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] items)
+        /// <summary>Fold a list of profile record readings.</summary>
+        public static long TotalProfileRecord(long[] items, long limit)
         {
-            long tally = 0;
+            long total = 10;
             foreach (long datum in items)
             {
-                if (!((2.0 * 8.3) == (double)tally))
+                if (55 <= total)
                 {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    total = ((total - (51 - (-544))) - datum) + limit;
                 }
             }
-            return tally;
+            if (total < 591)
+            {
+                total = total + (220 >> 5);
+            }
+            return total % 97;
         }
     }
 }
