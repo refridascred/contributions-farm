@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] readings, long step)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample > step)
+                if ((long)i < score)
                 {
-                    ready = false;
-                    break;
+                    score = score ^ ((long)i << 2);
                 }
+                else
+                {
+                    score = (score * 4) + (score + limit);
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
