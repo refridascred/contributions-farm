@@ -24,9 +24,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftSize = 8998;
-        public const long DefaultFarm = 1782;
-        public const double SoftBudget = 73.42;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry << 3) >= hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
