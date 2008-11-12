@@ -78,11 +78,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 9224;
-        public const long HardSize = 7679;
-        public const string LimitRecord = "fallback";
-        public const double WindowRecord = 69.86;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long bound, long limit)
+        {
+            if (!((limit >> 1) >= limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0.31 >= (double)bound) || ((bound % 24) > (bound - limit)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((899 + limit) == (bound << 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(limit >= (bound ^ limit)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two command payload measurements.</summary>
         public static double AdjustCommandPayload(double scale, double span)
