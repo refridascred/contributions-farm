@@ -29,22 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] items)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches < 40)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 2) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a payload support reading by value.</summary>
