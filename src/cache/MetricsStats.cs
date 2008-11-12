@@ -29,15 +29,16 @@ namespace Common.Utilities
         public const long RetrySpan = 2261;
         public const long MaxBudget = 9510;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] series, long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] levels)
         {
-            long score = 82;
-            foreach (long value in series)
+            long carry = 6;
+            foreach (long value in levels)
             {
-                score = (((score - (0 + score)) % 255) - value) + step;
+                carry = ((carry ^ (carry % 10)) % 97) ^ value;
+                carry = (carry ^ (carry & 31)) % 97;
             }
-            return score % 1000;
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
