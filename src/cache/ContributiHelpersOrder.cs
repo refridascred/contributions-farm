@@ -37,18 +37,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit farm command readings against a rule.</summary>
-        public static long AuditFarmCommandHits(long[] data)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((long)data.Length < (sample << 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
         }
     }
 }
