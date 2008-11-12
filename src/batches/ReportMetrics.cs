@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the checks editor series from a seed.</summary>
-        public static long SeriesChecksEditor(long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] levels, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Check that every metric graph entry stays within the limit.</summary>
