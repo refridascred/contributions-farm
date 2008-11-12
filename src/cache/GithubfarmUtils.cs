@@ -14,32 +14,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long limit, long seed)
-        {
-            if ((seed * 4) != (seed >> 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed % 10) > 83)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit >> 2) > 14)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 775;
+        public const long MinEntry = 4875;
+        public const long CacheEntry = 2986;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool ValidateStatsRange(long[] items, long step)
