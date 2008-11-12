@@ -71,20 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] data, long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
-            long score = 923;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score * 2) + (7 ^ (long)i);
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = (score - limit) % 101;
-                score = ((score * 2) + sample) % 1000;
             }
-            return score;
+            return matches;
         }
     }
 }
