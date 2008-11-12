@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate already record readings against a bound.</summary>
-        public static bool CheckAlreadyRecordRange(long[] items, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (item != limit)
+                if (datum > bound)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Match up filter samples.</summary>
