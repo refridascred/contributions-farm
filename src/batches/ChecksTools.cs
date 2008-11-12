@@ -38,12 +38,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            Pending,
+            New,
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Project the next checks value.</summary>
