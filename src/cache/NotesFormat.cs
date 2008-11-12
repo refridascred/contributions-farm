@@ -20,18 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit batches cache readings against a rule.</summary>
-        public static long CountBatchesCacheHits(long[] readings, long step)
+        /// <summary>Derive the next notes entry value from a seed.</summary>
+        public static long RollNotesEntry(long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((value + value) <= (value + step))
-                {
-                    hits = hits + 3;
-                }
+                mark = ((mark * 3) + (209 + mark)) % 4096;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
