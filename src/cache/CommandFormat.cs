@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long limit, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] samples)
         {
-            if ((target + target) <= (limit * 4))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target % 64) > (9 - limit))
+                if ((value >> 1) < value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the layout class values.</summary>
