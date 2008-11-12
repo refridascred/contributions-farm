@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] levels)
         {
-            Closed,
-            Queued,
-            Done,
-            Paused,
-            Idle,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((1 - tally) == (tally % 24))
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
