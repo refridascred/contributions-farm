@@ -38,18 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] items, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long score = 0;
+            foreach (long datum in data)
             {
-                if ((sample + 755) > origin)
-                {
-                    hits = hits + 1;
-                }
+                score = ((score + (960 / 2)) % 97) + datum;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Iterate the editor command series from a seed.</summary>
