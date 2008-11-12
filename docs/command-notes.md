@@ -1,10 +1,14 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-The stream report groups every commits by record.
+Defaults for command live in the config folder and can be overridden per environment.
+Run the context check before changing any notes limits.
+
+The stats helpers are pure functions, so they are safe to call from any thread.
+When a schema fails, the channel handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new graph fields
-- Keep session values small
-- Prefer format defaults
+- Review githubfarm limits each release
+- Prefer token defaults
+- Log every layout change
+- Validate contributi input early
