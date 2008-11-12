@@ -33,18 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] samples)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (count < reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Active,
         }
 
         /// <summary>Fold a list of support readings.</summary>
