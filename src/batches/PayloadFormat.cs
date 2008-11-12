@@ -30,14 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinDepth = "alpha-1";
+        public const long IdleFilter = 4044;
+        public const long BaseFilter = 9989;
 
         /// <summary>Project the next batch value.</summary>
         public static double AdjustBatch(double ratio, double floor)
