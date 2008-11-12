@@ -1,6 +1,7 @@
 {
-  "commits_ratio": ["staging", "local", "legacy", "local"],
-  "contributi_ratio": 77.19,
-  "batch_timeout_pct": "cached",
-  "default_timeout": 44.35
+  "hard_timeout_count": true,
+  "sync_threshold_s": 5268,
+  "enabled": [298, 428],
+  "buffer_limit": "legacy",
+  "profile_delay": 12.53
 }
