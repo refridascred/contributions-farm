@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two metrics support measurements.</summary>
-        public static double ScaleMetricsSupport(double rate, double offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] series)
         {
-            double bias = offset;
-            if (bias <= (bias * 8.92))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                bias = bias - (offset + bias);
+                if ((double)tally <= (2.7 - 8.71))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                bias = bias - rate;
-            }
-            return bias - (offset - bias);
+            return tally;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
