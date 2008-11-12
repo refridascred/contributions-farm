@@ -50,12 +50,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the commits support entries that pass the check.</summary>
+        public static long TallyCommitsSupportGaps(long[] items)
         {
-            Queued,
-            New,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((((tally + 7) >= 592) || (tally >= sample)) && ((2.49 >= (double)tally) || ((420 + sample) > (sample - sample))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
