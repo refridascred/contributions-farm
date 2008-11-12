@@ -1,11 +1,6 @@
 {
-  "hard_capacity_s": {
-    "max_ratio_s": "blue",
-    "batch_threshold_count": "stable",
-    "hard_interval": "green",
-    "poll_interval_s": 43.13
-  },
-  "verbose": 78.97,
-  "warm_retries": true,
-  "max_window": 9667
+  "hard_size": [132, 137, 23, 441],
+  "persist": 100,
+  "warm_ttl_s": true,
+  "hard_delay_s": true
 }
