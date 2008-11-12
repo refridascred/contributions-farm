@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] series)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((285 - cell) < (46 - cell))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Locked,
+            Active,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
