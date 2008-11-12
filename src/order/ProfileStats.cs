@@ -40,15 +40,21 @@ namespace Common.Utilities
         public const double RetryCommits = 74.78;
         public const double MinInterval = 45.54;
 
-        /// <summary>Fold a list of editor record readings.</summary>
-        public static long TotalEditorRecord(long[] values)
+        /// <summary>Compare every pair of tools farm readings.</summary>
+        public static long OverlapToolsFarmCount(long[] data)
         {
-            long acc = 268;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc << 2) ^ acc) % 4096) + datum;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc % 97;
+            return seen;
         }
     }
 }
