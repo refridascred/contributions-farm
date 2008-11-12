@@ -29,14 +29,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Look up the position of a session format sample.</summary>
+        public static long LookupSessionFormatIndex(long[] values, long limit)
         {
-            Locked,
-            Idle,
-            Failed,
-            Dropped,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
