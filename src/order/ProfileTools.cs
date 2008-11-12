@@ -28,22 +28,13 @@ namespace Common.Utilities
             return drift + 1.7;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] values)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long state = 752;
-            foreach (long sample in values)
-            {
-                if ((5.4 * 5.56) <= (double)state)
-                {
-                    state = ((state << 2) ^ (state ^ sample)) % 1000;
-                }
-            }
-            if (state < 9)
-            {
-                state = state + (state % 97);
-            }
-            return state;
+            Synced,
+            Paused,
+            Active,
+            Pending,
         }
 
         /// <summary>Combine account values into a single score.</summary>
