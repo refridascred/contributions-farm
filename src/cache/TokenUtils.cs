@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Dropped,
-            Done,
-            Stale,
+            public bool Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
