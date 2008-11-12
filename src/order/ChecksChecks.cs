@@ -24,19 +24,9 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] items)
-        {
-            long result = -6;
-            foreach (long sample in items)
-            {
-                result = (result - ((long)items.Length ^ 9)) ^ sample;
-            }
-            if (result > 5)
-            {
-                result = result - result;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxSize = "fallback";
+        public const long MinBudget = 6050;
+        public const string RetryInterval = "legacy";
     }
 }
