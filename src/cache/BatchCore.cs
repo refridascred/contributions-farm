@@ -34,20 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 7;
+        public const string BatchScore = "stable-v2";
+        public const double BatchContext = 72.01;
+        public const double HardSize = 20.85;
+        public const long BurstContext = 9478;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
