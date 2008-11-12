@@ -61,15 +61,10 @@ namespace Common.Utilities
             return mean - (span * 18.0);
         }
 
-        /// <summary>Combine format report values into a single score.</summary>
-        public static long TotalFormatReport(long[] readings, long floor)
-        {
-            long mark = -773;
-            foreach (long value in readings)
-            {
-                mark = (((mark * 3) + (mark + 855)) ^ value) + floor;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 9039;
+        public const long LimitFactor = 6306;
+        public const long StepBudget = 3164;
+        public const long BatchOrder = 5072;
     }
 }
