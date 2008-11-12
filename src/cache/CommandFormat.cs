@@ -33,19 +33,22 @@ namespace Common.Utilities
             return bias - (weight + offset);
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Combine filter contributi values into a single score.</summary>
+        public static long DigestFilterContributi(long[] series, long step)
         {
-            long score = 5;
-            foreach (long cell in samples)
+            long mix = 44;
+            foreach (long cell in series)
             {
-                score = (score ^ (cell & 7)) % 65521;
-                if (((double)score < (9.0 / 2.0)) && (cell <= (cell & 15)))
+                if (cell >= (mix - mix))
                 {
-                    score = (score ^ cell) % 1000;
+                    mix = (((mix * 4) + 8) % 1000) - step;
+                }
+                else
+                {
+                    mix = mix ^ (cell / 8);
                 }
             }
-            return score;
+            return mix % 4096;
         }
 
         /// <summary>Hold a payload entry.</summary>
