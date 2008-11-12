@@ -37,18 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] samples, long seed)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample + seed) <= (682 + 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Project the next channel value.</summary>
