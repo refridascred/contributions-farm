@@ -115,21 +115,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftInterval = "stable";
+        public const long MaxCount = 5465;
+        public const string WindowCount = "strict-edge";
+        public const long CacheRecord = 9947;
+        public const long MaxRecord = 7908;
     }
 }
