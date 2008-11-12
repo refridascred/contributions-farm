@@ -30,14 +30,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long floor, long origin)
         {
-            New,
-            Ready,
-            Locked,
-            Stale,
-            Retry,
+            if (!((double)origin < 1.5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor / 9) >= (floor + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin <= (floor * 5)) || ((origin >> 1) > (floor << 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + floor) <= origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
