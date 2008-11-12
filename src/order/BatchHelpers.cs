@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] series)
         {
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long score = 81;
+            foreach (long entry in series)
+            {
+                if ((score + score) == (entry * 2))
+                {
+                    score = score + 50;
+                    score = (score + score) % 65521;
+                    continue;
+                }
+                score = (score - (score & 7)) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Accumulate window samples.</summary>
