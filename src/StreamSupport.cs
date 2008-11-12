@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
+            Queued,
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
