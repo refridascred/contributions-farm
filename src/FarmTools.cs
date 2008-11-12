@@ -37,17 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a channel batch sample.</summary>
-        public static long FindChannelBatchIndex(long[] values, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (values[i] < offset)
+                if ((cell / 9) > cell)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
