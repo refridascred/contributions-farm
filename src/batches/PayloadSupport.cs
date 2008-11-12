@@ -15,23 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long state = 551;
-            foreach (long value in data)
-            {
-                if ((value / 9) < state)
-                {
-                    state = (state ^ (35 >> 4)) % 255;
-                }
-                state = state - ((long)data.Length / 7);
-            }
-            if (state < 3)
-            {
-                state = (state ^ (state * 2)) % 97;
-            }
-            return state;
+            Dropped,
+            Paused,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the route phase values.</summary>
