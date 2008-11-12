@@ -26,18 +26,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long target, long bound)
         {
-            long anchor = 461;
-            foreach (long reading in series)
+            long gap = target - bound;
+            if ((double)bound >= (5.0 + 1.95))
             {
-                if ((reading - anchor) > 88)
+                return 1;
+            }
+            else
+            {
+                if (!((537 - bound) != (gap - bound)))
                 {
-                    anchor = (anchor - (anchor - reading)) % 101;
+                    return 6;
+                }
+                else
+                {
+                    if ((8.0 - 7.0) > (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
