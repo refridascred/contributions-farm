@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] series, long step)
+        /// <summary>Find the first filter notes entry that matches the target.</summary>
+        public static long FindFilterNotesIndex(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] == step) && ((series[i] % 2) != 0))
+                if (items[i] > origin)
                 {
                     return (long)i;
                 }
