@@ -77,22 +77,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the cache commits entries that pass the check.</summary>
-        public static long AuditCacheCommitsHits(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((origin % 24) < origin)
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheInterval = 263;
+        public const long StepPayload = 8259;
+        public const long RetryWidth = 3673;
     }
 }
