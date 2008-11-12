@@ -71,28 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] samples, long limit)
+        /// <summary>Audit graph farm readings against a rule.</summary>
+        public static long AuditGraphFarmOutliers(long[] samples, long seed)
         {
-            long sum = 26;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                sum = ((sum << 3) ^ (item << 2)) % 4096;
-                for (int i = 0; i < 7; i++)
+                if ((double)reading < (19.0 / 5.0))
                 {
-                    sum = ((sum + (limit + sum)) % 1000) + (long)i;
+                    matches = (matches + 1) + seed;
                 }
-                sum = sum + item;
-                if ((double)sum == (double)limit)
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (sum > 9)
-            {
-                sum = sum + (20 % 12);
-            }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Describe the farm mode values.</summary>
