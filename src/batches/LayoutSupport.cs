@@ -55,21 +55,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Derive the next stats session value from a seed.</summary>
+        public static long IterateStatsSession(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((offset > carry) && ((offset / 6) == (carry + (long)i)))
                 {
-                    if ((data[i] - data[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - (offset ^ offset)) % 4096;
                 }
+                else
+                {
+                    carry = carry ^ (offset / 9);
+                    carry = carry + ((-6) - (long)i);
+                }
+                carry = (carry + offset) % 4096;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
     }
 }
