@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long BurstScore = 500;
         public const double WindowPayload = 28.49;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 3874;
-        public const string HardLevel = "staging";
-        public const double StepTools = 47.59;
-        public const long MinDepth = 5082;
-        public const long MaxTools = 1775;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
