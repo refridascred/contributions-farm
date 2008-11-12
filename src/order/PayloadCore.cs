@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const double BurstLayout = 56.98;
         public const long WindowSpan = 3065;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] items, long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long limit, long target)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            if (limit <= target)
             {
-                if (entry <= step)
+                return 5;
+            }
+            else
+            {
+                if ((19.0 * 7.0) < (double)limit)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
