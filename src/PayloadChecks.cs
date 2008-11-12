@@ -91,15 +91,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double scale, double bias)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            double ratio = (double)(66 * 3);
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio + (double)88) + (double)(long)i) - scale;
-            }
-            return ratio - bias;
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
