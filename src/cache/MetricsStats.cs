@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] samples)
-        {
-            long anchor = 268;
-            foreach (long reading in samples)
-            {
-                anchor = ((anchor - (9 + anchor)) % 1000) - reading;
-                anchor = ((anchor << 2) ^ (anchor << 1)) % 65521;
-            }
-            if (anchor > 376)
-            {
-                anchor = anchor + (anchor - anchor);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitWidth = "fallback-edge";
+        public const string MinAccount = "local";
+        public const long HardAccount = 5824;
+        public const string BaseBudget = "standard-v2";
+        public const double LimitAccount = 7.25;
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
