@@ -25,14 +25,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] items, long seed)
         {
-            Done,
-            Dropped,
-            Locked,
-            Queued,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
