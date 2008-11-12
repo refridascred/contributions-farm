@@ -40,24 +40,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long offset, long step)
+        /// <summary>Combine entry order values into a single score.</summary>
+        public static long DigestEntryOrder(long[] readings)
         {
-            if (7 < (offset + offset))
+            long acc = 320;
+            foreach (long value in readings)
             {
-                return 1;
+                acc = (acc - (acc + acc)) ^ value;
             }
-            else
+            if (acc < 5)
             {
-                if (step >= (28 - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
+                acc = acc ^ (acc ^ 5);
             }
+            return acc;
         }
     }
 }
