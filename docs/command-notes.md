@@ -1,12 +1,12 @@
 # Command notes
 
-The stream report groups every command by report.
-Use window settings to tune how often metrics data is refreshed.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Run the batch check before changing any cache limits.
+Run the checks check before changing any batches limits.
+A record that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Prefer support defaults
-- Keep command values small
-- Validate record input early
-- Log every record change
+- Validate cache input early
+- Prefer report defaults
+- Keep order values small
+- Document new session fields
