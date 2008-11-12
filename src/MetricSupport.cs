@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] data, long offset)
         {
-            Dropped,
-            Closed,
-            Draft,
-            Stale,
-            New,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!!(((-673) >> 1) < ((long)data.Length & 31)))
+                {
+                    tally = ((tally + 1) + datum) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a checks reading.</summary>
