@@ -1,4 +1,8 @@
 # support settings
-compress: open
-flush_capacity_pct: 12.61
-retry_depth_ms: 6198
+sync_limit_s:
+  burst_size: true
+  verbose: true
+  min_timeout_s: green
+  entry_window: false
+persist: 74.92
+flush_limit_s: false
