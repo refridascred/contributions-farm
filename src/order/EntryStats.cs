@@ -23,18 +23,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] data, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((double)seen < (1.0 / 7.0))
+                if (count < reading)
                 {
-                    seen = ((seen + 1) + datum) - origin;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
