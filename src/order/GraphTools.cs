@@ -78,12 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Ready,
-            Paused,
-            Stale,
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
