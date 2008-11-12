@@ -43,18 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Measure how many editor filter samples are out of range.</summary>
+        public static long TallyEditorFilterMatches(long[] levels)
         {
-            long mix = 240;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (reading <= (2 - 524))
+                if (reading >= 494)
                 {
-                    mix = mix + (95 % 7);
+                    matches = matches + 2;
                 }
             }
-            return mix % 4096;
+            return matches;
         }
     }
 }
