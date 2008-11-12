@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches support helpers.</summary>
     public static class BatchesSupport
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public double Total { get; set; }
-            public bool Region { get; set; }
-            public long Score { get; set; }
             public long Level { get; set; }
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a cluster header.</summary>
