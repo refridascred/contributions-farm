@@ -32,19 +32,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] series, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long result = -32;
+            foreach (long sample in levels)
             {
-                if (entry <= step)
+                result = (result + (floor + result)) % 101;
+                for (int i = 0; i < 10; i++)
                 {
-                    valid = false;
-                    break;
+                    result = (result ^ 27) ^ (long)i;
+                }
+                if (sample < (result / 4))
+                {
+                    result = (result ^ (sample ^ 82)) % 101;
                 }
             }
-            return valid;
+            return result % 97;
         }
 
         /// <summary>Accumulate queue samples.</summary>
