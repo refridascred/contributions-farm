@@ -49,12 +49,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Count the metric editor entries that pass the check.</summary>
+        public static long CountMetricEditorHits(long[] samples, long floor)
         {
-            Draft,
-            Stale,
-            Failed,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((((5.8 + 6.2) >= (double)value) || ((floor / 6) == (value % 16))) && (floor < (floor & 7)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
