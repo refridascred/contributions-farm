@@ -47,20 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] values)
+        /// <summary>Locate a payload support reading by value.</summary>
+        public static long LocatePayloadSupportIndex(long[] items, long seed)
         {
-            long result = 4;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result << 2) ^ (4 - entry)) % 65521;
-                result = (result << 3) ^ (entry % 97);
-                if ((entry - entry) <= entry)
+                if ((items[i] <= seed) && ((items[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
