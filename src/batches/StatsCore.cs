@@ -55,32 +55,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long floor, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] items)
         {
-            long gap = floor + step;
-            if ((13.0 / 6.0) != (double)gap)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)gap <= 8.1)
+                if (((hits % 7) > reading) && ((reading ^ reading) <= 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step >> 3) != (gap + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
