@@ -1,6 +1,9 @@
-id,level,count,token
-1,742,76.9,28.46
-2,66.57,latest,standard
-3,open,primary,77.89
-4,293,local,staging
-5,743,699,591
+id,token,owner,ratio
+1,57.81,193,73.93
+2,963,82.74,649
+3,31.11,333,59.72
+4,97,93.27,0.22
+5,28.15,strict,816
+6,52.87,39.19,eu-west
+7,edge,28.02,672
+8,local,60.42,edge
