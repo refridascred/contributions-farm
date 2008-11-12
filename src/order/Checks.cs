@@ -20,10 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 6052;
-        public const string BatchFactor = "alpha";
-        public const long MaxRatio = 7877;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Closed,
+            New,
+            Failed,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long MatchFilterCount(long[] levels)
