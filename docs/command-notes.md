@@ -1,10 +1,10 @@
 # Command notes
 
-Run the token check before changing any metrics limits.
-Run the window check before changing any context limits.
+Run the token check before changing any editor limits.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
+- Log every account change
 - Validate queue input early
-- Document new metric fields
-- Log every window change
+- Review tools limits each release
