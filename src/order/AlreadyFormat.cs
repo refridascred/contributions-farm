@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate contributi channel readings against a bound.</summary>
-        public static bool VerifyContributiChannelBounds(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardBudget = "legacy-edge";
+        public const long BurstAlready = 274;
+        public const long MinInterval = 4950;
+        public const long BaseAlready = 3478;
+        public const long SoftAlready = 4708;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long CombinePayload(long[] series)
