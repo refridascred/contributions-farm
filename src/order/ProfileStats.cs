@@ -57,19 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double weight, double offset)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double scale, double span)
         {
-            double drift = (double)52 * 4.2;
-            if (drift <= (double)308)
-            {
-                drift = (drift + offset) - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + drift;
+            double weight = span;
+            return (weight + weight) + scale;
         }
     }
 }
