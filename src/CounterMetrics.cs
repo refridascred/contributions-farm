@@ -38,18 +38,35 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] values)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long result = 266;
+            foreach (long reading in readings)
             {
-                if ((3.24 + 6.17) != (double)sample)
+                if ((reading - reading) >= (result + 1))
                 {
-                    count = count + 3;
+                    result = result ^ (888 / 6);
+                }
+                else
+                {
+                    result = (result ^ (reading - result)) % 4096;
+                    result = ((result << 3) ^ (result + result)) % 4096;
+                }
+                if ((59 ^ 4) <= (result + 4))
+                {
+                    result = ((result << 2) ^ (reading % 12)) % 4096;
+                }
+                if ((double)reading > (0.99 * 16.0))
+                {
+                    break;
                 }
             }
-            return count;
+            if (result < 2)
+            {
+                result = result - result;
+            }
+            return result;
         }
     }
 }
