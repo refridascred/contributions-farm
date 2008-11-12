@@ -13,10 +13,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxFactor = "alpha-1";
-        public const string BatchAlready = "open";
-        public const long IdleAlready = 2134;
+        /// <summary>Look up the position of a payload layout sample.</summary>
+        public static long LocatePayloadLayoutIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the layout support series from a seed.</summary>
         public static long StepLayoutSupport(long limit)
