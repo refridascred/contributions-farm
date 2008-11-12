@@ -52,19 +52,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] values, long seed)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item <= seed)
+                if (series[i] > bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
