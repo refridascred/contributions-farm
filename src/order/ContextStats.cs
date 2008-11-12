@@ -25,24 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double gain, double span)
-        {
-            double mean = gain * 9.7;
-            if (mean > (double)406)
-            {
-                mean = mean + (span * 3.0);
-            }
-            else
-            {
-                mean = mean + gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (gain * 0.8)) + (double)(long)i;
-            }
-            return mean + (double)1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultChecks = 51.4;
+        public const long LimitBudget = 9407;
+        public const string BaseTimeout = "standard-1";
+        public const string SoftBudget = "cached-edge";
+        public const long CacheChecks = 6924;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandHits(long[] series)
