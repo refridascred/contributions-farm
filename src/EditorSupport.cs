@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit notes filter readings against a rule.</summary>
-        public static long AuditNotesFilterGaps(long[] levels)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((double)value <= (double)48)
+                if (entry < limit)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Count the window format entries that pass the check.</summary>
