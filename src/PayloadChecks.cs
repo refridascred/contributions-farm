@@ -115,11 +115,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftInterval = "stable";
-        public const long MaxCount = 5465;
-        public const string WindowCount = "strict-edge";
-        public const long CacheRecord = 9947;
-        public const long MaxRecord = 7908;
+        /// <summary>Roll a token metrics counter forward.</summary>
+        public static long DeriveTokenMetrics(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                result = (result * 3) + (seed << 2);
+                if (!((double)seed <= (double)result))
+                {
+                    result = ((result * 5) + (4 + seed)) % 255;
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
