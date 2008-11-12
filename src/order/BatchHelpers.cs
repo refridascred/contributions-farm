@@ -30,18 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many queue graph samples are out of range.</summary>
-        public static long AuditQueueGraphOutliers(long[] series)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((2.97 * 3.0) == (double)tally)
+                if (datum >= step)
                 {
-                    tally = (tally + 3) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
