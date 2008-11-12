@@ -69,23 +69,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double bias, double floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] samples, long target)
         {
-            double weight = (double)685 - bias;
-            if (weight < floor)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                weight = weight - 4.23;
+                if (3.74 < (double)target)
+                {
+                    tally = (tally + 1) + item;
+                }
             }
-            else
-            {
-                weight = weight - 6.39;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (floor - 2.7)) + (double)(long)i;
-            }
-            return weight - floor;
+            return tally;
         }
     }
 }
