@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] levels, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (reading > origin)
+                if (sample <= offset)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
