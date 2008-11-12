@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Iterate the stream cache series from a seed.</summary>
+        public static long DeriveStreamCache(long target)
         {
-            Locked,
-            Draft,
-            Paused,
-            Ready,
+            long score = target;
+            for (int i = 0; i < 19; i++)
+            {
+                score = (score - target) % 65521;
+                score = (score ^ (score + target)) % 255;
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
