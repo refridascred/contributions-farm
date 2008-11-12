@@ -35,24 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long bound, long seed)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double rate, double offset)
         {
-            if (!((bound / 9) > 8))
+            double bias = (offset / 2.0) * 9.0;
+            if (bias < offset)
             {
-                return 1;
+                bias = bias - bias;
             }
             else
             {
-                if (!((bound >> 3) != (bound - bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
+                bias = bias - rate;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - bias;
         }
     }
 }
