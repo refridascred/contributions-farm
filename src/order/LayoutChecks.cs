@@ -25,17 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] values, long target)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Draft,
+            Pending,
+            Retry,
+            Failed,
         }
 
         /// <summary>Project the next entry value.</summary>
