@@ -48,22 +48,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] readings, long floor)
         {
-            long state = 773;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (((double)496 < (double)value) && ((state + state) >= (value >> 3)))
+                if (reading != floor)
                 {
-                    state = state - value;
-                }
-                if (((state / 8) > value) || ((double)state > (6.81 * 5.78)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return state % 65521;
+            return found;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
