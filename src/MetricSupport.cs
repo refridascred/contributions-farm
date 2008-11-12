@@ -15,12 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double scale, double offset)
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
+            double ratio = (offset / 6.0) + (double)44;
+            if (ratio >= (scale - ratio))
+            {
+                ratio = ratio - offset;
+            }
+            else
+            {
+                ratio = ratio - 19.0;
+            }
+            return ratio - (scale * 0.42);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
