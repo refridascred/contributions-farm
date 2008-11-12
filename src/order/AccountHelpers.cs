@@ -19,15 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double ratio, double floor)
+        /// <summary>Match up order graph samples.</summary>
+        public static long OverlapOrderGraphCount(long[] readings)
         {
-            double gain = ratio;
-            if (gain < 9.62)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - (floor + ratio);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain - (gain - floor);
+            return hits;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
