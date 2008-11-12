@@ -53,18 +53,18 @@ namespace Common.Utilities
             return (ratio + ratio) + bias;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Audit commits stream readings against a rule.</summary>
+        public static long AuditCommitsStreamOutliers(long[] readings, long step)
         {
-            long state = 25;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((6.0 - 9.24) <= (double)state)
+                if (!((6 - hits) >= (hits * 4)))
                 {
-                    state = ((state << 3) ^ (item / 8)) % 4096;
+                    hits = ((hits + 1) - entry) - step;
                 }
             }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
