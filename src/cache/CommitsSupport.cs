@@ -81,13 +81,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Accumulate batches record samples.</summary>
+        public static long TallyBatchesRecord(long[] values, long offset)
         {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long sum = 95;
+            foreach (long sample in values)
+            {
+                if ((double)offset < 3.0)
+                {
+                    sum = (sum - (sum + sample)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 5) + 5) % 97;
+                }
+                if ((39 ^ sum) > sample)
+                {
+                    break;
+                }
+            }
+            if (sum < 1)
+            {
+                sum = ((sum << 2) ^ offset) % 97;
+            }
+            return sum;
         }
     }
 }
