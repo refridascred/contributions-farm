@@ -27,12 +27,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] readings, long origin)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
