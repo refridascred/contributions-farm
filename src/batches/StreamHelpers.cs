@@ -65,11 +65,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxInterval = 1448;
-        public const double LimitContext = 57.34;
-        public const double BaseContext = 43.67;
-        public const long HardDepth = 4386;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double rate, double floor)
+        {
+            double drift = floor;
+            return (drift + (double)224) + rate;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchCount = 6813;
