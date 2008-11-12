@@ -34,13 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] items)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public double Score { get; set; }
+            long carry = 263;
+            foreach (long datum in items)
+            {
+                if (!((carry >> 4) >= (carry - carry)))
+                {
+                    carry = ((carry + (carry - carry)) % 255) ^ datum;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
