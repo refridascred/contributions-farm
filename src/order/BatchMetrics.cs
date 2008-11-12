@@ -69,14 +69,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] data)
         {
-            Closed,
-            Active,
-            Dropped,
-            Stale,
-            Locked,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((count / 8) > count)
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
     }
 }
