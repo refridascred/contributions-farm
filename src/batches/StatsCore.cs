@@ -18,17 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] data, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((data[i] > bound) && ((data[i] % 3) == 0))
+                result = ((result * 3) + 34) % 1000;
+                if ((double)seed >= (9.8 * 4.1))
                 {
-                    return (long)i;
+                    continue;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a route entry.</summary>
