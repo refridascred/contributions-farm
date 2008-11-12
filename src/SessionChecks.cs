@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long bound, long step)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            if ((8.0 + 2.47) < (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if (step > (bound + step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Synced,
+            Draft,
+            Pending,
+            Locked,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
