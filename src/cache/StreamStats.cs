@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Derive the next farm channel value from a seed.</summary>
+        public static long SeriesFarmChannel(long offset)
         {
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = (carry - (offset * 2)) % 255;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
