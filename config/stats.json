@@ -1,6 +1,5 @@
 {
-  "base_size_ms": [302, 461],
-  "audit": "standard",
-  "tools_timeout": true,
-  "buffer_timeout": "cached"
+  "metrics_window": 5.5,
+  "persist": "local",
+  "compress": [223, 426]
 }
