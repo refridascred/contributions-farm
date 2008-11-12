@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 5741;
-        public const long LimitLevel = 1938;
-        public const long CacheBudget = 8881;
-        public const long CacheEditor = 6970;
-        public const long SoftLevel = 9199;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextHits(long[] samples, long seed)
