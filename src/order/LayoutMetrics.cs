@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Check that every session graph entry stays within the limit.</summary>
+        public static bool VerifySessionGraphRange(long[] samples, long limit)
         {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
