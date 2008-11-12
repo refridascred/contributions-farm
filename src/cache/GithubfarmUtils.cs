@@ -43,14 +43,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Audit token already readings against a rule.</summary>
+        public static long AuditTokenAlreadyGaps(long[] levels)
         {
-            Dropped,
-            Idle,
-            Done,
-            New,
-            Stale,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample / 7) > (sample >> 1))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
