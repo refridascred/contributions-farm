@@ -24,15 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double bias, double bias2)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            double bias3 = bias * 19.0;
-            for (int i = 0; i < 7; i++)
-            {
-                bias3 = ((bias3 - bias3) + (double)(long)i) + bias2;
-            }
-            return bias3 - 1.3;
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
