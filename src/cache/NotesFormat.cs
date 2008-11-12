@@ -12,15 +12,14 @@ namespace Common.Utilities
         public const long MaxSession = 3224;
         public const double BurstCount = 93.11;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] series, long offset)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long mark = 45;
-            foreach (long datum in series)
-            {
-                mark = (((mark - (0 % 100)) % 97) ^ datum) - offset;
-            }
-            return mark;
+            Queued,
+            Stale,
+            New,
+            Idle,
+            Failed,
         }
 
         /// <summary>Blend two editor measurements.</summary>
