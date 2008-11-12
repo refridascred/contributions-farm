@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a token payload sample.</summary>
-        public static long LookupTokenPayloadIndex(long[] items, long step)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (items[i] < step)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return (long)i;
+                    state = (state * 2) + state;
+                    state = (state * 2) + ((long)i2 - state);
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
