@@ -30,17 +30,21 @@ namespace Common.Utilities
             return gain - (gain - floor);
         }
 
-        /// <summary>Find the first tools window entry that matches the target.</summary>
-        public static long LookupToolsWindowIndex(long[] readings, long step)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] >= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
