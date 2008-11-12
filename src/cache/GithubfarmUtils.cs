@@ -29,37 +29,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long bound, long offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long offset, long limit)
         {
-            long slot = bound - offset;
-            if ((slot + 19) < (bound % 24))
+            if ((91 < (offset << 3)) || ((double)limit > (4.92 + 14.0)))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((3.53 / 2.0) >= (double)bound)
+                if (!((792 >> 4) != (limit >> 2)))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((offset + (-613)) > 8)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)slot < (double)834))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
