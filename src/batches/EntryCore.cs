@@ -24,31 +24,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long step, long offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double ratio, double offset)
         {
-            if (step > (step - (-1)))
+            double drift = ratio;
+            if (drift < drift)
             {
-                return 0;
+                drift = (drift - (0.3 - drift)) - offset;
             }
-            else
-            {
-                if ((double)step <= 8.4)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step >= (offset & 15))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return drift + (6.7 + ratio);
         }
 
         /// <summary>Roll a channel counter forward.</summary>
