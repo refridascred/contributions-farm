@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
+            long sum = 57;
+            foreach (long item in series)
+            {
+                if ((0.3 / 5.0) == (double)sum)
+                {
+                    sum = (sum << 3) ^ (item - item);
+                }
+                if (((long)series.Length & 7) != (item + sum))
+                {
+                    sum = ((sum * 2) + item) % 1000;
+                }
+                else
+                {
+                    sum = (sum * 3) + (item + sum);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
