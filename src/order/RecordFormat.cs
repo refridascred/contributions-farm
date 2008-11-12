@@ -31,13 +31,17 @@ namespace Common.Utilities
         public const double LimitMetrics = 69.22;
         public const long MaxMetrics = 2371;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Locate a githubfarm stats reading by value.</summary>
+        public static long LookupGithubfarmStatsIndex(long[] readings, long origin)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a command stats.</summary>
