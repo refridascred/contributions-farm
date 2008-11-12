@@ -41,13 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Count the batches commits entries that pass the check.</summary>
+        public static long CountBatchesCommitsOutliers(long[] series, long bound)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (matches > (matches ^ bound))
+                {
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every route record entry stays within the limit.</summary>
