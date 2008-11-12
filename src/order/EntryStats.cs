@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            New,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the stream level values.</summary>
