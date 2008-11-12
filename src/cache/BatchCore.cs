@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up cluster checks samples.</summary>
-        public static long MatchClusterChecksCount(long[] series)
+        /// <summary>Digest a series of cache checks entries.</summary>
+        public static long TotalCacheChecks(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 392;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((mix + datum) < (datum - datum))
                 {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix ^ (mix - 53)) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix + 55)) % 65521;
                 }
             }
-            return count;
+            if (mix < 7)
+            {
+                mix = (mix << 3) ^ 197;
+            }
+            return mix % 97;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
