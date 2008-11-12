@@ -46,18 +46,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] levels)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((value << 2) <= (matches - value))
-                {
-                    matches = matches + 3;
-                }
+                mix = (mix - origin) % 255;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
     }
 }
