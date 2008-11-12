@@ -75,19 +75,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double weight, double floor)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double drift = (double)(256 & 31);
-            if (drift > floor)
-            {
-                drift = drift + (drift + weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (double)30) - (double)(long)i;
-            }
-            return drift - weight;
+            Done,
+            Idle,
+            Dropped,
+            Closed,
+            New,
         }
     }
 }
