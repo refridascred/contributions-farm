@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 952;
+        public const long WindowScore = 733;
+        public const string WindowReport = "local-1";
+        public const long StepReport = 5001;
+        public const long IdleReport = 8438;
 
         /// <summary>Measure how many queue context samples are out of range.</summary>
         public static long MeasureQueueContextMatches(long[] samples)
