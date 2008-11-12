@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] series, long limit)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long total = 80;
-            foreach (long datum in series)
-            {
-                total = ((total * 3) + (total ^ datum)) - limit;
-            }
-            return total;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
