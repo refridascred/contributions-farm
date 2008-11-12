@@ -51,39 +51,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long floor, long seed)
-        {
-            if ((seed % 5) > (seed + seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed % 7) != (519 % 60))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (4.7 <= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((167 / 5) < (floor & 255))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 84.79;
+        public const long CacheDepth = 9843;
+        public const string CacheStats = "stable-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long DefaultDepth = 3814;
