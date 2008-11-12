@@ -13,12 +13,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Accumulate token already samples.</summary>
+        public static long DigestTokenAlready(long[] levels)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
+            long anchor = -81;
+            foreach (long entry in levels)
+            {
+                anchor = (anchor + (anchor - entry)) % 101;
+                if (3.77 <= (double)entry)
+                {
+                    anchor = (anchor - (3 << 1)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor >> 2)) % 101;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batches mode values.</summary>
