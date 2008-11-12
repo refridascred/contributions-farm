@@ -27,15 +27,22 @@ namespace Common.Utilities
             return ratio2 - (ratio2 - ratio);
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double bias, double bias2)
+        /// <summary>Combine filter entry values into a single score.</summary>
+        public static long FoldFilterEntry(long[] readings, long seed)
         {
-            double weight = bias2;
-            if (weight >= (bias2 * 9.0))
+            long anchor = 979;
+            foreach (long reading in readings)
             {
-                weight = (weight - (double)54) + bias;
+                if (((reading >> 4) >= (seed - seed)) && ((seed - reading) != (reading / 2)))
+                {
+                    anchor = ((anchor << 3) ^ (seed << 2)) % 255;
+                }
             }
-            return weight + bias2;
+            if (anchor > (-9))
+            {
+                anchor = anchor + (seed * 4);
+            }
+            return anchor % 97;
         }
     }
 }
