@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitLayout = "fallback";
-        public const long SoftDepth = 5762;
-        public const double BurstLayout = 56.98;
-        public const long WindowSpan = 3065;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] levels, long origin)
+        {
+            long sum = 929;
+            foreach (long sample in levels)
+            {
+                if ((4 - origin) <= (origin / 5))
+                {
+                    sum = ((sum * 4) + (sum + origin)) % 101;
+                }
+                if (!((sample + origin) <= (35 + sum)))
+                {
+                    break;
+                }
+            }
+            if (sum < 1)
+            {
+                sum = (sum - (1 ^ origin)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Combine route entry values into a single score.</summary>
         public static long WeighRouteEntry(long[] samples)
