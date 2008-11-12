@@ -53,21 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] values)
+        /// <summary>Count entry notes pairs that satisfy a relation.</summary>
+        public static long OverlapEntryNotesCount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 18)
+                    if ((samples[i] - samples[j]) != 15)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
