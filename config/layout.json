@@ -1,7 +1,7 @@
 {
-  "base_retries_pct": true,
-  "channel_ratio": ["strict", "staging", "stable"],
-  "githubfarm_retries": 100,
-  "flush_size_s": 500,
-  "retry_ttl_s": false
+  "sync_retries_count": "edge",
+  "verbose": 70.09,
+  "dry_run": false,
+  "persist": false,
+  "strict": 42.69
 }
