@@ -15,18 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many queue context samples are out of range.</summary>
-        public static long MeasureQueueContextMatches(long[] samples)
+        /// <summary>Count the profile batches entries that pass the check.</summary>
+        public static long MeasureProfileBatchesHits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((seen - sample) > (seen & 1))
+                if ((cell - count) < (count & 127))
                 {
-                    seen = seen + 1;
+                    count = (count + 3) + limit;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
