@@ -48,12 +48,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long offset)
         {
-            Ready,
-            Locked,
-            Draft,
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc << 2) ^ (offset - (long)i)) % 1000;
+                if ((offset / 4) != (acc & 255))
+                {
+                    acc = (acc ^ ((long)i ^ acc)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
