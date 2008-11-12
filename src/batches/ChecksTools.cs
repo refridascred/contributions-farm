@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 3853;
-        public const double MinAccount = 32.05;
-        public const long MinScore = 615;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits >> 5) < (194 % 5))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool CheckClusterRange(long[] items, long target)
