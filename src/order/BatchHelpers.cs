@@ -13,38 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank tools buffer input into a small class.</summary>
-        public static long BucketToolsBuffer(long seed, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] items)
         {
-            if ((double)38 >= (double)offset)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed <= (seed % 8))
+                if ((datum & 3) > (datum ^ count))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)offset < (7.1 - 5.81)) && ((seed - 503) != (25 + offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed >> 1) > offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
