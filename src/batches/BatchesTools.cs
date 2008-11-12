@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] series, long target)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double drift = scale;
+            if (drift < scale)
             {
-                if ((target % 2) < (entry / 6))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift - floor;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (scale / 4.0)) + (double)(long)i;
+            }
+            return drift + (scale * 19.0);
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
