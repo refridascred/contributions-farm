@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            Queued,
-            Locked,
-            Retry,
-            Active,
+            long sum = 4;
+            foreach (long cell in samples)
+            {
+                if (((cell * 4) <= (cell + cell)) || ((sum ^ cell) <= (8 + cell)))
+                {
+                    sum = sum + (sum + (long)samples.Length);
+                }
+            }
+            if (sum > (-635))
+            {
+                sum = ((sum << 2) ^ (27 ^ (-62))) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
