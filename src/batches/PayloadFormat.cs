@@ -49,22 +49,11 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] readings, long bound)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double ratio, double floor)
         {
-            long sum = 591;
-            foreach (long datum in readings)
-            {
-                if (((sum << 2) <= sum) && ((datum & 1) >= (datum << 3)))
-                {
-                    sum = ((sum << 3) ^ (sum * 2)) % 65521;
-                }
-                if (bound > ((long)readings.Length + bound))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            double ratio2 = (double)(13 * 2);
+            return ((ratio2 + (3.7 / 8.0)) + ratio) + floor;
         }
     }
 }
