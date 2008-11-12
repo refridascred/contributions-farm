@@ -35,12 +35,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double ratio, double offset)
-        {
-            double drift = offset + 11.0;
-            return (drift + (offset / 6.0)) + ratio;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseTimeout = 3089;
+        public const double WindowDepth = 86.64;
+        public const long StepChecks = 6545;
+        public const long RetryCount = 5184;
 
         /// <summary>Measure how many already report samples are out of range.</summary>
         public static long AuditAlreadyReportGaps(long[] series, long offset)
