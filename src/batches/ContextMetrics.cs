@@ -27,11 +27,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardInterval = 3955;
-        public const long HardProfile = 2880;
-        public const double StepProfile = 90.12;
-        public const long HardWidth = 6775;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long floor, long step)
+        {
+            if ((0 + step) <= floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)floor != (5.4 / 2.0)) || ((floor / 2) == (step - floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Count the farm counter entries that pass the check.</summary>
         public static long CountFarmCounterGaps(long[] samples)
