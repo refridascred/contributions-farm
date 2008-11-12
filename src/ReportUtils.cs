@@ -53,22 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] values, long origin)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double gain, double bias)
         {
-            long state = 93;
-            foreach (long reading in values)
+            double weight = 9.0;
+            if (weight >= (weight - bias))
             {
-                if ((reading & 1) != (reading & 127))
-                {
-                    state = ((state + (872 << 2)) % 1000) - origin;
-                }
+                weight = (weight + bias) + gain;
             }
-            if (state > 589)
-            {
-                state = ((state * 4) + (state * 4)) % 65521;
-            }
-            return state;
+            return weight + bias;
         }
     }
 }
