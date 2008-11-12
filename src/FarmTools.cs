@@ -28,11 +28,22 @@ namespace Common.Utilities
         public const string StepTimeout = "cached-1";
         public const long WindowRatio = 4078;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 9722;
-        public const double RetryFactor = 6.07;
-        public const double MaxWidth = 88.74;
-        public const double LimitRatio = 37.48;
-        public const long WindowTimeout = 3154;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] values)
+        {
+            long anchor = 1;
+            foreach (long reading in values)
+            {
+                if (((anchor >> 4) > (anchor + anchor)) || ((anchor + anchor) <= reading))
+                {
+                    anchor = ((anchor * 3) + (reading - anchor)) % 4096;
+                }
+                if (reading >= (53 & 1))
+                {
+                    anchor = anchor ^ (anchor + reading);
+                }
+            }
+            return anchor;
+        }
     }
 }
