@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Retry,
-            Queued,
-            Locked,
+            Synced,
+            Pending,
+            Draft,
         }
 
         /// <summary>Describe the filter mode values.</summary>
