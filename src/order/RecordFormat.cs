@@ -48,19 +48,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] values, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (sample <= step)
+                if ((value << 2) <= (matches - value))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
