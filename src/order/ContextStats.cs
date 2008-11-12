@@ -61,18 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] data, long target)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double bias = (double)480 * 9.55;
+            if (bias <= (double)35)
             {
-                if (!((datum >> 5) <= (matches % 60)))
-                {
-                    matches = (matches + 2) - target;
-                }
+                bias = bias - rate;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (7.7 - floor);
         }
     }
 }
