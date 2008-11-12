@@ -1,15 +1,13 @@
 # support settings
-default_delay: 81
-batch_window_pct: 17.55
-warm_threshold:
-  - green
-  - stable
-  - local
-  - staging
-audit:
-  contributi_interval: true
-  default_depth_ms: staging
-  verbose: 12
-  format_threshold: edge
-  farm_depth: edge
-  burst_delay_ms: false
+persist: 60
+batch_retries_count: 86
+account_retries: blue
+soft_size:
+  default_retries: 51
+  filter_limit: 66
+  cache_size_pct:
+    - open
+    - strict
+  session_retries: true
+flush_ratio_ms: eu-west
+audit: standard
