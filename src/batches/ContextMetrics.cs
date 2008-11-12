@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Pending,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 44.28;
+        public const double LimitOrder = 96.8;
+        public const long LimitLevel = 2401;
+        public const long MaxLevel = 2657;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long MinSpan = 7310;
