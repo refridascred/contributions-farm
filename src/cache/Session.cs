@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank stream format input into a small class.</summary>
-        public static long RankStreamFormat(long offset, long origin)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            if (((double)offset > 15.0) || ((866 & 15) > origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin < (12.0 + 14.0)) || (origin <= (origin * 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the session checks entries that pass the check.</summary>
