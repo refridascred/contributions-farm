@@ -67,17 +67,11 @@ namespace Common.Utilities
         public const string BatchNotes = "primary-v2";
         public const long LimitBudget = 2127;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 101;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "open-edge";
+        public const double StepScore = 65.71;
+        public const double StepRoute = 47.61;
+        public const long SoftSize = 7126;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long MatchAccountCount(long[] values)
