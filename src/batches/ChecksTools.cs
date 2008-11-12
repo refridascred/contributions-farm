@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "staging-edge";
-        public const long DefaultTools = 4320;
-        public const string MinSize = "latest-v2";
-        public const double StepTools = 52.15;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches / 4) != (71 / 2))
+                {
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the buffer layout entries that pass the check.</summary>
         public static long CountBufferLayoutMatches(long[] levels)
