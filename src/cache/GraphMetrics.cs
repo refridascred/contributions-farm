@@ -43,15 +43,15 @@ namespace Common.Utilities
         public const string SoftGithubfarm = "fallback-v2";
         public const double BurstCount = 8.14;
 
-        /// <summary>Iterate the editor command series from a seed.</summary>
-        public static long StepEditorCommand(long floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return carry;
+            return score;
         }
     }
 }
