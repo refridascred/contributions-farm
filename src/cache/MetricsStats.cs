@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            Paused,
+            New,
+            Stale,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
