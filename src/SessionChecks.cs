@@ -33,13 +33,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Idle,
-            Failed,
-            Locked,
-            Done,
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
