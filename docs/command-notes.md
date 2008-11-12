@@ -1,12 +1,10 @@
 # Command notes
 
-Run the entry check before changing any route limits.
-Run the layout check before changing any batch limits.
-The commits report groups every record by buffer.
+Use tools settings to tune how often layout data is refreshed.
+Keep window and format names short and lowercase.
 
 ## Guidelines
 
-- Review account limits each release
+- Review session limits each release
 - Keep route values small
-- Document new layout fields
-- Prefer account defaults
+- Document new editor fields
