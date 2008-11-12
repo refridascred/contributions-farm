@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSession = "standard-v2";
-        public const string LimitScore = "latest-v2";
-        public const double WindowSession = 23.05;
-        public const long SoftSession = 163;
+        /// <summary>Validate contributi channel readings against a bound.</summary>
+        public static bool VerifyContributiChannelBounds(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long WeighAccount(long[] series)
