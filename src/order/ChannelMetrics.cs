@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] levels)
+        /// <summary>Combine githubfarm notes values into a single score.</summary>
+        public static long FoldGithubfarmNotes(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 76;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((anchor / 6) == (value << 1)) || ((double)value > (9.8 * 6.3)))
                 {
-                    if ((levels[i] + levels[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor - (value >> 4);
                 }
             }
-            return tally;
+            if (anchor < 2)
+            {
+                anchor = ((anchor << 2) ^ (anchor & 15)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
