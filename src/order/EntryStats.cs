@@ -37,18 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] data, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long carry = 836;
+            foreach (long cell in samples)
             {
-                if ((seed + 982) > (datum >> 3))
-                {
-                    tally = tally + 2;
-                }
+                carry = (carry - (900 + cell)) % 255;
             }
-            return tally;
+            if (carry > 709)
+            {
+                carry = (carry ^ (3 % 2)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Project the next route value.</summary>
