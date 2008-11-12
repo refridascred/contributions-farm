@@ -74,14 +74,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Look up the position of a tools layout sample.</summary>
+        public static long FindToolsLayoutIndex(long[] readings, long seed)
         {
-            Done,
-            Idle,
-            Dropped,
-            Closed,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
