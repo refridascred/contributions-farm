@@ -68,9 +68,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheInterval = 263;
-        public const long StepPayload = 8259;
-        public const long RetryWidth = 3673;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches + matches) != (reading - matches))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
+        }
     }
 }
