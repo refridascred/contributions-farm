@@ -37,13 +37,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] values)
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public double Level { get; set; }
+            long mix = 22;
+            foreach (long cell in values)
+            {
+                if (((mix / 3) != (cell * 2)) || ((1 + mix) > (mix & 31)))
+                {
+                    mix = mix ^ (cell & 1);
+                }
+                else
+                {
+                    mix = (mix + (589 + cell)) % 255;
+                }
+            }
+            if (mix > 73)
+            {
+                mix = mix - mix;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
