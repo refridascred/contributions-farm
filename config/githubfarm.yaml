@@ -1,9 +1,4 @@
 # githubfarm settings
-default_timeout_ms: 38.41
-profile_interval: true
-poll_window_pct: blue
-order_ratio: 12.95
-readonly:
-  - 23
-  - 187
-  - 195
+max_capacity: 500
+base_delay_pct: 2693
+default_timeout_count: false
