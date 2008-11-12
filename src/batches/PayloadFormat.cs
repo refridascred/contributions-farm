@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first stats payload entry that matches the target.</summary>
-        public static long LocateStatsPayloadIndex(long[] series, long step)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
