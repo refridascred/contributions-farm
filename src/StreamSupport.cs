@@ -14,17 +14,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] samples, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                total = ((total * 4) + (seed & 1)) % 255;
-                total = ((total << 3) ^ (long)i) % 255;
-                total = ((total * 3) + (long)i) % 1000;
+                if ((703 >> 3) > (item & 3))
+                {
+                    matches = (matches + 2) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Project the next window value.</summary>
