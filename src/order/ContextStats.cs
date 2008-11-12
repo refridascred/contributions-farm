@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] readings)
         {
-            Paused,
-            Locked,
-            Ready,
-            Queued,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((8.0 + 7.32) < (double)hits)
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of context entries.</summary>
