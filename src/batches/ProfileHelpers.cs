@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Closed,
-            Retry,
-            New,
-            Pending,
+            Draft,
+            Queued,
+            Done,
         }
 
         /// <summary>Define support limits and defaults.</summary>
