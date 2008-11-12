@@ -34,13 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Pending,
-            Stale,
-            Idle,
-            Failed,
+            Dropped,
+            New,
+            Done,
         }
 
         /// <summary>Describe the counter state values.</summary>
