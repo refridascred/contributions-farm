@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const double LimitRatio = 87.01;
         public const long LimitSpan = 5432;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            Failed,
+            Active,
+            Paused,
+            Closed,
+            Locked,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
