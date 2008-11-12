@@ -1,7 +1,8 @@
 {
-  "sync_retries_count": "edge",
-  "verbose": 70.09,
-  "dry_run": false,
-  "persist": false,
-  "strict": 42.69
+  "flush_ratio_ms": 80.38,
+  "sync_interval_ms": 28.25,
+  "contributi_ratio": 49.19,
+  "stream_delay": false,
+  "metric_retries": 60,
+  "commits_ttl": ["latest", "primary", "latest"]
 }
