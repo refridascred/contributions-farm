@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double scale, double offset)
+        /// <summary>Rank commits editor input into a small class.</summary>
+        public static long RankCommitsEditor(long origin, long offset)
         {
-            double drift = offset + 15.0;
-            if (drift >= drift)
+            if ((origin & 1) > offset)
             {
-                drift = (drift + offset) - scale;
+                return 8;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift + drift) + (double)(long)i;
+                if ((76 - origin) <= (offset + 45))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + origin) <= (7 & 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return drift - offset;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
