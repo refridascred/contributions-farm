@@ -1,5 +1,8 @@
 {
-  "sync_ratio_pct": 1.34,
-  "verbose": 80.49,
-  "batch_threshold_pct": "primary"
+  "warm_threshold_s": 41,
+  "min_size_count": ["stable", "open", "strict", "blue"],
+  "dry_run": "primary",
+  "compress": 15.82,
+  "sync_capacity_pct": 2839,
+  "soft_retries": [83, 252, 224, 410]
 }
