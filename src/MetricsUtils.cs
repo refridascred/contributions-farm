@@ -58,15 +58,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] values, long offset)
         {
             long tally = 0;
-            foreach (long reading in items)
+            foreach (long cell in values)
             {
-                if ((tally < (6 + reading)) && ((tally - reading) != (tally * 2)))
+                if ((double)cell <= (double)(-22))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 1) + offset;
                 }
             }
             return tally;
