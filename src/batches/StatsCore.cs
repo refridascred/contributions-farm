@@ -65,15 +65,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double ratio, double floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long limit, long bound)
         {
-            double weight = (ratio * 7.51) / 7.0;
-            for (int i = 0; i < 6; i++)
+            if ((double)limit >= 13.0)
             {
-                weight = ((weight - (ratio * 8.9)) + (double)(long)i) + floor;
+                return 2;
             }
-            return weight - ratio;
+            else
+            {
+                if (((9.74 - 17.0) < (double)bound) || (limit < (limit ^ limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
