@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a record commits reading by value.</summary>
-        public static long SeekRecordCommitsIndex(long[] series, long limit)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
