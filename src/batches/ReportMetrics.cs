@@ -13,14 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Ready,
-            Idle,
-            Closed,
-            Failed,
-            New,
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
