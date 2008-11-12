@@ -43,18 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] samples, long step)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((step << 1) <= count)
-                {
-                    count = (count + 3) ^ value;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
