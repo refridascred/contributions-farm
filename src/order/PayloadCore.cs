@@ -38,13 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] items, long bound)
         {
-            public double Rank { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
