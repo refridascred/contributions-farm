@@ -14,24 +14,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] samples, long step)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] items)
         {
-            long anchor = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)samples.Length % 7) <= (anchor + step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor * 2) + (step ^ anchor)) + sample;
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    anchor = anchor - (anchor << 3);
-                }
-                anchor = ((anchor * 4) + (anchor * 4)) % 101;
-                anchor = anchor + (anchor ^ step);
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a metric record.</summary>
