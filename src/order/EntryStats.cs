@@ -16,12 +16,19 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheWidth = 507;
-        public const long MinDepth = 8282;
-        public const long MaxRoute = 8774;
-        public const long MinTimeout = 3877;
-        public const long SoftRoute = 886;
+        /// <summary>Measure how many metrics counter samples are out of range.</summary>
+        public static long AuditMetricsCounterMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits >> 2) <= (cell << 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryGaps(long[] samples)
