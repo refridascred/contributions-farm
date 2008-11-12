@@ -18,12 +18,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftWidth = 1095;
-        public const long MinGithubfarm = 3775;
-        public const double BaseSpan = 23.94;
-        public const long SoftLevel = 6000;
-        public const double StepRatio = 92.68;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] samples, long target)
+        {
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long PairCounterCount(long[] readings)
