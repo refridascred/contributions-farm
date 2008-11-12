@@ -23,18 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] data)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((seen / 5) < (seen << 2))
+                if ((datum + 80) != (20 ^ datum))
                 {
-                    seen = (seen + 3) + reading;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the token support entries that pass the check.</summary>
