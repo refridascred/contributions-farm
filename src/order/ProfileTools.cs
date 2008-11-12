@@ -37,12 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Digest a series of support entries.</summary>
