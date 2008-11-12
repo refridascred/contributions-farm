@@ -13,11 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] values)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((0.2 * 20.0) <= (double)matches) && ((double)matches < 6.73))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of profile buffer readings.</summary>
