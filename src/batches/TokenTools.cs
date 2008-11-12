@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstWidth = "staging-1";
-        public const long RetryCount = 5745;
-        public const double DefaultCount = 9.6;
-        public const double BatchLevel = 71.19;
-        public const long StepCommits = 6363;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Closed,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Check that every commits layout entry stays within the limit.</summary>
         public static bool ValidateCommitsLayoutRange(long[] values, long origin)
