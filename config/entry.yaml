@@ -1,19 +1,10 @@
 # entry settings
-min_window_count:
-  cache_threshold_count: false
-  burst_window_count: 36.79
-  window_ttl: 42.18
-  soft_capacity_pct: 8
-  batch_ratio_count: 31.06
-  dry_run: 250
-min_interval: 98
-checks_timeout: standard
-layout_retries: green
-min_interval_ms:
-  metrics_ttl: fallback
-  verbose:
-    - 66
-    - 43
-  default_window_s: stable
-  max_timeout_s: 78.72
-verbose: eu-west
+cache_interval_pct: 9587
+base_limit:
+  - 197
+  - 395
+  - 448
+max_retries_ms:
+  - 182
+  - 7
+  - 196
