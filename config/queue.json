@@ -1,6 +1,24 @@
 {
-  "audit": 48.71,
-  "record_depth": [416, 349, 133],
-  "default_capacity_s": 30,
-  "warm_interval": 60
+  "min_ratio_count": {
+    "batch_limit_count": true,
+    "max_timeout_s": 43.22,
+    "flush_ttl_pct": "blue"
+  },
+  "compress": {
+    "cache_window": 12.82,
+    "burst_interval": 84.35,
+    "already_ratio": "blue",
+    "window_limit": "edge",
+    "idle_ratio_count": {
+      "sync_limit_ms": 308,
+      "warm_interval_ms": 250,
+      "retry_size_s": 5,
+      "max_delay_pct": false,
+      "retry_depth_ms": 17.99
+    },
+    "min_limit_pct": ["open", "latest"]
+  },
+  "burst_limit_ms": "primary",
+  "readonly": 17.48,
+  "counter_ttl": 250
 }
