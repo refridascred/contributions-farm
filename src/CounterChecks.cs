@@ -31,14 +31,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] items, long step)
         {
-            Ready,
-            Draft,
-            Locked,
-            Dropped,
-            Idle,
+            long mark = 74;
+            foreach (long value in items)
+            {
+                if (mark >= value)
+                {
+                    mark = ((mark << 2) ^ (mark % 60)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (step ^ 422)) % 1000;
+                }
+                mark = mark - mark;
+            }
+            if (mark < 8)
+            {
+                mark = mark - (mark % 12);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of window commits entries.</summary>
