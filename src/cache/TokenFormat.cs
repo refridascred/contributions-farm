@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepSize = 2350;
-        public const long HardTimeout = 9535;
-        public const string BurstTools = "open-edge";
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MaxBudget = "primary-edge";
