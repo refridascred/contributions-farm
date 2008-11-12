@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] levels, long step)
         {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((item + item) == (step ^ step))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a channel batch sample.</summary>
