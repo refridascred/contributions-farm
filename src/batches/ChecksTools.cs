@@ -36,14 +36,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Classify a profile payload pair into a bucket.</summary>
+        public static long RankProfilePayload(long limit, long step)
         {
-            Pending,
-            New,
-            Dropped,
-            Paused,
-            Draft,
+            long delta = limit + step;
+            if (!((delta << 1) <= (delta - delta)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (9 > (limit + delta))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Project the next checks value.</summary>
