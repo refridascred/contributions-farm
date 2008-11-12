@@ -66,20 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] items, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((count / 5) > (count & 7))
                 {
-                    anchor = (anchor ^ anchor) - (long)i2;
-                    anchor = anchor - (anchor << 3);
+                    count = ((count + 1) ^ datum) + bound;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
