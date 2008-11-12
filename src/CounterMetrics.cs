@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] levels, long bound)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 10;
+            foreach (long cell in series)
             {
-                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
+                long tally = (9 + anchor) - (149 - anchor);
+                if ((81 * 3) >= (cell * 4))
                 {
-                    return (long)i;
+                    anchor = (anchor - tally) - seed;
                 }
+                anchor = (anchor ^ anchor) % 1000;
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Combine order editor values into a single score.</summary>
