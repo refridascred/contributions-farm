@@ -1,14 +1,18 @@
 {
-  "batch_window": "edge",
-  "sync_threshold": false,
-  "batch_limit": "stable",
-  "soft_retries_count": 30,
-  "hard_ttl": 30,
-  "metric_threshold": {
-    "poll_ttl_count": 24.93,
-    "burst_retries_pct": true,
-    "account_size": "green",
-    "stats_retries": 60,
-    "soft_ttl_ms": 1696
-  }
+  "min_timeout_count": "local",
+  "support_depth": {
+    "compress": 36.87,
+    "batches_timeout": 100,
+    "base_limit": 7362,
+    "flush_threshold_count": 30
+  },
+  "tools_interval": {
+    "burst_limit_s": true,
+    "persist": false,
+    "enabled": 100,
+    "batch_ttl_count": "blue"
+  },
+  "hard_threshold_ms": true,
+  "verbose": true,
+  "max_delay_ms": ["green", "standard"]
 }
