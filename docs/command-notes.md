@@ -1,12 +1,10 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-Each layout is validated before it reaches the window queue.
-The window module keeps already values in sync with the token cache.
+Run the token check before changing any metrics limits.
+Run the window check before changing any context limits.
 
 ## Guidelines
 
-- Validate route input early
-- Document new queue fields
-- Log every commits change
-- Keep tools values small
+- Validate queue input early
+- Document new metric fields
+- Log every window change
