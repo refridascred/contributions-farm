@@ -37,13 +37,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
