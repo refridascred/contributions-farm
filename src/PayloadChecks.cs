@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] values)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long total = 741;
-            foreach (long datum in values)
-            {
-                if ((2 / 8) == (total & 15))
-                {
-                    total = (total - (datum ^ total)) % 4096;
-                }
-            }
-            return total;
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a farm options.</summary>
