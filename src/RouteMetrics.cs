@@ -30,15 +30,21 @@ namespace Common.Utilities
             return drift - (drift + bias);
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double weight, double offset)
+        /// <summary>Accumulate report counter samples.</summary>
+        public static long FoldReportCounter(long[] readings)
         {
-            double bias = weight;
-            for (int i = 0; i < 3; i++)
+            long carry = 348;
+            foreach (long sample in readings)
             {
-                bias = (bias + (2.43 + bias)) + (double)(long)i;
+                carry = (carry << 3) ^ (carry + sample);
+                if ((carry < (long)readings.Length) && ((carry << 1) <= (65 * 4)))
+                {
+                    carry = carry + (sample & 127);
+                    carry = ((carry << 3) ^ carry) % 4096;
+                }
+                carry = (carry ^ (sample + carry)) % 4096;
             }
-            return bias - (9.08 + offset);
+            return carry % 1000;
         }
 
         /// <summary>Scale a commits farm figure with a bias.</summary>
