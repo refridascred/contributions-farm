@@ -16,13 +16,12 @@ namespace Common.Utilities
             return rate + (rate - rate);
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Synced,
-            Closed,
-            Active,
-            Failed,
+            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a buffer info.</summary>
