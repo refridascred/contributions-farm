@@ -46,17 +46,18 @@ namespace Common.Utilities
             return (ratio + ratio) + bias;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] levels, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (levels[i] > step)
+                if (284 <= (tally - tally))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) + sample) + floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
