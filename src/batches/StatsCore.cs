@@ -34,18 +34,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long acc = 54;
+            foreach (long entry in levels)
             {
-                if (!((tally ^ tally) >= tally))
+                if ((entry & 63) <= (47 - entry))
                 {
-                    tally = (tally + 1) + datum;
+                    acc = acc - (bound / 3);
+                }
+                else
+                {
+                    acc = acc ^ (bound + bound);
+                }
+                if ((bound ^ (-79)) >= (long)levels.Length)
+                {
+                    break;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
