@@ -1,7 +1,4 @@
 # support settings
-channel_ratio: staging
-contributi_delay: stable
-min_limit: 4391
-poll_timeout: local
-tools_interval: 16
-editor_ratio: 51.34
+compress: open
+flush_capacity_pct: 12.61
+retry_depth_ms: 6198
