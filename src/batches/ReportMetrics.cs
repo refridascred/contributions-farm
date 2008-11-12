@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] readings)
         {
-            Closed,
-            Draft,
-            Done,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (!((double)datum < 2.99))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a filter reading.</summary>
