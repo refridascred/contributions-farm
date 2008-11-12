@@ -33,22 +33,18 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] series)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((double)count < (4.3 * 3.94))
+                if ((double)hits >= 12.0)
                 {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 3) + item;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
