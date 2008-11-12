@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double weight, double span)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            double bias = (double)((-45) + 679);
-            if (bias >= (weight / 6.0))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias - (weight - span);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (double)5) - (double)(long)i;
-            }
-            return bias - span;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
