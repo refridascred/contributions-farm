@@ -41,14 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] readings, long origin)
         {
-            New,
-            Failed,
-            Draft,
-            Locked,
-            Stale,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + (-41)) < origin)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a commits stats.</summary>
