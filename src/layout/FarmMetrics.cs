@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetrySpan = "staging";
-        public const double WindowCache = 61.23;
-        public const long IdleSize = 8124;
-        public const long BaseRatio = 5187;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public string Offset { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double BlendBatch(double gain, double span)
