@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardSpan = 42.45;
-        public const long BurstSpan = 468;
-        public const long BaseStats = 3294;
+        /// <summary>Check that every metric tools entry stays within the limit.</summary>
+        public static bool VerifyMetricToolsRange(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
