@@ -45,11 +45,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 1971;
-        public const string CacheCommits = "primary-1";
-        public const long RetryCommits = 7844;
-        public const long IdleCommits = 2557;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (!((item - (-59)) <= ((long)readings.Length >> 5)))
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TotalTools(long[] series, long offset)
