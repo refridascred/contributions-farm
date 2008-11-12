@@ -57,18 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache cluster samples are out of range.</summary>
-        public static long MeasureCacheClusterMatches(long[] readings, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (19.0 >= (double)item)
+                if (reading <= (reading >> 2))
                 {
-                    seen = (seen + 2) + floor;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
