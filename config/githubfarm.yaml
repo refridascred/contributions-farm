@@ -1,7 +1,11 @@
 # githubfarm settings
-max_depth: blue
-retry_limit_pct: 5298
-session_depth: 60
-report_ratio:
-  - open
-  - staging
+cache_ttl: true
+verbose: 500
+warm_ratio_count: 2148
+poll_threshold_pct: 60
+burst_capacity: true
+max_capacity_pct:
+  soft_capacity: 60
+  githubfarm_timeout: blue
+  cache_interval_count: false
+  hard_timeout: 26.66
