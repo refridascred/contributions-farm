@@ -38,19 +38,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double rate, double floor)
-        {
-            double bias = (double)480 * 9.55;
-            if (bias <= (double)35)
-            {
-                bias = bias - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - (7.7 - floor);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 7589;
+        public const string BurstRoute = "primary-v2";
+        public const double CacheRoute = 13.95;
+        public const long BurstCount = 9694;
     }
 }
