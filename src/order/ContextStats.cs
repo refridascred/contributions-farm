@@ -14,13 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] samples, long step)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
