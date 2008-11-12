@@ -19,17 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] items, long floor)
+        /// <summary>Derive the next session profile value from a seed.</summary>
+        public static long StepSessionProfile(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((items[i] == floor) && ((items[i] % 2) != 0))
+                if (!((1.8 - 11.0) < (double)result))
                 {
-                    return (long)i;
+                    result = (result * 4) + (offset / 4);
+                    result = (result - (result + 4)) % 1000;
                 }
+                result = ((result * 4) + (offset + (long)i)) % 1000;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the order level values.</summary>
