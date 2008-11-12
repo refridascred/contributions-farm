@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Audit format payload readings against a rule.</summary>
+        public static long TallyFormatPayloadOutliers(long[] items)
         {
-            New,
-            Failed,
-            Synced,
-            Paused,
-            Closed,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading ^ tally) < (reading >> 3))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
