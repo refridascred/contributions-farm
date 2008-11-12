@@ -34,10 +34,24 @@ namespace Common.Utilities
             return weight - (bias - 1.14);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftInterval = "stable-1";
-        public const string BaseWindow = "alpha-1";
-        public const double BatchRatio = 50.39;
-        public const long BatchScore = 1445;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long limit, long floor)
+        {
+            if ((7.61 + 16.0) != (double)limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit + floor) > limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
