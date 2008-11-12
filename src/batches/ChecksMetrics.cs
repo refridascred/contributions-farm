@@ -51,12 +51,33 @@ namespace Common.Utilities
         public const double BurstDepth = 24.97;
         public const string BaseFactor = "primary-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardDepth = 98.28;
-        public const long MinCommand = 158;
-        public const long LimitCount = 235;
-        public const long BaseCommand = 2155;
-        public const string BaseBudget = "standard";
+        /// <summary>Classify a metrics cache pair into a bucket.</summary>
+        public static long ClassifyMetricsCache(long floor, long origin)
+        {
+            long edge = floor - origin;
+            if (origin <= (origin - floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((floor * 2) < (edge + floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor << 1) > (edge ^ (-4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueHits(long[] samples)
