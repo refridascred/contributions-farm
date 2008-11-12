@@ -44,14 +44,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Combine tools order values into a single score.</summary>
+        public static long TotalToolsOrder(long[] data)
         {
-            Dropped,
-            Synced,
-            Paused,
-            Closed,
-            Queued,
+            long mark = -99;
+            foreach (long cell in data)
+            {
+                mark = (((mark * 2) + 744) % 101) ^ cell;
+                mark = ((mark << 3) ^ ((-6) << 3)) % 1000;
+            }
+            if (mark > 1)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
     }
 }
