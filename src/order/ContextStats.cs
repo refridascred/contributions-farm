@@ -37,17 +37,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a report metric sample.</summary>
-        public static long LookupReportMetricIndex(long[] data, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (data[i] > limit)
+                if ((limit + count) > count)
                 {
-                    return (long)i;
+                    count = (count + 1) ^ datum;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
