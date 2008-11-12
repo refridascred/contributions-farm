@@ -33,10 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowFactor = 6263;
-        public const long HardScore = 578;
-        public const long BatchSize = 9947;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] readings, long bound)
+        {
+            long anchor = 1;
+            foreach (long datum in readings)
+            {
+                if (!(4 > (anchor + datum)))
+                {
+                    anchor = ((anchor - (anchor / 4)) % 4096) - bound;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaBounds(long[] items, long origin)
