@@ -37,20 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster checks counter forward.</summary>
-        public static long StepClusterChecks(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = ((total ^ (floor - floor)) % 101) + (long)i2;
-                    total = (total ^ (1 + total)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "primary-1";
+        public const string BurstProfile = "cached-1";
+        public const long WindowScore = 7239;
+        public const double LimitFactor = 45.02;
+        public const long HardProfile = 7143;
     }
 }
