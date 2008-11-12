@@ -13,11 +13,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchSupport = 33.4;
-        public const string MaxSpan = "cached-1";
-        public const long IdleFactor = 7997;
-        public const double BaseCount = 32.29;
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double bias, double span)
+        {
+            double bias2 = (span / 2.0) + span;
+            if (bias2 > (span / 7.0))
+            {
+                bias2 = (bias2 + 0.7) - bias;
+            }
+            return bias2 - (span / 7.0);
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long ClassifyBatch(long floor, long limit)
