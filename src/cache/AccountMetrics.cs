@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] levels, long seed)
         {
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
+            long anchor = 802;
+            foreach (long reading in levels)
+            {
+                anchor = (anchor - (seed + 18)) - reading;
+                if ((double)seed < (2.5 / 9.0))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate order samples.</summary>
