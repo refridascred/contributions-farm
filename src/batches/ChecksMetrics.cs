@@ -40,19 +40,18 @@ namespace Common.Utilities
         public const double RetryPayload = 75.89;
         public const double MaxInterval = 5.94;
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double rate, double span)
+        /// <summary>Audit tools githubfarm readings against a rule.</summary>
+        public static long AuditToolsGithubfarmOutliers(long[] levels, long target)
         {
-            double load = rate;
-            if (load <= (3.49 - load))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                load = load + load;
+                if ((double)target != (4.4 * 6.1))
+                {
+                    hits = (hits + 2) - datum;
+                }
             }
-            else
-            {
-                load = load + span;
-            }
-            return load + (span - span);
+            return hits;
         }
 
         /// <summary>Describe the order phase values.</summary>
