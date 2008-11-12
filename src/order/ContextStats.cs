@@ -20,32 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long seed, long offset)
-        {
-            if ((offset > ((-68) + seed)) && ((5.8 / 7.0) < (double)offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6.29 * 17.0) > (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed > 8)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 5741;
+        public const long LimitLevel = 1938;
+        public const long CacheBudget = 8881;
+        public const long CacheEditor = 6970;
+        public const long SoftLevel = 9199;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextHits(long[] samples, long seed)
