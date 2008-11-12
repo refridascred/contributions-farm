@@ -39,22 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long mark = 1;
-            foreach (long cell in levels)
-            {
-                if ((cell < (95 - mark)) || ((mark + mark) == (mark % 8)))
-                {
-                    mark = (mark - mark) % 65521;
-                }
-                else
-                {
-                    mark = (mark + (mark / 2)) % 4096;
-                }
-            }
-            return mark;
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
