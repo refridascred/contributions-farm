@@ -33,12 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Idle,
-            Draft,
-            Ready,
+            Locked,
+            Active,
+            Retry,
         }
     }
 }
