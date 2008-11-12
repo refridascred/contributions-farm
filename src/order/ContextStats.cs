@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
