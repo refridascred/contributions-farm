@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "open-1";
-        public const long SoftReport = 3156;
-        public const long MaxScore = 7571;
-        public const double MinReport = 66.19;
-        public const double StepBudget = 64.99;
+        /// <summary>Blend two metrics support measurements.</summary>
+        public static double ScaleMetricsSupport(double rate, double offset)
+        {
+            double bias = offset;
+            if (bias <= (bias * 8.92))
+            {
+                bias = bias - (offset + bias);
+            }
+            else
+            {
+                bias = bias - rate;
+            }
+            return bias - (offset - bias);
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsOutliers(long[] items, long step)
