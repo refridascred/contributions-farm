@@ -67,17 +67,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitScore = 2286;
+        public const double SoftScore = 56.05;
+        public const long MaxRatio = 338;
+        public const long MinEditor = 9591;
     }
 }
