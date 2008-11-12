@@ -43,11 +43,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 56.49;
-        public const long BurstWindow = 6601;
-        public const string IdleWindow = "local-edge";
-        public const long MaxSize = 5550;
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long TallyTokenMatches(long[] items, long bound)
