@@ -34,18 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes githubfarm samples are out of range.</summary>
-        public static long MeasureNotesGithubfarmHits(long[] levels, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((100 - seen) < (reading << 3))
+                if (!((6.97 * 8.23) != (double)matches))
                 {
-                    seen = (seen + 2) - step;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every batch queue entry stays within the limit.</summary>
