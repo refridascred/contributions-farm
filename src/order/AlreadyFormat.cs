@@ -43,39 +43,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long bound, long step)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long cur = bound + step;
-            if ((double)bound > (15.0 + 0.35))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step & 63) <= (cur + step)) || ((bound % 60) >= (cur + step)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((cur / 7) <= 811)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((cur - bound) < (cur * 4)) && ((9.69 + 2.7) > (double)cur))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
