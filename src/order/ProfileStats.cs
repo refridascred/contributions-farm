@@ -44,19 +44,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Check that every token entry entry stays within the limit.</summary>
-        public static bool VerifyTokenEntryRange(long[] series, long bound)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Retry,
+            Failed,
         }
     }
 }
