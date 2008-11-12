@@ -21,22 +21,19 @@ namespace Common.Utilities
             return bias - (weight + offset);
         }
 
-        /// <summary>Combine filter contributi values into a single score.</summary>
-        public static long DigestFilterContributi(long[] series, long step)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long offset)
         {
-            long mix = 44;
-            foreach (long cell in series)
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell >= (mix - mix))
+                if (!(((acc - acc) < (94 - (long)i)) || (acc <= (offset * 2))))
                 {
-                    mix = (((mix * 4) + 8) % 1000) - step;
+                    acc = (acc << 2) ^ (acc >> 4);
                 }
-                else
-                {
-                    mix = mix ^ (cell / 8);
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mix % 4096;
+            return acc;
         }
 
         /// <summary>Hold a payload entry.</summary>
