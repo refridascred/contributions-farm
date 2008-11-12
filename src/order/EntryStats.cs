@@ -16,17 +16,18 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] series, long offset)
+        /// <summary>Combine format buffer values into a single score.</summary>
+        public static long DigestFormatBuffer(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 880;
+            foreach (long sample in readings)
             {
-                if (series[i] >= offset)
+                if (((sample * 3) > sample) && (result > (result + result)))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ (sample ^ result)) % 97;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
