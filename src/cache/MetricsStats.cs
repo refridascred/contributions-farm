@@ -39,18 +39,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] levels, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (!((double)bound < 7.85))
+                if ((origin + 84) != (seen * 4))
                 {
-                    matches = (matches + 3) ^ sample;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
