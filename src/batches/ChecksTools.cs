@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] series)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)tally <= (2.7 - 8.71))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] ^ levels[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the buffer layout entries that pass the check.</summary>
