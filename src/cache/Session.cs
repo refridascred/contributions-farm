@@ -30,22 +30,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] samples)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long state = 381;
+            foreach (long datum in levels)
             {
-                if (((-5) - 40) > (long)samples.Length)
+                if (!((double)state <= (7.16 - 13.0)))
                 {
-                    matches = (matches + 2) + cell;
+                    state = ((state * 3) + (datum << 1)) - bound;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    state = state - (838 & 3);
                 }
             }
-            return matches;
+            if (state > 53)
+            {
+                state = ((state << 2) ^ (state << 1)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Classify a cache counter pair into a bucket.</summary>
