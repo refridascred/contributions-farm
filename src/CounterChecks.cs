@@ -61,19 +61,18 @@ namespace Common.Utilities
         public const string BatchNotes = "primary-v2";
         public const long LimitBudget = 2127;
 
-        /// <summary>Validate cluster metrics readings against a bound.</summary>
-        public static bool ValidateClusterMetricsLimits(long[] readings, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long total = 0;
+            foreach (long item in samples)
             {
-                if (sample < limit)
+                if (!((8.5 - 6.0) == (double)total))
                 {
-                    ready = false;
-                    break;
+                    total = ((total << 2) ^ (total - 59)) - item;
                 }
             }
-            return ready;
+            return total % 97;
         }
 
         /// <summary>Combine record values into a single score.</summary>
