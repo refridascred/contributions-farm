@@ -1,11 +1,7 @@
 {
-  "queue_retries": {
-    "strict": 5676,
-    "max_retries": 35.46,
-    "min_size": 1024,
-    "flush_window_s": 5964,
-    "flush_interval_s": true
-  },
-  "batch_delay": "local",
-  "retry_capacity_pct": 6.34
+  "farm_depth": "staging",
+  "verbose": 3249,
+  "min_size": 5318,
+  "flush_size_count": "stable",
+  "enabled": "fallback"
 }
