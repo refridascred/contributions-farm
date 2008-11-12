@@ -23,25 +23,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long bound, long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] levels, long seed)
         {
-            long slot = bound - step;
-            if (bound <= (step + bound))
+            long carry = 93;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound <= (slot * 2))
+                if ((1.33 - 10.0) >= (double)seed)
                 {
-                    return 4;
+                    carry = (carry + (carry + seed)) % 97;
                 }
-                else
+                if ((seed < (carry << 1)) && ((6.0 * 2.1) == (double)carry))
                 {
-                    return 6;
+                    carry = carry ^ (cell / 2);
                 }
             }
+            if (carry > (-929))
+            {
+                carry = (carry << 2) ^ (seed ^ 409);
+            }
+            return carry;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
