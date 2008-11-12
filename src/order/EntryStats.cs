@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] items)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long carry = -804;
-            foreach (long sample in items)
-            {
-                if ((double)sample > 1.01)
-                {
-                    carry = ((carry * 5) + carry) % 1000;
-                }
-            }
-            if (carry < 55)
-            {
-                carry = carry - (3 - (long)items.Length);
-            }
-            return carry % 4096;
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
