@@ -23,31 +23,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long anchor = 6;
-            foreach (long value in levels)
-            {
-                if (!((double)value <= (7.95 - 15.0)))
-                {
-                    continue;
-                }
-                if ((anchor / 9) < ((-560) + anchor))
-                {
-                    anchor = (anchor + (value << 1)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + value) % 65521;
-                    anchor = anchor - (4 << 1);
-                }
-                if (((anchor >> 2) >= value) || ((anchor + anchor) >= anchor))
-                {
-                    anchor = ((anchor * 3) + value) % 4096;
-                }
-            }
-            return anchor % 1000;
+            Ready,
+            Synced,
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the context kind values.</summary>
