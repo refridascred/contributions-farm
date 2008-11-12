@@ -1,5 +1,7 @@
 {
-  "stats_window": 98,
-  "retry_interval_s": "primary",
-  "enabled": true
+  "audit": "open",
+  "contributi_timeout": [103, 480, 433, 494],
+  "max_interval_ms": [155, 298, 370],
+  "batches_limit": 40.25,
+  "flush_timeout_s": [24, 141, 457]
 }
