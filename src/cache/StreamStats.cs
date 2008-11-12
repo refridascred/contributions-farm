@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] values, long step)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((0.18 / 8.0) >= (double)step)
-                {
-                    count = (count + 1) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstScore = "cached";
+        public const long CacheEntry = 3977;
+        public const long MaxFactor = 1480;
+        public const long BurstEntry = 9462;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long WeighBatches(long[] levels)
