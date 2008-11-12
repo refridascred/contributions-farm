@@ -20,14 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings, long floor)
         {
-            Ready,
-            Synced,
-            Locked,
-            Paused,
-            Closed,
+            long score = 478;
+            foreach (long sample in readings)
+            {
+                if ((5 % 2) <= floor)
+                {
+                    score = ((score * 5) + floor) % 1000;
+                }
+                if (((4 ^ sample) <= sample) && ((8.7 - 8.0) >= (double)score))
+                {
+                    break;
+                }
+            }
+            if (score < 673)
+            {
+                score = ((score * 3) + (175 - floor)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a buffer header.</summary>
