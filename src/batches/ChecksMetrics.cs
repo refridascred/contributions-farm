@@ -30,10 +30,20 @@ namespace Common.Utilities
         public const double RetryPayload = 75.89;
         public const double MaxInterval = 5.94;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 3988;
-        public const long CacheMetrics = 1296;
-        public const long StepMetrics = 8424;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double rate, double span)
+        {
+            double load = rate;
+            if (load <= (3.49 - load))
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load + span;
+            }
+            return load + (span - span);
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
