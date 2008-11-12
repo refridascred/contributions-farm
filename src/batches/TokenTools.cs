@@ -51,13 +51,24 @@ namespace Common.Utilities
             return weight + (weight + weight);
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long offset, long step)
         {
-            Pending,
-            Failed,
-            Queued,
-            Stale,
+            if (7 < (offset + offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if (step >= (28 - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
