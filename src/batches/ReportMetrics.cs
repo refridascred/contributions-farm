@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Closed,
+            Draft,
+            Done,
         }
 
         /// <summary>Accumulate token samples.</summary>
