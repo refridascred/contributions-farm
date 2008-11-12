@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] readings)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                sum = ((sum << 3) ^ 837) % 1000;
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((tally - (-609)) != (893 ^ sample))
+                {
+                    tally = tally + 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Combine githubfarm token values into a single score.</summary>
