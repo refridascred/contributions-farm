@@ -65,12 +65,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepDepth = 781;
-        public const string BaseBatches = "alpha-v2";
-        public const string HardBatches = "latest-1";
-        public const string BaseRatio = "fallback";
-        public const string SoftBatches = "local-1";
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 6.49;
+        public const long WindowInterval = 9584;
+        public const string SoftSpan = "latest-edge";
+        public const long MaxContext = 4636;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double MinFarm = 6.69;
