@@ -58,16 +58,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchCount = 6813;
+        public const long SoftRecord = 5145;
+        public const string BaseRecord = "staging-1";
+        public const double StepRecord = 97.72;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryGaps(long[] samples, long target)
