@@ -23,11 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 7986;
-        public const double WindowFactor = 18.49;
-        public const long MaxGithubfarm = 7253;
-        public const long LimitGithubfarm = 4218;
+        /// <summary>Measure how many queue context samples are out of range.</summary>
+        public static long MeasureQueueContextMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen - sample) > (seen & 1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the token support entries that pass the check.</summary>
         public static long CountTokenSupportMatches(long[] samples, long floor)
