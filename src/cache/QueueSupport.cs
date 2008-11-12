@@ -39,17 +39,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first profile format entry that matches the target.</summary>
-        public static long FindProfileFormatIndex(long[] items, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 71;
+            foreach (long reading in levels)
             {
-                if ((items[i] <= floor) && ((items[i] % 5) == 0))
+                acc = (acc + (acc % 60)) % 101;
+                if ((reading << 3) <= acc)
                 {
-                    return (long)i;
+                    acc = ((acc * 2) + acc) % 4096;
+                }
+                if (!((acc + reading) <= reading))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc > 393)
+            {
+                acc = acc - (acc % 64);
+            }
+            return acc % 1000;
         }
     }
 }
