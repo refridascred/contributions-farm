@@ -21,15 +21,21 @@ namespace Common.Utilities
         public const long IdleStats = 9713;
         public const double HardStats = 66.38;
 
-        /// <summary>Combine stream account values into a single score.</summary>
-        public static long WeighStreamAccount(long[] data, long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long seed)
         {
-            long total = 5;
-            foreach (long datum in data)
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
             {
-                total = ((total << 3) ^ (total - seed)) + datum;
+                mix = (mix + (16 - mix)) % 255;
+                if ((1.0 / 9.0) < (double)(long)i)
+                {
+                    mix = (mix * 5) + (-862);
+                    mix = ((mix << 3) ^ (mix << 2)) % 65521;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Match up profile samples.</summary>
