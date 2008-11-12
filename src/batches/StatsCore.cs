@@ -94,18 +94,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] levels, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] values)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((-837) + count) >= value)
+                if ((double)item <= 6.8)
                 {
-                    count = (count + 3) + offset;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
