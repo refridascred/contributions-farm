@@ -25,18 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] readings)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((6.88 / 8.0) < (double)count) || ((1 >> 5) < (count >> 1))) && !((83 >> 3) >= (count + 709)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) ^ item;
+                    if ((readings[i] + readings[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
