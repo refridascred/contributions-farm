@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long floor, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] data)
         {
-            if ((bound - bound) == (bound - floor))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor - floor) > (floor & 3)) || ((51 & 7) > (bound + bound)))
+                if (((double)seen == (2.21 - 6.14)) && ((double)seen <= (2.35 * 18.0)))
                 {
-                    return 7;
+                    seen = (seen + 1) ^ datum;
                 }
                 else
                 {
-                    if (95 > (bound - floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound >= 23)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
