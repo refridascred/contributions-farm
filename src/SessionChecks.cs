@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] levels)
+        /// <summary>Digest a series of counter record entries.</summary>
+        public static long CombineCounterRecord(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long score = -768;
+            foreach (long cell in series)
             {
-                if (((count + count) >= (reading ^ count)) && ((reading >> 4) < (count << 3)))
+                if ((double)limit == (7.14 - 11.0))
                 {
-                    count = count + 3;
+                    score = score + (cell + score);
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
