@@ -52,22 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long seed, long seed2)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long step, long limit)
         {
-            if (((seed2 + 0) < seed) && (7.85 >= (double)seed2))
+            if (limit >= (limit ^ 8))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if (seed2 <= (seed2 << 3))
+                if ((step ^ step) > limit)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)seed > (1.1 / 2.0))
+                    if ((1 >> 3) != (limit % 60))
                     {
                         return 5;
                     }
