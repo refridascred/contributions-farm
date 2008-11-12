@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((2.82 - 5.0) > (double)seen)
                 {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 2) ^ sample) + origin;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Locate a counter session reading by value.</summary>
