@@ -1,28 +1,16 @@
 # support settings
-hard_timeout_ms:
-  - latest
-  - cached
-min_timeout: 30
-warm_ttl_ms:
-  default_ratio: 2998
-  checks_size:
-    layout_delay: 59
-    filter_limit: 690
-    batch_size_ms: legacy
-    retry_capacity: 81.18
-    audit: eu-west
-    burst_size_count: 4704
-  strict: 91.39
-  hard_ttl_s: 250
-  compress: true
-  min_ratio_s:
-    metric_depth: 98.5
-    warm_delay_count: true
-    sync_depth: 37
-    strict: fallback
-    min_retries_count: 44.82
-min_size_s: edge
-entry_capacity: standard
-audit:
-  - 382
-  - 264
+sync_threshold_ms: true
+sync_retries: true
+flush_ttl_s: 54
+persist: 60.19
+flush_ratio_pct:
+  base_ratio_s:
+    compress: 4458
+    min_limit: stable
+    queue_retries:
+      - stable
+      - edge
+    counter_interval: 7579
+    cache_delay_count: stable
+  burst_size_count: 100
+  batch_capacity_count: 74.03
