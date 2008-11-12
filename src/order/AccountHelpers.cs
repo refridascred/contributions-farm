@@ -66,18 +66,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] data)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (((981 + matches) <= (matches + 38)) && !((8.79 / 4.0) <= (double)entry))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    matches = matches + 3;
+                    anchor = (anchor ^ anchor) - (long)i2;
+                    anchor = anchor - (anchor << 3);
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
