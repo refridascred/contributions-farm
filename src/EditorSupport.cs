@@ -66,12 +66,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] data)
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample < (4.7 / 8.0))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit channel queue readings against a rule.</summary>
