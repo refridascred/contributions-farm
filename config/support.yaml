@@ -1,5 +1,15 @@
 # support settings
-audit: 60
-sync_ratio: 7820
-channel_ttl: edge
-sync_window_count: 3617
+default_delay: 81
+batch_window_pct: 17.55
+warm_threshold:
+  - green
+  - stable
+  - local
+  - staging
+audit:
+  contributi_interval: true
+  default_depth_ms: staging
+  verbose: 12
+  format_threshold: edge
+  farm_depth: edge
+  burst_delay_ms: false
