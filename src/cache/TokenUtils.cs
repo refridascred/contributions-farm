@@ -36,15 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double weight, double floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double load = weight;
-            if (load < (weight * 1.46))
-            {
-                load = load + floor;
-            }
-            return load + (double)51;
+            Ready,
+            Active,
+            Pending,
+            Queued,
         }
     }
 }
