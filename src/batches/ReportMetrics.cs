@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
+            Retry,
+            Queued,
             Locked,
-            Failed,
-            Closed,
-            Dropped,
         }
 
         /// <summary>Describe the filter mode values.</summary>
