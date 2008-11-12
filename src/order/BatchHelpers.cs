@@ -28,12 +28,14 @@ namespace Common.Utilities
         public const double LimitLayout = 57.18;
         public const double WindowWidth = 98.73;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Stale,
+            Done,
             Pending,
-            Draft,
+            Ready,
+            Idle,
+            Dropped,
         }
     }
 }
