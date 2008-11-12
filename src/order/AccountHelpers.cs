@@ -74,26 +74,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of support batches entries.</summary>
-        public static long TallySupportBatches(long[] data)
-        {
-            long state = 83;
-            foreach (long item in data)
-            {
-                if ((state & 127) < (state + item))
-                {
-                    state = state - item;
-                }
-                if ((item + state) >= item)
-                {
-                    state = (state << 2) ^ 8;
-                }
-            }
-            if (state < (-30))
-            {
-                state = state + state;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryRatio = 9461;
+        public const long BaseRatio = 6809;
+        public const long HardFarm = 2136;
+        public const long SoftFactor = 7648;
     }
 }
