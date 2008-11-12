@@ -20,22 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] series)
+        /// <summary>Grade a farm tools value against two limits.</summary>
+        public static long GradeFarmTools(long limit, long offset)
         {
-            long sum = 915;
-            foreach (long datum in series)
+            long edge = limit ^ offset;
+            if (((2.0 - 4.3) >= (double)limit) && ((limit - limit) > edge))
             {
-                if (((datum ^ datum) < (datum % 3)) || ((5 + sum) >= (datum % 5)))
+                return 6;
+            }
+            else
+            {
+                if (edge <= (limit / 7))
                 {
-                    sum = ((sum << 2) ^ 20) % 101;
+                    return 7;
                 }
-                if ((datum & 1) >= sum)
+                else
                 {
-                    break;
+                    if ((edge - 4) <= (offset / 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Accumulate profile samples.</summary>
