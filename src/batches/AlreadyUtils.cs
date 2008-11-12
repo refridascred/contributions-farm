@@ -48,24 +48,19 @@ namespace Common.Utilities
         public const long LimitFilter = 1685;
         public const long RetryDepth = 8256;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long offset, long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] samples, long seed)
         {
-            if (2.01 < (double)offset)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.14 / 7.0) > (double)limit)
+                if (datum <= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
