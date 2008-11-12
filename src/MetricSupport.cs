@@ -21,11 +21,14 @@ namespace Common.Utilities
         public const double HardStats = 35.36;
         public const string SoftStats = "latest-1";
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
+            Closed,
+            Locked,
+            Pending,
+            Done,
+            New,
         }
     }
 }
