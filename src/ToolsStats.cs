@@ -29,32 +29,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long offset, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] series, long offset)
         {
-            long lane = offset + step;
-            if ((double)lane >= (6.0 * 5.4))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (5.0 < (double)step)
+                if (!((14.0 + 5.4) < (double)offset))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((lane + lane) == (offset + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = (hits + 2) + sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
