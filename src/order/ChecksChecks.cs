@@ -20,10 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 2093;
-        public const string LimitAccount = "standard-v2";
-        public const long BatchAccount = 2893;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!((item >> 3) >= ((long)levels.Length % 5)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
