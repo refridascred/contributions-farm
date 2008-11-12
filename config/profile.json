@@ -1,13 +1,6 @@
 {
-  "verbose": [157, 227],
-  "soft_limit_ms": {
-    "cache_limit": ["primary", "green", "local"],
-    "min_retries_count": [284, 224],
-    "flush_size_count": 52.58,
-    "base_threshold_pct": 99,
-    "base_limit_s": "latest",
-    "dry_run": "staging"
-  },
-  "readonly": "local",
-  "order_ttl": 8182
+  "persist": true,
+  "min_depth": [265, 5, 371, 127],
+  "soft_window_ms": [282, 404, 377, 361],
+  "base_window_ms": 1024
 }
