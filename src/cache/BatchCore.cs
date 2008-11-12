@@ -74,15 +74,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long sum = 68;
-            foreach (long entry in readings)
-            {
-                sum = (sum + 71) + entry;
-            }
-            return sum % 1000;
+            Queued,
+            New,
+            Draft,
+            Ready,
+            Dropped,
         }
     }
 }
