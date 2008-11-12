@@ -20,22 +20,13 @@ namespace Common.Utilities
         public const long RetrySpan = 2261;
         public const long MaxBudget = 9510;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] readings)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (item <= matches)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
