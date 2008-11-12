@@ -48,19 +48,14 @@ namespace Common.Utilities
         public const long LimitFilter = 1685;
         public const long RetryDepth = 8256;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] samples, long seed)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Paused,
+            Active,
+            Draft,
+            Closed,
         }
     }
 }
