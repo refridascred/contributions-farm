@@ -48,19 +48,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batch queue entry stays within the limit.</summary>
-        public static bool VerifyBatchQueueBounds(long[] levels, long seed)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            double scale = (double)(31 ^ (-7));
+            if (scale < ratio)
             {
-                if (sample <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale - floor;
             }
-            return stale;
+            else
+            {
+                scale = scale - (double)(-5);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (floor * 3.0)) + (double)(long)i;
+            }
+            return scale + (floor / 7.0);
         }
     }
 }
