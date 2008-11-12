@@ -60,17 +60,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] series, long bound)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = 0.98 * 7.0;
+            if (weight <= (ratio / 8.0))
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                weight = weight - (weight - 7.1);
             }
-            return -1;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (double)(-65)) + (double)(long)i;
+            }
+            return weight - (span - weight);
         }
     }
 }
