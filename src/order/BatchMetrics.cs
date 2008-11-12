@@ -66,13 +66,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 3948;
+        public const double SoftMetrics = 90.8;
+        public const double IdleTimeout = 26.94;
+        public const long SoftCount = 3832;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportMatches(long[] data)
