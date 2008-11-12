@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftFactor = 7498;
-        public const long HardChecks = 2924;
-        public const long BatchChecks = 3882;
-        public const long BaseChecks = 650;
-        public const double WindowRatio = 93.65;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] readings, long limit)
+        {
+            long carry = 9;
+            foreach (long entry in readings)
+            {
+                if ((limit <= entry) && ((-62) > (entry + carry)))
+                {
+                    carry = (carry + (limit - entry)) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long CombineCommand(long[] readings, long bound)
