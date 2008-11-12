@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double ratio, double offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] items, long limit)
         {
-            double scale = (ratio - offset) * 11.0;
-            return scale + (double)5;
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the route status values.</summary>
