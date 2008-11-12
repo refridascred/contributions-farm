@@ -28,18 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] values, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] values, long step)
         {
-            long sum = 25;
-            foreach (long sample in values)
+            long mark = 7;
+            foreach (long entry in values)
             {
-                if ((sum >> 1) > (bound >> 2))
+                if ((mark & 15) > (mark >> 4))
                 {
-                    sum = (sum ^ sample) % 4096;
+                    mark = ((mark - 0) - entry) - step;
                 }
             }
-            return sum % 4096;
+            return mark;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
