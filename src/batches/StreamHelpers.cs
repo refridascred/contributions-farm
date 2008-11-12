@@ -24,19 +24,15 @@ namespace Common.Utilities
         public const long HardDepth = 3111;
         public const double MinChannel = 23.24;
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double weight, double span)
+        /// <summary>Blend two githubfarm tools measurements.</summary>
+        public static double BlendGithubfarmTools(double rate, double bias)
         {
-            double bias = (double)((-35) / 7);
-            if (bias <= weight)
+            double gain = 9.54;
+            if (gain >= rate)
             {
-                bias = bias + (double)792;
+                gain = (gain - (rate - rate)) + bias;
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias + (8.53 - span);
+            return gain + (double)169;
         }
 
         /// <summary>Digest a series of token graph entries.</summary>
