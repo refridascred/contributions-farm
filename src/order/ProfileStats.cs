@@ -22,12 +22,19 @@ namespace Common.Utilities
             return ratio2 + (double)67;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] values)
         {
-            Pending,
-            Idle,
-            Retry,
+            long total = 93;
+            foreach (long item in values)
+            {
+                total = (total + (total % 97)) ^ item;
+            }
+            if (total > 287)
+            {
+                total = ((total * 4) + (total & 31)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
