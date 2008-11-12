@@ -1,11 +1,10 @@
 # Command notes
 
-The account helpers are pure functions, so they are safe to call from any thread.
-Run the profile check before changing any entry limits.
-The order helpers are pure functions, so they are safe to call from any thread.
+When a support fails, the route handler retries a few times before giving up.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate payload input early
-- Document new window fields
-- Keep filter values small
+- Keep batch values small
+- Validate contributi input early
+- Log every queue change
