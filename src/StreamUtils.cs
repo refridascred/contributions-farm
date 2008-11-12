@@ -16,13 +16,15 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Iterate the already context series from a seed.</summary>
+        public static long StepAlreadyContext(long offset)
         {
-            New,
-            Queued,
-            Draft,
-            Idle,
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a schema stats.</summary>
