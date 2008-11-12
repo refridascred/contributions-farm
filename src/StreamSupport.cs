@@ -18,25 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] data, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long edge = (origin ^ 181) - origin;
-                if (origin <= acc)
+                if (data[i] >= seed)
                 {
-                    acc = (acc ^ (origin ^ origin)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = ((acc * 2) + (-5)) % 4096;
-                    acc = ((acc * 3) + ((long)i - edge)) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
