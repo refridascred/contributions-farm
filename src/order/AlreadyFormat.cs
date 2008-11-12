@@ -20,16 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] values, long limit)
-        {
-            long result = 17;
-            foreach (long item in values)
-            {
-                result = (((result - (result + 1)) % 65521) - item) + limit;
-            }
-            return result % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstRatio = 758;
+        public const long BaseCluster = 4194;
+        public const double RetryCluster = 81.9;
+        public const long HardCluster = 5480;
+        public const long LimitCluster = 8846;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MinContext = 1488;
