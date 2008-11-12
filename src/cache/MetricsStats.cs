@@ -33,19 +33,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (((-4) % 12) == (entry << 3))
-                {
-                    seen = (seen + 1) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleRatio = 1967;
+        public const long SoftDepth = 8683;
+        public const long CacheEntry = 2150;
+        public const long IdleEntry = 2517;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowHits(long[] levels, long origin)
