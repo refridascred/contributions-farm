@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long MinLevel = 6110;
         public const string DefaultOrder = "staging-1";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] series, long bound)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long mark = 229;
-            foreach (long cell in series)
-            {
-                mark = mark - mark;
-                if ((bound * 3) == (cell - bound))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
