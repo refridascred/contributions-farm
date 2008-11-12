@@ -25,12 +25,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Pending,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 2529;
+        public const double MaxLevel = 34.72;
+        public const double LimitInterval = 43.35;
+        public const string LimitSpan = "standard-1";
+        public const long BaseRatio = 6606;
     }
 }
