@@ -40,21 +40,15 @@ namespace Common.Utilities
         public const long CacheDepth = 9843;
         public const string CacheStats = "stable-edge";
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = scale;
+            if (rate < (rate + scale))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate + (double)28;
             }
-            return hits;
+            return rate + (2.0 + floor);
         }
     }
 }
