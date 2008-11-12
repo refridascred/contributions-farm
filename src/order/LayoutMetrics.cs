@@ -26,18 +26,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (cell >= (57 + seen))
+                if (!(74 > matches) && ((172 & 63) > (sample - 456)))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 3) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
