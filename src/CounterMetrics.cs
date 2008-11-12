@@ -45,10 +45,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstFactor = 9153;
-        public const long RetryMetric = 728;
-        public const long LimitFactor = 9818;
-        public const long IdleBudget = 8652;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
