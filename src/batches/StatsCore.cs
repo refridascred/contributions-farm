@@ -44,39 +44,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long origin, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] items)
         {
-            long gap = origin + seed;
-            if ((gap < seed) && ((seed * 3) <= (gap % 8)))
+            long result = 798;
+            foreach (long sample in items)
             {
-                return 8;
+                result = (result * 4) + (sample / 6);
             }
-            else
-            {
-                if (((gap << 3) < seed) && (((-933) + 41) < (gap << 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)seed <= (double)gap))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin + seed) != (gap / 6))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return result % 97;
         }
 
         /// <summary>Rank support input into a small class.</summary>
