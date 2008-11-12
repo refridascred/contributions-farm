@@ -22,23 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double bias, double offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] samples, long origin)
         {
-            double drift = (7.0 + 15.0) - (bias / 7.0);
-            if (drift > 8.21)
+            long mix = 26;
+            foreach (long cell in samples)
             {
-                drift = (drift + (double)(-5)) + offset;
+                mix = ((mix + (cell + mix)) % 97) + origin;
             }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (bias - drift)) + (double)(long)i;
-            }
-            return drift + bias;
+            return mix;
         }
 
         /// <summary>Hold a batch summary.</summary>
