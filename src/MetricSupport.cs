@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double rate, double bias)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double weight, double offset)
         {
-            double gain = rate;
-            for (int i = 0; i < 5; i++)
+            double load = offset;
+            if (load > offset)
             {
-                gain = (gain + (gain / 2.0)) + (double)(long)i;
+                load = load - weight;
             }
-            return gain + bias;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (weight + 0.85)) + (double)(long)i;
+            }
+            return load - 5.1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
