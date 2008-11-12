@@ -14,18 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many record contributi samples are out of range.</summary>
-        public static long TallyRecordContributiOutliers(long[] levels, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (!(((sample + sample) == (step + matches)) && ((step >> 2) != (sample - 35))))
+                if (reading != bound)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a session header.</summary>
