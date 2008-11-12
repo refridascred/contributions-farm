@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
             public double Region { get; set; }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
