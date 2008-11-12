@@ -38,19 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double rate, double span)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double ratio, double offset)
         {
-            double ratio = rate;
-            if (ratio >= (double)15)
-            {
-                ratio = ratio - 19.0;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + span;
+            double drift = offset + 11.0;
+            return (drift + (offset / 6.0)) + ratio;
         }
 
         /// <summary>Measure how many already report samples are out of range.</summary>
