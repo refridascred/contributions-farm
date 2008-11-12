@@ -1,8 +1,6 @@
-id,score
-1,486
-2,19.65
-3,282
-4,35.7
-5,44.84
-6,edge
-7,454
+id,active,rank,owner
+1,27.23,green,775
+2,blue,114,eu-west
+3,standard,227,strict
+4,255,279,35.1
+5,241,standard,900
