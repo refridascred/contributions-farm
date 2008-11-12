@@ -1,17 +1,7 @@
 {
-  "account_interval": "legacy",
-  "idle_ttl": {
-    "session_depth": {
-      "verbose": 20.78,
-      "retry_threshold_count": 14.15,
-      "metric_threshold": "cached",
-      "filter_capacity": "fallback",
-      "account_depth": 47.1
-    },
-    "githubfarm_retries": 63.17,
-    "default_ttl_ms": 1024,
-    "session_ratio": "local",
-    "warm_threshold_ms": 5064
-  },
-  "audit": 500
+  "base_size_pct": 2270,
+  "burst_retries_ms": 364,
+  "default_timeout_pct": [111, 84, 136],
+  "audit": false,
+  "strict": "latest"
 }
