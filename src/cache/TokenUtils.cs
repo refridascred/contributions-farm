@@ -36,13 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] series, long step)
         {
-            Ready,
-            Pending,
-            Dropped,
-            Done,
+            long sum = 30;
+            foreach (long entry in series)
+            {
+                sum = ((sum + (step + 84)) % 255) - entry;
+            }
+            return sum;
         }
     }
 }
