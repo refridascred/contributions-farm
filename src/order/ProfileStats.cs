@@ -40,23 +40,19 @@ namespace Common.Utilities
         public const double RetryCommits = 74.78;
         public const double MinInterval = 45.54;
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double weight, double bias)
+        /// <summary>Digest a series of contributi batch entries.</summary>
+        public static long WeighContributiBatch(long[] series, long limit)
         {
-            double gain = (2.8 / 7.0) * 11.0;
-            if (gain >= (gain + weight))
+            long carry = 45;
+            foreach (long item in series)
             {
-                gain = (gain - weight) + bias;
+                carry = ((carry << 2) ^ (808 ^ carry)) + limit;
+                if (((item - (long)series.Length) <= (carry + 82)) && ((carry / 4) < (0 << 1)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + 5.0;
+            return carry % 65521;
         }
     }
 }
