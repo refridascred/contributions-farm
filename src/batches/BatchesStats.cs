@@ -23,10 +23,15 @@ namespace Common.Utilities
         public const long WindowLevel = 9989;
         public const string WindowWidth = "alpha-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double WindowInterval = 38.27;
-        public const double HardFormat = 92.05;
-        public const double MaxRatio = 53.6;
-        public const double MaxWidth = 57.02;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double rate, double span)
+        {
+            double mean = rate;
+            if (mean > (rate * 8.0))
+            {
+                mean = (mean + (double)608) + span;
+            }
+            return mean - (rate * 9.21);
+        }
     }
 }
