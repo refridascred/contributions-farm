@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] data, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] values, long floor)
         {
             bool stale = true;
-            foreach (long datum in data)
+            foreach (long sample in values)
             {
-                if (datum > limit)
+                if (sample < floor)
                 {
                     stale = false;
                     break;
