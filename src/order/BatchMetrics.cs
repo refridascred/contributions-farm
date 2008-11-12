@@ -60,18 +60,14 @@ namespace Common.Utilities
         public const long CacheMetrics = 556;
         public const long IdleSpan = 3012;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] data)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((count / 8) > count)
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            Paused,
+            Active,
+            Locked,
+            Done,
+            Failed,
         }
     }
 }
