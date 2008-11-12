@@ -29,21 +29,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long step, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (step > (step - (-1)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)step <= 8.4)
                 {
-                    if ((samples[i] ^ samples[j]) < 19)
+                    return 6;
+                }
+                else
+                {
+                    if (step >= (offset & 15))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a cluster summary.</summary>
