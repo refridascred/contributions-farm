@@ -24,12 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Dropped,
-            Ready,
-            Pending,
+            Paused,
+            Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
