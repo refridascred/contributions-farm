@@ -14,23 +14,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] values, long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] readings, long bound)
         {
-            long result = 871;
-            foreach (long datum in values)
+            long carry = 703;
+            foreach (long datum in readings)
             {
-                if ((double)result < (double)(-59))
+                if (((-85) ^ bound) <= 369)
                 {
-                    result = (result * 4) + (datum / 9);
-                    continue;
+                    carry = ((carry * 3) + (datum + carry)) % 4096;
                 }
-                if ((result - bound) <= (943 + result))
+                else
                 {
-                    result = result - (55 & 1);
+                    carry = (carry ^ (carry + carry)) % 97;
+                }
+                if ((datum + datum) > (datum - bound))
+                {
+                    break;
                 }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
