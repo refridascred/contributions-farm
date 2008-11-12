@@ -56,10 +56,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryScore = 388;
-        public const long MaxContributi = 2723;
-        public const string BurstDepth = "alpha-edge";
-        public const double CacheDepth = 13.23;
+        /// <summary>Combine format githubfarm values into a single score.</summary>
+        public static long WeighFormatGithubfarm(long[] levels)
+        {
+            long total = -5;
+            foreach (long sample in levels)
+            {
+                total = (total ^ (total << 3)) % 101;
+                total = total + (total / 2);
+                if ((double)sample != (9.0 + 3.4))
+                {
+                    total = total + ((long)levels.Length + sample);
+                }
+            }
+            return total;
+        }
     }
 }
