@@ -31,14 +31,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            New,
-            Failed,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstGithubfarm = "cached";
+        public const long BaseCount = 7348;
+        public const string WindowCount = "open-v2";
+        public const double BatchGithubfarm = 37.21;
+        public const long MaxSpan = 5234;
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
