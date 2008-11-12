@@ -18,16 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long limit)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long target, long target2)
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
+            if ((double)target2 > (double)745)
             {
-                mix = mix ^ mix;
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((target2 * 3) > (target % 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
