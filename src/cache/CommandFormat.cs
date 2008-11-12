@@ -31,17 +31,15 @@ namespace Common.Utilities
             return (scale2 - bias) + scale;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] samples, long limit)
+        /// <summary>Blend two metric account measurements.</summary>
+        public static double ScaleMetricAccount(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (double)(70 << 3);
+            for (int i = 0; i < 5; i++)
             {
-                if ((samples[i] == limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = ((bias - (2.0 / 8.0)) + (double)(long)i) - weight;
             }
-            return -1;
+            return bias + span;
         }
     }
 }
