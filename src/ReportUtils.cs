@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Find the first route format entry that matches the target.</summary>
+        public static long LocateRouteFormatIndex(long[] series, long bound)
         {
-            public double Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
