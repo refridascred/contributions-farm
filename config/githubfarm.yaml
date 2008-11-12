@@ -1,4 +1,18 @@
 # githubfarm settings
-max_capacity: 500
-base_delay_pct: 2693
-default_timeout_count: false
+idle_capacity_count: 38
+poll_delay_ms:
+  warm_window_count: strict
+  cluster_ttl: 1024
+  cache_depth_pct: 41
+  support_window: 98.22
+  entry_ttl:
+    queue_window: latest
+    warm_ratio: 71.97
+    cache_delay: 7.05
+    sync_delay_count: 68.78
+    persist:
+      - latest
+      - edge
+      - green
+flush_timeout_count: local
+layout_ttl: 1113
