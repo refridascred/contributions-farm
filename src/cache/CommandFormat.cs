@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const double LimitRatio = 87.01;
         public const long LimitSpan = 5432;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Failed,
-            Active,
-            Paused,
-            Closed,
-            Locked,
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Adjust a batches reading.</summary>
