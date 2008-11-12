@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSession = "standard-v2";
+        public const string LimitScore = "latest-v2";
+        public const double WindowSession = 23.05;
+        public const long SoftSession = 163;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteBounds(long[] items, long limit)
