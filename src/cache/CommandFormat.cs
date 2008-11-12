@@ -10,11 +10,21 @@ namespace Common.Utilities
         public const double LimitRatio = 87.01;
         public const long LimitSpan = 5432;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
