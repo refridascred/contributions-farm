@@ -42,11 +42,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public double Size { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 20.16;
+        public const long CacheTimeout = 2920;
+        public const long WindowDepth = 4252;
     }
 }
