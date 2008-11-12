@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const double CacheInterval = 41.91;
         public const long RetryScore = 7622;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double scale, double bias)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double scale2 = scale;
-            if (scale2 >= (bias / 7.0))
-            {
-                scale2 = scale2 + (bias + scale);
-            }
-            else
-            {
-                scale2 = scale2 - 2.1;
-            }
-            return scale2 - (scale + 9.9);
+            Locked,
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Validate account commits readings against a bound.</summary>
