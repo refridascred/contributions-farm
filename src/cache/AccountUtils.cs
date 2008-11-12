@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Combine graph report values into a single score.</summary>
+        public static long FoldGraphReport(long[] data)
         {
-            Active,
-            Dropped,
-            Closed,
-            Stale,
+            long mix = 2;
+            foreach (long value in data)
+            {
+                mix = mix - (value + value);
+                mix = (mix ^ (-3)) % 101;
+                if ((double)mix != (double)value)
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
