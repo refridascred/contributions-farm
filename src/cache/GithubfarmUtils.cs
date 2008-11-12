@@ -34,19 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((matches ^ matches) <= (item ^ (long)values.Length))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 5761;
+        public const long WindowInterval = 7595;
+        public const long BurstScore = 1443;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
