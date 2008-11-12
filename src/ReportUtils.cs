@@ -32,21 +32,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] levels)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 23;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (((score ^ (score & 63)) % 4096) + (long)i) + target;
+                }
+                if ((double)cell < (6.75 * 9.6))
+                {
+                    score = (score - (score << 1)) % 97;
                 }
             }
-            return matches;
+            if (score < 7)
+            {
+                score = (score * 2) + (score >> 1);
+            }
+            return score % 65521;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
