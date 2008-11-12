@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first stats contributi entry that matches the target.</summary>
-        public static long LookupStatsContributiIndex(long[] readings, long offset)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale2 = (double)(7 / 4);
+            return ((scale2 - (double)(-638)) + scale) + span;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
