@@ -29,21 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a payload support reading by value.</summary>
