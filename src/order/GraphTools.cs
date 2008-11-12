@@ -20,12 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Synced,
-            Queued,
-            New,
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
