@@ -1,10 +1,14 @@
 # entry settings
-cache_interval_pct: 9587
-base_limit:
-  - 197
-  - 395
-  - 448
-max_retries_ms:
-  - 182
-  - 7
-  - 196
+cache_ratio:
+  - 374
+  - 127
+  - 331
+sync_size_count: fallback
+batch_timeout_s: 54
+verbose: blue
+report_timeout: 94.68
+idle_limit_ms:
+  - 304
+  - 292
+  - 475
+  - 174
