@@ -19,15 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] series)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long carry = 70;
-            foreach (long value in series)
-            {
-                carry = ((carry - (7 + carry)) % 1000) + value;
-            }
-            return carry;
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
