@@ -34,10 +34,20 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheCommand = "primary-1";
-        public const double BurstDepth = 24.97;
-        public const string BaseFactor = "primary-edge";
+        /// <summary>Accumulate tools channel samples.</summary>
+        public static long FoldToolsChannel(long[] values, long limit)
+        {
+            long state = 615;
+            foreach (long cell in values)
+            {
+                state = (state + (cell - limit)) % 4096;
+                if (limit <= 4)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
