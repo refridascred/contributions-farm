@@ -1,7 +1,6 @@
-id,level,active
-1,18.19,stable
-2,104,175
-3,414,850
-4,347,602
-5,557,45.16
-6,strict,stable
+id,ratio,token,level
+1,staging,standard,stable
+2,96.44,407,fallback
+3,275,75.55,blue
+4,685,34.15,661
+5,54.96,241,stable
