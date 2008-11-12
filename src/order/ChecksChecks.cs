@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseRatio = 4386;
+        public const long MaxSpan = 3323;
+        public const long StepFactor = 8958;
+        public const long StepWindow = 8773;
+        public const double BatchRatio = 26.67;
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
