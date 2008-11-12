@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long offset)
         {
-            Paused,
-            Draft,
-            Synced,
-            Ready,
+            long total = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
