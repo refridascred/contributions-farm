@@ -39,22 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] levels, long offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (9 > (offset ^ reading))
+                if ((286 * 2) > step)
                 {
-                    tally = tally + 3;
+                    carry = (carry - (carry / 9)) % 1000;
+                    break;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
