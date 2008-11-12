@@ -56,13 +56,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            Dropped,
+            Idle,
+            Done,
+            New,
+            Stale,
         }
     }
 }
