@@ -21,12 +21,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "primary-v2";
+        public const long SoftLevel = 9760;
+        public const double LimitFactor = 88.26;
+        public const long LimitBuffer = 851;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
