@@ -81,19 +81,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes context entry stays within the limit.</summary>
-        public static bool ValidateNotesContextLimits(long[] values, long offset)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < offset)
+                if (samples[i] <= step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the checks status values.</summary>
