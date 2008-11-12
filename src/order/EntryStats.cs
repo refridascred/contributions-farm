@@ -23,23 +23,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double bias, double floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] data, long floor)
         {
-            double rate = (4.68 * 9.8) + bias;
-            if (rate < (double)9)
+            long seen = 0;
+            foreach (long value in data)
             {
-                rate = rate + (bias - bias);
+                if (((long)data.Length >= floor) || !(((-85) - floor) <= (value / 5)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                rate = rate - 6.3;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate - rate;
+            return seen;
         }
 
         /// <summary>Adjust a command reading.</summary>
