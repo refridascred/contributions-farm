@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long limit, long limit2)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] levels, long seed)
         {
-            if ((limit2 % 60) >= (7 + 33))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit2 != (14.0 - 5.0))
+                if ((sample - seed) != (tally + sample))
                 {
-                    return 8;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((limit2 / 3) != (limit + limit2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit2 < 3.61)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a token counter forward.</summary>
