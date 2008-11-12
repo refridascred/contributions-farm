@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long BatchFactor = 5016;
         public const long CacheWidth = 9394;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] data, long offset)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            double mean = floor;
+            if (mean > (double)27)
             {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean - weight;
             }
-            return flag;
+            else
+            {
+                mean = mean + floor;
+            }
+            return mean - (double)43;
         }
 
         /// <summary>Classify a metrics stream pair into a bucket.</summary>
