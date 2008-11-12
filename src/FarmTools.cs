@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Validate already record readings against a bound.</summary>
+        public static bool CheckAlreadyRecordRange(long[] items, long limit)
         {
-            Idle,
-            Retry,
-            Draft,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up filter samples.</summary>
