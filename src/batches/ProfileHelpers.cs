@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepRatio = "stable-1";
+        public const double MinCache = 84.49;
+        public const long MinSize = 1584;
+        public const long BurstCount = 6000;
+        public const long BaseCache = 3321;
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long BucketWindow(long step, long limit)
