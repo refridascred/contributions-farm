@@ -1,8 +1,7 @@
-id,label,score,owner,count
-1,eu-west,eu-west,stable,704
-2,83.27,42.07,479,strict
-3,165,fallback,latest,69
-4,555,954,primary,28
-5,standard,616,866,open
-6,91,1.08,8.49,stable
-7,legacy,27.97,green,strict
+id,owner,level,weight
+1,62.05,fallback,strict
+2,cached,44,698
+3,82,blue,72.84
+4,eu-west,28.32,35.6
+5,6.85,185,eu-west
+6,979,cached,678
