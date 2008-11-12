@@ -23,9 +23,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheLevel = 8930;
-        public const long SoftTimeout = 5261;
-        public const long RetrySize = 3250;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
+        }
     }
 }
