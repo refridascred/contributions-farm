@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count graph batch pairs that satisfy a relation.</summary>
-        public static long CompareGraphBatchCount(long[] readings)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)(82 >> 4);
+            if (load > 2.1)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load + (load + weight);
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load - (weight * 14.0);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
