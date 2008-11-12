@@ -34,12 +34,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
