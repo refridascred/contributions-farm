@@ -23,27 +23,10 @@ namespace Common.Utilities
         public const long BaseSession = 3006;
         public const long MaxInterval = 5469;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] values)
-        {
-            long mix = 22;
-            foreach (long cell in values)
-            {
-                if (((mix / 3) != (cell * 2)) || ((1 + mix) > (mix & 31)))
-                {
-                    mix = mix ^ (cell & 1);
-                }
-                else
-                {
-                    mix = (mix + (589 + cell)) % 255;
-                }
-            }
-            if (mix > 73)
-            {
-                mix = mix - mix;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 7891;
+        public const long BasePayload = 1314;
+        public const long BurstPayload = 7900;
 
         /// <summary>Count editor notes pairs that satisfy a relation.</summary>
         public static long MatchEditorNotesCount(long[] values)
