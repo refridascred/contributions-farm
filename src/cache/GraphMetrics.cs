@@ -51,19 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] samples, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] samples)
         {
-            long mark = 571;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                mark = mark - (value ^ value);
-                if ((offset < (mark + value)) && ((double)value > (3.0 / 7.0)))
+                if ((sample << 2) > 23)
                 {
-                    mark = (mark ^ (mark + offset)) % 1000;
+                    hits = hits + 2;
                 }
             }
-            return mark % 97;
+            return hits;
         }
     }
 }
