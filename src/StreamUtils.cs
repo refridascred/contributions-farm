@@ -40,11 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstCount = 5064;
-        public const double RetryCount = 52.35;
-        public const long CacheSpan = 370;
-        public const string LimitBudget = "stable-v2";
+        /// <summary>Measure how many account schema samples are out of range.</summary>
+        public static long MeasureAccountSchemaOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((15.0 + 5.5) == (double)reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double SmoothLayout(double weight, double span)
