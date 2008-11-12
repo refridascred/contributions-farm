@@ -1,5 +1,6 @@
 {
-  "cache_limit": [76, 382, 312],
-  "idle_threshold": 60,
-  "warm_ratio": "standard"
+  "burst_limit": [270, 47],
+  "channel_ratio": 6790,
+  "default_timeout_ms": "blue",
+  "session_threshold": 1024
 }
