@@ -30,21 +30,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix + (16 - mix)) % 255;
-                if ((1.0 / 9.0) < (double)(long)i)
-                {
-                    mix = (mix * 5) + (-862);
-                    mix = ((mix << 3) ^ (mix << 2)) % 65521;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Closed,
+            Done,
+            Active,
+            Locked,
         }
 
         /// <summary>Match up profile samples.</summary>
