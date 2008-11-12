@@ -1,5 +1,5 @@
 # entry settings
-idle_capacity_count: 86
-account_ttl: 87.36
-counter_depth: true
-verbose: false
+stream_limit: false
+default_delay: true
+batches_interval: eu-west
+batch_capacity_pct: 41.05
