@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchSize = 6421;
-        public const double BatchEntry = 75.84;
-        public const long BaseSpan = 3138;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitRatio = 2964;
+        public const double RetryScore = 69.69;
+        public const long CacheInterval = 3920;
+        public const long CacheToken = 3892;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MinWindow = 3259;
