@@ -14,19 +14,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] readings, long target)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (entry <= target)
+                if (value < bound)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
