@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double weight, double offset)
-        {
-            double load = offset;
-            if (load > offset)
-            {
-                load = load - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (weight + 0.85)) + (double)(long)i;
-            }
-            return load - 5.1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchScore = 5960;
+        public const long StepScore = 115;
+        public const long BatchContext = 8169;
+        public const long BurstScore = 1655;
+        public const double MaxContext = 63.61;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesMatches(long[] series, long floor)
