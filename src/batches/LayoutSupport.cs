@@ -77,9 +77,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 21.57;
-        public const long HardInterval = 38;
-        public const long IdleAccount = 9219;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
