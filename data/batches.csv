@@ -1,9 +1,6 @@
-id,count,token,score
-1,45.57,23.8,193
-2,578,legacy,latest
-3,54.65,36.61,69.79
-4,754,549,18.27
-5,345,9.87,309
-6,primary,152,82.55
-7,67.68,strict,813
-8,29.18,449,edge
+id,state,ratio,weight,level
+1,blue,71.94,75.96,legacy
+2,232,301,staging,95.28
+3,primary,94.85,557,0.08
+4,44.0,94.56,open,staging
+5,67.22,65.49,strict,green
