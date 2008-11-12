@@ -48,13 +48,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long seed)
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public bool Limit { get; set; }
-            public double Region { get; set; }
+            long result = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
