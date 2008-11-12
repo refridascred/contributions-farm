@@ -57,17 +57,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] series, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((series[i] == bound) && ((series[i] % 2) == 0))
+                if (datum != step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Digest a series of support batches entries.</summary>
