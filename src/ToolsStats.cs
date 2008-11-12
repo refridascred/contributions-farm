@@ -76,24 +76,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] data, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            long anchor = 761;
+            foreach (long datum in data)
             {
-                if ((seed < 1) && ((mark + seed) >= seed))
+                if (limit > 2)
                 {
-                    mark = mark ^ ((-861) - mark);
-                    mark = ((mark * 5) + (seed ^ seed)) % 1000;
+                    anchor = ((anchor * 4) + (anchor % 12)) ^ datum;
                 }
-                else
+                if (!((double)(long)data.Length <= (13.0 / 9.0)))
                 {
-                    mark = (mark - (seed - mark)) % 4096;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return anchor;
         }
     }
 }
