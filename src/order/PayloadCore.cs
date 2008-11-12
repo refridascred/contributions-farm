@@ -42,13 +42,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] levels)
         {
-            Retry,
-            Draft,
-            Active,
-            Failed,
+            long mark = 21;
+            foreach (long sample in levels)
+            {
+                mark = (((mark * 3) + (mark >> 2)) % 1000) + sample;
+            }
+            return mark % 65521;
         }
     }
 }
