@@ -15,18 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate token command samples.</summary>
-        public static long DigestTokenCommand(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] data)
         {
-            long acc = 52;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (!((acc - entry) == (20 + entry)))
+                if (((double)count <= 7.1) && ((double)0 > 2.81))
                 {
-                    acc = acc - (acc * 2);
+                    count = (count + 1) + cell;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
