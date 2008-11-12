@@ -18,25 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor farm input into a small class.</summary>
-        public static long ClassifyEditorFarm(long offset, long floor)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long offset2 = offset ^ floor;
-            if (!((offset2 & 31) <= offset2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)offset2 > (double)offset) && ((double)floor > (1.62 / 5.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
