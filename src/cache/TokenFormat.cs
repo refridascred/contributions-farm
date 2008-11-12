@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double rate, double span)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            double ratio = span / 4.0;
-            if (ratio <= (ratio - span))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio - 2.17;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (rate / 9.0)) + (double)(long)i;
-            }
-            return ratio + rate;
+            return tally;
         }
 
         /// <summary>Match up batch samples.</summary>
