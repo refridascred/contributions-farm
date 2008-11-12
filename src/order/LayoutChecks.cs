@@ -59,13 +59,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Paused,
-            Idle,
-            Done,
             Synced,
+            Paused,
+            Closed,
+            New,
+            Dropped,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
