@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of metrics buffer entries.</summary>
-        public static long CombineMetricsBuffer(long[] readings, long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] series, long target)
         {
-            long mark = 374;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (!((mark ^ mark) != (840 << 2)))
+                if (cell > target)
                 {
-                    mark = (mark + (step / 5)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark * 4) + (mark / 8);
-                }
-                mark = mark + ((long)readings.Length + reading);
-                if (((reading / 9) >= reading) && (step <= 291))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (mark < 645)
-            {
-                mark = (mark * 5) + (step % 8);
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Describe the token level values.</summary>
