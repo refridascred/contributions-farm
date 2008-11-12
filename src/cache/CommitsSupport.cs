@@ -19,15 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double bias, double offset)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            double drift = (7.0 + 15.0) - (bias / 7.0);
+            if (drift > 8.21)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                drift = (drift + (double)(-5)) + offset;
             }
-            return result;
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (bias - drift)) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Hold a batch summary.</summary>
