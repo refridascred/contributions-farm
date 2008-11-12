@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long DefaultCommits = 3469;
         public const long LimitWidth = 6563;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] levels, long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches / 8) > (offset + 505))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            Closed,
+            Retry,
+            Failed,
+            Done,
         }
 
         /// <summary>Adjust a filter reading.</summary>
