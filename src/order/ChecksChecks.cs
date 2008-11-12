@@ -19,15 +19,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of batch queue readings.</summary>
-        public static long ScoreBatchQueue(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] items)
         {
-            long score = 826;
-            foreach (long value in samples)
+            long result = -6;
+            foreach (long sample in items)
             {
-                score = ((score ^ (424 >> 3)) % 97) ^ value;
+                result = (result - ((long)items.Length ^ 9)) ^ sample;
             }
-            return score;
+            if (result > 5)
+            {
+                result = result - result;
+            }
+            return result % 4096;
         }
     }
 }
