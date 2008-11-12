@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string SoftChannel = "strict-edge";
-        public const long CacheSize = 8616;
-        public const long IdleChannel = 9253;
-        public const double MinSize = 63.14;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Locked,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] levels)
