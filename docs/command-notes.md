@@ -1,11 +1,14 @@
 # Command notes
 
-The farm report groups every token by metrics.
-Run the cache check before changing any queue limits.
+A notes that stays idle for too long is moved to the format list.
+Run the entry check before changing any editor limits.
+Keep metric and channel names short and lowercase.
+
+A payload that stays idle for too long is moved to the farm list.
+A counter that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Log every contributi change
-- Prefer schema defaults
-- Validate buffer input early
-- Keep cluster values small
+- Prefer report defaults
+- Document new record fields
+- Keep cache values small
