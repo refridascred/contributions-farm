@@ -18,13 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Rank editor farm input into a small class.</summary>
+        public static long ClassifyEditorFarm(long offset, long floor)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
+            long offset2 = offset ^ floor;
+            if (!((offset2 & 31) <= offset2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)offset2 > (double)offset) && ((double)floor > (1.62 / 5.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
