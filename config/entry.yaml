@@ -1,18 +1,32 @@
 # entry settings
-retry_threshold_ms:
-  max_depth_s:
-    - 243
-    - 112
-  soft_retries: eu-west
-  metric_ratio:
-    - standard
-    - latest
-    - blue
-    - open
-  dry_run: 16.31
-filter_ttl: 95.59
-cluster_size: 9648
-default_limit: 9472
-sync_ttl:
-  - cached
-  - legacy
+verbose:
+  stream_timeout: 4452
+  min_depth_count: 31.59
+  default_retries: true
+  max_delay:
+    retry_ratio: 3609
+    min_limit_count: 66
+    soft_size_pct: 9393
+    farm_threshold: 6
+  enabled:
+    enabled: strict
+    base_ratio_count: 9796
+    max_interval: 1024
+    flush_window_count: false
+    verbose: 84
+    base_interval: false
+retry_retries_pct:
+  metrics_timeout:
+    tools_timeout: 80
+    max_capacity_pct: false
+    editor_depth: false
+    profile_ratio: 734
+    editor_threshold: 4083
+  sync_depth_ms: 100
+  flush_window_count:
+    - 236
+    - 272
+    - 388
+  hard_depth_count: fallback
+cache_threshold_ms: 96
+queue_capacity: eu-west
