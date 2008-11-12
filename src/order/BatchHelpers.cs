@@ -35,23 +35,37 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long offset, long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long seed, long bound)
         {
-            long cur = offset - floor;
-            if (!((12.0 / 7.0) > (double)cur))
+            long bound2 = seed + bound;
+            if (((double)bound <= 2.27) || ((6 - seed) <= (bound + bound2)))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (((190 + cur) <= (floor & 63)) && ((double)offset != (19.0 - 8.77)))
+                if ((bound2 & 1) > bound2)
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    if (!((bound >> 2) <= (1 + 565)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed <= (4 / 8)) && ((double)seed < (double)bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
