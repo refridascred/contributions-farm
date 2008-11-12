@@ -66,18 +66,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] samples)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (tally > ((-657) + item))
+                if ((seen << 2) >= cell)
                 {
-                    tally = tally + 1;
+                    seen = (seen + 1) - step;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
