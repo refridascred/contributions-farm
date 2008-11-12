@@ -11,24 +11,22 @@ namespace Common.Utilities
         public const double BurstLayout = 56.98;
         public const long WindowSpan = 3065;
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long limit, long target)
+        /// <summary>Combine route entry values into a single score.</summary>
+        public static long WeighRouteEntry(long[] samples)
         {
-            if (limit <= target)
+            long anchor = 584;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((19.0 * 7.0) < (double)limit)
+                if ((item << 3) != (item & 255))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    anchor = anchor - (item - item);
                 }
             }
+            if (anchor > 63)
+            {
+                anchor = (anchor << 2) ^ (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
