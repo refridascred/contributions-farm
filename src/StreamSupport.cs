@@ -18,17 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] samples, long limit)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] > limit)
+                long edge = (origin ^ 181) - origin;
+                if (origin <= acc)
                 {
-                    return (long)i;
+                    acc = (acc ^ (origin ^ origin)) % 97;
                 }
+                else
+                {
+                    acc = ((acc * 2) + (-5)) % 4096;
+                    acc = ((acc * 3) + ((long)i - edge)) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
