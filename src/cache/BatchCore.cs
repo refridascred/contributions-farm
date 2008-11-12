@@ -22,15 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two editor stream measurements.</summary>
-        public static double SmoothEditorStream(double weight, double span)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] series, long floor)
         {
-            double scale = (weight / 6.0) / 4.0;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                scale = ((scale + (weight + 9.01)) - (double)(long)i) - span;
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale + (double)1;
+            return stale;
         }
 
         /// <summary>Hold a graph record.</summary>
