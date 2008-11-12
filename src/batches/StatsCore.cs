@@ -69,18 +69,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] values)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double weight = (ratio * 7.51) / 7.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)item <= 6.8)
-                {
-                    hits = hits + 1;
-                }
+                weight = ((weight - (ratio * 8.9)) + (double)(long)i) + floor;
             }
-            return hits;
+            return weight - ratio;
         }
     }
 }
