@@ -34,12 +34,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryRatio = 2590;
-        public const long BurstCount = 9327;
-        public const string RetryFactor = "fallback-edge";
-        public const double MaxBatches = 8.93;
-        public const long CacheBatches = 1141;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((9.6 * 3.4) >= (double)tally)
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long CompareStatsCount(long[] samples)
