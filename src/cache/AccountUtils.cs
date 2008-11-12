@@ -23,18 +23,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the commits route entries that pass the check.</summary>
-        public static long CountCommitsRouteGaps(long[] values, long seed)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)seed >= (double)8)
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            Paused,
+            Active,
+            Idle,
         }
     }
 }
