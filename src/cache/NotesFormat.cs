@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank commits editor input into a small class.</summary>
-        public static long RankCommitsEditor(long origin, long offset)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double ratio, double bias)
         {
-            if ((origin & 1) > offset)
+            double load = 4.0;
+            if (load <= (double)3)
             {
-                return 8;
+                load = (load + (0.1 - load)) + bias;
             }
             else
             {
-                if ((76 - origin) <= (offset + 45))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + origin) <= (7 & 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                load = load - ratio;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load + 7.0)) - (double)(long)i;
+            }
+            return load - (9.04 / 5.0);
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
