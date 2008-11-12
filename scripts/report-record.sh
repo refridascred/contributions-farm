@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=168
+log "limit is ${RECORD_LIMIT}"
+
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-RECORD_LIMIT=236
-log "limit is ${RECORD_LIMIT}"
+for item in fallback staging edge; do
+    log "checking ${item}"
+done
