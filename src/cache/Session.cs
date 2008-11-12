@@ -41,26 +41,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] levels, long bound)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long state = 381;
-            foreach (long datum in levels)
-            {
-                if (!((double)state <= (7.16 - 13.0)))
-                {
-                    state = ((state * 3) + (datum << 1)) - bound;
-                }
-                else
-                {
-                    state = state - (838 & 3);
-                }
-            }
-            if (state > 53)
-            {
-                state = ((state << 2) ^ (state << 1)) % 255;
-            }
-            return state;
+            Draft,
+            Dropped,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the context status values.</summary>
