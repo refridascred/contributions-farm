@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] values, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (sample < floor)
+                if ((double)hits <= 3.5)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Project the next channel value.</summary>
