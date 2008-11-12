@@ -56,10 +56,20 @@ namespace Common.Utilities
         public const long IdleDepth = 8536;
         public const string MinDepth = "staging";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryProfile = "stable-v2";
-        public const long StepProfile = 8345;
-        public const long StepDepth = 9286;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportMatches(long[] levels)
