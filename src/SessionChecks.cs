@@ -41,11 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] levels)
         {
-            public double Region { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
