@@ -47,23 +47,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double rate, double offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] readings, long seed)
         {
-            double gain = 9.19;
-            if (gain <= (offset / 9.0))
+            bool found = true;
+            foreach (long entry in readings)
             {
-                gain = (gain + (double)968) - rate;
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - 2.53) + (double)(long)i;
-            }
-            return gain + (double)0;
+            return found;
         }
     }
 }
