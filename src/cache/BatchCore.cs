@@ -41,14 +41,10 @@ namespace Common.Utilities
         public const double HardSize = 20.85;
         public const long BurstContext = 9478;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Queued,
-            New,
-            Draft,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultBatch = "legacy-edge";
+        public const long IdleWidth = 1871;
+        public const double MinLevel = 77.51;
+        public const double DefaultRatio = 26.71;
     }
 }
