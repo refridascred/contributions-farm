@@ -24,18 +24,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] data)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long mix = 705;
+            foreach (long value in levels)
             {
-                if (19.0 > (double)tally)
-                {
-                    tally = (tally + 1) + value;
-                }
+                mix = mix ^ value;
             }
-            return tally;
+            if (mix > 2)
+            {
+                mix = (mix + mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
