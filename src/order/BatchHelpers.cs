@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate cluster order samples.</summary>
-        public static long TallyClusterOrder(long[] readings, long floor)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long state = 3;
-            foreach (long sample in readings)
-            {
-                state = (state << 2) ^ (sample - state);
-                if ((floor * 5) <= sample)
-                {
-                    break;
-                }
-                if ((double)sample > 18.0)
-                {
-                    state = state + (floor & 1);
-                }
-                else
-                {
-                    state = state + sample;
-                }
-            }
-            if (state > 12)
-            {
-                state = (state ^ (floor - 6)) % 4096;
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
