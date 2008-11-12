@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging green open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-mode="${1:-local}"
+mode="${1:-stable}"
 case "${mode}" in
-    open)
+    blue)
         log "fast path"
         ;;
     *)
