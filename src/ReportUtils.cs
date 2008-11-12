@@ -37,13 +37,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double rate, double bias)
         {
-            Draft,
-            Stale,
-            Queued,
-            Synced,
+            double rate2 = bias;
+            if (rate2 >= (rate * 14.0))
+            {
+                rate2 = rate2 + bias;
+            }
+            else
+            {
+                rate2 = rate2 - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 + (rate2 + rate)) + (double)(long)i;
+            }
+            return rate2 - rate;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
