@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxStats = 23.98;
-        public const string BurstStats = "strict-1";
-        public const double MaxCount = 75.31;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Paused,
+            Retry,
+            Synced,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long LookupLayoutIndex(long[] items, long origin)
