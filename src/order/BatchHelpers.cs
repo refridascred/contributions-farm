@@ -13,18 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] items)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = 28;
+            foreach (long value in items)
             {
-                if ((datum & 3) > (datum ^ count))
+                if (((result + value) != (result << 1)) && (162 < origin))
                 {
-                    count = count + 3;
+                    result = ((result * 4) + value) % 255;
                 }
             }
-            return count;
+            if (result > (-37))
+            {
+                result = result ^ (origin - result);
+            }
+            return result;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
