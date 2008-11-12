@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Classify a route cache pair into a bucket.</summary>
+        public static long ClassifyRouteCache(long target, long offset)
         {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            long cur = target + offset;
+            if ((double)offset >= (double)69)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((5.5 * 4.0) >= (double)cur)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((9.0 - 6.23) != (double)cur)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(79 <= offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
