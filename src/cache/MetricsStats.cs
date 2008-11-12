@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitWidth = "fallback-edge";
-        public const string MinAccount = "local";
-        public const long HardAccount = 5824;
-        public const string BaseBudget = "standard-v2";
-        public const double LimitAccount = 7.25;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Dropped,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
