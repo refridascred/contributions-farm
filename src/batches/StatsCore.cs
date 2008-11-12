@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Accumulate report profile samples.</summary>
+        public static long TallyReportProfile(long[] series, long offset)
         {
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long sum = 380;
+            foreach (long cell in series)
+            {
+                sum = ((sum - (cell % 5)) % 65521) - offset;
+            }
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
