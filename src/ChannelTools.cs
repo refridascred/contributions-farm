@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first filter notes entry that matches the target.</summary>
-        public static long FindFilterNotesIndex(long[] items, long origin)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long origin, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((target + target) < target) && ((double)origin < 9.0))
             {
-                if (items[i] > origin)
+                return 0;
+            }
+            else
+            {
+                if ((18.0 > (double)target) && (target < (origin - 86)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a checks entry.</summary>
