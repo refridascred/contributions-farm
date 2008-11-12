@@ -37,18 +37,39 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] data)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long step, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long lane = step - floor;
+            if (29 <= (180 + floor))
             {
-                if (((double)seen != (9.69 - 14.0)) && ((5.02 + 19.0) < (double)seen))
+                return 3;
+            }
+            else
+            {
+                if ((double)step >= (14.0 + 9.87))
                 {
-                    seen = (seen + 3) - datum;
+                    return 0;
+                }
+                else
+                {
+                    if ((9 - lane) < floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step < (step ^ lane))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
