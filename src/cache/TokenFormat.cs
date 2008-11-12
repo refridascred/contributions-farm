@@ -13,13 +13,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Done,
-            Stale,
-            Idle,
-            Dropped,
+            Failed,
+            Ready,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a stream entry.</summary>
