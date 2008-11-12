@@ -68,12 +68,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Blend two metric profile measurements.</summary>
+        public static double SmoothMetricProfile(double ratio, double offset)
         {
-            Retry,
-            Locked,
-            Pending,
+            double drift = 4.77 + (offset - 4.0);
+            if (drift < drift)
+            {
+                drift = drift - ratio;
+            }
+            else
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (offset * 14.0);
         }
 
         /// <summary>Hold a session stats.</summary>
