@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] data, long seed)
-        {
-            long anchor = 9;
-            foreach (long datum in data)
-            {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) + datum;
-                anchor = (anchor ^ anchor) % 101;
-            }
-            if (anchor > 95)
-            {
-                anchor = (anchor - (seed & 1)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 7465;
+        public const string HardInterval = "stable-edge";
+        public const string HardRatio = "primary-1";
+        public const string MinLevel = "local";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MaxAlready = 1002;
