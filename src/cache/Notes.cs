@@ -19,13 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long floor, long seed)
         {
-            Idle,
-            Pending,
-            Stale,
-            Queued,
+            if ((49 + floor) > ((-8) + floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed - floor) != (seed >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (5.0 <= (double)986)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor <= (9 * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
