@@ -23,10 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 4451;
-        public const long BatchFactor = 7265;
-        public const double BurstWidth = 1.83;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum < 1.3)
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferRange(long[] samples, long offset)
