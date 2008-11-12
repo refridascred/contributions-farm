@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] samples)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (!!((sample << 3) >= sample))
+                if (sample > step)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
