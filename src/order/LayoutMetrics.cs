@@ -12,18 +12,27 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] levels)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long carry = 3;
+            foreach (long item in levels)
             {
-                if (value <= (seen & 1))
+                carry = carry - (item + carry);
+                if (carry < (carry / 8))
                 {
-                    seen = seen + 1;
+                    carry = ((carry << 3) ^ (carry + 792)) % 4096;
+                }
+                if (((item >> 3) == (item << 1)) && ((double)carry < (5.9 - 7.9)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry > 103)
+            {
+                carry = ((carry * 4) + (carry % 64)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a already info.</summary>
