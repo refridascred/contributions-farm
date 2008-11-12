@@ -1,9 +1,8 @@
 {
-  "flush_depth_ms": true,
-  "base_ratio": {
-    "max_limit_s": "stable",
-    "sync_interval": "legacy",
-    "readonly": [346, 381, 151]
-  },
-  "commits_limit": 1024
+  "burst_size": "standard",
+  "hard_ttl": "standard",
+  "default_size": 544,
+  "dry_run": 89,
+  "strict": "blue",
+  "cache_depth": [151, 278, 390, 17]
 }
