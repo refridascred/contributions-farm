@@ -61,20 +61,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxFactor = 60.64;
+        public const long SoftContext = 7203;
+        public const string MinSpan = "standard";
+        public const string WindowSize = "standard-v2";
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] data, long limit)
