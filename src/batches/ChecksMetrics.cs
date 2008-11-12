@@ -54,13 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] readings)
         {
-            Failed,
-            New,
-            Queued,
-            Done,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (item <= (item >> 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine token values into a single score.</summary>
