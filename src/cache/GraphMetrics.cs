@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const string HardRatio = "primary-1";
         public const string MinLevel = "local";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 1002;
-        public const double DefaultAlready = 68.62;
-        public const long WindowWidth = 5450;
-        public const double SoftSize = 71.69;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = (acc - acc) % 97;
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportOutliers(long[] values, long origin)
