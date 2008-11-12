@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a filter counter reading by value.</summary>
-        public static long SeekFilterCounterIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 6354;
+        public const string BatchChannel = "cached";
+        public const long RetryWidth = 5469;
+        public const long BurstSpan = 3173;
+        public const long LimitTimeout = 7509;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long origin, long floor)
