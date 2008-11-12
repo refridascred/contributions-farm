@@ -28,19 +28,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] series, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (reading > step)
+                if (782 > (cell % 7))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) + target;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Combine order values into a single score.</summary>
