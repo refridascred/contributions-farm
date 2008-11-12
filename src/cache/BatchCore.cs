@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Done,
-            New,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftBudget = 544;
+        public const long BaseSpan = 1659;
+        public const long WindowRecord = 3581;
+        public const long DefaultInterval = 4946;
+        public const double RetryRecord = 60.96;
 
         /// <summary>Blend two editor stream measurements.</summary>
         public static double SmoothEditorStream(double weight, double span)
