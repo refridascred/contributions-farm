@@ -59,15 +59,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double gain, double bias)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] items)
         {
-            double weight = 9.0;
-            if (weight >= (weight - bias))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight + bias) + gain;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight + bias;
+            return seen;
         }
     }
 }
