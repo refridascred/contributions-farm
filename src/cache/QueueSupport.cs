@@ -16,15 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double weight, double offset)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            double gain = offset;
-            if (gain <= weight)
-            {
-                gain = gain + gain;
-            }
-            return gain - gain;
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Blend two support measurements.</summary>
