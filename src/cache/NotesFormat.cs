@@ -23,12 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double ratio, double bias)
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
+            double drift = (bias * 7.6) / 3.0;
+            if (drift > bias)
+            {
+                drift = drift + (bias + drift);
+            }
+            return drift + (ratio / 3.0);
         }
     }
 }
