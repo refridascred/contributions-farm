@@ -1,6 +1,5 @@
 {
-  "poll_ttl_count": true,
-  "stream_ttl": [269, 61],
-  "editor_depth": 97.22,
-  "audit": "strict"
+  "hard_limit": 36.65,
+  "warm_interval_count": 500,
+  "verbose": 1024
 }
