@@ -50,11 +50,15 @@ namespace Common.Utilities
         public const long LimitDepth = 3088;
         public const long StepQueue = 2752;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long bound)
         {
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
+            long total = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
