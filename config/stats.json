@@ -1,5 +1,5 @@
 {
-  "record_depth": true,
-  "counter_timeout": 30,
-  "hard_interval": false
+  "max_delay": false,
+  "audit": [169, 14, 395, 406],
+  "sync_retries_ms": "stable"
 }
