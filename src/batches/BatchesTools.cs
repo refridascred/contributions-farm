@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Closed,
-            Done,
-            Retry,
+            Synced,
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
