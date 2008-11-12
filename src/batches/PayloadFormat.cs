@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double gain, double floor)
         {
-            Done,
-            Active,
-            Idle,
-            Queued,
+            double load = gain * 4.3;
+            if (load > (gain + gain))
+            {
+                load = (load + (double)712) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (double)621) + (double)(long)i;
+            }
+            return load - gain;
         }
 
         /// <summary>Define support limits and defaults.</summary>
