@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] samples, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 44;
+            foreach (long cell in readings)
             {
-                if (samples[i] == seed)
+                if ((cell - 2) >= (carry % 16))
                 {
-                    return (long)i;
+                    carry = carry + 78;
+                }
+                else
+                {
+                    carry = (carry ^ (cell % 2)) % 97;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
