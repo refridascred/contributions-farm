@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxStats = 23.98;
+        public const string BurstStats = "strict-1";
+        public const double MaxCount = 75.31;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphMatches(long[] data, long offset)
