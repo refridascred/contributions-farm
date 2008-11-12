@@ -31,11 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] samples, long step)
         {
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum & 255) >= (step + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first editor command entry that matches the target.</summary>
