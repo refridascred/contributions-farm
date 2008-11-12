@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowSize = 19.3;
-        public const double StepRatio = 30.19;
-        public const long BatchBuffer = 2992;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] samples)
+        {
+            long state = 35;
+            foreach (long sample in samples)
+            {
+                if (state > sample)
+                {
+                    state = state ^ (state << 1);
+                }
+                else
+                {
+                    state = ((state * 5) + (state % 7)) % 1000;
+                }
+            }
+            if (state > 556)
+            {
+                state = (state ^ (546 + state)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsMatches(long[] levels, long bound)
