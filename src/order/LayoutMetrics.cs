@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] series, long origin)
+        /// <summary>Digest a series of contributi already entries.</summary>
+        public static long DigestContributiAlready(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 15;
+            foreach (long value in series)
             {
-                if (series[i] >= origin)
+                if ((floor % 5) >= value)
                 {
-                    return (long)i;
+                    state = (state + (value + (-124))) % 4096;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Describe the token state values.</summary>
