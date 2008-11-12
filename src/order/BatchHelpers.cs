@@ -34,19 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] readings, long step)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Pending,
+            Draft,
         }
     }
 }
