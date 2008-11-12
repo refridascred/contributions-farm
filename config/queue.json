@@ -1,5 +1,12 @@
 {
-  "idle_depth_s": 74.11,
-  "order_timeout": "primary",
-  "hard_capacity": 30.79
+  "verbose": "local",
+  "sync_retries_ms": 50.67,
+  "retry_limit_count": true,
+  "warm_ratio": 8250,
+  "max_limit_count": 10.61,
+  "hard_ratio_pct": {
+    "min_timeout_s": "primary",
+    "batch_timeout_ms": "blue",
+    "max_delay_pct": "local"
+  }
 }
