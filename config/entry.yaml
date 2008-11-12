@@ -1,8 +1,18 @@
 # entry settings
-order_threshold: 39.2
-soft_delay_s: 15.81
-readonly:
-  - standard
-  - open
-  - staging
-  - cached
+contributi_delay: 65
+session_depth: false
+sync_interval_pct: 17.79
+order_depth: false
+format_depth: standard
+report_ttl:
+  audit:
+    batch_depth_s: 10.6
+    route_retries:
+      - 302
+      - 321
+    window_ttl: 6600
+    channel_ttl: true
+    burst_capacity_ms: 60
+    max_size_pct: 85.54
+  cache_interval_ms: 5766
+  tools_delay: fallback
