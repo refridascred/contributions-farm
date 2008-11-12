@@ -33,38 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long floor, long seed)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] values, long seed)
         {
-            if ((49 + floor) > ((-8) + floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed - floor) != (seed >> 5))
+                if (values[i] > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (5.0 <= (double)986)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor <= (9 * 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
