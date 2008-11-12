@@ -38,10 +38,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 7589;
-        public const string BurstRoute = "primary-v2";
-        public const double CacheRoute = 13.95;
-        public const long BurstCount = 9694;
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double gain, double floor)
+        {
+            double ratio = (double)(85 + 0);
+            if (ratio < (double)179)
+            {
+                ratio = ratio - (ratio + gain);
+            }
+            else
+            {
+                ratio = ratio - floor;
+            }
+            return ratio + (floor - ratio);
+        }
     }
 }
