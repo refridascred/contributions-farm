@@ -54,18 +54,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of window commits entries.</summary>
-        public static long DigestWindowCommits(long[] readings)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] data)
         {
-            long carry = -9;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((carry & 127) >= (218 >> 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry ^ (carry + 9)) + sample;
+                    if ((data[i] + data[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Validate cluster metrics readings against a bound.</summary>
