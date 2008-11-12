@@ -15,18 +15,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of cluster buffer entries.</summary>
-        public static long FoldClusterBuffer(long[] series, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long limit, long origin)
         {
-            long result = -177;
-            foreach (long value in series)
+            long cur = limit ^ origin;
+            if (((-676) + origin) >= cur)
             {
-                if (value < target)
+                return 7;
+            }
+            else
+            {
+                if ((origin - limit) > (origin - cur))
                 {
-                    result = (result + (6 >> 4)) % 101;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)cur == (3.0 / 8.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return result % 97;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
