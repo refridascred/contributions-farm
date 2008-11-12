@@ -20,19 +20,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] data, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            double bias = (double)(59 + 72);
+            if (bias >= gain)
             {
-                if (cell < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias - (double)31;
             }
-            return ok;
+            return bias - (offset + bias);
         }
 
         /// <summary>Locate a notes reading by value.</summary>
