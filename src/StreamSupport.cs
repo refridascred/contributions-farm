@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public double Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
