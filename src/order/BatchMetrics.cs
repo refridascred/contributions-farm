@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] series, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] samples)
         {
-            long mix = -87;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((floor / 5) >= floor)
+                if ((double)matches < (9.71 + 0.31))
                 {
-                    mix = ((mix + ((-5) + (-678))) % 4096) + cell;
-                }
-                else
-                {
-                    mix = (mix * 4) + (floor << 1);
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a metric stats.</summary>
