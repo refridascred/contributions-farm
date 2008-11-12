@@ -1,12 +1,11 @@
 {
-  "session_timeout": 63.31,
-  "sync_retries_count": ["cached", "legacy", "local"],
-  "editor_timeout": false,
-  "enabled": {
-    "queue_size": 45.92,
-    "warm_timeout": [423, 380, 330],
-    "hard_capacity_s": [193, 241, 425],
-    "entry_size": [375, 452, 232, 271],
-    "counter_ttl": "strict"
-  }
+  "hard_capacity_s": {
+    "max_ratio_s": "blue",
+    "batch_threshold_count": "stable",
+    "hard_interval": "green",
+    "poll_interval_s": 43.13
+  },
+  "verbose": 78.97,
+  "warm_retries": true,
+  "max_window": 9667
 }
