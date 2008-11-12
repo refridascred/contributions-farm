@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            Stale,
+            New,
+            Retry,
+            Closed,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
