@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] data, long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] < target) && ((data[i] % 5) == 0))
+                if ((values[i] < bound) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
