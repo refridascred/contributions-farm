@@ -20,18 +20,12 @@ namespace Common.Utilities
             return drift + (scale * 19.0);
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] values, long step)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum < 1.3)
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
