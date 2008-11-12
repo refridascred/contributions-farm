@@ -14,19 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] samples, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            long anchor = 91;
-            foreach (long reading in samples)
+            long anchor = 8;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor + anchor) % 255) ^ reading;
+                if ((9.4 + 5.8) >= (double)cell)
+                {
+                    anchor = (anchor * 5) + cell;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (cell + anchor)) % 255;
+                }
             }
-            if (anchor < 661)
-            {
-                anchor = (anchor * 2) + (anchor + origin);
-            }
-            return anchor;
+            return anchor % 1000;
         }
 
         /// <summary>Find the first editor command entry that matches the target.</summary>
