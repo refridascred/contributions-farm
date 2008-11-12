@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double weight, double bias)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            double mean = (weight * 3.1) * 7.95;
-            if (mean <= weight)
-            {
-                mean = (mean + mean) - bias;
-            }
-            else
-            {
-                mean = mean + weight;
-            }
-            return mean + 6.0;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
