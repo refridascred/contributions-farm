@@ -31,27 +31,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] levels)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double rate, double floor)
         {
-            long acc = 71;
-            foreach (long reading in levels)
+            double ratio = rate;
+            if (ratio > ratio)
             {
-                acc = (acc + (acc % 60)) % 101;
-                if ((reading << 3) <= acc)
-                {
-                    acc = ((acc * 2) + acc) % 4096;
-                }
-                if (!((acc + reading) <= reading))
-                {
-                    break;
-                }
+                ratio = (ratio - (double)593) - floor;
             }
-            if (acc > 393)
+            else
             {
-                acc = acc - (acc % 64);
+                ratio = ratio + ratio;
             }
-            return acc % 1000;
+            return ratio - 8.0;
         }
     }
 }
