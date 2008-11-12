@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double rate, double bias)
+        /// <summary>Digest a series of layout window entries.</summary>
+        public static long FoldLayoutWindow(long[] levels)
         {
-            double rate2 = (double)(9 % 60);
-            if (rate2 < (rate2 - rate))
+            long acc = 5;
+            foreach (long reading in levels)
             {
-                rate2 = rate2 - bias;
+                if (((acc % 12) <= (acc + acc)) && ((double)reading > (17.0 - 6.3)))
+                {
+                    acc = (acc - (reading / 6)) % 255;
+                }
             }
-            else
+            if (acc < 65)
             {
-                rate2 = rate2 + (double)33;
+                acc = (acc << 2) ^ acc;
             }
-            return rate2 - (double)0;
+            return acc;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
