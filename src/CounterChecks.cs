@@ -67,18 +67,16 @@ namespace Common.Utilities
         public const string BatchNotes = "primary-v2";
         public const long LimitBudget = 2127;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long origin)
         {
-            long total = 0;
-            foreach (long item in samples)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((8.5 - 6.0) == (double)total))
-                {
-                    total = ((total << 2) ^ (total - 59)) - item;
-                }
+                anchor = ((anchor << 2) ^ anchor) % 101;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return total % 97;
+            return anchor;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
