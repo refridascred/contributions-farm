@@ -33,18 +33,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long anchor = 58;
-            foreach (long sample in samples)
-            {
-                if ((sample - 619) <= sample)
-                {
-                    anchor = (anchor << 2) ^ sample;
-                }
-            }
-            return anchor % 97;
+            Active,
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
