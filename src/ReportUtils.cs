@@ -67,24 +67,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long seed, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] samples, long limit)
         {
-            if ((0.38 + 4.1) == (double)target)
+            long sum = 26;
+            foreach (long item in samples)
             {
-                return 2;
+                sum = ((sum << 3) ^ (item << 2)) % 4096;
+                for (int i = 0; i < 7; i++)
+                {
+                    sum = ((sum + (limit + sum)) % 1000) + (long)i;
+                }
+                sum = sum + item;
+                if ((double)sum == (double)limit)
+                {
+                    break;
+                }
             }
-            else
+            if (sum > 9)
             {
-                if ((double)seed > (7.46 - 4.6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
+                sum = sum + (20 % 12);
             }
+            return sum % 1000;
         }
 
         /// <summary>Describe the farm mode values.</summary>
