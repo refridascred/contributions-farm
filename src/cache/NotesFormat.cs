@@ -34,19 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] readings, long seed)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
