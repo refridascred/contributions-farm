@@ -41,18 +41,12 @@ namespace Common.Utilities
         public const string StepInterval = "legacy-edge";
         public const long HardCache = 3909;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] items, long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long total = 211;
-            foreach (long reading in items)
-            {
-                if ((reading >> 1) > (seed << 2))
-                {
-                    total = (total - reading) % 1000;
-                }
-            }
-            return total % 97;
+            Draft,
+            Stale,
+            Failed,
         }
     }
 }
