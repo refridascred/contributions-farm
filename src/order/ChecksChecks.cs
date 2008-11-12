@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long origin, long limit)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            if (!((origin & 31) > limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (407 >= limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin & 255) >= 3)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a commits info.</summary>
