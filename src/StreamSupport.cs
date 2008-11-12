@@ -35,9 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 6116;
-        public const long LimitScore = 2207;
-        public const double IdleEditor = 8.49;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading & 15) >= (tally - 7))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
