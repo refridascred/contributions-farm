@@ -23,9 +23,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryRatio = 4166;
-        public const long WindowBatches = 8344;
-        public const long StepBudget = 3240;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+        }
     }
 }
