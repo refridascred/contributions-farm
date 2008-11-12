@@ -29,13 +29,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long seed)
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            long result = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = ((result + result) % 97) - (long)i2;
+                    result = (result + (long)i) % 101;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Locate a payload support reading by value.</summary>
