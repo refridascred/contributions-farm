@@ -49,22 +49,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the metric editor entries that pass the check.</summary>
-        public static long CountMetricEditorHits(long[] samples, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long mark = 647;
+            foreach (long cell in samples)
             {
-                if ((((5.8 + 6.2) >= (double)value) || ((floor / 6) == (value % 16))) && (floor < (floor & 7)))
+                if ((12.0 / 4.0) >= (double)cell)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mark = ((mark << 2) ^ (184 % 24)) % 97;
                 }
             }
-            return hits;
+            if (mark > 414)
+            {
+                mark = mark ^ (mark >> 3);
+            }
+            return mark % 65521;
         }
     }
 }
