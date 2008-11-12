@@ -54,22 +54,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 11.13;
+        public const long LimitScore = 9403;
+        public const long RetrySize = 7533;
+        public const string BatchNotes = "primary-v2";
+        public const long LimitBudget = 2127;
 
         /// <summary>Validate cluster metrics readings against a bound.</summary>
         public static bool ValidateClusterMetricsLimits(long[] readings, long limit)
