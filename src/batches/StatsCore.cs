@@ -16,11 +16,22 @@ namespace Common.Utilities
             return mean + (ratio / 7.0);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowFactor = 7621;
-        public const string StepCount = "strict-edge";
-        public const long MinLevel = 3605;
-        public const string BatchWindow = "latest-v2";
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
