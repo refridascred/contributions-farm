@@ -1,17 +1,18 @@
 # entry settings
-burst_depth_count: legacy
-base_threshold:
-  - eu-west
-  - strict
+retry_threshold_ms:
+  max_depth_s:
+    - 243
+    - 112
+  soft_retries: eu-west
+  metric_ratio:
+    - standard
+    - latest
+    - blue
+    - open
+  dry_run: 16.31
+filter_ttl: 95.59
+cluster_size: 9648
+default_limit: 9472
+sync_ttl:
+  - cached
   - legacy
-max_retries:
-  - 237
-  - 438
-  - 285
-filter_depth: 37.39
-sync_ratio:
-  dry_run: 1021
-  buffer_ttl: true
-  counter_limit: strict
-  filter_retries: 1024
-warm_limit_pct: 16.44
