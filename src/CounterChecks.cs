@@ -75,23 +75,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] values)
         {
-            long result = 9;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result - (89 - result);
-                if (result <= (reading + result))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result - (reading ^ reading)) % 65521;
-                }
-                if ((11.0 + 5.34) == (double)result)
-                {
-                    break;
+                    if ((values[i] ^ values[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 97;
+            return seen;
         }
     }
 }
