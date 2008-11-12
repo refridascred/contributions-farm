@@ -12,21 +12,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count schema tools pairs that satisfy a relation.</summary>
-        public static long PairSchemaToolsCount(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((1 + 830) == (step + seen))
                 {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
