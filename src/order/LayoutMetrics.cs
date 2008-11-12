@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of contributi already entries.</summary>
-        public static long DigestContributiAlready(long[] series, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] series, long step)
         {
-            long state = 15;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((floor % 5) >= value)
+                if (cell >= (step << 2))
                 {
-                    state = (state + (value + (-124))) % 4096;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Describe the token state values.</summary>
