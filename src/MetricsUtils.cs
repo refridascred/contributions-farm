@@ -38,11 +38,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] values)
         {
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            long carry = 9;
+            foreach (long sample in values)
+            {
+                carry = ((carry * 3) + (carry / 5)) - sample;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the cluster level values.</summary>
