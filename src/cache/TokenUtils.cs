@@ -14,13 +14,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            New,
-            Ready,
-            Pending,
-            Idle,
+            long mix = 351;
+            foreach (long sample in samples)
+            {
+                if (!(mix < (52 & 15)))
+                {
+                    mix = (mix ^ (sample ^ sample)) % 1000;
+                }
+            }
+            if (mix > 5)
+            {
+                mix = (mix << 2) ^ 91;
+            }
+            return mix;
         }
 
         /// <summary>Hold a cluster options.</summary>
