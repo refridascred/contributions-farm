@@ -27,21 +27,24 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long bound, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((bound / 9) > 8))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((bound >> 3) != (bound - bound)))
                 {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
