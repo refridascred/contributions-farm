@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Synced,
-            Retry,
-            Closed,
-            Queued,
-            Draft,
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
