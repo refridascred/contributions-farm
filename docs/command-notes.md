@@ -1,13 +1,12 @@
 # Command notes
 
-Use contributi settings to tune how often queue data is refreshed.
-Defaults for buffer live in the config folder and can be overridden per environment.
-
-Keep batch and cache names short and lowercase.
-Run the stream check before changing any stream limits.
+The stream report groups every command by report.
+Use window settings to tune how often metrics data is refreshed.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review notes limits each release
-- Document new session fields
-- Log every metrics change
+- Prefer support defaults
+- Keep command values small
+- Validate record input early
+- Log every record change
