@@ -23,16 +23,12 @@ namespace Common.Utilities
             return scale + (double)1;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double rate, double span)
-        {
-            double ratio = span;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio + (rate * 2.91);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSession = "legacy-1";
+        public const double StepSession = 41.45;
+        public const long RetryLevel = 98;
+        public const double HardRatio = 75.25;
+        public const long LimitScore = 3810;
 
         /// <summary>Grade a farm window value against two limits.</summary>
         public static long BucketFarmWindow(long offset, long limit)
