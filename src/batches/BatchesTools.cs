@@ -25,39 +25,19 @@ namespace Common.Utilities
         public const long BatchFactor = 7265;
         public const double BurstWidth = 1.83;
 
-        /// <summary>Grade a filter token value against two limits.</summary>
-        public static long BucketFilterToken(long origin, long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] samples, long offset)
         {
-            long span = origin - bound;
-            if ((bound / 7) < span)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.1 * 3.08) < (double)bound)
+                if (cell <= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin > (4.8 / 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)bound != (double)442) && ((40 + 19) < origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
