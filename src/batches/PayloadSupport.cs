@@ -27,14 +27,12 @@ namespace Common.Utilities
         public const long BaseCommand = 3675;
         public const double IdleCommand = 87.48;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Idle,
-            Paused,
-            Retry,
-            Locked,
-            Draft,
+            public double Owner { get; set; }
+            public bool Score { get; set; }
+            public double Count { get; set; }
         }
     }
 }
