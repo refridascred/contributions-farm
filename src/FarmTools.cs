@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many profile commits samples are out of range.</summary>
-        public static long AuditProfileCommitsGaps(long[] values, long offset)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)sample != (4.6 - 19.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) + offset;
+                    if ((readings[i] + readings[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
