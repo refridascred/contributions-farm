@@ -25,23 +25,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a schema payload figure with a bias.</summary>
-        public static double SmoothSchemaPayload(double rate, double bias)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double scale = rate;
-            if (scale <= (double)0)
-            {
-                scale = (scale + (rate / 4.0)) + bias;
-            }
-            else
-            {
-                scale = scale + (double)843;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (double)2) + (double)(long)i;
-            }
-            return scale + (scale / 9.0);
+            Paused,
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
