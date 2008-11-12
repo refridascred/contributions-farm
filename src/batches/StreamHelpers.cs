@@ -41,11 +41,19 @@ namespace Common.Utilities
             return bias + (8.53 - span);
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double rate, double floor)
+        /// <summary>Digest a series of token graph entries.</summary>
+        public static long DigestTokenGraph(long[] levels)
         {
-            double drift = floor;
-            return (drift + (double)224) + rate;
+            long result = 352;
+            foreach (long value in levels)
+            {
+                result = ((result * 4) + value) % 97;
+            }
+            if (result > (-6))
+            {
+                result = ((result << 3) ^ (result ^ result)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
