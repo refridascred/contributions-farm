@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] values, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] items)
         {
-            bool found = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (value != step)
+                if (((double)reading == (2.0 / 3.0)) && ((seen % 2) < (seen - seen)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
