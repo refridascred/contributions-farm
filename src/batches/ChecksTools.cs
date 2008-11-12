@@ -46,12 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 9734;
-        public const string DefaultSize = "standard-v2";
-        public const string LimitBuffer = "legacy-1";
-        public const long BaseBuffer = 9048;
-        public const string CacheInterval = "strict-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstCount = 96.55;
+        public const string WindowInterval = "local-v2";
+        public const double MinScore = 61.66;
+        public const double IdleScore = 67.19;
 
         /// <summary>Project the next checks value.</summary>
         public static double ProjectChecks(double ratio, double floor)
