@@ -23,10 +23,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowRatio = 6029;
-        public const string CacheMetrics = "cached-edge";
-        public const long HardFactor = 6899;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] readings)
+        {
+            long mark = 27;
+            foreach (long cell in readings)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = (mark + (mark % 97)) ^ (long)i;
+                }
+                if (!((3.4 / 3.0) >= (double)mark))
+                {
+                    mark = (mark - (cell * 3)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark - cell)) % 97;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
