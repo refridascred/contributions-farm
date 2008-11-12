@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)value < (5.4 - 3.81))
                 {
-                    if ((items[i] - items[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) - limit;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
