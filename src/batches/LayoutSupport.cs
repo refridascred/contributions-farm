@@ -69,12 +69,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] levels, long limit)
         {
-            public bool Level { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a order info.</summary>
