@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] samples, long limit)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double gain, double offset)
         {
-            long state = 950;
-            foreach (long item in samples)
+            double ratio = 19.0;
+            for (int i = 0; i < 2; i++)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    state = ((state + ((long)i * 2)) % 255) + limit;
-                    state = (state + item) % 255;
-                }
-                state = ((state << 3) ^ (45 + item)) % 97;
+                ratio = ((ratio + gain) + (double)(long)i) - offset;
             }
-            return state;
+            return ratio - ratio;
         }
 
         /// <summary>Roll a account record counter forward.</summary>
