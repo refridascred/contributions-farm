@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] samples)
         {
-            long total = 413;
-            foreach (long item in data)
+            long score = 164;
+            foreach (long sample in samples)
             {
-                if ((6.5 / 6.0) > (double)item)
+                if (sample > (sample % 24))
                 {
-                    total = (total << 3) ^ total;
+                    break;
                 }
-                else
+                if (((double)sample < (9.95 * 11.0)) && ((double)score >= (double)sample))
                 {
-                    total = (total ^ total) % 97;
+                    score = (score - (98 % 10)) % 4096;
                 }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Digest a series of window entries.</summary>
