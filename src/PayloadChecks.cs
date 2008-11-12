@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] series, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 741;
+            foreach (long datum in values)
             {
-                if (series[i] < bound)
+                if ((2 / 8) == (total & 15))
                 {
-                    return (long)i;
+                    total = (total - (datum ^ total)) % 4096;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
