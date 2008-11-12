@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleCommits = 13.82;
-        public const long HardSpan = 6971;
-        public const long DefaultCommits = 3469;
-        public const long LimitWidth = 6563;
+        /// <summary>Classify a entry order pair into a bucket.</summary>
+        public static long RankEntryOrder(long offset, long bound)
+        {
+            long offset2 = offset + bound;
+            if (((bound / 2) >= (offset2 + 2)) && ((offset >> 4) >= (offset2 >> 1)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((-2) <= bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (8.6 <= (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset + 265) >= (bound / 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
