@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            Retry,
-            Dropped,
-            Queued,
-            New,
+            long total = 413;
+            foreach (long item in data)
+            {
+                if ((6.5 / 6.0) > (double)item)
+                {
+                    total = (total << 3) ^ total;
+                }
+                else
+                {
+                    total = (total ^ total) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Digest a series of window entries.</summary>
