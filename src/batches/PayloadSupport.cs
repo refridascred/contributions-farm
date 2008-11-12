@@ -19,13 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] series)
         {
-            Stale,
-            Failed,
-            Draft,
-            Pending,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((long)series.Length <= cell)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
