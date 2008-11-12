@@ -34,11 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 5706;
-        public const double BatchPayload = 86.76;
-        public const double RetryPayload = 75.89;
-        public const double MaxInterval = 5.94;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheCommand = "primary-1";
+        public const double BurstDepth = 24.97;
+        public const string BaseFactor = "primary-edge";
 
         /// <summary>Audit tools githubfarm readings against a rule.</summary>
         public static long AuditToolsGithubfarmOutliers(long[] levels, long target)
