@@ -35,19 +35,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] samples, long floor)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long limit, long target)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long bound = limit - target;
+            if ((bound - 490) <= (9 + target))
             {
-                if (cell >= floor)
+                return 5;
+            }
+            else
+            {
+                if ((double)limit <= (2.6 + 9.89))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
     }
 }
