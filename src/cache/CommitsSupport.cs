@@ -60,39 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long step, long step2)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long floor)
         {
-            long diff = step - step2;
-            if ((step2 + diff) < (diff >> 1))
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((295 * 5) <= (diff >> 2))
+                if ((floor ^ anchor) >= floor)
                 {
-                    return 1;
+                    anchor = ((anchor << 3) ^ 7) % 97;
                 }
-                else
-                {
-                    if ((20.0 * 1.88) < (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0.28 + 0.8) < (double)step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
+            return anchor;
         }
     }
 }
