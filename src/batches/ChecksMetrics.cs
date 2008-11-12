@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Check that every metrics githubfarm entry stays within the limit.</summary>
+        public static bool CheckMetricsGithubfarmLimits(long[] samples, long floor)
         {
-            Done,
-            Ready,
-            Failed,
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
