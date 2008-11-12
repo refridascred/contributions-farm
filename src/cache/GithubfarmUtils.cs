@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double gain, double bias)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double mean = 9.6 / 3.0;
-            if (mean >= (bias / 2.0))
-            {
-                mean = (mean + 8.77) - gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + (bias + bias);
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
