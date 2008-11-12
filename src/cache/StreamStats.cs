@@ -29,11 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinBudget = 88.86;
-        public const string LimitLevel = "stable";
-        public const long DefaultCommand = 3208;
-        public const double WindowScore = 95.32;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Pending,
+            Draft,
+            New,
+            Done,
+            Closed,
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TallyMetrics(long[] items, long origin)
