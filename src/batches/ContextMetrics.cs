@@ -20,22 +20,11 @@ namespace Common.Utilities
         public const long BatchCounter = 3478;
         public const long StepCounter = 5780;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] samples)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample * 3) <= (hits << 3))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count cache support pairs that satisfy a relation.</summary>
