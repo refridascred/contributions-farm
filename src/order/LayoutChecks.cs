@@ -25,14 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] series, long seed)
         {
-            Idle,
-            Draft,
-            Pending,
-            Retry,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
