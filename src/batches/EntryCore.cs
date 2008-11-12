@@ -26,12 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public bool Total { get; set; }
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit account readings against a rule.</summary>
