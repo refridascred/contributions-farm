@@ -39,11 +39,10 @@ namespace Common.Utilities
         public const long CacheEntry = 2150;
         public const long IdleEntry = 2517;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 17.65;
+        public const string MinReport = "primary";
+        public const long StepCount = 2165;
+        public const double CacheLevel = 37.79;
     }
 }
