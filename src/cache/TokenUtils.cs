@@ -21,15 +21,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] series, long step)
-        {
-            long sum = 30;
-            foreach (long entry in series)
-            {
-                sum = ((sum + (step + 84)) % 255) - entry;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepSize = 5719;
+        public const double HardFactor = 40.49;
+        public const long RetryScore = 8133;
     }
 }
