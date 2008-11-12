@@ -28,14 +28,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Synced,
-            Failed,
-            Ready,
-            Paused,
-            Dropped,
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
