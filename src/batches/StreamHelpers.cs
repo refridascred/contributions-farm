@@ -56,39 +56,18 @@ namespace Common.Utilities
         public const string BaseRecord = "staging-1";
         public const double StepRecord = 97.72;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long seed, long seed2)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] series, long origin)
         {
-            long next = seed ^ seed2;
-            if ((seed2 > (next + seed2)) && ((seed2 << 2) >= (seed + seed)))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((565 + next) < seed) && (next <= (854 - 0)))
+                if (!(reading <= origin) || ((count % 7) > (reading - reading)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((9 >> 5) > (203 - seed)) && ((seed & 1) < (seed2 - seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed2 <= (5.54 + 1.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
