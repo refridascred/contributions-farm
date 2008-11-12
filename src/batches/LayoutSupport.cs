@@ -19,27 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine githubfarm token values into a single score.</summary>
-        public static long TotalGithubfarmToken(long[] series)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] samples, long offset)
         {
-            long acc = 3;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc ^ 2;
-                if ((13.0 * 17.0) > (double)acc)
+                if ((samples[i] >= offset) && ((samples[i] % 5) == 0))
                 {
-                    acc = acc - acc;
-                }
-                else
-                {
-                    acc = (acc ^ (reading - acc)) % 65521;
+                    return (long)i;
                 }
             }
-            if (acc < 66)
-            {
-                acc = acc ^ (4 + acc);
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of context readings.</summary>
