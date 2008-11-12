@@ -1,19 +1,6 @@
 {
-  "enabled": 46,
-  "base_ttl_pct": 51,
-  "poll_interval_pct": "standard",
-  "warm_interval_pct": false,
-  "checks_interval": {
-    "commits_ttl": "primary",
-    "route_delay": ["staging", "green"],
-    "enabled": {
-      "max_retries": "legacy",
-      "compress": "fallback",
-      "max_ttl_ms": 73.13,
-      "dry_run": "latest",
-      "retry_capacity_ms": 100
-    },
-    "base_limit": false
-  },
-  "base_interval_count": 60
+  "min_retries": "eu-west",
+  "burst_ratio_s": "open",
+  "token_window": 100,
+  "checks_window": "stable"
 }
