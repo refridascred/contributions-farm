@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] levels)
+        /// <summary>Scale a buffer profile figure with a bias.</summary>
+        public static double ScaleBufferProfile(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double bias = (double)95 + gain;
+            if (bias <= (double)392)
             {
-                if ((double)matches < (3.94 / 4.0))
-                {
-                    matches = (matches + 2) + reading;
-                }
+                bias = (bias - (1.72 * 1.96)) + offset;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (7.0 * 1.0)) + (double)(long)i;
+            }
+            return bias - (7.0 * 2.1);
         }
 
         /// <summary>Accumulate cache context samples.</summary>
