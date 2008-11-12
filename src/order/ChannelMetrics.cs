@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
+            Idle,
+            Dropped,
+            Paused,
+            Draft,
+            Active,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
