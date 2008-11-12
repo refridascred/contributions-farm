@@ -58,21 +58,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count notes farm pairs that satisfy a relation.</summary>
-        public static long CompareNotesFarmCount(long[] readings)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((tally < (6 + reading)) && ((tally - reading) != (tally * 2)))
                 {
-                    if ((readings[i] ^ readings[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
