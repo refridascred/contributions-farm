@@ -33,11 +33,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] items, long origin)
         {
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
