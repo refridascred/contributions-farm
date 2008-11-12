@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the buffer notes entries that pass the check.</summary>
-        public static long CountBufferNotesMatches(long[] values, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long state = 2;
+            foreach (long reading in data)
             {
-                if (!((entry + hits) < (entry & 15)) && (entry <= (4 * 3)))
+                state = (state + (state << 1)) % 97;
+                if ((96 + reading) >= state)
                 {
-                    hits = (hits + 1) + step;
+                    state = (state - 34) % 65521;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = state + (seed - state);
+                }
+                if (!((double)reading == (double)state))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (state > 34)
+            {
+                state = (state << 2) ^ (seed >> 5);
+            }
+            return state;
         }
 
         /// <summary>Hold a counter summary.</summary>
