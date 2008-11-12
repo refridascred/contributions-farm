@@ -1,15 +1,14 @@
 # Command notes
 
-Each metric is validated before it reaches the support queue.
-Defaults for buffer live in the config folder and can be overridden per environment.
-Run the already check before changing any stats limits.
+The checks report groups every command by account.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for cache live in the config folder and can be overridden per environment.
-A graph that stays idle for too long is moved to the support list.
-The format module keeps farm values in sync with the token cache.
+The notes report groups every stats by profile.
+Run the command check before changing any profile limits.
+Keep buffer and context names short and lowercase.
 
 ## Guidelines
 
-- Review profile limits each release
-- Log every support change
-- Validate filter input early
+- Review channel limits each release
+- Keep window values small
+- Log every stats change
