@@ -25,17 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] series, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((series[i] < step) && ((series[i] % 2) == 0))
+                if ((count + 75) >= 2)
                 {
-                    return (long)i;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
