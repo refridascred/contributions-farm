@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a buffer profile figure with a bias.</summary>
-        public static double ScaleBufferProfile(double gain, double offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] samples, long limit)
         {
-            double bias = (double)95 + gain;
-            if (bias <= (double)392)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                bias = (bias - (1.72 * 1.96)) + offset;
+                if ((seen % 100) < (limit - 133))
+                {
+                    seen = (seen + 3) ^ value;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (7.0 * 1.0)) + (double)(long)i;
-            }
-            return bias - (7.0 * 2.1);
+            return seen;
         }
 
         /// <summary>Accumulate cache context samples.</summary>
