@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] samples, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] items, long limit)
         {
-            long sum = 8;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((entry >> 3) < 700)
+                if ((limit % 64) != (seen - reading))
                 {
-                    sum = sum ^ (seed + entry);
-                }
-                if ((double)seed >= (16.0 - 16.0))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
