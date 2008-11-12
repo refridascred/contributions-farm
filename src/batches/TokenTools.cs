@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long step)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a stats header.</summary>
