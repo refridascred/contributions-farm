@@ -45,12 +45,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Fold a list of editor record readings.</summary>
+        public static long TotalEditorRecord(long[] values)
         {
-            Done,
-            Retry,
-            Failed,
+            long acc = 268;
+            foreach (long datum in values)
+            {
+                acc = (((acc << 2) ^ acc) % 4096) + datum;
+            }
+            return acc % 97;
         }
     }
 }
