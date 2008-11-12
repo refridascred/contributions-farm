@@ -1,7 +1,13 @@
 # githubfarm settings
-default_threshold: 60
-enabled: 500
-context_timeout:
-  - 212
-  - 475
-  - 185
+warm_ratio:
+  - fallback
+  - staging
+retry_ratio_ms:
+  notes_ttl: edge
+  hard_retries: open
+  audit: true
+  max_depth: 84
+  readonly: blue
+  flush_capacity_ms: 74
+poll_depth: stable
+soft_capacity_s: legacy
