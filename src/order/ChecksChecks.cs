@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseRatio = 4386;
-        public const long MaxSpan = 3323;
-        public const long StepFactor = 8958;
-        public const long StepWindow = 8773;
-        public const double BatchRatio = 26.67;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleBudget = 8227;
+        public const double CacheChecks = 68.31;
+        public const long HardChecks = 4008;
+        public const long StepChecks = 1911;
+        public const long BaseSpan = 4795;
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
