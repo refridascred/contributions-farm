@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double ratio, double floor)
+        /// <summary>Locate a window batches reading by value.</summary>
+        public static long SeekWindowBatchesIndex(long[] items, long floor)
         {
-            double mean = 6.3;
-            if (mean < (8.69 - ratio))
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - ratio) - floor;
+                if ((items[i] < floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (ratio / 7.0);
+            return -1;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
