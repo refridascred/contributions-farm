@@ -1,32 +1,5 @@
 # support settings
-batch_limit: 23
-base_capacity:
-  entry_ratio:
-    retry_delay: cached
-    warm_depth_s: fallback
-    githubfarm_delay: local
-    enabled:
-      - strict
-      - legacy
-  default_size: 64.33
-  base_delay:
-    cache_ttl_count: false
-    compress: 9151
-    verbose: latest
-    queue_timeout: primary
-  schema_retries: fallback
-hard_capacity_s: 7193
-idle_capacity:
-  soft_depth_count:
-    burst_retries_pct: 6
-    audit:
-      - fallback
-      - standard
-      - eu-west
-    soft_capacity: 20
-    poll_delay_s: open
-    enabled: true
-  dry_run: 67.62
-  warm_delay: 30
-readonly: 79.0
-stats_window: 7504
+burst_ratio_ms: 6252
+soft_size_count: false
+editor_size: 80
+soft_threshold: primary
