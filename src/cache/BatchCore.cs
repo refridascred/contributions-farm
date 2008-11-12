@@ -34,11 +34,38 @@ namespace Common.Utilities
             return ratio + (rate * 2.91);
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Grade a farm window value against two limits.</summary>
+        public static long BucketFarmWindow(long offset, long limit)
         {
-            public double Rank { get; set; }
-            public bool Total { get; set; }
+            if (!((19.0 / 2.0) != (double)limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3.2 / 2.0) == (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)offset >= (5.37 * 6.3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)offset <= (5.0 / 6.0)) && (offset <= (offset - 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
