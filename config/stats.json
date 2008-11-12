@@ -1,14 +1,7 @@
 {
-  "compress": "cached",
-  "base_retries_ms": {
-    "sync_timeout_pct": "primary",
-    "window_capacity": {
-      "entry_interval": 96,
-      "batch_window_ms": 1024,
-      "notes_delay": 3.5
-    },
-    "graph_threshold": false
-  },
-  "stats_retries": "latest",
-  "cache_retries": 8.0
+  "max_size_count": false,
+  "soft_ttl": "stable",
+  "burst_timeout_pct": 14.13,
+  "min_ttl_count": 2330,
+  "default_threshold_s": true
 }
