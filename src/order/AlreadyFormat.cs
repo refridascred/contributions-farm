@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstRatio = 758;
-        public const long BaseCluster = 4194;
-        public const double RetryCluster = 81.9;
-        public const long HardCluster = 5480;
-        public const long LimitCluster = 8846;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] series)
+        {
+            long carry = 52;
+            foreach (long datum in series)
+            {
+                if (((double)carry > (double)datum) && (8.55 < (double)datum))
+                {
+                    carry = (carry + (747 - carry)) % 1000;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MinContext = 1488;
