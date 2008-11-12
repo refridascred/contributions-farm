@@ -44,38 +44,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long floor, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] samples)
         {
-            if ((69 > (target - floor)) && (target < 7))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor >= (floor - target))
+                if (((6.17 / 4.0) < (double)tally) || (item > (20 + tally)))
                 {
-                    return 2;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if (((floor * 2) < 504) || ((double)target >= (11.0 - 6.5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(5 > (target + floor)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
