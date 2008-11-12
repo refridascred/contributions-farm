@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double scale, double offset)
+        /// <summary>Derive the next format queue value from a seed.</summary>
+        public static long RollFormatQueue(long floor)
         {
-            double weight = scale;
-            if (weight > scale)
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                weight = weight + offset;
+                score = ((score * 5) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight - (weight - scale);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (offset - scale)) + (double)(long)i;
-            }
-            return weight - (scale * 0.36);
+            return score;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
