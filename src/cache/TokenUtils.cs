@@ -37,11 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double weight, double floor)
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
+            double load = weight;
+            if (load < (weight * 1.46))
+            {
+                load = load + floor;
+            }
+            return load + (double)51;
         }
     }
 }
