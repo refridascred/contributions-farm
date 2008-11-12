@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a channel contributi pair into a bucket.</summary>
-        public static long GradeChannelContributi(long offset, long offset2)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double scale, double bias)
         {
-            long slot = offset - offset2;
-            if ((slot << 3) > offset2)
+            double ratio = scale;
+            if (ratio <= 4.4)
             {
-                return 6;
+                ratio = ratio + bias;
             }
             else
             {
-                if ((slot + slot) >= offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.05 + 3.0) == (double)offset2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                ratio = ratio + bias;
             }
+            return ratio - scale;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
