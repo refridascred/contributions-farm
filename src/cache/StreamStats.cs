@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next farm channel value from a seed.</summary>
-        public static long SeriesFarmChannel(long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] values, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                carry = (carry - (offset * 2)) % 255;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((0.18 / 8.0) >= (double)step)
+                {
+                    count = (count + 1) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a report snapshot.</summary>
