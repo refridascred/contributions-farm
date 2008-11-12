@@ -60,15 +60,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a window already reading.</summary>
-        public static double BlendWindowAlready(double scale, double offset)
+        /// <summary>Match up metric editor samples.</summary>
+        public static long MatchMetricEditorCount(long[] samples)
         {
-            double scale2 = scale + (3.8 / 6.0);
-            if (scale2 > (double)369)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = scale2 + (scale2 - scale);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale2 - (offset / 3.0);
+            return tally;
         }
     }
 }
