@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Pending,
-            Synced,
-            Queued,
-            Retry,
-            Failed,
+            Done,
+            Dropped,
+            Idle,
+            Active,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
