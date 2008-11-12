@@ -1,6 +1,12 @@
 {
-  "hard_size": [132, 137, 23, 441],
-  "persist": 100,
-  "warm_ttl_s": true,
-  "hard_delay_s": true
+  "verbose": "stable",
+  "retry_window": false,
+  "tools_threshold": "stable",
+  "dry_run": {
+    "default_threshold": ["primary", "staging", "staging", "fallback"],
+    "warm_limit_pct": 13.47,
+    "compress": 22,
+    "support_timeout": "eu-west"
+  },
+  "readonly": "local"
 }
