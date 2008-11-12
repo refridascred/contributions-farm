@@ -25,18 +25,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mix = 11;
-            foreach (long cell in samples)
-            {
-                if (((23 % 8) >= (mix - cell)) || ((mix & 63) <= (cell + mix)))
-                {
-                    mix = ((mix * 3) + (cell & 127)) % 65521;
-                }
-            }
-            return mix;
+            Pending,
+            Closed,
+            Paused,
         }
     }
 }
