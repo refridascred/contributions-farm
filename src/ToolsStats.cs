@@ -88,31 +88,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long limit, long origin)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            if ((55 * 3) == (limit - limit))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((895 >= (origin % 8)) && ((limit & 3) != (86 >> 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + limit) > origin)
+                    if ((values[i] ^ values[j]) == 20)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
