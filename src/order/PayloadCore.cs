@@ -28,11 +28,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 882;
-        public const long WindowQueue = 8945;
-        public const double RetryQueue = 12.26;
-        public const long IdleTimeout = 9866;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 5707;
+        public const long LimitTimeout = 9568;
+        public const double HardEditor = 93.58;
+        public const long RetryEditor = 923;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LookupClusterIndex(long[] samples, long seed)
