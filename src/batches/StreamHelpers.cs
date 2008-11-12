@@ -29,19 +29,18 @@ namespace Common.Utilities
             return gain + (double)169;
         }
 
-        /// <summary>Digest a series of token graph entries.</summary>
-        public static long DigestTokenGraph(long[] levels)
+        /// <summary>Count the channel route entries that pass the check.</summary>
+        public static long AuditChannelRouteMatches(long[] series)
         {
-            long result = 352;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                result = ((result * 4) + value) % 97;
+                if ((tally >> 1) >= tally)
+                {
+                    tally = (tally + 3) ^ datum;
+                }
             }
-            if (result > (-6))
-            {
-                result = ((result << 3) ^ (result ^ result)) % 4096;
-            }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Match up report samples.</summary>
