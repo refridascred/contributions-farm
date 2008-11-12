@@ -12,13 +12,12 @@ namespace Common.Utilities
             return drift + (gain - drift);
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            public bool Score { get; set; }
             public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
