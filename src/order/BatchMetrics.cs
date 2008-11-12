@@ -63,22 +63,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] data, long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)seen < (14.0 - 1.76))
-                {
-                    seen = ((seen + 2) + reading) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Active,
+            Dropped,
+            Stale,
+            Locked,
         }
     }
 }
