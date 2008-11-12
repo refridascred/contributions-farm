@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] data, long step)
+        /// <summary>Count the cluster commits entries that pass the check.</summary>
+        public static long TallyClusterCommitsMatches(long[] items, long seed)
         {
             long count = 0;
-            foreach (long reading in data)
+            foreach (long value in items)
             {
-                if ((double)3 > (double)count)
+                if ((8.0 * 14.0) > (double)value)
                 {
-                    count = ((count + 2) ^ reading) + step;
+                    count = (count + 2) + seed;
                 }
             }
             return count;
