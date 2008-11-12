@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count filter token pairs that satisfy a relation.</summary>
-        public static long PairFilterTokenCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchMetrics = 71.78;
+        public const string DefaultMetrics = "cached-v2";
+        public const long IdleInterval = 7974;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
