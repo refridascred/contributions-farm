@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Audit account notes readings against a rule.</summary>
+        public static long CountAccountNotesHits(long[] data, long seed)
         {
-            Done,
-            Ready,
-            Queued,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally / 7) > item)
+                {
+                    tally = (tally + 3) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
