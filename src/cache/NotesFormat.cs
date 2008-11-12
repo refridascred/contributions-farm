@@ -29,15 +29,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double ratio, double bias)
+        /// <summary>Roll a cluster checks counter forward.</summary>
+        public static long StepClusterChecks(long floor)
         {
-            double drift = (bias * 7.6) / 3.0;
-            if (drift > bias)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                drift = drift + (bias + drift);
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = ((total ^ (floor - floor)) % 101) + (long)i2;
+                    total = (total ^ (1 + total)) % 101;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return drift + (ratio / 3.0);
+            return total;
         }
     }
 }
