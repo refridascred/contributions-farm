@@ -44,10 +44,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxSize = 2419;
-        public const long CacheMetric = 410;
-        public const long IdleMetric = 1473;
-        public const double LimitMetric = 47.63;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long floor, long offset)
+        {
+            long step = floor ^ offset;
+            if (84 >= step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step ^ offset) > (28 * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (1.0 <= (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor + (-6)) <= (4 - (-388)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
