@@ -28,15 +28,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Fold a list of farm contributi readings.</summary>
+        public static long DigestFarmContributi(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
+            long sum = 59;
+            foreach (long item in items)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                sum = sum - (item & 1);
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
