@@ -19,19 +19,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate metric checks readings against a bound.</summary>
-        public static bool GuardMetricChecksRange(long[] readings, long seed)
+        /// <summary>Fold a list of batch queue readings.</summary>
+        public static long ScoreBatchQueue(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long score = 826;
+            foreach (long value in samples)
             {
-                if (reading >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score ^ (424 >> 3)) % 97) ^ value;
             }
-            return found;
+            return score;
         }
     }
 }
