@@ -1,17 +1,8 @@
 {
-  "poll_retries": 7246,
-  "audit": {
-    "audit": true,
-    "metric_window": 78,
-    "enabled": {
-      "hard_size_count": "eu-west",
-      "min_ratio": 1,
-      "batch_capacity": 76,
-      "format_window": 1,
-      "default_timeout": "latest",
-      "batch_capacity_count": true
-    },
-    "tools_window": "primary"
-  },
-  "base_delay_count": "stable"
+  "checks_threshold": 100,
+  "verbose": 92,
+  "enabled": "local",
+  "retry_size_count": 1940,
+  "retry_capacity": true,
+  "order_limit": "cached"
 }
