@@ -14,10 +14,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 775;
-        public const long MinEntry = 4875;
-        public const long CacheEntry = 2986;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool ValidateStatsRange(long[] items, long step)
