@@ -19,12 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinSpan = 7310;
-        public const long CacheWidth = 1008;
-        public const string HardCounter = "staging-1";
-        public const long BatchCounter = 3478;
-        public const long StepCounter = 5780;
+        /// <summary>Check that every buffer layout entry stays within the limit.</summary>
+        public static bool CheckBufferLayoutLimits(long[] readings, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
