@@ -20,12 +20,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Draft,
+            Synced,
+            Stale,
             Closed,
-            Active,
+            New,
+            Done,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
