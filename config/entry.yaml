@@ -1,11 +1,19 @@
 # entry settings
-max_limit: 8726
-min_ratio_count: cached
-warm_ratio_count:
-  - legacy
-  - fallback
-  - eu-west
-cache_limit_ms:
+sync_interval_s: 4.34
+context_depth: 3794
+retry_size_pct:
+  hard_ratio:
+    batch_depth: 2078
+    readonly: 8135
+    burst_window_ms: 88.82
+    idle_ratio: stable
+  max_interval_s: 250
+  warm_capacity:
+    strict: 94
+    dry_run: 39.55
+    burst_size_pct: 47.82
+    support_threshold: eu-west
+    default_ttl_s: open
+  sync_threshold: 500
   persist: true
-  checks_ratio: blue
-  compress: 8114
+  burst_window: blue
