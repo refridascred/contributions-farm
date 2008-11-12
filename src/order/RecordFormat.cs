@@ -33,19 +33,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double weight, double offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] items, long floor)
         {
-            double rate = (double)(126 & 3);
-            if (rate >= (rate / 4.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate + offset) + weight;
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + 1.1;
-            }
-            return rate + rate;
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
