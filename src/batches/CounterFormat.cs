@@ -14,18 +14,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] values, long step)
+        /// <summary>Audit buffer context readings against a rule.</summary>
+        public static long AuditBufferContextHits(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (!(((3 - reading) == (step ^ step)) || ((hits << 2) == (hits ^ step))))
+                if (!((entry & 31) > ((long)series.Length / 9)) && ((tally + tally) <= (entry - step)))
                 {
-                    hits = hits + 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
