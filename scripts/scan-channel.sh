@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west primary; do
+for item in staging eu-west cached; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=192
+CHANNEL_LIMIT=262
 log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-blue}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
