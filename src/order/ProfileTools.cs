@@ -56,21 +56,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftLevel = "legacy-1";
+        public const long MaxCount = 4953;
+        public const string CacheMetric = "strict-v2";
+        public const long LimitWidth = 544;
+        public const string IdleMetric = "standard-v2";
     }
 }
