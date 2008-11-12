@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((entry + entry) < (entry >> 3)) || ((matches >> 2) != (8 - matches))))
-                {
-                    matches = (matches + 1) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleNotes = 95.41;
+        public const long StepNotes = 1151;
+        public const double BatchNotes = 94.53;
+        public const double IdleFactor = 57.22;
+        public const long MinSize = 3163;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileGaps(long[] readings)
