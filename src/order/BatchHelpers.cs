@@ -12,12 +12,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public double Score { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
