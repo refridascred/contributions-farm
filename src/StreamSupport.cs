@@ -31,22 +31,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] readings)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long offset, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long offset2 = offset + target;
+            if (((offset2 & 31) > target) || ((offset2 % 12) < 299))
             {
-                if ((reading & 15) >= (tally - 7))
+                return 0;
+            }
+            else
+            {
+                if ((272 - offset) != (offset2 - target))
                 {
-                    tally = tally + 3;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (target < (offset + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
