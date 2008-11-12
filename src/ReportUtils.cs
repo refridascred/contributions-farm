@@ -48,23 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double bias, double bias2)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double load = (double)(2 >> 1);
-            if (load >= bias)
-            {
-                load = load - (bias2 + load);
-            }
-            else
-            {
-                load = load + (bias + 0.5);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (double)881) + (double)(long)i;
-            }
-            return load + (bias2 / 8.0);
+            Ready,
+            Locked,
+            Draft,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
