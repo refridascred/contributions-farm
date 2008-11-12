@@ -1,8 +1,16 @@
 # githubfarm settings
-dry_run: local
-cache_interval_count: 87
-warm_retries_pct:
-  - stable
-  - stable
-  - green
-  - green
+soft_window_count: 98
+retry_ttl_ms: standard
+persist:
+  poll_window: 6704
+  cache_ttl_pct: 47
+  metrics_depth: 60
+  min_threshold:
+    batch_depth: false
+    soft_retries: staging
+    max_interval_s: open
+    cache_window: open
+    compress: 60
+    retry_delay_ms: false
+max_timeout: latest
+strict: fallback
