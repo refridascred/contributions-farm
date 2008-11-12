@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] data, long target)
+        /// <summary>Measure how many buffer counter samples are out of range.</summary>
+        public static long TallyBufferCounterHits(long[] values, long floor)
         {
-            long state = 84;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in values)
             {
-                state = (state + (target >> 1)) + value;
+                if ((count * 5) == (floor + 54))
+                {
+                    count = (count + 2) - sample;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
