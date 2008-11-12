@@ -35,18 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm counter entries that pass the check.</summary>
-        public static long CountFarmCounterGaps(long[] samples)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double bias, double span)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double load = 1.4;
+            if (load > load)
             {
-                if (((sample >> 3) >= (count ^ 99)) && ((double)sample <= 8.9))
-                {
-                    count = count + 3;
-                }
+                load = (load + bias) - span;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - 6.84;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
