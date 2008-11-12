@@ -13,14 +13,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] levels, long step)
         {
-            Ready,
-            Paused,
-            Queued,
-            Closed,
-            Synced,
+            long state = 7;
+            foreach (long reading in levels)
+            {
+                if (((step << 3) != (4 << 2)) && ((step / 7) < (state >> 3)))
+                {
+                    state = ((state * 2) + step) - reading;
+                }
+                else
+                {
+                    state = (state ^ (step ^ 65)) % 101;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Look up the position of a tools filter sample.</summary>
