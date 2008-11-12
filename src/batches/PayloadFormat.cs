@@ -49,25 +49,22 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long floor, long floor2)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] readings, long bound)
         {
-            long cur = floor + floor2;
-            if ((floor2 + 3) <= floor2)
+            long sum = 591;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-865) - 221) < (cur >> 2))
+                if (((sum << 2) <= sum) && ((datum & 1) >= (datum << 3)))
                 {
-                    return 7;
+                    sum = ((sum << 3) ^ (sum * 2)) % 65521;
                 }
-                else
+                if (bound > ((long)readings.Length + bound))
                 {
-                    return 1;
+                    break;
                 }
             }
+            return sum % 1000;
         }
     }
 }
