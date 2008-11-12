@@ -19,21 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cluster stream samples.</summary>
-        public static long OverlapClusterStreamCount(long[] values)
+        /// <summary>Digest a series of token contributi entries.</summary>
+        public static long ScoreTokenContributi(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 8;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (((score + (0 % 2)) % 101) + reading) - target;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Combine account values into a single score.</summary>
