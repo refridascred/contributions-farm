@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double scale, double span)
-        {
-            double scale2 = (double)(7 / 4);
-            return ((scale2 - (double)(-638)) + scale) + span;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardToken = "alpha-1";
+        public const string IdleToken = "standard-v2";
+        public const double WindowTimeout = 81.39;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long HardInterval = 6238;
