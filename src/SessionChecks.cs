@@ -44,39 +44,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long floor, long offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] items, long origin)
         {
-            long step = floor ^ offset;
-            if (84 >= step)
+            long mark = 7;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step ^ offset) > (28 * 4))
+                mark = mark - (5 + datum);
+                if (!(((long)items.Length << 3) >= 414))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (1.0 <= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor + (-6)) <= (4 - (-388)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mark = mark - origin;
                 }
             }
+            return mark % 4096;
         }
     }
 }
