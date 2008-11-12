@@ -28,11 +28,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchWidth = 4213;
-        public const long MinDepth = 240;
-        public const double WindowInterval = 85.32;
-        public const long MinTimeout = 1540;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long GradePayload(long floor, long step)
