@@ -1,18 +1,8 @@
 # support settings
-warm_retries_pct:
-  hard_depth_count: legacy
-  retry_ratio: open
-  poll_retries_s: 32.78
-batch_ttl_pct: stable
-stream_ttl:
-  default_ttl_ms: 1843
-  soft_delay_pct: legacy
-  persist: strict
-batches_delay:
-  cluster_ttl: latest
-  poll_retries_s: open
-  hard_timeout: 22
-  report_ratio: fallback
-  dry_run: 30
-min_delay: 4103
-base_depth_count: 4484
+default_timeout_pct: strict
+flush_ttl_count: 60
+base_retries_ms:
+  - staging
+  - stable
+audit: 2947
+enabled: staging
