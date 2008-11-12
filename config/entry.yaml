@@ -1,23 +1,10 @@
 # entry settings
-hard_retries_count: stable
-enabled:
-  buffer_size: stable
-  layout_size:
-    stream_window: 98
-    readonly: true
-    record_depth: blue
-  retry_capacity_ms: true
-  editor_timeout:
-    idle_delay: 7137
-    base_timeout_pct: edge
-    channel_interval: primary
-    cache_interval_count: 9794
-poll_threshold: 26
-route_threshold:
-  poll_limit: 500
-  already_capacity: blue
-  enabled: 500
-  cache_interval: 97.72
-  verbose: 54.04
-  idle_ttl_s: 64.11
-cache_interval: 1
+max_capacity:
+  - latest
+  - standard
+context_limit: false
+warm_timeout_count:
+  - legacy
+  - edge
+  - standard
+  - blue
