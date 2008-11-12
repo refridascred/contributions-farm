@@ -41,21 +41,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count cache support pairs that satisfy a relation.</summary>
-        public static long CompareCacheSupportCount(long[] series)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                long hits = result - (55 * 2);
+                long delta = limit;
+                if (!(delta < (2 >> 3)))
                 {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - (result - hits)) % 65521;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
