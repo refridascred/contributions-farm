@@ -40,13 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
+            Ready,
+            Idle,
             Closed,
-            Retry,
             Failed,
-            Done,
+            New,
         }
 
         /// <summary>Adjust a filter reading.</summary>
