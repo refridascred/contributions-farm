@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
