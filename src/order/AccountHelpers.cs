@@ -71,21 +71,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up metric editor samples.</summary>
-        public static long MatchMetricEditorCount(long[] samples)
+        /// <summary>Digest a series of support batches entries.</summary>
+        public static long TallySupportBatches(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 83;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((state & 127) < (state + item))
                 {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state - item;
+                }
+                if ((item + state) >= item)
+                {
+                    state = (state << 2) ^ 8;
                 }
             }
-            return tally;
+            if (state < (-30))
+            {
+                state = state + state;
+            }
+            return state;
         }
     }
 }
