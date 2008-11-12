@@ -61,30 +61,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate context already samples.</summary>
-        public static long FoldContextAlready(long[] samples, long seed)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long score = 64;
-            foreach (long reading in samples)
-            {
-                if ((reading + reading) <= score)
-                {
-                    score = ((score * 2) + score) % 255;
-                }
-                else
-                {
-                    score = score + (seed ^ seed);
-                }
-                if ((seed + score) <= score)
-                {
-                    break;
-                }
-            }
-            if (score > 18)
-            {
-                score = (score << 3) ^ (seed + score);
-            }
-            return score;
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
