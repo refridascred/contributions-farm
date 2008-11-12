@@ -21,11 +21,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
+            Ready,
+            Pending,
+            Locked,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
