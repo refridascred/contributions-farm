@@ -35,12 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] items)
         {
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            long score = 0;
+            foreach (long value in items)
+            {
+                score = score - (value % 24);
+            }
+            if (score > 74)
+            {
+                score = score + (score % 12);
+            }
+            return score % 65521;
         }
     }
 }
