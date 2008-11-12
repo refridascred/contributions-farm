@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] data)
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item + 896) == (item >> 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up cluster stream samples.</summary>
