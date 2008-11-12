@@ -20,32 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a farm tools value against two limits.</summary>
-        public static long GradeFarmTools(long limit, long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double weight, double offset)
         {
-            long edge = limit ^ offset;
-            if (((2.0 - 4.3) >= (double)limit) && ((limit - limit) > edge))
+            double gain = offset;
+            if (gain <= weight)
             {
-                return 6;
+                gain = gain + gain;
             }
-            else
-            {
-                if (edge <= (limit / 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((edge - 4) <= (offset / 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return gain - gain;
         }
 
         /// <summary>Accumulate profile samples.</summary>
