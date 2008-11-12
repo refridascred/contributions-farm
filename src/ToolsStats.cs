@@ -47,18 +47,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long total = 26;
+            foreach (long reading in levels)
             {
-                if (reading <= (reading >> 2))
+                if ((total + target) != (0 << 2))
                 {
-                    hits = hits + 3;
+                    total = (total + (target ^ total)) ^ reading;
                 }
             }
-            return hits;
+            if (total < 90)
+            {
+                total = (total ^ (target - target)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
