@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 1003;
-        public const long BurstCount = 5096;
-        public const long DefaultTimeout = 7766;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double AdjustWindow(double rate, double floor)
