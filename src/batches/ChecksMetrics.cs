@@ -19,18 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] values)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long step, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if ((596 <= (offset - offset)) || ((89 >> 3) != (step + step)))
             {
-                if ((entry <= hits) && ((hits >> 2) >= (hits ^ hits)))
+                return 5;
+            }
+            else
+            {
+                if (!((425 / 8) >= (offset << 3)))
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((step % 16) <= step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
