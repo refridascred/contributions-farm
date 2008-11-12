@@ -39,19 +39,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] readings, long seed)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Synced,
+            Paused,
+            Closed,
+            Queued,
         }
     }
 }
