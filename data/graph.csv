@@ -1,6 +1,7 @@
-id,token,region,count
-1,98.45,49.97,235
-2,35.94,local,local
-3,158,532,blue
-4,641,cached,487
-5,337,strict,60.34
+id,label,owner
+1,6.0,574
+2,172,blue
+3,61.64,14.97
+4,52.94,30.12
+5,29.73,stable
+6,43.07,strict
