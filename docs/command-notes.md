@@ -1,14 +1,15 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Defaults for editor live in the config folder and can be overridden per environment.
+The report module keeps contributi values in sync with the farm cache.
+Each metrics is validated before it reaches the order queue.
+The buffer module keeps session values in sync with the notes cache.
 
-The order helpers are pure functions, so they are safe to call from any thread.
-The checks module keeps command values in sync with the window cache.
-Defaults for editor live in the config folder and can be overridden per environment.
+Use editor settings to tune how often channel data is refreshed.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate metrics input early
-- Prefer report defaults
-- Log every batches change
+- Log every entry change
+- Prefer contributi defaults
+- Review layout limits each release
+- Document new farm fields
