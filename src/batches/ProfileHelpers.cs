@@ -88,12 +88,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
