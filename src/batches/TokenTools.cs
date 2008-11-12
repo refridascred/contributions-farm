@@ -40,19 +40,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every commits layout entry stays within the limit.</summary>
-        public static bool ValidateCommitsLayoutRange(long[] values, long origin)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Failed,
+            Queued,
+            Stale,
         }
     }
 }
