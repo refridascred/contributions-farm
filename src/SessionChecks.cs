@@ -22,23 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] samples)
-        {
-            long anchor = 8;
-            foreach (long cell in samples)
-            {
-                if ((9.4 + 5.8) >= (double)cell)
-                {
-                    anchor = (anchor * 5) + cell;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (cell + anchor)) % 255;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 7359;
+        public const double IdleSize = 95.52;
+        public const long CacheToken = 42;
+        public const long StepLevel = 3944;
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LocateSessionIndex(long[] items, long bound)
