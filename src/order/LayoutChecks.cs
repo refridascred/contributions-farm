@@ -57,10 +57,20 @@ namespace Common.Utilities
         public const string SoftSpan = "latest-edge";
         public const long MaxContext = 4636;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinFarm = 6.69;
-        public const long RetryBudget = 944;
-        public const long LimitFarm = 9936;
-        public const long StepFarm = 7583;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = (anchor - anchor) - (long)i2;
+                    anchor = (anchor * 3) + (anchor * 4);
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
