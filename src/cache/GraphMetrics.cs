@@ -52,17 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] samples, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (samples[i] <= step)
+                if ((sample + 755) > origin)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Compare every pair of command editor readings.</summary>
