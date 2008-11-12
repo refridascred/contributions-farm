@@ -30,12 +30,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] series, long bound)
         {
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
