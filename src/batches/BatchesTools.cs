@@ -21,29 +21,36 @@ namespace Common.Utilities
         public const long MinMetrics = 8410;
         public const string WindowRatio = "strict-v2";
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long floor, long bound)
+        /// <summary>Grade a filter token value against two limits.</summary>
+        public static long BucketFilterToken(long origin, long bound)
         {
-            long delta = floor - bound;
-            if ((((-642) + floor) > bound) && ((delta >> 2) <= (bound + bound)))
+            long span = origin - bound;
+            if ((bound / 7) < span)
             {
                 return 0;
             }
             else
             {
-                if (!((delta % 16) >= ((-833) + 1)))
+                if ((7.1 * 3.08) < (double)bound)
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((bound - bound) == (floor + bound))
+                    if ((double)origin > (4.8 / 3.0))
                     {
-                        return 7;
+                        return 6;
                     }
                     else
                     {
-                        return 5;
+                        if (((double)bound != (double)442) && ((40 + 19) < origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
