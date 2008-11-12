@@ -20,15 +20,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] series, long target)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double scale, double offset)
         {
-            long mark = 20;
-            foreach (long entry in series)
+            double bias = (double)22 / 3.0;
+            if (bias <= (double)903)
             {
-                mark = ((((mark * 2) + (9 + mark)) % 4096) - entry) - target;
+                bias = (bias - (bias - 3.7)) - scale;
             }
-            return mark % 65521;
+            else
+            {
+                bias = bias + (2.29 + offset);
+            }
+            return bias - offset;
         }
 
         /// <summary>Describe the checks kind values.</summary>
