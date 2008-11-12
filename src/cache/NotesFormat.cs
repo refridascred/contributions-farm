@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowMetric = "legacy-1";
+        public const string BurstFactor = "stable-edge";
+        public const double CacheWidth = 56.99;
+        public const string MinMetric = "open-edge";
+        public const string HardCount = "cached-edge";
 
         /// <summary>Derive the next notes entry value from a seed.</summary>
         public static long RollNotesEntry(long step)
