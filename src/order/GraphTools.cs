@@ -72,39 +72,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long floor, long step)
+        /// <summary>Measure how many account payload samples are out of range.</summary>
+        public static long CountAccountPayloadMatches(long[] samples)
         {
-            long cur = floor - step;
-            if ((step % 2) < (floor & 63))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (cur >= (floor - cur))
+                if ((reading << 1) > (reading ^ reading))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((cur <= (208 >> 3)) || (cur <= (88 + 216)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((cur / 3) != (step ^ step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a layout info.</summary>
