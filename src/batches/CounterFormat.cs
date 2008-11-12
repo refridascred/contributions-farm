@@ -30,14 +30,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            New,
-            Active,
-            Queued,
-            Stale,
-            Done,
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
