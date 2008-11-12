@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long origin, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((origin & 31) > limit))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (407 >= limit)
                 {
-                    if ((series[i] + series[j]) == 16)
+                    return 6;
+                }
+                else
+                {
+                    if ((origin & 255) >= 3)
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a commits info.</summary>
