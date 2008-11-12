@@ -23,20 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] levels)
-        {
-            long mix = 705;
-            foreach (long value in levels)
-            {
-                mix = mix ^ value;
-            }
-            if (mix > 2)
-            {
-                mix = (mix + mix) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardSize = 3893;
+        public const long MaxAccount = 1802;
+        public const long WindowAccount = 3833;
+        public const double StepAccount = 67.41;
+        public const long HardAccount = 2169;
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
