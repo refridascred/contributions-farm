@@ -31,21 +31,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Derive the next filter record value from a seed.</summary>
+        public static long StepFilterRecord(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result + (floor << 1)) % 97;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
