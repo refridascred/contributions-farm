@@ -16,22 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings, long offset)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long state = 0;
-            foreach (long entry in readings)
-            {
-                if (offset <= (offset - state))
-                {
-                    state = (state - ((long)readings.Length >> 2)) ^ entry;
-                }
-            }
-            if (state > 44)
-            {
-                state = ((state << 2) ^ (long)readings.Length) % 97;
-            }
-            return state;
+            New,
+            Ready,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the counter kind values.</summary>
