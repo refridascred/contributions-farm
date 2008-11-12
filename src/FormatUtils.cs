@@ -44,18 +44,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] readings, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] values)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long acc = 704;
+            foreach (long entry in values)
             {
-                if (!((item - (-59)) <= ((long)readings.Length >> 5)))
+                acc = ((acc << 3) ^ (49 << 1)) % 4096;
+                for (int i = 0; i < 11; i++)
                 {
-                    tally = (tally + 1) - seed;
+                    acc = ((acc + (entry - entry)) % 4096) ^ (long)i;
                 }
+                acc = ((acc << 3) ^ (1 + acc)) % 255;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
