@@ -40,18 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] levels, long seed)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((396 % 60) < (matches * 3))
-                {
-                    matches = ((matches + 1) + item) - seed;
-                }
-            }
-            return matches;
+            Ready,
+            Closed,
+            Done,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
