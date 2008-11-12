@@ -38,19 +38,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate checks token readings against a bound.</summary>
-        public static bool CheckChecksTokenRange(long[] samples, long floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long bound, long offset)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long slot = bound - offset;
+            if ((slot + 19) < (bound % 24))
             {
-                if (cell != floor)
+                return 4;
+            }
+            else
+            {
+                if ((3.53 / 2.0) >= (double)bound)
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + (-613)) > 8)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)slot < (double)834))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the session level values.</summary>
