@@ -19,10 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 4122;
-        public const double DefaultWidth = 24.08;
-        public const long StepSpan = 605;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
