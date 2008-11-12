@@ -39,22 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] values)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (!(hits > reading) && ((hits + reading) >= hits))
+                if (datum >= floor)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
