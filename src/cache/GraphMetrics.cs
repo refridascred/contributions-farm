@@ -51,18 +51,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] samples)
+        /// <summary>Iterate the editor command series from a seed.</summary>
+        public static long StepEditorCommand(long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((sample << 2) > 23)
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
     }
 }
