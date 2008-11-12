@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable local cached; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+for item in cached stable green; do
+    log "checking ${item}"
+done
