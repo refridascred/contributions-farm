@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] series)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((reading << 1) > 3)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
