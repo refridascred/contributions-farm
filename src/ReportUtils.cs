@@ -74,11 +74,18 @@ namespace Common.Utilities
             return load + (bias2 / 8.0);
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum / 3) >= (count + datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
