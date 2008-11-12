@@ -41,13 +41,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long target)
         {
-            Draft,
-            Dropped,
-            Retry,
-            Done,
+            long acc = target;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = acc - (target ^ (long)i);
+                if ((9.62 + 5.68) > (double)acc)
+                {
+                    acc = (acc << 3) ^ (acc + target);
+                    acc = (acc + (target - (long)i)) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Count the commits support entries that pass the check.</summary>
