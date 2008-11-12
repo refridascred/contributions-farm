@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double MinReport = 66.19;
         public const double StepBudget = 64.99;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] readings)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((hits >> 5) < (194 % 5))
+                if (step < (10 % 64))
                 {
-                    hits = (hits + 1) + value;
+                    tally = (tally + 3) + item;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many notes githubfarm samples are out of range.</summary>
