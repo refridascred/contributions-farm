@@ -17,17 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] items, long origin)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
