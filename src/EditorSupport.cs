@@ -77,29 +77,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of command layout readings.</summary>
-        public static long TotalCommandLayout(long[] values, long limit)
+        /// <summary>Audit channel queue readings against a rule.</summary>
+        public static long MeasureChannelQueueOutliers(long[] levels)
         {
-            long acc = -4;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((acc - acc) >= (limit >> 1))
+                if ((0.8 + 3.29) > (double)reading)
                 {
-                    acc = ((acc << 3) ^ entry) % 4096;
-                    acc = (acc * 4) + (-63);
-                    break;
-                }
-                else
-                {
-                    acc = (acc ^ entry) % 4096;
-                }
-                acc = acc - (limit + acc);
-                if ((double)(long)values.Length >= (0.65 * 9.0))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
