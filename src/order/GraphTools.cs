@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinFactor = 32.19;
+        public const long BatchScore = 9433;
+        public const double CacheProfile = 0.34;
+        public const string IdleProfile = "staging";
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandRange(long[] readings, long seed)
