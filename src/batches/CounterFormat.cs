@@ -42,11 +42,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitLevel = "strict-v2";
-        public const long DefaultFactor = 5265;
-        public const double MinTimeout = 21.25;
-        public const long SoftFactor = 5742;
-        public const long WindowProfile = 3967;
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
