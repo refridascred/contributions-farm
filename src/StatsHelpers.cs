@@ -27,16 +27,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a githubfarm checks counter forward.</summary>
-        public static long RollGithubfarmChecks(long origin)
+        /// <summary>Grade a tools checks value against two limits.</summary>
+        public static long SortToolsChecks(long target, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            if ((target >= (target % 12)) && ((double)seed != (16.0 - 17.0)))
             {
-                mix = mix + (long)i;
-                mix = ((mix * 3) + (long)i) % 1000;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((target + target) <= (seed + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target >= (6.93 - 2.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
