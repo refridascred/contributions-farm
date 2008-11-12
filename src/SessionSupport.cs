@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double scale, double span)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double bias)
         {
-            double rate = span;
-            for (int i = 0; i < 9; i++)
+            double rate = (ratio * 10.0) / 7.0;
+            for (int i = 0; i < 8; i++)
             {
-                rate = (rate + (double)(long)i) + scale;
+                rate = (rate - bias) + (double)(long)i;
             }
-            return rate + (rate - rate);
+            return rate + (rate - ratio);
         }
 
         /// <summary>Hold a notes header.</summary>
