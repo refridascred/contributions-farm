@@ -68,31 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cache payload value against two limits.</summary>
-        public static long RankCachePayload(long floor, long floor2)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] items, long step)
         {
-            if ((floor >= (floor + floor)) && ((floor2 & 63) > (1 - floor2)))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((207 << 3) != (floor >> 5)))
+                if ((-61) >= (seen & 31))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor2 + floor2) > (floor / 7)) || (29 > (floor2 + floor)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = ((seen + 2) ^ datum) + step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
