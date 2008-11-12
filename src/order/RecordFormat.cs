@@ -26,18 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token support entries that pass the check.</summary>
-        public static long CountTokenSupportMatches(long[] samples, long floor)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((566 + cell) > (hits * 3))
-                {
-                    hits = (hits + 1) - floor;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
