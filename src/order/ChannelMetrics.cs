@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BurstScore = 500;
         public const double WindowPayload = 28.49;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardSize = 3893;
-        public const long MaxAccount = 1802;
-        public const long WindowAccount = 3833;
-        public const double StepAccount = 67.41;
-        public const long HardAccount = 2169;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 3874;
+        public const string HardLevel = "staging";
+        public const double StepTools = 47.59;
+        public const long MinDepth = 5082;
+        public const long MaxTools = 1775;
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
