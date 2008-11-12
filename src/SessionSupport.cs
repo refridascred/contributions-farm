@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double gain, double offset)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double drift = offset;
-            return drift + (gain - drift);
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
