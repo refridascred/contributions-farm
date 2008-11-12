@@ -24,11 +24,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double scale, double bias)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
+            double scale2 = (6.2 / 8.0) / 5.0;
+            return (scale2 - bias) + scale;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
