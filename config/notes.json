@@ -1,7 +1,7 @@
 {
-  "min_threshold": true,
-  "batch_threshold": 1029,
-  "payload_delay": "staging",
-  "already_delay": 1024,
-  "cache_delay": "eu-west"
+  "strict": 47.85,
+  "audit": ["open", "strict"],
+  "compress": 100,
+  "channel_threshold": ["standard", "stable"],
+  "metrics_depth": "legacy"
 }
