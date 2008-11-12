@@ -13,20 +13,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleBudget = 73.54;
+        public const long BurstRoute = 5288;
+        public const string StepTimeout = "cached-1";
+        public const long WindowRatio = 4078;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
