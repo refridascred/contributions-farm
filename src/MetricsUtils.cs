@@ -58,12 +58,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Count notes farm pairs that satisfy a relation.</summary>
+        public static long CompareNotesFarmCount(long[] readings)
         {
-            Queued,
-            Locked,
-            Stale,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
