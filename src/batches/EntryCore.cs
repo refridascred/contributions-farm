@@ -26,13 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
+            Active,
+            Idle,
+            Paused,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
