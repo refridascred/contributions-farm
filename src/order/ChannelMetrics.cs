@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of layout window entries.</summary>
-        public static long FoldLayoutWindow(long[] levels)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] levels)
         {
-            long acc = 5;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((acc % 12) <= (acc + acc)) && ((double)reading > (17.0 - 6.3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc - (reading / 6)) % 255;
+                    if ((levels[i] + levels[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 65)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
