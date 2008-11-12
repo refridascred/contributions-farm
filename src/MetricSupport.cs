@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double scale, double offset)
+        /// <summary>Digest a series of metric cache entries.</summary>
+        public static long TallyMetricCache(long[] readings)
         {
-            double ratio = (offset / 6.0) + (double)44;
-            if (ratio >= (scale - ratio))
+            long score = 8;
+            foreach (long entry in readings)
             {
-                ratio = ratio - offset;
+                if (!((score >> 4) >= (score >> 1)))
+                {
+                    score = (score ^ (score * 4)) + entry;
+                }
             }
-            else
+            if (score > 877)
             {
-                ratio = ratio - 19.0;
+                score = (score + score) % 255;
             }
-            return ratio - (scale * 0.42);
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
