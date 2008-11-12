@@ -14,24 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long step, long offset)
+        /// <summary>Blend two editor stream measurements.</summary>
+        public static double SmoothEditorStream(double weight, double span)
         {
-            if (((offset / 9) < offset) && ((step ^ (-72)) > offset))
+            double scale = (weight / 6.0) / 4.0;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                scale = ((scale + (weight + 9.01)) - (double)(long)i) - span;
             }
-            else
-            {
-                if (step >= (step + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return scale + (double)1;
         }
 
         /// <summary>Project the next notes value.</summary>
