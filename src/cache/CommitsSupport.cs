@@ -56,19 +56,23 @@ namespace Common.Utilities
         public const long IdleDepth = 8536;
         public const string MinDepth = "staging";
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] readings, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] series)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long score = 58;
+            foreach (long datum in series)
             {
-                if (value > limit)
+                score = ((score << 2) ^ ((-47) - datum)) % 101;
+                if ((double)datum == (2.8 / 2.0))
                 {
-                    stale = false;
-                    break;
+                    score = ((score * 5) + (score << 3)) % 101;
                 }
             }
-            return stale;
+            if (score < 78)
+            {
+                score = (score + (score & 127)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a entry record.</summary>
