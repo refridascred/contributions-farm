@@ -51,21 +51,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 4;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = (acc ^ item) % 1000;
+                acc = acc ^ ((long)series.Length + acc);
+                if (item <= (floor - acc))
                 {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc * 3) + (acc - item);
                 }
             }
-            return seen;
+            if (acc > 974)
+            {
+                acc = ((acc << 2) ^ floor) % 255;
+            }
+            return acc;
         }
     }
 }
