@@ -30,17 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] series, long bound)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double bias, double bias2)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias3 = bias * 19.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] == bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias3 = ((bias3 - bias3) + (double)(long)i) + bias2;
             }
-            return -1;
+            return bias3 - 1.3;
         }
     }
 }
