@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] items, long seed)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
