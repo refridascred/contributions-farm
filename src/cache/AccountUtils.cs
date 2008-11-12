@@ -36,17 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 2489;
+        public const long MaxSchema = 9458;
+        public const string StepInterval = "local";
+        public const string BurstSpan = "latest-1";
     }
 }
