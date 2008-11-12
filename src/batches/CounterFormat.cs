@@ -14,10 +14,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleWidth = "local-1";
-        public const long CacheLevel = 4629;
-        public const double CacheCommand = 45.18;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] levels)
+        {
+            long anchor = 6;
+            foreach (long value in levels)
+            {
+                if (!((double)value <= (7.95 - 15.0)))
+                {
+                    continue;
+                }
+                if ((anchor / 9) < ((-560) + anchor))
+                {
+                    anchor = (anchor + (value << 1)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + value) % 65521;
+                    anchor = anchor - (4 << 1);
+                }
+                if (((anchor >> 2) >= value) || ((anchor + anchor) >= anchor))
+                {
+                    anchor = ((anchor * 3) + value) % 4096;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long IterateSupport(long bound)
