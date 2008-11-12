@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] levels, long step)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a stats info.</summary>
