@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] readings, long offset)
         {
-            Idle,
-            Dropped,
-            Paused,
-            Draft,
-            Active,
+            long total = 836;
+            foreach (long datum in readings)
+            {
+                if (!((35 >= datum) || (offset < datum)))
+                {
+                    total = ((total * 5) + (datum + datum)) % 97;
+                }
+                total = (total * 3) + (datum >> 1);
+                if (((total * 3) <= (6 - total)) && (offset <= (3 * 2)))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the context kind values.</summary>
