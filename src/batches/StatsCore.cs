@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const long MinLevel = 3605;
         public const string BatchWindow = "latest-v2";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 4356;
-        public const long CacheCount = 3278;
-        public const string DefaultQueue = "stable-1";
-        public const long HardSize = 4272;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] data, long limit)
+        {
+            long acc = 70;
+            foreach (long cell in data)
+            {
+                if ((limit * 5) >= (acc & 7))
+                {
+                    acc = (acc << 2) ^ (80 ^ cell);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
