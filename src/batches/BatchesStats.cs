@@ -25,31 +25,26 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Classify a profile graph pair into a bucket.</summary>
-        public static long BucketProfileGraph(long bound, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] series)
         {
-            if ((bound & 1) <= target)
+            long mark = 13;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)target >= 3.07)
+                if ((mark ^ 48) > mark)
                 {
-                    return 7;
+                    mark = (mark ^ (entry >> 3)) % 97;
                 }
                 else
                 {
-                    if ((26 + 951) >= (target >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = (mark ^ (entry & 3)) % 97;
+                }
+                if (6.51 > (double)mark)
+                {
+                    mark = (mark ^ (4 / 3)) % 255;
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
