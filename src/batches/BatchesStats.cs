@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a channel support sample.</summary>
-        public static long LocateChannelSupportIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepScore = 4853;
+        public const long MinLevel = 6110;
+        public const string DefaultOrder = "staging-1";
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
