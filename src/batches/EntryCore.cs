@@ -34,18 +34,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] values)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long item in values)
+            if (limit < (limit + 6))
             {
-                if ((9.6 * 3.4) >= (double)tally)
+                return 0;
+            }
+            else
+            {
+                if ((bound >= (limit % 8)) && ((2.0 / 4.0) <= (double)limit))
                 {
-                    tally = (tally + 2) + item;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + bound) <= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
