@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] levels, long step)
+        /// <summary>Measure how many farm entry samples are out of range.</summary>
+        public static long MeasureFarmEntryMatches(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((item + item) == (step ^ step))
+                if (!((double)reading > (double)matches))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Look up the position of a channel batch sample.</summary>
