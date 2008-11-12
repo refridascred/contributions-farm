@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] samples, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            long total = 904;
+            foreach (long cell in samples)
             {
-                acc = ((acc << 2) ^ (acc + floor)) % 65521;
-                acc = ((acc * 3) + (long)i) % 1000;
+                total = (((total * 2) + floor) % 101) ^ cell;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
