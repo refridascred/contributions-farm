@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a channel stats counter forward.</summary>
-        public static long SeriesChannelStats(long target)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6 > (carry / 5)) && ((carry >> 1) == ((long)i * 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry * 4) + ((long)i >> 5);
+                    if ((items[i] - items[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = (carry ^ target) % 101;
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Digest a series of report entries.</summary>
