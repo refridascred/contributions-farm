@@ -56,13 +56,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] readings, long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] values, long origin)
         {
             bool valid = true;
-            foreach (long item in readings)
+            foreach (long sample in values)
             {
-                if (item != limit)
+                if (sample < origin)
                 {
                     valid = false;
                     break;
