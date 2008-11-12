@@ -32,21 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry * 4) + (long)i;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
     }
 }
