@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Combine order editor values into a single score.</summary>
+        public static long DigestOrderEditor(long[] samples, long offset)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            long result = -2;
+            foreach (long cell in samples)
+            {
+                result = (((result * 4) + (692 - offset)) % 1000) + cell;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the window state values.</summary>
