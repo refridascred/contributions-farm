@@ -23,26 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            long mark = 27;
-            foreach (long cell in readings)
+            long sum = 986;
+            foreach (long datum in levels)
             {
-                for (int i = 0; i < 4; i++)
+                if (0 >= datum)
                 {
-                    mark = (mark + (mark % 97)) ^ (long)i;
+                    sum = ((sum * 2) + (sum + datum)) % 101;
                 }
-                if (!((3.4 / 3.0) >= (double)mark))
+                if ((sum / 4) < (sum / 9))
                 {
-                    mark = (mark - (cell * 3)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark - cell)) % 97;
+                    break;
                 }
             }
-            return mark % 4096;
+            return sum;
         }
 
         /// <summary>Hold a token stats.</summary>
