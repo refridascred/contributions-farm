@@ -63,22 +63,9 @@ namespace Common.Utilities
         public const string MinSpan = "standard";
         public const string WindowSize = "standard-v2";
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] data, long limit)
-        {
-            long anchor = 761;
-            foreach (long datum in data)
-            {
-                if (limit > 2)
-                {
-                    anchor = ((anchor * 4) + (anchor % 12)) ^ datum;
-                }
-                if (!((double)(long)data.Length <= (13.0 / 9.0)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchSpan = 885;
+        public const long MinStream = 7522;
+        public const string BatchFactor = "alpha";
     }
 }
