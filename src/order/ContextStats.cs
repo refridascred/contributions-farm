@@ -22,13 +22,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Scale a route githubfarm figure with a bias.</summary>
+        public static double AdjustRouteGithubfarm(double ratio, double offset)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            double bias = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = ((bias - (bias + offset)) + (double)(long)i) - ratio;
+            }
+            return bias + offset;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
