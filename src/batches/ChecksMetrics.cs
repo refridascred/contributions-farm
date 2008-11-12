@@ -51,32 +51,12 @@ namespace Common.Utilities
         public const double BurstDepth = 24.97;
         public const string BaseFactor = "primary-edge";
 
-        /// <summary>Classify a metrics cache pair into a bucket.</summary>
-        public static long ClassifyMetricsCache(long floor, long origin)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long edge = floor - origin;
-            if (origin <= (origin - floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((floor * 2) < (edge + floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor << 1) > (edge ^ (-4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Synced,
+            New,
+            Retry,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
