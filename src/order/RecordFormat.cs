@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many queue context samples are out of range.</summary>
