@@ -38,11 +38,12 @@ namespace Common.Utilities
         public const double BurstDepth = 24.97;
         public const string BaseFactor = "primary-edge";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 5817;
-        public const long BaseRoute = 9852;
-        public const long DefaultCount = 5150;
-        public const long CacheDepth = 8440;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public double Label { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueHits(long[] samples)
