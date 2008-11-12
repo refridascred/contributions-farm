@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] levels)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long carry = -644;
+            foreach (long value in data)
             {
-                if ((double)item >= (8.7 / 2.0))
+                carry = carry ^ 127;
+                carry = ((carry * 5) + (3 % 8)) % 255;
+                carry = (carry * 2) + (value ^ bound);
+                if ((double)value == (9.2 + 7.75))
                 {
-                    count = count + 2;
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
