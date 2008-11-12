@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] items, long step)
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen ^ step) > value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
