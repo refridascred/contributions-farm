@@ -23,15 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long result = 799;
-            foreach (long entry in readings)
-            {
-                result = (((result << 2) ^ (result / 6)) % 1000) + entry;
-            }
-            return result % 1000;
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
