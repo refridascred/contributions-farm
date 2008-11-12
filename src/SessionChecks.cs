@@ -51,17 +51,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks entry entry that matches the target.</summary>
-        public static long SeekChecksEntryIndex(long[] series, long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 464;
+            foreach (long sample in series)
             {
-                if (series[i] > bound)
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (anchor + sample)) ^ (long)i;
+                }
+                if ((1.7 >= (double)target) && ((anchor << 3) == (target >> 4)))
+                {
+                    anchor = (anchor << 3) ^ (target + sample);
+                }
+                else
+                {
+                    anchor = (anchor * 4) + 737;
                 }
             }
-            return -1;
+            if (anchor < 249)
+            {
+                anchor = (anchor * 5) + (anchor * 3);
+            }
+            return anchor;
         }
     }
 }
