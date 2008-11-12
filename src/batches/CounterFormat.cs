@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double weight, double floor)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double mean = floor;
-            if (mean > (double)27)
-            {
-                mean = mean - weight;
-            }
-            else
-            {
-                mean = mean + floor;
-            }
-            return mean - (double)43;
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Classify a metrics stream pair into a bucket.</summary>
