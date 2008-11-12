@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] values, long origin)
+        /// <summary>Compare every pair of report batch readings.</summary>
+        public static long PairReportBatchCount(long[] readings)
         {
-            long state = 2;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((5 + 944) <= origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state - origin) ^ cell;
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
