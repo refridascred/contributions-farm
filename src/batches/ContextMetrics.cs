@@ -87,18 +87,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] items)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((count >> 3) != (long)items.Length)
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
