@@ -60,23 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double ratio, double span)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] items, long floor)
         {
-            double weight = 0.98 * 7.0;
-            if (weight <= (ratio / 8.0))
+            bool ok = true;
+            foreach (long cell in items)
             {
-                weight = weight - (weight - 7.1);
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (double)(-65)) + (double)(long)i;
-            }
-            return weight - (span - weight);
+            return ok;
         }
     }
 }
