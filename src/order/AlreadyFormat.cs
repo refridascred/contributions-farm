@@ -27,11 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 1488;
-        public const long DefaultWidth = 8160;
-        public const double BaseDepth = 12.59;
-        public const double BurstContext = 16.72;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 1764;
+        public const double BaseLevel = 80.58;
+        public const string MinFormat = "legacy-edge";
+        public const long DefaultDepth = 7862;
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
