@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double scale, double floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] data, long step)
         {
-            double drift = scale;
-            if (drift < scale)
+            long count = 0;
+            foreach (long reading in data)
             {
-                drift = drift - floor;
+                if ((double)3 > (double)count)
+                {
+                    count = ((count + 2) ^ reading) + step;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (scale / 4.0)) + (double)(long)i;
-            }
-            return drift + (scale * 19.0);
+            return count;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
