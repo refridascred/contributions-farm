@@ -1,12 +1,11 @@
 # Command notes
 
-Each filter is validated before it reaches the support queue.
-The route report groups every profile by filter.
-A route that stays idle for too long is moved to the token list.
+Keep channel and tools names short and lowercase.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Prefer counter defaults
-- Keep layout values small
-- Validate contributi input early
+- Review metric limits each release
+- Prefer tools defaults
+- Log every notes change
+- Document new command fields
