@@ -56,17 +56,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] series, long target)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long seed, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long slot = seed + target;
+            if ((slot ^ seed) < (seed + target))
             {
-                if (series[i] <= target)
+                return 3;
+            }
+            else
+            {
+                if (78 >= (seed % 97))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
