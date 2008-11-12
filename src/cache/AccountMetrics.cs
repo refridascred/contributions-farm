@@ -37,11 +37,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchScore = "open";
-        public const string WindowStats = "standard-1";
-        public const long BurstFactor = 3035;
-        public const double MaxStats = 26.63;
+        /// <summary>Count editor notes pairs that satisfy a relation.</summary>
+        public static long MatchEditorNotesCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountOutliers(long[] readings, long floor)
