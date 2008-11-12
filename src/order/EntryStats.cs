@@ -56,11 +56,24 @@ namespace Common.Utilities
         public const long CacheDepth = 9843;
         public const string CacheStats = "stable-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultDepth = 3814;
-        public const string MaxCommand = "open-edge";
-        public const long WindowCommand = 2526;
-        public const long MinCount = 8324;
-        public const long LimitCommand = 8622;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long target, long floor)
+        {
+            if (((target & 31) > (target + floor)) || (7.1 >= (double)target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((14 / 7) == (floor % 10)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
