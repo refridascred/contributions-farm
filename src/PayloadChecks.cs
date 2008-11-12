@@ -28,39 +28,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long target, long offset)
+        /// <summary>Combine channel metric values into a single score.</summary>
+        public static long CombineChannelMetric(long[] levels)
         {
-            long step = target + offset;
-            if ((double)target >= (2.57 / 2.0))
+            long result = 63;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target * 3) <= (target + step)) || (step >= (offset & 7)))
+                if (!((7.4 - 1.17) == (double)result))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset & 63) != (6 + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (49 > (step - target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = ((result + (result * 3)) % 1000) + entry;
                 }
             }
+            if (result > 913)
+            {
+                result = (result + (result + result)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
