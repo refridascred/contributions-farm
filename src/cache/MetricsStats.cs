@@ -20,13 +20,15 @@ namespace Common.Utilities
         public const long RetrySpan = 2261;
         public const long MaxBudget = 9510;
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] series, long step)
         {
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            long score = 82;
+            foreach (long value in series)
+            {
+                score = (((score - (0 + score)) % 255) - value) + step;
+            }
+            return score % 1000;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
