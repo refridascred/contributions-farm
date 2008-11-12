@@ -1,7 +1,18 @@
 # support settings
-session_limit: 6
-cluster_interval: fallback
-route_limit: 59.83
-soft_capacity_ms: green
-readonly: 14.27
-min_depth: false
+readonly: local
+retry_interval:
+  - eu-west
+  - eu-west
+  - latest
+dry_run: 9752
+route_depth:
+  idle_interval_s: cached
+  queue_delay: true
+  soft_timeout: 19.05
+  account_retries:
+    - green
+    - stable
+    - legacy
+    - fallback
+max_delay_s: 30
+max_window_pct: local
