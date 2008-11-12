@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first graph contributi entry that matches the target.</summary>
-        public static long LocateGraphContributiIndex(long[] values, long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] >= offset)
+                if ((((long)i + offset) != (carry ^ offset)) || ((carry + offset) != ((long)i - (long)i)))
                 {
-                    return (long)i;
+                    carry = (carry + offset) % 101;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
