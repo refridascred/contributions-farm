@@ -1,10 +1,17 @@
 # support settings
-verbose: 41
-audit:
-  - cached
-  - fallback
-  - strict
-  - standard
-sync_retries_s: 60
-idle_retries: 58.07
-enabled: 4.29
+persist:
+  batch_size: 1024
+  verbose: false
+  metric_timeout:
+    - standard
+    - open
+  persist: 8085
+  enabled:
+    - stable
+    - staging
+    - standard
+    - eu-west
+window_size: false
+max_depth_pct: edge
+compress: false
+base_depth_s: 1064
