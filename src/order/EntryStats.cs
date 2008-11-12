@@ -40,18 +40,12 @@ namespace Common.Utilities
         public const long CacheDepth = 9843;
         public const string CacheStats = "stable-edge";
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long total = -3;
-            foreach (long value in samples)
-            {
-                if (value <= (value + value))
-                {
-                    total = (total * 2) + (value + value);
-                }
-            }
-            return total % 65521;
+            public double Score { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
