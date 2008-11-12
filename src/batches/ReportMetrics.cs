@@ -50,9 +50,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 8641;
-        public const long HardInterval = 2965;
-        public const string CacheCount = "alpha-1";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 6278;
+        public const long BatchAccount = 4633;
+        public const string SoftAccount = "open-v2";
     }
 }
