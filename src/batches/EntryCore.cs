@@ -49,21 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stats buffer samples.</summary>
-        public static long OverlapStatsBufferCount(long[] series)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 470;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix ^ (mix + mix)) ^ item;
             }
-            return hits;
+            if (mix < 0)
+            {
+                mix = (mix << 2) ^ ((long)samples.Length + mix);
+            }
+            return mix;
         }
     }
 }
