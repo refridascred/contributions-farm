@@ -24,19 +24,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit githubfarm layout readings against a rule.</summary>
-        public static long MeasureGithubfarmLayoutGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((3.97 * 4.4) <= (double)hits)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 6052;
+        public const string BatchFactor = "alpha";
+        public const long MaxRatio = 7877;
 
         /// <summary>Fold a list of report window readings.</summary>
         public static long WeighReportWindow(long[] series)
