@@ -19,19 +19,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit already stream readings against a rule.</summary>
-        public static long MeasureAlreadyStreamHits(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (hits >= (long)series.Length)
-                {
-                    hits = ((hits + 3) - item) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchChannel = "fallback-1";
+        public const long HardDepth = 3111;
+        public const double MinChannel = 23.24;
 
         /// <summary>Project the next already value.</summary>
         public static double ProjectAlready(double weight, double span)
