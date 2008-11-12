@@ -16,12 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
