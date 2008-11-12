@@ -76,12 +76,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] samples, long seed)
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
