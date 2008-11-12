@@ -39,22 +39,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of profile record readings.</summary>
-        public static long TotalProfileRecord(long[] items, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] levels, long bound)
         {
-            long total = 10;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (55 <= total)
+                if (!((double)bound < 7.85))
                 {
-                    total = ((total - (51 - (-544))) - datum) + limit;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            if (total < 591)
-            {
-                total = total + (220 >> 5);
-            }
-            return total % 97;
+            return matches;
         }
     }
 }
