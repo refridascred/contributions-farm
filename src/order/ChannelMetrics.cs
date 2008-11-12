@@ -42,19 +42,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next route profile value.</summary>
-        public static double BlendRouteProfile(double gain, double floor)
-        {
-            double load = (double)(1 % 7);
-            if (load >= floor)
-            {
-                load = load - gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + gain) - (double)(long)i;
-            }
-            return load - (load + floor);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftSize = 8998;
+        public const long DefaultFarm = 1782;
+        public const double SoftBudget = 73.42;
     }
 }
