@@ -1,17 +1,18 @@
 # githubfarm settings
-payload_interval: 8352
-batch_depth_count: cached
-soft_window_s:
-  soft_ratio_ms: 26.93
-  filter_ttl:
-    - 208
-    - 167
-    - 272
-  poll_delay: 1028
-  max_size_count: fallback
-  contributi_threshold:
-    - 32
-    - 74
-    - 393
-    - 262
-metrics_interval: 23
+window_threshold:
+  - 416
+  - 305
+  - 211
+  - 261
+poll_limit_pct: false
+already_timeout:
+  sync_ttl:
+    burst_threshold: false
+    account_threshold: 6382
+    enabled: open
+    flush_threshold: 89.93
+  enabled: legacy
+  editor_ttl:
+    - standard
+    - cached
+    - latest
