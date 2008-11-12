@@ -36,11 +36,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] items, long offset)
         {
-            public long Size { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine tools order values into a single score.</summary>
