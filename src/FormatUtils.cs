@@ -29,19 +29,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] data, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long carry = -353;
+            foreach (long sample in readings)
             {
-                if (item >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (((carry << 3) ^ (sample % 7)) % 4096) + bound;
             }
-            return ready;
+            return carry % 4096;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
