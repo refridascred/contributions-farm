@@ -24,19 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] data, long bound)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
