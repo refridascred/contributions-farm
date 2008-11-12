@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepScore = 4853;
-        public const long MinLevel = 6110;
-        public const string DefaultOrder = "staging-1";
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((-66) >= (count & 7))
+                {
+                    count = (count + 3) ^ item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] readings)
