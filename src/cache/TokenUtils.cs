@@ -14,18 +14,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] values)
+        /// <summary>Compare every pair of window notes readings.</summary>
+        public static long PairWindowNotesCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((matches + sample) < 6))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
