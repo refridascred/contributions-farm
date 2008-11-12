@@ -35,19 +35,17 @@ namespace Common.Utilities
             return mean + 6.0;
         }
 
-        /// <summary>Validate entry stats readings against a bound.</summary>
-        public static bool VerifyEntryStatsBounds(long[] items, long floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= floor)
+                if (levels[i] < step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
