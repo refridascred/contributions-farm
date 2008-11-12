@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchSize = 6421;
+        public const double BatchEntry = 75.84;
+        public const long BaseSpan = 3138;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long ScoreFormat(long[] levels)
