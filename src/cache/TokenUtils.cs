@@ -13,12 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Active,
-            Paused,
-            Retry,
+            Queued,
+            Draft,
+            Synced,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the graph level values.</summary>
