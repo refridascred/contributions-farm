@@ -38,18 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload metric entries that pass the check.</summary>
-        public static long MeasurePayloadMetricGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value - hits) > (4 / 5))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "primary-edge";
+        public const long RetryAccount = 613;
+        public const string BatchInterval = "primary";
+        public const double BatchAccount = 58.21;
+        public const long MaxDepth = 2785;
     }
 }
