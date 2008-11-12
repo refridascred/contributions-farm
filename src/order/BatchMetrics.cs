@@ -21,12 +21,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] samples)
         {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long mix = 302;
+            foreach (long item in samples)
+            {
+                mix = (mix ^ (94 + item)) % 4096;
+            }
+            if (mix > 0)
+            {
+                mix = (mix + (mix + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
