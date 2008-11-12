@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
