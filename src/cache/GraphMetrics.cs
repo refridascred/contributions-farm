@@ -38,16 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] data)
-        {
-            long score = 0;
-            foreach (long datum in data)
-            {
-                score = ((score + (960 / 2)) % 97) + datum;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstLevel = 70.81;
+        public const string SoftGithubfarm = "fallback-v2";
+        public const double BurstCount = 8.14;
 
         /// <summary>Iterate the editor command series from a seed.</summary>
         public static long StepEditorCommand(long floor)
