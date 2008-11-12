@@ -34,12 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public double Owner { get; set; }
-            public bool Score { get; set; }
-            public double Count { get; set; }
+            New,
+            Retry,
+            Stale,
         }
     }
 }
