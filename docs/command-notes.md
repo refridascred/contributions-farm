@@ -1,12 +1,14 @@
 # Command notes
 
-Run the batch check before changing any cache limits.
-Run the checks check before changing any batches limits.
-A record that stays idle for too long is moved to the checks list.
+Each stream is validated before it reaches the channel queue.
+The account helpers are pure functions, so they are safe to call from any thread.
+The entry report groups every contributi by farm.
+
+The channel helpers are pure functions, so they are safe to call from any thread.
+Use editor settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Validate cache input early
-- Prefer report defaults
-- Keep order values small
-- Document new session fields
+- Prefer metric defaults
+- Keep githubfarm values small
+- Log every payload change
