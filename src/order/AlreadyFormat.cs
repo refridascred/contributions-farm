@@ -27,11 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 1764;
-        public const double BaseLevel = 80.58;
-        public const string MinFormat = "legacy-edge";
-        public const long DefaultDepth = 7862;
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
