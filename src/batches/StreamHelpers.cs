@@ -71,21 +71,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
