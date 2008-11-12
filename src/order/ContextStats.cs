@@ -38,15 +38,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] readings, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] values)
         {
             long count = 0;
-            foreach (long datum in readings)
+            foreach (long value in values)
             {
-                if ((limit + count) > count)
+                if ((double)count < (4.3 * 3.94))
                 {
-                    count = (count + 1) ^ datum;
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
