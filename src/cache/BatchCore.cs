@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
+            Done,
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
