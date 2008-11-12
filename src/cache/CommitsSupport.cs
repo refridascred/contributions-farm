@@ -40,12 +40,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "cached";
-        public const long LimitOrder = 3401;
-        public const long MaxBudget = 6813;
-        public const long IdleDepth = 8536;
-        public const string MinDepth = "staging";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepChannel = "primary-edge";
+        public const long BaseChannel = 444;
+        public const long MinFactor = 2886;
 
         /// <summary>Look up the position of a commits command sample.</summary>
         public static long FindCommitsCommandIndex(long[] data, long seed)
