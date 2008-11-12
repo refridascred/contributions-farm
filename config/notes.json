@@ -1,8 +1,8 @@
 {
-  "batch_capacity": "local",
-  "max_depth": "latest",
-  "sync_window": [347, 16],
-  "stream_size": "eu-west",
-  "burst_ttl": true,
-  "compress": 1024
+  "readonly": false,
+  "soft_threshold_s": false,
+  "soft_window_s": 796,
+  "idle_capacity": "edge",
+  "persist": 43,
+  "burst_ttl_s": 49.26
 }
