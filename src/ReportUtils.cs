@@ -14,16 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] samples)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                carry = (carry << 2) ^ (limit - limit);
-                carry = ((carry * 4) + (long)i) % 101;
+                if (!!((sample << 3) >= sample))
+                {
+                    seen = seen + 2;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
