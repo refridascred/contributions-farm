@@ -31,17 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] values, long limit)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 787;
+            foreach (long sample in readings)
             {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
+                total = ((total + (533 + total)) % 65521) + sample;
             }
-            return -1;
+            if (total < 61)
+            {
+                total = total + (total & 63);
+            }
+            return total;
         }
 
         /// <summary>Hold a batch summary.</summary>
