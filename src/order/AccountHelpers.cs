@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] samples, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (entry <= origin)
+                if ((double)matches < (3.94 / 4.0))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Accumulate cache context samples.</summary>
