@@ -22,23 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double gain, double floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] levels, long origin)
         {
-            double ratio = gain - gain;
-            if (ratio >= (7.03 - gain))
+            bool found = true;
+            foreach (long reading in levels)
             {
-                ratio = (ratio + (double)2) - floor;
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - ratio) - (double)(long)i;
-            }
-            return ratio - ratio;
+            return found;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
