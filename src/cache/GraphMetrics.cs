@@ -32,21 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long floor, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long gap = floor - target;
+            if (((double)target == (19.0 + 2.0)) || ((floor * 3) == (target + target)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((gap * 2) < (target + 84)) && ((target - floor) == (floor * 5)))
                 {
-                    if ((samples[i] + samples[j]) != 16)
+                    return 6;
+                }
+                else
+                {
+                    if (((double)gap != (17.0 / 3.0)) && ((gap - floor) != (target + gap)))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)gap == (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
