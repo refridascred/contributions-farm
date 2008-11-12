@@ -1,18 +1,6 @@
 {
-  "retry_ttl_ms": {
-    "stream_window": 250,
-    "burst_ttl": 38.24,
-    "record_ratio": {
-      "idle_depth_count": 100,
-      "strict": 3202,
-      "sync_size": 57
-    },
-    "cluster_capacity": true,
-    "window_delay": "legacy"
-  },
-  "retry_size": 93,
-  "soft_threshold": "strict",
-  "burst_threshold": "legacy",
-  "min_delay_count": 47,
-  "persist": [111, 432, 190]
+  "cache_delay": 3714,
+  "format_threshold": "strict",
+  "filter_ttl": 71.14,
+  "hard_depth": true
 }
