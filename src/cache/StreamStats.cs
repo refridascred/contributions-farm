@@ -25,15 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Pending,
-            Draft,
-            New,
-            Done,
-            Closed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBatches = "open-1";
+        public const long BurstInterval = 1512;
+        public const long HardBatches = 316;
+        public const long WindowWidth = 4676;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricMatches(long[] items, long offset)
