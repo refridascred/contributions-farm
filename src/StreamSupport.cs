@@ -37,16 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            long result = 233;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result - (result >> 4)) % 101;
-                result = (result << 2) ^ entry;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
