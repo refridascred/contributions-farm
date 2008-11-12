@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleDepth = "alpha-1";
-        public const double LimitFactor = 4.16;
-        public const long LimitTimeout = 6300;
-        public const long StepBatch = 4478;
-        public const long DefaultBatch = 1104;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((value % 64) <= (value * 4))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsHits(long[] data)
