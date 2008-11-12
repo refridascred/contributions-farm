@@ -40,39 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long step, long floor)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            long lane = step - floor;
-            if (29 <= (180 + floor))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step >= (14.0 + 9.87))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((9 - lane) < floor)
+                    if ((readings[i] ^ readings[j]) < 13)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step < (step ^ lane))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
