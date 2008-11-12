@@ -1,13 +1,10 @@
 # Command notes
 
-Keep payload and report names short and lowercase.
-The support report groups every record by counter.
-
-When a stats fails, the command handler retries a few times before giving up.
-When a layout fails, the channel handler retries a few times before giving up.
+The command helpers are pure functions, so they are safe to call from any thread.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Validate batches input early
-- Log every tools change
+- Review format limits each release
+- Keep contributi values small
+- Log every buffer change
