@@ -20,13 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] levels)
         {
-            Stale,
-            Retry,
-            Active,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((matches << 3) > (matches + matches))
+                {
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
