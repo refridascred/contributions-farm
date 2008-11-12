@@ -30,18 +30,30 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Count the batches command entries that pass the check.</summary>
-        public static long AuditBatchesCommandHits(long[] readings)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long sum = -641;
+            foreach (long reading in series)
             {
-                if (cell < (seen >> 2))
+                if (reading <= (sum - sum))
                 {
-                    seen = seen + 3;
+                    sum = sum - reading;
+                }
+                else
+                {
+                    sum = (sum ^ (sum ^ reading)) % 255;
+                }
+                if (!((sum / 4) >= sum))
+                {
+                    sum = (sum ^ (sum + sum)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (reading - reading)) % 101;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
