@@ -29,21 +29,18 @@ namespace Common.Utilities
         public const long MinSize = 6108;
         public const long SoftScore = 1130;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] readings)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                acc = acc - (target ^ (long)i);
-                if ((9.62 + 5.68) > (double)acc)
+                if ((seen + value) <= (value - seen))
                 {
-                    acc = (acc << 3) ^ (acc + target);
-                    acc = (acc + (target - (long)i)) % 65521;
+                    seen = seen + 2;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Locate a session reading by value.</summary>
