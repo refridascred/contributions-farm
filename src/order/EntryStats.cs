@@ -24,19 +24,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] values)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score + (long)i) < (score << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the farm state values.</summary>
