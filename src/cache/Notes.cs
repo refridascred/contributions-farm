@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Paused,
-            Retry,
-            Pending,
-            Active,
-            Queued,
+            New,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a payload record.</summary>
