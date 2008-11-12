@@ -19,26 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] readings, long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long carry = 703;
-            foreach (long datum in readings)
-            {
-                if (((-85) ^ bound) <= 369)
-                {
-                    carry = ((carry * 3) + (datum + carry)) % 4096;
-                }
-                else
-                {
-                    carry = (carry ^ (carry + carry)) % 97;
-                }
-                if ((datum + datum) > (datum - bound))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Failed,
+            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
