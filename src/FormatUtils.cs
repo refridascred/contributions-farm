@@ -78,19 +78,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double scale, double span)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            double ratio = span;
-            if (ratio >= span)
+            long sum = 31;
+            foreach (long value in levels)
             {
-                ratio = ratio + 5.6;
+                if ((value + sum) < (sum + sum))
+                {
+                    sum = sum + (51 % 3);
+                }
+                else
+                {
+                    sum = (sum - (sum & 1)) % 97;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (scale - span)) + (double)(long)i;
-            }
-            return ratio - (16.0 * 18.0);
+            return sum;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
