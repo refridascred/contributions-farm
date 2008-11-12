@@ -1,8 +1,6 @@
 # support settings
-enabled: 76
-poll_capacity_s:
-  - 107
-  - 40
-soft_size_pct: 80.24
-retry_ttl_s: 2.55
-default_capacity_ms: false
+cache_size_count: fallback
+verbose: blue
+flush_size_pct: strict
+dry_run: true
+compress: 56
