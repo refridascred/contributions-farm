@@ -76,28 +76,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] series, long target)
+        /// <summary>Adjust a window already reading.</summary>
+        public static double BlendWindowAlready(double scale, double offset)
         {
-            long state = 54;
-            foreach (long reading in series)
+            double scale2 = scale + (3.8 / 6.0);
+            if (scale2 > (double)369)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    state = ((state << 2) ^ ((-8) * 4)) ^ (long)i;
-                    state = state + (reading ^ (long)series.Length);
-                }
-                if (reading < (reading * 4))
-                {
-                    state = (state << 2) ^ (-3);
-                }
-                state = state - (target + state);
+                scale2 = scale2 + (scale2 - scale);
             }
-            if (state > 75)
-            {
-                state = (state ^ (target ^ state)) % 65521;
-            }
-            return state;
+            return scale2 - (offset / 3.0);
         }
     }
 }
