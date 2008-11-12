@@ -24,12 +24,11 @@ namespace Common.Utilities
         public const long CacheBatches = 3219;
         public const long HardBatches = 3223;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public double Offset { get; set; }
-            public bool Mode { get; set; }
-            public double Owner { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
