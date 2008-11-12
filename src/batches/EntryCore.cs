@@ -37,31 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long limit, long bound)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] series)
         {
-            if (limit < (limit + 6))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >= (limit % 8)) && ((2.0 / 4.0) <= (double)limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + bound) <= limit)
+                    if ((series[i] + series[j]) < 8)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
