@@ -21,15 +21,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine order editor values into a single score.</summary>
-        public static long DigestOrderEditor(long[] samples, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] values)
         {
-            long result = -2;
-            foreach (long cell in samples)
+            long carry = 31;
+            foreach (long cell in values)
             {
-                result = (((result * 4) + (692 - offset)) % 1000) + cell;
+                carry = (carry - (cell + cell)) % 1000;
+                carry = carry - (66 + 50);
             }
-            return result % 97;
+            return carry % 4096;
         }
 
         /// <summary>Iterate the account token series from a seed.</summary>
