@@ -90,17 +90,21 @@ namespace Common.Utilities
             return load + (bias2 / 8.0);
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] items, long origin)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
