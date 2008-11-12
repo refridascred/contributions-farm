@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every metrics githubfarm entry stays within the limit.</summary>
-        public static bool CheckMetricsGithubfarmLimits(long[] samples, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] samples)
         {
-            bool ok = true;
+            long seen = 0;
             foreach (long entry in samples)
             {
-                if (entry <= floor)
+                if ((double)entry > (7.0 / 5.0))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
