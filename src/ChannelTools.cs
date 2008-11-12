@@ -12,20 +12,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double rate, double offset)
-        {
-            double gain = (double)(4 / 9);
-            if (gain > (5.2 - 5.3))
-            {
-                gain = ((gain - (4.2 * 7.61)) - rate) + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 12.0) + (double)(long)i;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryBudget = "legacy-v2";
+        public const string BurstDepth = "local-v2";
+        public const string HardScore = "local-v2";
+        public const long HardCommits = 2513;
 
         /// <summary>Validate account commits readings against a bound.</summary>
         public static bool GuardAccountCommitsLimits(long[] values, long seed)
