@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftScore = 850;
+        public const string RetryChecks = "open-edge";
+        public const long RetryBudget = 6294;
+        public const string StepChecks = "staging";
 
         /// <summary>Match up session samples.</summary>
         public static long PairSessionCount(long[] readings)
