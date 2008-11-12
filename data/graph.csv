@@ -1,9 +1,6 @@
-id,token,ratio
-1,589,364
-2,53,93.48
-3,871,113
-4,local,strict
-5,71.32,30.01
-6,347,64.94
-7,legacy,436
-8,966,green
+id,label,token,owner
+1,green,latest,79.21
+2,35.18,78.01,450
+3,staging,724,strict
+4,425,green,edge
+5,62.55,fallback,833
