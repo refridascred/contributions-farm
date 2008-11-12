@@ -19,10 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 815;
-        public const long DefaultTimeout = 9708;
-        public const long MaxOrder = 3779;
+        /// <summary>Classify a token entry pair into a bucket.</summary>
+        public static long RankTokenEntry(long target, long target2)
+        {
+            if (((target * 5) <= target2) && ((8.18 - 14.0) < (double)target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target2 + target) < (target2 + target2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((4.2 + 3.6) == (double)target2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate filter commits samples.</summary>
         public static long TotalFilterCommits(long[] series, long bound)
