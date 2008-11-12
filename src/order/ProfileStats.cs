@@ -37,17 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first account entry entry that matches the target.</summary>
-        public static long SeekAccountEntryIndex(long[] samples, long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long floor, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (target >= (floor + floor))
             {
-                if (samples[i] <= bound)
+                return 3;
+            }
+            else
+            {
+                if (target < ((-940) << 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next context value.</summary>
