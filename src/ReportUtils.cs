@@ -89,14 +89,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] items, long origin)
         {
-            Paused,
-            Retry,
-            Done,
-            Draft,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
