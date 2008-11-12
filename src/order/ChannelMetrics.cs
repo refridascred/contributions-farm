@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double gain, double offset)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            double ratio = 19.0;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio + gain) + (double)(long)i) - offset;
-            }
-            return ratio - ratio;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a account record counter forward.</summary>
