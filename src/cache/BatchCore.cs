@@ -41,38 +41,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Grade a farm window value against two limits.</summary>
-        public static long BucketFarmWindow(long offset, long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long floor)
         {
-            if (!((19.0 / 2.0) != (double)limit))
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.2 / 2.0) == (double)offset)
+                if (!((19.0 / 8.0) <= (double)sum))
                 {
-                    return 4;
+                    sum = (sum ^ (floor & 15)) % 4096;
                 }
-                else
-                {
-                    if (!((double)offset >= (5.37 * 6.3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)offset <= (5.0 / 6.0)) && (offset <= (offset - 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
+            return sum;
         }
     }
 }
