@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=67
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-stable}"
+mode="${1:-local}"
 case "${mode}" in
-    stable)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in latest local; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 9 ]; do
