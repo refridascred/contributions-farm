@@ -54,11 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            Retry,
+            Pending,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
