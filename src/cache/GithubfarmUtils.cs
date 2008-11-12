@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] values, long seed)
         {
-            Ready,
-            Locked,
-            Pending,
-            Stale,
+            long acc = 94;
+            foreach (long item in values)
+            {
+                acc = (acc ^ (seed << 1)) % 4096;
+                if (!((acc - item) >= (seed >> 5)))
+                {
+                    acc = acc ^ (538 & 3);
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Check that every cache metric entry stays within the limit.</summary>
