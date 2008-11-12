@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] series, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long seed, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)seed < (1.3 + 6.07))
             {
-                if ((series[i] >= target) && ((series[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if (!((double)bound >= (7.0 / 5.0)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of cluster buffer entries.</summary>
