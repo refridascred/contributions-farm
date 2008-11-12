@@ -49,17 +49,31 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor << 2) ^ (long)i) % 4096;
-                anchor = ((anchor << 2) ^ 5) % 101;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (mix < (mix << 2))
+                {
+                    mix = (mix * 4) + (floor + (long)i);
+                    mix = ((mix << 2) ^ (6 >> 4)) % 65521;
+                }
+                else
+                {
+                    long gap = ((long)i - floor) + (mix - 402);
+                    mix = (mix + (mix + gap)) % 101;
+                }
+                if (!((double)(long)i > 13.0))
+                {
+                    mix = (mix * 5) + (floor & 1);
+                    mix = ((mix << 2) ^ (mix + mix)) % 97;
+                }
+                mix = mix - (mix - mix);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
