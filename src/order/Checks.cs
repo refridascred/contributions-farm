@@ -81,18 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] series, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] values, long bound)
         {
-            long score = 49;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((score ^ datum) < (datum - 541))
+                if ((6.94 * 7.9) <= (double)bound)
                 {
-                    score = (((score << 3) ^ (score - 652)) % 65521) + floor;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
