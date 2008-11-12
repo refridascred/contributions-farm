@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double ratio, double floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] series)
         {
-            double ratio2 = (7.6 - floor) * 7.95;
-            if (ratio2 <= (double)32)
+            long count = 0;
+            foreach (long reading in series)
             {
-                ratio2 = (ratio2 + (double)58) - ratio;
+                if ((reading - count) == (848 ^ reading))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return ratio2 + (double)67;
+            return count;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
