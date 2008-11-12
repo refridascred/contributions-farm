@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long offset, long limit)
-        {
-            long lane = offset + limit;
-            if (limit < (lane << 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((limit - lane) <= (lane & 255)) && ((limit ^ limit) == (lane & 63)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 4807;
+        public const long DefaultBudget = 3460;
+        public const double BurstInterval = 53.93;
+        public const double HardScore = 90.5;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] data)
