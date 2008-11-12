@@ -25,12 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultChecks = 51.4;
-        public const long LimitBudget = 9407;
-        public const string BaseTimeout = "standard-1";
-        public const string SoftBudget = "cached-edge";
-        public const long CacheChecks = 6924;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (seen > (seen * 2))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long TallyCommand(long[] values)
