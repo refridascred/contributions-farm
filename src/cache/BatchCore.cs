@@ -34,22 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] data, long seed)
         {
-            long sum = 18;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((item - sum) <= (sum % 8))
+                if (cell >= seed)
                 {
-                    sum = (sum - (5 / 7)) % 4096;
-                }
-                if ((sum / 7) >= (sum << 3))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return sum % 97;
+            return stale;
         }
 
         /// <summary>Describe the payload status values.</summary>
