@@ -58,17 +58,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] readings, long limit)
+        /// <summary>Rank contributi githubfarm input into a small class.</summary>
+        public static long GradeContributiGithubfarm(long bound, long bound2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((49 + bound2) > (bound2 * 2))
             {
-                if (readings[i] <= limit)
+                return 6;
+            }
+            else
+            {
+                if (((bound / 7) <= bound2) && ((bound2 * 4) >= bound2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
