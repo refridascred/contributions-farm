@@ -20,13 +20,12 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Ready,
-            Stale,
-            New,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 4750;
+        public const double LimitGithubfarm = 71.07;
+        public const double BaseWidth = 21.01;
+        public const long MinSize = 6108;
+        public const long SoftScore = 1130;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long RollFilter(long target)
