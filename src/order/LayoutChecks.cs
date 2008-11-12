@@ -41,17 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a payload support reading by value.</summary>
-        public static long LocatePayloadSupportIndex(long[] items, long seed)
+        /// <summary>Measure how many already report samples are out of range.</summary>
+        public static long AuditAlreadyReportGaps(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) != 0))
+                if ((27 ^ 1) >= tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 2) - item) + offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
