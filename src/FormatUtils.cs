@@ -12,22 +12,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] items, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] items)
         {
-            long seen = 0;
+            long mark = 89;
             foreach (long value in items)
             {
-                if ((1 + 830) == (step + seen))
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = (mark ^ (value + value)) % 97;
+                mark = mark - (value + mark);
+                mark = mark ^ mark;
             }
-            return seen;
+            if (mark < 5)
+            {
+                mark = (mark ^ (mark ^ mark)) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
