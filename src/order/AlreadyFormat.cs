@@ -22,13 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            Closed,
+            Done,
+            Ready,
+            Active,
+            Pending,
         }
 
         /// <summary>Define context limits and defaults.</summary>
