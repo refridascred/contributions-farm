@@ -49,18 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] series, long offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double scale = (double)(5 / 4);
+            for (int i = 0; i < 8; i++)
             {
-                if (!!((double)entry < (8.2 * 5.6)))
-                {
-                    tally = (tally + 1) - offset;
-                }
+                scale = ((scale - (scale + floor)) - (double)(long)i) - bias;
             }
-            return tally;
+            return scale + floor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
