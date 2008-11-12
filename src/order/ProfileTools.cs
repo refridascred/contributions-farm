@@ -49,12 +49,11 @@ namespace Common.Utilities
             return ratio + (span / 9.0);
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Ready,
-            New,
-            Retry,
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
