@@ -43,16 +43,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] values)
-        {
-            long carry = 9;
-            foreach (long sample in values)
-            {
-                carry = ((carry * 3) + (carry / 5)) - sample;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftDepth = 49.02;
+        public const long IdleQueue = 6034;
+        public const long BatchDepth = 5369;
+        public const long LimitDepth = 3088;
+        public const long StepQueue = 2752;
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
