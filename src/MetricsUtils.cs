@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchMetrics = 71.78;
-        public const string DefaultMetrics = "cached-v2";
-        public const long IdleInterval = 7974;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            New,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long RollBatch(long step)
