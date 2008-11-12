@@ -1,5 +1,20 @@
 # support settings
-base_size: 1024
-verbose: 7.1
-poll_timeout_count: green
-base_threshold_count: 86.03
+context_delay: 8
+cache_window: blue
+soft_capacity_ms:
+  compress:
+    - legacy
+    - local
+  sync_limit_pct: 41.79
+  counter_depth: 3210
+min_depth_s: 30
+command_limit:
+  hard_timeout_s: 16
+  hard_delay: 6306
+  persist: green
+  filter_interval: 30
+sync_ttl_s:
+  - 396
+  - 16
+  - 5
+  - 250
