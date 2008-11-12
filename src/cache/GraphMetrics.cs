@@ -64,12 +64,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Check that every notes context entry stays within the limit.</summary>
+        public static bool ValidateNotesContextLimits(long[] values, long offset)
         {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the checks status values.</summary>
