@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double gain, double floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] series)
         {
-            double load = gain * 4.3;
-            if (load > (gain + gain))
+            long mix = 13;
+            foreach (long datum in series)
             {
-                load = (load + (double)712) - floor;
+                if (!((double)datum == (7.92 + 5.1)))
+                {
+                    mix = mix ^ ((long)series.Length - datum);
+                }
+                else
+                {
+                    mix = mix - (datum + 67);
+                }
+                if ((datum / 2) <= (datum & 255))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (double)621) + (double)(long)i;
-            }
-            return load - gain;
+            return mix;
         }
 
         /// <summary>Define support limits and defaults.</summary>
