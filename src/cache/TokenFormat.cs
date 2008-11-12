@@ -18,19 +18,15 @@ namespace Common.Utilities
         public const string MinChannel = "alpha-v2";
         public const double HardChannel = 20.56;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] values, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] data, long target)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long result = 3;
+            foreach (long cell in data)
             {
-                if (datum >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                result = (((result * 4) + cell) % 65521) - target;
             }
-            return found;
+            return result;
         }
     }
 }
