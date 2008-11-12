@@ -68,19 +68,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((floor ^ anchor) >= floor)
-                {
-                    anchor = ((anchor << 3) ^ 7) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Idle,
+            Ready,
+            Failed,
+            Done,
+            Closed,
         }
     }
 }
