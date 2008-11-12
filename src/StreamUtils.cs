@@ -62,19 +62,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] readings, long seed)
+        /// <summary>Check that every route record entry stays within the limit.</summary>
+        public static bool VerifyRouteRecordLimits(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (entry > seed)
+                if (reading <= offset)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
