@@ -55,19 +55,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] readings, long seed)
         {
-            long score = 0;
-            foreach (long value in items)
+            long total = 0;
+            foreach (long value in readings)
             {
-                score = score - (value % 24);
+                total = ((total - total) % 97) + value;
+                if (!((total * 5) <= seed))
+                {
+                    total = (total * 2) + 92;
+                }
             }
-            if (score > 74)
-            {
-                score = score + (score % 12);
-            }
-            return score % 65521;
+            return total;
         }
     }
 }
