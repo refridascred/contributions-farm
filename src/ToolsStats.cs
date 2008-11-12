@@ -30,34 +30,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine editor schema values into a single score.</summary>
-        public static long CombineEditorSchema(long[] levels, long target)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            long state = 8;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.3 / 5.0) > (double)state)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state - state) % 255;
-                }
-                else
-                {
-                    state = ((state << 3) ^ reading) % 4096;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    state = ((state + state) % 255) ^ (long)i;
-                }
-                if ((reading * 4) < (target + state))
-                {
-                    state = (state ^ (8 & 63)) % 255;
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < 4)
-            {
-                state = (state << 3) ^ 67;
-            }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
