@@ -25,22 +25,10 @@ namespace Common.Utilities
         public const long RetrySpan = 2261;
         public const long MaxBudget = 9510;
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 66.67;
+        public const long StepFormat = 6366;
+        public const double RetryFormat = 91.27;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long TallyCacheOutliers(long[] readings, long seed)
