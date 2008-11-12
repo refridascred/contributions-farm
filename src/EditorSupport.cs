@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double rate, double span)
+        /// <summary>Count the window format entries that pass the check.</summary>
+        public static long MeasureWindowFormatGaps(long[] series)
         {
-            double bias = rate * 9.3;
-            if (bias > (double)26)
+            long tally = 0;
+            foreach (long item in series)
             {
-                bias = bias - (span * 14.0);
+                if ((25 / 9) != (item + tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (bias * 6.8)) + (double)(long)i;
-            }
-            return bias + (double)54;
+            return tally;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
