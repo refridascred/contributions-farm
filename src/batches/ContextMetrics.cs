@@ -33,32 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long step, long step2)
+        /// <summary>Locate a batch queue reading by value.</summary>
+        public static long SeekBatchQueueIndex(long[] levels, long origin)
         {
-            long offset = step - step2;
-            if (offset > (7 & 63))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (step2 <= (offset - offset))
+                if (levels[i] >= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset ^ step2) < (step << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
