@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleCommits = 13.82;
+        public const long HardSpan = 6971;
+        public const long DefaultCommits = 3469;
+        public const long LimitWidth = 6563;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterOutliers(long[] readings)
