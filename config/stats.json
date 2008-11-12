@@ -1,7 +1,12 @@
 {
-  "warm_limit_count": [304, 100, 144, 411],
-  "batch_threshold_count": 44.95,
-  "flush_window_count": [177, 478, 401],
-  "persist": 40,
-  "warm_ttl_s": true
+  "record_interval": 61,
+  "soft_capacity_count": ["strict", "blue"],
+  "sync_retries": 37.25,
+  "poll_size": {
+    "tools_size": 53.81,
+    "cache_retries": 86.4,
+    "metrics_limit": ["blue", "edge"]
+  },
+  "burst_retries_count": 100,
+  "persist": "latest"
 }
