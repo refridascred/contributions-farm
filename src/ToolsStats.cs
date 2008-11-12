@@ -51,22 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] levels, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] samples, long bound)
         {
-            long total = 26;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((total + target) != (0 << 2))
+                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
                 {
-                    total = (total + (target ^ total)) ^ reading;
+                    return (long)i;
                 }
             }
-            if (total < 90)
-            {
-                total = (total ^ (target - target)) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
