@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of entry filter readings.</summary>
-        public static long OverlapEntryFilterCount(long[] data)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 9;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((273 & 63) <= result) || ((sample + result) != (sample % 10)))
                 {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result - (bound ^ bound);
+                }
+                else
+                {
+                    result = result ^ (result + result);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Digest a series of report entries.</summary>
