@@ -59,38 +59,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long bound, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long seed)
         {
-            if (!((limit >> 1) >= limit))
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
+                acc = (acc << 3) ^ seed;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((0.31 >= (double)bound) || ((bound % 24) > (bound - limit)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((899 + limit) == (bound << 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(limit >= (bound ^ limit)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
