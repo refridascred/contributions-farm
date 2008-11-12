@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for command live in the config folder and can be overridden per environment.
-Run the context check before changing any notes limits.
+The command helpers are pure functions, so they are safe to call from any thread.
+Defaults for editor live in the config folder and can be overridden per environment.
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-When a schema fails, the channel handler retries a few times before giving up.
+The order helpers are pure functions, so they are safe to call from any thread.
+The checks module keeps command values in sync with the window cache.
+Defaults for editor live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Prefer token defaults
-- Log every layout change
-- Validate contributi input early
+- Validate metrics input early
+- Prefer report defaults
+- Log every batches change
