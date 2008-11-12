@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchScore = 5960;
-        public const long StepScore = 115;
-        public const long BatchContext = 8169;
-        public const long BurstScore = 1655;
-        public const double MaxContext = 63.61;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((285 - cell) < (46 - cell))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesMatches(long[] series, long floor)
