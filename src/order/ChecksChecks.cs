@@ -39,12 +39,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Validate metric checks readings against a bound.</summary>
+        public static bool GuardMetricChecksRange(long[] readings, long seed)
         {
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
