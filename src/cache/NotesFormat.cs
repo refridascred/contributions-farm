@@ -23,18 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] readings, long step)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((entry + step) < matches) || ((entry + step) < (matches >> 1)))
                 {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
