@@ -32,19 +32,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] series, long step)
         {
-            long result = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                result = (result ^ (reading / 4)) % 65521;
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (result < 76)
-            {
-                result = ((result * 4) + (result + result)) % 65521;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Accumulate queue samples.</summary>
