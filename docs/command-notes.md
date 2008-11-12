@@ -1,14 +1,12 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the format list.
-Run the entry check before changing any editor limits.
-Keep metric and channel names short and lowercase.
-
-A payload that stays idle for too long is moved to the farm list.
-A counter that stays idle for too long is moved to the buffer list.
+Run the session check before changing any stats limits.
+The notes module keeps filter values in sync with the editor cache.
+The editor report groups every queue by format.
 
 ## Guidelines
 
-- Prefer report defaults
-- Document new record fields
-- Keep cache values small
+- Keep token values small
+- Validate graph input early
+- Document new layout fields
+- Review filter limits each release
