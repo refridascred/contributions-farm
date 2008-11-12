@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long origin, long origin2)
         {
-            Synced,
-            Paused,
-            Locked,
+            long gap = origin + origin2;
+            if (!((origin + origin2) > gap))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((gap + origin2) < (origin2 * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin2 & 7) >= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics state values.</summary>
