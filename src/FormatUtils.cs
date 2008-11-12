@@ -72,15 +72,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double bias, double span)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
         {
-            double weight = (double)(2 ^ 481);
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = ((weight + bias) + (double)(long)i) + span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight + (bias / 7.0);
+            return matches;
         }
     }
 }
