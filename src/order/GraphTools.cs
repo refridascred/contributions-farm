@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long limit)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long limit, long limit2)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            if ((limit2 % 60) >= (7 + 33))
             {
-                if ((limit >> 3) != (long)i)
-                {
-                    score = (score + (9 + limit)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                return 4;
             }
-            return score;
+            else
+            {
+                if ((double)limit2 != (14.0 - 5.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit2 / 3) != (limit + limit2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit2 < 3.61)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a graph header.</summary>
