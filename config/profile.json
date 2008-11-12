@@ -1,7 +1,18 @@
 {
-  "readonly": 60,
-  "window_capacity": "stable",
-  "audit": 72,
-  "poll_delay_s": 1024,
-  "tools_depth": 60
+  "soft_size": "standard",
+  "burst_ratio_ms": 30,
+  "compress": {
+    "warm_depth_s": {
+      "strict": 3629,
+      "max_threshold": 30,
+      "stats_size": ["edge", "stable", "eu-west"],
+      "dry_run": true,
+      "counter_interval": "standard"
+    },
+    "dry_run": 87.28,
+    "poll_ttl_s": 6294
+  },
+  "buffer_ttl": 52.2,
+  "audit": 11,
+  "hard_interval_count": 250
 }
