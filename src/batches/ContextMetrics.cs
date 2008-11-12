@@ -35,17 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batch queue reading by value.</summary>
-        public static long SeekBatchQueueIndex(long[] levels, long origin)
+        /// <summary>Count the farm counter entries that pass the check.</summary>
+        public static long CountFarmCounterGaps(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (levels[i] >= origin)
+                if (((sample >> 3) >= (count ^ 99)) && ((double)sample <= 8.9))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
