@@ -13,20 +13,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Blend two contributi githubfarm measurements.</summary>
-        public static double AdjustContributiGithubfarm(double ratio, double span)
-        {
-            double load = ratio;
-            if (load < ratio)
-            {
-                load = load - (span / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (ratio * 8.0)) + (double)(long)i;
-            }
-            return load + (0.29 * 13.0);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxFactor = "alpha-1";
+        public const string BatchAlready = "open";
+        public const long IdleAlready = 2134;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
