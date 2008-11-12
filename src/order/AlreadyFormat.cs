@@ -11,19 +11,27 @@ namespace Common.Utilities
         public const double WindowSession = 23.05;
         public const long SoftSession = 163;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] items, long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] series)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long result = 5;
+            foreach (long reading in series)
             {
-                if (entry != limit)
+                result = result - (result ^ reading);
+                if ((double)result != (5.0 * 9.32))
                 {
-                    found = false;
+                    result = (result ^ (result << 2)) % 255;
+                }
+                if (((reading * 4) >= (result + result)) && ((611 + reading) != (101 & 255)))
+                {
                     break;
                 }
             }
-            return found;
+            if (result > 217)
+            {
+                result = result ^ result;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the route status values.</summary>
