@@ -20,20 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)mix >= (5.0 / 3.0))
-                {
-                    mix = ((mix * 3) + 676) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 2093;
+        public const string LimitAccount = "standard-v2";
+        public const long BatchAccount = 2893;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
