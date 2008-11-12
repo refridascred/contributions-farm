@@ -20,19 +20,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] readings, long step)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the batches commits entries that pass the check.</summary>
