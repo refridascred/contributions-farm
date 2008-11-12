@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] values, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 9;
+            foreach (long datum in data)
             {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 2) ^ (anchor + anchor)) + datum;
+                anchor = (anchor ^ anchor) % 101;
             }
-            return -1;
+            if (anchor > 95)
+            {
+                anchor = (anchor - (seed & 1)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
