@@ -22,14 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Roll a command metrics counter forward.</summary>
+        public static long DeriveCommandMetrics(long target)
         {
-            Closed,
-            Done,
-            Ready,
-            Active,
-            Pending,
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark ^ (long)i) % 4096;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
