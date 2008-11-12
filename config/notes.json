@@ -1,7 +1,5 @@
 {
-  "cache_threshold": ["primary", "legacy", "open"],
-  "idle_ratio": "stable",
-  "batch_ratio_s": false,
-  "readonly": 3,
-  "batch_capacity_s": 8
+  "audit": 49.41,
+  "idle_threshold_pct": 500,
+  "persist": 99
 }
