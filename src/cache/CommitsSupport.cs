@@ -61,12 +61,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long step, long step2)
         {
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public double Level { get; set; }
+            long diff = step - step2;
+            if ((step2 + diff) < (diff >> 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((295 * 5) <= (diff >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((20.0 * 1.88) < (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((0.28 + 0.8) < (double)step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
