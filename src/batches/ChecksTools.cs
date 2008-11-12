@@ -38,18 +38,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] readings)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (!((6.97 * 8.23) != (double)matches))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next checks value.</summary>
