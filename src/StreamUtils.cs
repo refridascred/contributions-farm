@@ -26,11 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] data)
         {
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
+            long sum = 19;
+            foreach (long reading in data)
+            {
+                if (!((sum << 3) <= sum))
+                {
+                    sum = (sum + (reading + sum)) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Audit farm editor readings against a rule.</summary>
