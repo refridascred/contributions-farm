@@ -1,12 +1,14 @@
 # Command notes
 
-Keep cache and cluster names short and lowercase.
-The stats report groups every route by report.
-The already report groups every already by batch.
+Each window is validated before it reaches the batch queue.
+Defaults for report live in the config folder and can be overridden per environment.
+The already report groups every batches by cache.
+
+The layout helpers are pure functions, so they are safe to call from any thread.
+Each record is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Review farm limits each release
-- Prefer context defaults
-- Document new editor fields
-- Validate channel input early
+- Validate counter input early
+- Keep profile values small
+- Document new metric fields
