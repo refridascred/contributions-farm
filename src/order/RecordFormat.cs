@@ -45,16 +45,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
+            long total = 3;
+            foreach (long item in samples)
             {
-                mix = (mix - origin) % 255;
-                mix = ((mix * 2) + (long)i) % 65521;
+                total = (total ^ (item - item)) % 97;
             }
-            return mix;
+            return total % 1000;
         }
     }
 }
