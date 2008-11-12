@@ -1,6 +1,6 @@
 {
-  "sync_retries_pct": true,
-  "cache_interval": "green",
-  "cache_ratio_s": false,
-  "warm_timeout_count": 82.64
+  "payload_ratio": "legacy",
+  "poll_depth_ms": "legacy",
+  "min_ratio_count": 3339,
+  "cluster_timeout": [421, 420, 201, 42]
 }
