@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double weight, double offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] series, long target)
         {
-            double load = (double)(82 >> 4);
-            if (load > 2.1)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                load = load + (load + weight);
+                if ((target % 2) < (entry / 6))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load - (weight * 14.0);
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
