@@ -58,21 +58,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 582;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum - datum) < (59 >> 1))
                 {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score << 3) ^ (datum ^ datum)) % 97;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
