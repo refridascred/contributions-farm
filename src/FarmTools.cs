@@ -28,22 +28,12 @@ namespace Common.Utilities
         public const string StepTimeout = "cached-1";
         public const long WindowRatio = 4078;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long anchor = 1;
-            foreach (long reading in values)
-            {
-                if (((anchor >> 4) > (anchor + anchor)) || ((anchor + anchor) <= reading))
-                {
-                    anchor = ((anchor * 3) + (reading - anchor)) % 4096;
-                }
-                if (reading >= (53 & 1))
-                {
-                    anchor = anchor ^ (anchor + reading);
-                }
-            }
-            return anchor;
+            Done,
+            Pending,
+            Draft,
         }
     }
 }
