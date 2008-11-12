@@ -1,14 +1,6 @@
 {
-  "dry_run": {
-    "max_depth": ["blue", "open"],
-    "max_limit_pct": "local",
-    "idle_limit": {
-      "batch_interval": 8202,
-      "idle_ratio_s": 7591,
-      "dry_run": "strict"
-    },
-    "session_limit": ["primary", "cached"]
-  },
-  "batches_delay": "legacy",
-  "warm_retries_pct": "legacy"
+  "base_size_ms": [302, 461],
+  "audit": "standard",
+  "tools_timeout": true,
+  "buffer_timeout": "cached"
 }
