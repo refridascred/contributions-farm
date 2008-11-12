@@ -41,11 +41,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleRatio = 1967;
-        public const long SoftDepth = 8683;
-        public const long CacheEntry = 2150;
-        public const long IdleEntry = 2517;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 7247;
+        public const long CacheAccount = 3449;
+        public const long IdleFactor = 860;
+        public const long StepAccount = 7309;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double RetryReport = 17.65;
