@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 606;
+        public const double StepTimeout = 56.55;
+        public const string MaxCount = "stable-1";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MaxSession = 2874;
