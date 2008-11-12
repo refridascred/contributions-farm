@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] values, long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double mean = (double)(-4) / 3.0;
+            return ((mean + (6.1 / 2.0)) + rate) + offset;
         }
 
         /// <summary>Describe the cache state values.</summary>
