@@ -64,11 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] series)
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((double)603 == (double)reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a window info.</summary>
