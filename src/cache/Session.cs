@@ -24,19 +24,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] readings, long bound)
+        /// <summary>Look up the position of a tools editor sample.</summary>
+        public static long LookupToolsEditorIndex(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample >= bound)
+                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Classify a cache counter pair into a bucket.</summary>
