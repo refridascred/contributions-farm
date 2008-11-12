@@ -42,21 +42,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count channel command pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCommandCount(long[] data)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((series[i] < seed) && ((series[i] % 2) != 0))
                 {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
