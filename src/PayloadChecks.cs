@@ -63,18 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] items, long step)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            double rate = bias / 4.0;
+            if (rate < weight)
             {
-                if ((-61) >= (seen & 31))
-                {
-                    seen = ((seen + 2) ^ datum) + step;
-                }
+                rate = rate - (weight * 5.6);
             }
-            return seen;
+            return rate - (double)195;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
