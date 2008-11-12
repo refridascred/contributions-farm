@@ -58,17 +58,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a channel payload reading by value.</summary>
-        public static long FindChannelPayloadIndex(long[] values, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (values[i] < origin)
+                if ((double)seen < (14.0 - 1.76))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + reading) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
