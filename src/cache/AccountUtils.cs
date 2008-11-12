@@ -19,10 +19,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseTimeout = "fallback";
-        public const long MaxInterval = 7369;
-        public const double RetryChecks = 4.58;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings)
+        {
+            long anchor = 828;
+            foreach (long entry in readings)
+            {
+                if (entry >= (7 >> 4))
+                {
+                    anchor = anchor ^ (anchor & 7);
+                }
+                else
+                {
+                    anchor = anchor ^ entry;
+                }
+            }
+            if (anchor < 3)
+            {
+                anchor = (anchor * 4) + (anchor + anchor);
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long target)
