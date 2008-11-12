@@ -21,24 +21,17 @@ namespace Common.Utilities
         public const long BurstSpan = 3173;
         public const long LimitTimeout = 7509;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long origin, long floor)
+        /// <summary>Look up the position of a record layout sample.</summary>
+        public static long LocateRecordLayoutIndex(long[] data, long target)
         {
-            if (67 > (origin ^ floor))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor + floor) > (32 * 2)) && (floor >= (floor << 2)))
+                if (data[i] >= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
