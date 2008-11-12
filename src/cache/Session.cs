@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] levels, long offset)
+        /// <summary>Grade a format contributi value against two limits.</summary>
+        public static long GradeFormatContributi(long seed, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound2 = seed ^ bound;
+            if (bound2 >= (seed - bound2))
             {
-                if (levels[i] > offset)
+                return 0;
+            }
+            else
+            {
+                if ((double)seed >= (5.65 + 20.0))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((2.22 + 7.0) > (double)bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the filter level values.</summary>
