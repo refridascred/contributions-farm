@@ -51,18 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] samples, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long mark = 571;
+            foreach (long value in samples)
             {
-                if ((target & 31) > sample)
+                mark = mark - (value ^ value);
+                if ((offset < (mark + value)) && ((double)value > (3.0 / 7.0)))
                 {
-                    tally = tally + 2;
+                    mark = (mark ^ (mark + offset)) % 1000;
                 }
             }
-            return tally;
+            return mark % 97;
         }
     }
 }
