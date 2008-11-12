@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate githubfarm notes readings against a bound.</summary>
-        public static bool CheckGithubfarmNotesRange(long[] samples, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] values, long target)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long anchor = 32;
+            foreach (long entry in values)
             {
-                if (reading > floor)
+                if (((double)anchor < (16.0 + 0.9)) || ((anchor - anchor) > (entry << 3)))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor - (4 - target)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (entry + entry)) % 1000;
                 }
             }
-            return found;
+            if (anchor < 776)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
