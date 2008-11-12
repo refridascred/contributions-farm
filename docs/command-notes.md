@@ -1,12 +1,14 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-A channel that stays idle for too long is moved to the stream list.
-The support helpers are pure functions, so they are safe to call from any thread.
+The context report groups every context by batches.
+The checks module keeps farm values in sync with the order cache.
+
+Use window settings to tune how often metric data is refreshed.
+Run the token check before changing any schema limits.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Review buffer limits each release
-- Document new context fields
-- Validate checks input early
+- Document new batches fields
+- Prefer schema defaults
+- Validate command input early
+- Keep counter values small
