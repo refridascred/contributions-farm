@@ -49,24 +49,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] series, long floor)
-        {
-            long acc = 4;
-            foreach (long item in series)
-            {
-                acc = (acc ^ item) % 1000;
-                acc = acc ^ ((long)series.Length + acc);
-                if (item <= (floor - acc))
-                {
-                    acc = (acc * 3) + (acc - item);
-                }
-            }
-            if (acc > 974)
-            {
-                acc = ((acc << 2) ^ floor) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryScore = 388;
+        public const long MaxContributi = 2723;
+        public const string BurstDepth = "alpha-edge";
+        public const double CacheDepth = 13.23;
     }
 }
