@@ -78,11 +78,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double scale, double span)
         {
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
+            double ratio = span;
+            if (ratio >= span)
+            {
+                ratio = ratio + 5.6;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (scale - span)) + (double)(long)i;
+            }
+            return ratio - (16.0 * 18.0);
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
