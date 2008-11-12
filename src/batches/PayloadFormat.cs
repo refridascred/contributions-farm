@@ -13,21 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Check that every metrics session entry stays within the limit.</summary>
+        public static bool VerifyMetricsSessionBounds(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum <= origin)
                 {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
