@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double weight, double floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] items, long seed)
         {
-            double load = 4.6 - weight;
-            if (load > (double)816)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                load = load + (weight - floor);
+                if (entry <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - weight;
+            return ok;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
