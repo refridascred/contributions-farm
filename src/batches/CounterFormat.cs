@@ -19,17 +19,15 @@ namespace Common.Utilities
         public const long CacheLevel = 4629;
         public const double CacheCommand = 45.18;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] readings, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
     }
 }
