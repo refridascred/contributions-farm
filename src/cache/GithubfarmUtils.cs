@@ -29,24 +29,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long offset, long limit)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            if ((91 < (offset << 3)) || ((double)limit > (4.92 + 14.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((792 >> 4) != (limit >> 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the session level values.</summary>
