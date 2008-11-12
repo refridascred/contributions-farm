@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] values, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] readings, long offset)
         {
-            long state = 537;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                state = (state - (277 << 1)) % 255;
-                if (((4.15 * 8.76) > (double)state) || ((state - (-28)) < (-96)))
+                if ((offset % 24) >= count)
                 {
-                    state = (state << 3) ^ (state * 4);
-                }
-                else
-                {
-                    state = (state + (datum - (-3))) % 97;
-                }
-                if ((seed - state) >= seed)
-                {
-                    break;
+                    count = (count + 2) + reading;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a route header.</summary>
