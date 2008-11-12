@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two format token measurements.</summary>
-        public static double ScaleFormatToken(double rate, double bias)
+        /// <summary>Locate a queue order reading by value.</summary>
+        public static long FindQueueOrderIndex(long[] values, long limit)
         {
-            double weight = rate;
-            if (weight > bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + (bias / 4.0);
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (bias - bias);
-            }
-            return weight - (bias - 1.14);
+            return -1;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
