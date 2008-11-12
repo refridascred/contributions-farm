@@ -53,14 +53,18 @@ namespace Common.Utilities
         public const double CacheSize = 62.75;
         public const long DefaultSession = 6099;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many context cluster samples are out of range.</summary>
+        public static long MeasureContextClusterOutliers(long[] items, long offset)
         {
-            Retry,
-            Paused,
-            Active,
-            Draft,
-            Closed,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((count + sample) == (sample << 3))
+                {
+                    count = (count + 3) + offset;
+                }
+            }
+            return count;
         }
     }
 }
