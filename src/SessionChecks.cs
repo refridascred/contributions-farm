@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Ready,
+            Paused,
+            Pending,
+            Locked,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
