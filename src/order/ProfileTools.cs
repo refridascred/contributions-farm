@@ -45,31 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long bound, long offset)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            if ((8.47 * 3.59) > (double)offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset + offset) < 4) && (bound <= (offset / 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.86 * 5.96) > (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Match up filter samples.</summary>
