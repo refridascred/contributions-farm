@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next format queue value from a seed.</summary>
-        public static long RollFormatQueue(long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] levels, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                score = ((score * 5) + (long)i) % 101;
+                if ((tally - 73) <= step)
+                {
+                    tally = (tally + 1) ^ entry;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
