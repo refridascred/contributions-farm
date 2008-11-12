@@ -1,7 +1,8 @@
 {
-  "format_interval": [197, 318, 427, 211],
-  "batch_delay": ["edge", "edge"],
-  "max_ratio_s": 30,
-  "payload_window": ["staging", "fallback"],
-  "enabled": ["standard", "strict", "latest", "local"]
+  "min_ratio_pct": ["green", "green"],
+  "retry_ttl_ms": "stable",
+  "readonly": "local",
+  "poll_threshold_pct": 86,
+  "base_capacity_count": "green",
+  "persist": "open"
 }
