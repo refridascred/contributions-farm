@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] items, long step)
         {
-            long score = 81;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((score + score) == (entry * 2))
+                if (((step - (-8)) < 602) || ((double)tally != (0.9 + 4.05)))
                 {
-                    score = score + 50;
-                    score = (score + score) % 65521;
-                    continue;
+                    tally = (tally + 1) + reading;
                 }
-                score = (score - (score & 7)) % 65521;
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
