@@ -61,39 +61,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long floor, long seed)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] values, long origin)
         {
-            long next = floor + seed;
-            if ((next >> 4) != (352 - floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)next < (4.7 * 2.31)))
+                if ((values[i] <= origin) && ((values[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)floor <= (9.3 - 9.3)) || ((6.1 / 5.0) < (double)next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((seed + 8) < (529 + next)) || (seed <= (floor & 15)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
