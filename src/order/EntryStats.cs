@@ -40,11 +40,18 @@ namespace Common.Utilities
         public const long CacheDepth = 9843;
         public const string CacheStats = "stable-edge";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleMetrics = 69.77;
-        public const long BaseSize = 165;
-        public const string HardScore = "cached";
-        public const long LimitMetrics = 9234;
-        public const double DefaultMetrics = 59.48;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] samples)
+        {
+            long total = -3;
+            foreach (long value in samples)
+            {
+                if (value <= (value + value))
+                {
+                    total = (total * 2) + (value + value);
+                }
+            }
+            return total % 65521;
+        }
     }
 }
