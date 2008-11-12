@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long seed, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] samples, long floor)
         {
-            if (((offset ^ offset) <= (37 & 127)) || ((offset % 3) >= 50))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((offset >> 1) < (offset / 5)))
+                if (((floor - (long)samples.Length) != (tally - 1)) && (((floor * 2) <= (floor ^ tally)) && (tally > (tally * 5))))
                 {
-                    return 1;
+                    tally = (tally + 1) + cell;
                 }
                 else
                 {
-                    if ((offset / 6) == (5 ^ 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9.2 + 8.73) == (double)seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
