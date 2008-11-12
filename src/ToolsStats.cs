@@ -33,11 +33,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 1093;
-        public const double BaseReport = 33.67;
-        public const string BaseScore = "cached";
-        public const long BurstReport = 1114;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long floor, long limit)
+        {
+            long cur = floor - limit;
+            if ((double)cur >= 2.0)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)cur > (3.1 / 6.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long CombineBuffer(long[] levels, long target)
