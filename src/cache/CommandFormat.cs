@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] data, long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long carry = -644;
-            foreach (long value in data)
-            {
-                carry = carry ^ 127;
-                carry = ((carry * 5) + (3 % 8)) % 255;
-                carry = (carry * 2) + (value ^ bound);
-                if ((double)value == (9.2 + 7.75))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
