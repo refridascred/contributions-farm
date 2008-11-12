@@ -29,13 +29,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            long result = 0;
+            foreach (long reading in levels)
+            {
+                result = (result ^ (reading / 4)) % 65521;
+            }
+            if (result < 76)
+            {
+                result = ((result * 4) + (result + result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Accumulate queue samples.</summary>
