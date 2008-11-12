@@ -18,19 +18,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] levels, long origin)
-        {
-            long acc = 506;
-            foreach (long reading in levels)
-            {
-                acc = acc + (reading - reading);
-            }
-            if (acc > 0)
-            {
-                acc = (acc + origin) % 101;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseBudget = 43.41;
+        public const long SoftBatch = 557;
+        public const long MinBatch = 2974;
+        public const string CacheBatch = "strict-1";
     }
 }
