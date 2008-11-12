@@ -56,13 +56,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long seed)
         {
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Score { get; set; }
-            public long Token { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc * 4) + (44 << 1);
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
