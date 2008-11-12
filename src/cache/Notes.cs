@@ -28,25 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] series, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (reading > step)
                 {
-                    sum = ((sum + (sum + 442)) % 101) ^ (long)i2;
-                    sum = (sum - (sum * 5)) % 65521;
+                    found = false;
+                    break;
                 }
-                long slot = (sum + sum) - (sum / 6);
-                if ((sum + slot) < (target + sum))
-                {
-                    sum = sum + (target % 64);
-                }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Fold a list of command readings.</summary>
