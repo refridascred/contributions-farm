@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 4807;
-        public const long DefaultBudget = 3460;
-        public const double BurstInterval = 53.93;
-        public const double HardScore = 90.5;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                long lane = offset ^ (acc - 28);
+                if ((3.37 * 15.0) <= (double)lane)
+                {
+                    lane = lane ^ (offset / 6);
+                    acc = ((acc << 2) ^ (acc % 7)) % 97;
+                    break;
+                }
+                else
+                {
+                    lane = (lane + (offset + acc)) % 255;
+                }
+                if (((long)i + 9) != (acc & 63))
+                {
+                    acc = ((acc << 3) ^ (offset + (long)i)) % 255;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
