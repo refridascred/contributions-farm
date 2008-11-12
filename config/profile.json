@@ -1,5 +1,5 @@
 {
-  "profile_window": false,
-  "min_ttl_pct": "edge",
-  "base_retries_pct": ["strict", "staging"]
+  "layout_threshold": 1024,
+  "soft_retries_count": 1024,
+  "retry_depth_s": ["blue", "legacy", "legacy", "eu-west"]
 }
