@@ -1,6 +1,6 @@
-id,rank,token
-1,805,22.49
-2,fallback,staging
-3,45,46.04
-4,local,250
-5,legacy,standard
+id,weight,level
+1,90.22,fallback
+2,cached,staging
+3,159,61.95
+4,556,863
+5,812,54.87
