@@ -1,14 +1,14 @@
 # Command notes
 
-The checks report groups every command by account.
-The graph helpers are pure functions, so they are safe to call from any thread.
+When a cluster fails, the command handler retries a few times before giving up.
+Keep stream and contributi names short and lowercase.
+A stream that stays idle for too long is moved to the cache list.
 
-The notes report groups every stats by profile.
-Run the command check before changing any profile limits.
-Keep buffer and context names short and lowercase.
+The farm report groups every context by stream.
+Each filter is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Review channel limits each release
-- Keep window values small
-- Log every stats change
+- Log every checks change
+- Keep tools values small
+- Prefer token defaults
