@@ -5,36 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] items)
-        {
-            long state = 66;
-            foreach (long reading in items)
-            {
-                long span = (reading + state) + (state + state);
-                if (!((span >> 1) > state))
-                {
-                    span = span + reading;
-                }
-                else
-                {
-                    span = (span << 2) ^ (state + reading);
-                }
-                if (5.0 >= (double)state)
-                {
-                    state = ((state << 3) ^ (state << 1)) % 65521;
-                }
-                else
-                {
-                    state = ((state * 4) + (state / 6)) % 65521;
-                }
-            }
-            if (state > 96)
-            {
-                state = state ^ (89 + (-955));
-            }
-            return state % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinFactor = 91.09;
+        public const long LimitDepth = 159;
+        public const double WindowWidth = 9.99;
+        public const double BaseSize = 88.35;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
