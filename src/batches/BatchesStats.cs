@@ -13,11 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheSize = 3583;
-        public const long IdleDepth = 1668;
-        public const long BaseDepth = 1393;
-        public const long BurstCounter = 4445;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryLevel = "open-1";
+        public const long MinChecks = 8173;
+        public const double CacheTimeout = 26.14;
+        public const double CacheSize = 80.74;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphLimits(long[] data, long bound)
