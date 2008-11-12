@@ -53,21 +53,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count entry notes pairs that satisfy a relation.</summary>
-        public static long OverlapEntryNotesCount(long[] samples)
+        /// <summary>Accumulate notes editor samples.</summary>
+        public static long CombineNotesEditor(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = -965;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(((30 >> 1) <= (state - state)) && (2.0 <= (8.0 * 1.8))))
                 {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state ^ (cell - offset)) % 101;
+                }
+                if (((state + offset) > cell) || ((double)cell < (double)130))
+                {
+                    state = state ^ (offset + offset);
+                }
+                else
+                {
+                    state = (state ^ ((long)series.Length & 3)) % 1000;
                 }
             }
-            return count;
+            if (state > 7)
+            {
+                state = (state + ((long)series.Length / 9)) % 65521;
+            }
+            return state;
         }
     }
 }
