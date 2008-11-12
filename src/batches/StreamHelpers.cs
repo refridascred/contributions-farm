@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] readings, long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long carry = 9;
-            foreach (long entry in readings)
-            {
-                if ((limit <= entry) && ((-62) > (entry + carry)))
-                {
-                    carry = (carry + (limit - entry)) % 4096;
-                }
-            }
-            return carry;
+            Done,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
