@@ -33,19 +33,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!((14.0 + 5.4) < (double)offset))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 1093;
+        public const double BaseReport = 33.67;
+        public const string BaseScore = "cached";
+        public const long BurstReport = 1114;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long CombineBuffer(long[] levels, long target)
