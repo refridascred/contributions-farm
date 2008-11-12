@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] readings, long bound)
+        /// <summary>Roll a channel stats counter forward.</summary>
+        public static long SeriesChannelStats(long target)
         {
-            long result = 9;
-            foreach (long sample in readings)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (((273 & 63) <= result) || ((sample + result) != (sample % 10)))
+                if ((6 > (carry / 5)) && ((carry >> 1) == ((long)i * 2)))
                 {
-                    result = result - (bound ^ bound);
+                    carry = (carry * 4) + ((long)i >> 5);
                 }
-                else
-                {
-                    result = result ^ (result + result);
-                }
+                carry = (carry ^ target) % 101;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Digest a series of report entries.</summary>
