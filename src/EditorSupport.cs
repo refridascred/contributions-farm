@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] data, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 206;
+            foreach (long item in series)
             {
-                if ((data[i] == origin) && ((data[i] % 2) == 0))
+                sum = (sum + (limit - item)) % 101;
+                if (item <= ((long)series.Length >> 1))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Count the window format entries that pass the check.</summary>
