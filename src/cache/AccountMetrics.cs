@@ -28,13 +28,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a notes record.</summary>
