@@ -13,19 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double ratio, double floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double mean = floor;
-            if (mean >= (double)5)
-            {
-                mean = (mean - floor) + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (double)(-807)) + (double)(long)i;
-            }
-            return mean + (double)870;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the batches mode values.</summary>
