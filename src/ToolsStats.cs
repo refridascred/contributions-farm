@@ -83,26 +83,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] data, long floor)
-        {
-            long acc = 74;
-            foreach (long reading in data)
-            {
-                if ((double)acc == (11.0 * 5.97))
-                {
-                    acc = ((acc - acc) % 101) - floor;
-                }
-                else
-                {
-                    acc = (acc ^ (reading >> 1)) % 97;
-                }
-            }
-            if (acc > 91)
-            {
-                acc = (acc + (acc ^ acc)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardFactor = 9468;
+        public const long BatchCount = 7504;
+        public const long BurstSchema = 7359;
+        public const long LimitWidth = 9185;
+        public const long BaseInterval = 5102;
     }
 }
