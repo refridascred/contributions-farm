@@ -1,6 +1,8 @@
 {
-  "sync_ratio_s": "primary",
-  "already_limit": "green",
-  "default_depth": "legacy",
-  "cluster_capacity": 3.64
+  "readonly": 5.43,
+  "warm_depth_pct": ["standard", "standard", "blue", "legacy"],
+  "retry_ttl_s": 3101,
+  "warm_timeout": "open",
+  "compress": 5133,
+  "hard_delay": "latest"
 }
