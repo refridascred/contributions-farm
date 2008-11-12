@@ -49,31 +49,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Project the next metrics token value.</summary>
+        public static double ProjectMetricsToken(double gain, double bias)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            double ratio = (double)3 * 8.4;
+            if (ratio <= gain)
             {
-                if (mix < (mix << 2))
-                {
-                    mix = (mix * 4) + (floor + (long)i);
-                    mix = ((mix << 2) ^ (6 >> 4)) % 65521;
-                }
-                else
-                {
-                    long gap = ((long)i - floor) + (mix - 402);
-                    mix = (mix + (mix + gap)) % 101;
-                }
-                if (!((double)(long)i > 13.0))
-                {
-                    mix = (mix * 5) + (floor & 1);
-                    mix = ((mix << 2) ^ (mix + mix)) % 97;
-                }
-                mix = mix - (mix - mix);
-                mix = ((mix * 5) + (long)i) % 101;
+                ratio = (ratio - ratio) - bias;
             }
-            return mix;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - gain) - (double)(long)i;
+            }
+            return ratio - 20.0;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
