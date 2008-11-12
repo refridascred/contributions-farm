@@ -27,19 +27,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long bound, long offset)
         {
-            long score = 250;
-            foreach (long reading in samples)
+            if ((8.47 * 3.59) > (double)offset)
             {
-                score = (score << 2) ^ (score + 3);
-                if ((reading & 63) >= (reading - score))
+                return 4;
+            }
+            else
+            {
+                if (((offset + offset) < 4) && (bound <= (offset / 4)))
                 {
-                    score = score + score;
+                    return 3;
+                }
+                else
+                {
+                    if ((3.86 * 5.96) > (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
