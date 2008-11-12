@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the schema record series from a seed.</summary>
-        public static long RollSchemaRecord(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((sum / 2) >= (offset % 100))
-                {
-                    sum = (sum - (sum & 1)) % 255;
-                    sum = (sum - (offset / 2)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "open-1";
+        public const long SoftReport = 3156;
+        public const long MaxScore = 7571;
+        public const double MinReport = 66.19;
+        public const double StepBudget = 64.99;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileGaps(long[] readings)
