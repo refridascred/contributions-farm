@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long offset, long target)
+        /// <summary>Audit notes filter readings against a rule.</summary>
+        public static long AuditNotesFilterGaps(long[] levels)
         {
-            long gap = offset + target;
-            if (((13.0 * 1.98) <= (double)gap) && (offset < 3))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((gap + target) >= offset)
+                if ((double)value <= (double)48)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((3.41 - 4.0) <= (double)offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the window format entries that pass the check.</summary>
