@@ -19,13 +19,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Classify a cache entry pair into a bucket.</summary>
+        public static long ClassifyCacheEntry(long step, long seed)
         {
-            Failed,
-            Done,
-            Retry,
-            Closed,
+            long step2 = step + seed;
+            if ((step % 64) < step2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step2 + seed) >= step2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-9) & 1) == (step2 % 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
