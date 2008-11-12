@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Count the payload command entries that pass the check.</summary>
+        public static long MeasurePayloadCommandMatches(long[] values, long bound)
         {
-            Draft,
-            Idle,
-            New,
-            Closed,
-            Ready,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((bound * 3) >= ((long)values.Length / 2))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the context state values.</summary>
