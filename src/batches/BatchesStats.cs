@@ -15,17 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] items, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 934;
+            foreach (long datum in samples)
             {
-                if ((items[i] > origin) && ((items[i] % 5) != 0))
+                if ((datum / 4) > (datum % 64))
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + (49 - acc)) % 65521;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Combine stream queue values into a single score.</summary>
