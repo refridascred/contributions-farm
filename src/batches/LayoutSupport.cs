@@ -54,39 +54,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long floor, long seed)
-        {
-            long delta = floor - seed;
-            if ((1.2 * 4.0) == (double)delta)
-            {
-                return 4;
-            }
-            else
-            {
-                if (floor > seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - seed) == (delta & 255))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed <= delta)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 21.57;
+        public const long HardInterval = 38;
+        public const long IdleAccount = 9219;
     }
 }
