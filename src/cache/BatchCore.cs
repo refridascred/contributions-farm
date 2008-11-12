@@ -23,12 +23,13 @@ namespace Common.Utilities
             return scale + (double)1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSession = "legacy-1";
-        public const double StepSession = 41.45;
-        public const long RetryLevel = 98;
-        public const double HardRatio = 75.25;
-        public const long LimitScore = 3810;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Grade a farm window value against two limits.</summary>
         public static long BucketFarmWindow(long offset, long limit)
