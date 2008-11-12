@@ -35,15 +35,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long offset, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            long cur = offset - floor;
+            if (!((12.0 / 7.0) > (double)cur))
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (((190 + cur) <= (floor & 63)) && ((double)offset != (19.0 - 8.77)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
