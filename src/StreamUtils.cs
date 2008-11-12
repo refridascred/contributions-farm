@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] samples, long offset)
+        /// <summary>Scale a queue metrics figure with a bias.</summary>
+        public static double ScaleQueueMetrics(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = 5.0;
+            if (ratio < ratio)
             {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (9.53 / 8.0)) - bias;
             }
-            return -1;
+            return ratio + weight;
         }
 
         /// <summary>Describe the entry level values.</summary>
