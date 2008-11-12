@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long offset, long origin)
+        /// <summary>Locate a record commits reading by value.</summary>
+        public static long SeekRecordCommitsIndex(long[] series, long limit)
         {
-            if (72 > (offset >> 4))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((5.42 - 8.3) == (double)origin) || ((offset ^ origin) != (485 << 2)))
+                if (series[i] > limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin / 9) >= (offset + 21)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset & 127) <= 35)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
