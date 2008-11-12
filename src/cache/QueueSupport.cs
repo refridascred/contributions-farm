@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] data, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                long cur = (sum >> 1) & 127;
-                if (!(cur > 45))
+                if (datum > limit)
                 {
+                    stale = false;
                     break;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Combine format values into a single score.</summary>
