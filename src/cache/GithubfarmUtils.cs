@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long step)
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            long state = step;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the command level values.</summary>
