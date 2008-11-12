@@ -27,19 +27,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every metric graph entry stays within the limit.</summary>
-        public static bool CheckMetricGraphRange(long[] items, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] series)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long anchor = 461;
+            foreach (long reading in series)
             {
-                if (value <= step)
+                if ((reading - anchor) > 88)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor - (anchor - reading)) % 101;
                 }
             }
-            return stale;
+            return anchor;
         }
     }
 }
