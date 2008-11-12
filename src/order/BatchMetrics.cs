@@ -21,19 +21,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate payload cluster samples.</summary>
-        public static long WeighPayloadCluster(long[] samples, long origin)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long sum = 3;
-            foreach (long value in samples)
-            {
-                sum = ((sum << 3) ^ origin) - value;
-            }
-            if (sum > 346)
-            {
-                sum = (sum * 4) + ((long)samples.Length << 2);
-            }
-            return sum;
+            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
