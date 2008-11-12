@@ -1,10 +1,12 @@
 # Command notes
 
-Run the token check before changing any editor limits.
-Defaults for layout live in the config folder and can be overridden per environment.
+Run the entry check before changing any route limits.
+Run the layout check before changing any batch limits.
+The commits report groups every record by buffer.
 
 ## Guidelines
 
-- Log every account change
-- Validate queue input early
-- Review tools limits each release
+- Review account limits each release
+- Keep route values small
+- Document new layout fields
+- Prefer account defaults
