@@ -45,32 +45,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long bound, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] samples, long bound)
         {
-            long lane = bound + floor;
-            if (!((924 % 97) != (lane * 5)))
+            bool found = true;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((lane - 6) == (floor - floor)) && ((3 - lane) >= floor))
+                if (item < bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor + floor) <= (217 / 3)) || ((floor / 5) > (lane / 8)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
