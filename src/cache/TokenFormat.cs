@@ -20,16 +20,21 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total << 2) ^ (floor + total)) % 101;
-                total = ((total * 5) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
