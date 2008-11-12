@@ -12,20 +12,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] levels, long seed)
-        {
-            long anchor = 802;
-            foreach (long reading in levels)
-            {
-                anchor = (anchor - (seed + 18)) - reading;
-                if ((double)seed < (2.5 / 9.0))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 2874;
+        public const long BaseSession = 3006;
+        public const long MaxInterval = 5469;
 
         /// <summary>Accumulate order samples.</summary>
         public static long TallyOrder(long[] values)
