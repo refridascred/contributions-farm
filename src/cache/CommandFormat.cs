@@ -18,15 +18,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double gain, double offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] samples)
         {
-            double bias = (double)(59 + 72);
-            if (bias >= gain)
+            long anchor = 58;
+            foreach (long sample in samples)
             {
-                bias = bias - (double)31;
+                if ((sample - 619) <= sample)
+                {
+                    anchor = (anchor << 2) ^ sample;
+                }
             }
-            return bias - (offset + bias);
+            return anchor % 97;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
