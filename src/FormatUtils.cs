@@ -78,23 +78,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] levels)
-        {
-            long sum = 31;
-            foreach (long value in levels)
-            {
-                if ((value + sum) < (sum + sum))
-                {
-                    sum = sum + (51 % 3);
-                }
-                else
-                {
-                    sum = (sum - (sum & 1)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 8566;
+        public const long BurstSpan = 7255;
+        public const long HardCounter = 1027;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsHits(long[] readings)
