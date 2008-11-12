@@ -14,16 +14,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                result = ((result << 2) ^ ((long)i - result)) % 101;
-                result = ((result * 4) + (long)i) % 65521;
+                if (!((matches + sample) < 6))
+                {
+                    matches = matches + 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
