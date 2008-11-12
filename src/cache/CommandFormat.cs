@@ -17,12 +17,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] data, long limit)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count payload order pairs that satisfy a relation.</summary>
