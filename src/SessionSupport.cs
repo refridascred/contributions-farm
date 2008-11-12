@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long CacheSpan = 8585;
         public const long MaxStream = 9160;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] values)
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (sample < (sample % 97))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the record format series from a seed.</summary>
