@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 8533;
+        public const string SoftSpan = "cached-1";
+        public const string DefaultSize = "legacy-edge";
 
         /// <summary>Locate a support reading by value.</summary>
         public static long FindSupportIndex(long[] values, long bound)
