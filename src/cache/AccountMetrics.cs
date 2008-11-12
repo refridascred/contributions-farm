@@ -68,31 +68,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long target, long limit)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            if (((target % 7) <= limit) && ((target - limit) != (target & 255)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit >= (limit + target)) && ((limit & 63) >= (limit << 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(limit > target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
