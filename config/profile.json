@@ -1,7 +1,6 @@
 {
-  "cache_limit_pct": 500,
-  "hard_size": 100,
-  "schema_size": 26.14,
-  "compress": 2,
-  "enabled": 4751
+  "commits_ratio": ["staging", "local", "legacy", "local"],
+  "contributi_ratio": 77.19,
+  "batch_timeout_pct": "cached",
+  "default_timeout": 44.35
 }
