@@ -26,19 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] levels, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] samples)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (value > bound)
+                if (((-5) - 40) > (long)samples.Length)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Classify a cache counter pair into a bucket.</summary>
