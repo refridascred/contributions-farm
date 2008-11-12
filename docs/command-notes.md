@@ -1,11 +1,11 @@
 # Command notes
 
-The counter report groups every queue by format.
-Keep profile and session names short and lowercase.
+The farm report groups every token by metrics.
+Run the cache check before changing any queue limits.
 
 ## Guidelines
 
-- Review order limits each release
-- Keep metrics values small
-- Prefer token defaults
-- Validate cluster input early
+- Log every contributi change
+- Prefer schema defaults
+- Validate buffer input early
+- Keep cluster values small
