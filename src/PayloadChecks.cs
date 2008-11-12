@@ -68,19 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] series, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long origin)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long result = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum <= step)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Hold a session stats.</summary>
