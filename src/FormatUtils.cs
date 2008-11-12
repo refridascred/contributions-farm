@@ -58,18 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] series, long offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            long total = 9;
-            foreach (long item in series)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(916 > item))
-                {
-                    total = ((total * 5) + (item + item)) - offset;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
