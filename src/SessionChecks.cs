@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Stale,
-            Ready,
-            Paused,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseTimeout = "latest-1";
+        public const string BurstRatio = "fallback-edge";
+        public const long MaxTimeout = 9038;
+        public const double WindowWidth = 90.69;
+        public const long MinWidth = 2591;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] samples)
