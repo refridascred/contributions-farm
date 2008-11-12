@@ -1,13 +1,5 @@
 {
-  "min_retries_s": ["open", "green"],
-  "idle_ratio_ms": 77.18,
-  "sync_capacity": "blue",
-  "strict": {
-    "poll_window": [388, 73, 397],
-    "dry_run": "staging",
-    "batch_ratio": "latest",
-    "stream_timeout": 30,
-    "layout_retries": "stable"
-  },
-  "audit": 40
+  "retry_limit_ms": "latest",
+  "format_threshold": true,
+  "default_retries_ms": true
 }
