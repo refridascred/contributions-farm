@@ -33,31 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools checks value against two limits.</summary>
-        public static long SortToolsChecks(long target, long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] items)
         {
-            if ((target >= (target % 12)) && ((double)seed != (16.0 - 17.0)))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + target) <= (seed + seed))
+                if ((9.26 + 6.0) <= (double)hits)
                 {
-                    return 1;
+                    hits = (hits + 1) ^ entry;
                 }
                 else
                 {
-                    if ((double)target >= (6.93 - 2.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
