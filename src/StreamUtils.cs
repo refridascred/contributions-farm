@@ -61,12 +61,17 @@ namespace Common.Utilities
             return mean - (span * 18.0);
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Locate a context queue reading by value.</summary>
+        public static long LookupContextQueueIndex(long[] values, long bound)
         {
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
