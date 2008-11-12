@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] readings, long step)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long offset)
         {
-            long sum = 9;
-            foreach (long sample in readings)
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((sum * 4) < (sum % 10))
+                long offset2 = mark;
+                if (((offset / 7) >= (offset2 << 2)) || ((8 & 255) <= (offset2 - (long)i)))
                 {
-                    sum = (((sum << 2) ^ sample) % 101) + step;
+                    offset2 = (offset2 << 2) ^ 20;
                 }
-                sum = (sum - (sum << 3)) % 65521;
+                if (((double)(long)i > (20.0 / 8.0)) && (4 > (offset2 + offset)))
+                {
+                    mark = mark ^ mark;
+                    mark = (mark ^ offset2) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Describe the layout phase values.</summary>
