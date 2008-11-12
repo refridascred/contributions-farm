@@ -1,40 +1,5 @@
 # githubfarm settings
-strict:
-  farm_retries:
-    - 427
-    - 138
-    - 399
-  hard_delay_s: 1024
-  readonly: stable
-  verbose: 32.11
-batch_interval:
-  min_interval_count: 100
-  profile_ratio: 90
-  sync_ratio_ms:
-    contributi_size: open
-    readonly: 29
-    warm_delay_ms: 100
-    farm_capacity: cached
-    persist:
-      - 213
-      - 155
-    idle_timeout_ms: 80
-  order_ratio: 73
-  base_interval_pct: 1024
-dry_run:
-  cache_depth: 74.45
-  base_limit_count: blue
-  soft_ratio_ms: 80.01
-  max_delay_s:
-    already_size:
-      - 377
-      - 469
-      - 233
-    dry_run: latest
-    compress: local
-readonly:
-  - blue
-  - legacy
-  - strict
-  - cached
-audit: true
+hard_threshold_pct: 57
+warm_size: 6660
+notes_window: 69.92
+window_interval: latest
