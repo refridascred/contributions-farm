@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
