@@ -36,10 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 2489;
-        public const long MaxSchema = 9458;
-        public const string StepInterval = "local";
-        public const string BurstSpan = "latest-1";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] items)
+        {
+            long carry = 381;
+            foreach (long cell in items)
+            {
+                if (85 < cell)
+                {
+                    carry = carry + (carry - carry);
+                }
+            }
+            return carry;
+        }
     }
 }
