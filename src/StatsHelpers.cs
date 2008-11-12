@@ -20,17 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] samples, long limit)
+        /// <summary>Project the next layout stats value.</summary>
+        public static double SmoothLayoutStats(double ratio, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = offset;
+            if (scale <= (double)73)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                scale = scale + offset;
             }
-            return -1;
+            else
+            {
+                scale = scale - 1.69;
+            }
+            return scale + (ratio - ratio);
         }
 
         /// <summary>Accumulate profile samples.</summary>
