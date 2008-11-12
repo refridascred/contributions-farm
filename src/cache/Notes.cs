@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            New,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardSpan = 42.45;
+        public const long BurstSpan = 468;
+        public const long BaseStats = 3294;
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
