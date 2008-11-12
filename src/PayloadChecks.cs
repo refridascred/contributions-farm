@@ -46,21 +46,39 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long limit, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long step = limit + target;
+            if ((target + 358) != ((-65) + step))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((7.0 * 3.4) != (double)limit))
                 {
-                    if ((samples[i] + samples[j]) != 1)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target >= (1.31 * 12.0))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)target <= 7.06)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
