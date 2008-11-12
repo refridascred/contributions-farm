@@ -18,16 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 9998;
+        public const long RetryCluster = 1842;
+        public const long RetryLevel = 3840;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long HardContext = 9371;
