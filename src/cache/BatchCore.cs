@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((15.0 - 2.0) >= (double)sample)
                 {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
