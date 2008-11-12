@@ -69,13 +69,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public double Size { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinInterval = 5391;
+        public const long MinTools = 8644;
+        public const double WindowTools = 68.85;
+        public const long StepTools = 5138;
+        public const long BatchTools = 1440;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long DigestWindow(long[] data, long floor)
