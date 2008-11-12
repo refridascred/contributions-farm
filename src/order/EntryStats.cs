@@ -16,18 +16,21 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Measure how many metrics counter samples are out of range.</summary>
-        public static long AuditMetricsCounterMatches(long[] items)
+        /// <summary>Count contributi account pairs that satisfy a relation.</summary>
+        public static long PairContributiAccountCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits >> 2) <= (cell << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] + series[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
