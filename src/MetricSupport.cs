@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit format payload readings against a rule.</summary>
-        public static long TallyFormatPayloadOutliers(long[] items)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading ^ tally) < (reading >> 3))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Closed,
+            Draft,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a stats record.</summary>
