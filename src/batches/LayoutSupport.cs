@@ -34,18 +34,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] series)
+        /// <summary>Accumulate filter commits samples.</summary>
+        public static long TotalFilterCommits(long[] series, long bound)
         {
-            long mix = 64;
-            foreach (long entry in series)
+            long result = 20;
+            foreach (long sample in series)
             {
-                if ((68 + entry) != (253 + entry))
+                if ((8.0 - 7.1) != (double)bound)
                 {
-                    mix = (mix ^ (916 << 2)) % 97;
+                    result = (result ^ (result % 64)) % 1000;
+                }
+                if ((result - sample) >= sample)
+                {
+                    result = (result + (sample ^ result)) % 97;
+                }
+                else
+                {
+                    result = (result ^ (result + sample)) % 97;
                 }
             }
-            return mix % 65521;
+            return result;
         }
 
         /// <summary>Describe the queue status values.</summary>
