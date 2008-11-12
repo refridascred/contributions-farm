@@ -68,31 +68,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long bound, long bound2)
+        /// <summary>Compare every pair of cluster payload readings.</summary>
+        public static long CompareClusterPayloadCount(long[] values)
         {
-            if ((4.5 + 8.0) > (double)bound)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.8 - 5.6) == (double)bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)59 != (double)bound2))
+                    if ((values[i] - values[j]) < 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
