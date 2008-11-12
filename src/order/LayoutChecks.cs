@@ -25,22 +25,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] series)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (datum < (datum >> 5))
+                if (matches < 40)
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) ^ entry;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate stats samples.</summary>
