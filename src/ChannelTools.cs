@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] series, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] items)
         {
-            long anchor = 3;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (((limit / 9) != ((-98) + 6)) && ((8.33 * 6.93) == (double)limit))
+                if ((cell + 744) == (24 >> 3))
                 {
-                    anchor = ((anchor << 3) ^ (cell ^ cell)) % 97;
+                    count = count + 2;
                 }
                 else
                 {
-                    anchor = (anchor - cell) % 4096;
+                    count = count - 1;
                 }
             }
-            if (anchor > 98)
-            {
-                anchor = (anchor ^ 850) % 4096;
-            }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
