@@ -20,18 +20,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] data)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (((item / 4) > item) || ((hits - hits) != (item / 9)))
+                if (reading < step)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Count the batches commits entries that pass the check.</summary>
