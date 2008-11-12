@@ -1,7 +1,14 @@
 {
-  "session_timeout": 78.23,
-  "hard_ttl": "open",
-  "base_depth_count": 45,
-  "warm_ratio_count": [473, 474, 261],
-  "default_timeout_s": "green"
+  "batch_window": "edge",
+  "sync_threshold": false,
+  "batch_limit": "stable",
+  "soft_retries_count": 30,
+  "hard_ttl": 30,
+  "metric_threshold": {
+    "poll_ttl_count": 24.93,
+    "burst_retries_pct": true,
+    "account_size": "green",
+    "stats_retries": 60,
+    "soft_ttl_ms": 1696
+  }
 }
