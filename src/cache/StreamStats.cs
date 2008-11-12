@@ -35,26 +35,15 @@ namespace Common.Utilities
         public const long DefaultCommand = 3208;
         public const double WindowScore = 95.32;
 
-        /// <summary>Digest a series of cache batches entries.</summary>
-        public static long FoldCacheBatches(long[] values)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long offset)
         {
-            long acc = 138;
-            foreach (long datum in values)
+            long score = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((acc + datum) < datum)
-                {
-                    acc = (acc - (acc & 3)) % 101;
-                }
-                else
-                {
-                    acc = acc - acc;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            if (acc > (-4))
-            {
-                acc = ((acc * 5) + (acc + 5)) % 255;
-            }
-            return acc;
+            return score;
         }
     }
 }
