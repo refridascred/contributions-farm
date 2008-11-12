@@ -51,12 +51,12 @@ namespace Common.Utilities
         public const double BurstDepth = 24.97;
         public const string BaseFactor = "primary-edge";
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public double Label { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardDepth = 98.28;
+        public const long MinCommand = 158;
+        public const long LimitCount = 235;
+        public const long BaseCommand = 2155;
+        public const string BaseBudget = "standard";
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueHits(long[] samples)
