@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
