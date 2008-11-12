@@ -85,9 +85,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchSpan = 885;
-        public const long MinStream = 7522;
-        public const string BatchFactor = "alpha";
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (!((-10) >= (count << 2)))
+                {
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
