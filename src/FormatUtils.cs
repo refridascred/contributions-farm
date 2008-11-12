@@ -44,16 +44,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 3921;
+        public const long MaxStats = 7530;
+        public const long RetryScore = 6052;
+        public const double CacheStats = 98.93;
+        public const string StepStats = "staging-1";
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TotalTools(long[] series, long offset)
