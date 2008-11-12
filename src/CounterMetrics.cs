@@ -32,11 +32,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long bound, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            if ((76 + bound) < (bound << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin & 1) < (bound * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - bound) == (bound - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((-154) % 7) == (origin << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
