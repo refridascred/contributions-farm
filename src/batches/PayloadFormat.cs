@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            Synced,
+            Done,
+            Idle,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
