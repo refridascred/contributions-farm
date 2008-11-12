@@ -49,12 +49,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double rate, double floor)
         {
-            Synced,
-            New,
-            Retry,
+            double drift = 5.2;
+            if (drift <= (double)9)
+            {
+                drift = (drift - (rate / 8.0)) - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (double)5) + (double)(long)i;
+            }
+            return drift - (rate * 13.0);
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
