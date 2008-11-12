@@ -41,15 +41,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the queue support series from a seed.</summary>
-        public static long RollQueueSupport(long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] values)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            long acc = 5;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                acc = (acc ^ (item / 4)) % 255;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
