@@ -22,19 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long step, long bound)
         {
-            long total = 787;
-            foreach (long sample in readings)
+            if (715 >= (bound >> 4))
             {
-                total = ((total + (533 + total)) % 65521) + sample;
+                return 5;
             }
-            if (total < 61)
+            else
             {
-                total = total + (total & 63);
+                if ((bound - 3) < (step ^ bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step <= 7.7)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)bound > (8.0 - 6.0)) && ((12.0 / 3.0) != (double)bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Hold a batch summary.</summary>
