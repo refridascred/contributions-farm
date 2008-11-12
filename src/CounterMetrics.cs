@@ -58,18 +58,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] items, long offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] readings, long limit)
         {
-            long carry = 4;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item == (19.0 * 2.8))
+                if (readings[i] <= limit)
                 {
-                    carry = ((carry * 3) + (carry + 69)) - offset;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
