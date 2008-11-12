@@ -61,13 +61,12 @@ namespace Common.Utilities
             return mean - (span * 18.0);
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            New,
-            Dropped,
-            Retry,
-            Idle,
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
