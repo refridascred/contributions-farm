@@ -59,9 +59,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 5561;
-        public const long HardWidth = 4871;
-        public const string BaseSize = "cached-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftCount = "open";
+        public const string LimitCommits = "open-edge";
+        public const double MaxFactor = 98.67;
+        public const long WindowCommits = 6731;
     }
 }
