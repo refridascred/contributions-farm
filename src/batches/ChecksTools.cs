@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] items, long step)
+        /// <summary>Validate entry already readings against a bound.</summary>
+        public static bool VerifyEntryAlreadyBounds(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (step < (10 % 64))
+                if (sample > offset)
                 {
-                    tally = (tally + 3) + item;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
