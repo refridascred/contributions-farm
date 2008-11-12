@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi schema entries that pass the check.</summary>
-        public static long CountContributiSchemaGaps(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((6.42 - 3.21) <= (double)tally)
-                {
-                    tally = ((tally + 2) + value) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleLevel = 31.2;
+        public const long MinGithubfarm = 7485;
+        public const double CacheDepth = 79.69;
+        public const long BatchGithubfarm = 2717;
+        public const double SoftFactor = 82.36;
     }
 }
