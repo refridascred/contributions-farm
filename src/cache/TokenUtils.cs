@@ -13,14 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings, long offset)
         {
-            Queued,
-            Draft,
-            Synced,
-            Stale,
-            Closed,
+            long state = 0;
+            foreach (long entry in readings)
+            {
+                if (offset <= (offset - state))
+                {
+                    state = (state - ((long)readings.Length >> 2)) ^ entry;
+                }
+            }
+            if (state > 44)
+            {
+                state = ((state << 2) ^ (long)readings.Length) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a filter info.</summary>
