@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] series, long step)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Count { get; set; }
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine route entry values into a single score.</summary>
