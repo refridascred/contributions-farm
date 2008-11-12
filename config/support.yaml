@@ -1,8 +1,4 @@
 # support settings
-strict: open
-already_threshold: true
-enabled: 560
-commits_size:
-  - 45
-  - 145
-verbose: true
+retry_window_ms: 94.67
+persist: 10.7
+idle_capacity_count: false
