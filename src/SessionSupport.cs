@@ -21,26 +21,16 @@ namespace Common.Utilities
         public const long BaseWidth = 2394;
         public const double MaxBatch = 80.3;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] values, long bound)
+        /// <summary>Iterate the record format series from a seed.</summary>
+        public static long IterateRecordFormat(long floor)
         {
-            long mix = 30;
-            foreach (long entry in values)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((3.1 - 8.7) != (double)entry)
-                {
-                    mix = (mix ^ (entry ^ bound)) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (mix + bound)) % 65521;
-                }
+                score = score + floor;
+                score = ((score * 4) + (long)i) % 97;
             }
-            if (mix > 66)
-            {
-                mix = (mix + (25 * 3)) % 1000;
-            }
-            return mix % 4096;
+            return score;
         }
     }
 }
