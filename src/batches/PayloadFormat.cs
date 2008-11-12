@@ -28,10 +28,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinDepth = "alpha-1";
-        public const long IdleFilter = 4044;
-        public const long BaseFilter = 9989;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 116;
+        public const long MinEditor = 7966;
+        public const long RetryEditor = 6621;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
