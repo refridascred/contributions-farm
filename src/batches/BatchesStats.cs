@@ -13,11 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryLevel = "open-1";
-        public const long MinChecks = 8173;
-        public const double CacheTimeout = 26.14;
-        public const double CacheSize = 80.74;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!((seen % 10) <= seen))
+                {
+                    seen = ((seen + 3) + cell) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphLimits(long[] data, long bound)
