@@ -1,4 +1,5 @@
 # support settings
-notes_depth: 66.43
-retry_limit_ms: 46
-burst_ratio_s: 1024
+audit: 60
+sync_ratio: 7820
+channel_ttl: edge
+sync_window_count: 3617
