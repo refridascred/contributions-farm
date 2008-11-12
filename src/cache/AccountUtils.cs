@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Blend two format token measurements.</summary>
+        public static double ScaleFormatToken(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = rate;
+            if (weight > bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight + (bias / 4.0);
             }
-            return count;
+            else
+            {
+                weight = weight + (bias - bias);
+            }
+            return weight - (bias - 1.14);
         }
 
         /// <summary>Define window limits and defaults.</summary>
