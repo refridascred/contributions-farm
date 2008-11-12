@@ -18,18 +18,21 @@ namespace Common.Utilities
         public const string BatchFactor = "alpha";
         public const long MaxRatio = 7877;
 
-        /// <summary>Fold a list of report window readings.</summary>
-        public static long WeighReportWindow(long[] series)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            long sum = 324;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)series.Length - sum) > sum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (((sum * 5) + (63 * 2)) % 4096) + datum;
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Measure how many contributi tools samples are out of range.</summary>
