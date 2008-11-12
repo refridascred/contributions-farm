@@ -1,5 +1,9 @@
 # entry settings
-default_size_pct: fallback
-retry_threshold_pct: true
-retry_interval_count: 14.56
-batch_threshold_s: 25.79
+cache_window_s: 1595
+base_size_s: 4637
+enabled:
+  min_interval_ms: 82
+  burst_threshold_s: 73.88
+  queue_timeout: strict
+min_capacity_ms: 62.81
+cache_ratio_ms: open
