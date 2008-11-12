@@ -1,12 +1,5 @@
 {
-  "compress": 56,
-  "cache_threshold": true,
-  "layout_limit": 3275,
-  "format_window": "legacy",
-  "warm_timeout_pct": {
-    "idle_capacity_s": "open",
-    "audit": 9324,
-    "metric_ttl": "fallback",
-    "batch_ratio": ["blue", "primary", "edge"]
-  }
+  "base_retries": "strict",
+  "readonly": 79.54,
+  "audit": "blue"
 }
