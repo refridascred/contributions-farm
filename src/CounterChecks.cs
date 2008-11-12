@@ -57,23 +57,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double rate, double span)
-        {
-            double drift = rate;
-            if (drift >= (drift * 19.0))
-            {
-                drift = drift + rate;
-            }
-            else
-            {
-                drift = drift + rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (rate + span)) + (double)(long)i;
-            }
-            return drift - 8.6;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 9719;
+        public const long StepQueue = 33;
+        public const double SoftRatio = 44.07;
+        public const long RetryRatio = 194;
+        public const long RetryQueue = 2846;
     }
 }
