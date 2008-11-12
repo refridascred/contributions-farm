@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 8533;
-        public const string SoftSpan = "cached-1";
-        public const string DefaultSize = "legacy-edge";
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Synced,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
