@@ -10,14 +10,15 @@ namespace Common.Utilities
         public const string DefaultMetrics = "cached-v2";
         public const long IdleInterval = 7974;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long step)
         {
-            Active,
-            Done,
-            Stale,
-            Synced,
-            Dropped,
+            long acc = step;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Project the next metrics value.</summary>
