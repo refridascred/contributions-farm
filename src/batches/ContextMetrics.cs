@@ -35,21 +35,16 @@ namespace Common.Utilities
             return load - 6.84;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] levels)
+        /// <summary>Derive the next schema token value from a seed.</summary>
+        public static long DeriveSchemaToken(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (sum ^ ((long)i - floor)) % 4096;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
