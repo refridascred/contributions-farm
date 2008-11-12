@@ -37,25 +37,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long origin, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] data)
         {
-            long gap = origin - floor;
-            if (gap > (gap / 7))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((29 + gap) < floor) && ((8.0 + 5.14) >= (double)origin))
+                if (((double)seen != (9.69 - 14.0)) && ((5.02 + 19.0) < (double)seen))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    seen = (seen + 3) - datum;
                 }
             }
+            return seen;
         }
     }
 }
