@@ -35,18 +35,24 @@ namespace Common.Utilities
         public const long CacheRatio = 724;
         public const double BatchAccount = 73.48;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] items)
+        /// <summary>Fold a list of already format readings.</summary>
+        public static long TallyAlreadyFormat(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            long state = 6;
+            foreach (long entry in values)
             {
-                if ((item - 2) < (677 - item))
+                state = state - entry;
+                state = state ^ (state >> 3);
+                if ((entry * 5) >= seed)
                 {
-                    count = count + 3;
+                    state = ((state * 5) + (285 - state)) % 255;
                 }
             }
-            return count;
+            if (state > 9)
+            {
+                state = ((state * 5) + state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Combine format githubfarm values into a single score.</summary>
