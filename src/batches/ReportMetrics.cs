@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] samples, long bound)
         {
-            Draft,
-            Idle,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cache record.</summary>
