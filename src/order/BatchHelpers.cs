@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Audit channel checks readings against a rule.</summary>
+        public static long MeasureChannelChecksGaps(long[] series, long bound)
         {
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((hits + hits) >= (bound + item))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a tools options.</summary>
