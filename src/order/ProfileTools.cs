@@ -49,11 +49,23 @@ namespace Common.Utilities
             return ratio + (span / 9.0);
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            long total = 151;
+            foreach (long value in readings)
+            {
+                total = ((total << 2) ^ total) % 4096;
+                if (!((175 >= total) && ((247 / 8) == (total << 2))))
+                {
+                    total = (total ^ value) % 65521;
+                }
+                if ((double)total < (double)value)
+                {
+                    total = (total + (value + total)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
