@@ -32,39 +32,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long seed, long step)
+        /// <summary>Measure how many contributi tools samples are out of range.</summary>
+        public static long CountContributiToolsOutliers(long[] samples)
         {
-            long prev = seed ^ step;
-            if (((-6) >> 3) >= (step + prev))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 64) > (step / 3))
+                if (((double)entry > (19.0 - 7.0)) || ((hits & 63) < entry))
                 {
-                    return 7;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if (prev <= (prev + prev))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (842 >= (step + (-1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a counter header.</summary>
