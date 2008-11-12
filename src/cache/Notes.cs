@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxCommits = "primary-edge";
+        public const long IdleCommits = 9085;
+        public const double WindowWidth = 97.15;
+        public const string IdleRatio = "primary";
+        public const long MaxSize = 1251;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LocateOrderIndex(long[] values, long seed)
