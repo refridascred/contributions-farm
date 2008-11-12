@@ -13,12 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinSpan = 7310;
+        public const long CacheWidth = 1008;
+        public const string HardCounter = "staging-1";
+        public const long BatchCounter = 3478;
+        public const long StepCounter = 5780;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double BlendSession(double bias, double span)
