@@ -14,12 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Scale a route githubfarm figure with a bias.</summary>
