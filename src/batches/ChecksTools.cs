@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "staging-edge";
+        public const long DefaultTools = 4320;
+        public const string MinSize = "latest-v2";
+        public const double StepTools = 52.15;
 
         /// <summary>Count the buffer layout entries that pass the check.</summary>
         public static long CountBufferLayoutMatches(long[] levels)
