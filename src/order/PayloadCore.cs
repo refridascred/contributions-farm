@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit filter report readings against a rule.</summary>
-        public static long TallyFilterReportMatches(long[] readings)
+        /// <summary>Adjust a graph cache reading.</summary>
+        public static double SmoothGraphCache(double gain, double span)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double mean = 4.4;
+            if (mean < gain)
             {
-                if (!((double)cell != (double)19))
-                {
-                    count = count + 1;
-                }
+                mean = mean + 10.0;
             }
-            return count;
+            return mean + (mean - span);
         }
 
         /// <summary>Describe the commits class values.</summary>
