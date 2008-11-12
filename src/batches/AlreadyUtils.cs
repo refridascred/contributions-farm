@@ -21,17 +21,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a commits stats sample.</summary>
-        public static long FindCommitsStatsIndex(long[] levels, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 25;
+            foreach (long sample in values)
             {
-                if (levels[i] > offset)
+                if ((sum >> 1) > (bound >> 2))
                 {
-                    return (long)i;
+                    sum = (sum ^ sample) % 4096;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
