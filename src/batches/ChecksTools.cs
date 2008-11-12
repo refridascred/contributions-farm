@@ -35,11 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseCache = 32.94;
-        public const long DefaultCache = 6460;
-        public const long LimitRatio = 3775;
-        public const string HardCache = "alpha";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 4299;
+        public const double LimitInterval = 6.02;
+        public const long BatchCommand = 2384;
+        public const long SoftTimeout = 2871;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksHits(long[] items, long step)
