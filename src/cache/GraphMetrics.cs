@@ -67,19 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] series, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (reading >= floor)
+                if (origin < (item / 4))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Check that every notes context entry stays within the limit.</summary>
