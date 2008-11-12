@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate layout githubfarm samples.</summary>
-        public static long WeighLayoutGithubfarm(long[] data)
+        /// <summary>Measure how many metrics farm samples are out of range.</summary>
+        public static long TallyMetricsFarmHits(long[] levels)
         {
-            long result = 924;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                result = result ^ (item << 2);
+                if ((68 - 197) < (value >> 4))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (result > (-1))
-            {
-                result = result ^ result;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the layout phase values.</summary>
