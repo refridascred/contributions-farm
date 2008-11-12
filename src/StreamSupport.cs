@@ -27,19 +27,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double bias, double offset)
-        {
-            double weight = offset;
-            if (weight >= offset)
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - 12.0) + (double)(long)i;
-            }
-            return weight + (weight - 4.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 6116;
+        public const long LimitScore = 2207;
+        public const double IdleEditor = 8.49;
     }
 }
