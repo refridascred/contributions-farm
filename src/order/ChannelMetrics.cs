@@ -39,11 +39,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "primary-edge";
-        public const long RetryAccount = 613;
-        public const string BatchInterval = "primary";
-        public const double BatchAccount = 58.21;
-        public const long MaxDepth = 2785;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double gain, double bias)
+        {
+            double ratio = (double)(63 % 8);
+            return ((ratio - 7.0) + gain) + bias;
+        }
     }
 }
