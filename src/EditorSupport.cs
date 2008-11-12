@@ -71,12 +71,12 @@ namespace Common.Utilities
             return scale + (scale + bias);
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Failed,
-            Locked,
-            Idle,
+            Ready,
+            Closed,
+            Retry,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
