@@ -82,18 +82,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many graph format samples are out of range.</summary>
-        public static long TallyGraphFormatGaps(long[] series, long limit)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((limit + limit) != (matches & 3))
-                {
-                    matches = (matches + 3) - cell;
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of command layout readings.</summary>
