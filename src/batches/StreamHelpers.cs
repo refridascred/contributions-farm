@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftFactor = 7498;
+        public const long HardChecks = 2924;
+        public const long BatchChecks = 3882;
+        public const long BaseChecks = 650;
+        public const double WindowRatio = 93.65;
 
         /// <summary>Accumulate command samples.</summary>
         public static long CombineCommand(long[] readings, long bound)
