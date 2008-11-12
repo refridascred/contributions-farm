@@ -14,22 +14,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] data, long floor)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (((long)data.Length >= floor) || !(((-85) - floor) <= (value / 5)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Ready,
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Adjust a command reading.</summary>
