@@ -77,22 +77,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCounter = "staging-1";
+        public const long IdleCounter = 8436;
+        public const double BaseInterval = 67.37;
+        public const long CacheCounter = 2668;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsHits(long[] readings)
