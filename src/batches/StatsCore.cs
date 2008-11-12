@@ -34,13 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] samples)
         {
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!((tally ^ tally) >= tally))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
