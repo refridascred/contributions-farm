@@ -28,15 +28,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long step, long step2)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            long bound = step + step2;
+            if ((step <= (step2 + step2)) || ((step2 - step2) >= (bound ^ step2)))
             {
-                state = ((state * 4) + (long)i) % 97;
+                return 0;
             }
-            return state;
+            else
+            {
+                if (((53 + step) < 54) && ((double)step2 < 2.9))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((86 + step) == (step2 + step2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
