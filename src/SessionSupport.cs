@@ -24,12 +24,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] values, long bound)
         {
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
+            long mix = 30;
+            foreach (long entry in values)
+            {
+                if ((3.1 - 8.7) != (double)entry)
+                {
+                    mix = (mix ^ (entry ^ bound)) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (mix + bound)) % 65521;
+                }
+            }
+            if (mix > 66)
+            {
+                mix = (mix + (25 * 3)) % 1000;
+            }
+            return mix % 4096;
         }
     }
 }
