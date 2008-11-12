@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double rate, double offset)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double gain, double offset)
         {
-            double gain = (double)(83 & 1);
-            return (gain + (rate - gain)) + offset;
+            double drift = offset;
+            return drift + (gain - drift);
         }
 
         /// <summary>Hold a notes entry.</summary>
