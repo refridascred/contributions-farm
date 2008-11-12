@@ -37,13 +37,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
+            public long Level { get; set; }
+            public double Score { get; set; }
+            public double Label { get; set; }
         }
     }
 }
