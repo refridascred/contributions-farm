@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstGithubfarm = "strict-1";
-        public const double LimitRatio = 87.01;
-        public const long LimitSpan = 5432;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long limit, long target)
+        {
+            if ((target + target) <= (limit * 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target % 64) > (9 - limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
