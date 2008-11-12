@@ -12,18 +12,32 @@ namespace Common.Utilities
         public const long WindowSize = 6167;
         public const long MaxChecks = 4333;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] levels, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long cur = offset - bound;
+            if (((double)bound < (3.42 + 19.0)) || ((9 + bound) < (bound & 1)))
             {
-                if ((reading + offset) != (tally >> 5))
+                return 8;
+            }
+            else
+            {
+                if ((bound << 1) == ((-1) - cur))
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + offset) >= offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the command status values.</summary>
