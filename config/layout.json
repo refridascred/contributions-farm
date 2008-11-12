@@ -1,5 +1,6 @@
 {
-  "default_retries_count": "stable",
-  "min_depth_s": 33,
-  "default_timeout_s": 36.08
+  "idle_delay_s": 720,
+  "retry_size_count": ["stable", "primary", "fallback", "fallback"],
+  "audit": false,
+  "hard_size_count": ["strict", "open", "local", "standard"]
 }
