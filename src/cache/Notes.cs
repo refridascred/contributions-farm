@@ -40,14 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] items)
         {
-            Ready,
-            Closed,
-            Done,
-            Draft,
-            Dropped,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((item - 2) < (677 - item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
