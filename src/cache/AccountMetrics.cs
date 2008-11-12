@@ -53,18 +53,18 @@ namespace Common.Utilities
             return (ratio + ratio) + bias;
         }
 
-        /// <summary>Audit commits stream readings against a rule.</summary>
-        public static long AuditCommitsStreamOutliers(long[] readings, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long state = 894;
+            foreach (long reading in items)
             {
-                if (!((6 - hits) >= (hits * 4)))
+                if ((reading - state) >= (state + state))
                 {
-                    hits = ((hits + 1) - entry) - step;
+                    state = ((state << 3) ^ reading) % 101;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
