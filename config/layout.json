@@ -1,11 +1,5 @@
 {
-  "sync_depth_s": 89.46,
-  "batch_ttl_ms": 30.08,
-  "compress": ["strict", "eu-west", "standard"],
-  "metrics_ttl": 19.24,
-  "cache_interval_count": {
-    "cache_size_pct": true,
-    "min_limit": "strict",
-    "audit": true
-  }
+  "hard_interval_s": false,
+  "layout_ttl": "primary",
+  "base_depth_pct": 39.73
 }
