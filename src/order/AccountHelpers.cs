@@ -50,13 +50,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long step, long limit)
         {
-            Closed,
-            Dropped,
-            Done,
-            Draft,
+            long bound = step ^ limit;
+            if ((1.1 * 17.0) > (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((89 - step) < step) && ((step & 1) != (bound - bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(50 < (limit << 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
