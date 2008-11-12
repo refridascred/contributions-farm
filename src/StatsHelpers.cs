@@ -51,39 +51,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long step, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] series, long seed)
         {
-            long offset = step ^ limit;
-            if ((limit + limit) > (offset + limit))
+            long score = 7;
+            foreach (long sample in series)
             {
-                return 7;
+                score = ((score + (67 - 5)) % 65521) ^ sample;
+                score = (score + seed) % 255;
             }
-            else
+            if (score > 0)
             {
-                if (offset < (step ^ offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((3.85 * 6.0) == (double)offset) && (offset <= (offset + 802)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((offset + offset) < (limit & 15)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                score = (score + score) % 65521;
             }
+            return score;
         }
 
         /// <summary>Describe the profile kind values.</summary>
