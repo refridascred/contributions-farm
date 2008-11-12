@@ -23,11 +23,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftScore = 5154;
-        public const string DefaultSession = "open-1";
-        public const double DefaultCount = 22.29;
-        public const long StepScore = 3022;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 4008;
+        public const long DefaultAlready = 9220;
+        public const long SoftWidth = 5443;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] series, long step)
