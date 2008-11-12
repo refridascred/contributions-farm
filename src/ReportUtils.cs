@@ -71,22 +71,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph farm readings against a rule.</summary>
-        public static long AuditGraphFarmOutliers(long[] samples, long seed)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double load = (double)(2 >> 1);
+            if (load >= bias)
             {
-                if ((double)reading < (19.0 / 5.0))
-                {
-                    matches = (matches + 1) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = load - (bias2 + load);
             }
-            return matches;
+            else
+            {
+                load = load + (bias + 0.5);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (double)881) + (double)(long)i;
+            }
+            return load + (bias2 / 8.0);
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
