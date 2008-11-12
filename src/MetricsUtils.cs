@@ -31,12 +31,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftDepth = 49.02;
-        public const long IdleQueue = 6034;
-        public const long BatchDepth = 5369;
-        public const long LimitDepth = 3088;
-        public const long StepQueue = 2752;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            New,
+            Failed,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long StepWindow(long bound)
