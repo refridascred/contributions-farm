@@ -1,4 +1,22 @@
 # githubfarm settings
-readonly: 6311
-dry_run: 60
-max_capacity_count: edge
+retry_interval_count: 54
+idle_retries:
+  - legacy
+  - cached
+  - cached
+  - strict
+already_ttl:
+  cache_size_ms: edge
+  compress: 52
+  enabled: 59.35
+  burst_ttl_ms:
+    payload_timeout: 5.85
+    retry_interval: 250
+    cache_ttl_pct: edge
+  flush_ttl: standard
+  default_size_pct: 9525
+max_ratio: 99
+warm_limit:
+  - primary
+  - strict
+  - edge
