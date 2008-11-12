@@ -1,6 +1,29 @@
 {
-  "base_threshold": "cached",
-  "soft_interval_count": 250,
-  "editor_window": 100,
-  "editor_retries": true
+  "notes_window": {
+    "burst_ratio": {
+      "hard_window_s": 43,
+      "report_size": false,
+      "session_limit": 1060,
+      "poll_size": 76.12,
+      "burst_threshold_pct": 5.62
+    },
+    "retry_timeout_s": {
+      "format_ttl": 35.6,
+      "max_size": 99,
+      "default_window_s": 51,
+      "retry_retries": "open",
+      "compress": 84.96
+    },
+    "cache_interval_count": "standard",
+    "idle_delay_ms": {
+      "burst_retries_ms": true,
+      "min_ratio": "standard",
+      "report_delay": ["stable", "eu-west", "latest", "local"],
+      "counter_ratio": 273
+    },
+    "verbose": 81.22
+  },
+  "audit": 30,
+  "max_retries": 17.38,
+  "idle_size": 31.77
 }
