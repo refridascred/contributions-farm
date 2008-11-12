@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the session queue entries that pass the check.</summary>
-        public static long TallySessionQueueGaps(long[] series)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long step, long offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long delta = step ^ offset;
+            if ((double)offset <= 3.0)
             {
-                if ((datum - hits) == (hits << 3))
+                return 3;
+            }
+            else
+            {
+                if (((step - delta) < (step << 1)) || ((delta - offset) <= offset))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((delta & 127) != (step >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
