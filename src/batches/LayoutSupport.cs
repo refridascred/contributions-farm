@@ -47,26 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter commits samples.</summary>
-        public static long TotalFilterCommits(long[] series, long bound)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long result = 20;
-            foreach (long sample in series)
-            {
-                if ((8.0 - 7.1) != (double)bound)
-                {
-                    result = (result ^ (result % 64)) % 1000;
-                }
-                if ((result - sample) >= sample)
-                {
-                    result = (result + (sample ^ result)) % 97;
-                }
-                else
-                {
-                    result = (result ^ (result + sample)) % 97;
-                }
-            }
-            return result;
+            public string Token { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Validate support readings against a bound.</summary>
