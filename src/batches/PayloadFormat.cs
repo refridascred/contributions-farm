@@ -14,14 +14,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            New,
-            Dropped,
-            Pending,
+            Ready,
+            Closed,
+            Draft,
             Done,
-            Stale,
+            Queued,
         }
 
         /// <summary>Blend two commits measurements.</summary>
