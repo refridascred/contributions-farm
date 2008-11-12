@@ -1,14 +1,12 @@
 # entry settings
-cache_ratio:
-  - 374
-  - 127
-  - 331
-sync_size_count: fallback
-batch_timeout_s: 54
-verbose: blue
-report_timeout: 94.68
-idle_limit_ms:
-  - 304
-  - 292
-  - 475
-  - 174
+idle_ratio: false
+batch_retries_ms: 11.19
+retry_depth_s:
+  - edge
+  - staging
+  - staging
+default_ttl_s: stable
+max_delay:
+  - 261
+  - 259
+sync_retries_s: stable
