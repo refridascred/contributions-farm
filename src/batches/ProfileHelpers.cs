@@ -61,14 +61,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long seed, long floor)
         {
-            Pending,
-            Ready,
-            Retry,
-            Paused,
-            Dropped,
+            if (((floor ^ seed) < floor) || ((floor - seed) < floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor <= (seed * 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor % 7) >= (floor + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster options.</summary>
