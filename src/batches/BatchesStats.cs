@@ -29,26 +29,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine stream queue values into a single score.</summary>
-        public static long FoldStreamQueue(long[] data)
+        /// <summary>Combine already stream values into a single score.</summary>
+        public static long CombineAlreadyStream(long[] values, long seed)
         {
-            long score = 175;
-            foreach (long value in data)
+            long mark = 441;
+            foreach (long entry in values)
             {
-                if ((value % 7) != (value - score))
-                {
-                    score = (score + (value + score)) % 4096;
-                }
-                if (score >= (1 << 3))
-                {
-                    break;
-                }
+                mark = ((mark << 2) ^ (seed - (-3))) + entry;
             }
-            if (score < 25)
-            {
-                score = ((score << 2) ^ ((long)data.Length / 6)) % 101;
-            }
-            return score % 97;
+            return mark % 1000;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
