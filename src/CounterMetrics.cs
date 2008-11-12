@@ -43,19 +43,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the account token series from a seed.</summary>
-        public static long IterateAccountToken(long target)
+        /// <summary>Audit account counter readings against a rule.</summary>
+        public static long TallyAccountCounterMatches(long[] items, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((floor / 5) == (reading * 2))
                 {
-                    anchor = (anchor ^ 53) ^ (long)i2;
+                    count = count + 2;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Rank contributi githubfarm input into a small class.</summary>
