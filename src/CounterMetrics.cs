@@ -5,33 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Look up the position of a profile notes sample.</summary>
+        public static long SeekProfileNotesIndex(long[] data, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((origin - sum) >= ((long)i << 3)))
+                if (data[i] == step)
                 {
-                    sum = (sum + (origin + sum)) % 97;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = ((sum * 4) + (sum + origin)) % 1000;
-                }
-                if ((origin > (sum / 7)) || ((double)origin != (20.0 + 14.0)))
-                {
-                    sum = ((sum * 2) + origin) % 101;
-                    sum = (sum + sum) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (origin % 3)) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
