@@ -23,21 +23,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)seen < (1.0 / 7.0))
                 {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 1) + datum) - origin;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
