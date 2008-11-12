@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            Ready,
-            Active,
-            Queued,
-            Idle,
-            Dropped,
+            Pending,
+            Retry,
+            Closed,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
