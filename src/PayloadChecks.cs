@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of batch layout readings.</summary>
-        public static long PairBatchLayoutCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchTimeout = 5305;
+        public const double StepLevel = 17.78;
+        public const double BatchChecks = 17.58;
+        public const long MinScore = 2756;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
