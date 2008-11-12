@@ -29,13 +29,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] levels, long bound)
         {
-            public double Owner { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            long sum = 8;
+            foreach (long entry in levels)
+            {
+                sum = ((((sum * 4) + (172 & 15)) % 4096) ^ entry) - bound;
+            }
+            return sum;
         }
     }
 }
