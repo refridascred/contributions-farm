@@ -39,19 +39,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] items, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] items, long offset)
         {
-            long acc = 3;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                acc = (((acc << 3) ^ (acc - item)) % 97) - origin;
+                if (!!((offset / 8) <= (hits << 2)))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
             }
-            if (acc < 80)
-            {
-                acc = acc + (acc ^ acc);
-            }
-            return acc;
+            return hits;
         }
     }
 }
