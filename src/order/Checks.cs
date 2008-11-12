@@ -30,21 +30,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] levels)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
