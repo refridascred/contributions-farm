@@ -33,22 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] items)
+        /// <summary>Check that every commits layout entry stays within the limit.</summary>
+        public static bool ValidateCommitsLayoutRange(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((cell >> 3) <= (cell / 2))
+                if (cell <= origin)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
