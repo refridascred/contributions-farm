@@ -26,12 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Audit token farm readings against a rule.</summary>
+        public static long MeasureTokenFarmMatches(long[] readings, long target)
         {
-            Active,
-            Idle,
-            Paused,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((long)readings.Length <= count)
+                {
+                    count = ((count + 1) + sample) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
