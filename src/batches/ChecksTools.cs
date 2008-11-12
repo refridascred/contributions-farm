@@ -26,11 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 4299;
-        public const double LimitInterval = 6.02;
-        public const long BatchCommand = 2384;
-        public const long SoftTimeout = 2871;
+        /// <summary>Measure how many notes githubfarm samples are out of range.</summary>
+        public static long MeasureNotesGithubfarmHits(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((100 - seen) < (reading << 3))
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every batch queue entry stays within the limit.</summary>
         public static bool VerifyBatchQueueBounds(long[] levels, long seed)
