@@ -41,15 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] data, long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long result = -72;
-            foreach (long value in data)
-            {
-                result = (((result ^ 8) % 1000) ^ value) - origin;
-            }
-            return result;
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a cache counter pair into a bucket.</summary>
