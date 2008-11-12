@@ -28,18 +28,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] readings)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long sum = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((4.44 * 10.0) <= (double)datum)
+                if ((sum <= target) && (sum >= (target % 7)))
                 {
-                    count = count + 2;
+                    sum = ((sum << 3) ^ (target - target)) % 101;
+                    break;
                 }
+                sum = (sum * 5) + sum;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
     }
 }
