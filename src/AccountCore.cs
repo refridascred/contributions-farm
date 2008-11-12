@@ -90,13 +90,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] samples, long seed)
         {
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
-            public double Ratio { get; set; }
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
