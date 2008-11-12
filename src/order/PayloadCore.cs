@@ -28,11 +28,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 5707;
-        public const long LimitTimeout = 9568;
-        public const double HardEditor = 93.58;
-        public const long RetryEditor = 923;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches - datum) < (datum + 404))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] values)
