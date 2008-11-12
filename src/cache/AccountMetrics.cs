@@ -46,11 +46,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 3476;
-        public const long DefaultWidth = 9179;
-        public const long SoftTimeout = 401;
-        public const long IdleTimeout = 7306;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double bias, double span)
+        {
+            double ratio = span - 11.0;
+            return (ratio + ratio) + bias;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TallyToken(long[] levels)
