@@ -31,17 +31,14 @@ namespace Common.Utilities
         public const double LimitMetrics = 69.22;
         public const long MaxMetrics = 2371;
 
-        /// <summary>Locate a githubfarm stats reading by value.</summary>
-        public static long LookupGithubfarmStatsIndex(long[] readings, long origin)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Locked,
+            Synced,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a command stats.</summary>
