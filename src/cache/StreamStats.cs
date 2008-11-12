@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] samples, long floor)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long total = 904;
-            foreach (long cell in samples)
-            {
-                total = (((total * 2) + floor) % 101) ^ cell;
-            }
-            return total;
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
