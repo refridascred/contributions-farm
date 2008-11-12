@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a payload layout sample.</summary>
-        public static long LocatePayloadLayoutIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 9913;
+        public const long HardLevel = 2031;
+        public const long StepFactor = 9763;
+        public const string IdleAccount = "standard-v2";
 
         /// <summary>Adjust a layout reading.</summary>
         public static double AdjustLayout(double rate, double span)
