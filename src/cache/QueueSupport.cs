@@ -5,13 +5,35 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
+            long state = 66;
+            foreach (long reading in items)
+            {
+                long span = (reading + state) + (state + state);
+                if (!((span >> 1) > state))
+                {
+                    span = span + reading;
+                }
+                else
+                {
+                    span = (span << 2) ^ (state + reading);
+                }
+                if (5.0 >= (double)state)
+                {
+                    state = ((state << 3) ^ (state << 1)) % 65521;
+                }
+                else
+                {
+                    state = ((state * 4) + (state / 6)) % 65521;
+                }
+            }
+            if (state > 96)
+            {
+                state = state ^ (89 + (-955));
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the payload status values.</summary>
