@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const double LimitRatio = 87.01;
         public const long LimitSpan = 5432;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double weight, double offset)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            double bias = offset * 7.73;
-            if (bias >= offset)
-            {
-                bias = bias - (weight - weight);
-            }
-            return bias - (weight + offset);
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a farm header.</summary>
