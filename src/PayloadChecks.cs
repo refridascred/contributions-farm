@@ -95,12 +95,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double scale, double bias)
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            double ratio = (double)(66 * 3);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio + (double)88) + (double)(long)i) - scale;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
