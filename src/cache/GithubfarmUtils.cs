@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] readings, long floor)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (count >= (34 ^ count))
-                {
-                    count = ((count + 3) + sample) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Locked,
+            Pending,
+            Stale,
         }
 
         /// <summary>Check that every cache metric entry stays within the limit.</summary>
