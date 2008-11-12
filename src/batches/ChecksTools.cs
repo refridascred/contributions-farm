@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const long BatchCommand = 2384;
         public const long SoftTimeout = 2871;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] items, long step)
+        /// <summary>Check that every batch queue entry stays within the limit.</summary>
+        public static bool VerifyBatchQueueBounds(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((seen << 2) >= cell)
+                if (sample <= seed)
                 {
-                    seen = (seen + 1) - step;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
