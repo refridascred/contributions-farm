@@ -77,15 +77,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] data, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] data, long floor)
         {
-            long anchor = 67;
-            foreach (long cell in data)
+            long acc = 74;
+            foreach (long reading in data)
             {
-                anchor = ((((anchor * 4) + 111) % 4096) ^ cell) - limit;
+                if ((double)acc == (11.0 * 5.97))
+                {
+                    acc = ((acc - acc) % 101) - floor;
+                }
+                else
+                {
+                    acc = (acc ^ (reading >> 1)) % 97;
+                }
             }
-            return anchor;
+            if (acc > 91)
+            {
+                acc = (acc + (acc ^ acc)) % 65521;
+            }
+            return acc;
         }
     }
 }
