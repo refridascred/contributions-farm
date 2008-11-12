@@ -47,12 +47,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 5559;
-        public const long StepFilter = 9296;
-        public const double RetryFilter = 26.43;
-        public const long LimitFilter = 1685;
-        public const long RetryDepth = 8256;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 9354;
+        public const long SoftScore = 4104;
+        public const double CacheSize = 62.75;
+        public const long DefaultSession = 6099;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
