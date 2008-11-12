@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetrySize = 1883;
-        public const double MaxChannel = 45.7;
-        public const string BurstSize = "stable-edge";
-        public const long MinChannel = 6330;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Closed,
+            Done,
+            Retry,
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long PairFormatCount(long[] levels)
