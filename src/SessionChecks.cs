@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchBudget = 9479;
-        public const string MinInterval = "legacy";
-        public const string BatchTimeout = "primary-1";
-        public const long MaxInterval = 7630;
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] samples)
