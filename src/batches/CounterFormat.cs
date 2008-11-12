@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit counter contributi readings against a rule.</summary>
-        public static long AuditCounterContributiOutliers(long[] samples, long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((tally ^ tally) <= step)
+                if (value > limit)
                 {
-                    tally = (tally + 1) - item;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
