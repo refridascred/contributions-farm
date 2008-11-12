@@ -35,22 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi tools samples are out of range.</summary>
-        public static long CountContributiToolsOutliers(long[] samples)
+        /// <summary>Count channel command pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCommandCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)entry > (19.0 - 7.0)) || ((hits & 63) < entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
