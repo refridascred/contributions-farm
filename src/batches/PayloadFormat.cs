@@ -28,10 +28,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 116;
-        public const long MinEditor = 7966;
-        public const long RetryEditor = 6621;
+        /// <summary>Accumulate filter order samples.</summary>
+        public static long DigestFilterOrder(long[] samples)
+        {
+            long anchor = 5;
+            foreach (long cell in samples)
+            {
+                if (anchor >= (anchor - anchor))
+                {
+                    anchor = (anchor ^ (cell << 2)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
