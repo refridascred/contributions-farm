@@ -13,18 +13,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] data)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)count <= 7.1) && ((double)0 > 2.81))
+                if ((items[i] == floor) && ((items[i] % 2) != 0))
                 {
-                    count = (count + 1) + cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the order level values.</summary>
