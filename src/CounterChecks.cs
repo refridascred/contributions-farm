@@ -31,12 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            Ready,
+            Draft,
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Digest a series of window commits entries.</summary>
