@@ -20,17 +20,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a record support reading by value.</summary>
-        public static long LookupRecordSupportIndex(long[] data, long limit)
+        /// <summary>Accumulate queue filter samples.</summary>
+        public static long TotalQueueFilter(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 39;
+            foreach (long cell in series)
             {
-                if (data[i] > limit)
+                for (int i = 0; i < 12; i++)
                 {
-                    return (long)i;
+                    mark = ((mark - (mark + cell)) % 97) ^ (long)i;
+                }
+                if ((mark / 5) < (cell ^ mark))
+                {
+                    mark = (mark ^ (mark & 127)) % 255;
+                }
+                else
+                {
+                    mark = (mark + (mark + mark)) % 97;
                 }
             }
-            return -1;
+            if (mark > 87)
+            {
+                mark = mark - 896;
+            }
+            return mark % 97;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
