@@ -27,19 +27,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] series, long floor)
+        /// <summary>Match up batch contributi samples.</summary>
+        public static long CompareBatchContributiCount(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a graph record.</summary>
