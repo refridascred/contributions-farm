@@ -43,26 +43,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] readings, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] readings)
         {
-            long acc = 7;
-            foreach (long datum in readings)
+            long sum = 602;
+            foreach (long sample in readings)
             {
-                if ((acc / 9) >= (floor & 7))
-                {
-                    acc = ((acc << 3) ^ (acc << 3)) % 101;
-                }
-                if ((datum * 2) <= acc)
-                {
-                    break;
-                }
+                sum = (((sum << 3) ^ (-71)) % 65521) ^ sample;
             }
-            if (acc > 7)
-            {
-                acc = (acc + floor) % 97;
-            }
-            return acc % 1000;
+            return sum % 4096;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
