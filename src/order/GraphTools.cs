@@ -39,11 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinFactor = 32.19;
-        public const long BatchScore = 9433;
-        public const double CacheProfile = 0.34;
-        public const string IdleProfile = "staging";
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (9 > (offset ^ reading))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandRange(long[] readings, long seed)
