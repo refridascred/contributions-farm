@@ -1,11 +1,14 @@
 # Command notes
 
-Keep context and order names short and lowercase.
-Use batches settings to tune how often farm data is refreshed.
-Defaults for route live in the config folder and can be overridden per environment.
+The commits helpers are pure functions, so they are safe to call from any thread.
+Use editor settings to tune how often report data is refreshed.
+
+Each githubfarm is validated before it reaches the metrics queue.
+When a format fails, the notes handler retries a few times before giving up.
+Each format is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Review stats limits each release
-- Prefer entry defaults
-- Validate record input early
+- Review graph limits each release
+- Log every graph change
+- Prefer profile defaults
