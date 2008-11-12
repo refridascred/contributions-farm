@@ -74,10 +74,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryRatio = 9461;
-        public const long BaseRatio = 6809;
-        public const long HardFarm = 2136;
-        public const long SoftFactor = 7648;
+        /// <summary>Audit token batch readings against a rule.</summary>
+        public static long TallyTokenBatchGaps(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)tally > 3.0)
+                {
+                    tally = ((tally + 3) ^ cell) + target;
+                }
+            }
+            return tally;
+        }
     }
 }
