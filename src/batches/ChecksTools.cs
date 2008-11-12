@@ -39,38 +39,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long limit, long origin)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
-            if (!((0 * 3) > (origin & 127)))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit * 2) > origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin < (double)6)
+                    if ((data[i] + data[j]) != 11)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (limit <= (limit ^ origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
