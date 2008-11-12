@@ -27,21 +27,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up batch contributi samples.</summary>
-        public static long CompareBatchContributiCount(long[] values)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
                 {
-                    if ((values[i] + values[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a graph record.</summary>
