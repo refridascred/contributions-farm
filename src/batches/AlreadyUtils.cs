@@ -13,12 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 6697;
-        public const long CacheScore = 4279;
-        public const double BatchRatio = 82.43;
-        public const long BurstRatio = 2226;
-        public const string SoftInterval = "cached-v2";
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
