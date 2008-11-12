@@ -25,12 +25,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
