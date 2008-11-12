@@ -22,11 +22,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryInterval = 6430;
-        public const long BurstRatio = 3025;
-        public const double LimitLayout = 57.18;
-        public const double WindowWidth = 98.73;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] items, long target)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
