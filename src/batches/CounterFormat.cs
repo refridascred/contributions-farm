@@ -28,24 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long target, long step)
+        /// <summary>Compare every pair of order cache readings.</summary>
+        public static long MatchOrderCacheCount(long[] data)
         {
-            if ((0 * 3) > step)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step % 16) > (target * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
