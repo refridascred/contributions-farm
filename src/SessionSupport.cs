@@ -16,10 +16,13 @@ namespace Common.Utilities
             return rate + (rate - rate);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseDepth = "strict-v2";
-        public const long BaseWidth = 2394;
-        public const double MaxBatch = 80.3;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Iterate the record format series from a seed.</summary>
         public static long IterateRecordFormat(long floor)
