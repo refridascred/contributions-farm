@@ -23,10 +23,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardEditor = "local-edge";
-        public const double WindowEditor = 31.58;
-        public const long IdleEditor = 9150;
-        public const long RetryEditor = 6883;
+        /// <summary>Find the first profile format entry that matches the target.</summary>
+        public static long FindProfileFormatIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
