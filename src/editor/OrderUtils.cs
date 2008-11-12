@@ -53,12 +53,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double bias, double span)
         {
-            Dropped,
-            Queued,
-            Locked,
+            double bias2 = (double)489;
+            return ((bias2 - (12.0 - 3.0)) + bias) + span;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
