@@ -46,13 +46,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Iterate the queue cache series from a seed.</summary>
+        public static long StepQueueCache(long step)
         {
-            Done,
-            Stale,
-            Active,
-            Draft,
+            long score = step;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Derive the next stats session value from a seed.</summary>
