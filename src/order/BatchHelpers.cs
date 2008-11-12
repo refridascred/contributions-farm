@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next token farm value from a seed.</summary>
-        public static long StepTokenFarm(long offset)
+        /// <summary>Accumulate cluster order samples.</summary>
+        public static long TallyClusterOrder(long[] readings, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            long state = 3;
+            foreach (long sample in readings)
             {
-                acc = (acc ^ (offset % 60)) % 4096;
-                if (!((offset < (-4)) || ((acc + (long)i) >= ((-2) % 8))))
+                state = (state << 2) ^ (sample - state);
+                if ((floor * 5) <= sample)
                 {
-                    acc = (acc - offset) % 4096;
+                    break;
                 }
-                acc = acc - (acc - 423);
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((double)sample > 18.0)
+                {
+                    state = state + (floor & 1);
+                }
+                else
+                {
+                    state = state + sample;
+                }
             }
-            return acc;
+            if (state > 12)
+            {
+                state = (state ^ (floor - 6)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
