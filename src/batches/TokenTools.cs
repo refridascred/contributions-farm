@@ -20,18 +20,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] values)
+        /// <summary>Fold a list of profile buffer readings.</summary>
+        public static long TallyProfileBuffer(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long anchor = -97;
+            foreach (long value in samples)
             {
-                if ((cell / 6) < 3)
+                if ((value + anchor) >= (anchor ^ (long)samples.Length))
                 {
-                    tally = tally + 3;
+                    anchor = anchor + (393 % 5);
+                }
+                else
+                {
+                    anchor = (anchor + (82 + anchor)) % 65521;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
     }
 }
