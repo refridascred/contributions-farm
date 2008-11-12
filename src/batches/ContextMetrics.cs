@@ -20,19 +20,22 @@ namespace Common.Utilities
         public const long BatchCounter = 3478;
         public const long StepCounter = 5780;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double bias, double span)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] samples)
         {
-            double load = 1.4;
-            if (load > load)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                load = (load + bias) - span;
+                if ((sample * 3) <= (hits << 3))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - 6.84;
+            return hits;
         }
 
         /// <summary>Derive the next schema token value from a seed.</summary>
