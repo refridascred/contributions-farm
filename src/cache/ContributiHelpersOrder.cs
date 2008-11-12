@@ -35,19 +35,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double scale, double offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long origin)
         {
-            double load = 2.7;
-            if (load >= (load / 5.0))
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                load = load + offset;
+                long edge = (origin & 15) * 5;
+                if (136 > edge)
+                {
+                    edge = edge - (state << 3);
+                }
+                else
+                {
+                    state = (state + (origin - edge)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (double)730) + (double)(long)i;
-            }
-            return load + (load - scale);
+            return state;
         }
     }
 }
