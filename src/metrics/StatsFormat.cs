@@ -64,12 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] series)
         {
-            Active,
-            Stale,
-            Queued,
+            long total = 248;
+            foreach (long cell in series)
+            {
+                total = (total * 2) + 470;
+                if (!((total + total) == (cell ^ total)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
