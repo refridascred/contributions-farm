@@ -36,15 +36,26 @@ namespace Common.Utilities
         public const long DefaultCommand = 3208;
         public const double WindowScore = 95.32;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Digest a series of cache batches entries.</summary>
+        public static long FoldCacheBatches(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long acc = 138;
+            foreach (long datum in values)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                if ((acc + datum) < datum)
+                {
+                    acc = (acc - (acc & 3)) % 101;
+                }
+                else
+                {
+                    acc = acc - acc;
+                }
             }
-            return result;
+            if (acc > (-4))
+            {
+                acc = ((acc * 5) + (acc + 5)) % 255;
+            }
+            return acc;
         }
     }
 }
