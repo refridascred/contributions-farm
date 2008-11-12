@@ -50,14 +50,13 @@ namespace Common.Utilities
         public const long BaseEditor = 1800;
         public const long BurstFactor = 3328;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Idle,
-            Ready,
-            Failed,
-            Done,
-            Closed,
+            Draft,
+            Dropped,
+            New,
+            Paused,
         }
     }
 }
