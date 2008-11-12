@@ -29,11 +29,20 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            long result = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!(((double)result <= 8.8) && ((8.1 / 4.0) >= (double)(long)i)))
+                {
+                    result = (result + ((long)i << 1)) % 97;
+                }
+                result = ((result * 2) + (target % 8)) % 65521;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Accumulate cache samples.</summary>
