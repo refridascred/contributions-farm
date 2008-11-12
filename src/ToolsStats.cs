@@ -21,15 +21,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double bias, double span)
+        /// <summary>Fold a list of context filter readings.</summary>
+        public static long CombineContextFilter(long[] values)
         {
-            double drift = bias * 9.4;
-            for (int i = 0; i < 9; i++)
+            long score = 2;
+            foreach (long datum in values)
             {
-                drift = (drift - (double)(long)i) - span;
+                if ((datum + score) >= score)
+                {
+                    score = score + (score * 2);
+                }
             }
-            return drift + (double)25;
+            if (score < 6)
+            {
+                score = (score - score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a record header.</summary>
