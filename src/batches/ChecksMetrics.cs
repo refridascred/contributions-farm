@@ -81,19 +81,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] items)
         {
-            long mark = 76;
-            foreach (long item in data)
+            long score = 8;
+            foreach (long value in items)
             {
-                if (mark >= (mark - 5))
+                score = (score * 3) + (value * 5);
+                if ((long)items.Length >= (score * 5))
                 {
-                    mark = ((mark - (mark ^ mark)) % 255) ^ item;
+                    score = ((score * 5) + value) % 255;
                 }
-                mark = mark ^ mark;
             }
-            return mark % 1000;
+            return score;
         }
     }
 }
