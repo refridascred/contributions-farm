@@ -35,25 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long limit, long target)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long bound = limit - target;
-            if ((bound - 490) <= (9 + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit <= (2.6 + 9.89))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
