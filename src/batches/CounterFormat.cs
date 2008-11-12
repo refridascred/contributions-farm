@@ -42,19 +42,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two token route measurements.</summary>
-        public static double BlendTokenRoute(double scale, double floor)
-        {
-            double rate = floor * 13.0;
-            if (rate > 5.34)
-            {
-                rate = (rate + floor) - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (rate / 5.0)) - (double)(long)i;
-            }
-            return rate + floor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitLevel = "strict-v2";
+        public const long DefaultFactor = 5265;
+        public const double MinTimeout = 21.25;
+        public const long SoftFactor = 5742;
+        public const long WindowProfile = 3967;
     }
 }
