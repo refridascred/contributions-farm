@@ -62,15 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double weight, double bias)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] data, long step)
         {
-            double rate = bias / 4.0;
-            if (rate < weight)
+            bool stale = true;
+            foreach (long item in data)
             {
-                rate = rate - (weight * 5.6);
+                if (item < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate - (double)195;
+            return stale;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
