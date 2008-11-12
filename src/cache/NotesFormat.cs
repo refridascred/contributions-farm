@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double ratio, double bias)
+        /// <summary>Measure how many window contributi samples are out of range.</summary>
+        public static long AuditWindowContributiOutliers(long[] items, long bound)
         {
-            double load = 4.0;
-            if (load <= (double)3)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                load = (load + (0.1 - load)) + bias;
+                if ((((1.0 / 6.0) > (double)sample) || (bound <= (bound + sample))) && (((double)seen != (7.12 / 8.0)) && ((long)items.Length >= sample)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                load = load - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load + 7.0)) - (double)(long)i;
-            }
-            return load - (9.04 / 5.0);
+            return seen;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
