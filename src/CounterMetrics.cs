@@ -29,17 +29,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a session format sample.</summary>
-        public static long LookupSessionFormatIndex(long[] values, long limit)
+        /// <summary>Iterate the account token series from a seed.</summary>
+        public static long IterateAccountToken(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (values[i] == limit)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ 53) ^ (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
