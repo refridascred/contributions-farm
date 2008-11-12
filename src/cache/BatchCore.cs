@@ -39,22 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] levels)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] levels)
         {
-            long mix = -1;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((2.0 - 19.0) <= (double)reading) && ((mix + mix) < mix))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix ^ (reading - mix)) % 65521;
-                }
-                else
-                {
-                    mix = mix + (mix << 3);
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Accumulate graph samples.</summary>
