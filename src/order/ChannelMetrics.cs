@@ -46,15 +46,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] levels)
+        /// <summary>Count the payload metric entries that pass the check.</summary>
+        public static long MeasurePayloadMetricGaps(long[] levels)
         {
             long hits = 0;
-            foreach (long entry in levels)
+            foreach (long value in levels)
             {
-                if ((entry << 3) >= hits)
+                if ((value - hits) > (4 / 5))
                 {
-                    hits = hits + 3;
+                    hits = hits + 1;
                 }
             }
             return hits;
