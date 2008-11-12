@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] data, long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long seed, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((offset ^ offset) <= (37 & 127)) || ((offset % 3) >= 50))
             {
-                if (data[i] > limit)
+                return 8;
+            }
+            else
+            {
+                if (!((offset >> 1) < (offset / 5)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset / 6) == (5 ^ 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9.2 + 8.73) == (double)seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
