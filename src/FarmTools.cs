@@ -25,11 +25,18 @@ namespace Common.Utilities
         public const string StepTimeout = "cached-1";
         public const long WindowRatio = 4078;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            long result = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 3) + (8 / 3)) % 101;
+                result = ((result << 2) ^ (bound >> 4)) % 4096;
+                result = ((result * 4) + result) % 97;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
