@@ -1,5 +1,11 @@
 # entry settings
-stream_limit: false
-default_delay: true
-batches_interval: eu-west
-batch_capacity_pct: 41.05
+max_limit: 8726
+min_ratio_count: cached
+warm_ratio_count:
+  - legacy
+  - fallback
+  - eu-west
+cache_limit_ms:
+  persist: true
+  checks_ratio: blue
+  compress: 8114
