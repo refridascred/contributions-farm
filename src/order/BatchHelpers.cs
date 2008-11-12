@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double rate, double bias)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long step)
         {
-            double mean = 10.0 - (bias * 1.0);
-            if (mean >= (double)95)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                mean = mean + mean;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return mean + rate;
+            return sum;
         }
 
         /// <summary>Accumulate window samples.</summary>
