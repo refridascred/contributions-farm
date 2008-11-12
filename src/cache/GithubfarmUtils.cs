@@ -14,19 +14,27 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every cache metric entry stays within the limit.</summary>
-        public static bool ValidateCacheMetricLimits(long[] data, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long state = 41;
+            foreach (long sample in values)
             {
-                if (datum >= target)
+                if (!(((state + limit) == (limit + state)) || ((double)sample < (5.0 - 6.3))))
                 {
-                    found = false;
-                    break;
+                    state = ((state * 5) + (68 >> 1)) % 1000;
+                }
+                state = ((state << 2) ^ (330 & 3)) % 1000;
+                if ((sample ^ sample) <= (sample / 9))
+                {
+                    state = state - (state - limit);
                 }
             }
-            return found;
+            if (state > 4)
+            {
+                state = state + (limit % 97);
+            }
+            return state;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
