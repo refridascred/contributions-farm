@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchTimeout = 5305;
-        public const double StepLevel = 17.78;
-        public const double BatchChecks = 17.58;
-        public const long MinScore = 2756;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
