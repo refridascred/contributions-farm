@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const string WindowInterval = "stable";
         public const long WindowGraph = 461;
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double bias, double floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            double load = floor + (1.0 + floor);
-            if (load <= (load - bias))
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (floor * 16.0)) + (double)(long)i;
-            }
-            return load + (bias + bias);
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
