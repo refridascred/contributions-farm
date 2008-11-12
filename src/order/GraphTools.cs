@@ -41,11 +41,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 95.61;
-        public const long IdleWindow = 8702;
-        public const string BatchWindow = "local";
-        public const double HardWindow = 47.85;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two payload tools measurements.</summary>
         public static double SmoothPayloadTools(double weight, double floor)
