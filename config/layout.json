@@ -1,6 +1,12 @@
 {
-  "editor_window": 30,
-  "default_threshold_s": "standard",
-  "default_window_count": "primary",
-  "default_limit": 17.88
+  "compress": 56,
+  "cache_threshold": true,
+  "layout_limit": 3275,
+  "format_window": "legacy",
+  "warm_timeout_pct": {
+    "idle_capacity_s": "open",
+    "audit": 9324,
+    "metric_ttl": "fallback",
+    "batch_ratio": ["blue", "primary", "edge"]
+  }
 }
