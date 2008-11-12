@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the cluster commits entries that pass the check.</summary>
-        public static long TallyClusterCommitsMatches(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((8.0 * 14.0) > (double)value)
-                {
-                    count = (count + 2) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 6290;
+        public const long BurstContributi = 8480;
+        public const long HardContributi = 3422;
+        public const long LimitContributi = 6132;
+        public const long DefaultFactor = 8461;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long FindFilterIndex(long[] samples, long offset)
