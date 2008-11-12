@@ -64,23 +64,37 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long seed, long target)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long floor, long seed)
         {
-            long slot = seed + target;
-            if ((slot ^ seed) < (seed + target))
+            long delta = floor - seed;
+            if ((1.2 * 4.0) == (double)delta)
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if (78 >= (seed % 97))
+                if (floor > seed)
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    return 2;
+                    if ((floor - seed) == (delta & 255))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed <= delta)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
