@@ -37,12 +37,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double bias, double span)
-        {
-            double ratio = span - 11.0;
-            return (ratio + ratio) + bias;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchScore = "open";
+        public const string WindowStats = "standard-1";
+        public const long BurstFactor = 3035;
+        public const double MaxStats = 26.63;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountOutliers(long[] readings, long floor)
