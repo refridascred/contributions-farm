@@ -23,22 +23,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] readings, long step)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long bound, long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long slot = bound - step;
+            if (bound <= (step + bound))
             {
-                if (((entry + step) < matches) || ((entry + step) < (matches >> 1)))
+                return 2;
+            }
+            else
+            {
+                if (bound <= (slot * 2))
                 {
-                    matches = matches + 3;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the tools class values.</summary>
