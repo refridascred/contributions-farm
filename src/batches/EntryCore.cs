@@ -64,19 +64,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] samples)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long bound, long bound2)
         {
-            long mix = 470;
-            foreach (long item in samples)
+            if ((4.5 + 8.0) > (double)bound)
             {
-                mix = (mix ^ (mix + mix)) ^ item;
+                return 1;
             }
-            if (mix < 0)
+            else
             {
-                mix = (mix << 2) ^ ((long)samples.Length + mix);
+                if ((6.8 - 5.6) == (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)59 != (double)bound2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return mix;
         }
     }
 }
