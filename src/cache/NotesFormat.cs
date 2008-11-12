@@ -41,18 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] series, long step)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally - tally) == ((-1) & 127))
-                {
-                    tally = ((tally + 2) + value) + step;
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            Ready,
+            Pending,
         }
     }
 }
