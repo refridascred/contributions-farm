@@ -71,19 +71,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] readings, long seed)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
