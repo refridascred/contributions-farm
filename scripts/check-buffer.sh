@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local strict fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-edge}"
+mode="${1:-green}"
 case "${mode}" in
-    staging)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -20,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=421
-log "limit is ${BUFFER_LIMIT}"
+for item in standard green; do
+    log "checking ${item}"
+done
