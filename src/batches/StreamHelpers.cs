@@ -85,14 +85,18 @@ namespace Common.Utilities
         public const string LimitRecord = "fallback";
         public const double WindowRecord = 69.86;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] samples, long origin)
         {
-            Failed,
-            Paused,
-            Draft,
-            Retry,
-            Pending,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((201 + count) != (value % 5))
+                {
+                    count = (count + 1) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cache status values.</summary>
