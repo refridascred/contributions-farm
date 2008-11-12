@@ -34,17 +34,10 @@ namespace Common.Utilities
         public const double HardEditor = 93.58;
         public const long RetryEditor = 923;
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 7785;
+        public const long StepBudget = 4630;
+        public const string WindowTools = "alpha-v2";
+        public const long LimitCount = 9850;
     }
 }
