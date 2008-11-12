@@ -18,19 +18,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Count order account pairs that satisfy a relation.</summary>
+        public static long MatchOrderAccountCount(long[] levels)
         {
-            long acc = 24;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = acc ^ (reading + 398);
-                if ((double)acc != (double)reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc + (acc + acc)) % 65521;
+                    if ((levels[i] - levels[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
