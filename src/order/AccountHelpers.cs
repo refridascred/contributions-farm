@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up order graph samples.</summary>
-        public static long OverlapOrderGraphCount(long[] readings)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell <= target)
                 {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
