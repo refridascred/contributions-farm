@@ -55,17 +55,24 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] levels, long offset)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long seed, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((0.38 + 4.1) == (double)target)
             {
-                if (levels[i] == offset)
+                return 2;
+            }
+            else
+            {
+                if ((double)seed > (7.46 - 4.6))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
