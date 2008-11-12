@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] data, long offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((88 / 7) <= (count + offset))
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
