@@ -45,10 +45,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleRatio = 32.01;
-        public const long WindowInterval = 8891;
-        public const long LimitChannel = 2453;
-        public const double BaseChannel = 26.18;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Queued,
+            Locked,
+            Stale,
+        }
     }
 }
