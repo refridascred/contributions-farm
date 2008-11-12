@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long origin, long origin2)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long bound)
         {
-            long gap = origin + origin2;
-            if (!((origin + origin2) > gap))
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 5;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((gap + origin2) < (origin2 * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin2 & 7) >= origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
