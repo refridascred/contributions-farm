@@ -82,12 +82,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long origin, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
+            if ((6.9 * 7.0) == (double)origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound < (bound + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin != (6.0 - 0.96))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (origin < ((-3) * 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
