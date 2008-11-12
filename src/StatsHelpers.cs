@@ -74,17 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a tools layout sample.</summary>
-        public static long FindToolsLayoutIndex(long[] readings, long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
