@@ -87,31 +87,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long seed, long floor)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double ratio, double floor)
         {
-            if (((floor ^ seed) < floor) || ((floor - seed) < floor))
+            double load = floor;
+            if (load <= floor)
             {
-                return 6;
+                load = load + (ratio - floor);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (floor <= (seed * 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor % 7) >= (floor + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                load = (load + load) + (double)(long)i;
             }
+            return load - ratio;
         }
 
         /// <summary>Hold a schema record.</summary>
