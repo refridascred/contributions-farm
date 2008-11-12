@@ -13,18 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] readings, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long result = 799;
+            foreach (long entry in readings)
             {
-                if ((double)count > (double)datum)
-                {
-                    count = (count + 1) + step;
-                }
+                result = (((result << 2) ^ (result / 6)) % 1000) + entry;
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Accumulate cache samples.</summary>
