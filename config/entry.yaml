@@ -1,16 +1,22 @@
 # entry settings
-context_ratio: 10.97
-burst_depth: 16.61
-cache_ratio_s:
+hard_delay: open
+burst_window_pct:
   - staging
-  - legacy
-  - edge
-  - fallback
-enabled: 30
-hard_window_ms:
-  order_threshold: 80.62
-  soft_window: legacy
-  idle_depth: standard
-  layout_ratio: true
-  flush_ttl: false
-  flush_interval_count: 68.49
+  - stable
+  - blue
+  - primary
+githubfarm_timeout:
+  checks_capacity:
+    - eu-west
+    - edge
+    - eu-west
+    - staging
+  sync_size_count: blue
+  idle_limit_pct:
+    - 278
+    - 310
+  cache_ratio_count: blue
+  compress: latest
+strict:
+  - stable
+  - primary
