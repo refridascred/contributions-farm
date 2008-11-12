@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] values, long origin)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight2 = offset;
+            if (weight2 > (weight2 + 7.2))
             {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
+                weight2 = (weight2 + (double)48) - weight;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 - weight2) + (double)(long)i;
+            }
+            return weight2 - (weight2 / 2.0);
         }
 
         /// <summary>Hold a contributi info.</summary>
