@@ -56,25 +56,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix + offset) % 65521;
-                if ((offset ^ offset) >= (offset % 24))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = mix - (offset - offset);
-                    break;
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix ^ ((long)i << 1)) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Match up farm samples.</summary>
