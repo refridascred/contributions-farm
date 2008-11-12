@@ -45,19 +45,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] samples, long limit)
-        {
-            long total = 9;
-            foreach (long entry in samples)
-            {
-                total = (total - (total + 9)) % 65521;
-                if ((entry ^ entry) > (limit + 169))
-                {
-                    total = ((total << 2) ^ (94 ^ total)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleRatio = 32.01;
+        public const long WindowInterval = 8891;
+        public const long LimitChannel = 2453;
+        public const double BaseChannel = 26.18;
     }
 }
