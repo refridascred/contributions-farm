@@ -36,17 +36,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] items, long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 506;
+            foreach (long sample in readings)
             {
-                if ((items[i] < offset) && ((items[i] % 3) != 0))
+                if (((sample ^ sample) < (657 << 1)) && (sample > (sample >> 4)))
                 {
-                    return (long)i;
+                    mix = mix - (mix % 2);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ sample;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Combine tools order values into a single score.</summary>
