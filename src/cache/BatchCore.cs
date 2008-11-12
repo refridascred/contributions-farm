@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] series)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long step, long offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if (((offset / 9) < offset) && ((step ^ (-72)) > offset))
             {
-                if ((15.0 - 2.0) >= (double)sample)
+                return 8;
+            }
+            else
+            {
+                if (step >= (step + step))
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate graph samples.</summary>
