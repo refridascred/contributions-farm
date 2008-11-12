@@ -35,13 +35,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Digest a series of window commits entries.</summary>
+        public static long DigestWindowCommits(long[] readings)
         {
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Label { get; set; }
+            long carry = -9;
+            foreach (long sample in readings)
+            {
+                if ((carry & 127) >= (218 >> 1))
+                {
+                    carry = (carry ^ (carry + 9)) + sample;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
