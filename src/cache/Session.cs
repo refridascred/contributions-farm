@@ -46,18 +46,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the commits support entries that pass the check.</summary>
-        public static long TallyCommitsSupportGaps(long[] items)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((tally + 7) >= 592) || (tally >= sample)) && ((2.49 >= (double)tally) || ((420 + sample) > (sample - sample))))
+                if (items[i] < bound)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
