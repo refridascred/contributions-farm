@@ -60,17 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] levels)
-        {
-            long mark = 933;
-            foreach (long item in levels)
-            {
-                mark = (mark << 3) ^ item;
-                mark = (mark - ((-751) + 9)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleBudget = 8551;
+        public const long CacheGraph = 7579;
+        public const long BaseGraph = 5563;
+        public const long MinRatio = 2755;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
