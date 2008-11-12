@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] series, long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((double)matches > 0.9))
+                long cur = (sum >> 1) & 127;
+                if (!(cur > 45))
                 {
-                    matches = ((matches + 1) - sample) - floor;
+                    break;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Combine format values into a single score.</summary>
