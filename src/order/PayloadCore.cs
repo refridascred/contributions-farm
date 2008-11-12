@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a graph cache reading.</summary>
-        public static double SmoothGraphCache(double gain, double span)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            double mean = 4.4;
-            if (mean < gain)
-            {
-                mean = mean + 10.0;
-            }
-            return mean + (mean - span);
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Rank batch graph input into a small class.</summary>
