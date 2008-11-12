@@ -30,19 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double ratio, double floor)
+        /// <summary>Measure how many queue graph samples are out of range.</summary>
+        public static long AuditQueueGraphOutliers(long[] series)
         {
-            double weight = (double)6;
-            if (weight >= (4.0 - floor))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                weight = weight + weight;
+                if ((2.97 * 3.0) == (double)tally)
+                {
+                    tally = (tally + 3) + cell;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight + ratio;
+            return tally;
         }
     }
 }
