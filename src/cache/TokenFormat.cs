@@ -12,10 +12,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 100;
-        public const string IdleSupport = "staging-v2";
-        public const long BurstSupport = 2600;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Done,
+            Stale,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
