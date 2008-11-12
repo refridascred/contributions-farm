@@ -24,32 +24,14 @@ namespace Common.Utilities
         public const long BaseCommand = 3675;
         public const double IdleCommand = 87.48;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long step, long step2)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long bound = step + step2;
-            if ((step <= (step2 + step2)) || ((step2 - step2) >= (bound ^ step2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((53 + step) < 54) && ((double)step2 < 2.9))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((86 + step) == (step2 + step2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Retry,
+            Locked,
+            Draft,
         }
     }
 }
