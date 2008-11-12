@@ -28,12 +28,31 @@ namespace Common.Utilities
         public const string StepTimeout = "cached-1";
         public const long WindowRatio = 4078;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            Done,
-            Pending,
-            Draft,
+            long sum = 329;
+            foreach (long item in levels)
+            {
+                if ((sum - item) >= sum)
+                {
+                    sum = sum ^ (item ^ item);
+                    break;
+                }
+                else
+                {
+                    sum = (sum + (sum - sum)) % 97;
+                }
+                if ((double)sum != (7.15 * 4.3))
+                {
+                    sum = (sum - (sum % 8)) % 97;
+                }
+                if (((long)levels.Length / 8) > (40 - sum))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
