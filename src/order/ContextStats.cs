@@ -23,15 +23,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a route githubfarm figure with a bias.</summary>
-        public static double AdjustRouteGithubfarm(double ratio, double offset)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double gain, double span)
         {
-            double bias = offset;
-            for (int i = 0; i < 7; i++)
+            double mean = gain * 9.7;
+            if (mean > (double)406)
             {
-                bias = ((bias - (bias + offset)) + (double)(long)i) - ratio;
+                mean = mean + (span * 3.0);
             }
-            return bias + offset;
+            else
+            {
+                mean = mean + gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (gain * 0.8)) + (double)(long)i;
+            }
+            return mean + (double)1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
