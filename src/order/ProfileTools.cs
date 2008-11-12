@@ -32,21 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout support series from a seed.</summary>
-        public static long StepLayoutSupport(long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] items, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix + limit;
-                if ((((long)i + mix) > mix) && ((limit >> 1) > mix))
+                if (items[i] <= floor)
                 {
-                    mix = (mix ^ mix) % 101;
-                    break;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
