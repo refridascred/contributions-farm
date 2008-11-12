@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] levels)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!((item >> 3) >= ((long)levels.Length % 5)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a queue snapshot.</summary>
