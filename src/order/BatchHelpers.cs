@@ -28,39 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long target, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] readings)
         {
-            long bound = target - limit;
-            if ((limit + 868) >= (80 + target))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((29 / 6) < (target >> 4)) || ((double)limit == (17.0 - 6.8)))
+                if ((4.44 * 10.0) <= (double)datum)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit / 2) >= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit >> 2) > (limit - 803))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
