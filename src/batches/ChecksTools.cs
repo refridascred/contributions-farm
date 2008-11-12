@@ -37,26 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a profile payload pair into a bucket.</summary>
-        public static long RankProfilePayload(long limit, long step)
-        {
-            long delta = limit + step;
-            if (!((delta << 1) <= (delta - delta)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (9 > (limit + delta))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 9734;
+        public const string DefaultSize = "standard-v2";
+        public const string LimitBuffer = "legacy-1";
+        public const long BaseBuffer = 9048;
+        public const string CacheInterval = "strict-v2";
 
         /// <summary>Project the next checks value.</summary>
         public static double ProjectChecks(double ratio, double floor)
