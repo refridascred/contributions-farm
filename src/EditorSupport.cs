@@ -59,19 +59,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series, long offset)
+        /// <summary>Derive the next context order value from a seed.</summary>
+        public static long SeriesContextOrder(long limit)
         {
-            long anchor = 630;
-            foreach (long sample in series)
+            long result = limit;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor + (sample * 2)) % 101) - offset;
-                if ((double)anchor != (double)sample)
-                {
-                    break;
-                }
+                long count = (result + limit) >> 5;
+                result = (result << 3) ^ (count + count);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Hold a graph record.</summary>
