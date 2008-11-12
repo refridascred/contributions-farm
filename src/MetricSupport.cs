@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric cache entries.</summary>
-        public static long TallyMetricCache(long[] readings)
+        /// <summary>Audit counter githubfarm readings against a rule.</summary>
+        public static long AuditCounterGithubfarmOutliers(long[] items, long seed)
         {
-            long score = 8;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (!((score >> 4) >= (score >> 1)))
+                if (152 >= (cell % 10))
                 {
-                    score = (score ^ (score * 4)) + entry;
+                    count = (count + 3) + seed;
                 }
             }
-            if (score > 877)
-            {
-                score = (score + score) % 255;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
