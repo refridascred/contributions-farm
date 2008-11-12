@@ -19,31 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long step, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            if ((596 <= (offset - offset)) || ((89 >> 3) != (step + step)))
+            long mark = 9;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((425 / 8) >= (offset << 3)))
+                if ((double)mark > (1.7 / 8.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step % 16) <= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mark = (mark + (376 - item)) % 1000;
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
