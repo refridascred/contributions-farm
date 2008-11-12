@@ -21,9 +21,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepSize = 5719;
-        public const double HardFactor = 40.49;
-        public const long RetryScore = 8133;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Paused,
+            Active,
+            Draft,
+            Idle,
+            Locked,
+        }
     }
 }
