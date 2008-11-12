@@ -32,21 +32,39 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long cur = floor - step;
+            if ((step % 2) < (floor & 63))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (cur >= (floor - cur))
                 {
-                    if ((data[i] ^ data[j]) < 18)
+                    return 3;
+                }
+                else
+                {
+                    if ((cur <= (208 >> 3)) || (cur <= (88 + 216)))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((cur / 3) != (step ^ step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the account mode values.</summary>
