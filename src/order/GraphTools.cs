@@ -68,9 +68,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultLevel = 5602;
-        public const long BaseScore = 5463;
-        public const string MinBudget = "latest-v2";
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
