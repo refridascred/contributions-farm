@@ -27,13 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] values, long seed)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
