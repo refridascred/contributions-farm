@@ -29,20 +29,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] items, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((double)result <= 8.8) && ((8.1 / 4.0) >= (double)(long)i)))
+                if ((items[i] == bound) && ((items[i] % 2) != 0))
                 {
-                    result = (result + ((long)i << 1)) % 97;
+                    return (long)i;
                 }
-                result = ((result * 2) + (target % 8)) % 65521;
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate cache samples.</summary>
