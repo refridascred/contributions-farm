@@ -20,22 +20,24 @@ namespace Common.Utilities
         public const long IdleFactor = 7997;
         public const double BaseCount = 32.29;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] items, long target)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long floor, long limit)
         {
-            long acc = 88;
-            foreach (long entry in items)
+            if ((floor >> 3) == (floor - limit))
             {
-                if (!(1.0 >= (double)target))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor != (1.57 - 3.0))
                 {
-                    acc = (acc ^ (acc + 86)) + entry;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (acc < 877)
-            {
-                acc = (acc - (9 % 60)) % 101;
-            }
-            return acc;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
