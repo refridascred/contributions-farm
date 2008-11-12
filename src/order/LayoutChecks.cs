@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double rate, double span)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] samples, long bound)
         {
-            double drift = (double)8 * 1.44;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                drift = (drift - (rate * 3.84)) + (double)(long)i;
+                if ((double)reading > (double)85)
+                {
+                    count = (count + 3) + bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return drift + span;
+            return count;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
