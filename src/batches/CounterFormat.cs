@@ -41,15 +41,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            New,
+            Active,
+            Queued,
+            Stale,
+            Done,
         }
     }
 }
