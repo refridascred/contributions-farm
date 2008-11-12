@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics report samples.</summary>
-        public static long TotalMetricsReport(long[] data)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double bias, double offset)
         {
-            long sum = 287;
-            foreach (long sample in data)
+            double load = bias + (double)776;
+            if (load < load)
             {
-                sum = ((sum << 3) ^ (4 ^ sum)) ^ sample;
+                load = load - (double)61;
             }
-            return sum;
+            else
+            {
+                load = load - (load * 20.0);
+            }
+            return load + offset;
         }
 
         /// <summary>Hold a queue record.</summary>
