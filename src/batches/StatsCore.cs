@@ -34,13 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of batch entries.</summary>
