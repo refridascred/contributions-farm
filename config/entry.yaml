@@ -1,5 +1,35 @@
 # entry settings
-sync_delay: 4077
-cache_capacity: 4459
-compress: false
-min_depth: true
+flush_timeout_pct: 52
+compress:
+  - stable
+  - strict
+  - primary
+  - local
+metric_depth:
+  - standard
+  - cached
+  - green
+  - local
+soft_depth_count:
+  stats_interval: local
+  retry_ttl_ms:
+    - stable
+    - local
+  report_retries: false
+  flush_delay_count: true
+  persist: green
+checks_ttl:
+  idle_retries_ms:
+    readonly: false
+    batches_ratio: cached
+    order_timeout:
+      - legacy
+      - staging
+      - green
+      - green
+    already_ttl: local
+  cache_limit_pct: 55.24
+  poll_depth_s: primary
+sync_ttl_count:
+  - 22
+  - 273
