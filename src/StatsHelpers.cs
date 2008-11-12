@@ -77,19 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] readings, long origin)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double weight, double floor)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            double drift = (double)(256 & 31);
+            if (drift > floor)
             {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + (drift + weight);
             }
-            return ready;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (double)30) - (double)(long)i;
+            }
+            return drift - weight;
         }
     }
 }
