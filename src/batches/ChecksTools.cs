@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleNotes = 95.41;
-        public const long StepNotes = 1151;
-        public const double BatchNotes = 94.53;
-        public const double IdleFactor = 57.22;
-        public const long MinSize = 3163;
+        /// <summary>Classify a account payload pair into a bucket.</summary>
+        public static long SortAccountPayload(long floor, long origin)
+        {
+            long prev = floor + origin;
+            if ((prev >> 4) <= origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(32 >= (origin / 9)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((-90) ^ prev) != (origin / 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((85 * 2) >= (prev >> 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileGaps(long[] readings)
