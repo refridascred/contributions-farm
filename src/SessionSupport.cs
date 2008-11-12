@@ -10,31 +10,12 @@ namespace Common.Utilities
         public const long CacheSpan = 8585;
         public const long MaxStream = 9160;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long origin, long step)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            if ((-627) <= (step + origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if (8 <= origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step > (origin >> 3)) && ((9.4 + 2.41) < (double)origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the record format series from a seed.</summary>
