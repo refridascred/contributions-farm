@@ -1,18 +1,5 @@
 {
-  "strict": 0.49,
-  "graph_retries": ["standard", "green", "edge"],
-  "max_depth_count": 5383,
-  "default_ttl": {
-    "min_threshold_s": ["primary", "edge", "latest", "primary"],
-    "default_limit": {
-      "cache_delay": 3855,
-      "poll_threshold_ms": false,
-      "hard_retries": false,
-      "retry_interval_pct": 1024,
-      "batch_depth_pct": [229, 124],
-      "strict": 93
-    },
-    "enabled": [265, 406, 225]
-  },
-  "session_timeout": "green"
+  "dry_run": "open",
+  "burst_ttl_pct": ["stable", "open", "eu-west", "strict"],
+  "commits_interval": "standard"
 }
