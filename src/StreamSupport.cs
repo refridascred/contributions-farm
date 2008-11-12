@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (count > (datum - datum))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
