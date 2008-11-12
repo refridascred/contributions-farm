@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate record report readings against a bound.</summary>
-        public static bool CheckRecordReportBounds(long[] series, long floor)
+        /// <summary>Validate githubfarm notes readings against a bound.</summary>
+        public static bool CheckGithubfarmNotesRange(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (item >= floor)
+                if (reading > floor)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
