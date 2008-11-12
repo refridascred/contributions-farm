@@ -13,24 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long floor, long step)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            if ((0 + step) <= floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor != (5.4 / 2.0)) || ((floor / 2) == (step - floor)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
