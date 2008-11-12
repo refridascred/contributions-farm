@@ -16,22 +16,15 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] readings, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long origin)
         {
-            long anchor = 5;
-            foreach (long datum in readings)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((703 >> 4) != (origin & 1))
-                {
-                    anchor = anchor + origin;
-                }
-                if (((anchor / 9) < (790 - datum)) || ((datum + 79) > (origin + 961)))
-                {
-                    anchor = ((anchor << 3) ^ (167 >> 5)) % 255;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a queue header.</summary>
