@@ -28,21 +28,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
         }
     }
 }
