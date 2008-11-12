@@ -1,7 +1,20 @@
 {
-  "order_ratio": [154, 128, 451, 83],
-  "cache_depth": "fallback",
-  "batch_threshold": [360, 59],
-  "hard_ratio_count": 61,
-  "retry_delay_s": 59
+  "strict": 15.3,
+  "default_delay": "open",
+  "checks_delay": {
+    "dry_run": [55, 86, 381],
+    "default_size_count": true,
+    "readonly": "cached",
+    "poll_size_s": "eu-west",
+    "flush_delay_ms": 8340
+  },
+  "stats_depth": 1024,
+  "batch_threshold": {
+    "batch_limit_count": [199, 76, 262, 495],
+    "payload_capacity": 3301,
+    "already_size": "standard",
+    "dry_run": 52.12,
+    "notes_window": true,
+    "hard_capacity_ms": 86
+  }
 }
