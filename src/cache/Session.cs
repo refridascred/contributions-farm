@@ -26,12 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] levels, long bound)
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a cache counter pair into a bucket.</summary>
