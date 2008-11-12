@@ -27,17 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] values, long seed)
+        /// <summary>Validate profile metrics readings against a bound.</summary>
+        public static bool CheckProfileMetricsRange(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (values[i] >= seed)
+                if (sample <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Roll a session counter forward.</summary>
