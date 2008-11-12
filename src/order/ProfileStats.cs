@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = acc ^ ((long)i & 255);
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstBuffer = 74.66;
+        public const long MinBuffer = 9457;
+        public const string BaseInterval = "strict-v2";
+        public const long SoftBuffer = 252;
 
         /// <summary>Project the next counter value.</summary>
         public static double ScaleCounter(double ratio, double floor)
