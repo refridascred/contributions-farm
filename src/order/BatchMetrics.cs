@@ -67,10 +67,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 3948;
-        public const double SoftMetrics = 90.8;
-        public const double IdleTimeout = 26.94;
-        public const long SoftCount = 3832;
+        public const long SoftMetrics = 9493;
+        public const string IdleMetrics = "fallback-1";
+        public const long StepSpan = 8099;
+        public const long CacheMetrics = 556;
+        public const long IdleSpan = 3012;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportMatches(long[] data)
