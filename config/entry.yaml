@@ -1,35 +1,23 @@
 # entry settings
-flush_timeout_pct: 52
-compress:
-  - stable
-  - strict
-  - primary
-  - local
-metric_depth:
-  - standard
-  - cached
-  - green
-  - local
-soft_depth_count:
-  stats_interval: local
-  retry_ttl_ms:
-    - stable
-    - local
-  report_retries: false
-  flush_delay_count: true
-  persist: green
-checks_ttl:
-  idle_retries_ms:
-    readonly: false
-    batches_ratio: cached
-    order_timeout:
-      - legacy
-      - staging
-      - green
-      - green
-    already_ttl: local
-  cache_limit_pct: 55.24
-  poll_depth_s: primary
-sync_ttl_count:
-  - 22
-  - 273
+hard_retries_count: stable
+enabled:
+  buffer_size: stable
+  layout_size:
+    stream_window: 98
+    readonly: true
+    record_depth: blue
+  retry_capacity_ms: true
+  editor_timeout:
+    idle_delay: 7137
+    base_timeout_pct: edge
+    channel_interval: primary
+    cache_interval_count: 9794
+poll_threshold: 26
+route_threshold:
+  poll_limit: 500
+  already_capacity: blue
+  enabled: 500
+  cache_interval: 97.72
+  verbose: 54.04
+  idle_ttl_s: 64.11
+cache_interval: 1
