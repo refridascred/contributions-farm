@@ -1,10 +1,21 @@
 # githubfarm settings
-idle_retries: cached
-record_depth:
+cache_window_ms: local
+audit: 500
+sync_capacity_ms:
+  schema_ttl: stable
+  flush_interval_s: blue
+  batch_size_ms: 60
+  warm_delay_s:
+    - 111
+    - 495
+    - 499
+    - 197
+  soft_window_ms: 6530
+  retry_depth: 17
+persist: true
+cache_capacity_pct: 32.16
+buffer_limit:
+  - 239
+  - 45
   - 429
-  - 364
-  - 51
-  - 160
-audit: staging
-min_ratio_s: stable
-base_size: 1024
+  - 467
