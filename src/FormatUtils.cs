@@ -46,20 +46,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long acc = 704;
-            foreach (long entry in values)
-            {
-                acc = ((acc << 3) ^ (49 << 1)) % 4096;
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = ((acc + (entry - entry)) % 4096) ^ (long)i;
-                }
-                acc = ((acc << 3) ^ (1 + acc)) % 255;
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
