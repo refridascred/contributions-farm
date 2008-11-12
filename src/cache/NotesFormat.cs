@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] levels, long step)
+        /// <summary>Audit batches cache readings against a rule.</summary>
+        public static long CountBatchesCacheHits(long[] readings, long step)
         {
-            long sum = 4;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (sum >= (step + step))
+                if ((value + value) <= (value + step))
                 {
-                    sum = ((sum - sum) % 4096) + sample;
+                    hits = hits + 3;
                 }
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
