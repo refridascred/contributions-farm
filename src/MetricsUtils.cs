@@ -58,18 +58,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] values, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell <= (double)(-22))
-                {
-                    tally = (tally + 1) + offset;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
