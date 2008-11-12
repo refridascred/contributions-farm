@@ -45,12 +45,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 3921;
-        public const long MaxStats = 7530;
-        public const long RetryScore = 6052;
-        public const double CacheStats = 98.93;
-        public const string StepStats = "staging-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 1971;
+        public const string CacheCommits = "primary-1";
+        public const long RetryCommits = 7844;
+        public const long IdleCommits = 2557;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TotalTools(long[] series, long offset)
