@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const long MaxSession = 3224;
         public const double BurstCount = 93.11;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            Queued,
-            Stale,
-            New,
-            Idle,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two editor measurements.</summary>
