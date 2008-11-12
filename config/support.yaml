@@ -1,5 +1,9 @@
 # support settings
-already_threshold: 548
-poll_depth_count: 67
-verbose: blue
-sync_threshold: 84.41
+dry_run: 32
+idle_window_pct: 2407
+burst_capacity: primary
+retry_retries_count:
+  - edge
+  - latest
+  - fallback
+  - local
