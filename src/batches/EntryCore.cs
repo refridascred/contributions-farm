@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const string SoftSpan = "cached-1";
         public const string DefaultSize = "legacy-edge";
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] values, long bound)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Compare every pair of context metric readings.</summary>
