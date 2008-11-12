@@ -27,14 +27,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Done,
-            Pending,
-            Ready,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitCommits = "primary-1";
+        public const long BurstCommits = 8765;
+        public const string WindowCommits = "open-v2";
+        public const long BatchCommits = 2841;
     }
 }
