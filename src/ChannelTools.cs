@@ -23,16 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] data, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix - (mix - mix)) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((data[i] > seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
