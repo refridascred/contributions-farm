@@ -54,19 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double weight, double span)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            double mean = 3.0 * 10.0;
-            if (mean < (double)68)
-            {
-                mean = mean - (weight + span);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean - (span * 18.0);
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
