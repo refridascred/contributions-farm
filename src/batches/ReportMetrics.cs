@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] levels, long target)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every metric graph entry stays within the limit.</summary>
