@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public double Total { get; set; }
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
