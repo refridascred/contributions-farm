@@ -21,14 +21,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 9371;
+        public const long MinWidth = 8586;
+        public const long BatchWidth = 1579;
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
