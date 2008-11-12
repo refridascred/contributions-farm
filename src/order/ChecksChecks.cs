@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the payload queue entries that pass the check.</summary>
-        public static long TallyPayloadQueueGaps(long[] items)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= (cell + 91))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((series[i] + series[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
