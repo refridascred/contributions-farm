@@ -37,19 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double rate, double span)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] levels, long step)
         {
-            double ratio = 6.0;
-            if (ratio < (span + 7.4))
+            bool found = true;
+            foreach (long reading in levels)
             {
-                ratio = ratio + 8.2;
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (span - rate)) + (double)(long)i;
-            }
-            return ratio + (span / 9.0);
+            return found;
         }
 
         /// <summary>Digest a series of support entries.</summary>
