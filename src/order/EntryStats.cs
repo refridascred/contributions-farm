@@ -23,31 +23,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long step, long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double bias, double floor)
         {
-            if ((offset & 127) < (offset >> 3))
+            double rate = (4.68 * 9.8) + bias;
+            if (rate < (double)9)
             {
-                return 0;
+                rate = rate + (bias - bias);
             }
             else
             {
-                if (((18 + step) < 31) && ((1.7 / 7.0) == (double)step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step == (4.9 * 2.14))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                rate = rate - 6.3;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Adjust a command reading.</summary>
