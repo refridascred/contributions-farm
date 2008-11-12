@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] data, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 55;
+            foreach (long item in levels)
             {
-                if ((data[i] < floor) && ((data[i] % 3) == 0))
+                if ((5 <= item) && ((74 << 2) == (item + item)))
                 {
-                    return (long)i;
+                    sum = (sum ^ (sum + item)) % 97;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Iterate the token context series from a seed.</summary>
