@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] items, long seed)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
