@@ -16,11 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 9913;
-        public const long HardLevel = 2031;
-        public const long StepFactor = 9763;
-        public const string IdleAccount = "standard-v2";
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double AdjustLayout(double rate, double span)
