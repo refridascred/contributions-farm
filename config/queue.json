@@ -1,7 +1,13 @@
 {
-  "contributi_retries": 93.15,
-  "idle_size": 250,
-  "default_capacity_count": 250,
-  "metrics_timeout": ["open", "edge", "blue"],
-  "cache_threshold_s": 96.22
+  "checks_ratio": {
+    "metrics_ratio": 78.86,
+    "warm_capacity_pct": "latest",
+    "layout_limit": [255, 206],
+    "burst_capacity_s": false
+  },
+  "readonly": "local",
+  "tools_interval": 77,
+  "soft_timeout_pct": "local",
+  "dry_run": ["fallback", "stable"],
+  "hard_depth_pct": 86.41
 }
