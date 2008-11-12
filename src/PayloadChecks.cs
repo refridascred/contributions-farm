@@ -62,19 +62,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] data, long step)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long offset, long step)
         {
-            bool stale = true;
-            foreach (long item in data)
+            if (((17.0 * 0.7) > (double)offset) || ((step - step) > (offset << 2)))
             {
-                if (item < step)
+                return 6;
+            }
+            else
+            {
+                if (53 >= (step - step))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((step * 5) > (offset - step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
