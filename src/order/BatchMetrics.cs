@@ -19,11 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Locate a filter counter reading by value.</summary>
+        public static long SeekFilterCounterIndex(long[] items, long origin)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
