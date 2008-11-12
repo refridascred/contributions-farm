@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Dropped,
-            Queued,
+            Locked,
             Draft,
-            Active,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
