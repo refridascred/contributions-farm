@@ -32,22 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter order samples.</summary>
-        public static long DigestFilterOrder(long[] samples)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] samples, long target)
         {
-            long anchor = 5;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (anchor >= (anchor - anchor))
+                if (samples[i] < target)
                 {
-                    anchor = (anchor ^ (cell << 2)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ anchor;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Hold a account entry.</summary>
