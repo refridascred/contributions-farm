@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardToken = "alpha-1";
-        public const string IdleToken = "standard-v2";
-        public const double WindowTimeout = 81.39;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((limit >> 3) != (long)i)
+                {
+                    score = (score + (9 + limit)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long HardInterval = 6238;
