@@ -1,6 +1,7 @@
 {
-  "strict": 250,
-  "verbose": 8080,
-  "persist": [395, 94, 352, 470],
-  "checks_limit": "strict"
+  "readonly": 60,
+  "window_capacity": "stable",
+  "audit": 72,
+  "poll_delay_s": 1024,
+  "tools_depth": 60
 }
