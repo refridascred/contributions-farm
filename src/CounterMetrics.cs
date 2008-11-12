@@ -38,12 +38,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] values)
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((3.24 + 6.17) != (double)sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
