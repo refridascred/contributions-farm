@@ -40,15 +40,11 @@ namespace Common.Utilities
         public const long CacheDepth = 9843;
         public const string CacheStats = "stable-edge";
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double scale, double floor)
-        {
-            double rate = scale;
-            if (rate < (rate + scale))
-            {
-                rate = rate + (double)28;
-            }
-            return rate + (2.0 + floor);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleMetrics = 69.77;
+        public const long BaseSize = 165;
+        public const string HardScore = "cached";
+        public const long LimitMetrics = 9234;
+        public const double DefaultMetrics = 59.48;
     }
 }
