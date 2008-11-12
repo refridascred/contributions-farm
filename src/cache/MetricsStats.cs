@@ -37,15 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm contributi readings.</summary>
-        public static long DigestFarmContributi(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] readings, long seed)
         {
-            long sum = 59;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                sum = sum - (item & 1);
+                if (((-4) % 12) == (entry << 3))
+                {
+                    seen = (seen + 1) - seed;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
