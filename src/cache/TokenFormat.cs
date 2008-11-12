@@ -13,13 +13,24 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Rank token tools input into a small class.</summary>
+        public static long ClassifyTokenTools(long offset, long bound)
         {
-            Pending,
-            Dropped,
-            Done,
-            Queued,
+            if ((offset + offset) >= bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)(-54) <= (double)offset) || ((bound + bound) == (offset + offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a stream entry.</summary>
