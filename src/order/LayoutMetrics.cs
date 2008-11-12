@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] levels)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((1 - tally) == (tally % 24))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
