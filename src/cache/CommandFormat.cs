@@ -16,13 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Failed,
-            Pending,
-            Done,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardInterval = 33.88;
+        public const long BaseSupport = 8200;
+        public const long IdleSupport = 7634;
 
         /// <summary>Blend two window measurements.</summary>
         public static double BlendWindow(double scale, double bias)
