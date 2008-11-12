@@ -11,16 +11,17 @@ namespace Common.Utilities
         public const string HardRatio = "primary-1";
         public const string MinLevel = "local";
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] readings, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc - acc) % 97;
-                acc = ((acc * 4) + (long)i) % 97;
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
