@@ -48,23 +48,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the batches commits entries that pass the check.</summary>
-        public static long CountBatchesCommitsOutliers(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (matches > (matches ^ bound))
-                {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstCount = 5064;
+        public const double RetryCount = 52.35;
+        public const long CacheSpan = 370;
+        public const string LimitBudget = "stable-v2";
 
         /// <summary>Check that every route record entry stays within the limit.</summary>
         public static bool VerifyRouteRecordLimits(long[] data, long offset)
