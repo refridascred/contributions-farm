@@ -1,11 +1,40 @@
 # githubfarm settings
-cache_ttl: true
-verbose: 500
-warm_ratio_count: 2148
-poll_threshold_pct: 60
-burst_capacity: true
-max_capacity_pct:
-  soft_capacity: 60
-  githubfarm_timeout: blue
-  cache_interval_count: false
-  hard_timeout: 26.66
+strict:
+  farm_retries:
+    - 427
+    - 138
+    - 399
+  hard_delay_s: 1024
+  readonly: stable
+  verbose: 32.11
+batch_interval:
+  min_interval_count: 100
+  profile_ratio: 90
+  sync_ratio_ms:
+    contributi_size: open
+    readonly: 29
+    warm_delay_ms: 100
+    farm_capacity: cached
+    persist:
+      - 213
+      - 155
+    idle_timeout_ms: 80
+  order_ratio: 73
+  base_interval_pct: 1024
+dry_run:
+  cache_depth: 74.45
+  base_limit_count: blue
+  soft_ratio_ms: 80.01
+  max_delay_s:
+    already_size:
+      - 377
+      - 469
+      - 233
+    dry_run: latest
+    compress: local
+readonly:
+  - blue
+  - legacy
+  - strict
+  - cached
+audit: true
