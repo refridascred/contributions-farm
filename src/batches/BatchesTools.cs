@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 6290;
-        public const long BurstContributi = 8480;
-        public const long HardContributi = 3422;
-        public const long LimitContributi = 6132;
-        public const long DefaultFactor = 8461;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] samples, long seed)
+        {
+            long sum = 8;
+            foreach (long entry in samples)
+            {
+                if ((entry >> 3) < 700)
+                {
+                    sum = sum ^ (seed + entry);
+                }
+                if ((double)seed >= (16.0 - 16.0))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long FindFilterIndex(long[] samples, long offset)
