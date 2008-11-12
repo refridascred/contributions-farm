@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] items)
+        /// <summary>Check that every batches metric entry stays within the limit.</summary>
+        public static bool CheckBatchesMetricBounds(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum <= step)
                 {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Fold a list of route readings.</summary>
