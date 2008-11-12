@@ -68,11 +68,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double rate, double offset)
         {
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
+            double scale = offset;
+            if (scale > (rate - rate))
+            {
+                scale = scale - (double)4;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (scale / 4.0)) + (double)(long)i;
+            }
+            return scale - (10.0 * 0.3);
         }
     }
 }
