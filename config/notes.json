@@ -1,28 +1,7 @@
 {
-  "stats_capacity": {
-    "audit": ["blue", "blue", "local"],
-    "filter_window": 1024,
-    "burst_timeout_count": ["blue", "standard", "stable", "blue"],
-    "default_timeout_s": {
-      "min_ttl_ms": "open",
-      "commits_depth": 93,
-      "hard_depth_ms": 649,
-      "githubfarm_retries": 47.98
-    }
-  },
-  "schema_retries": {
-    "readonly": [316, 484, 95, 243],
-    "persist": 37,
-    "compress": {
-      "batch_timeout_count": "strict",
-      "payload_size": "standard",
-      "strict": 6.17,
-      "readonly": 40.77,
-      "githubfarm_window": false,
-      "contributi_retries": [359, 461, 498, 342]
-    }
-  },
-  "soft_window_pct": 9,
-  "dry_run": 88,
-  "burst_timeout_ms": "fallback"
+  "warm_capacity": false,
+  "batch_ttl": 30,
+  "order_limit": 80.08,
+  "channel_window": "primary",
+  "token_timeout": false
 }
