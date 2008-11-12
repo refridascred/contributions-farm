@@ -18,21 +18,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count order account pairs that satisfy a relation.</summary>
-        public static long MatchOrderAccountCount(long[] levels)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
