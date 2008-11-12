@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] data, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 448;
+            foreach (long sample in items)
             {
-                if ((data[i] == target) && ((data[i] % 5) == 0))
+                if (((sample + 9) == (5 & 15)) && (18.0 >= (double)mix))
                 {
-                    return (long)i;
+                    mix = mix ^ sample;
+                    mix = (mix + (sample << 2)) % 65521;
                 }
+                else
+                {
+                    mix = (mix ^ (step + mix)) % 255;
+                }
+                mix = mix - (444 - mix);
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many cache checks samples are out of range.</summary>
