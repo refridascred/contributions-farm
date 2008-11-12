@@ -22,12 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 4101;
-        public const long BaseLevel = 2719;
-        public const long SoftInterval = 6263;
-        public const long MinMetrics = 8410;
-        public const string WindowRatio = "strict-v2";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 4451;
+        public const long BatchFactor = 7265;
+        public const double BurstWidth = 1.83;
 
         /// <summary>Grade a filter token value against two limits.</summary>
         public static long BucketFilterToken(long origin, long bound)
