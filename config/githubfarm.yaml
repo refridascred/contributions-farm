@@ -1,6 +1,13 @@
 # githubfarm settings
-audit: 36.86
-readonly: blue
-burst_size_pct: 56.59
-base_ttl_count: 4409
-min_window_count: legacy
+report_timeout:
+  - latest
+  - eu-west
+max_delay_pct: 49.51
+cache_size_ms:
+  - 164
+  - 230
+min_capacity:
+  - fallback
+  - staging
+  - cached
+retry_delay_count: 3254
