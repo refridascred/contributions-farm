@@ -58,19 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] readings, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (datum <= bound)
+                if ((cell % 7) > (cell + (-773)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
