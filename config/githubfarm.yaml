@@ -1,13 +1,13 @@
 # githubfarm settings
-warm_ratio:
-  - fallback
-  - staging
-retry_ratio_ms:
-  notes_ttl: edge
-  hard_retries: open
-  audit: true
-  max_depth: 84
-  readonly: blue
-  flush_capacity_ms: 74
-poll_depth: stable
-soft_capacity_s: legacy
+retry_depth_count: 7539
+hard_ttl_ms: false
+cache_threshold_count: 7362
+max_capacity_ms:
+  verbose: 46
+  enabled: latest
+  soft_ratio_pct: 9257
+  batch_capacity_s:
+    editor_capacity: true
+    checks_depth: 9.74
+    burst_window_s: open
+  poll_depth_pct: legacy
