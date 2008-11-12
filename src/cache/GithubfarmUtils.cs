@@ -24,19 +24,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] items, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (datum > step)
+                if ((matches ^ matches) <= (item ^ (long)values.Length))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the session level values.</summary>
