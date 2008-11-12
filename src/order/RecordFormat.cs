@@ -33,17 +33,13 @@ namespace Common.Utilities
         public const double LimitMetrics = 69.22;
         public const long MaxMetrics = 2371;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] items, long floor)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
