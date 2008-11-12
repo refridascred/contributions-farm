@@ -66,21 +66,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of command editor readings.</summary>
-        public static long OverlapCommandEditorCount(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((target & 31) > sample)
                 {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
