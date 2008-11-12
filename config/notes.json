@@ -1,8 +1,5 @@
 {
-  "readonly": false,
-  "soft_threshold_s": false,
-  "soft_window_s": 796,
-  "idle_capacity": "edge",
-  "persist": 43,
-  "burst_ttl_s": 49.26
+  "soft_threshold_pct": 72.88,
+  "sync_threshold_ms": 64,
+  "soft_limit_count": "standard"
 }
