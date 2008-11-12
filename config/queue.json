@@ -1,5 +1,27 @@
 {
-  "flush_ratio_count": "fallback",
-  "default_limit_s": 250,
-  "warm_timeout_s": [345, 48, 329]
+  "idle_size_count": ["primary", "local", "standard"],
+  "readonly": {
+    "max_ratio_ms": {
+      "enabled": ["stable", "eu-west"],
+      "burst_window": 9,
+      "default_depth_s": 51,
+      "max_retries_s": [487, 324, 78],
+      "cache_timeout": 6749,
+      "format_window": false
+    },
+    "flush_depth_pct": [290, 71],
+    "base_interval": {
+      "support_depth": 87,
+      "account_delay": 30,
+      "readonly": "standard",
+      "warm_window_pct": 23,
+      "burst_ttl": 250,
+      "buffer_interval": "stable"
+    },
+    "token_delay": true
+  },
+  "compress": "latest",
+  "warm_ratio_pct": false,
+  "retry_size": true,
+  "payload_ratio": true
 }
