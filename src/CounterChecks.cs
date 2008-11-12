@@ -61,31 +61,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long origin, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double rate, double span)
         {
-            if ((939 ^ bound) < (origin - bound))
+            double drift = rate;
+            if (drift >= (drift * 19.0))
             {
-                return 3;
+                drift = drift + rate;
             }
             else
             {
-                if ((double)origin <= (double)(-31))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin + 67) <= (origin & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                drift = drift + rate;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (rate + span)) + (double)(long)i;
+            }
+            return drift - 8.6;
         }
     }
 }
