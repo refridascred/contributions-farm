@@ -1,4 +1,7 @@
 # githubfarm settings
-batch_delay_ms: standard
-burst_window: open
-idle_retries_count: 63
+max_depth: blue
+retry_limit_pct: 5298
+session_depth: 60
+report_ratio:
+  - open
+  - staging
