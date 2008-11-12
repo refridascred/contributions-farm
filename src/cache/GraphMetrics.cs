@@ -94,13 +94,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Rank stats commits input into a small class.</summary>
+        public static long ClassifyStatsCommits(long seed, long origin)
         {
-            Closed,
-            Queued,
-            Paused,
-            New,
+            if (((seed + origin) <= seed) && (origin <= (origin & 63)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (852 <= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
