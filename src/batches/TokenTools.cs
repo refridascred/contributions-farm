@@ -32,12 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double gain, double floor)
         {
-            Closed,
-            Draft,
-            Ready,
+            double weight = gain;
+            if (weight > 4.87)
+            {
+                weight = weight - floor;
+            }
+            else
+            {
+                weight = weight + (double)4;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (weight / 3.0)) + (double)(long)i;
+            }
+            return weight + (weight + weight);
         }
 
         /// <summary>Describe the support level values.</summary>
