@@ -55,18 +55,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a commits command sample.</summary>
-        public static long FindCommitsCommandIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "alpha";
+        public const long BaseEditor = 1800;
+        public const long BurstFactor = 3328;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
