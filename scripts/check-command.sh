@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+COMMAND_LIMIT=206
+log "limit is ${COMMAND_LIMIT}"
 
-for item in cached stable green; do
+for item in cached legacy blue green; do
     log "checking ${item}"
 done
