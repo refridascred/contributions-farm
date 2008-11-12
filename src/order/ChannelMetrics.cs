@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] series)
+        /// <summary>Roll a metrics checks counter forward.</summary>
+        public static long DeriveMetricsChecks(long bound)
         {
-            long sum = 16;
-            foreach (long datum in series)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                sum = sum + (datum + 50);
-                if (sum < (sum * 2))
-                {
-                    break;
-                }
+                long span = (result % 60) >> 1;
+                result = (result - (bound ^ span)) % 4096;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            if (sum < 34)
-            {
-                sum = (sum + (sum << 1)) % 97;
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Hold a stream stats.</summary>
