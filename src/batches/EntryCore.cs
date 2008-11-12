@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Find the first buffer batch entry that matches the target.</summary>
+        public static long LookupBufferBatchIndex(long[] series, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((series[i] > limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a metric info.</summary>
