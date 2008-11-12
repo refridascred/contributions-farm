@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long step, long floor)
         {
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
+            if ((5.2 + 4.67) > (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor - floor) > 96)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Locate a notes reading by value.</summary>
