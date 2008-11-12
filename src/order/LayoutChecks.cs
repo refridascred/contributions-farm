@@ -59,18 +59,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] data, long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] levels)
         {
-            long sum = -330;
-            foreach (long entry in data)
+            long mark = 933;
+            foreach (long item in levels)
             {
-                if ((long)data.Length <= entry)
-                {
-                    sum = (sum + entry) - target;
-                }
+                mark = (mark << 3) ^ item;
+                mark = (mark - ((-751) + 9)) % 65521;
             }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
