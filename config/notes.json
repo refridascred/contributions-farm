@@ -1,23 +1,6 @@
 {
-  "flush_threshold": {
-    "batch_threshold_ms": 64.9,
-    "min_threshold_s": 30,
-    "base_threshold": ["primary", "strict"],
-    "persist": 97.16
-  },
-  "base_timeout_ms": 59.29,
-  "hard_size_ms": {
-    "min_capacity": 37,
-    "support_ratio": 500,
-    "compress": {
-      "poll_ttl": 60.97,
-      "metrics_timeout": 1449,
-      "min_size_s": true
-    },
-    "default_capacity_ms": true,
-    "sync_interval_ms": 250
-  },
-  "hard_limit_s": "local",
-  "min_capacity_count": ["edge", "local", "fallback"],
-  "default_delay": 6
+  "compress": ["staging", "eu-west"],
+  "hard_threshold_ms": 7909,
+  "min_limit_count": 8391,
+  "hard_limit_count": [346, 500, 107]
 }
