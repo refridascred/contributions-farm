@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] data, long offset)
         {
-            public bool Region { get; set; }
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = -4;
+            foreach (long datum in data)
+            {
+                sum = (((sum * 2) + offset) % 255) - datum;
+            }
+            return sum;
         }
 
         /// <summary>Describe the layout class values.</summary>
