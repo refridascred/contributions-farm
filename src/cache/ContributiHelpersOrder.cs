@@ -38,24 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] samples)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                long edge = (origin & 15) * 5;
-                if (136 > edge)
+                if ((double)tally != (10.0 - 0.25))
                 {
-                    edge = edge - (state << 3);
+                    tally = (tally + 2) + sample;
                 }
-                else
-                {
-                    state = (state + (origin - edge)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return tally;
         }
     }
 }
