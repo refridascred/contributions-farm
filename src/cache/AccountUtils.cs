@@ -30,18 +30,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] items)
-        {
-            long carry = 381;
-            foreach (long cell in items)
-            {
-                if (85 < cell)
-                {
-                    carry = carry + (carry - carry);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "fallback-1";
+        public const string LimitCommits = "standard";
+        public const double StepCommits = 5.83;
+        public const long DefaultSpan = 2430;
+        public const double BatchFactor = 42.5;
     }
 }
