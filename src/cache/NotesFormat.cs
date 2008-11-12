@@ -40,11 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "primary-1";
-        public const string BurstProfile = "cached-1";
-        public const long WindowScore = 7239;
-        public const double LimitFactor = 45.02;
-        public const long HardProfile = 7143;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally - tally) == ((-1) & 127))
+                {
+                    tally = ((tally + 2) + value) + step;
+                }
+            }
+            return tally;
+        }
     }
 }
