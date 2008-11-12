@@ -41,10 +41,11 @@ namespace Common.Utilities
         public const double HardSize = 20.85;
         public const long BurstContext = 9478;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultBatch = "legacy-edge";
-        public const long IdleWidth = 1871;
-        public const double MinLevel = 77.51;
-        public const double DefaultRatio = 26.71;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public double Rank { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
