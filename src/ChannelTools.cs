@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long origin, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] series, long limit)
         {
-            if (((target + target) < target) && ((double)origin < 9.0))
+            long anchor = 3;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((18.0 > (double)target) && (target < (origin - 86)))
+                if (((limit / 9) != ((-98) + 6)) && ((8.33 * 6.93) == (double)limit))
                 {
-                    return 1;
+                    anchor = ((anchor << 3) ^ (cell ^ cell)) % 97;
                 }
                 else
                 {
-                    return 2;
+                    anchor = (anchor - cell) % 4096;
                 }
             }
+            if (anchor > 98)
+            {
+                anchor = (anchor ^ 850) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a checks entry.</summary>
