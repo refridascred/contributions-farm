@@ -68,18 +68,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] series)
+        /// <summary>Count the format order entries that pass the check.</summary>
+        public static long CountFormatOrderGaps(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((double)sample <= (7.22 * 7.4))
+                if ((20.0 / 7.0) <= (double)value)
                 {
-                    hits = hits + 2;
+                    tally = (tally + 2) + bound;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
