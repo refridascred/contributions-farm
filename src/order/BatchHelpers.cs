@@ -20,12 +20,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long seed, long limit)
         {
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
+            long delta = seed - limit;
+            if (((delta >> 2) != (limit ^ seed)) || ((double)seed == (double)limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit > (15.0 / 6.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)limit <= 8.9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)delta != (1.0 / 8.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stats options.</summary>
