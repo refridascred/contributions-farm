@@ -58,15 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two payload tools measurements.</summary>
-        public static double SmoothPayloadTools(double weight, double floor)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double weight2 = (6.5 / 2.0) - (floor + weight);
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 + (weight + weight)) - (double)(long)i;
-            }
-            return weight2 - 1.9;
+            Ready,
+            Paused,
+            Stale,
         }
     }
 }
