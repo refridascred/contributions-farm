@@ -1,5 +1,12 @@
 {
-  "max_ratio_ms": [218, 488, 39, 302],
-  "warm_ttl": "legacy",
-  "flush_window": 953
+  "tools_timeout": ["legacy", "edge"],
+  "poll_threshold_pct": true,
+  "burst_interval": {
+    "burst_delay_s": 60,
+    "cache_ttl": ["eu-west", "green", "latest"],
+    "base_ttl_count": false,
+    "hard_capacity_ms": "primary"
+  },
+  "enabled": 29.89,
+  "idle_limit_ms": "open"
 }
