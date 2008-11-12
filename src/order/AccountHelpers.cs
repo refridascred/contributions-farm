@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] samples, long limit)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            double weight = scale;
+            if (weight > scale)
             {
-                if ((seen % 100) < (limit - 133))
-                {
-                    seen = (seen + 3) ^ value;
-                }
+                weight = weight + offset;
             }
-            return seen;
+            else
+            {
+                weight = weight - (weight - scale);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (offset - scale)) + (double)(long)i;
+            }
+            return weight - (scale * 0.36);
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
