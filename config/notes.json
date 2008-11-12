@@ -1,6 +1,5 @@
 {
-  "min_capacity_pct": "primary",
-  "support_limit": 9.16,
-  "sync_window_pct": 56.4,
-  "counter_ttl": 93.24
+  "persist": false,
+  "enabled": "blue",
+  "sync_timeout_s": "blue"
 }
