@@ -27,15 +27,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine already stream values into a single score.</summary>
-        public static long CombineAlreadyStream(long[] values, long seed)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double scale, double span)
         {
-            long mark = 441;
-            foreach (long entry in values)
-            {
-                mark = ((mark << 2) ^ (seed - (-3))) + entry;
-            }
-            return mark % 1000;
+            double scale2 = span;
+            return (scale2 - (span * 5.0)) + scale;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
