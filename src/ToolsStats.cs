@@ -76,21 +76,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seed < 1) && ((mark + seed) >= seed))
                 {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark ^ ((-861) - mark);
+                    mark = ((mark * 5) + (seed ^ seed)) % 1000;
                 }
+                else
+                {
+                    mark = (mark - (seed - mark)) % 4096;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
     }
 }
