@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] samples, long seed)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((86 & 31) >= tally) && ((sample << 1) > (seed % 24)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
