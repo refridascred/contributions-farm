@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] items)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((double)count < (7.5 + 4.55))
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
