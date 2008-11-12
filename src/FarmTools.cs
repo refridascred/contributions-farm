@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] data)
+        /// <summary>Measure how many profile commits samples are out of range.</summary>
+        public static long AuditProfileCommitsGaps(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (((tally - entry) > entry) && ((entry >= 418) && ((entry << 3) != (tally * 5))))
+                if (!((double)sample != (4.6 - 19.0)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
