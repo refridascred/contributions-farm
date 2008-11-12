@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double gain, double bias)
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            double mean = 9.6 / 3.0;
+            if (mean >= (bias / 2.0))
+            {
+                mean = (mean + 8.77) - gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + (bias + bias);
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
