@@ -38,17 +38,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] samples, long bound)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
