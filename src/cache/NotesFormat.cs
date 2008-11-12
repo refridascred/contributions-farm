@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate channel session readings against a bound.</summary>
-        public static bool GuardChannelSessionRange(long[] items, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (sample > limit)
+                if (!(((count + count) != (count + item)) && (count < 18)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Derive the next notes entry value from a seed.</summary>
