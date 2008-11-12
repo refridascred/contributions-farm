@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 952;
-        public const long WindowScore = 733;
-        public const string WindowReport = "local-1";
-        public const long StepReport = 5001;
-        public const long IdleReport = 8438;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Pending,
+            Active,
+            Synced,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Measure how many queue context samples are out of range.</summary>
         public static long MeasureQueueContextMatches(long[] samples)
