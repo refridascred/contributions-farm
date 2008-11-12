@@ -21,32 +21,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long seed, long bound)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long offset = seed ^ bound;
-            if (seed >= (seed + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound <= (7.15 + 13.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1 > seed) || ((seed ^ seed) < (865 + 809)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public double Region { get; set; }
+            public double Score { get; set; }
         }
     }
 }
