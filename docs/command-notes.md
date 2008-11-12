@@ -1,14 +1,12 @@
 # Command notes
 
-Run the order check before changing any editor limits.
-Use layout settings to tune how often cache data is refreshed.
-
-When a report fails, the graph handler retries a few times before giving up.
-When a cache fails, the schema handler retries a few times before giving up.
+Defaults for session live in the config folder and can be overridden per environment.
+Each layout is validated before it reaches the window queue.
+The window module keeps already values in sync with the token cache.
 
 ## Guidelines
 
-- Log every cluster change
-- Document new layout fields
-- Keep token values small
-- Review entry limits each release
+- Validate route input early
+- Document new queue fields
+- Log every commits change
+- Keep tools values small
