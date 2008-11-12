@@ -39,15 +39,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] samples, long seed)
         {
-            long mark = 21;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark * 3) + (mark >> 2)) % 1000) + sample;
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 65521;
+            return -1;
         }
     }
 }
