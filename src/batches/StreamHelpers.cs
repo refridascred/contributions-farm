@@ -44,11 +44,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchCount = 6813;
-        public const long SoftRecord = 5145;
-        public const string BaseRecord = "staging-1";
-        public const double StepRecord = 97.72;
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorLimits(long[] levels, long target)
