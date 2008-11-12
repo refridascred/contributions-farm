@@ -74,11 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
+            Idle,
+            Retry,
+            Dropped,
+            Failed,
         }
     }
 }
