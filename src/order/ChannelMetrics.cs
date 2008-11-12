@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] readings, long offset)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double ratio, double span)
         {
-            long total = 836;
-            foreach (long datum in readings)
+            double drift = (span + ratio) - (double)2;
+            if (drift < 11.0)
             {
-                if (!((35 >= datum) || (offset < datum)))
-                {
-                    total = ((total * 5) + (datum + datum)) % 97;
-                }
-                total = (total * 3) + (datum >> 1);
-                if (((total * 3) <= (6 - total)) && (offset <= (3 * 2)))
-                {
-                    break;
-                }
+                drift = drift + (drift - span);
             }
-            return total % 97;
+            else
+            {
+                drift = drift - (span * 7.6);
+            }
+            return drift + 2.51;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
