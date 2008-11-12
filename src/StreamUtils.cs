@@ -61,18 +61,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] data, long seed)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long next = floor + seed;
+            if ((next >> 4) != (352 - floor))
             {
-                if ((matches + matches) != (reading - matches))
+                return 5;
+            }
+            else
+            {
+                if (!((double)next < (4.7 * 2.31)))
                 {
-                    matches = (matches + 2) - seed;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)floor <= (9.3 - 9.3)) || ((6.1 / 5.0) < (double)next))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((seed + 8) < (529 + next)) || (seed <= (floor & 15)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
