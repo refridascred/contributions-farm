@@ -63,9 +63,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryTimeout = 6700;
-        public const string StepEditor = "legacy";
-        public const long BaseEditor = 6576;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+        }
     }
 }
