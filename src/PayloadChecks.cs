@@ -65,31 +65,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long offset, long step)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
-            if (((17.0 * 0.7) > (double)offset) || ((step - step) > (offset << 2)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (53 >= (step - step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step * 5) > (offset - step))
+                    if ((samples[i] + samples[j]) != 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
