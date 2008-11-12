@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green staging strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-fallback}"
 case "${mode}" in
-    standard)
+    local)
         log "fast path"
         ;;
     *)
@@ -21,7 +17,11 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+for item in standard fallback blue; do
+    log "checking ${item}"
+done
