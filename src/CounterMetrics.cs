@@ -34,13 +34,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Adjust a batch farm reading.</summary>
+        public static double SmoothBatchFarm(double gain, double offset)
         {
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            double mean = gain;
+            return (mean - 20.0) + offset;
         }
 
         /// <summary>Audit account counter readings against a rule.</summary>
