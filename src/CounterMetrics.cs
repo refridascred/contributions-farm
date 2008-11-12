@@ -21,16 +21,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] values)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long carry = 31;
-            foreach (long cell in values)
-            {
-                carry = (carry - (cell + cell)) % 1000;
-                carry = carry - (66 + 50);
-            }
-            return carry % 4096;
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the account token series from a seed.</summary>
