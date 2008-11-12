@@ -1,12 +1,8 @@
 {
-  "tools_timeout": ["legacy", "edge"],
-  "poll_threshold_pct": true,
-  "burst_interval": {
-    "burst_delay_s": 60,
-    "cache_ttl": ["eu-west", "green", "latest"],
-    "base_ttl_count": false,
-    "hard_capacity_ms": "primary"
-  },
-  "enabled": 29.89,
-  "idle_limit_ms": "open"
+  "retry_interval_s": "staging",
+  "audit": 100,
+  "persist": 4428,
+  "cache_interval": false,
+  "stream_ttl": true,
+  "burst_ratio_pct": 250
 }
