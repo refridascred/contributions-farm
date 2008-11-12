@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Find the first stats payload entry that matches the target.</summary>
+        public static long LocateStatsPayloadIndex(long[] series, long step)
         {
-            long mix = 13;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)datum == (7.92 + 5.1)))
+                if (series[i] <= step)
                 {
-                    mix = mix ^ ((long)series.Length - datum);
-                }
-                else
-                {
-                    mix = mix - (datum + 67);
-                }
-                if ((datum / 2) <= (datum & 255))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
