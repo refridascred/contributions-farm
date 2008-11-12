@@ -19,32 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a cache entry pair into a bucket.</summary>
-        public static long ClassifyCacheEntry(long step, long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long step2 = step + seed;
-            if ((step % 64) < step2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step2 + seed) >= step2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-9) & 1) == (step2 % 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
