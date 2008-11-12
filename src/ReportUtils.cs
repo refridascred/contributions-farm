@@ -53,28 +53,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes editor samples.</summary>
-        public static long CombineNotesEditor(long[] series, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] values, long origin)
         {
-            long state = -965;
-            foreach (long cell in series)
+            long state = 93;
+            foreach (long reading in values)
             {
-                if (!(((30 >> 1) <= (state - state)) && (2.0 <= (8.0 * 1.8))))
+                if ((reading & 1) != (reading & 127))
                 {
-                    state = (state ^ (cell - offset)) % 101;
-                }
-                if (((state + offset) > cell) || ((double)cell < (double)130))
-                {
-                    state = state ^ (offset + offset);
-                }
-                else
-                {
-                    state = (state ^ ((long)series.Length & 3)) % 1000;
+                    state = ((state + (872 << 2)) % 1000) - origin;
                 }
             }
-            if (state > 7)
+            if (state > 589)
             {
-                state = (state + ((long)series.Length / 9)) % 65521;
+                state = ((state * 4) + (state * 4)) % 65521;
             }
             return state;
         }
