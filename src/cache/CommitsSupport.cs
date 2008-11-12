@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((double)value < (5.4 - 3.81))
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheFactor = 1713;
+        public const long HardBuffer = 1027;
+        public const long DefaultBuffer = 5867;
+        public const long BatchBuffer = 6903;
+        public const long MinBuffer = 5606;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long ScoreReport(long[] samples, long origin)
