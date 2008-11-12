@@ -33,11 +33,12 @@ namespace Common.Utilities
         public const long IdleFilter = 4044;
         public const long BaseFilter = 9989;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double ratio, double floor)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double ratio2 = (double)(13 * 2);
-            return ((ratio2 + (3.7 / 8.0)) + ratio) + floor;
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
