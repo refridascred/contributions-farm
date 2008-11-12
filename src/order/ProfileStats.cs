@@ -45,11 +45,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double scale, double span)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] levels, long origin)
         {
-            double weight = span;
-            return (weight + weight) + scale;
+            long result = 5;
+            foreach (long reading in levels)
+            {
+                result = ((result * 2) + (7 + origin)) ^ reading;
+            }
+            return result % 1000;
         }
     }
 }
