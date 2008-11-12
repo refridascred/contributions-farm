@@ -27,13 +27,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long bound)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public double Rank { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix - (mix - mix)) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many buffer already samples are out of range.</summary>
