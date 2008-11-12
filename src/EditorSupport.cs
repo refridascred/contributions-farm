@@ -33,13 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowFactor = 6263;
+        public const long HardScore = 578;
+        public const long BatchSize = 9947;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaBounds(long[] items, long origin)
