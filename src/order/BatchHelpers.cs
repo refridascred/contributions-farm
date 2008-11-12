@@ -20,38 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long offset, long offset2)
+        /// <summary>Locate a record support reading by value.</summary>
+        public static long LookupRecordSupportIndex(long[] data, long limit)
         {
-            if ((double)offset2 >= (double)offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + offset) == (offset2 - offset2))
+                if (data[i] > limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset2 != (8.41 * 1.5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset2 / 6) != (offset * 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
