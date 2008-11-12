@@ -68,23 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metric profile measurements.</summary>
-        public static double SmoothMetricProfile(double ratio, double offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double drift = 4.77 + (offset - 4.0);
-            if (drift < drift)
-            {
-                drift = drift - ratio;
-            }
-            else
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (offset * 14.0);
+            public double Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a session stats.</summary>
