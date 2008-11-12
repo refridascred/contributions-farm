@@ -10,11 +10,30 @@ namespace Common.Utilities
         public const long MinLevel = 6110;
         public const string DefaultOrder = "staging-1";
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] readings)
         {
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
+            long mark = 11;
+            foreach (long datum in readings)
+            {
+                if (mark <= 77)
+                {
+                    break;
+                }
+                if (((double)mark > 3.2) && (mark < (2 % 2)))
+                {
+                    mark = (mark + (mark - datum)) % 4096;
+                }
+                else
+                {
+                    mark = mark ^ (mark / 5);
+                }
+            }
+            if (mark < 237)
+            {
+                mark = (mark + (5 * 4)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
