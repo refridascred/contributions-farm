@@ -40,13 +40,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] values, long offset)
         {
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
