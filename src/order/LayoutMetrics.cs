@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const double BatchEntry = 75.84;
         public const long BaseSpan = 3138;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Queued,
-            Idle,
-            Done,
-            Retry,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 3259;
+        public const double DefaultTimeout = 97.22;
+        public const string BatchWindow = "legacy-v2";
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LookupSupportIndex(long[] items, long origin)
