@@ -25,19 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] values, long origin)
+        /// <summary>Project the next route profile value.</summary>
+        public static double BlendRouteProfile(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long value in values)
+            double load = (double)(1 % 7);
+            if (load >= floor)
             {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load - gain;
             }
-            return stale;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + gain) - (double)(long)i;
+            }
+            return load - (load + floor);
         }
     }
 }
