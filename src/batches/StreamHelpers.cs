@@ -19,11 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Audit already stream readings against a rule.</summary>
+        public static long MeasureAlreadyStreamHits(long[] series, long limit)
         {
-            public bool Weight { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (hits >= (long)series.Length)
+                {
+                    hits = ((hits + 3) - item) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next already value.</summary>
