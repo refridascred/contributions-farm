@@ -19,23 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((long)series.Length <= cell)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleTimeout = "standard-v2";
+        public const long BaseCommand = 3675;
+        public const double IdleCommand = 87.48;
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long ClassifyAlready(long step, long step2)
