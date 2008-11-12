@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] items, long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long mark = 205;
-            foreach (long sample in items)
-            {
-                mark = ((mark ^ (56 ^ bound)) % 97) + sample;
-                if ((bound + mark) <= bound)
-                {
-                    mark = (mark * 2) + bound;
-                }
-            }
-            if (mark > 788)
-            {
-                mark = (mark + mark) % 101;
-            }
-            return mark % 65521;
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
