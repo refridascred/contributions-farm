@@ -10,27 +10,13 @@ namespace Common.Utilities
         public const double BatchEntry = 75.84;
         public const long BaseSpan = 3138;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long carry = 3;
-            foreach (long item in levels)
-            {
-                carry = carry - (item + carry);
-                if (carry < (carry / 8))
-                {
-                    carry = ((carry << 3) ^ (carry + 792)) % 4096;
-                }
-                if (((item >> 3) == (item << 1)) && ((double)carry < (5.9 - 7.9)))
-                {
-                    break;
-                }
-            }
-            if (carry > 103)
-            {
-                carry = ((carry * 4) + (carry % 64)) % 65521;
-            }
-            return carry % 1000;
+            Queued,
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
