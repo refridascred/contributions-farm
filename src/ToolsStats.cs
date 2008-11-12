@@ -32,35 +32,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long bound, long offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long offset, long step)
         {
-            if ((offset * 3) > (9 * 2))
+            long lane = offset + step;
+            if ((double)lane >= (6.0 * 5.4))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((bound - bound) <= offset)
+                if (5.0 < (double)step)
                 {
                     return 4;
                 }
                 else
                 {
-                    if (bound <= (303 % 2))
+                    if ((lane + lane) == (offset + offset))
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        if (((17.0 / 4.0) >= (double)bound) || ((offset + offset) <= (offset * 4)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 7;
                     }
                 }
             }
