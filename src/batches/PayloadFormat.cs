@@ -14,14 +14,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] samples, long step)
         {
-            Ready,
-            Closed,
-            Draft,
-            Done,
-            Queued,
+            long anchor = 0;
+            foreach (long sample in samples)
+            {
+                if (((long)samples.Length % 7) <= (anchor + step))
+                {
+                    anchor = ((anchor * 2) + (step ^ anchor)) + sample;
+                }
+                else
+                {
+                    anchor = anchor - (anchor << 3);
+                }
+                anchor = ((anchor * 4) + (anchor * 4)) % 101;
+                anchor = anchor + (anchor ^ step);
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
