@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] items)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long limit, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long offset = limit ^ seed;
+            if ((seed << 2) >= (seed ^ limit))
             {
-                if ((cell + 744) == (24 >> 3))
+                return 4;
+            }
+            else
+            {
+                if (((offset / 7) != (seed % 12)) || ((limit + limit) <= (offset ^ 6)))
                 {
-                    count = count + 2;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((seed < (395 / 4)) && ((offset / 2) >= limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((offset + limit) >= (offset ^ limit)) || ((offset + offset) >= offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
