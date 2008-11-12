@@ -50,23 +50,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double rate, double floor)
-        {
-            double bias = 7.97;
-            if (bias > (double)409)
-            {
-                bias = bias - 3.7;
-            }
-            else
-            {
-                bias = bias - (rate + floor);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (double)93) + (double)(long)i;
-            }
-            return bias + (floor / 2.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 8641;
+        public const long HardInterval = 2965;
+        public const string CacheCount = "alpha-1";
     }
 }
