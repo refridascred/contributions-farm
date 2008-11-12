@@ -44,13 +44,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long bound, long floor)
         {
-            Active,
-            Closed,
-            Ready,
-            Pending,
+            long lane = bound + floor;
+            if (!((924 % 97) != (lane * 5)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((lane - 6) == (floor - floor)) && ((3 - lane) >= floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor + floor) <= (217 / 3)) || ((floor / 5) > (lane / 8)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
