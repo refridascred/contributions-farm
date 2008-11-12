@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] series)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long seed)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)hits <= 3.5)
-                {
-                    hits = (hits + 1) ^ cell;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Project the next channel value.</summary>
