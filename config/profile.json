@@ -1,17 +1,6 @@
 {
-  "max_threshold_count": "latest",
-  "hard_size_ms": "standard",
-  "account_delay": {
-    "idle_capacity": 7695,
-    "cluster_size": {
-      "strict": 12,
-      "hard_threshold_count": 10,
-      "max_retries_pct": 1,
-      "retry_ratio_ms": "fallback"
-    },
-    "poll_limit_pct": 48,
-    "batch_ttl": false,
-    "buffer_retries": 68.72
-  },
-  "default_delay": 9706
+  "max_capacity_s": "local",
+  "hard_depth_count": 500,
+  "flush_capacity_ms": 26,
+  "stats_retries": "staging"
 }
