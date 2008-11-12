@@ -88,11 +88,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardFactor = 9468;
-        public const long BatchCount = 7504;
-        public const long BurstSchema = 7359;
-        public const long LimitWidth = 9185;
-        public const long BaseInterval = 5102;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long limit, long origin)
+        {
+            if ((55 * 3) == (limit - limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((895 >= (origin % 8)) && ((limit & 3) != (86 >> 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin + limit) > origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
