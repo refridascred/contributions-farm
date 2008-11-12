@@ -52,19 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] items, long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long score = 49;
+            foreach (long datum in series)
             {
-                if (cell >= floor)
+                if ((score ^ datum) < (datum - 541))
                 {
-                    ok = false;
-                    break;
+                    score = (((score << 3) ^ (score - 652)) % 65521) + floor;
                 }
             }
-            return ok;
+            return score;
         }
     }
 }
