@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitSpan = 4783;
+        public const long RetryBuffer = 9098;
+        public const long LimitBuffer = 7011;
+        public const double WindowCount = 57.14;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
