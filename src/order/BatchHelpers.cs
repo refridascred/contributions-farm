@@ -34,11 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryBudget = "staging";
-        public const double SoftDepth = 37.25;
-        public const long DefaultCache = 7991;
-        public const long WindowSize = 2966;
-        public const long MinFactor = 9659;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
