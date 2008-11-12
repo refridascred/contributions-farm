@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of account githubfarm readings.</summary>
-        public static long DigestAccountGithubfarm(long[] series, long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] data, long limit)
         {
-            long state = 526;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((((state << 3) ^ state) % 65521) - value) + origin;
+                if ((data[i] >= limit) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
