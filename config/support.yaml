@@ -1,15 +1,7 @@
 # support settings
-min_delay:
-  enabled: fallback
-  default_depth_s:
-    support_window: local
-    default_ttl_count: latest
-    burst_limit_s: false
-    max_size_s:
-      - 187
-      - 180
-  base_ttl_s: 13.8
-  githubfarm_retries: legacy
-default_ratio_count: 36
-audit: fallback
-editor_depth: open
+editor_capacity: true
+cache_timeout_pct: 58.09
+burst_window: eu-west
+soft_window_count: 85.84
+schema_timeout: 500
+burst_limit_ms: 500
