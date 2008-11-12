@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long step, long limit)
         {
-            long sum = 55;
-            foreach (long item in levels)
+            if ((80 / 5) >= (step % 7))
             {
-                if ((5 <= item) && ((74 << 2) == (item + item)))
+                return 8;
+            }
+            else
+            {
+                if ((step + 33) <= (step >> 5))
                 {
-                    sum = (sum ^ (sum + item)) % 97;
+                    return 4;
+                }
+                else
+                {
+                    if (!(limit >= (limit >> 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Describe the window status values.</summary>
