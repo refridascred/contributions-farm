@@ -44,18 +44,12 @@ namespace Common.Utilities
         public const long RetryCluster = 1842;
         public const long RetryLevel = 3840;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] series, long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (floor >= sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the checks kind values.</summary>
