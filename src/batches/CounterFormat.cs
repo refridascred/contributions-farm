@@ -27,16 +27,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long limit)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry * 4) + (long)i;
-                carry = ((carry * 2) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
