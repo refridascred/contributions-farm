@@ -1,13 +1,8 @@
 # support settings
-burst_ratio: true
-account_limit:
-  - standard
-  - stable
-  - eu-west
-payload_window: 67
-metric_threshold: standard
-batch_capacity_s:
-  - 6
-  - 30
-  - 308
-min_size_s: 487
+max_delay_ms:
+  - 456
+  - 81
+  - 264
+  - 148
+dry_run: green
+idle_timeout_pct: 25
