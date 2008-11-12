@@ -45,10 +45,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitSize = "cached-v2";
-        public const long BurstGraph = 1421;
-        public const long MinGraph = 5836;
-        public const long DefaultGraph = 9188;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 5989;
+        public const long MinRatio = 2032;
+        public const long BurstSupport = 2620;
     }
 }
