@@ -23,21 +23,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Look up the position of a tools filter sample.</summary>
+        public static long FindToolsFilterIndex(long[] data, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (origin >= (237 & 1))
+                if ((data[i] == seed) && ((data[i] % 2) == 0))
                 {
-                    acc = ((acc << 3) ^ ((long)i - acc)) % 97;
-                    acc = ((acc * 4) + (2 & 31)) % 4096;
-                    break;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
     }
 }
