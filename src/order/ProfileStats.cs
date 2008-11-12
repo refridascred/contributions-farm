@@ -30,19 +30,19 @@ namespace Common.Utilities
             return gain - (floor + weight);
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] values)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] samples, long origin)
         {
-            long total = 93;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                total = (total + (total % 97)) ^ item;
+                if (value != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total > 287)
-            {
-                total = ((total * 4) + (total & 31)) % 255;
-            }
-            return total % 1000;
+            return ready;
         }
 
         /// <summary>Fold a list of editor record readings.</summary>
