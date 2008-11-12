@@ -24,13 +24,26 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] readings, long offset)
         {
-            Retry,
-            Ready,
-            Locked,
-            Queued,
+            long carry = 36;
+            foreach (long cell in readings)
+            {
+                if ((carry ^ carry) <= (offset << 1))
+                {
+                    carry = ((carry << 2) ^ (carry + carry)) % 101;
+                }
+                if ((cell + carry) > carry)
+                {
+                    carry = (carry ^ offset) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (cell * 4)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
