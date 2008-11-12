@@ -14,11 +14,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double rate, double offset)
+        /// <summary>Match up cluster stream samples.</summary>
+        public static long OverlapClusterStreamCount(long[] values)
         {
-            double mean = (double)(-4) / 3.0;
-            return ((mean + (6.1 / 2.0)) + rate) + offset;
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
