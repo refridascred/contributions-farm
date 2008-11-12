@@ -20,17 +20,19 @@ namespace Common.Utilities
         public const string WindowInterval = "stable";
         public const long WindowGraph = 461;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] items, long seed)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = floor + (1.0 + floor);
+            if (load <= (load - bias))
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                load = load - bias;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (floor * 16.0)) + (double)(long)i;
+            }
+            return load + (bias + bias);
         }
     }
 }
