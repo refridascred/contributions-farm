@@ -1,8 +1,28 @@
 {
-  "retry_interval_s": "staging",
-  "audit": 100,
-  "persist": 4428,
-  "cache_interval": false,
-  "stream_ttl": true,
-  "burst_ratio_pct": 250
+  "stats_depth": 52.5,
+  "burst_retries_count": false,
+  "readonly": 100,
+  "commits_depth": [244, 404, 441],
+  "audit": {
+    "dry_run": 61.06,
+    "compress": {
+      "hard_limit_count": ["local", "legacy", "eu-west"],
+      "min_interval": "eu-west",
+      "strict": true,
+      "dry_run": "cached",
+      "verbose": 2.43
+    },
+    "metrics_retries": "edge",
+    "min_capacity_ms": "edge",
+    "base_window": ["stable", "open", "edge"],
+    "max_retries": {
+      "githubfarm_delay": 51.84,
+      "min_ttl_pct": 7759,
+      "audit": "blue",
+      "batches_size": "blue",
+      "base_threshold_count": 43.71,
+      "poll_ttl_pct": "strict"
+    }
+  },
+  "default_depth_pct": 41.22
 }
