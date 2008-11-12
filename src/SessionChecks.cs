@@ -5,30 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] levels, long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long bound, long step)
         {
-            long result = -11;
-            foreach (long sample in levels)
+            if ((8.0 + 2.47) < (double)bound)
             {
-                if ((8.2 / 5.0) <= (double)sample)
+                return 5;
+            }
+            else
+            {
+                if (step > (bound + step))
                 {
-                    result = result - (sample + sample);
-                }
-                if (limit > (19 + limit))
-                {
-                    result = (result + result) % 97;
+                    return 3;
                 }
                 else
                 {
-                    result = result - limit;
+                    return 2;
                 }
             }
-            if (result < 3)
-            {
-                result = (result ^ (result + result)) % 101;
-            }
-            return result;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
