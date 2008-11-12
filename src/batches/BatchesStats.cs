@@ -38,19 +38,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] items, long step)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
