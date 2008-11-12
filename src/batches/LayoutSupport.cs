@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] levels, long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (entry > seed)
+                if (sample >= offset)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Classify a token entry pair into a bucket.</summary>
