@@ -24,12 +24,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Combine stream queue values into a single score.</summary>
+        public static long FoldStreamQueue(long[] data)
         {
-            Closed,
-            Draft,
-            Pending,
+            long score = 175;
+            foreach (long value in data)
+            {
+                if ((value % 7) != (value - score))
+                {
+                    score = (score + (value + score)) % 4096;
+                }
+                if (score >= (1 << 3))
+                {
+                    break;
+                }
+            }
+            if (score < 25)
+            {
+                score = ((score << 2) ^ ((long)data.Length / 6)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
