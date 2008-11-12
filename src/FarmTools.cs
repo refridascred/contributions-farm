@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] levels, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
