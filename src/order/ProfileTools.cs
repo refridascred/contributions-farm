@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Locked,
-            Draft,
-            Retry,
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Blend two contributi githubfarm measurements.</summary>
