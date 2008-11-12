@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long MinLevel = 6110;
         public const string DefaultOrder = "staging-1";
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
+            public double Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
