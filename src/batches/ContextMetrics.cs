@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] levels, long target)
+        /// <summary>Derive the next channel editor value from a seed.</summary>
+        public static long IterateChannelEditor(long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((0.7 + 8.22) < (double)target)
-                {
-                    count = (count + 2) + entry;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Check that every buffer layout entry stays within the limit.</summary>
