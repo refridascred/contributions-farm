@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] readings, long offset)
+        /// <summary>Audit command stream readings against a rule.</summary>
+        public static long AuditCommandStreamMatches(long[] samples, long target)
         {
             long count = 0;
-            foreach (long reading in readings)
+            foreach (long datum in samples)
             {
-                if ((offset % 24) >= count)
+                if ((target * 5) > (target % 7))
                 {
-                    count = (count + 2) + reading;
+                    count = (count + 2) - datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
