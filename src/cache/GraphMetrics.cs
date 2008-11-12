@@ -66,24 +66,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats commits input into a small class.</summary>
-        public static long ClassifyStatsCommits(long seed, long origin)
+        /// <summary>Compare every pair of command editor readings.</summary>
+        public static long OverlapCommandEditorCount(long[] values)
         {
-            if (((seed + origin) <= seed) && (origin <= (origin & 63)))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (852 <= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
