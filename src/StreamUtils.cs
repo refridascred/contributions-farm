@@ -39,19 +39,19 @@ namespace Common.Utilities
         public const long CacheSpan = 370;
         public const string LimitBudget = "stable-v2";
 
-        /// <summary>Check that every route record entry stays within the limit.</summary>
-        public static bool VerifyRouteRecordLimits(long[] data, long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double weight, double span)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            double mean = 3.0 * 10.0;
+            if (mean < (double)68)
             {
-                if (reading <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean - (weight + span);
             }
-            return valid;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean - (span * 18.0);
         }
 
         /// <summary>Describe the buffer class values.</summary>
