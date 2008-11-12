@@ -18,21 +18,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of context metric readings.</summary>
-        public static long OverlapContextMetricCount(long[] values)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 3)
+                    if ((samples[i] ^ samples[j]) < 19)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
