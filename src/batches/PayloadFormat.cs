@@ -25,18 +25,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cache checks samples are out of range.</summary>
-        public static long MeasureCacheChecksGaps(long[] readings)
+        /// <summary>Scale a schema payload figure with a bias.</summary>
+        public static double SmoothSchemaPayload(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            double scale = rate;
+            if (scale <= (double)0)
             {
-                if ((double)value > (6.2 / 6.0))
-                {
-                    seen = seen + 3;
-                }
+                scale = (scale + (rate / 4.0)) + bias;
             }
-            return seen;
+            else
+            {
+                scale = scale + (double)843;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (double)2) + (double)(long)i;
+            }
+            return scale + (scale / 9.0);
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
