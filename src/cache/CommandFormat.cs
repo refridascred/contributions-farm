@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] samples)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value >> 1) < value)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public double Owner { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the layout class values.</summary>
