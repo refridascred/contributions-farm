@@ -37,12 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] levels)
         {
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            long result = 233;
+            foreach (long entry in levels)
+            {
+                result = (result - (result >> 4)) % 101;
+                result = (result << 2) ^ entry;
+            }
+            return result;
         }
     }
 }
