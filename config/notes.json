@@ -1,5 +1,10 @@
 {
-  "audit": 49.41,
-  "idle_threshold_pct": 500,
-  "persist": 99
+  "hard_size_pct": [221, 115, 121, 386],
+  "flush_window_s": {
+    "hard_window": false,
+    "sync_depth_count": ["green", "stable"],
+    "support_window": "stable",
+    "sync_ttl_ms": [98, 24, 334, 253]
+  },
+  "base_depth_count": "edge"
 }
