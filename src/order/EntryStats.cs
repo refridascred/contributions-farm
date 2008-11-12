@@ -51,12 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double scale, double span)
         {
-            public double Score { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            double scale2 = (double)(139 % 8);
+            if (scale2 > scale2)
+            {
+                scale2 = (scale2 + (1.0 / 3.0)) - span;
+            }
+            return scale2 + scale;
         }
     }
 }
