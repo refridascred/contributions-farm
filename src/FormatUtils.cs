@@ -24,39 +24,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Classify a token filter pair into a bucket.</summary>
-        public static long ClassifyTokenFilter(long target, long bound)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] values, long origin)
         {
-            long cur = target - bound;
-            if ((bound >> 4) < (target * 3))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((target + bound) > (bound - target)))
+                if (values[i] == origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (cur <= bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (cur > (bound - 340))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
