@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleTimeout = "standard-v2";
-        public const long BaseCommand = 3675;
-        public const double IdleCommand = 87.48;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
