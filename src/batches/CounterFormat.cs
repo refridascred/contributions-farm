@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the stream entry entries that pass the check.</summary>
-        public static long TallyStreamEntryMatches(long[] levels)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading ^ reading) != ((long)levels.Length + reading)) && ((double)(long)levels.Length <= (9.99 * 9.2)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Dropped,
+            Queued,
+            New,
         }
 
         /// <summary>Hold a batch entry.</summary>
