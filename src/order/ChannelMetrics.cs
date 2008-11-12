@@ -32,9 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 5944;
-        public const long HardCount = 1765;
-        public const long WindowContext = 1831;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] values, long origin)
+        {
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
