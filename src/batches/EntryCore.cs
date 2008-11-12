@@ -46,17 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] samples, long offset)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
