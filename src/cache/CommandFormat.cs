@@ -21,19 +21,12 @@ namespace Common.Utilities
             return bias - (weight + offset);
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!(((acc - acc) < (94 - (long)i)) || (acc <= (offset * 2))))
-                {
-                    acc = (acc << 2) ^ (acc >> 4);
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a payload entry.</summary>
