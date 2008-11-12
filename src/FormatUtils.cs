@@ -29,15 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings, long bound)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] levels, long seed)
         {
-            long carry = -353;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                carry = (((carry << 3) ^ (sample % 7)) % 4096) + bound;
+                if (datum <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry % 4096;
+            return stale;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
