@@ -13,19 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] samples, long target)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            double mean = floor;
+            if (mean >= (double)5)
             {
-                if (reading < target)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean - floor) + ratio;
             }
-            return flag;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (double)(-807)) + (double)(long)i;
+            }
+            return mean + (double)870;
         }
 
         /// <summary>Describe the batches mode values.</summary>
