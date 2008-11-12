@@ -68,15 +68,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Grade a cache payload value against two limits.</summary>
+        public static long RankCachePayload(long floor, long floor2)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            if ((floor >= (floor + floor)) && ((floor2 & 63) > (1 - floor2)))
             {
-                result = ((result * 2) + (long)i) % 101;
+                return 5;
             }
-            return result;
+            else
+            {
+                if (!((207 << 3) != (floor >> 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((floor2 + floor2) > (floor / 7)) || (29 > (floor2 + floor)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a session stats.</summary>
