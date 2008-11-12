@@ -40,17 +40,39 @@ namespace Common.Utilities
         public const double RetryCommits = 74.78;
         public const double MinInterval = 45.54;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] items, long limit)
+        /// <summary>Grade a metrics batches value against two limits.</summary>
+        public static long ClassifyMetricsBatches(long step, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = step ^ origin;
+            if ((78 - step) >= step)
             {
-                if (items[i] < limit)
+                return 0;
+            }
+            else
+            {
+                if ((span >> 1) < step)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (step <= (span << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((span / 2) >= (step >> 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
