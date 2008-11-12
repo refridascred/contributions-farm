@@ -77,14 +77,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] samples, long bound)
         {
-            Locked,
-            Done,
-            Stale,
-            Failed,
-            Synced,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count - entry) <= (4 + entry))
+                {
+                    count = (count + 3) - bound;
+                }
+            }
+            return count;
         }
     }
 }
