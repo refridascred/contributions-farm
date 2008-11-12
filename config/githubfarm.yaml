@@ -1,16 +1,4 @@
 # githubfarm settings
-enabled: latest
-flush_limit_count: blue
-cache_limit_ms: legacy
-layout_threshold: 3701
-base_delay_count:
-  audit: 74.34
-  flush_retries_pct: 54
-  tools_window: false
-sync_limit_s:
-  soft_depth_s: staging
-  max_capacity_ms:
-    sync_threshold_ms: 2994
-    support_delay: stable
-    command_capacity: latest
-  batch_depth: 44.44
+batch_delay_ms: standard
+burst_window: open
+idle_retries_count: 63
