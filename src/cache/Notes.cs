@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] items)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] series, long limit)
         {
-            long total = -41;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                total = ((total << 3) ^ (6 - cell)) % 4096;
-                if ((175 - total) == (total - 9))
+                if ((entry + 439) < (seen - limit))
                 {
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
