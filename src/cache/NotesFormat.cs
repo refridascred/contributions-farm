@@ -24,12 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
