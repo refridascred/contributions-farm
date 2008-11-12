@@ -12,11 +12,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxBudget = "primary-edge";
-        public const long DefaultRatio = 1192;
-        public const string MinChannel = "alpha-v2";
-        public const double HardChannel = 20.56;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 100;
+        public const string IdleSupport = "staging-v2";
+        public const long BurstSupport = 2600;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long DigestStream(long[] data, long target)
