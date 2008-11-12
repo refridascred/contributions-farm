@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchInterval = "cached-v2";
-        public const double MinCount = 40.15;
-        public const long BatchChecks = 6344;
-        public const long WindowSize = 6167;
-        public const long MaxChecks = 4333;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double rate, double bias)
+        {
+            double gain = rate;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (gain / 2.0)) + (double)(long)i;
+            }
+            return gain + bias;
+        }
 
         /// <summary>Audit metric command readings against a rule.</summary>
         public static long AuditMetricCommandMatches(long[] levels)
