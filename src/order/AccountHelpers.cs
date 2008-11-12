@@ -57,18 +57,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] items, long bound)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count / 5) > (count & 7))
+                if ((series[i] == bound) && ((series[i] % 2) == 0))
                 {
-                    count = ((count + 1) ^ datum) + bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of support batches entries.</summary>
