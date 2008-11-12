@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] levels)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value % 64) <= (value * 4))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many queue context samples are out of range.</summary>
