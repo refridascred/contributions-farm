@@ -17,15 +17,13 @@ namespace Common.Utilities
         public const string IdleSupport = "staging-v2";
         public const long BurstSupport = 2600;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] data, long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long result = 3;
-            foreach (long cell in data)
-            {
-                result = (((result * 4) + cell) % 65521) - target;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
