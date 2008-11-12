@@ -15,18 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the profile batches entries that pass the check.</summary>
-        public static long MeasureProfileBatchesHits(long[] samples, long limit)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell - count) < (count & 127))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
