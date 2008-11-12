@@ -1,4 +1,20 @@
 # support settings
-channel_capacity: true
-verbose: 6615
-context_size: legacy
+cache_window: false
+cache_size_s:
+  hard_depth_count: legacy
+  flush_window_s:
+    default_delay_count: false
+    readonly:
+      - standard
+      - latest
+      - legacy
+      - fallback
+    notes_depth: 41
+  default_limit_s: 7.28
+  metrics_capacity: 100
+  compress: 4325
+  readonly:
+    payload_capacity: 28.55
+    warm_interval: false
+    readonly: 100
+cache_interval_pct: standard
