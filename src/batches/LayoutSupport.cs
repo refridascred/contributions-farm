@@ -54,25 +54,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next stats session value from a seed.</summary>
-        public static long IterateStatsSession(long offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] series, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((offset > carry) && ((offset / 6) == (carry + (long)i)))
+                if (series[i] <= target)
                 {
-                    carry = (carry - (offset ^ offset)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    carry = carry ^ (offset / 9);
-                    carry = carry + ((-6) - (long)i);
-                }
-                carry = (carry + offset) % 4096;
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
     }
 }
