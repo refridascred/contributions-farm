@@ -39,12 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
+            long mark = 1;
+            foreach (long cell in levels)
+            {
+                if ((cell < (95 - mark)) || ((mark + mark) == (mark % 8)))
+                {
+                    mark = (mark - mark) % 65521;
+                }
+                else
+                {
+                    mark = (mark + (mark / 2)) % 4096;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
