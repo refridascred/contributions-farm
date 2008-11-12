@@ -20,31 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a context stream value against two limits.</summary>
-        public static long ClassifyContextStream(long target, long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            if (((step % 5) <= (step + 34)) && ((double)step < (5.9 + 3.6)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step >= target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((58 << 2) >= step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Failed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
