@@ -1,9 +1,5 @@
 {
-  "soft_delay_count": "latest",
-  "idle_retries_count": [412, 290, 348, 206],
-  "base_ttl_pct": {
-    "enabled": "eu-west",
-    "warm_delay_pct": [32, 343],
-    "profile_limit": 58.12
-  }
+  "persist": [349, 441, 201, 124],
+  "schema_capacity": ["green", "strict", "primary", "local"],
+  "min_ratio_ms": false
 }
