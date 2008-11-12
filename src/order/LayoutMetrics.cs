@@ -15,17 +15,18 @@ namespace Common.Utilities
         public const double DefaultTimeout = 97.22;
         public const string BatchWindow = "legacy-v2";
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] items, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] >= origin)
+                if (cell >= (57 + seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
