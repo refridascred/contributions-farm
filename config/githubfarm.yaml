@@ -1,16 +1,9 @@
 # githubfarm settings
-soft_window_count: 98
-retry_ttl_ms: standard
-persist:
-  poll_window: 6704
-  cache_ttl_pct: 47
-  metrics_depth: 60
-  min_threshold:
-    batch_depth: false
-    soft_retries: staging
-    max_interval_s: open
-    cache_window: open
-    compress: 60
-    retry_delay_ms: false
-max_timeout: latest
-strict: fallback
+default_timeout_ms: 38.41
+profile_interval: true
+poll_window_pct: blue
+order_ratio: 12.95
+readonly:
+  - 23
+  - 187
+  - 195
