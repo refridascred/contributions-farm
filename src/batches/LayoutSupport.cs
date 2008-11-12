@@ -46,12 +46,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Paused,
-            Dropped,
-            Synced,
+            public bool Level { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
