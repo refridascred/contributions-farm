@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((datum - (-74)) <= (0 << 2)) && (((datum / 7) <= (hits & 63)) && ((15.0 + 13.0) > (double)datum)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
