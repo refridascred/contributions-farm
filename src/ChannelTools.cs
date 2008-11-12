@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 9382;
+        public const double CacheInterval = 41.91;
+        public const long RetryScore = 7622;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string RetryBudget = "legacy-v2";
