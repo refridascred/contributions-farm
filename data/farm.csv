@@ -1,10 +1,7 @@
-id,label,token,region,count
-1,11.41,stable,26.96,stable
-2,edge,731,981,legacy
-3,staging,47.72,cached,40.92
-4,open,77.34,64.37,38.52
-5,59.23,fallback,cached,156
-6,590,fallback,green,194
-7,82.56,559,660,86.74
-8,721,79.54,281,52.33
-9,54.84,2.77,803,blue
+id,level,active
+1,18.19,stable
+2,104,175
+3,414,850
+4,347,602
+5,557,45.16
+6,strict,stable
