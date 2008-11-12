@@ -46,17 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = (acc << 3) ^ seed;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxInterval = 1448;
+        public const double LimitContext = 57.34;
+        public const double BaseContext = 43.67;
+        public const long HardDepth = 4386;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchCount = 6813;
