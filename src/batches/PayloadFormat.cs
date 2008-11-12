@@ -24,15 +24,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double scale, double bias)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] data)
         {
-            double scale2 = 3.0;
-            for (int i = 0; i < 4; i++)
+            long acc = 676;
+            foreach (long cell in data)
             {
-                scale2 = (((scale2 + scale2) + (double)(long)i) - scale) - bias;
+                if (!((double)acc < 18.0))
+                {
+                    acc = (acc << 2) ^ (cell % 5);
+                }
+                if (((acc + acc) < (acc - cell)) || ((96 ^ 5) > (long)data.Length))
+                {
+                    break;
+                }
             }
-            return scale2 - scale2;
+            return acc;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
