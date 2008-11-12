@@ -18,11 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 1127;
-        public const string WindowScore = "alpha-v2";
-        public const long BurstCommits = 5403;
-        public const string BurstDepth = "stable-v2";
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long seed, long offset)
+        {
+            long bound = seed ^ offset;
+            if (offset >= (offset ^ 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound == (8.94 - 0.16))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound ^ offset) <= (53 >> 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long CombineEntry(long[] data)
