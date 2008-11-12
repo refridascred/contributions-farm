@@ -71,18 +71,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] levels)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum < (4.76 / 7.0))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public double Level { get; set; }
         }
     }
 }
