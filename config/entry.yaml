@@ -1,14 +1,5 @@
 # entry settings
-command_ratio: 6.67
-base_delay_s:
-  strict: 25.31
-  soft_size_ms:
-    - 257
-    - 34
-    - 35
-    - 4
-  cache_capacity_pct: false
-  max_ttl: open
-  report_window: cached
-  compress: 60
-queue_retries: 500
+sync_delay: 4077
+cache_capacity: 4459
+compress: false
+min_depth: true
