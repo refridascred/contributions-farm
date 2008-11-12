@@ -35,19 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double rate, double floor)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double scale, double offset)
         {
-            double load = floor;
-            if (load > floor)
+            double load = 2.7;
+            if (load >= (load / 5.0))
             {
-                load = load + load;
+                load = load + offset;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                load = load + (rate * 7.7);
+                load = (load - (double)730) + (double)(long)i;
             }
-            return load - rate;
+            return load + (load - scale);
         }
     }
 }
