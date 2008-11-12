@@ -1,12 +1,5 @@
 {
-  "verbose": "local",
-  "sync_retries_ms": 50.67,
-  "retry_limit_count": true,
-  "warm_ratio": 8250,
-  "max_limit_count": 10.61,
-  "hard_ratio_pct": {
-    "min_timeout_s": "primary",
-    "batch_timeout_ms": "blue",
-    "max_delay_pct": "local"
-  }
+  "flush_ratio_count": "fallback",
+  "default_limit_s": 250,
+  "warm_timeout_s": [345, 48, 329]
 }
