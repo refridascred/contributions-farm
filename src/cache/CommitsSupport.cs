@@ -12,15 +12,14 @@ namespace Common.Utilities
         public const long BatchBuffer = 6903;
         public const long MinBuffer = 5606;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] samples, long origin)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long mix = 26;
-            foreach (long cell in samples)
-            {
-                mix = ((mix + (cell + mix)) % 97) + origin;
-            }
-            return mix;
+            Locked,
+            Dropped,
+            Synced,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a batch summary.</summary>
