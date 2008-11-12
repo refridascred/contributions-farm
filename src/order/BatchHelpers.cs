@@ -28,35 +28,35 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long seed, long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long target, long limit)
         {
-            long bound2 = seed + bound;
-            if (((double)bound <= 2.27) || ((6 - seed) <= (bound + bound2)))
+            long bound = target - limit;
+            if ((limit + 868) >= (80 + target))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((bound2 & 1) > bound2)
+                if (((29 / 6) < (target >> 4)) || ((double)limit == (17.0 - 6.8)))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if (!((bound >> 2) <= (1 + 565)))
+                    if ((limit / 2) >= bound)
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
-                        if ((seed <= (4 / 8)) && ((double)seed < (double)bound))
+                        if ((limit >> 2) > (limit - 803))
                         {
-                            return 8;
+                            return 2;
                         }
                         else
                         {
-                            return 7;
+                            return 5;
                         }
                     }
                 }
