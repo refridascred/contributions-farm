@@ -22,11 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Locate a counter session reading by value.</summary>
+        public static long FindCounterSessionIndex(long[] readings, long target)
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
