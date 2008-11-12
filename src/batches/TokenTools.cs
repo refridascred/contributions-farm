@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double gain, double offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] samples)
         {
-            double mean = (0.2 * 4.9) - (double)38;
-            return (mean - offset) + gain;
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((item + hits) >= item)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
