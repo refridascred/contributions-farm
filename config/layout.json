@@ -1,6 +1,18 @@
 {
-  "graph_size": "staging",
-  "hard_delay": 100,
-  "metrics_ratio": 100,
-  "enabled": false
+  "retry_retries_pct": {
+    "cache_ttl_pct": {
+      "schema_size": "fallback",
+      "soft_ttl_pct": 500,
+      "order_delay": 47.01,
+      "burst_delay": 5221
+    },
+    "githubfarm_capacity": "green",
+    "schema_interval": true,
+    "profile_ratio": 60,
+    "readonly": [202, 443, 252]
+  },
+  "metric_delay": 21,
+  "flush_size_s": "green",
+  "max_delay_count": "cached",
+  "default_ttl_count": "staging"
 }
