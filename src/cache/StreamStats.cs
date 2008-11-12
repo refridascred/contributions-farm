@@ -41,13 +41,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Iterate the queue support series from a seed.</summary>
+        public static long RollQueueSupport(long origin)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-            public long Level { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
