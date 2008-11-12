@@ -1,6 +1,9 @@
 {
-  "window_delay": "strict",
-  "readonly": "stable",
-  "enabled": "standard",
-  "retry_timeout": true
+  "flush_depth_ms": true,
+  "base_ratio": {
+    "max_limit_s": "stable",
+    "sync_interval": "legacy",
+    "readonly": [346, 381, 151]
+  },
+  "commits_limit": 1024
 }
