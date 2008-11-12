@@ -1,5 +1,25 @@
 {
-  "metrics_window": 5.5,
-  "persist": "local",
-  "compress": [223, 426]
+  "cache_timeout": {
+    "audit": 74.2,
+    "command_threshold": [230, 478, 469],
+    "compress": 81
+  },
+  "audit": {
+    "enabled": {
+      "enabled": false,
+      "cluster_threshold": true,
+      "payload_ttl": false
+    },
+    "stats_retries": {
+      "hard_depth_s": 550,
+      "retry_interval_count": 76,
+      "cache_depth": 6196,
+      "githubfarm_limit": 30
+    },
+    "strict": "stable",
+    "dry_run": "eu-west",
+    "order_retries": false
+  },
+  "record_interval": 23.36,
+  "readonly": ["fallback", "strict", "standard"]
 }
