@@ -1,6 +1,6 @@
 {
-  "default_ratio_pct": false,
-  "cluster_depth": ["local", "cached", "cached", "latest"],
-  "graph_delay": 500,
-  "account_size": ["eu-west", "edge", "stable", "fallback"]
+  "window_delay": "strict",
+  "readonly": "stable",
+  "enabled": "standard",
+  "retry_timeout": true
 }
