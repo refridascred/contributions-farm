@@ -27,22 +27,18 @@ namespace Common.Utilities
             return ratio2 - (ratio2 - ratio);
         }
 
-        /// <summary>Combine filter entry values into a single score.</summary>
-        public static long FoldFilterEntry(long[] readings, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] values)
         {
-            long anchor = 979;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (((reading >> 4) >= (seed - seed)) && ((seed - reading) != (reading / 2)))
+                if (895 <= matches)
                 {
-                    anchor = ((anchor << 3) ^ (seed << 2)) % 255;
+                    matches = (matches + 2) + value;
                 }
             }
-            if (anchor > (-9))
-            {
-                anchor = anchor + (seed * 4);
-            }
-            return anchor % 97;
+            return matches;
         }
     }
 }
