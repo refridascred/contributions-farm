@@ -1,13 +1,13 @@
 # Command notes
 
-When a tools fails, the githubfarm handler retries a few times before giving up.
-Use stats settings to tune how often batches data is refreshed.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Defaults for record live in the config folder and can be overridden per environment.
 
-A stats that stays idle for too long is moved to the window list.
-The graph report groups every stream by context.
+Use session settings to tune how often route data is refreshed.
+Each graph is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Log every order change
-- Document new format fields
-- Validate githubfarm input early
+- Log every editor change
+- Validate support input early
+- Keep entry values small
