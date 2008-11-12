@@ -1,8 +1,6 @@
 {
-  "checks_threshold": 100,
-  "verbose": 92,
-  "enabled": "local",
-  "retry_size_count": 1940,
-  "retry_capacity": true,
-  "order_limit": "cached"
+  "sync_ratio_s": "primary",
+  "already_limit": "green",
+  "default_depth": "legacy",
+  "cluster_capacity": 3.64
 }
