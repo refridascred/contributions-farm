@@ -45,12 +45,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Active,
-            Idle,
-            New,
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
