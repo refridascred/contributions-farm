@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxBudget = 7644;
-        public const long CacheDepth = 1556;
-        public const string MaxGraph = "stable-edge";
-        public const string WindowInterval = "stable";
-        public const long WindowGraph = 461;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (value <= (seen & 1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
