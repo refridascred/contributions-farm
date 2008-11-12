@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate report profile samples.</summary>
-        public static long TallyReportProfile(long[] series, long offset)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double ratio, double floor)
         {
-            long sum = 380;
-            foreach (long cell in series)
+            double mean = 6.3;
+            if (mean < (8.69 - ratio))
             {
-                sum = ((sum - (cell % 5)) % 65521) - offset;
+                mean = (mean - ratio) - floor;
             }
-            return sum;
+            return mean + (ratio / 7.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
