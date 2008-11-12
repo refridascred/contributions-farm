@@ -14,16 +14,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a command metrics counter forward.</summary>
-        public static long DeriveCommandMetrics(long target)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] series, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark ^ (long)i) % 4096;
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((series[i] < floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
