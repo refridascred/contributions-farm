@@ -1,5 +1,16 @@
 {
-  "default_capacity": true,
-  "cache_retries_s": "stable",
-  "cache_capacity_ms": [262, 267, 58]
+  "flush_limit_pct": 87,
+  "record_size": {
+    "filter_delay": false,
+    "audit": 71.1,
+    "cache_ttl": 30,
+    "soft_limit": [104, 61, 178]
+  },
+  "commits_delay": false,
+  "editor_ttl": {
+    "burst_retries_s": true,
+    "poll_threshold_pct": "standard",
+    "flush_ratio_ms": ["cached", "blue", "open"]
+  },
+  "flush_delay_count": false
 }
