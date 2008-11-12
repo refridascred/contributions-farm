@@ -16,11 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] levels)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((value - count) > (count - value))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a layout reading.</summary>
