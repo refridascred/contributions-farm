@@ -1,6 +1,14 @@
 # entry settings
-idle_timeout_pct: legacy
-max_ratio_pct: 34
-base_retries: 85.08
-burst_interval: 30
-tools_ratio: legacy
+command_ratio: 6.67
+base_delay_s:
+  strict: 25.31
+  soft_size_ms:
+    - 257
+    - 34
+    - 35
+    - 4
+  cache_capacity_pct: false
+  max_ttl: open
+  report_window: cached
+  compress: 60
+queue_retries: 500
