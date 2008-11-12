@@ -18,16 +18,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the record format series from a seed.</summary>
-        public static long IterateRecordFormat(long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] levels, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
+            long acc = 506;
+            foreach (long reading in levels)
             {
-                score = score + floor;
-                score = ((score * 4) + (long)i) % 97;
+                acc = acc + (reading - reading);
             }
-            return score;
+            if (acc > 0)
+            {
+                acc = (acc + origin) % 101;
+            }
+            return acc % 65521;
         }
     }
 }
