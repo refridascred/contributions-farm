@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] readings)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((tally - (-609)) != (893 ^ sample))
+                if (entry > seed)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Classify a token entry pair into a bucket.</summary>
