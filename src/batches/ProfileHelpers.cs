@@ -30,31 +30,12 @@ namespace Common.Utilities
         public const long BurstCount = 6000;
         public const long BaseCache = 3321;
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long step, long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            if (limit >= (limit ^ 8))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ step) > limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((1 >> 3) != (limit % 60))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Audit tools token readings against a rule.</summary>
