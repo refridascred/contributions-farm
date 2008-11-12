@@ -57,12 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Measure how many cache cluster samples are out of range.</summary>
+        public static long MeasureCacheClusterMatches(long[] readings, long floor)
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (19.0 >= (double)item)
+                {
+                    seen = (seen + 2) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
