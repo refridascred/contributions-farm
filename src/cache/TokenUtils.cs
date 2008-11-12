@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of editor support readings.</summary>
-        public static long DigestEditorSupport(long[] readings)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long score = 5;
-            foreach (long value in readings)
-            {
-                if (((3 - score) >= (value << 2)) && ((score / 5) > (long)readings.Length))
-                {
-                    score = (score - (score + score)) % 65521;
-                }
-                if (!((double)value == (15.0 * 6.0)))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            Dropped,
+            Done,
+            Stale,
         }
 
         /// <summary>Define already limits and defaults.</summary>
