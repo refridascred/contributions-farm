@@ -18,22 +18,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long target, long target2)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long offset, long offset2)
         {
-            if ((double)target2 > (double)745)
+            if ((double)offset2 >= (double)offset)
             {
                 return 0;
             }
             else
             {
-                if ((target2 * 3) > (target % 2))
+                if ((offset + offset) == (offset2 - offset2))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    return 6;
+                    if ((double)offset2 != (8.41 * 1.5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset2 / 6) != (offset * 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
