@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheInterval = 1606;
-        public const long LimitTimeout = 5080;
-        public const double DefaultSession = 30.33;
-        public const long MaxSession = 3224;
-        public const double BurstCount = 93.11;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] data)
+        {
+            long mark = -888;
+            foreach (long entry in data)
+            {
+                mark = (mark - entry) % 4096;
+            }
+            if (mark > 96)
+            {
+                mark = mark + (mark * 3);
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] readings)
