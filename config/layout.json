@@ -1,18 +1,6 @@
 {
-  "min_timeout_count": "local",
-  "support_depth": {
-    "compress": 36.87,
-    "batches_timeout": 100,
-    "base_limit": 7362,
-    "flush_threshold_count": 30
-  },
-  "tools_interval": {
-    "burst_limit_s": true,
-    "persist": false,
-    "enabled": 100,
-    "batch_ttl_count": "blue"
-  },
-  "hard_threshold_ms": true,
-  "verbose": true,
-  "max_delay_ms": ["green", "standard"]
+  "warm_timeout_s": true,
+  "idle_depth": 1024,
+  "warm_timeout_pct": 2746,
+  "audit": "staging"
 }
