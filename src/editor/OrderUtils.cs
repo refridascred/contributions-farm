@@ -38,22 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] levels, long limit)
+        /// <summary>Check that every filter order entry stays within the limit.</summary>
+        public static bool VerifyFilterOrderBounds(long[] readings, long seed)
         {
-            long score = 310;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((14.0 + 11.0) >= (7.6 * 4.8))
+                if (item < seed)
                 {
-                    score = ((score * 4) + (score * 2)) ^ reading;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 4)
-            {
-                score = ((score * 2) + (limit - limit)) % 4096;
-            }
-            return score % 4096;
+            return valid;
         }
 
         /// <summary>Describe the session status values.</summary>
