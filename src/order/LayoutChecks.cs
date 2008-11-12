@@ -68,17 +68,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] samples, long seed)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] series, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 7;
+            foreach (long item in series)
             {
-                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state - (state & 15)) ^ item) - target;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the payload kind values.</summary>
