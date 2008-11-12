@@ -1,11 +1,6 @@
-id,owner,count
-1,81.33,233
-2,standard,50.62
-3,71.54,legacy
-4,824,legacy
-5,78.91,strict
-6,31.04,staging
-7,primary,297
-8,edge,885
-9,53.45,standard
-10,602,83.39
+id,ratio,count,region
+1,45,staging,green
+2,13.47,46.55,894
+3,74.03,fallback,stable
+4,17.5,stable,standard
+5,stable,edge,green
