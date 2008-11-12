@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Measure how many route buffer samples are out of range.</summary>
+        public static long TallyRouteBufferHits(long[] samples)
         {
-            Idle,
-            Ready,
-            Done,
-            Queued,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((916 * 3) < matches)
+                {
+                    matches = (matches + 1) - cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next counter value.</summary>
