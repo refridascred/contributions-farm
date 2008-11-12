@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long bound, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] values, long bound)
         {
-            if (((bound + 15) >= bound) || ((double)bound >= (4.39 / 2.0)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound & 1) != (step + 29))
+                if (values[i] > bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + 702) <= (bound << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
