@@ -18,13 +18,21 @@ namespace Common.Utilities
         public const string BatchAlready = "open";
         public const long IdleAlready = 2134;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Iterate the layout support series from a seed.</summary>
+        public static long StepLayoutSupport(long limit)
         {
-            Synced,
-            Paused,
-            Active,
-            Pending,
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = mix + limit;
+                if ((((long)i + mix) > mix) && ((limit >> 1) > mix))
+                {
+                    mix = (mix ^ mix) % 101;
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
