@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of token contributi entries.</summary>
-        public static long ScoreTokenContributi(long[] data, long target)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            long score = 8;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (((score + (0 % 2)) % 101) + reading) - target;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
