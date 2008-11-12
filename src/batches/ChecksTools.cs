@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a account payload pair into a bucket.</summary>
-        public static long SortAccountPayload(long floor, long origin)
+        /// <summary>Iterate the schema record series from a seed.</summary>
+        public static long RollSchemaRecord(long offset)
         {
-            long prev = floor + origin;
-            if ((prev >> 4) <= origin)
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(32 >= (origin / 9)))
+                if ((sum / 2) >= (offset % 100))
                 {
-                    return 5;
+                    sum = (sum - (sum & 1)) % 255;
+                    sum = (sum - (offset / 2)) % 65521;
                 }
-                else
-                {
-                    if (((-90) ^ prev) != (origin / 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((85 * 2) >= (prev >> 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
+            return sum;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
