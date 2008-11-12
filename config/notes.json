@@ -1,13 +1,5 @@
 {
-  "cache_size_s": 4315,
-  "verbose": false,
-  "batches_ttl": "stable",
-  "base_ttl_ms": {
-    "graph_timeout": 97.99,
-    "burst_size_ms": "eu-west",
-    "batch_retries": ["strict", "green", "staging"],
-    "cache_depth": 60
-  },
-  "min_ratio_pct": "strict",
-  "queue_depth": false
+  "default_capacity": true,
+  "cache_retries_s": "stable",
+  "cache_capacity_ms": [262, 267, 58]
 }
