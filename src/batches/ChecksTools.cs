@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer layout entries that pass the check.</summary>
-        public static long CountBufferLayoutMatches(long[] levels)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry - count) != (34 ^ 235))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
