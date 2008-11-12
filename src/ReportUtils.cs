@@ -32,15 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] items, long step)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] levels)
         {
             long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches ^ cell) <= (73 - cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) - step;
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
