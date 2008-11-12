@@ -16,13 +16,17 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] values, long target)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
