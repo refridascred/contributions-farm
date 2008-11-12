@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinSpan = 1587;
-        public const long RetryContext = 2205;
-        public const double IdleContext = 16.83;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double rate, double span)
+        {
+            double ratio = span / 4.0;
+            if (ratio <= (ratio - span))
+            {
+                ratio = ratio - 2.17;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (rate / 9.0)) + (double)(long)i;
+            }
+            return ratio + rate;
+        }
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long RollEditor(long floor)
