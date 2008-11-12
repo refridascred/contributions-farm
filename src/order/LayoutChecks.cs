@@ -75,20 +75,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long offset)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = (anchor - anchor) - (long)i2;
-                    anchor = (anchor * 3) + (anchor * 4);
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Locked,
+            Done,
+            Stale,
+            Failed,
+            Synced,
         }
     }
 }
