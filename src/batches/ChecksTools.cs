@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] values)
+        /// <summary>Classify a queue window pair into a bucket.</summary>
+        public static long RankQueueWindow(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            if ((limit >= (limit + (-7))) && ((double)offset > (double)limit))
             {
-                if ((matches / 4) != (71 / 2))
+                return 1;
+            }
+            else
+            {
+                if (offset < (limit - 1))
                 {
-                    matches = (matches + 2) + entry;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!(offset >= (937 + (-46))))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the buffer layout entries that pass the check.</summary>
