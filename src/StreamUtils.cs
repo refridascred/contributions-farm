@@ -62,18 +62,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit githubfarm already readings against a rule.</summary>
-        public static long CountGithubfarmAlreadyHits(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (!((tally % 16) == (item - item)))
+                if (entry > seed)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Count the cache commits entries that pass the check.</summary>
