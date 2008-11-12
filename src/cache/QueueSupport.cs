@@ -24,19 +24,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double rate, double floor)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double ratio = rate;
-            if (ratio > ratio)
-            {
-                ratio = (ratio - (double)593) - floor;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio - 8.0;
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
