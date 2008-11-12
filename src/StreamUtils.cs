@@ -11,20 +11,13 @@ namespace Common.Utilities
         public const double BurstInterval = 53.93;
         public const double HardScore = 90.5;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                long step = ((long)i * 5) - (37 % 100);
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = (acc + (step % 3)) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            New,
+            Queued,
+            Draft,
+            Idle,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
