@@ -1,19 +1,7 @@
 {
-  "poll_capacity": {
-    "default_interval_s": {
-      "hard_limit_pct": [112, 91],
-      "readonly": 37,
-      "soft_timeout_ms": "standard"
-    },
-    "hard_delay": 1024,
-    "max_capacity_pct": 40.14,
-    "poll_window_s": [488, 3, 122, 302]
-  },
-  "cache_capacity": "edge",
-  "default_capacity_pct": {
-    "readonly": 1034,
-    "hard_size": ["standard", "latest", "staging"],
-    "tools_size": [180, 100]
-  },
-  "retry_window_ms": true
+  "format_interval": [197, 318, 427, 211],
+  "batch_delay": ["edge", "edge"],
+  "max_ratio_s": 30,
+  "payload_window": ["staging", "fallback"],
+  "enabled": ["standard", "strict", "latest", "local"]
 }
