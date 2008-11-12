@@ -55,18 +55,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] items)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell % 7) > (cell + (-773)))
+                if ((series[i] < offset) && ((series[i] % 3) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
