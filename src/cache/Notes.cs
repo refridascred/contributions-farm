@@ -53,21 +53,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 20)
+                    if ((data[i] - data[j]) != 14)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
