@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long seed, long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] items, long step)
         {
-            if ((double)seed < (1.3 + 6.07))
+            bool ok = true;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)bound >= (7.0 / 5.0)))
+                if (item != step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Digest a series of cluster buffer entries.</summary>
