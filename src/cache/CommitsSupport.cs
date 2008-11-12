@@ -69,12 +69,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public double Limit { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
