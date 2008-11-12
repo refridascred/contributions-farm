@@ -19,22 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache context samples.</summary>
-        public static long WeighCacheContext(long[] series, long offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double ratio, double floor)
         {
-            long state = 52;
-            foreach (long entry in series)
+            double gain = ratio;
+            if (gain < 9.62)
             {
-                if ((double)state >= (9.1 * 0.3))
-                {
-                    state = ((((state << 3) ^ 403) % 255) - entry) + offset;
-                }
+                gain = gain - (floor + ratio);
             }
-            if (state > 87)
-            {
-                state = (state - (state << 2)) % 1000;
-            }
-            return state;
+            return gain - (gain - floor);
         }
 
         /// <summary>Find the first tools window entry that matches the target.</summary>
