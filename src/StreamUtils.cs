@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] samples, long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                long lane = offset ^ (acc - 28);
-                if ((3.37 * 15.0) <= (double)lane)
+                if (samples[i] <= offset)
                 {
-                    lane = lane ^ (offset / 6);
-                    acc = ((acc << 2) ^ (acc % 7)) % 97;
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    lane = (lane + (offset + acc)) % 255;
-                }
-                if (((long)i + 9) != (acc & 63))
-                {
-                    acc = ((acc << 3) ^ (offset + (long)i)) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the entry level values.</summary>
