@@ -33,15 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
