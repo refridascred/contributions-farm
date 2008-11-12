@@ -1,14 +1,11 @@
 # Command notes
 
-Each stream is validated before it reaches the channel queue.
-The account helpers are pure functions, so they are safe to call from any thread.
-The entry report groups every contributi by farm.
-
-The channel helpers are pure functions, so they are safe to call from any thread.
-Use editor settings to tune how often format data is refreshed.
+Keep context and order names short and lowercase.
+Use batches settings to tune how often farm data is refreshed.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Keep githubfarm values small
-- Log every payload change
+- Review stats limits each release
+- Prefer entry defaults
+- Validate record input early
