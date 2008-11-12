@@ -44,19 +44,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate tools session readings against a bound.</summary>
-        public static bool ValidateToolsSessionLimits(long[] data, long offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long floor, long target)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            if ((69 > (target - floor)) && (target < 7))
             {
-                if (datum < offset)
+                return 4;
+            }
+            else
+            {
+                if (floor >= (floor - target))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((floor * 2) < 504) || ((double)target >= (11.0 - 6.5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(5 > (target + floor)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
