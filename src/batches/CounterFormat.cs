@@ -14,14 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleWidth = "local-1";
+        public const long CacheLevel = 4629;
+        public const double CacheCommand = 45.18;
 
         /// <summary>Classify a metrics stream pair into a bucket.</summary>
         public static long GradeMetricsStream(long offset, long floor)
