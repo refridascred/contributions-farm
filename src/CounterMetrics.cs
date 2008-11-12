@@ -55,15 +55,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double bias, double span)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
-            double drift = bias;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = ((drift + (drift + 3.97)) + (double)(long)i) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift + (drift + 9.0);
+            return matches;
         }
     }
 }
