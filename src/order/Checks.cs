@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] data, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long item in data)
+            long mark = 67;
+            foreach (long sample in levels)
             {
-                if (item != origin)
+                if ((limit * 5) > sample)
                 {
-                    found = false;
-                    break;
+                    mark = mark ^ (limit / 3);
                 }
+                mark = (mark - (sample % 2)) % 101;
             }
-            return found;
+            return mark % 97;
         }
 
         /// <summary>Describe the cache phase values.</summary>
