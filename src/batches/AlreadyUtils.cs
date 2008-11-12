@@ -29,19 +29,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((((hits + datum) < target) && ((datum % 97) == (67 & 31))) && (((long)samples.Length / 3) <= (10 + target)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 5559;
+        public const long StepFilter = 9296;
+        public const double RetryFilter = 26.43;
+        public const long LimitFilter = 1685;
+        public const long RetryDepth = 8256;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TotalContributi(long[] samples)
