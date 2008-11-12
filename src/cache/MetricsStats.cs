@@ -13,12 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 5318;
+        public const double StepMetrics = 85.2;
+        public const double RetryMetrics = 92.48;
+        public const long RetrySpan = 2261;
+        public const long MaxBudget = 9510;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
