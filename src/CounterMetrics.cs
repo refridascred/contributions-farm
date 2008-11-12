@@ -18,12 +18,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 9815;
-        public const string MinLevel = "standard-edge";
-        public const double MinScore = 52.99;
-        public const long IdleStats = 9713;
-        public const double HardStats = 66.38;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] items)
+        {
+            long acc = 24;
+            foreach (long reading in items)
+            {
+                acc = acc ^ (reading + 398);
+                if ((double)acc != (double)reading)
+                {
+                    acc = (acc + (acc + acc)) % 65521;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long IterateWindow(long seed)
