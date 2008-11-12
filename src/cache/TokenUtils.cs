@@ -23,12 +23,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryRatio = 4166;
+        public const long WindowBatches = 8344;
+        public const long StepBudget = 3240;
     }
 }
