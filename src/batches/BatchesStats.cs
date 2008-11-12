@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const string BurstStats = "strict-1";
         public const double MaxCount = 75.31;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] data, long offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((seen % 10) <= seen))
+                if ((items[i] > origin) && ((items[i] % 5) != 0))
                 {
-                    seen = ((seen + 3) + cell) - offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine stream queue values into a single score.</summary>
