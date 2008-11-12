@@ -115,21 +115,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token metrics counter forward.</summary>
-        public static long DeriveTokenMetrics(long seed)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result * 3) + (seed << 2);
-                if (!((double)seed <= (double)result))
-                {
-                    result = ((result * 5) + (4 + seed)) % 255;
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
