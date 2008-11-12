@@ -85,10 +85,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultBudget = 7406;
-        public const long WindowReport = 605;
-        public const double CacheRatio = 59.61;
-        public const long LimitInterval = 1290;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] readings, long step)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((3.43 - 10.0) != (double)step)
+                {
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
