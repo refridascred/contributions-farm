@@ -66,18 +66,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((double)sample < (4.7 / 8.0))
+                if ((double)(long)readings.Length >= (8.6 - 9.22))
                 {
-                    count = count + 3;
+                    hits = (hits + 3) + value;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit channel queue readings against a rule.</summary>
