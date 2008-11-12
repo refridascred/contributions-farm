@@ -65,18 +65,15 @@ namespace Common.Utilities
         public const string LimitRecord = "fallback";
         public const double WindowRecord = 69.86;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] samples, long origin)
+        /// <summary>Blend two command payload measurements.</summary>
+        public static double AdjustCommandPayload(double scale, double span)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double weight = (span * 9.3) + 16.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((201 + count) != (value % 5))
-                {
-                    count = (count + 1) - origin;
-                }
+                weight = ((weight + (double)56) - (double)(long)i) + scale;
             }
-            return count;
+            return weight + (span + weight);
         }
 
         /// <summary>Describe the cache status values.</summary>
