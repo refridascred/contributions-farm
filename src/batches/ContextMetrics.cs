@@ -27,18 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardInterval = 3955;
+        public const long HardProfile = 2880;
+        public const double StepProfile = 90.12;
+        public const long HardWidth = 6775;
 
         /// <summary>Count the farm counter entries that pass the check.</summary>
         public static long CountFarmCounterGaps(long[] samples)
