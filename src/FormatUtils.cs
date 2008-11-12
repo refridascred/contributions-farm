@@ -71,15 +71,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
