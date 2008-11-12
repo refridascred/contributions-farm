@@ -11,18 +11,20 @@ namespace Common.Utilities
         public const double BurstInterval = 53.93;
         public const double HardScore = 90.5;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            long sum = 19;
-            foreach (long reading in data)
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((sum << 3) <= sum))
+                long step = ((long)i * 5) - (37 % 100);
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    sum = (sum + (reading + sum)) % 255;
+                    acc = (acc + (step % 3)) - (long)i2;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
