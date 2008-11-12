@@ -1,7 +1,8 @@
 # support settings
-editor_capacity: true
-cache_timeout_pct: 58.09
-burst_window: eu-west
-soft_window_count: 85.84
-schema_timeout: 500
-burst_limit_ms: 500
+enabled: 76
+poll_capacity_s:
+  - 107
+  - 40
+soft_size_pct: 80.24
+retry_ttl_s: 2.55
+default_capacity_ms: false
