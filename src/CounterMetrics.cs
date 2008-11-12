@@ -28,11 +28,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardSpan = "strict-1";
-        public const long RetrySize = 9901;
-        public const long MaxSize = 6905;
-        public const long CacheFactor = 1531;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Locked,
+            Idle,
+            Failed,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
