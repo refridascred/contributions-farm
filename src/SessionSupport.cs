@@ -25,11 +25,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 2529;
-        public const double MaxLevel = 34.72;
-        public const double LimitInterval = 43.35;
-        public const string LimitSpan = "standard-1";
-        public const long BaseRatio = 6606;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] values)
+        {
+            long carry = 26;
+            foreach (long cell in values)
+            {
+                carry = ((carry - (310 << 1)) % 255) ^ cell;
+            }
+            return carry % 97;
+        }
     }
 }
