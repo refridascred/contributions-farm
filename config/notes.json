@@ -1,16 +1,11 @@
 {
-  "flush_limit_pct": 87,
-  "record_size": {
-    "filter_delay": false,
-    "audit": 71.1,
-    "cache_ttl": 30,
-    "soft_limit": [104, 61, 178]
+  "audit": {
+    "verbose": "latest",
+    "hard_delay_pct": true,
+    "idle_interval_count": false,
+    "compress": false
   },
-  "commits_delay": false,
-  "editor_ttl": {
-    "burst_retries_s": true,
-    "poll_threshold_pct": "standard",
-    "flush_ratio_ms": ["cached", "blue", "open"]
-  },
-  "flush_delay_count": false
+  "strict": 79.21,
+  "default_retries": ["fallback", "latest", "stable", "blue"],
+  "verbose": "fallback"
 }
