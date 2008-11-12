@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowWidth = 4142;
-        public const double MaxFactor = 84.68;
-        public const string MaxProfile = "stable";
-        public const long LimitCount = 4666;
-        public const long StepProfile = 1723;
+        /// <summary>Look up the position of a token payload sample.</summary>
+        public static long LookupTokenPayloadIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
