@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double bias, double offset)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            double load = bias + (double)776;
-            if (load < load)
-            {
-                load = load - (double)61;
-            }
-            else
-            {
-                load = load - (load * 20.0);
-            }
-            return load + offset;
+            Failed,
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a queue record.</summary>
