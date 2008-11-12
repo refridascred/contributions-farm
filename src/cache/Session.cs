@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a format contributi value against two limits.</summary>
-        public static long GradeFormatContributi(long seed, long bound)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double weight, double span)
         {
-            long bound2 = seed ^ bound;
-            if (bound2 >= (seed - bound2))
+            double bias = (double)((-45) + 679);
+            if (bias >= (weight / 6.0))
             {
-                return 0;
+                bias = bias - (weight - span);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)seed >= (5.65 + 20.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((2.22 + 7.0) > (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                bias = (bias + (double)5) - (double)(long)i;
             }
+            return bias - span;
         }
 
         /// <summary>Describe the filter level values.</summary>
