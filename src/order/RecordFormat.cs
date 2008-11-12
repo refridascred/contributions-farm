@@ -58,23 +58,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double rate, double floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] values, long step)
         {
-            double scale = 19.0;
-            if (scale <= floor)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                scale = (scale + scale) + rate;
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + 1.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + 8.08;
+            return ok;
         }
     }
 }
