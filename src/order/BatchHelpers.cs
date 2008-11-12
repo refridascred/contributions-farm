@@ -23,11 +23,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long limit)
         {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = mix ^ mix;
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
