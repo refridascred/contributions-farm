@@ -41,24 +41,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long target)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 3) + (acc * 2)) % 4096;
-                if (!(target <= 760))
-                {
-                    acc = acc - target;
-                }
-                if ((target ^ 3) < (355 - (long)i))
-                {
-                    acc = acc + (target / 9);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Paused,
+            Active,
+            Synced,
         }
     }
 }
