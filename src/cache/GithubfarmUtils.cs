@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] readings, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                for (int i3 = 0; i3 < 2; i3++)
+                if (count >= (34 ^ count))
                 {
-                    anchor = (anchor - (origin & 15)) ^ (long)i3;
+                    count = ((count + 3) + sample) - floor;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
