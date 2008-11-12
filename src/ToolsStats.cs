@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] samples, long origin)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Failed,
+            Closed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
