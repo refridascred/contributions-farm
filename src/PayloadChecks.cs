@@ -27,14 +27,27 @@ namespace Common.Utilities
             return (mean + (6.5 / 9.0)) + floor;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            Locked,
-            Draft,
-            Dropped,
-            Stale,
-            Pending,
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                if (limit >= (94 - (long)i))
+                {
+                    anchor = (anchor + (96 / 9)) % 255;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = ((anchor + (1 / 2)) % 255) ^ (long)i2;
+                }
+                if ((double)anchor >= (7.2 / 5.0))
+                {
+                    anchor = ((anchor << 2) ^ (limit ^ anchor)) % 1000;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
