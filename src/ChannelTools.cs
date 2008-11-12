@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 9382;
-        public const double CacheInterval = 41.91;
-        public const long RetryScore = 7622;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
