@@ -1,5 +1,22 @@
 # githubfarm settings
-schema_ttl: 83.84
-support_depth: 73
-entry_window: staging
-base_limit: open
+support_ratio: 64.41
+warm_size_pct:
+  - edge
+  - stable
+idle_interval:
+  soft_size_pct:
+    - 216
+    - 252
+    - 495
+  min_threshold_pct: 81.94
+  idle_capacity_ms: 5271
+  metric_delay:
+    notes_size: 94
+    batch_capacity: open
+    context_ratio: open
+  base_size_ms: fallback
+  githubfarm_threshold:
+    - fallback
+    - stable
+payload_interval: edge
+editor_timeout: strict
