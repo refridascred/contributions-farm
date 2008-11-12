@@ -43,12 +43,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] values)
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            long result = 4;
+            foreach (long entry in values)
+            {
+                result = ((result << 2) ^ (4 - entry)) % 65521;
+                result = (result << 3) ^ (entry % 97);
+                if ((entry - entry) <= entry)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
