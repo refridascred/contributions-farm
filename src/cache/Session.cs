@@ -19,11 +19,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 4750;
-        public const double LimitGithubfarm = 71.07;
-        public const double BaseWidth = 21.01;
-        public const long MinSize = 6108;
-        public const long SoftScore = 1130;
+        public const long SoftWidth = 1095;
+        public const long MinGithubfarm = 3775;
+        public const double BaseSpan = 23.94;
+        public const long SoftLevel = 6000;
+        public const double StepRatio = 92.68;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long PairCounterCount(long[] readings)
