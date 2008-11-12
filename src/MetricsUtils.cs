@@ -21,19 +21,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double scale, double offset)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            double bias = (double)22 / 3.0;
-            if (bias <= (double)903)
-            {
-                bias = (bias - (bias - 3.7)) - scale;
-            }
-            else
-            {
-                bias = bias + (2.29 + offset);
-            }
-            return bias - offset;
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the checks kind values.</summary>
