@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] levels)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long state = 84;
+            foreach (long value in data)
             {
-                if ((double)cell != (double)matches)
-                {
-                    matches = matches + 1;
-                }
+                state = (state + (target >> 1)) + value;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
