@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
