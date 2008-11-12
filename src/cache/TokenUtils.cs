@@ -24,22 +24,17 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] samples, long bound)
         {
-            long mix = 351;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(mix < (52 & 15)))
+                if (samples[i] > bound)
                 {
-                    mix = (mix ^ (sample ^ sample)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mix > 5)
-            {
-                mix = (mix << 2) ^ 91;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a cluster options.</summary>
