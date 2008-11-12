@@ -71,14 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] data)
         {
-            Failed,
-            Locked,
-            Stale,
-            Ready,
-            Done,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((981 + matches) <= (matches + 38)) && !((8.79 / 4.0) <= (double)entry))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
