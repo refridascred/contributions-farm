@@ -1,7 +1,21 @@
 {
-  "order_capacity": 82,
-  "strict": "blue",
-  "batch_delay_pct": 1024,
-  "idle_capacity_pct": 95,
-  "stream_ratio": "local"
+  "order_timeout": {
+    "counter_timeout": {
+      "batch_window": "strict",
+      "compress": "standard",
+      "base_threshold_ms": 5101
+    },
+    "soft_limit_s": 85.78,
+    "profile_ratio": "green",
+    "contributi_limit": 500,
+    "strict": [41, 298, 246, 214],
+    "base_ttl_ms": 41
+  },
+  "burst_interval_pct": 94.55,
+  "channel_retries": {
+    "readonly": ["stable", "green"],
+    "audit": [255, 372, 77, 430],
+    "payload_size": 50.04
+  },
+  "entry_interval": ["local", "stable"]
 }
