@@ -1,10 +1,5 @@
 # support settings
-warm_delay: latest
-flush_threshold_ms: edge
-enabled: 1024
-sync_size_count: latest
-default_delay: 100
-readonly:
-  - edge
-  - green
-  - cached
+already_threshold: 548
+poll_depth_count: 67
+verbose: blue
+sync_threshold: 84.41
