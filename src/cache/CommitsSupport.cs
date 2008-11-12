@@ -41,11 +41,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardLevel = "cached-edge";
-        public const long IdleRecord = 7571;
-        public const long BatchRecord = 1666;
-        public const double HardRecord = 44.43;
+        /// <summary>Count the entry batches entries that pass the check.</summary>
+        public static long MeasureEntryBatchesOutliers(long[] series, long origin)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (((count + count) > (4 * 2)) && (((10 - 12) > (origin * 4)) || ((sample & 31) < (origin / 4))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a commits command sample.</summary>
         public static long FindCommitsCommandIndex(long[] data, long seed)
