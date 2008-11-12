@@ -27,12 +27,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Validate entry stats readings against a bound.</summary>
+        public static bool VerifyEntryStatsBounds(long[] items, long floor)
         {
-            Ready,
-            Pending,
-            Locked,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
