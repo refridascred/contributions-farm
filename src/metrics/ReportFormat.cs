@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const long BaseChecks = 7559;
         public const long WindowChecks = 1083;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftRatio = 4613;
-        public const double SoftWidth = 39.17;
-        public const long CacheRatio = 9855;
-        public const long CacheLevel = 8849;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] readings)
+        {
+            long sum = 596;
+            foreach (long datum in readings)
+            {
+                if ((double)sum < (18.0 - 4.0))
+                {
+                    sum = (sum + (datum - sum)) % 97;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
