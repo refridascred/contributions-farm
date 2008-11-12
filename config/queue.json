@@ -1,8 +1,6 @@
 {
-  "burst_size": "standard",
-  "hard_ttl": "standard",
-  "default_size": 544,
-  "dry_run": 89,
-  "strict": "blue",
-  "cache_depth": [151, 278, 390, 17]
+  "cache_capacity_count": 17.31,
+  "payload_window": 70,
+  "cache_ratio": "green",
+  "retry_limit_pct": 67.66
 }
