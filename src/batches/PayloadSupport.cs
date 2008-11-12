@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Accumulate layout githubfarm samples.</summary>
+        public static long WeighLayoutGithubfarm(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long result = 924;
+            foreach (long item in data)
             {
-                long offset2 = mark;
-                if (((offset / 7) >= (offset2 << 2)) || ((8 & 255) <= (offset2 - (long)i)))
-                {
-                    offset2 = (offset2 << 2) ^ 20;
-                }
-                if (((double)(long)i > (20.0 / 8.0)) && (4 > (offset2 + offset)))
-                {
-                    mark = mark ^ mark;
-                    mark = (mark ^ offset2) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                result = result ^ (item << 2);
             }
-            return mark;
+            if (result > (-1))
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Describe the layout phase values.</summary>
