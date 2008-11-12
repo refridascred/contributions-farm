@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics session entry stays within the limit.</summary>
-        public static bool VerifyMetricsSessionBounds(long[] readings, long origin)
+        /// <summary>Measure how many cache checks samples are out of range.</summary>
+        public static long MeasureCacheChecksGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (datum <= origin)
+                if ((double)value > (6.2 / 6.0))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Accumulate filter order samples.</summary>
