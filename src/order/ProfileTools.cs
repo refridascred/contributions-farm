@@ -64,11 +64,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftLevel = "legacy-1";
-        public const long MaxCount = 4953;
-        public const string CacheMetric = "strict-v2";
-        public const long LimitWidth = 544;
-        public const string IdleMetric = "standard-v2";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
