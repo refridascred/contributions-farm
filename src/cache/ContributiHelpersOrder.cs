@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels, long origin)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] series, long target)
         {
-            long state = 924;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin - reading) > reading)
+                if ((series[i] >= target) && ((series[i] % 2) == 0))
                 {
-                    state = ((state << 2) ^ (reading + reading)) % 4096;
+                    return (long)i;
                 }
             }
-            if (state > 52)
-            {
-                state = state + (state * 2);
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of cluster buffer entries.</summary>
