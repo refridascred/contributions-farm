@@ -33,12 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] values, long floor)
         {
-            Draft,
-            Done,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
