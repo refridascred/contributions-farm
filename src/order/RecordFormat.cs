@@ -40,15 +40,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] samples)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long total = 3;
-            foreach (long item in samples)
-            {
-                total = (total ^ (item - item)) % 97;
-            }
-            return total % 1000;
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
