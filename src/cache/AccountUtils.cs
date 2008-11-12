@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double weight, double offset)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            double weight2 = offset;
-            if (weight2 > (weight2 + 7.2))
-            {
-                weight2 = (weight2 + (double)48) - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 - (weight2 / 2.0);
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a contributi info.</summary>
