@@ -37,14 +37,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Audit farm command readings against a rule.</summary>
+        public static long AuditFarmCommandHits(long[] data)
         {
-            Retry,
-            Done,
-            Pending,
-            Idle,
-            Draft,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((long)data.Length < (sample << 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
