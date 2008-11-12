@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstGithubfarm = "strict-1";
+        public const double LimitRatio = 87.01;
+        public const long LimitSpan = 5432;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double ProjectEntry(double weight, double offset)
