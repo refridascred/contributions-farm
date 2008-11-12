@@ -93,15 +93,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two command payload measurements.</summary>
-        public static double AdjustCommandPayload(double scale, double span)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            double weight = (span * 9.3) + 16.0;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = ((weight + (double)56) - (double)(long)i) + scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight + (span + weight);
+            return tally;
         }
 
         /// <summary>Describe the cache status values.</summary>
