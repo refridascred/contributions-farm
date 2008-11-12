@@ -1,8 +1,4 @@
 # support settings
-default_timeout_pct: strict
-flush_ttl_count: 60
-base_retries_ms:
-  - staging
-  - stable
-audit: 2947
-enabled: staging
+compress: 69.4
+window_threshold: 39
+base_threshold: strict
