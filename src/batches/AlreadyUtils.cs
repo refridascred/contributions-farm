@@ -35,12 +35,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultWidth = 34.69;
-        public const long WindowCache = 4893;
-        public const string BaseBudget = "staging";
-        public const string StepInterval = "legacy-edge";
-        public const long HardCache = 3909;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
