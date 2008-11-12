@@ -27,19 +27,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] series, long bound)
+        /// <summary>Count window metric pairs that satisfy a relation.</summary>
+        public static long CompareWindowMetricCount(long[] items)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] - items[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
