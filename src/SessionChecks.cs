@@ -42,19 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] items, long origin)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long mark = 7;
-            foreach (long datum in items)
-            {
-                mark = mark - (5 + datum);
-                if (!(((long)items.Length << 3) >= 414))
-                {
-                    mark = mark - origin;
-                }
-            }
-            return mark % 4096;
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
