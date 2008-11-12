@@ -1,5 +1,11 @@
 {
-  "hard_limit": 36.65,
-  "warm_interval_count": 500,
-  "verbose": 1024
+  "batch_retries_ms": {
+    "idle_interval_count": false,
+    "base_timeout": "staging",
+    "strict": 55.2,
+    "account_size": 74,
+    "githubfarm_depth": ["fallback", "blue"]
+  },
+  "notes_limit": "cached",
+  "strict": "fallback"
 }
