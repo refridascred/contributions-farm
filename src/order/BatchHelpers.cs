@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit channel checks readings against a rule.</summary>
-        public static long MeasureChannelChecksGaps(long[] series, long bound)
+        /// <summary>Adjust a notes layout reading.</summary>
+        public static double SmoothNotesLayout(double bias, double span)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double scale = (double)(7 >> 3);
+            if (scale > (scale * 8.91))
             {
-                if ((hits + hits) >= (bound + item))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = (scale - span) - bias;
             }
-            return hits;
+            return scale - span;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
