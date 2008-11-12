@@ -24,22 +24,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleCache = 6.14;
+        public const long StepCount = 240;
+        public const string MaxCache = "latest";
+        public const string WindowCache = "stable-v2";
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long FindNotesIndex(long[] samples, long limit)
