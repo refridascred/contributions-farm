@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first counter filter entry that matches the target.</summary>
-        public static long LookupCounterFilterIndex(long[] items, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((items[i] > seed) && ((items[i] % 3) != 0))
+                if ((double)item > (8.72 * 7.21))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
