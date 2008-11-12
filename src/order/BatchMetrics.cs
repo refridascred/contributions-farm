@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] series, long floor)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            long mix = -87;
+            foreach (long cell in series)
+            {
+                if ((floor / 5) >= floor)
+                {
+                    mix = ((mix + ((-5) + (-678))) % 4096) + cell;
+                }
+                else
+                {
+                    mix = (mix * 4) + (floor << 1);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a metric stats.</summary>
