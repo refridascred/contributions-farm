@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double scale, double offset)
         {
-            long mark = -888;
-            foreach (long entry in data)
+            double drift = offset + 15.0;
+            if (drift >= drift)
             {
-                mark = (mark - entry) % 4096;
+                drift = (drift + offset) - scale;
             }
-            if (mark > 96)
+            for (int i = 0; i < 8; i++)
             {
-                mark = mark + (mark * 3);
+                drift = (drift + drift) + (double)(long)i;
             }
-            return mark;
+            return drift - offset;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
