@@ -40,19 +40,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double gain, double floor)
+        /// <summary>Look up the position of a report metric sample.</summary>
+        public static long LookupReportMetricIndex(long[] data, long limit)
         {
-            double ratio = (double)(85 + 0);
-            if (ratio < (double)179)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (ratio + gain);
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            return ratio + (floor - ratio);
+            return -1;
         }
     }
 }
