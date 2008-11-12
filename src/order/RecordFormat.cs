@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double ratio, double span)
-        {
-            double load = span;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + ratio) + (double)(long)i;
-            }
-            return load + (4.6 + 5.71);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleDepth = "alpha-1";
+        public const double LimitFactor = 4.16;
+        public const long LimitTimeout = 6300;
+        public const long StepBatch = 4478;
+        public const long DefaultBatch = 1104;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsHits(long[] data)
