@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double weight, double floor)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
+            double load = 4.6 - weight;
+            if (load > (double)816)
+            {
+                load = load + (weight - floor);
+            }
+            else
+            {
+                load = load + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - weight;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
