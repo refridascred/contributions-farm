@@ -1,8 +1,9 @@
-id,ratio,score
-1,322,181
-2,79.44,596
-3,761,blue
-4,green,178
-5,122,294
-6,34.53,cached
-7,18,270
+id,active,level
+1,439,731
+2,primary,open
+3,legacy,44.84
+4,363,staging
+5,52.14,98.68
+6,primary,871
+7,562,147
+8,cached,fallback
