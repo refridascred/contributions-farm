@@ -73,13 +73,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Idle,
-            Retry,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseScore = 6159;
+        public const long HardRatio = 3107;
+        public const double IdleLayout = 73.59;
+        public const long SoftLayout = 1726;
+        public const double LimitSize = 44.31;
     }
 }
