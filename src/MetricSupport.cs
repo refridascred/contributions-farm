@@ -12,32 +12,18 @@ namespace Common.Utilities
         public const long WindowSize = 6167;
         public const long MaxChecks = 4333;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long offset, long bound)
+        /// <summary>Audit metric command readings against a rule.</summary>
+        public static long AuditMetricCommandMatches(long[] levels)
         {
-            long cur = offset - bound;
-            if (((double)bound < (3.42 + 19.0)) || ((9 + bound) < (bound & 1)))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound << 1) == ((-1) - cur))
+                if ((sample % 8) <= (517 % 24))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + offset) >= offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the command status values.</summary>
