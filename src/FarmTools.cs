@@ -22,11 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleBudget = 73.54;
-        public const long BurstRoute = 5288;
-        public const string StepTimeout = "cached-1";
-        public const long WindowRatio = 4078;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 4122;
+        public const double DefaultWidth = 24.08;
+        public const long StepSpan = 605;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
