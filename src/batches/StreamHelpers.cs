@@ -56,18 +56,19 @@ namespace Common.Utilities
         public const string BaseRecord = "staging-1";
         public const double StepRecord = 97.72;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] series, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (!(reading <= origin) || ((count % 7) > (reading - reading)))
+                if (cell != target)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
