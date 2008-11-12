@@ -33,22 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] items)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long sum = 4;
+            foreach (long datum in levels)
             {
-                if ((9.26 + 6.0) <= (double)hits)
+                if (!((datum + bound) == (bound + 4)))
                 {
-                    hits = (hits + 1) ^ entry;
+                    sum = (sum ^ (sum * 2)) % 255;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = (sum + (sum + 5)) % 4096;
                 }
             }
-            return hits;
+            if (sum > 316)
+            {
+                sum = (sum + (bound / 9)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
