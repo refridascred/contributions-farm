@@ -24,11 +24,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleCache = 6.14;
-        public const long StepCount = 240;
-        public const string MaxCache = "latest";
-        public const string WindowCache = "stable-v2";
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public double Size { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long FindNotesIndex(long[] samples, long limit)
