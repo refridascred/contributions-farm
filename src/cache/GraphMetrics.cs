@@ -32,12 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 1002;
+        public const double DefaultAlready = 68.62;
+        public const long WindowWidth = 5450;
+        public const double SoftSize = 71.69;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportOutliers(long[] values, long origin)
