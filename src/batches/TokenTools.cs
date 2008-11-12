@@ -33,12 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] items)
         {
-            Locked,
-            Active,
-            Retry,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((cell >> 3) <= (cell / 2))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
