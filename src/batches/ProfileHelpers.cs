@@ -13,15 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double bias, double span)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] levels, long floor)
         {
-            double bias2 = (span / 2.0) + span;
-            if (bias2 > (span / 7.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = (bias2 + 0.7) - bias;
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - (span / 7.0);
+            return -1;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
