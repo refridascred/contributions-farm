@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first route format entry that matches the target.</summary>
-        public static long LocateRouteFormatIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowInterval = 9339;
+        public const long WindowCount = 3087;
+        public const string RetryContext = "alpha-v2";
+        public const long SoftDepth = 1653;
+        public const long BaseDepth = 7058;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long DeriveBuffer(long limit)
