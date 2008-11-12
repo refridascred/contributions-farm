@@ -53,12 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 9493;
-        public const string IdleMetrics = "fallback-1";
-        public const long StepSpan = 8099;
-        public const long CacheMetrics = 556;
-        public const long IdleSpan = 3012;
+        /// <summary>Measure how many session queue samples are out of range.</summary>
+        public static long MeasureSessionQueueOutliers(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((((-8) >= (587 + hits)) || ((double)target != (3.98 - 5.43))) && !((entry + entry) <= (entry % 24)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
