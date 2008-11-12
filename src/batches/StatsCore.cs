@@ -22,18 +22,13 @@ namespace Common.Utilities
         public const long MinLevel = 3605;
         public const string BatchWindow = "latest-v2";
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] data, long limit)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long acc = 70;
-            foreach (long cell in data)
-            {
-                if ((limit * 5) >= (acc & 7))
-                {
-                    acc = (acc << 2) ^ (80 ^ cell);
-                }
-            }
-            return acc;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
