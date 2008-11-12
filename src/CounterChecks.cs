@@ -37,27 +37,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] items, long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long mark = 74;
-            foreach (long value in items)
-            {
-                if (mark >= value)
-                {
-                    mark = ((mark << 2) ^ (mark % 60)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (step ^ 422)) % 1000;
-                }
-                mark = mark - mark;
-            }
-            if (mark < 8)
-            {
-                mark = mark - (mark % 12);
-            }
-            return mark % 65521;
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
