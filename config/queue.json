@@ -1,9 +1,5 @@
 {
-  "session_timeout": 60,
-  "enabled": 9079,
-  "cache_timeout_pct": {
-    "soft_threshold_s": "staging",
-    "session_interval": "edge",
-    "cache_depth_pct": false
-  }
+  "idle_depth_s": 74.11,
+  "order_timeout": "primary",
+  "hard_capacity": 30.79
 }
