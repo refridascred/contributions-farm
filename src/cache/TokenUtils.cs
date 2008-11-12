@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public bool Size { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 9962;
+        public const long BatchCluster = 373;
+        public const long LimitInterval = 1824;
+        public const long IdleBudget = 8992;
+        public const double RetryCluster = 50.21;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long WeighAccount(long[] readings, long offset)
