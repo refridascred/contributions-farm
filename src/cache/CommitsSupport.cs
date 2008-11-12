@@ -22,38 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long step, long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long step)
         {
-            if (715 >= (bound >> 4))
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((bound - 3) < (step ^ bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step <= 7.7)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)bound > (8.0 - 6.0)) && ((12.0 / 3.0) != (double)bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a batch summary.</summary>
