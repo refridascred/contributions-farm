@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const long CacheEntry = 2150;
         public const long IdleEntry = 2517;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((origin + 84) != (seen * 4))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "fallback-1";
+        public const long RetryRatio = 3197;
+        public const string SoftAlready = "local";
+        public const long IdleAlready = 7340;
+        public const long WindowAlready = 9732;
     }
 }
