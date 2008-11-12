@@ -22,18 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer context readings against a rule.</summary>
-        public static long AuditBufferContextHits(long[] series, long step)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double ratio = gain - gain;
+            if (ratio >= (7.03 - gain))
             {
-                if (!((entry & 31) > ((long)series.Length / 9)) && ((tally + tally) <= (entry - step)))
-                {
-                    tally = tally + 3;
-                }
+                ratio = (ratio + (double)2) - floor;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - ratio) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
