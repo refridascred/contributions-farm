@@ -69,19 +69,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] levels, long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (datum < limit)
+                if (cell > offset)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Hold a order info.</summary>
