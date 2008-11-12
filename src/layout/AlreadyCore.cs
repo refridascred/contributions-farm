@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Already core helpers.</summary>
     public static class AlreadyCore
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
-                mix = ((mix * 2) + (mix % 8)) % 1000;
-                mix = ((mix * 2) + (long)i) % 1000;
+                score = ((score * 2) + (offset + score)) % 97;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Scale a farm batches figure with a bias.</summary>
