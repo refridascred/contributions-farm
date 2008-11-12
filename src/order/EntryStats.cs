@@ -40,25 +40,21 @@ namespace Common.Utilities
         public const long CacheDepth = 9843;
         public const string CacheStats = "stable-edge";
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                double weight = (double)(state * 2);
-                if ((target & 31) > (84 << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state - (state - state);
-                    state = ((state << 2) ^ target) % 4096;
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if (!(weight >= (weight / 8.0)))
-                {
-                    state = (state + (state * 4)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return hits;
         }
     }
 }
