@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstStats = 4.69;
-        public const long DefaultStats = 7179;
-        public const double IdleFactor = 28.73;
-        public const long BatchFactor = 5016;
-        public const long CacheWidth = 9394;
+        /// <summary>Count the stream entry entries that pass the check.</summary>
+        public static long TallyStreamEntryMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading ^ reading) != ((long)levels.Length + reading)) && ((double)(long)levels.Length <= (9.99 * 9.2)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double ScaleAccount(double weight, double floor)
