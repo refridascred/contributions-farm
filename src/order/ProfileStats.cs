@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstBuffer = 74.66;
-        public const long MinBuffer = 9457;
-        public const string BaseInterval = "strict-v2";
-        public const long SoftBuffer = 252;
+        /// <summary>Find the first counter filter entry that matches the target.</summary>
+        public static long LookupCounterFilterIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next counter value.</summary>
         public static double ScaleCounter(double ratio, double floor)
