@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] series, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((tally & 31) > (26 << 3)) && (((sample % 16) <= (sample >> 2)) || ((6.6 / 9.0) <= (double)tally)))
                 {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) + seed;
                 }
             }
             return tally;
