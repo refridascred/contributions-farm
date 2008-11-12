@@ -22,32 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long offset, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] samples, long limit)
         {
-            long next = offset + target;
-            if ((target + 73) > (target << 1))
+            bool ready = true;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target + 0) >= (512 >> 5)) || ((offset - offset) <= (next ^ offset)))
+                if (item >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target ^ target) < target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Locate a session reading by value.</summary>
