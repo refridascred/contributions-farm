@@ -32,23 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double gain, double floor)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double weight = gain;
-            if (weight > 4.87)
-            {
-                weight = weight - floor;
-            }
-            else
-            {
-                weight = weight + (double)4;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (weight / 3.0)) + (double)(long)i;
-            }
-            return weight + (weight + weight);
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Rank checks input into a small class.</summary>
