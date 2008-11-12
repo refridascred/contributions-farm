@@ -1,18 +1,17 @@
 # githubfarm settings
-idle_capacity_count: 38
-poll_delay_ms:
-  warm_window_count: strict
-  cluster_ttl: 1024
-  cache_depth_pct: 41
-  support_window: 98.22
-  entry_ttl:
-    queue_window: latest
-    warm_ratio: 71.97
-    cache_delay: 7.05
-    sync_delay_count: 68.78
-    persist:
-      - latest
-      - edge
-      - green
-flush_timeout_count: local
-layout_ttl: 1113
+payload_interval: 8352
+batch_depth_count: cached
+soft_window_s:
+  soft_ratio_ms: 26.93
+  filter_ttl:
+    - 208
+    - 167
+    - 272
+  poll_delay: 1028
+  max_size_count: fallback
+  contributi_threshold:
+    - 32
+    - 74
+    - 393
+    - 262
+metrics_interval: 23
