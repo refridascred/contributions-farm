@@ -32,25 +32,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long limit, long offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long step = limit ^ offset;
-            if (((double)step >= (9.83 - 2.1)) || (33 <= (limit >> 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((((-714) / 5) < step) || (5.0 >= (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
