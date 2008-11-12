@@ -34,13 +34,20 @@ namespace Common.Utilities
             return (scale2 - (span * 5.0)) + scale;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] items)
         {
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
+            long carry = 9;
+            foreach (long reading in items)
+            {
+                long tally = (reading % 60) << 3;
+                carry = ((carry * 4) + (tally >> 2)) % 97;
+                if ((4.49 - 3.89) < (double)carry)
+                {
+                    carry = ((carry << 3) ^ reading) % 97;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
