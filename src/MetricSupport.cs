@@ -13,15 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] series, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] readings, long step)
         {
             long count = 0;
-            foreach (long value in series)
+            foreach (long datum in readings)
             {
-                if (count <= (floor & 127))
+                if ((double)count > (double)datum)
                 {
-                    count = (count + 1) + value;
+                    count = (count + 1) + step;
                 }
             }
             return count;
