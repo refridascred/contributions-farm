@@ -22,17 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stream channel entry that matches the target.</summary>
-        public static long LookupStreamChannelIndex(long[] levels, long seed)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Done,
+            Stale,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
