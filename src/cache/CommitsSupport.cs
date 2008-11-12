@@ -81,30 +81,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate batches record samples.</summary>
-        public static long TallyBatchesRecord(long[] values, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] levels)
         {
-            long sum = 95;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((double)offset < 3.0)
+                if ((double)datum < (4.76 / 7.0))
                 {
-                    sum = (sum - (sum + sample)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 5) + 5) % 97;
-                }
-                if ((39 ^ sum) > sample)
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (sum < 1)
-            {
-                sum = ((sum << 2) ^ offset) % 97;
-            }
-            return sum;
+            return tally;
         }
     }
 }
