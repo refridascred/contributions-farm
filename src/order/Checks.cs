@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] samples)
         {
-            New,
-            Idle,
-            Paused,
-            Stale,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (hits >= (hits / 6))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
