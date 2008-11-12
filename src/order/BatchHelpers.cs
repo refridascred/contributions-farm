@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a notes layout reading.</summary>
-        public static double SmoothNotesLayout(double bias, double span)
+        /// <summary>Find the first graph contributi entry that matches the target.</summary>
+        public static long LocateGraphContributiIndex(long[] values, long offset)
         {
-            double scale = (double)(7 >> 3);
-            if (scale > (scale * 8.91))
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale - span) - bias;
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return scale - span;
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
