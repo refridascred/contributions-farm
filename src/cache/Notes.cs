@@ -28,19 +28,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (782 > (cell % 7))
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleSpan = 8462;
+        public const long MaxAccount = 585;
+        public const double BurstDepth = 49.87;
+        public const long CacheRatio = 724;
+        public const double BatchAccount = 73.48;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteOutliers(long[] items)
