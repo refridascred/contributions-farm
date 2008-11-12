@@ -1,5 +1,16 @@
 {
-  "cache_timeout_count": false,
-  "base_timeout_pct": false,
-  "warm_ttl_s": 12
+  "default_retries_pct": true,
+  "enabled": 250,
+  "min_window_s": {
+    "batch_ratio_count": 90.91,
+    "burst_window_count": {
+      "cache_interval_count": [457, 38, 53, 25],
+      "sync_retries": "green",
+      "audit": 81.04
+    },
+    "retry_capacity": [436, 163]
+  },
+  "sync_ttl_count": "latest",
+  "default_timeout_pct": "primary",
+  "idle_interval_ms": 82
 }
