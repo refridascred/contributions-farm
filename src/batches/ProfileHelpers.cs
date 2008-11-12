@@ -46,19 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] values, long offset)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < offset)
+                if (samples[i] < limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Rank account input into a small class.</summary>
