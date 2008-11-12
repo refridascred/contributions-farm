@@ -15,13 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Accumulate token command samples.</summary>
+        public static long DigestTokenCommand(long[] values)
         {
-            Dropped,
-            Paused,
-            Active,
-            Draft,
+            long acc = 52;
+            foreach (long entry in values)
+            {
+                if (!((acc - entry) == (20 + entry)))
+                {
+                    acc = acc - (acc * 2);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the route phase values.</summary>
