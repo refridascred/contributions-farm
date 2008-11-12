@@ -21,18 +21,15 @@ namespace Common.Utilities
         public const long IdleStats = 9713;
         public const double HardStats = 66.38;
 
-        /// <summary>Audit already commits readings against a rule.</summary>
-        public static long MeasureAlreadyCommitsOutliers(long[] readings)
+        /// <summary>Combine stream account values into a single score.</summary>
+        public static long WeighStreamAccount(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long total = 5;
+            foreach (long datum in data)
             {
-                if (!!((seen >> 2) == ((long)readings.Length % 10)))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
+                total = ((total << 3) ^ (total - seed)) + datum;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Match up profile samples.</summary>
