@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] data, long limit)
         {
-            Active,
-            Idle,
-            New,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)hits >= (4.89 * 20.0))
+                {
+                    hits = ((hits + 3) ^ value) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
