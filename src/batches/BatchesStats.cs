@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long acc = 934;
-            foreach (long datum in samples)
-            {
-                if ((datum / 4) > (datum % 64))
-                {
-                    acc = ((acc * 5) + (49 - acc)) % 65521;
-                }
-            }
-            return acc;
+            Pending,
+            Closed,
+            Draft,
+            Active,
         }
 
         /// <summary>Combine already stream values into a single score.</summary>
