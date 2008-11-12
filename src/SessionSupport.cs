@@ -16,13 +16,10 @@ namespace Common.Utilities
             return rate + (rate - rate);
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public double Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseDepth = "strict-v2";
+        public const long BaseWidth = 2394;
+        public const double MaxBatch = 80.3;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long CombineChannel(long[] values, long bound)
