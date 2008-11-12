@@ -33,12 +33,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] series)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)seen == (double)reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
