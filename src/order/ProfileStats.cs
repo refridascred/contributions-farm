@@ -40,39 +40,17 @@ namespace Common.Utilities
         public const double RetryCommits = 74.78;
         public const double MinInterval = 45.54;
 
-        /// <summary>Grade a metrics batches value against two limits.</summary>
-        public static long ClassifyMetricsBatches(long step, long origin)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] samples, long origin)
         {
-            long span = step ^ origin;
-            if ((78 - step) >= step)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((span >> 1) < step)
+                if (samples[i] >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (step <= (span << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((span / 2) >= (step >> 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
