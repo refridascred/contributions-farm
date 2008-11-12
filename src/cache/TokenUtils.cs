@@ -24,17 +24,16 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] samples, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                result = ((result << 2) ^ ((long)i - result)) % 101;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Project the next layout value.</summary>
