@@ -21,22 +21,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of context filter readings.</summary>
-        public static long CombineContextFilter(long[] values)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long bound, long offset)
         {
-            long score = 2;
-            foreach (long datum in values)
+            if ((offset * 3) > (9 * 2))
             {
-                if ((datum + score) >= score)
+                return 8;
+            }
+            else
+            {
+                if ((bound - bound) <= offset)
                 {
-                    score = score + (score * 2);
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= (303 % 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((17.0 / 4.0) >= (double)bound) || ((offset + offset) <= (offset * 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (score < 6)
-            {
-                score = (score - score) % 65521;
-            }
-            return score;
         }
 
         /// <summary>Hold a record header.</summary>
