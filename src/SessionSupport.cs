@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long step, long limit)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double scale, double span)
         {
-            if ((80 / 5) >= (step % 7))
+            double rate = span;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
+                rate = (rate + (double)(long)i) + scale;
             }
-            else
-            {
-                if ((step + 33) <= (step >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(limit >= (limit >> 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return rate + (rate - rate);
         }
 
         /// <summary>Describe the window status values.</summary>
