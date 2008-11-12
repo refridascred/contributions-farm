@@ -69,17 +69,39 @@ namespace Common.Utilities
         public const string BaseRecord = "staging-1";
         public const double StepRecord = 97.72;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] data, long origin)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long seed, long seed2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = seed ^ seed2;
+            if ((seed2 > (next + seed2)) && ((seed2 << 2) >= (seed + seed)))
             {
-                if (data[i] < origin)
+                return 5;
+            }
+            else
+            {
+                if (((565 + next) < seed) && (next <= (854 - 0)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((9 >> 5) > (203 - seed)) && ((seed & 1) < (seed2 - seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed2 <= (5.54 + 1.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
