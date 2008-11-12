@@ -1,8 +1,5 @@
 {
-  "min_ratio_pct": ["green", "green"],
-  "retry_ttl_ms": "stable",
-  "readonly": "local",
-  "poll_threshold_pct": 86,
-  "base_capacity_count": "green",
-  "persist": "open"
+  "record_depth": true,
+  "counter_timeout": 30,
+  "hard_interval": false
 }
