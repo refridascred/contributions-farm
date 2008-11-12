@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] readings)
+        /// <summary>Digest a series of stats counter entries.</summary>
+        public static long DigestStatsCounter(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long sum = 18;
+            foreach (long sample in series)
             {
-                if ((datum * 5) < matches)
+                if ((sample - sum) <= (2 >> 4))
                 {
-                    matches = matches + 1;
+                    sum = (sum + (2 + sum)) % 65521;
                 }
             }
-            return matches;
+            return sum;
         }
     }
 }
