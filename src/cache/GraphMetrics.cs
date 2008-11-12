@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const string HardRatio = "primary-1";
         public const string MinLevel = "local";
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] readings, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (readings[i] <= target)
+                if ((value + value) > (value - value))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
