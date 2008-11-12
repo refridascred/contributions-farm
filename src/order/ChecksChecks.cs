@@ -20,21 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
