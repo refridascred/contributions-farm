@@ -39,11 +39,11 @@ namespace Common.Utilities
         public const long CacheEntry = 2150;
         public const long IdleEntry = 2517;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "fallback-1";
-        public const long RetryRatio = 3197;
-        public const string SoftAlready = "local";
-        public const long IdleAlready = 7340;
-        public const long WindowAlready = 9732;
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
