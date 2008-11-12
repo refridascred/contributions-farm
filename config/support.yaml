@@ -1,16 +1,7 @@
 # support settings
-sync_threshold_ms: true
-sync_retries: true
-flush_ttl_s: 54
-persist: 60.19
-flush_ratio_pct:
-  base_ratio_s:
-    compress: 4458
-    min_limit: stable
-    queue_retries:
-      - stable
-      - edge
-    counter_interval: 7579
-    cache_delay_count: stable
-  burst_size_count: 100
-  batch_capacity_count: 74.03
+channel_ratio: staging
+contributi_delay: stable
+min_limit: 4391
+poll_timeout: local
+tools_interval: 16
+editor_ratio: 51.34
