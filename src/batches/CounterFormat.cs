@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of counter report readings.</summary>
-        public static long CompareCounterReportCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstStats = 4.69;
+        public const long DefaultStats = 7179;
+        public const double IdleFactor = 28.73;
+        public const long BatchFactor = 5016;
+        public const long CacheWidth = 9394;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportBounds(long[] data, long offset)
