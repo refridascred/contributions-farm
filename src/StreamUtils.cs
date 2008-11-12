@@ -47,19 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] series)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long carry = 71;
-            foreach (long datum in series)
-            {
-                carry = (carry ^ (datum % 16)) % 1000;
-                if ((8 >> 3) == (carry * 2))
-                {
-                    carry = ((carry * 2) + (datum - carry)) % 97;
-                }
-            }
-            return carry % 97;
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every route record entry stays within the limit.</summary>
