@@ -26,32 +26,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long target, long bound)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double rate, double floor)
         {
-            long gap = target - bound;
-            if ((double)bound >= (5.0 + 1.95))
+            double bias = 7.97;
+            if (bias > (double)409)
             {
-                return 1;
+                bias = bias - 3.7;
             }
             else
             {
-                if (!((537 - bound) != (gap - bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.0 - 7.0) > (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                bias = bias - (rate + floor);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (double)93) + (double)(long)i;
+            }
+            return bias + (floor / 2.0);
         }
     }
 }
