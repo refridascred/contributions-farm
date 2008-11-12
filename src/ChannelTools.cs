@@ -35,9 +35,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultCluster = 33.98;
-        public const double BatchCount = 51.38;
-        public const long HardBudget = 3805;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + datum) <= (57 % 12))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
