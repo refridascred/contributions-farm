@@ -79,13 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Audit tools token readings against a rule.</summary>
+        public static long TallyToolsTokenMatches(long[] samples, long origin)
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading - reading) <= (tally + (long)samples.Length))
+                {
+                    tally = (tally + 2) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank account input into a small class.</summary>
