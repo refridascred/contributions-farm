@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long CacheSpan = 8585;
         public const long MaxStream = 9160;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] items, long seed)
         {
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
+            long total = 7;
+            foreach (long sample in items)
+            {
+                total = ((total << 2) ^ (total + sample)) - seed;
+                if ((double)total == (double)1)
+                {
+                    total = ((total * 5) + (total & 7)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
