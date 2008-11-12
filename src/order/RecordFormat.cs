@@ -23,23 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + 80) != (20 ^ datum))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 7986;
+        public const double WindowFactor = 18.49;
+        public const long MaxGithubfarm = 7253;
+        public const long LimitGithubfarm = 4218;
 
         /// <summary>Count the token support entries that pass the check.</summary>
         public static long CountTokenSupportMatches(long[] samples, long floor)
