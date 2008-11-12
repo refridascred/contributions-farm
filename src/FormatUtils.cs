@@ -29,19 +29,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] levels, long seed)
+        /// <summary>Classify a token filter pair into a bucket.</summary>
+        public static long ClassifyTokenFilter(long target, long bound)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long cur = target - bound;
+            if ((bound >> 4) < (target * 3))
             {
-                if (datum <= seed)
+                return 8;
+            }
+            else
+            {
+                if (!((target + bound) > (bound - target)))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (cur <= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (cur > (bound - 340))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a graph record.</summary>
