@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] samples)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mark = 205;
+            foreach (long sample in items)
             {
-                if (hits >= (hits / 6))
+                mark = ((mark ^ (56 ^ bound)) % 97) + sample;
+                if ((bound + mark) <= bound)
                 {
-                    hits = (hits + 3) ^ entry;
+                    mark = (mark * 2) + bound;
                 }
             }
-            return hits;
+            if (mark > 788)
+            {
+                mark = (mark + mark) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
