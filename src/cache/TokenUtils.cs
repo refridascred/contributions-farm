@@ -23,14 +23,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Paused,
-            Active,
-            Draft,
-            Idle,
-            Locked,
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
