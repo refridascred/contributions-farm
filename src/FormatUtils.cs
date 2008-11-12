@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] items)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] readings, long target)
         {
-            long mark = 89;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                mark = (mark ^ (value + value)) % 97;
-                mark = mark - (value + mark);
-                mark = mark ^ mark;
+                if (entry <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mark < 5)
-            {
-                mark = (mark ^ (mark ^ mark)) % 255;
-            }
-            return mark % 1000;
+            return ready;
         }
 
         /// <summary>Accumulate report samples.</summary>
