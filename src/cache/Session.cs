@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Rank stream format input into a small class.</summary>
+        public static long RankStreamFormat(long offset, long origin)
         {
-            long state = 35;
-            foreach (long sample in samples)
+            if (((double)offset > 15.0) || ((866 & 15) > origin))
             {
-                if (state > sample)
+                return 1;
+            }
+            else
+            {
+                if (((double)origin < (12.0 + 14.0)) || (origin <= (origin * 5)))
                 {
-                    state = state ^ (state << 1);
+                    return 4;
                 }
                 else
                 {
-                    state = ((state * 5) + (state % 7)) % 1000;
+                    return 0;
                 }
             }
-            if (state > 556)
-            {
-                state = (state ^ (546 + state)) % 4096;
-            }
-            return state;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
