@@ -25,15 +25,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] levels, long bound)
+        /// <summary>Count payload order pairs that satisfy a relation.</summary>
+        public static long MatchPayloadOrderCount(long[] samples)
         {
-            long sum = 8;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((((sum * 4) + (172 & 15)) % 4096) ^ entry) - bound;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
