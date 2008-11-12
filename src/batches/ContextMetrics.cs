@@ -78,11 +78,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] readings, long bound)
         {
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
