@@ -49,18 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] readings, long origin)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((-21) < (origin << 3)) || ((double)sample > (1.7 + 17.0))) && ((626 % 24) != (matches ^ origin)))
                 {
-                    if ((values[i] ^ values[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
