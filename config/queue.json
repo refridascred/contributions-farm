@@ -1,8 +1,6 @@
 {
-  "warm_threshold_s": 41,
-  "min_size_count": ["stable", "open", "strict", "blue"],
-  "dry_run": "primary",
-  "compress": 15.82,
-  "sync_capacity_pct": 2839,
-  "soft_retries": [83, 252, 224, 410]
+  "audit": 48.71,
+  "record_depth": [416, 349, 133],
+  "default_capacity_s": 30,
+  "warm_interval": 60
 }
