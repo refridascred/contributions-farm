@@ -22,20 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] items)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double scale, double span)
         {
-            long mix = 99;
-            foreach (long entry in items)
+            double drift = span / 3.0;
+            if (drift >= (drift + drift))
             {
-                if (!((entry - entry) < entry))
-                {
-                    mix = (mix << 2) ^ (mix + mix);
-                    mix = mix ^ (mix + 368);
-                }
-                mix = mix ^ 781;
+                drift = (drift + span) - scale;
             }
-            return mix;
+            else
+            {
+                drift = drift - (0.6 / 7.0);
+            }
+            return drift + (double)60;
         }
 
         /// <summary>Hold a checks summary.</summary>
