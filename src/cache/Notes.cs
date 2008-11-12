@@ -50,19 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] series, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (sample >= offset)
+                if ((396 % 60) < (matches * 3))
                 {
-                    stale = false;
-                    break;
+                    matches = ((matches + 1) + item) - seed;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
