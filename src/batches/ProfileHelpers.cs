@@ -27,22 +27,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long floor, long limit)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long seed, long seed2)
         {
-            if ((floor >> 3) == (floor - limit))
+            if (((seed2 + 0) < seed) && (7.85 >= (double)seed2))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((double)floor != (1.57 - 3.0))
+                if (seed2 <= (seed2 << 3))
                 {
                     return 3;
                 }
                 else
                 {
-                    return 7;
+                    if ((double)seed > (1.1 / 2.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
