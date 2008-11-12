@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] series, long seed)
+        /// <summary>Compare every pair of entry filter readings.</summary>
+        public static long OverlapEntryFilterCount(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((tally & 31) > (26 << 3)) && (((sample % 16) <= (sample >> 2)) || ((6.6 / 9.0) <= (double)tally)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) + seed;
+                    if ((data[i] ^ data[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Project the next notes value.</summary>
