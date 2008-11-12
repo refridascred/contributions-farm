@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many checks filter samples are out of range.</summary>
-        public static long MeasureChecksFilterHits(long[] values)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((hits * 4) < (reading + reading)) || !((8.3 * 9.5) != (double)reading))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Queued,
+            Retry,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Digest a series of cluster buffer entries.</summary>
