@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Fold a list of account githubfarm readings.</summary>
+        public static long DigestAccountGithubfarm(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 526;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((((state << 3) ^ state) % 65521) - value) + origin;
             }
-            return hits;
+            return state % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
