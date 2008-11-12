@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=472
+log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+for item in edge latest eu-west cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
