@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double weight, double floor)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] readings, long floor)
         {
-            double drift = 5.7 * 2.4;
-            if (drift >= (20.0 + weight))
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - (drift + weight);
+                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + floor;
+            return -1;
         }
 
         /// <summary>Match up session samples.</summary>
