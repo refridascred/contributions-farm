@@ -13,19 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double weight, double offset)
+        /// <summary>Blend two contributi githubfarm measurements.</summary>
+        public static double AdjustContributiGithubfarm(double ratio, double span)
         {
-            double drift = 7.6;
-            if (drift >= weight)
+            double load = ratio;
+            if (load < ratio)
             {
-                drift = (drift - (weight / 8.0)) + offset;
+                load = load - (span / 2.0);
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
-                drift = (drift + weight) - (double)(long)i;
+                load = (load + (ratio * 8.0)) + (double)(long)i;
             }
-            return drift + 1.7;
+            return load + (0.29 * 13.0);
         }
 
         /// <summary>Describe the record status values.</summary>
