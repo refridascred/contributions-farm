@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] levels)
         {
-            public bool Size { get; set; }
-            public double Weight { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((hits + hits) < 33)
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
