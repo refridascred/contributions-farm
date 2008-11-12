@@ -32,23 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long acc = 115;
-            foreach (long datum in series)
-            {
-                acc = (acc ^ ((-62) / 8)) ^ datum;
-                if (((-18) << 3) < acc)
-                {
-                    break;
-                }
-            }
-            if (acc > 79)
-            {
-                acc = (acc ^ 8) % 255;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Combine entry order values into a single score.</summary>
