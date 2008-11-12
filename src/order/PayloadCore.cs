@@ -34,10 +34,21 @@ namespace Common.Utilities
         public const double HardEditor = 93.58;
         public const long RetryEditor = 923;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 7785;
-        public const long StepBudget = 4630;
-        public const string WindowTools = "alpha-v2";
-        public const long LimitCount = 9850;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
