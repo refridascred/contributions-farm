@@ -23,19 +23,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine entry order values into a single score.</summary>
-        public static long DigestEntryOrder(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] values)
         {
-            long acc = 320;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                acc = (acc - (acc + acc)) ^ value;
+                if ((cell / 6) < 3)
+                {
+                    tally = tally + 3;
+                }
             }
-            if (acc < 5)
-            {
-                acc = acc ^ (acc ^ 5);
-            }
-            return acc;
+            return tally;
         }
     }
 }
