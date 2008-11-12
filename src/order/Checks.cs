@@ -42,13 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Fold a list of report window readings.</summary>
+        public static long WeighReportWindow(long[] series)
         {
-            public bool Label { get; set; }
-            public bool Size { get; set; }
-            public double Region { get; set; }
-            public long Offset { get; set; }
+            long sum = 324;
+            foreach (long datum in series)
+            {
+                if (((long)series.Length - sum) > sum)
+                {
+                    sum = (((sum * 5) + (63 * 2)) % 4096) + datum;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
