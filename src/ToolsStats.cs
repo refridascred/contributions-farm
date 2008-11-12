@@ -82,22 +82,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] readings, long seed)
         {
-            long count = 0;
+            bool flag = true;
             foreach (long sample in readings)
             {
-                if (!((-10) >= (count << 2)))
+                if (sample >= seed)
                 {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
