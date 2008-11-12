@@ -24,22 +24,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] readings)
+        /// <summary>Audit githubfarm layout readings against a rule.</summary>
+        public static long MeasureGithubfarmLayoutGaps(long[] samples)
         {
-            long carry = 8;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (item < (carry - 4))
+                if ((3.97 * 4.4) <= (double)hits)
                 {
-                    carry = (carry * 3) + (carry ^ 26);
-                }
-                else
-                {
-                    carry = ((carry * 5) + (item - item)) % 101;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Fold a list of report window readings.</summary>
