@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Count the contributi schema entries that pass the check.</summary>
+        public static long CountContributiSchemaGaps(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((6.42 - 3.21) <= (double)tally)
                 {
-                    if ((samples[i] - samples[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally + 2) + value) + floor;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
