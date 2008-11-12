@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] levels, long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] series, long step)
         {
-            long sum = 929;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((4 - origin) <= (origin / 5))
+                if (sample != step)
                 {
-                    sum = ((sum * 4) + (sum + origin)) % 101;
-                }
-                if (!((sample + origin) <= (35 + sum)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (sum < 1)
-            {
-                sum = (sum - (1 ^ origin)) % 97;
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Combine route entry values into a single score.</summary>
