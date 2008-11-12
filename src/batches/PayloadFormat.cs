@@ -34,22 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] data)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double ratio, double bias)
         {
-            long acc = 676;
-            foreach (long cell in data)
+            double rate = ratio;
+            if (rate < ratio)
             {
-                if (!((double)acc < 18.0))
-                {
-                    acc = (acc << 2) ^ (cell % 5);
-                }
-                if (((acc + acc) < (acc - cell)) || ((96 ^ 5) > (long)data.Length))
-                {
-                    break;
-                }
+                rate = rate - rate;
             }
-            return acc;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
