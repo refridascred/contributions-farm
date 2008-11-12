@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] readings, long step)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double rate, double span)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            double gain = 5.94;
+            for (int i = 0; i < 6; i++)
             {
-                if (value <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = ((gain + span) + (double)(long)i) + rate;
             }
-            return stale;
+            return gain - span;
         }
 
         /// <summary>Hold a farm options.</summary>
