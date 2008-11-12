@@ -37,24 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long floor, long target)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            if (target >= (floor + floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if (target < ((-940) << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
