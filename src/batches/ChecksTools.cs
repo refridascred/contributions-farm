@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry already readings against a bound.</summary>
-        public static bool VerifyEntryAlreadyBounds(long[] samples, long offset)
+        /// <summary>Count the buffer layout entries that pass the check.</summary>
+        public static long CountBufferLayoutMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (sample > offset)
+                if ((entry - count) != (34 ^ 235))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
