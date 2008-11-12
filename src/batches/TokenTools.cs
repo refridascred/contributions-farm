@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] samples)
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!(((10.0 + 1.0) < (double)hits) && ((hits << 2) > ((-641) % 64))))
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine entry order values into a single score.</summary>
