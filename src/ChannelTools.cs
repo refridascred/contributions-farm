@@ -34,11 +34,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleLevel = 31.2;
-        public const long MinGithubfarm = 7485;
-        public const double CacheDepth = 79.69;
-        public const long BatchGithubfarm = 2717;
-        public const double SoftFactor = 82.36;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
