@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Compare every pair of counter report readings.</summary>
+        public static long CompareCounterReportCount(long[] data)
         {
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit buffer context readings against a rule.</summary>
