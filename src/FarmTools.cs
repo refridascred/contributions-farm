@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((tally - entry) > entry) && ((entry >= 418) && ((entry << 3) != (tally * 5))))
                 {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
