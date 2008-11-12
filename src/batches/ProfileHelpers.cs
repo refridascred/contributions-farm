@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long floor, long bound)
         {
-            Active,
-            Closed,
-            Synced,
-            Pending,
+            if ((bound - bound) == (bound - floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((floor - floor) > (floor & 3)) || ((51 & 7) > (bound + bound)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (95 > (bound - floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound >= 23)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
