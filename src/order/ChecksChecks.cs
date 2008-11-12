@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] values, long target)
+        /// <summary>Count the payload queue entries that pass the check.</summary>
+        public static long TallyPayloadQueueGaps(long[] items)
         {
-            long anchor = 32;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (((double)anchor < (16.0 + 0.9)) || ((anchor - anchor) > (entry << 3)))
+                if (cell <= (cell + 91))
                 {
-                    anchor = (anchor - (4 - target)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (entry + entry)) % 1000;
+                    seen = seen + 1;
                 }
             }
-            if (anchor < 776)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
