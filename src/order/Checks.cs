@@ -53,11 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] values, long seed)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
