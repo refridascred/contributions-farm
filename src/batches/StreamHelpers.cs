@@ -44,39 +44,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long target, long target2)
+        /// <summary>Validate tools session readings against a bound.</summary>
+        public static bool ValidateToolsSessionLimits(long[] data, long offset)
         {
-            long offset = target ^ target2;
-            if (((double)target == (5.1 - 20.0)) && ((double)target2 > (2.9 - 9.3)))
+            bool ready = true;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + offset) >= (9 - offset))
+                if (datum < offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target2 == (15.0 - 9.3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target % 24) < (target + 9)) && ((0 * 5) == (target << 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
