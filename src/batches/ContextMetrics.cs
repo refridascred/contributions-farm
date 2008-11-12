@@ -38,16 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next schema token value from a seed.</summary>
-        public static long DeriveSchemaToken(long floor)
+        /// <summary>Count cache support pairs that satisfy a relation.</summary>
+        public static long CompareCacheSupportCount(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum ^ ((long)i - floor)) % 4096;
-                sum = ((sum * 3) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
