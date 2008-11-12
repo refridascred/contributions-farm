@@ -27,18 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] values, long step)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long mark = 7;
-            foreach (long entry in values)
-            {
-                if ((mark & 15) > (mark >> 4))
-                {
-                    mark = ((mark - 0) - entry) - step;
-                }
-            }
-            return mark;
+            public double Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
