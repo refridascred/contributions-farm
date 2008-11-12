@@ -1,7 +1,17 @@
 # entry settings
-sync_ttl_count: local
-hard_ttl: 7351
-stats_delay: edge
-warm_interval_ms:
-  - primary
-  - standard
+burst_depth_count: legacy
+base_threshold:
+  - eu-west
+  - strict
+  - legacy
+max_retries:
+  - 237
+  - 438
+  - 285
+filter_depth: 37.39
+sync_ratio:
+  dry_run: 1021
+  buffer_ttl: true
+  counter_limit: strict
+  filter_retries: 1024
+warm_limit_pct: 16.44
