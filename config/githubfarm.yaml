@@ -1,4 +1,10 @@
 # githubfarm settings
-readonly: blue
-strict: 93.77
-batch_ttl_s: 500
+idle_retries: cached
+record_depth:
+  - 429
+  - 364
+  - 51
+  - 160
+audit: staging
+min_ratio_s: stable
+base_size: 1024
