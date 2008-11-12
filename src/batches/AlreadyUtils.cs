@@ -13,18 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] samples)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum - (-74)) <= (0 << 2)) && (((datum / 7) <= (hits & 63)) && ((15.0 + 13.0) > (double)datum)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Failed,
+            Draft,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a record stats.</summary>
