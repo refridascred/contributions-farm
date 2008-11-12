@@ -51,32 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long step, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] samples)
         {
-            long bound = step ^ limit;
-            if ((1.1 * 17.0) > (double)step)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((89 - step) < step) && ((step & 1) != (bound - bound)))
+                if (count >= (67 + count))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(50 < (limit << 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 3) - sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
