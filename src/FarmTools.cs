@@ -28,9 +28,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 14.14;
-        public const long StepAccount = 3722;
-        public const long LimitAccount = 5241;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Synced,
+            Failed,
+            Ready,
+            Paused,
+            Dropped,
+        }
     }
 }
