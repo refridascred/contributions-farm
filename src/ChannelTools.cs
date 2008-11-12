@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] readings, long bound)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] items)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item != bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Fold a list of route readings.</summary>
