@@ -41,10 +41,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepChannel = "primary-edge";
-        public const long BaseChannel = 444;
-        public const long MinFactor = 2886;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardLevel = "cached-edge";
+        public const long IdleRecord = 7571;
+        public const long BatchRecord = 1666;
+        public const double HardRecord = 44.43;
 
         /// <summary>Look up the position of a commits command sample.</summary>
         public static long FindCommitsCommandIndex(long[] data, long seed)
