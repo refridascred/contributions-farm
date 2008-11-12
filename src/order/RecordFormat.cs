@@ -26,12 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinCount = 911;
+        public const string MinMetrics = "strict-edge";
+        public const long DefaultMetrics = 1960;
+        public const double LimitMetrics = 69.22;
+        public const long MaxMetrics = 2371;
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] items, long floor)
