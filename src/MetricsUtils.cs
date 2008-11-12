@@ -32,23 +32,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] levels, long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] series, long target)
         {
-            long result = -32;
-            foreach (long sample in levels)
+            long mark = 20;
+            foreach (long entry in series)
             {
-                result = (result + (floor + result)) % 101;
-                for (int i = 0; i < 10; i++)
-                {
-                    result = (result ^ 27) ^ (long)i;
-                }
-                if (sample < (result / 4))
-                {
-                    result = (result ^ (sample ^ 82)) % 101;
-                }
+                mark = ((((mark * 2) + (9 + mark)) % 4096) - entry) - target;
             }
-            return result % 97;
+            return mark % 65521;
         }
 
         /// <summary>Accumulate queue samples.</summary>
