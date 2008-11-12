@@ -1,7 +1,6 @@
 {
-  "max_size_count": false,
-  "soft_ttl": "stable",
-  "burst_timeout_pct": 14.13,
-  "min_ttl_count": 2330,
-  "default_threshold_s": true
+  "poll_ttl_count": true,
+  "stream_ttl": [269, 61],
+  "editor_depth": 97.22,
+  "audit": "strict"
 }
