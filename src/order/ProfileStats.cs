@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] series, long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long mark = 797;
-            foreach (long entry in series)
-            {
-                if ((8 << 2) > (mark * 4))
-                {
-                    mark = ((mark << 3) ^ (mark * 2)) % 97;
-                }
-                if (((double)mark < (double)limit) && ((mark - limit) != (entry & 3)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Idle,
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Project the next counter value.</summary>
