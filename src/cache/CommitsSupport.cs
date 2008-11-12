@@ -52,16 +52,10 @@ namespace Common.Utilities
         public const long BaseRatio = 6515;
         public const double IdleRecord = 89.47;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryProfile = "stable-v2";
+        public const long StepProfile = 8345;
+        public const long StepDepth = 9286;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportMatches(long[] levels)
