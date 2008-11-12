@@ -46,39 +46,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long limit, long target)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long step = limit + target;
-            if ((target + 358) != ((-65) + step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((7.0 * 3.4) != (double)limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target >= (1.31 * 12.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target <= 7.06)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Draft,
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
