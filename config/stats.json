@@ -1,14 +1,14 @@
 {
-  "warm_retries_pct": [7, 57, 407],
-  "readonly": "edge",
-  "audit": ["stable", "edge", "latest", "stable"],
   "compress": "cached",
-  "support_ttl": "blue",
-  "support_limit": {
-    "route_ratio": "cached",
-    "checks_retries": 33.47,
-    "retry_ratio": [433, 340, 143],
-    "retry_size_s": "green",
-    "cache_capacity_count": "latest"
-  }
+  "base_retries_ms": {
+    "sync_timeout_pct": "primary",
+    "window_capacity": {
+      "entry_interval": 96,
+      "batch_window_ms": 1024,
+      "notes_delay": 3.5
+    },
+    "graph_threshold": false
+  },
+  "stats_retries": "latest",
+  "cache_retries": 8.0
 }
