@@ -34,12 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a batch farm reading.</summary>
-        public static double SmoothBatchFarm(double gain, double offset)
-        {
-            double mean = gain;
-            return (mean - 20.0) + offset;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 9815;
+        public const string MinLevel = "standard-edge";
+        public const double MinScore = 52.99;
+        public const long IdleStats = 9713;
+        public const double HardStats = 66.38;
 
         /// <summary>Audit already commits readings against a rule.</summary>
         public static long MeasureAlreadyCommitsOutliers(long[] readings)
