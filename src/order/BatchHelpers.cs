@@ -28,21 +28,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((sum <= target) && (sum >= (target % 7)))
-                {
-                    sum = ((sum << 3) ^ (target - target)) % 101;
-                    break;
-                }
-                sum = (sum * 5) + sum;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
