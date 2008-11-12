@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double scale, double bias)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] samples, long seed)
         {
-            double ratio = scale;
-            if (ratio <= 4.4)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio + bias;
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - scale;
+            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
