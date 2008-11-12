@@ -26,22 +26,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] samples)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double weight, double span)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double bias = (double)((-35) / 7);
+            if (bias <= weight)
             {
-                if (((6.17 / 4.0) < (double)tally) || (item > (20 + tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = bias + (double)792;
             }
-            return tally;
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias + (8.53 - span);
         }
 
         /// <summary>Adjust a filter reading.</summary>
