@@ -34,12 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitSpan = "strict-edge";
+        public const double RetryFactor = 38.9;
+        public const long HardLevel = 3462;
+        public const long RetryRatio = 4637;
+        public const string LimitAlready = "standard-edge";
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long RollBatches(long limit)
