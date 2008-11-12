@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Stale,
+            Active,
+            Idle,
             New,
-            Retry,
-            Closed,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
