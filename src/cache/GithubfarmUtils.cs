@@ -37,12 +37,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Audit cache stats readings against a rule.</summary>
+        public static long TallyCacheStatsMatches(long[] series)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((hits * 2) <= (hits % 8)) && !((0.4 * 8.8) > (double)hits))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
