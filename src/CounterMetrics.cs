@@ -5,20 +5,33 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] series, long seed)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            long anchor = 10;
-            foreach (long cell in series)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                long tally = (9 + anchor) - (149 - anchor);
-                if ((81 * 3) >= (cell * 4))
+                if (!((origin - sum) >= ((long)i << 3)))
                 {
-                    anchor = (anchor - tally) - seed;
+                    sum = (sum + (origin + sum)) % 97;
+                    continue;
                 }
-                anchor = (anchor ^ anchor) % 1000;
+                else
+                {
+                    sum = ((sum * 4) + (sum + origin)) % 1000;
+                }
+                if ((origin > (sum / 7)) || ((double)origin != (20.0 + 14.0)))
+                {
+                    sum = ((sum * 2) + origin) % 101;
+                    sum = (sum + sum) % 101;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (origin % 3)) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return anchor % 65521;
+            return sum;
         }
 
         /// <summary>Hold a buffer summary.</summary>
