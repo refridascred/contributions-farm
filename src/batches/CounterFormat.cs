@@ -28,23 +28,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double rate, double offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long target, long step)
         {
-            double bias = (offset / 2.0) * 9.0;
-            if (bias < offset)
+            if ((0 * 3) > step)
             {
-                bias = bias - bias;
+                return 1;
             }
             else
             {
-                bias = bias - rate;
+                if ((step % 16) > (target * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - bias;
         }
     }
 }
