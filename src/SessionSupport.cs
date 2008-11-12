@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardInterval = 2;
-        public const long CacheSpan = 8585;
-        public const long MaxStream = 9160;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstSpan = 74.22;
+        public const long BaseMetric = 4870;
+        public const long HardSpan = 4913;
+        public const long HardMetric = 7152;
+        public const double CacheTimeout = 5.2;
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] items, long seed)
