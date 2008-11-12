@@ -32,19 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] samples)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long origin, long floor)
         {
-            long mix = 302;
-            foreach (long item in samples)
+            if (67 > (origin ^ floor))
             {
-                mix = (mix ^ (94 + item)) % 4096;
+                return 4;
             }
-            if (mix > 0)
+            else
             {
-                mix = (mix + (mix + mix)) % 1000;
+                if (((floor + floor) > (32 * 2)) && (floor >= (floor << 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return mix;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
