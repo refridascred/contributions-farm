@@ -52,14 +52,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardWidth = 70.43;
+        public const long BaseRecord = 5339;
+        public const long BaseRatio = 6515;
+        public const double IdleRecord = 89.47;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long RollFilter(long origin)
