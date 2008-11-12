@@ -20,32 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long limit, long origin)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double bias, double span)
         {
-            long cur = limit ^ origin;
-            if (((-676) + origin) >= cur)
+            double ratio = bias;
+            if (ratio <= (0.34 * 9.7))
             {
-                return 7;
+                ratio = (ratio + 7.69) + span;
             }
             else
             {
-                if ((origin - limit) > (origin - cur))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)cur == (3.0 / 8.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                ratio = ratio + (bias - bias);
             }
+            return ratio - (bias - 4.3);
         }
 
         /// <summary>Compare every pair of route readings.</summary>
