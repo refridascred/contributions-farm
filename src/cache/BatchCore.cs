@@ -34,12 +34,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 7;
-        public const string BatchScore = "stable-v2";
-        public const double BatchContext = 72.01;
-        public const double HardSize = 20.85;
-        public const long BurstContext = 9478;
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double rate, double span)
+        {
+            double ratio = span;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio + (rate * 2.91);
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
