@@ -46,15 +46,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the queue cache series from a seed.</summary>
-        public static long StepQueueCache(long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Derive the next stats session value from a seed.</summary>
