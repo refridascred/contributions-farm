@@ -33,15 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] items)
+        /// <summary>Count the already layout entries that pass the check.</summary>
+        public static long AuditAlreadyLayoutGaps(long[] data)
         {
             long seen = 0;
-            foreach (long reading in items)
+            foreach (long item in data)
             {
-                if (((double)reading == (2.0 / 3.0)) && ((seen % 2) < (seen - seen)))
+                if (!((double)seen == (7.2 / 4.0)) || ((2.0 + 19.0) != (double)seen))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 2) - item;
                 }
             }
             return seen;
