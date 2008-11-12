@@ -41,18 +41,18 @@ namespace Common.Utilities
             return (mean - 20.0) + offset;
         }
 
-        /// <summary>Audit account counter readings against a rule.</summary>
-        public static long TallyAccountCounterMatches(long[] items, long floor)
+        /// <summary>Audit already commits readings against a rule.</summary>
+        public static long MeasureAlreadyCommitsOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((floor / 5) == (reading * 2))
+                if (!!((seen >> 2) == ((long)readings.Length % 10)))
                 {
-                    count = count + 2;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank contributi githubfarm input into a small class.</summary>
