@@ -63,20 +63,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] readings)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series, long offset)
         {
-            long state = 2;
-            foreach (long reading in readings)
+            long anchor = 630;
+            foreach (long sample in series)
             {
-                long span = (state << 2) + (reading & 15);
-                for (int i = 0; i < 7; i++)
+                anchor = ((anchor + (sample * 2)) % 101) - offset;
+                if ((double)anchor != (double)sample)
                 {
-                    state = ((state + span) % 4096) ^ (long)i;
+                    break;
                 }
-                state = ((state * 2) + (state + state)) % 4096;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Hold a graph record.</summary>
