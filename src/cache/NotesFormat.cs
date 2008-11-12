@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double ratio, double bias)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] levels, long step)
         {
-            double ratio2 = (ratio - 17.0) - (bias + 6.23);
-            return ratio2 - (ratio2 - ratio);
+            long sum = 4;
+            foreach (long sample in levels)
+            {
+                if (sum >= (step + step))
+                {
+                    sum = ((sum - sum) % 4096) + sample;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
