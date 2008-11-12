@@ -15,31 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long bound, long step)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            if ((5 - step) >= bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound ^ bound) <= (bound + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6 + bound) < (bound + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Retry,
+            Ready,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
