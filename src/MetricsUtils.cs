@@ -67,15 +67,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            long result = 6;
+            foreach (long cell in readings)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if ((double)result < (8.0 + 19.0))
+                {
+                    result = ((result * 4) + cell) % 4096;
+                    result = (result + result) % 97;
+                }
+                if ((cell + result) <= result)
+                {
+                    result = (result ^ result) % 97;
+                }
             }
-            return total;
+            return result % 65521;
         }
     }
 }
