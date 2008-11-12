@@ -14,15 +14,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a account record counter forward.</summary>
-        public static long DeriveAccountRecord(long offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long bound, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
+            if ((5 - step) >= bound)
             {
-                total = ((total * 5) + (long)i) % 101;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((bound ^ bound) <= (bound + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6 + bound) < (bound + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next route profile value.</summary>
