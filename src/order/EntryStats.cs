@@ -13,14 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] series, long offset)
         {
-            Active,
-            Ready,
-            Pending,
-            Done,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
