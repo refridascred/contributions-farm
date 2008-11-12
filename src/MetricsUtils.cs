@@ -38,15 +38,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] data)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long score = 24;
-            foreach (long sample in data)
-            {
-                score = ((score - score) % 1000) ^ sample;
-            }
-            return score % 1000;
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
