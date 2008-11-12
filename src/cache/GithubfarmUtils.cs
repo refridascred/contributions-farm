@@ -23,18 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] items, long limit)
+        /// <summary>Check that every cache metric entry stays within the limit.</summary>
+        public static bool ValidateCacheMetricLimits(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((double)limit <= (1.5 / 6.0))
+                if (datum >= target)
                 {
-                    hits = (hits + 2) + sample;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
