@@ -42,12 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Blend two token route measurements.</summary>
+        public static double BlendTokenRoute(double scale, double floor)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            double rate = floor * 13.0;
+            if (rate > 5.34)
+            {
+                rate = (rate + floor) - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (rate / 5.0)) - (double)(long)i;
+            }
+            return rate + floor;
         }
     }
 }
