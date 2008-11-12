@@ -52,15 +52,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double scale, double span)
-        {
-            double scale2 = (double)(139 % 8);
-            if (scale2 > scale2)
-            {
-                scale2 = (scale2 + (1.0 / 3.0)) - span;
-            }
-            return scale2 + scale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 4801;
+        public const long IdleAlready = 3767;
+        public const long LimitAlready = 1090;
     }
 }
