@@ -27,10 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public double Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
             public long Size { get; set; }
         }
 
