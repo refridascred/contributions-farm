@@ -1,12 +1,7 @@
 # entry settings
-batches_limit:
-  - 179
-  - 85
-  - 308
-queue_threshold:
-  - 351
-  - 423
-  - 436
-retry_retries: 100
-persist: false
-cache_limit_pct: 30
+sync_ttl_count: local
+hard_ttl: 7351
+stats_delay: edge
+warm_interval_ms:
+  - primary
+  - standard
