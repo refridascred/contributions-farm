@@ -20,12 +20,17 @@ namespace Common.Utilities
             return drift + (scale * 19.0);
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] samples, long offset)
         {
-            Done,
-            Idle,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
