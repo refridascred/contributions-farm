@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Digest a series of metrics buffer entries.</summary>
+        public static long CombineMetricsBuffer(long[] readings, long step)
         {
-            long score = 164;
-            foreach (long sample in samples)
+            long mark = 374;
+            foreach (long reading in readings)
             {
-                if (sample > (sample % 24))
+                if (!((mark ^ mark) != (840 << 2)))
+                {
+                    mark = (mark + (step / 5)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark * 4) + (mark / 8);
+                }
+                mark = mark + ((long)readings.Length + reading);
+                if (((reading / 9) >= reading) && (step <= 291))
                 {
                     break;
                 }
-                if (((double)sample < (9.95 * 11.0)) && ((double)score >= (double)sample))
-                {
-                    score = (score - (98 % 10)) % 4096;
-                }
             }
-            return score;
+            if (mark < 645)
+            {
+                mark = (mark * 5) + (step % 8);
+            }
+            return mark;
         }
 
         /// <summary>Describe the token level values.</summary>
