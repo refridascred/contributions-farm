@@ -1,6 +1,8 @@
-id,ratio,token,level
-1,staging,standard,stable
-2,96.44,407,fallback
-3,275,75.55,blue
-4,685,34.15,661
-5,54.96,241,stable
+id,count,token,ratio
+1,blue,29,812
+2,452,349,571
+3,standard,916,open
+4,97.44,122,latest
+5,657,171,47.89
+6,local,25,46.38
+7,latest,56.51,local
