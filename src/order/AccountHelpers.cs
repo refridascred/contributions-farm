@@ -78,21 +78,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Locked,
+            Stale,
+            Ready,
+            Done,
         }
 
         /// <summary>Define report limits and defaults.</summary>
