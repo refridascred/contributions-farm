@@ -30,13 +30,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            Stale,
+            Synced,
+            New,
+            Locked,
         }
     }
 }
