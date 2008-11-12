@@ -40,22 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] readings)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long seed)
         {
-            long mix = 506;
-            foreach (long sample in readings)
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (((sample ^ sample) < (657 << 1)) && (sample > (sample >> 4)))
+                if (!((seed + carry) < ((long)i * 2)))
                 {
-                    mix = mix - (mix % 2);
+                    carry = (carry << 3) ^ seed;
+                    carry = (carry * 4) + (301 ^ carry);
                 }
-                else
-                {
-                    mix = (mix << 3) ^ sample;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return mix % 97;
+            return carry;
         }
 
         /// <summary>Combine tools order values into a single score.</summary>
