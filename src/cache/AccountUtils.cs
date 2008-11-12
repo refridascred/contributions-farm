@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate already schema samples.</summary>
-        public static long DigestAlreadySchema(long[] data, long step)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long carry = -41;
-            foreach (long entry in data)
-            {
-                if ((7.65 - 0.32) > (double)carry)
-                {
-                    carry = (carry + (entry << 1)) - step;
-                }
-            }
-            return carry;
+            Synced,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
