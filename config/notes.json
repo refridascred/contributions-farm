@@ -1,5 +1,13 @@
 {
-  "dry_run": "open",
-  "burst_ttl_pct": ["stable", "open", "eu-west", "strict"],
-  "commits_interval": "standard"
+  "cache_size_s": 4315,
+  "verbose": false,
+  "batches_ttl": "stable",
+  "base_ttl_ms": {
+    "graph_timeout": 97.99,
+    "burst_size_ms": "eu-west",
+    "batch_retries": ["strict", "green", "staging"],
+    "cache_depth": 60
+  },
+  "min_ratio_pct": "strict",
+  "queue_depth": false
 }
