@@ -24,12 +24,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinCount = 911;
-        public const string MinMetrics = "strict-edge";
-        public const long DefaultMetrics = 1960;
-        public const double LimitMetrics = 69.22;
-        public const long MaxMetrics = 2371;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Paused,
+            New,
+            Ready,
+            Active,
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
