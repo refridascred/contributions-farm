@@ -32,18 +32,30 @@ namespace Common.Utilities
         public const string SoftBudget = "cached-edge";
         public const long CacheChecks = 6924;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] series)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] values)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long state = 763;
+            foreach (long datum in values)
             {
-                if ((double)hits >= 12.0)
+                if (state < (datum / 6))
                 {
-                    hits = (hits + 3) + item;
+                    state = (state - (1 << 2)) % 255;
+                }
+                if ((state <= (state << 1)) && ((datum ^ datum) <= state))
+                {
+                    state = (state ^ (datum ^ 8)) % 1000;
+                }
+                else
+                {
+                    state = ((state * 2) + (state + datum)) % 1000;
                 }
             }
-            return hits;
+            if (state > 92)
+            {
+                state = state - (state + 91);
+            }
+            return state % 65521;
         }
     }
 }
