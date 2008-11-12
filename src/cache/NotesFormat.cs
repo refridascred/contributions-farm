@@ -34,18 +34,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] values)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (895 <= matches)
+                if (cell > seed)
                 {
-                    matches = (matches + 2) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
