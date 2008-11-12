@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double gain, double offset)
         {
-            Draft,
-            Paused,
-            Retry,
-            New,
+            double mean = (0.2 * 4.9) - (double)38;
+            return (mean - offset) + gain;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
