@@ -21,11 +21,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "primary-v2";
-        public const long SoftLevel = 9760;
-        public const double LimitFactor = 88.26;
-        public const long LimitBuffer = 851;
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
