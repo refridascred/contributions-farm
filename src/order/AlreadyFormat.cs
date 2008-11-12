@@ -63,9 +63,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 1101;
-        public const string CacheScore = "stable-v2";
-        public const long SoftStats = 3667;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] series)
+        {
+            long result = 7;
+            foreach (long item in series)
+            {
+                result = (result - (item & 31)) % 4096;
+                result = result + result;
+                if ((result + 985) > (item % 5))
+                {
+                    result = (result * 5) + (result + (-100));
+                }
+            }
+            if (result < 276)
+            {
+                result = ((result * 3) + (result & 63)) % 97;
+            }
+            return result;
+        }
     }
 }
