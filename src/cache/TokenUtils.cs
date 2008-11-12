@@ -25,13 +25,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long seed)
         {
-            Stale,
-            Synced,
-            New,
-            Locked,
+            long total = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((1.08 + 1.4) >= (double)seed)
+                {
+                    total = ((total * 3) + (long)i) % 1000;
+                }
+                if ((((-66) + (-730)) == (seed & 31)) || ((total + seed) < (total + 72)))
+                {
+                    total = total ^ (total << 3);
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
