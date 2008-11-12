@@ -1,6 +1,7 @@
 {
-  "compress": ["staging", "eu-west"],
-  "hard_threshold_ms": 7909,
-  "min_limit_count": 8391,
-  "hard_limit_count": [346, 500, 107]
+  "cache_threshold": ["primary", "legacy", "open"],
+  "idle_ratio": "stable",
+  "batch_ratio_s": false,
+  "readonly": 3,
+  "batch_capacity_s": 8
 }
