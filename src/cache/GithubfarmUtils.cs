@@ -20,12 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] items, long target)
         {
-            Failed,
-            Pending,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
