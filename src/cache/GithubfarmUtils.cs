@@ -38,10 +38,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 5761;
-        public const long WindowInterval = 7595;
-        public const long BurstScore = 1443;
+        /// <summary>Validate checks token readings against a bound.</summary>
+        public static bool CheckChecksTokenRange(long[] samples, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
