@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double ratio, double offset)
         {
-            long sum = 57;
-            foreach (long item in series)
+            double weight = (13.0 / 4.0) - (offset * 1.8);
+            if (weight > (double)9)
             {
-                if ((0.3 / 5.0) == (double)sum)
-                {
-                    sum = (sum << 3) ^ (item - item);
-                }
-                if (((long)series.Length & 7) != (item + sum))
-                {
-                    sum = ((sum * 2) + item) % 1000;
-                }
-                else
-                {
-                    sum = (sum * 3) + (item + sum);
-                }
+                weight = (weight + (double)8) - ratio;
             }
-            return sum;
+            return weight + offset;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
