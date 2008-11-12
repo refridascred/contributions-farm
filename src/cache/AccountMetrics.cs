@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 606;
-        public const double StepTimeout = 56.55;
-        public const string MaxCount = "stable-1";
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MaxSession = 2874;
