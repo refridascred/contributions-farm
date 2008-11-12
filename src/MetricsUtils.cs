@@ -44,10 +44,19 @@ namespace Common.Utilities
         public const long RetryCluster = 1842;
         public const long RetryLevel = 3840;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 9371;
-        public const long MinWidth = 8586;
-        public const long BatchWidth = 1579;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (floor >= sample)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
