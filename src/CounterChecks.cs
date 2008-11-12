@@ -83,11 +83,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 9719;
-        public const long StepQueue = 33;
-        public const double SoftRatio = 44.07;
-        public const long RetryRatio = 194;
-        public const long RetryQueue = 2846;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] values)
+        {
+            long result = 9;
+            foreach (long reading in values)
+            {
+                result = result - (89 - result);
+                if (result <= (reading + result))
+                {
+                    result = (result - (reading ^ reading)) % 65521;
+                }
+                if ((11.0 + 5.34) == (double)result)
+                {
+                    break;
+                }
+            }
+            return result % 97;
+        }
     }
 }
