@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] samples)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((double)matches < (9.71 + 0.31))
+                if ((88 / 7) <= (count + offset))
                 {
-                    matches = (matches + 3) ^ entry;
+                    count = (count + 1) ^ cell;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a filter counter reading by value.</summary>
