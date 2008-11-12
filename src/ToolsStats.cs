@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long limit)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = (state * 2) + state;
-                    state = (state * 2) + ((long)i2 - state);
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Closed,
+            Queued,
+            Synced,
+            Done,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
