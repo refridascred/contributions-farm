@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Failed,
-            Locked,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardInterval = 6238;
+        public const double BatchBatches = 70.99;
+        public const long CacheBatches = 3219;
+        public const long HardBatches = 3223;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
