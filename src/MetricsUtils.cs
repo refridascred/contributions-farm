@@ -22,11 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Find the first stream channel entry that matches the target.</summary>
+        public static long LookupStreamChannelIndex(long[] levels, long seed)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
