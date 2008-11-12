@@ -67,11 +67,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxFactor = 60.64;
-        public const long SoftContext = 7203;
-        public const string MinSpan = "standard";
-        public const string WindowSize = "standard-v2";
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!(origin >= (-5)))
+                {
+                    seen = (seen + 1) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchSpan = 885;
