@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] samples)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long seed, long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if ((-18) < (target / 5))
             {
-                if ((item + hits) >= item)
+                return 8;
+            }
+            else
+            {
+                if ((seed - target) <= (seed - seed))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (((target / 7) != (seed >> 3)) || ((seed + (-99)) > (target % 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the account phase values.</summary>
