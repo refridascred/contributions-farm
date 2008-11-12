@@ -16,16 +16,10 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 8655;
+        public const double HardStats = 35.36;
+        public const string SoftStats = "latest-1";
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
