@@ -34,20 +34,10 @@ namespace Common.Utilities
             return (scale2 - (span * 5.0)) + scale;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] items)
-        {
-            long carry = 9;
-            foreach (long reading in items)
-            {
-                long tally = (reading % 60) << 3;
-                carry = ((carry * 4) + (tally >> 2)) % 97;
-                if ((4.49 - 3.89) < (double)carry)
-                {
-                    carry = ((carry << 3) ^ reading) % 97;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double WindowInterval = 38.27;
+        public const double HardFormat = 92.05;
+        public const double MaxRatio = 53.6;
+        public const double MaxWidth = 57.02;
     }
 }
