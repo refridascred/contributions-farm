@@ -47,15 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] readings)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] series, long offset)
         {
-            long sum = 602;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                sum = (((sum << 3) ^ (-71)) % 65521) ^ sample;
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum % 4096;
+            return stale;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
