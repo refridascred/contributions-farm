@@ -24,9 +24,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxSize = "fallback";
-        public const long MinBudget = 6050;
-        public const string RetryInterval = "legacy";
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
