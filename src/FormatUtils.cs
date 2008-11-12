@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double ratio, double offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double weight = (13.0 / 4.0) - (offset * 1.8);
-            if (weight > (double)9)
-            {
-                weight = (weight + (double)8) - ratio;
-            }
-            return weight + offset;
+            Locked,
+            Closed,
+            Dropped,
+            Pending,
+            Retry,
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
