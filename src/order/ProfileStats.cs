@@ -40,17 +40,23 @@ namespace Common.Utilities
         public const double RetryCommits = 74.78;
         public const double MinInterval = 45.54;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] samples, long origin)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (2.8 / 7.0) * 11.0;
+            if (gain >= (gain + weight))
             {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
+                gain = (gain - weight) + bias;
             }
-            return -1;
+            else
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + 5.0;
         }
     }
 }
