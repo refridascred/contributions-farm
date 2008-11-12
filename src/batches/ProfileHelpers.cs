@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] samples, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (value != limit)
+                if (((86 & 31) >= tally) && ((sample << 1) > (seed % 24)))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
