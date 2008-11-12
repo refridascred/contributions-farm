@@ -59,11 +59,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 6.49;
-        public const long WindowInterval = 9584;
-        public const string SoftSpan = "latest-edge";
-        public const long MaxContext = 4636;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] data, long target)
+        {
+            long sum = -330;
+            foreach (long entry in data)
+            {
+                if ((long)data.Length <= entry)
+                {
+                    sum = (sum + entry) - target;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long SeriesChecks(long offset)
