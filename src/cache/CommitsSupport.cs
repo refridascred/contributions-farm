@@ -5,20 +5,30 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] values, long bound)
         {
-            long sum = 144;
-            foreach (long sample in series)
+            long acc = 69;
+            foreach (long reading in values)
             {
-                sum = (sum - sum) % 101;
-                sum = ((sum * 2) + sample) % 4096;
-                if ((sum + sample) <= sample)
+                for (int i = 0; i < 4; i++)
                 {
-                    sum = ((sum * 4) + (sample % 100)) % 4096;
+                    acc = ((acc ^ reading) % 255) - (long)i;
+                }
+                if (((bound >> 3) <= bound) || ((acc % 12) > (reading >> 2)))
+                {
+                    acc = ((acc * 5) + acc) % 101;
+                }
+                if (bound >= (acc ^ 51))
+                {
+                    acc = (acc * 4) + (bound + bound);
+                }
+                else
+                {
+                    acc = acc - (acc / 9);
                 }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Locate a command reading by value.</summary>
