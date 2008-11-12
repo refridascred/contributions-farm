@@ -82,21 +82,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)reading >= (0.93 - 1.1)) && ((10.0 - 6.0) <= (double)count))
                 {
-                    if ((readings[i] ^ readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
