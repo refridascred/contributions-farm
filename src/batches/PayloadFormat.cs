@@ -14,16 +14,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 625;
+        public const double BurstSize = 95.16;
+        public const long StepSupport = 1587;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheGaps(long[] series)
