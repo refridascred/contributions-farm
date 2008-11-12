@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double scale, double span)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] items)
         {
-            double mean = (double)(88 ^ 8);
-            if (mean >= span)
+            long total = -41;
+            foreach (long cell in items)
             {
-                mean = (mean - span) - scale;
+                total = ((total << 3) ^ (6 - cell)) % 4096;
+                if ((175 - total) == (total - 9))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (double)(-226)) + (double)(long)i;
-            }
-            return mean - mean;
+            return total;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
