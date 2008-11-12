@@ -44,30 +44,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] series, long target)
-        {
-            long anchor = 464;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = (anchor ^ (anchor + sample)) ^ (long)i;
-                }
-                if ((1.7 >= (double)target) && ((anchor << 3) == (target >> 4)))
-                {
-                    anchor = (anchor << 3) ^ (target + sample);
-                }
-                else
-                {
-                    anchor = (anchor * 4) + 737;
-                }
-            }
-            if (anchor < 249)
-            {
-                anchor = (anchor * 5) + (anchor * 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxSize = 2419;
+        public const long CacheMetric = 410;
+        public const long IdleMetric = 1473;
+        public const double LimitMetric = 47.63;
     }
 }
