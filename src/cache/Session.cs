@@ -24,17 +24,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a tools editor sample.</summary>
-        public static long LookupToolsEditorIndex(long[] readings, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = -72;
+            foreach (long value in data)
             {
-                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = (((result ^ 8) % 1000) ^ value) - origin;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Classify a cache counter pair into a bucket.</summary>
