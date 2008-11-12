@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already layout entries that pass the check.</summary>
-        public static long AuditAlreadyLayoutGaps(long[] data)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long score = 807;
+            foreach (long cell in levels)
             {
-                if (!((double)seen == (7.2 / 4.0)) || ((2.0 + 19.0) != (double)seen))
+                score = score + cell;
+                if ((6 ^ cell) >= cell)
                 {
-                    seen = (seen + 2) - item;
+                    score = (score ^ (401 ^ 76)) % 4096;
                 }
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
