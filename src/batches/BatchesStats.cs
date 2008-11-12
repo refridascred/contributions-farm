@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Look up the position of a channel support sample.</summary>
+        public static long LocateChannelSupportIndex(long[] levels, long target)
         {
-            Paused,
-            Retry,
-            Synced,
-            Dropped,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate stats samples.</summary>
