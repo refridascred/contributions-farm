@@ -1,6 +1,17 @@
 {
-  "burst_limit_ms": "staging",
-  "retry_limit_count": "strict",
-  "hard_ratio": 98.47,
-  "verbose": 8081
+  "poll_limit": {
+    "default_ttl_s": true,
+    "metrics_retries": 500,
+    "strict": 100,
+    "readonly": [385, 485, 93]
+  },
+  "window_retries": "cached",
+  "stream_delay": {
+    "checks_delay": 6372,
+    "verbose": 81,
+    "idle_ratio": true
+  },
+  "max_limit_s": true,
+  "idle_delay_s": true,
+  "poll_capacity_s": 21.6
 }
