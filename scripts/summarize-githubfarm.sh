@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable fallback blue; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-primary}"
 case "${mode}" in
-    primary)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in fallback legacy; do
+    log "checking ${item}"
+done
