@@ -40,18 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit farm editor readings against a rule.</summary>
-        public static long MeasureFarmEditorMatches(long[] readings, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] data)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (!(reading >= (reading + 619)))
+                if (((item / 4) > item) || ((hits - hits) != (item / 9)))
                 {
-                    count = (count + 2) - offset;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a profile entry.</summary>
