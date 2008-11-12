@@ -43,19 +43,39 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] values, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long seed, long step)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long prev = seed ^ step;
+            if (((-6) >> 3) >= (step + prev))
             {
-                if (sample < origin)
+                return 6;
+            }
+            else
+            {
+                if ((seed % 64) > (step / 3))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (prev <= (prev + prev))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (842 >= (step + (-1)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a counter header.</summary>
