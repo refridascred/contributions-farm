@@ -55,23 +55,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Project the next metrics token value.</summary>
-        public static double ProjectMetricsToken(double gain, double bias)
+        /// <summary>Validate cluster metrics readings against a bound.</summary>
+        public static bool ValidateClusterMetricsLimits(long[] readings, long limit)
         {
-            double ratio = (double)3 * 8.4;
-            if (ratio <= gain)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                ratio = (ratio - ratio) - bias;
+                if (sample < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - gain) - (double)(long)i;
-            }
-            return ratio - 20.0;
+            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
