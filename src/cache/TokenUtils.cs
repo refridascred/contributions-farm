@@ -13,10 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 4008;
-        public const long DefaultAlready = 9220;
-        public const long SoftWidth = 5443;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Active,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] series, long step)
