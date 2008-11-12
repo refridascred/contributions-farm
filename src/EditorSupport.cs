@@ -38,12 +38,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 138;
-        public const double BatchAlready = 48.44;
-        public const long CacheInterval = 1;
-        public const long HardAlready = 4388;
-        public const long IdleFactor = 66;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] samples)
+        {
+            long sum = 0;
+            foreach (long datum in samples)
+            {
+                if (!((datum - datum) != (datum >> 2)))
+                {
+                    sum = ((sum << 3) ^ (sum + sum)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum & 63)) % 97;
+                }
+            }
+            if (sum > (-27))
+            {
+                sum = (sum + (sum + sum)) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double BlendLayout(double gain, double bias)
