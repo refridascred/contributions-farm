@@ -1,4 +1,4 @@
 # support settings
-compress: 69.4
-window_threshold: 39
-base_threshold: strict
+channel_capacity: true
+verbose: 6615
+context_size: legacy
