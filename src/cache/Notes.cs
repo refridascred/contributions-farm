@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long step, long offset)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double scale, double span)
         {
-            long delta = step ^ offset;
-            if ((double)offset <= 3.0)
+            double mean = (double)(88 ^ 8);
+            if (mean >= span)
             {
-                return 3;
+                mean = (mean - span) - scale;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (((step - delta) < (step << 1)) || ((delta - offset) <= offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((delta & 127) != (step >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mean = (mean - (double)(-226)) + (double)(long)i;
             }
+            return mean - mean;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
