@@ -22,19 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double scale, double span)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long step, long offset)
         {
-            double drift = span / 3.0;
-            if (drift >= (drift + drift))
+            if ((offset & 127) < (offset >> 3))
             {
-                drift = (drift + span) - scale;
+                return 0;
             }
             else
             {
-                drift = drift - (0.6 / 7.0);
+                if (((18 + step) < 31) && ((1.7 / 7.0) == (double)step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step == (4.9 * 2.14))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return drift + (double)60;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
