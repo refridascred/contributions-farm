@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] samples, long origin)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((2.82 - 5.0) > (double)seen)
-                {
-                    seen = ((seen + 2) ^ sample) + origin;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the cache queue entries that pass the check.</summary>
