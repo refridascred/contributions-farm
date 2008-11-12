@@ -30,25 +30,34 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long floor, long limit)
+        /// <summary>Combine editor schema values into a single score.</summary>
+        public static long CombineEditorSchema(long[] levels, long target)
         {
-            long cur = floor - limit;
-            if ((double)cur >= 2.0)
+            long state = 8;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)cur > (3.1 / 6.0))
+                if ((4.3 / 5.0) > (double)state)
                 {
-                    return 2;
+                    state = (state - state) % 255;
                 }
                 else
                 {
-                    return 0;
+                    state = ((state << 3) ^ reading) % 4096;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    state = ((state + state) % 255) ^ (long)i;
+                }
+                if ((reading * 4) < (target + state))
+                {
+                    state = (state ^ (8 & 63)) % 255;
                 }
             }
+            if (state < 4)
+            {
+                state = (state << 3) ^ 67;
+            }
+            return state % 4096;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
