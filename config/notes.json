@@ -1,5 +1,7 @@
 {
-  "persist": [349, 441, 201, 124],
-  "schema_capacity": ["green", "strict", "primary", "local"],
-  "min_ratio_ms": false
+  "min_threshold": true,
+  "batch_threshold": 1029,
+  "payload_delay": "staging",
+  "already_delay": 1024,
+  "cache_delay": "eu-west"
 }
