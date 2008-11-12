@@ -13,32 +13,16 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long seed, long offset)
+        /// <summary>Roll a cluster farm counter forward.</summary>
+        public static long SeriesClusterFarm(long seed)
         {
-            long bound = seed ^ offset;
-            if (offset >= (offset ^ 2))
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
+                acc = (acc - acc) % 101;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)bound == (8.94 - 0.16))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound ^ offset) <= (53 >> 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the entry class values.</summary>
