@@ -1,14 +1,11 @@
 # Command notes
 
-When a cluster fails, the command handler retries a few times before giving up.
-Keep stream and contributi names short and lowercase.
-A stream that stays idle for too long is moved to the cache list.
-
-The farm report groups every context by stream.
-Each filter is validated before it reaches the account queue.
+The counter report groups every queue by format.
+Keep profile and session names short and lowercase.
 
 ## Guidelines
 
-- Log every checks change
-- Keep tools values small
+- Review order limits each release
+- Keep metrics values small
 - Prefer token defaults
+- Validate cluster input early
