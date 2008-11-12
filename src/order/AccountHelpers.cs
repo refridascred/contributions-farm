@@ -84,10 +84,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleLevel = 2125;
-        public const string LimitBuffer = "staging-edge";
-        public const long DefaultBuffer = 3064;
-        public const long BatchBuffer = 3897;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] series, long target)
+        {
+            long state = 54;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    state = ((state << 2) ^ ((-8) * 4)) ^ (long)i;
+                    state = state + (reading ^ (long)series.Length);
+                }
+                if (reading < (reading * 4))
+                {
+                    state = (state << 2) ^ (-3);
+                }
+                state = state - (target + state);
+            }
+            if (state > 75)
+            {
+                state = (state ^ (target ^ state)) % 65521;
+            }
+            return state;
+        }
     }
 }
