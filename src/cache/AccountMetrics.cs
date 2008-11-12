@@ -57,18 +57,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long target, long limit)
         {
-            long score = 582;
-            foreach (long datum in values)
+            if (((target % 7) <= limit) && ((target - limit) != (target & 255)))
             {
-                if ((datum - datum) < (59 >> 1))
+                return 3;
+            }
+            else
+            {
+                if ((limit >= (limit + target)) && ((limit & 63) >= (limit << 2)))
                 {
-                    score = ((score << 3) ^ (datum ^ datum)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    if (!(limit > target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return score;
         }
     }
 }
