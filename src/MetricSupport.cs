@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Draft,
-            Locked,
-            Active,
+            New,
+            Failed,
+            Synced,
+            Paused,
+            Closed,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
