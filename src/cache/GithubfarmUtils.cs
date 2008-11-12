@@ -20,17 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] items, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((items[i] < target) && ((items[i] % 3) == 0))
+                if ((double)limit <= (1.5 / 6.0))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
