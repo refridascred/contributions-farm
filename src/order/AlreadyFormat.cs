@@ -71,24 +71,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] series)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] data, long limit)
         {
-            long result = 7;
-            foreach (long item in series)
+            long score = 923;
+            foreach (long sample in data)
             {
-                result = (result - (item & 31)) % 4096;
-                result = result + result;
-                if ((result + 985) > (item % 5))
+                for (int i = 0; i < 12; i++)
                 {
-                    result = (result * 5) + (result + (-100));
+                    score = (score * 2) + (7 ^ (long)i);
                 }
+                score = (score - limit) % 101;
+                score = ((score * 2) + sample) % 1000;
             }
-            if (result < 276)
-            {
-                result = ((result * 3) + (result & 63)) % 97;
-            }
-            return result;
+            return score;
         }
     }
 }
