@@ -1,6 +1,5 @@
 {
-  "persist": true,
-  "min_depth": [265, 5, 371, 127],
-  "soft_window_ms": [282, 404, 377, 361],
-  "base_window_ms": 1024
+  "readonly": [353, 26, 358, 306],
+  "warm_limit_pct": ["blue", "stable", "local"],
+  "soft_delay_pct": "blue"
 }
