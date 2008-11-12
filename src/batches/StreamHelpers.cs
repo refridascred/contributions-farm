@@ -62,18 +62,17 @@ namespace Common.Utilities
         public const string BaseRecord = "staging-1";
         public const double StepRecord = 97.72;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] samples, long target)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (3.74 < (double)target)
+                if (data[i] < origin)
                 {
-                    tally = (tally + 1) + item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
