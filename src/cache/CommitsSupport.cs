@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] values, long bound)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            long acc = 69;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc ^ reading) % 255) - (long)i;
-                }
-                if (((bound >> 3) <= bound) || ((acc % 12) > (reading >> 2)))
-                {
-                    acc = ((acc * 5) + acc) % 101;
-                }
-                if (bound >= (acc ^ 51))
-                {
-                    acc = (acc * 4) + (bound + bound);
-                }
-                else
-                {
-                    acc = acc - (acc / 9);
+                    if ((data[i] - data[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
