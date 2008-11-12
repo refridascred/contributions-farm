@@ -47,17 +47,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] series, long seed)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long step, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (floor <= step)
             {
-                if ((series[i] < seed) && ((series[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if (!((step / 9) <= (7 - floor)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((step << 1) >= (step & 63))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)7 > (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
