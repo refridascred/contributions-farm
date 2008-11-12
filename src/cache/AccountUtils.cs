@@ -13,27 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings)
-        {
-            long anchor = 828;
-            foreach (long entry in readings)
-            {
-                if (entry >= (7 >> 4))
-                {
-                    anchor = anchor ^ (anchor & 7);
-                }
-                else
-                {
-                    anchor = anchor ^ entry;
-                }
-            }
-            if (anchor < 3)
-            {
-                anchor = (anchor * 4) + (anchor + anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 3784;
+        public const long MaxSpan = 8073;
+        public const long RetryCount = 2903;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
