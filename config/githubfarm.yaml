@@ -1,18 +1,5 @@
 # githubfarm settings
-window_threshold:
-  - 416
-  - 305
-  - 211
-  - 261
-poll_limit_pct: false
-already_timeout:
-  sync_ttl:
-    burst_threshold: false
-    account_threshold: 6382
-    enabled: open
-    flush_threshold: 89.93
-  enabled: legacy
-  editor_ttl:
-    - standard
-    - cached
-    - latest
+schema_ttl: 83.84
+support_depth: 73
+entry_window: staging
+base_limit: open
