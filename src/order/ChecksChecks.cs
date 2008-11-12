@@ -16,11 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
