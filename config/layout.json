@@ -1,11 +1,11 @@
 {
-  "sync_size_count": {
-    "warm_threshold": 518,
-    "persist": ["green", "standard"],
-    "record_delay": [399, 79]
-  },
-  "buffer_ratio": 30,
-  "commits_limit": 6796,
-  "verbose": "cached",
-  "burst_retries_ms": 500
+  "sync_depth_s": 89.46,
+  "batch_ttl_ms": 30.08,
+  "compress": ["strict", "eu-west", "standard"],
+  "metrics_ttl": 19.24,
+  "cache_interval_count": {
+    "cache_size_pct": true,
+    "min_limit": "strict",
+    "audit": true
+  }
 }
