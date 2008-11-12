@@ -25,15 +25,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] values)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long carry = 26;
-            foreach (long cell in values)
-            {
-                carry = ((carry - (310 << 1)) % 255) ^ cell;
-            }
-            return carry % 97;
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
