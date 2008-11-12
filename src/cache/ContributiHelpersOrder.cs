@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Active,
-            Queued,
-            Retry,
-            Stale,
-            Dropped,
+            public bool Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
