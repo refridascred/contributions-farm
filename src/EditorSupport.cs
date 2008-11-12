@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] readings, long bound)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double rate, double span)
         {
-            long anchor = 1;
-            foreach (long datum in readings)
+            double bias = rate * 9.3;
+            if (bias > (double)26)
             {
-                if (!(4 > (anchor + datum)))
-                {
-                    anchor = ((anchor - (anchor / 4)) % 4096) - bound;
-                }
+                bias = bias - (span * 14.0);
             }
-            return anchor;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (bias * 6.8)) + (double)(long)i;
+            }
+            return bias + (double)54;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
