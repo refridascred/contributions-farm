@@ -35,22 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] items)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + datum) <= (57 % 12))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
