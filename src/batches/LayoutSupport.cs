@@ -59,13 +59,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 5561;
+        public const long HardWidth = 4871;
+        public const string BaseSize = "cached-1";
     }
 }
