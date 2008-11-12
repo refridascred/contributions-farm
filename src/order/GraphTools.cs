@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const long CacheBatches = 3219;
         public const long HardBatches = 3223;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public long Total { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchWidth = 4213;
+        public const long MinDepth = 240;
+        public const double WindowInterval = 85.32;
+        public const long MinTimeout = 1540;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long GradePayload(long floor, long step)
