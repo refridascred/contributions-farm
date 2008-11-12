@@ -68,15 +68,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] series, long target)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long state = 7;
-            foreach (long item in series)
-            {
-                state = ((state - (state & 15)) ^ item) - target;
-            }
-            return state;
+            Paused,
+            Idle,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the payload kind values.</summary>
