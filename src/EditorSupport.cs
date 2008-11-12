@@ -77,18 +77,12 @@ namespace Common.Utilities
             return scale + (scale + bias);
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] readings)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)(long)readings.Length >= (8.6 - 9.22))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Audit channel queue readings against a rule.</summary>
