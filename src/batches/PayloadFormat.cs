@@ -14,10 +14,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 625;
-        public const double BurstSize = 95.16;
-        public const long StepSupport = 1587;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            New,
+            Dropped,
+            Pending,
+            Done,
+            Stale,
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double BlendCommits(double scale, double bias)
