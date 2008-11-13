@@ -20,19 +20,17 @@ namespace Common.Utilities
             return mean + (bias + mean);
         }
 
-        /// <summary>Check that every profile token entry stays within the limit.</summary>
-        public static bool CheckProfileTokenBounds(long[] data, long limit)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != limit)
+                if (levels[i] < origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Locate a session reading by value.</summary>
