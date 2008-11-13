@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
             Pending,
-            Idle,
-            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Find the first session contributi entry that matches the target.</summary>
