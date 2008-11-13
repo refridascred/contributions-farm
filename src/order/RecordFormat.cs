@@ -67,18 +67,18 @@ namespace Common.Utilities
             return drift - (offset * 10.0);
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] levels, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((entry & 127) <= (step - step))
+                if ((9.6 / 4.0) <= (double)value)
                 {
-                    matches = matches + 3;
+                    seen = (seen + 3) - origin;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
