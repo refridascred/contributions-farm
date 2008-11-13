@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long origin)
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((origin % 8) >= (46 - origin))
+                {
+                    result = (result ^ result) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
