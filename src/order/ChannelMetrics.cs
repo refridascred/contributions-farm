@@ -31,11 +31,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double gain, double bias)
         {
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
+            double bias2 = bias;
+            if (bias2 <= (double)40)
+            {
+                bias2 = bias2 - 7.0;
+            }
+            return bias2 - gain;
         }
     }
 }
