@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long floor, long seed)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double weight, double bias)
         {
-            long offset = floor + seed;
-            if ((offset % 5) != (seed - seed))
+            double load = (double)65;
+            if (load >= (double)15)
             {
-                return 7;
+                load = (load - 0.5) + bias;
             }
-            else
-            {
-                if ((double)offset >= (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + offset) != (seed - seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return load + weight;
         }
 
         /// <summary>Find the first stats schema entry that matches the target.</summary>
