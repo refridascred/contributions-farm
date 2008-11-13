@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Paused,
-            Done,
-            Synced,
-            Retry,
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of format entries.</summary>
