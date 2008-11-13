@@ -39,10 +39,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 7414;
-        public const double WindowScore = 62.32;
-        public const long WindowInterval = 8075;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] series, long origin)
+        {
+            long carry = -384;
+            foreach (long sample in series)
+            {
+                carry = (((carry << 3) ^ (474 + (-112))) % 97) ^ sample;
+                if (!(origin > (origin >> 1)))
+                {
+                    break;
+                }
+            }
+            if (carry < 665)
+            {
+                carry = ((carry * 4) + (carry ^ origin)) % 4096;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BaseNotes = 11.13;
