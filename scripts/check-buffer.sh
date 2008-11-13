@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=439
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-open}"
+mode="${1:-staging}"
 case "${mode}" in
-    strict)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached strict; do
+    log "checking ${item}"
+done
