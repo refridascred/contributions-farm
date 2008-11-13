@@ -68,19 +68,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double scale, double span)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double mean = scale;
-            if (mean < mean)
-            {
-                mean = mean - (double)177;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - span;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
