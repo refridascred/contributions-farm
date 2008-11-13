@@ -37,21 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stream schema samples.</summary>
-        public static long OverlapStreamSchemaCount(long[] readings)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = weight;
+            if (load > offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load - load;
             }
-            return tally;
+            return load + (double)473;
         }
 
         /// <summary>Measure how many context cluster samples are out of range.</summary>
