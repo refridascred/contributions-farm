@@ -30,21 +30,11 @@ namespace Common.Utilities
         public const string BatchFactor = "stable-edge";
         public const long MinLevel = 5358;
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
