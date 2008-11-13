@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first editor order entry that matches the target.</summary>
-        public static long LookupEditorOrderIndex(long[] readings, long seed)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Active,
+            Synced,
+            Idle,
+            Closed,
         }
 
         /// <summary>Locate a report reading by value.</summary>
