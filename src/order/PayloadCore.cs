@@ -29,27 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] items, long target)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long total = 79;
-            foreach (long value in items)
-            {
-                if (!((12.0 * 5.6) == (double)value))
-                {
-                    total = ((total * 4) + (target & 3)) % 65521;
-                }
-                total = ((total << 2) ^ target) % 1000;
-                if (total < (target & 255))
-                {
-                    total = (total + total) % 101;
-                }
-                else
-                {
-                    total = (total - (542 - target)) % 97;
-                }
-            }
-            return total % 65521;
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Digest a series of farm profile entries.</summary>
