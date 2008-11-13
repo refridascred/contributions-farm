@@ -17,21 +17,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Iterate the account notes series from a seed.</summary>
