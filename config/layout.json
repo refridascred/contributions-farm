@@ -1,7 +1,6 @@
 {
-  "max_timeout_count": "eu-west",
-  "stream_size": "strict",
-  "compress": 100,
-  "readonly": "green",
-  "warm_capacity_count": "green"
+  "retry_limit": true,
+  "dry_run": 2918,
+  "strict": ["stable", "blue"],
+  "burst_interval_count": "legacy"
 }
