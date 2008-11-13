@@ -64,13 +64,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit contributi metrics readings against a rule.</summary>
+        public static long TallyContributiMetricsGaps(long[] values)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((5.5 + 2.02) > 9.1)
+                {
+                    hits = (hits + 1) - reading;
+                }
+            }
+            return hits;
         }
     }
 }
