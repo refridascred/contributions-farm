@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "legacy-v2";
-        public const long MinRatio = 1321;
-        public const long MinLevel = 9984;
+        /// <summary>Count the cache notes entries that pass the check.</summary>
+        public static long TallyCacheNotesHits(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!((target - count) < 4))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long FindChannelIndex(long[] series, long seed)
