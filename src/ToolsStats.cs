@@ -21,18 +21,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Find the first checks account entry that matches the target.</summary>
-        public static long LocateChecksAccountIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 4871;
+        public const long MinNotes = 3740;
+        public const long WindowNotes = 5089;
 
         /// <summary>Adjust a layout reading.</summary>
         public static double SmoothLayout(double rate, double bias)
