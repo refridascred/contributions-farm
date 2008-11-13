@@ -32,22 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] series)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((((datum >> 4) >= (datum / 5)) && ((datum ^ hits) > (240 & 31))) && ((hits + hits) < (0 ^ hits)))
+                if ((tally / 7) != (long)data.Length)
                 {
-                    hits = hits + 1;
+                    tally = (tally + 1) + reading;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
