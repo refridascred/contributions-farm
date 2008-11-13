@@ -32,21 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of session cluster readings.</summary>
-        public static long PairSessionClusterCount(long[] items)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Synced,
+            Stale,
+            Pending,
         }
 
         /// <summary>Measure how many already report samples are out of range.</summary>
