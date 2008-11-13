@@ -40,17 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] levels, long floor)
+        /// <summary>Match up stream schema samples.</summary>
+        public static long OverlapStreamSchemaCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many context cluster samples are out of range.</summary>
