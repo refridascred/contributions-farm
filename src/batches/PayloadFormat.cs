@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] values)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long state = 371;
-            foreach (long sample in values)
-            {
-                if ((0.5 * 19.0) < (3.78 * 16.0))
-                {
-                    state = (((state * 3) + ((-143) & 255)) % 255) + sample;
-                    state = state ^ state;
-                }
-                else
-                {
-                    state = state - 33;
-                }
-                if (state < (state * 3))
-                {
-                    state = state ^ 127;
-                }
-            }
-            if (state < 907)
-            {
-                state = ((state << 3) ^ state) % 255;
-            }
-            return state;
+            public double Count { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a graph commits reading.</summary>
