@@ -79,22 +79,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up counter schema samples.</summary>
-        public static long MatchCounterSchemaCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 4248;
+        public const string MinFactor = "latest-edge";
+        public const long StepBatch = 5128;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool ValidateOrderLimits(long[] series, long floor)
