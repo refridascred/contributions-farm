@@ -27,10 +27,13 @@ namespace Common.Utilities
         public const long WindowGraph = 8456;
         public const long BatchGraph = 9893;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftContext = "local-edge";
-        public const string BatchInterval = "open-v2";
-        public const long WindowContext = 2672;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public bool Total { get; set; }
+            public double Size { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
