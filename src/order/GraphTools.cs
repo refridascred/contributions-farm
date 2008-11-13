@@ -33,18 +33,29 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the account cache entries that pass the check.</summary>
-        public static long CountAccountCacheHits(long[] values, long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (((long)values.Length + seen) != ((long)values.Length % 10))
+                long bound2 = (bound + 330) * 3;
+                if ((648 & 1) >= bound)
                 {
-                    seen = ((seen + 1) ^ cell) - floor;
+                    bound2 = bound2 - (score >> 4);
                 }
+                else
+                {
+                    score = ((score << 2) ^ (bound2 * 5)) % 101;
+                    bound2 = (bound2 + ((long)i & 31)) % 97;
+                }
+                if (bound >= (bound & 7))
+                {
+                    bound2 = ((bound2 << 3) ^ ((long)i + score)) % 1000;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Fold a list of report readings.</summary>
