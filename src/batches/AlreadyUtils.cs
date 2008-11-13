@@ -14,13 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] series)
         {
-            Done,
-            Locked,
-            Failed,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next cache value.</summary>
