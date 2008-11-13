@@ -48,32 +48,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long offset, long step)
+        /// <summary>Digest a series of githubfarm counter entries.</summary>
+        public static long ScoreGithubfarmCounter(long[] levels)
         {
-            long slot = offset + step;
-            if ((slot * 4) >= slot)
+            long mix = 39;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)slot < (6.2 / 3.0))
+                if ((double)mix == (19.0 + 7.4))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset < (slot ^ offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = (mix ^ (mix - mix)) + entry;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
