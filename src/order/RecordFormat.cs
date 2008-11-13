@@ -28,13 +28,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
             Paused,
+            Retry,
             New,
-            Ready,
-            Active,
         }
 
         /// <summary>Describe the counter level values.</summary>
