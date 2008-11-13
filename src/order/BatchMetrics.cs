@@ -19,15 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already route readings.</summary>
-        public static long CombineAlreadyRoute(long[] series)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long sum = 51;
-            foreach (long value in series)
-            {
-                sum = sum - value;
-            }
-            return sum % 4096;
+            Retry,
+            Stale,
+            Done,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
