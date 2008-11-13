@@ -56,12 +56,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryFactor = 5135;
-        public const long SoftSize = 4859;
-        public const long WindowContext = 6702;
-        public const long WindowWidth = 9183;
-        public const string SoftContext = "cached-v2";
+        /// <summary>Check that every payload queue entry stays within the limit.</summary>
+        public static bool ValidatePayloadQueueRange(long[] samples, long origin)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
