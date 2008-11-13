@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] series, long offset)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            double rate = (5.0 - scale) - scale;
+            if (rate >= (rate / 6.0))
             {
-                if (sample >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - scale;
             }
-            return ok;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate - (3.7 * 3.55);
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
