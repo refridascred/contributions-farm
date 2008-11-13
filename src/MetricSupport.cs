@@ -33,18 +33,18 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] items, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mark = 30;
+            foreach (long datum in values)
             {
-                if (cell > (hits + target))
+                if (((mark - datum) == (datum & 127)) || (mark < (datum + (-373))))
                 {
-                    hits = hits + 1;
+                    mark = (mark - datum) + bound;
                 }
             }
-            return hits;
+            return mark;
         }
     }
 }
