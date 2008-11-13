@@ -63,13 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
             public long Count { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
         }
     }
 }
