@@ -1,13 +1,17 @@
 {
-  "retry_retries_count": 500,
-  "readonly": "legacy",
-  "strict": 44.57,
-  "base_limit_pct": [356, 115, 159, 313],
-  "retry_size_count": 86.0,
-  "poll_timeout": {
-    "audit": true,
-    "sync_timeout_ms": "standard",
-    "stream_timeout": 6818,
-    "soft_depth_count": "open"
-  }
+  "default_interval": false,
+  "persist": {
+    "window_timeout": {
+      "base_ratio_ms": false,
+      "max_ttl": 2400,
+      "idle_depth_ms": "open",
+      "idle_window_ms": ["green", "edge", "open", "staging"]
+    },
+    "compress": "primary",
+    "poll_window_pct": 67,
+    "checks_depth": "blue",
+    "idle_threshold": "blue",
+    "max_interval_pct": true
+  },
+  "verbose": false
 }
