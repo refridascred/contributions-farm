@@ -5,39 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long floor, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long origin)
         {
-            long slot = floor + step;
-            if (((slot & 7) >= (5 / 7)) && ((floor - step) <= step))
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + slot) <= (floor << 3))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 4;
+                    anchor = (anchor + ((long)i2 + origin)) % 97;
                 }
-                else
+                if ((184 - anchor) != (origin + anchor))
                 {
-                    if (8.25 <= (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor % 5) == (slot >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    anchor = ((anchor << 3) ^ anchor) % 255;
+                    anchor = anchor - origin;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Describe the metrics status values.</summary>
