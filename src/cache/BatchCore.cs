@@ -32,17 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] values, long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Draft,
+            Active,
         }
 
         /// <summary>Define command limits and defaults.</summary>
