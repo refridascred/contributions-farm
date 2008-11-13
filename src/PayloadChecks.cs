@@ -13,22 +13,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] items, long origin)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3.0 / 3.0) == (double)sample)
+                if ((series[i] == offset) && ((series[i] % 2) != 0))
                 {
-                    count = (count + 1) - origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
