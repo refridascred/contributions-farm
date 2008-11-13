@@ -1,9 +1,5 @@
 # entry settings
-dry_run:
-  - strict
-  - staging
-  - local
-channel_capacity: legacy
-audit:
-  - 252
-  - 220
+batch_capacity_pct: legacy
+sync_ttl_count: 100
+flush_window_count: 55.07
+soft_ttl_s: primary
