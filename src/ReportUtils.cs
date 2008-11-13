@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const double StepFormat = 91.6;
         public const string MinRatio = "cached";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheRoute = 30.68;
-        public const long CacheWidth = 1838;
-        public const long BurstFactor = 3809;
-        public const string CacheSize = "legacy";
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = ((result * 2) + (step ^ step)) ^ (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
