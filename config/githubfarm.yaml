@@ -1,5 +1,7 @@
 # githubfarm settings
-audit: cached
-channel_ratio: 30
-default_delay: false
-contributi_window: 500
+entry_size: 1024
+command_depth: 44
+flush_capacity: eu-west
+dry_run: 88.7
+persist: 296
+strict: blue
