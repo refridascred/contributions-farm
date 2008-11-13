@@ -55,19 +55,11 @@ namespace Common.Utilities
         public const long IdleStream = 7247;
         public const string BatchStream = "primary-edge";
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] levels, long origin)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long state = 291;
-            foreach (long cell in levels)
-            {
-                state = state ^ (origin - cell);
-            }
-            if (state < 731)
-            {
-                state = state ^ (state >> 5);
-            }
-            return state % 4096;
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a context entry.</summary>
