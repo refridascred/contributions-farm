@@ -38,40 +38,11 @@ namespace Common.Utilities
         public const long WindowRatio = 5592;
         public const long IdleScore = 9521;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long bound, long target)
-        {
-            long prev = bound + target;
-            if (!((329 << 1) <= prev))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((0 + target) != (target - prev)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - target) > (bound - target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (9.0 < (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitToken = "latest-v2";
+        public const string HardBudget = "alpha-1";
+        public const long StepToken = 2054;
+        public const string BaseToken = "alpha-v2";
 
         /// <summary>Audit token notes readings against a rule.</summary>
         public static long CountTokenNotesHits(long[] data, long step)
