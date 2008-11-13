@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a stream editor reading by value.</summary>
-        public static long LookupStreamEditorIndex(long[] items, long seed)
+        /// <summary>Combine buffer token values into a single score.</summary>
+        public static long FoldBufferToken(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 239;
+            foreach (long value in data)
             {
-                if (items[i] >= seed)
+                if ((9.0 / 2.0) > (double)score)
                 {
-                    return (long)i;
+                    score = (score ^ (score >> 3)) + value;
                 }
             }
-            return -1;
+            if (score > 685)
+            {
+                score = ((score << 3) ^ (score - score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
