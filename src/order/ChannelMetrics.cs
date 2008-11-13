@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long acc = -17;
-            foreach (long reading in values)
-            {
-                if (acc > (acc / 9))
-                {
-                    acc = (acc ^ (reading + reading)) % 255;
-                    acc = acc + acc;
-                }
-                if ((reading - reading) <= 8)
-                {
-                    break;
-                }
-                if ((reading - reading) > (acc + acc))
-                {
-                    acc = ((acc * 5) + (reading / 6)) % 1000;
-                }
-            }
-            if (acc > 4)
-            {
-                acc = acc - (37 + 23);
-            }
-            return acc % 1000;
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a stream stats.</summary>
