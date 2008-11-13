@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] levels)
         {
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (((datum % 10) >= ((-954) - datum)) || (datum <= (datum & 63)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count filter cluster pairs that satisfy a relation.</summary>
