@@ -1,10 +1,11 @@
 # support settings
-audit: primary
-stream_ratio:
-  - latest
-  - edge
-  - latest
-verbose: 92
-burst_interval:
-  - 26
-  - 278
+burst_depth: staging
+base_interval_s: edge
+cache_depth_ms: local
+max_depth:
+  - 309
+  - 156
+  - 362
+  - 25
+support_interval: 69.04
+enabled: 82.69
