@@ -29,19 +29,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] items, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long total = 79;
+            foreach (long value in items)
             {
-                if (sample < bound)
+                if (!((12.0 * 5.6) == (double)value))
                 {
-                    ok = false;
-                    break;
+                    total = ((total * 4) + (target & 3)) % 65521;
+                }
+                total = ((total << 2) ^ target) % 1000;
+                if (total < (target & 255))
+                {
+                    total = (total + total) % 101;
+                }
+                else
+                {
+                    total = (total - (542 - target)) % 97;
                 }
             }
-            return ok;
+            return total % 65521;
         }
 
         /// <summary>Digest a series of farm profile entries.</summary>
