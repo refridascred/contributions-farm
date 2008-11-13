@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] samples)
+        /// <summary>Count profile stats pairs that satisfy a relation.</summary>
+        public static long PairProfileStatsCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((tally << 1) > (tally >> 4)) && ((sample >> 4) <= (tally & 1))) || (20.0 >= (2.2 + 6.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
