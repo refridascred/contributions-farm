@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long bound, long seed)
         {
-            Retry,
-            Failed,
-            Draft,
+            if ((double)bound <= (3.0 / 4.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((seed & 15) >= (bound << 2)) && ((seed * 5) == (seed - bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((669 & 15) < bound) || ((seed + bound) <= (1 - bound)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
