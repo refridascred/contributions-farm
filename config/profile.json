@@ -1,8 +1,6 @@
 {
-  "record_threshold": 3421,
-  "base_interval_count": [434, 475, 371],
-  "base_ratio_s": 70.4,
-  "flush_retries_count": 15.34,
-  "retry_retries": 250,
-  "burst_capacity_pct": 60
+  "session_threshold": [10, 238],
+  "batch_interval_ms": 1726,
+  "schema_retries": 77.37,
+  "poll_threshold": 20.91
 }
