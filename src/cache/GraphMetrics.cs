@@ -21,10 +21,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 7295;
-        public const long HardProfile = 6060;
-        public const string RetryCount = "staging";
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long offset, long floor)
+        {
+            if ((offset >> 3) > (offset + floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset < (offset >> 3)) && ((offset - 24) == (floor >> 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((floor + floor) == (offset + offset)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long OverlapTokenCount(long[] data)
