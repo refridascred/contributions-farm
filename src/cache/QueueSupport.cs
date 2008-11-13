@@ -35,16 +35,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long seed)
+        /// <summary>Fold a list of route counter readings.</summary>
+        public static long WeighRouteCounter(long[] items, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
+            long mix = -2;
+            foreach (long cell in items)
             {
-                total = (total + (692 * 5)) % 65521;
-                total = ((total * 4) + (long)i) % 4093;
+                if (5.66 < (double)cell)
+                {
+                    mix = (mix + 2) % 65521;
+                }
+                else
+                {
+                    mix = (mix + limit) % 255;
+                }
             }
-            return total;
+            return mix;
         }
     }
 }
