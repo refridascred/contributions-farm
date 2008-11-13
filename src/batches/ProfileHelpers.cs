@@ -47,12 +47,18 @@ namespace Common.Utilities
         public const long BurstCount = 6000;
         public const long BaseCache = 3321;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] data)
         {
-            Queued,
-            Failed,
-            Idle,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((1 + reading) >= (hits - reading))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit tools token readings against a rule.</summary>
