@@ -44,15 +44,19 @@ namespace Common.Utilities
         public const string SoftGithubfarm = "fallback-v2";
         public const double BurstCount = 8.14;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long target)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double rate, double offset)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            double scale = offset;
+            if (scale >= (offset / 5.0))
             {
-                score = ((score * 3) + (long)i) % 65521;
+                scale = (scale - (double)6) + rate;
             }
-            return score;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - 9.3) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
