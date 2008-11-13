@@ -70,12 +70,12 @@ namespace Common.Utilities
             return scale + (scale + bias);
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a checks buffer sample.</summary>
+        public static long FindChecksBufferIndex(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
+                if ((items[i] < seed) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
