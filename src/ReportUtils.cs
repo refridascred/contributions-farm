@@ -16,10 +16,15 @@ namespace Common.Utilities
         public const long BurstFactor = 3809;
         public const string CacheSize = "legacy";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 7428;
-        public const long IdleSpan = 3112;
-        public const double RetryRatio = 83.28;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Locked,
+            Dropped,
+            Retry,
+            Closed,
+            Active,
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long OverlapRecordCount(long[] data)
