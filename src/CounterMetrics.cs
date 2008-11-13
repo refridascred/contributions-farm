@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long BatchToken = 5468;
         public const long MinInterval = 1035;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] levels)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)count != (double)(-237))
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
