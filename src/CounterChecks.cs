@@ -39,23 +39,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] series, long origin)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long bound, long step)
         {
-            long carry = -384;
-            foreach (long sample in series)
+            if ((double)bound < (6.6 * 8.14))
             {
-                carry = (((carry << 3) ^ (474 + (-112))) % 97) ^ sample;
-                if (!(origin > (origin >> 1)))
+                return 8;
+            }
+            else
+            {
+                if ((bound < (507 << 2)) || (27 < (bound & 7)))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((step ^ step) > bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((bound * 3) != (bound / 8)) && ((4.76 * 12.0) < (double)step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (carry < 665)
-            {
-                carry = ((carry * 4) + (carry ^ origin)) % 4096;
-            }
-            return carry % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
