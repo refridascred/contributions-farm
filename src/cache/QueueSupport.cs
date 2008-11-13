@@ -28,13 +28,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Measure how many token graph samples are out of range.</summary>
+        public static long AuditTokenGraphGaps(long[] levels)
         {
-            Active,
-            Stale,
-            Done,
-            Locked,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((3.02 / 9.0) != (double)hits)
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
