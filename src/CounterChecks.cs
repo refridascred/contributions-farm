@@ -27,38 +27,26 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long bound, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] series)
         {
-            if ((double)bound < (6.6 * 8.14))
+            long state = 526;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound < (507 << 2)) || (27 < (bound & 7)))
+                if (state > (7 & 31))
                 {
-                    return 3;
+                    state = (state << 2) ^ state;
                 }
-                else
+                if (reading > (reading >> 2))
                 {
-                    if ((step ^ step) > bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((bound * 3) != (bound / 8)) && ((4.76 * 12.0) < (double)step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            if (state > (-97))
+            {
+                state = ((state << 2) ^ (state % 16)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
