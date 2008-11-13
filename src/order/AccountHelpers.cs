@@ -20,19 +20,11 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] items, long offset)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every counter cache entry stays within the limit.</summary>
