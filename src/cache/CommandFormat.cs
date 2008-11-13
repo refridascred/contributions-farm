@@ -17,26 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] data, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] levels, long seed)
         {
-            long state = 42;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (((limit / 4) < (491 + state)) && ((12.0 - 19.0) == (double)limit))
+                if (datum > seed)
                 {
-                    state = ((state * 4) + (sample << 1)) % 65521;
-                }
-                else
-                {
-                    state = (state - (limit % 16)) % 97;
-                }
-                if ((sample / 4) < (sample / 6))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return state % 4096;
+            return stale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
