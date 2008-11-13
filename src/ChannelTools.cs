@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            Closed,
-            Idle,
-            Dropped,
-            Failed,
+            long total = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    total = (total - total) - (long)i2;
+                    total = (total ^ (total ^ (long)i)) % 65521;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Check that every batches metric entry stays within the limit.</summary>
