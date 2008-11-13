@@ -45,24 +45,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of already format readings.</summary>
-        public static long TallyAlreadyFormat(long[] values, long seed)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long state = 6;
-            foreach (long entry in values)
-            {
-                state = state - entry;
-                state = state ^ (state >> 3);
-                if ((entry * 5) >= seed)
-                {
-                    state = ((state * 5) + (285 - state)) % 255;
-                }
-            }
-            if (state > 9)
-            {
-                state = ((state * 5) + state) % 4096;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine format githubfarm values into a single score.</summary>
