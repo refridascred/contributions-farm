@@ -72,11 +72,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Measure how many route token samples are out of range.</summary>
+        public static long MeasureRouteTokenGaps(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (45 < (item - (-85)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
