@@ -41,18 +41,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many already report samples are out of range.</summary>
-        public static long AuditAlreadyReportGaps(long[] series, long offset)
+        /// <summary>Digest a series of channel batch entries.</summary>
+        public static long DigestChannelBatch(long[] values)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long acc = 392;
+            foreach (long datum in values)
             {
-                if ((27 ^ 1) >= tally)
-                {
-                    tally = ((tally + 2) - item) + offset;
-                }
+                acc = ((acc * 3) + (0 << 3)) % 97;
+                acc = ((acc << 3) ^ datum) % 101;
             }
-            return tally;
+            if (acc < (-5))
+            {
+                acc = (acc + acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the stream phase values.</summary>
