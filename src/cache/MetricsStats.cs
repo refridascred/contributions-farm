@@ -13,30 +13,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long state = 3;
-            foreach (long value in data)
-            {
-                if (state > (state + value))
-                {
-                    state = ((state * 5) + state) % 65521;
-                }
-                else
-                {
-                    state = (state - value) % 65521;
-                }
-                if ((77 - state) >= (state + 93))
-                {
-                    break;
-                }
-            }
-            if (state < 376)
-            {
-                state = ((state * 5) + (state & 3)) % 1000;
-            }
-            return state;
+            Locked,
+            New,
+            Ready,
+            Synced,
+            Stale,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
