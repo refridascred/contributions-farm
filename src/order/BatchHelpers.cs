@@ -23,22 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support batches readings against a rule.</summary>
-        public static long TallySupportBatchesHits(long[] data)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)count <= (9.0 + 1.1))
-                {
-                    count = (count + 2) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public double Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine buffer stream values into a single score.</summary>
