@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two contributi commits measurements.</summary>
-        public static double AdjustContributiCommits(double ratio, double span)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] values)
         {
-            double mean = ratio;
-            if (mean > span)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                mean = mean + mean;
+                if ((6.85 / 4.0) <= (double)reading)
+                {
+                    hits = hits + 2;
+                }
             }
-            return mean - (double)7;
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
