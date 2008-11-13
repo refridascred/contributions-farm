@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] readings)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long target)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample < (matches / 7))
-                {
-                    matches = matches + 2;
-                }
+                state = (state ^ ((long)i & 15)) % 1000;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
