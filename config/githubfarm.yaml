@@ -1,10 +1,4 @@
 # githubfarm settings
-tools_ratio: 8758
-default_ratio_count:
-  idle_size: 31.53
-  max_window: 5941
-  flush_timeout_s: 34.58
-  filter_threshold: stable
-  verbose: 93
-sync_limit_count: 2483
-cache_delay_pct: 4728
+audit: legacy
+entry_timeout: 61.99
+checks_timeout: edge
