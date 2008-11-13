@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every filter contributi entry stays within the limit.</summary>
-        public static bool CheckFilterContributiLimits(long[] levels, long target)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item != target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
