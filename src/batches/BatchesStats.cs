@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] series)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((cell << 3) < cell)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
