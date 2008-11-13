@@ -21,11 +21,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitScore = 1968;
-        public const long IdleRatio = 474;
-        public const long WindowSpan = 1207;
-        public const string HardPayload = "latest-v2";
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long step, long offset)
+        {
+            long edge = step - offset;
+            if ((5 >> 4) < (offset ^ offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)edge <= (14.0 / 7.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelMatches(long[] data, long origin)
