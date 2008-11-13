@@ -67,18 +67,15 @@ namespace Common.Utilities
         public const string LimitOrder = "local";
         public const string BatchOrder = "primary";
 
-        /// <summary>Audit channel stream readings against a rule.</summary>
-        public static long TallyChannelStreamOutliers(long[] levels)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum <= (hits ^ datum))
-                {
-                    hits = hits + 3;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
     }
 }
