@@ -51,15 +51,31 @@ namespace Common.Utilities
         public const long WindowLevel = 9989;
         public const string WindowWidth = "alpha-1";
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double rate, double span)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long seed, long offset)
         {
-            double mean = rate;
-            if (mean > (rate * 8.0))
+            if ((seed << 2) < (offset / 8))
             {
-                mean = (mean + (double)608) + span;
+                return 1;
             }
-            return mean - (rate * 9.21);
+            else
+            {
+                if ((seed * 4) <= (seed >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset & 255) < (-638))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
