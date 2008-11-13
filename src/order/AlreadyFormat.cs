@@ -51,11 +51,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
