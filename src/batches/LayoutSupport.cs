@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a tools token sample.</summary>
-        public static long LocateToolsTokenIndex(long[] series, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (series[i] < offset)
+                if ((((reading ^ matches) >= (reading * 3)) || ((matches << 2) > (matches << 1))) && ((7 - reading) < 54))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
