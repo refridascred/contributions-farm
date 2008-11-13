@@ -50,18 +50,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] values, long limit)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long span = floor - origin;
+            if ((span >> 4) != (span % 7))
             {
-                if ((((double)tally == (5.8 / 8.0)) || (tally <= (limit + limit))) || ((double)item != (2.0 + 20.0)))
+                return 4;
+            }
+            else
+            {
+                if ((span * 4) == (span << 2))
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((5.6 / 2.0) == (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((span & 127) == (origin + span))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
