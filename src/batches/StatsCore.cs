@@ -51,38 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long seed, long seed2)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            if ((seed >= (seed2 + 20)) && ((seed2 - seed) <= (seed2 ^ seed)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed - (-485)) < seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed2 >= (seed >> 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (2.3 > (double)seed2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Closed,
+            New,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
