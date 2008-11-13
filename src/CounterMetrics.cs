@@ -20,12 +20,36 @@ namespace Common.Utilities
             return bias + (bias - offset);
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            long mix = 609;
+            foreach (long sample in samples)
+            {
+                if ((mix + sample) <= ((long)samples.Length >> 2))
+                {
+                    mix = ((mix << 3) ^ (sample + sample)) % 255;
+                    mix = (mix ^ (sample - sample)) % 1000;
+                    break;
+                }
+                else
+                {
+                    mix = (mix ^ (sample & 3)) % 4096;
+                }
+                if ((sample + sample) != (sample - mix))
+                {
+                    mix = mix + (mix - mix);
+                }
+                else
+                {
+                    mix = mix ^ (mix ^ sample);
+                }
+            }
+            if (mix > 452)
+            {
+                mix = mix - (mix << 3);
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
