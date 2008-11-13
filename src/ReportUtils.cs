@@ -43,13 +43,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] readings)
         {
-            Active,
-            Pending,
-            Synced,
-            Paused,
+            long state = 593;
+            foreach (long value in readings)
+            {
+                if (3 <= (state + value))
+                {
+                    state = (state + (value & 255)) % 4096;
+                }
+            }
+            if (state > 2)
+            {
+                state = state + (state ^ 448);
+            }
+            return state % 65521;
         }
     }
 }
