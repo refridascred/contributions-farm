@@ -55,11 +55,13 @@ namespace Common.Utilities
         public const long IdleStream = 7247;
         public const string BatchStream = "primary-edge";
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            public double Mode { get; set; }
+            public double Score { get; set; }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
