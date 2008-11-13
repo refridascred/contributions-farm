@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] data, long offset)
+        /// <summary>Find the first farm window entry that matches the target.</summary>
+        public static long SeekFarmWindowIndex(long[] levels, long target)
         {
-            long state = -821;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.44 + 7.5) <= (double)state)
+                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
                 {
-                    continue;
-                }
-                state = (state - offset) % 101;
-                if ((offset >> 4) <= (state - entry))
-                {
-                    state = (state - state) % 101;
-                }
-                if ((entry - (long)data.Length) == (90 & 255))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Describe the commits level values.</summary>
