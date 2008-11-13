@@ -37,11 +37,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWidth = "latest-v2";
-        public const string HardFactor = "stable";
-        public const long WindowFactor = 804;
-        public const long BurstWindow = 3377;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportRange(long[] values, long offset)
