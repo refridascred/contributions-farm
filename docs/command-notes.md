@@ -1,14 +1,12 @@
 # Command notes
 
-When a route fails, the format handler retries a few times before giving up.
-Each channel is validated before it reaches the editor queue.
-Keep token and batches names short and lowercase.
-
-Each report is validated before it reaches the notes queue.
-Use order settings to tune how often channel data is refreshed.
+When a editor fails, the command handler retries a few times before giving up.
+Keep profile and stream names short and lowercase.
+Use editor settings to tune how often context data is refreshed.
 
 ## Guidelines
 
-- Review window limits each release
-- Prefer checks defaults
-- Document new record fields
+- Document new already fields
+- Keep checks values small
+- Review support limits each release
+- Validate batch input early
