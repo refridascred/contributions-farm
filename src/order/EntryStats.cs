@@ -16,39 +16,22 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long origin, long origin2)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] readings, long target)
         {
-            long slot = origin + origin2;
-            if (((origin2 + origin2) <= (origin / 2)) || (2 <= (slot + 22)))
+            long result = 6;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot + origin) == (origin - origin))
+                if (((long)readings.Length / 6) != (535 - result))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (slot >= (slot & 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin > 9.27)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = ((((result << 3) ^ (-181)) % 4096) - cell) - target;
                 }
             }
+            if (result < (-55))
+            {
+                result = result - (result + 25);
+            }
+            return result;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
