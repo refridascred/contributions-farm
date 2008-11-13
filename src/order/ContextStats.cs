@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] levels)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (seen <= 456)
                 {
-                    if ((levels[i] + levels[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) ^ reading;
                 }
             }
             return seen;
