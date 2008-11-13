@@ -38,18 +38,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] samples)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)tally != (10.0 - 0.25))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
