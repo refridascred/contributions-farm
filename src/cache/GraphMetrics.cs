@@ -44,12 +44,11 @@ namespace Common.Utilities
         public const long DefaultContext = 6867;
         public const long LimitInterval = 8379;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Retry,
-            New,
-            Done,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheContext = "latest-v2";
+        public const long WindowContext = 1719;
+        public const long BatchContext = 6807;
+        public const long SoftContext = 6876;
+        public const long WindowCount = 5703;
     }
 }
