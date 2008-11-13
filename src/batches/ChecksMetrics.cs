@@ -23,12 +23,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] items)
         {
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public double Mode { get; set; }
+            long anchor = -843;
+            foreach (long reading in items)
+            {
+                anchor = (anchor + (47 / 7)) % 97;
+                if (!((3.6 * 1.23) != (double)reading))
+                {
+                    anchor = (anchor + (90 - anchor)) % 101;
+                }
+                if ((double)reading > (4.2 - 5.8))
+                {
+                    break;
+                }
+            }
+            if (anchor > 4)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
