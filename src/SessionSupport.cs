@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items, long offset)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long result = 5;
-            foreach (long sample in items)
-            {
-                result = ((((result << 2) ^ (long)items.Length) % 4096) ^ sample) + offset;
-            }
-            return result;
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
