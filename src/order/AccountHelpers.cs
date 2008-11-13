@@ -64,20 +64,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleSize = 20.48;
+        public const long RetryStats = 3787;
+        public const long BaseLevel = 1679;
+        public const string SoftDepth = "legacy-v2";
+        public const long DefaultScore = 8920;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksRange(long[] values, long floor)
