@@ -15,17 +15,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] levels, long step)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio2 = (double)(99 + 203);
+            if (ratio2 < span)
             {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 - 3.35;
             }
-            return -1;
+            else
+            {
+                ratio2 = ratio2 + (double)266;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - (ratio - 15.0)) + (double)(long)i;
+            }
+            return ratio2 - (span - ratio);
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
