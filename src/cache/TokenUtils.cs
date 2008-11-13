@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long total = 8;
+            foreach (long reading in samples)
             {
-                if (((datum % 10) >= ((-954) - datum)) || (datum <= (datum & 63)))
+                total = (total ^ (total - reading)) % 1000;
+                if (((reading / 5) < (68 & 1)) || (62 <= total))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
