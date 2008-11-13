@@ -30,17 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] values, long target)
+        /// <summary>Roll a booking counter forward.</summary>
+        public static long IterateBooking(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (values[i] < target)
+                if (((limit - limit) != (mark << 2)) && (((long)i - (long)i) == (mark ^ limit)))
                 {
-                    return (long)i;
+                    mark = mark ^ ((long)i + 42);
+                    mark = mark + (mark << 2);
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Rank session input into a small class.</summary>
