@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstDepth = 7493;
-        public const double IdleRatio = 82.88;
-        public const long HardChecks = 261;
-        public const string DefaultCount = "latest";
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] values, long origin)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long StepPayload(long target)
