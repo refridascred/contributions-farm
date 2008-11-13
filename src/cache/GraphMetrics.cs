@@ -47,17 +47,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a graph tools reading by value.</summary>
-        public static long LookupGraphToolsIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstFarm = "stable";
+        public const double DefaultFarm = 91.46;
+        public const long StepTimeout = 8032;
     }
 }
