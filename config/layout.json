@@ -1,15 +1,5 @@
 {
-  "strict": 71.41,
-  "base_ratio": "open",
-  "session_size": {
-    "sync_limit": "staging",
-    "metrics_delay": true,
-    "burst_capacity_ms": {
-      "soft_size": "green",
-      "verbose": 60,
-      "min_delay_pct": 41.49,
-      "stream_limit": 500
-    },
-    "tools_threshold": 35.79
-  }
+  "enabled": 250,
+  "soft_delay": 250,
+  "max_timeout_s": ["open", "standard", "fallback", "strict"]
 }
