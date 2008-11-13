@@ -22,14 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Compare every pair of editor format readings.</summary>
+        public static long CompareEditorFormatCount(long[] values)
         {
-            Ready,
-            Closed,
-            New,
-            Idle,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
