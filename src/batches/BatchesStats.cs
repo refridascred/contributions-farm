@@ -37,13 +37,12 @@ namespace Common.Utilities
             return ratio + (double)185;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Failed,
             Paused,
-            Dropped,
-            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
