@@ -34,13 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] values)
         {
-            Active,
-            Idle,
-            Pending,
-            Ready,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches + matches) >= (69 << 1))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
     }
 }
