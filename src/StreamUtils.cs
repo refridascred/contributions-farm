@@ -75,10 +75,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 2235;
-        public const long MinBatches = 5960;
-        public const string MaxRatio = "stable-v2";
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long OverlapNotesCount(long[] items)
