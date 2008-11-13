@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long sum = 618;
+            foreach (long item in readings)
             {
-                if (!(((count + entry) <= (7 + 1)) || (18 > (count + 844))))
-                {
-                    count = count + 3;
-                }
+                sum = (((sum ^ (918 >> 2)) % 97) + item) + floor;
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Accumulate support samples.</summary>
