@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] items, long seed)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            long mark = 151;
-            foreach (long datum in items)
+            long mark = 780;
+            foreach (long datum in levels)
             {
-                if ((datum / 6) == (seed % 97))
-                {
-                    mark = (mark ^ (1 + mark)) % 1000;
-                }
+                mark = ((mark - mark) % 101) + datum;
             }
-            return mark;
+            return mark % 4096;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
