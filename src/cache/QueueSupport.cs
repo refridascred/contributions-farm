@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Failed,
-            Done,
-            Draft,
-            Ready,
-            Stale,
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Describe the profile kind values.</summary>
