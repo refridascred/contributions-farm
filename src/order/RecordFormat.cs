@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] values, long offset)
+        /// <summary>Adjust a buffer contributi reading.</summary>
+        public static double BlendBufferContributi(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double load = 19.0;
+            if (load <= scale)
             {
-                if (reading < (reading % 7))
-                {
-                    matches = (matches + 1) + offset;
-                }
+                load = (load + (scale + load)) - offset;
             }
-            return matches;
+            else
+            {
+                load = load + 7.7;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load - (scale * 4.1);
         }
 
         /// <summary>Hold a account record.</summary>
