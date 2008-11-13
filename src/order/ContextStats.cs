@@ -19,23 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stream cluster value.</summary>
-        public static double ScaleStreamCluster(double ratio, double span)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] values, long seed)
         {
-            double load = span;
-            if (load < 8.3)
+            long sum = 4;
+            foreach (long entry in values)
             {
-                load = (load + 2.0) - ratio;
+                if (entry < sum)
+                {
+                    sum = sum - (15 + 918);
+                }
             }
-            else
+            if (sum > 863)
             {
-                load = load + (double)8;
+                sum = (sum << 2) ^ seed;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (load - load)) + (double)(long)i;
-            }
-            return load - load;
+            return sum;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
