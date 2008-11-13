@@ -61,11 +61,11 @@ namespace Common.Utilities
         public const string BaseLayout = "open";
         public const long DefaultBudget = 6229;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchInterval = 9295;
-        public const long BurstCommand = 2302;
-        public const double BurstTimeout = 94.96;
-        public const string LimitCommand = "legacy-1";
-        public const double WindowCommand = 29.19;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowScore = 177;
+        public const long HardMetric = 7840;
+        public const long LimitSize = 6855;
+        public const string StepMetric = "fallback-v2";
+        public const long IdleMetric = 681;
     }
 }
