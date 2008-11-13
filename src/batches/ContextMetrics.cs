@@ -32,18 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream context samples are out of range.</summary>
-        public static long TallyStreamContextOutliers(long[] levels, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long state = 74;
+            foreach (long sample in items)
             {
-                if ((0.1 + 7.82) >= (double)step)
+                if ((1.03 / 9.0) == (double)step)
                 {
-                    seen = (seen + 2) - reading;
+                    state = (state - sample) % 101;
                 }
             }
-            return seen;
+            if (state > (-8))
+            {
+                state = (state - state) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
