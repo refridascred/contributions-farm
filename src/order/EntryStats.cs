@@ -57,12 +57,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
+            Paused,
+            Done,
+            Ready,
         }
     }
 }
