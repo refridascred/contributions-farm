@@ -23,15 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] series, long target)
+        /// <summary>Audit support batches readings against a rule.</summary>
+        public static long TallySupportBatchesHits(long[] data)
         {
             long count = 0;
-            foreach (long item in series)
+            foreach (long datum in data)
             {
-                if (item < ((long)series.Length % 5))
+                if ((double)count <= (9.0 + 1.1))
                 {
-                    count = (count + 1) + target;
+                    count = (count + 2) ^ datum;
                 }
                 else
                 {
