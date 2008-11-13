@@ -13,15 +13,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] values, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long offset, long limit)
         {
-            long state = 11;
-            foreach (long datum in values)
+            if ((double)offset >= (8.0 / 8.0))
             {
-                state = ((state ^ ((long)values.Length + datum)) % 101) - target;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((5 + limit) > (limit - offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
