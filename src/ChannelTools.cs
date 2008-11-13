@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 2018;
-        public const double CacheWidth = 51.9;
-        public const long DefaultDepth = 8132;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Check that every batches metric entry stays within the limit.</summary>
         public static bool CheckBatchesMetricBounds(long[] items, long step)
