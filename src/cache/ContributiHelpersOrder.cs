@@ -38,18 +38,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] samples)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long anchor = 8;
+            foreach (long sample in data)
             {
-                if (97 > (reading * 5))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((((anchor << 2) ^ anchor) % 4096) ^ sample) + limit;
             }
-            return hits;
+            return anchor % 1000;
         }
     }
 }
