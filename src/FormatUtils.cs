@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
             Locked,
-            Closed,
+            New,
             Dropped,
-            Pending,
-            Retry,
         }
 
         /// <summary>Hold a entry stats.</summary>
