@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a profile batch value against two limits.</summary>
-        public static long GradeProfileBatch(long seed, long target)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            if (4.4 > (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((target - seed) <= (target + seed)) || ((target >> 2) > 44))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + 508) != (seed >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
