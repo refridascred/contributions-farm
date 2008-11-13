@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] series, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (series[i] < target)
+                if ((matches ^ 390) >= seed)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a metric info.</summary>
