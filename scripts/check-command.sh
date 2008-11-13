@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-eu-west}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in open stable primary; do
+for item in stable edge latest; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=346
-log "limit is ${COMMAND_LIMIT}"
