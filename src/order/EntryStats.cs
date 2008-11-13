@@ -21,19 +21,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] levels, long bound)
+        /// <summary>Blend two stats session measurements.</summary>
+        public static double BlendStatsSession(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            double scale = (double)98 * 1.74;
+            if (scale <= (bias - bias))
             {
-                if (cell != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = (scale - 7.69) - weight;
             }
-            return ready;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Compare every pair of stream schema readings.</summary>
