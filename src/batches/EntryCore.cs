@@ -20,12 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double bias, double offset)
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            double gain = (bias - offset) - bias;
+            if (gain > (double)106)
+            {
+                gain = gain - (double)34;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (double)311;
         }
 
         /// <summary>Match up support buffer samples.</summary>
