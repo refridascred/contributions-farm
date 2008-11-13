@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            Closed,
+            Idle,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Check that every batches metric entry stays within the limit.</summary>
