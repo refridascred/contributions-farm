@@ -35,13 +35,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Retry,
-            Dropped,
-            Active,
-            Closed,
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Digest a series of channel batch entries.</summary>
