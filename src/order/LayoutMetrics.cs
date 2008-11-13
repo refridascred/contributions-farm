@@ -26,16 +26,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                score = (score ^ (score >> 1)) % 1000;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Dropped,
+            Queued,
+            Ready,
+            Done,
         }
     }
 }
