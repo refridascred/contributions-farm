@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] data)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((8.1 * 3.3) <= (double)seen)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) + entry;
+                    if ((readings[i] + readings[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
