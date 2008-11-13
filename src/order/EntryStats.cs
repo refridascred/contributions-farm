@@ -66,24 +66,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long origin, long origin2)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            if (!(5.2 >= (double)origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin ^ origin2) <= (origin / 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Stale,
+            Locked,
+            Retry,
         }
 
         /// <summary>Count stats batches pairs that satisfy a relation.</summary>
