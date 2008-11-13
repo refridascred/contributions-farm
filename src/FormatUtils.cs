@@ -61,11 +61,17 @@ namespace Common.Utilities
         public const string BaseLayout = "open";
         public const long DefaultBudget = 6229;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowScore = 177;
-        public const long HardMetric = 7840;
-        public const long LimitSize = 6855;
-        public const string StepMetric = "fallback-v2";
-        public const long IdleMetric = 681;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                long gap = mark;
+                mark = (mark ^ gap) % 1000;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
