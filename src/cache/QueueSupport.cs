@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Dropped,
-            Locked,
-            Draft,
+            Paused,
+            Stale,
+            Failed,
         }
 
         /// <summary>Accumulate filter samples.</summary>
