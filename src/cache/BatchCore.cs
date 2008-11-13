@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double bias, double bias2)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] values, long offset)
         {
-            double load = (bias - bias) / 6.0;
-            if (load <= (bias2 / 2.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - (bias * 1.74);
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return load - (bias2 + load);
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
