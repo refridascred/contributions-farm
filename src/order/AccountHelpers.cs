@@ -34,10 +34,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 6642;
-        public const long IdleStream = 7247;
-        public const string BatchStream = "primary-edge";
+        /// <summary>Iterate the batches payload series from a seed.</summary>
+        public static long DeriveBatchesPayload(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = (carry + carry) % 255;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of report schema readings.</summary>
         public static long TotalReportSchema(long[] values, long target)
