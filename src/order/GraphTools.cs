@@ -62,23 +62,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of schema counter readings.</summary>
-        public static long CombineSchemaCounter(long[] items, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] values)
         {
-            long mix = 2;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                mix = ((mix << 3) ^ (sample - sample)) % 65521;
-                if (mix > (mix + 6))
+                if ((tally - sample) != (sample + 4))
                 {
-                    mix = mix - ((-129) + mix);
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mix > 97)
-            {
-                mix = mix - bound;
-            }
-            return mix;
+            return tally;
         }
     }
 }
