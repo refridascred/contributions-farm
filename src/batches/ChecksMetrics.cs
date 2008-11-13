@@ -23,15 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two profile graph measurements.</summary>
-        public static double ScaleProfileGraph(double rate, double span)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double weight = (double)881 / 4.0;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (((weight - (5.17 * 5.99)) - (double)(long)i) - rate) - span;
-            }
-            return weight + (double)8;
+            public bool Label { get; set; }
+            public double Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
