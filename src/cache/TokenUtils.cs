@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] readings)
+        /// <summary>Check that every layout buffer entry stays within the limit.</summary>
+        public static bool CheckLayoutBufferRange(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (0.6 > (double)(-7))
+                if (reading != floor)
                 {
-                    seen = (seen + 3) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the already class values.</summary>
