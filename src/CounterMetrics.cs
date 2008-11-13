@@ -17,17 +17,32 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] levels, long floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long step, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = step + origin;
+            if (origin >= (95 * 4))
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if (origin <= 0)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + 135) <= (bound - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the account notes series from a seed.</summary>
