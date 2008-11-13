@@ -47,18 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] levels, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long bound)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((target % 97) == (value ^ value)))
+                if ((score - bound) >= score)
                 {
-                    seen = seen + 1;
+                    score = score ^ score;
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
