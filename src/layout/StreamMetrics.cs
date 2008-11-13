@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context contributi entries that pass the check.</summary>
-        public static long CountContextContributiHits(long[] values)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((3.0 - 4.08) == (double)hits)
-                {
-                    hits = (hits + 2) - cell;
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Rank report commits input into a small class.</summary>
