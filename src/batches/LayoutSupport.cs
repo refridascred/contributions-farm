@@ -49,11 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Audit profile editor readings against a rule.</summary>
+        public static long AuditProfileEditorOutliers(long[] values)
         {
-            public bool Level { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)(long)values.Length > (double)count)
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
