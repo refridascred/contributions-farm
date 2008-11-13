@@ -1,5 +1,5 @@
 {
-  "flush_limit_ms": ["edge", "latest", "edge", "green"],
-  "sync_ttl_s": "latest",
-  "batch_window_count": 1068
+  "burst_timeout": 1,
+  "soft_threshold_s": 95,
+  "cache_capacity_pct": "strict"
 }
