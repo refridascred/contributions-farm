@@ -13,17 +13,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a filter context sample.</summary>
-        public static long FindFilterContextIndex(long[] series, long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] <= bound)
+                if ((offset / 9) >= mix)
                 {
-                    return (long)i;
+                    break;
                 }
+                mix = mix + ((long)i << 3);
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
