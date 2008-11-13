@@ -1,6 +1,6 @@
 {
-  "retry_retries": "latest",
-  "metric_ratio": 1024,
-  "verbose": 100,
-  "base_delay_ms": 1108
+  "hard_depth_ms": 92,
+  "soft_threshold": 78,
+  "warm_timeout_pct": false,
+  "min_threshold_pct": "open"
 }
