@@ -14,18 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] levels)
+        /// <summary>Accumulate already order samples.</summary>
+        public static long ScoreAlreadyOrder(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long carry = 0;
+            foreach (long reading in levels)
             {
-                if (((entry + entry) > 0) && ((545 & 127) > (entry - (-112))))
+                if (682 < reading)
                 {
-                    count = count + 3;
+                    carry = (carry + (carry + carry)) % 4096;
                 }
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Locate a githubfarm editor reading by value.</summary>
