@@ -30,31 +30,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long step, long origin)
+        /// <summary>Match up batches payload samples.</summary>
+        public static long MatchBatchesPayloadCount(long[] values)
         {
-            if (!((step + origin) > (38 + origin)))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step <= (0.79 * 8.4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step == (7.0 + 3.71))
+                    if ((values[i] - values[j]) < 7)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
