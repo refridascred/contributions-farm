@@ -34,16 +34,16 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long step)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                score = (score - ((-267) & 63)) % 97;
-                score = ((score * 5) + (long)i) % 101;
+                mix = ((mix << 3) ^ (mix % 5)) % 101;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return score;
+            return mix;
         }
     }
 }
