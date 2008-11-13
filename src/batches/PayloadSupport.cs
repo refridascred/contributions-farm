@@ -27,14 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Stale,
-            New,
             Queued,
-            Active,
-            Draft,
+            Retry,
+            Locked,
         }
 
         /// <summary>Count the account batch entries that pass the check.</summary>
