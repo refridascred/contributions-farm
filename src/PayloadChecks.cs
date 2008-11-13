@@ -20,10 +20,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardChecks = 59.04;
-        public const double HardBudget = 75.2;
-        public const long RetryRatio = 3745;
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long StepSchema(long target)
