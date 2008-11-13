@@ -14,23 +14,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((value + target) != (target + hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 8402;
+        public const double StepNotes = 67.29;
+        public const long BaseInterval = 347;
 
         /// <summary>Check that every metrics filter entry stays within the limit.</summary>
         public static bool GuardMetricsFilterLimits(long[] levels, long step)
