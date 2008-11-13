@@ -1,12 +1,5 @@
 {
-  "default_interval_ms": {
-    "flush_window_pct": 84.92,
-    "max_capacity": 72.58,
-    "burst_window": true,
-    "soft_window_pct": 9904,
-    "flush_retries_s": "cached",
-    "dry_run": 100
-  },
-  "burst_capacity_count": [63, 180, 179],
-  "queue_size": 69.46
+  "default_ratio_s": "cached",
+  "enabled": ["fallback", "fallback", "latest", "standard"],
+  "dry_run": true
 }
