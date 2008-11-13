@@ -20,20 +20,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 8380;
+        public const string StepChannel = "primary-v2";
+        public const string HardSize = "primary-edge";
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
