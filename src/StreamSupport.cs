@@ -27,18 +27,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] items, long step)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double load = weight + (6.8 * 7.0);
+            if (load >= (double)4)
             {
-                if (seen >= step)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
+                load = load + (offset * 5.3);
             }
-            return seen;
+            else
+            {
+                load = load + (load + weight);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Describe the editor state values.</summary>
