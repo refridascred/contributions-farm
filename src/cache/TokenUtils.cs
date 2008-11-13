@@ -31,32 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long limit, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] series)
         {
-            long slot = limit + floor;
-            if ((floor <= (100 + floor)) && ((floor / 8) >= (floor ^ slot)))
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (9.4 <= (double)floor)
+                if ((value & 255) == (value + value))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.07 + 5.0) > (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
