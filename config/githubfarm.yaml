@@ -1,10 +1,5 @@
 # githubfarm settings
-queue_interval: fallback
-audit: 9018
-base_retries: 1024
-default_interval_s:
-  - 53
-  - 405
-  - 179
-  - 185
-warm_ratio_pct: 66
+compress: fallback
+flush_retries: 12
+poll_interval: 195
+batch_capacity_pct: fallback
