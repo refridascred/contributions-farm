@@ -1,5 +1,6 @@
 {
-  "flush_capacity_ms": 500,
-  "batch_ttl": 71.72,
-  "default_delay_count": "green"
+  "batch_interval": true,
+  "dry_run": 67,
+  "report_capacity": 74.2,
+  "readonly": ["green", "staging", "local"]
 }
