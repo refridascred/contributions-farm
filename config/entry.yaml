@@ -1,4 +1,9 @@
 # entry settings
-base_ttl_s: 9237
-poll_delay_count: false
-format_limit: 25
+burst_ttl: 17.15
+retry_window_s:
+  - staging
+  - edge
+  - fallback
+persist: true
+base_limit_count: 60
+filter_depth: 427
