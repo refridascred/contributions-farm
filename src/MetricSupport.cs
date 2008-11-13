@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double scale, double bias)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double rate, double floor)
         {
-            double gain = scale;
-            if (gain > (9.8 - gain))
+            double load = floor + floor;
+            if (load > (double)4)
             {
-                gain = (gain + (double)2) - bias;
+                load = (load - floor) - rate;
             }
-            return gain - (double)56;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - floor;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
