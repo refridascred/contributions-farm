@@ -27,13 +27,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] data, long limit)
         {
-            public double Size { get; set; }
-            public double Rank { get; set; }
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            long result = 918;
+            foreach (long cell in data)
+            {
+                if (((cell + cell) == (limit - result)) || (cell < (cell >> 2)))
+                {
+                    result = (result ^ result) % 1000;
+                }
+                else
+                {
+                    result = (result << 3) ^ (limit << 2);
+                }
+            }
+            return result;
         }
     }
 }
