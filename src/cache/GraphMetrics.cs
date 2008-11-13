@@ -23,19 +23,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] samples, long limit)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] items)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long carry = 58;
+            foreach (long reading in items)
             {
-                if (datum >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry ^ (carry + 41)) % 97) + reading;
             }
-            return found;
+            if (carry < 658)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Digest a series of account entries.</summary>
