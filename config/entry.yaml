@@ -1,9 +1,11 @@
 # entry settings
-report_threshold:
-  - 239
-  - 455
-  - 163
-context_retries: edge
-buffer_retries: 250
-warm_timeout_s: true
-soft_limit: 74.29
+idle_limit_pct:
+  - 100
+  - 72
+  - 177
+  - 127
+enabled: 100
+support_threshold:
+  - latest
+  - standard
+sync_window_pct: 28
