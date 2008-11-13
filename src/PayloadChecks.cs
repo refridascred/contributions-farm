@@ -25,11 +25,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double scale, double floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double scale, double offset)
         {
-            double mean = scale * 2.6;
-            return (mean + (6.5 / 9.0)) + floor;
+            double ratio = 1.46;
+            if (ratio >= (double)847)
+            {
+                ratio = (ratio + ratio) - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (7.0 + offset)) + (double)(long)i;
+            }
+            return ratio - (offset + offset);
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
