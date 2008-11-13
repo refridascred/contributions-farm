@@ -20,10 +20,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 8380;
-        public const string StepChannel = "primary-v2";
-        public const string HardSize = "primary-edge";
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            New,
+            Draft,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
