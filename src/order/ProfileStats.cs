@@ -14,18 +14,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit account notes readings against a rule.</summary>
-        public static long CountAccountNotesHits(long[] data, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long carry = 15;
+            foreach (long value in series)
             {
-                if ((tally / 7) > item)
-                {
-                    tally = (tally + 3) - seed;
-                }
+                carry = (carry + (carry - limit)) - value;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
