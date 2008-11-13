@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] items)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long acc = 2;
-            foreach (long cell in items)
-            {
-                acc = (acc - 3) % 101;
-                if ((cell << 3) >= (acc + acc))
-                {
-                    break;
-                }
-            }
-            if (acc < 794)
-            {
-                acc = (acc ^ (acc + acc)) % 255;
-            }
-            return acc % 1000;
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
