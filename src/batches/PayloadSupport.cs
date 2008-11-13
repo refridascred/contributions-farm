@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const long BaseReport = 5811;
         public const string StepReport = "strict-1";
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
+            Stale,
+            New,
+            Queued,
+            Active,
+            Draft,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
