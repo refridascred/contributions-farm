@@ -73,12 +73,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long limit, long origin)
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            if (7.9 > (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit & 1) > (1 << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((26 + origin) >= origin) && ((limit + 78) != ((-74) & 127)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
