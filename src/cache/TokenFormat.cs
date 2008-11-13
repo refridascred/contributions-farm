@@ -19,19 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double scale, double floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] samples)
         {
-            double load = floor;
-            if (load > (scale * 18.0))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + (floor - load);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (scale - floor)) + (double)(long)i;
-            }
-            return load + scale;
+            return tally;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
