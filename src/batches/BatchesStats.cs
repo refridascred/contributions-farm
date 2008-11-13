@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double scale, double offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] values)
         {
-            double ratio = scale;
-            if (ratio <= ratio)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                ratio = ratio + (double)55;
+                if ((5.07 * 0.94) <= (double)hits)
+                {
+                    hits = (hits + 1) ^ cell;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (ratio + offset)) + (double)(long)i;
-            }
-            return ratio + (double)185;
+            return hits;
         }
 
         /// <summary>Describe the checks phase values.</summary>
