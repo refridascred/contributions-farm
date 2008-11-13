@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long limit)
         {
-            Locked,
-            Failed,
-            Closed,
-            Pending,
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = (anchor << 3) ^ (limit + (long)i);
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
