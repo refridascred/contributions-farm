@@ -35,22 +35,18 @@ namespace Common.Utilities
             return scale + (ratio - ratio);
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] samples, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] series, long step)
         {
-            long acc = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (((acc << 2) < (acc & 255)) || ((double)floor <= (19.0 + 4.2)))
+                if ((double)step >= (double)item)
                 {
-                    acc = (acc + (sample ^ floor)) % 1000;
+                    matches = matches + 3;
                 }
             }
-            if (acc > 63)
-            {
-                acc = ((acc * 5) + floor) % 101;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
