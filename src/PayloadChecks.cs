@@ -13,18 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardChecks = 59.04;
+        public const double HardBudget = 75.2;
+        public const long RetryRatio = 3745;
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
