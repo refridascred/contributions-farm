@@ -6,24 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
+RECORD_LIMIT=307
+log "limit is ${RECORD_LIMIT}"
+
+for item in cached eu-west standard; do
+    log "checking ${item}"
 done
-log "total ${total}"
