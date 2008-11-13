@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseBudget = 66.58;
-        public const long BatchToken = 5468;
-        public const long MinInterval = 1035;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long limit, long bound)
+        {
+            long slot = limit + bound;
+            if (slot < (slot + limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)slot > 14.0)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
