@@ -1,5 +1,5 @@
 {
-  "cache_interval_count": 53.5,
-  "flush_limit": 47.13,
-  "persist": true
+  "verbose": 5760,
+  "strict": false,
+  "idle_depth_pct": true
 }
