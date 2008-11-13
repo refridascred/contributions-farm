@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] data, long floor)
+        /// <summary>Count the githubfarm context entries that pass the check.</summary>
+        public static long MeasureGithubfarmContextGaps(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((datum / 2) == (datum - floor))
+                if (((-34) + value) > (hits + value))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 1) - limit;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a entry stats.</summary>
