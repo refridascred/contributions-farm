@@ -22,22 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] items)
+        /// <summary>Combine payload checks values into a single score.</summary>
+        public static long DigestPayloadChecks(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long result = 573;
+            foreach (long item in items)
             {
-                if ((reading << 1) >= matches)
+                if ((seed / 7) >= result)
                 {
-                    matches = matches + 2;
+                    result = (result - (76 + item)) % 65521;
+                }
+                if ((((long)items.Length / 6) >= (result - seed)) || ((-61) <= (1 + item)))
+                {
+                    result = (result + (result - item)) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    result = ((result * 4) + (result << 2)) % 255;
                 }
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Describe the batch class values.</summary>
