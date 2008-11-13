@@ -36,27 +36,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] samples)
-        {
-            long state = 5;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    state = ((state * 4) + sample) - (long)i;
-                }
-                if ((99 % 3) >= sample)
-                {
-                    state = (state << 2) ^ (sample + sample);
-                }
-            }
-            if (state > 6)
-            {
-                state = (state ^ (state / 4)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepScore = 14.5;
+        public const double BatchSpan = 53.09;
+        public const long BatchContext = 8934;
+        public const long BurstBudget = 3766;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long bound)
