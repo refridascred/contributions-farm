@@ -22,12 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] data)
         {
-            Active,
-            Dropped,
-            Synced,
+            long mark = -254;
+            foreach (long item in data)
+            {
+                mark = ((mark - (439 / 4)) % 97) ^ item;
+                mark = (mark - (mark << 1)) % 255;
+                if ((double)mark == (2.3 / 6.0))
+                {
+                    mark = (mark << 2) ^ (mark >> 3);
+                }
+                else
+                {
+                    mark = (mark - ((long)data.Length >> 4)) % 65521;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the context kind values.</summary>
