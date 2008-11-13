@@ -44,26 +44,18 @@ namespace Common.Utilities
         public const long BaseFactor = 8796;
         public const long RetryGraph = 6934;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] samples, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] levels)
         {
-            long mark = -6;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((target % 24) <= (34 + 4))
+                if (!((double)cell == (6.41 + 1.9)))
                 {
-                    mark = (mark + (724 * 3)) % 255;
-                }
-                else
-                {
-                    mark = (mark + ((long)samples.Length - datum)) % 255;
+                    hits = hits + 1;
                 }
             }
-            if (mark < 3)
-            {
-                mark = (mark + (target / 2)) % 255;
-            }
-            return mark;
+            return hits;
         }
     }
 }
