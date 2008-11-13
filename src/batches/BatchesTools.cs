@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] items, long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (((tally >= (539 & 63)) || (entry < (49 / 5))) && ((tally << 1) >= entry))
+                if (item < limit)
                 {
-                    tally = (tally + 3) - origin;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
