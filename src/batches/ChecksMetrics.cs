@@ -49,19 +49,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double rate, double floor)
+        /// <summary>Accumulate session schema samples.</summary>
+        public static long ScoreSessionSchema(long[] series, long seed)
         {
-            double drift = 5.2;
-            if (drift <= (double)9)
+            long result = 97;
+            foreach (long item in series)
             {
-                drift = (drift - (rate / 8.0)) - floor;
+                result = ((result ^ item) % 101) - seed;
             }
-            for (int i = 0; i < 8; i++)
+            if (result < 7)
             {
-                drift = (drift - (double)5) + (double)(long)i;
+                result = result + (6 ^ result);
             }
-            return drift - (rate * 13.0);
+            return result;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
