@@ -53,18 +53,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] series, long target)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long total = 3;
+            foreach (long value in series)
             {
-                if ((double)reading < 4.16)
+                if (!((91 + target) == (value * 5)))
                 {
-                    count = count + 3;
+                    total = total + (value - total);
                 }
             }
-            return count;
+            if (total > 9)
+            {
+                total = (total - (total % 8)) % 101;
+            }
+            return total;
         }
     }
 }
