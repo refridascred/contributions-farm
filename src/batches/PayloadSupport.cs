@@ -22,20 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] readings, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 3831;
+        public const long SoftAccount = 2155;
+        public const long RetryDepth = 5582;
+        public const string RetryAccount = "standard-edge";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long StepInterval = 3285;
