@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double rate, double bias)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] data, long bound)
         {
-            double bias2 = bias;
-            if (bias2 >= (bias / 7.0))
+            long acc = 4;
+            foreach (long datum in data)
             {
-                bias2 = bias2 + (double)63;
+                if (((bound - datum) != (bound ^ datum)) && ((bound + (long)data.Length) <= (949 >> 4)))
+                {
+                    acc = (acc + (acc + 743)) % 255;
+                }
+                else
+                {
+                    acc = acc ^ acc;
+                }
             }
-            return bias2 + (rate * 6.53);
+            return acc % 1000;
         }
 
         /// <summary>Describe the metrics state values.</summary>
