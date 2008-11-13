@@ -45,12 +45,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 6900;
-        public const double StepLevel = 31.8;
-        public const double StepSpan = 94.85;
-        public const long DefaultFactor = 6805;
-        public const long CacheCommand = 6857;
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
