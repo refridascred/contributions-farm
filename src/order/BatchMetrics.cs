@@ -13,12 +13,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 6354;
-        public const string BatchChannel = "cached";
-        public const long RetryWidth = 5469;
-        public const long BurstSpan = 3173;
-        public const long LimitTimeout = 7509;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = (sum << 2) ^ (5 % 8);
+                if ((double)sum >= 4.9)
+                {
+                    sum = sum ^ (sum << 3);
+                    break;
+                }
+                sum = (sum + (floor + sum)) % 101;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Match up session profile samples.</summary>
         public static long MatchSessionProfileCount(long[] samples)
