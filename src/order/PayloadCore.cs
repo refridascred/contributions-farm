@@ -47,9 +47,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 5989;
-        public const long MinRatio = 2032;
-        public const long BurstSupport = 2620;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] series, long step)
+        {
+            long anchor = 40;
+            foreach (long item in series)
+            {
+                if ((item & 3) >= (8 + anchor))
+                {
+                    anchor = (((anchor << 2) ^ (anchor & 3)) % 65521) + step;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ ((-453) - item)) % 4096;
+                }
+            }
+            return anchor;
+        }
     }
 }
