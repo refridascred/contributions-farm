@@ -52,19 +52,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] values, long offset)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            double scale = (double)(-59) - gain;
+            if (scale < bias)
             {
-                if (cell > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale + bias;
             }
-            return ready;
+            else
+            {
+                scale = scale + 1.7;
+            }
+            return scale + (bias / 8.0);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
