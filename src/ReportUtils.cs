@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowInterval = 9339;
-        public const long WindowCount = 3087;
-        public const string RetryContext = "alpha-v2";
-        public const long SoftDepth = 1653;
-        public const long BaseDepth = 7058;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstInterval = 9373;
+        public const double StepFormat = 91.6;
+        public const string MinRatio = "cached";
 
         /// <summary>Define route limits and defaults.</summary>
         public const double CacheRoute = 30.68;
