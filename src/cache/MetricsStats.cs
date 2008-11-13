@@ -13,14 +13,24 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Classify a format already pair into a bucket.</summary>
+        public static long RankFormatAlready(long origin, long origin2)
         {
-            Locked,
-            New,
-            Ready,
-            Synced,
-            Stale,
+            if ((origin + origin2) != (origin % 8))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin2 & 15) >= (origin2 + 0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
