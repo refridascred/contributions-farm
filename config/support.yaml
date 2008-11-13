@@ -1,5 +1,10 @@
 # support settings
-dry_run: 44
-poll_retries_s: true
-batch_capacity: 500
-readonly: 88.3
+sync_size_count:
+  - cached
+  - latest
+  - standard
+idle_threshold:
+  - 179
+  - 5
+  - 233
+session_threshold: 6383
