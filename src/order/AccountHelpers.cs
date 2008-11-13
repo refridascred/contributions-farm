@@ -41,20 +41,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] data, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 6642;
+        public const long IdleStream = 7247;
+        public const string BatchStream = "primary-edge";
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long ScoreLayout(long[] levels, long origin)
