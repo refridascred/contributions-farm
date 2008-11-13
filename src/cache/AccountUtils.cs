@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats batches readings against a rule.</summary>
-        public static long MeasureStatsBatchesHits(long[] values)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((8.0 + 9.1) > (double)cell)
+                if ((6.8 + 14.0) <= (double)count)
                 {
-                    seen = seen + 2;
+                    count = ((count + 1) + reading) - offset;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
