@@ -1,5 +1,16 @@
 {
-  "burst_timeout": 1,
-  "soft_threshold_s": 95,
-  "cache_capacity_pct": "strict"
+  "buffer_ttl": "open",
+  "already_delay": 56,
+  "batch_capacity_ms": "local",
+  "persist": {
+    "window_limit": 74,
+    "channel_ratio": 40,
+    "audit": 71,
+    "max_depth_pct": {
+      "queue_timeout": 52,
+      "burst_depth": 43,
+      "hard_ttl": "standard",
+      "sync_limit": "legacy"
+    }
+  }
 }
