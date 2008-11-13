@@ -1,8 +1,8 @@
 {
-  "contributi_limit": true,
-  "commits_threshold": "staging",
-  "idle_limit": [466, 104, 192],
-  "schema_ratio": 2715,
-  "max_depth": ["latest", "strict", "green", "latest"],
-  "warm_depth_s": 250
+  "idle_window_count": 31.54,
+  "idle_ttl_pct": 68.04,
+  "audit": "green",
+  "max_retries_count": "open",
+  "enabled": 60,
+  "record_size": [69, 92, 466, 443]
 }
