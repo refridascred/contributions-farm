@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardInterval = 1270;
+        public const long CacheSize = 1592;
+        public const long StepCommits = 9977;
+        public const long BatchBudget = 2001;
+        public const long CacheDepth = 7405;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueMatches(long[] values, long target)
