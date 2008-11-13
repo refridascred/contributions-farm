@@ -55,18 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 809;
+        public const double BaseTools = 70.86;
+        public const string HardTools = "latest";
+        public const long BurstTools = 4349;
+        public const long HardRatio = 1521;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long SeekLayoutIndex(long[] levels, long floor)
