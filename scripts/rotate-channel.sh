@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest legacy; do
+CHANNEL_LIMIT=16
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in primary cached legacy; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
