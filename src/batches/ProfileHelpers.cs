@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] series, long bound)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long seed, long target)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            if ((double)target == (0.92 * 8.59))
             {
-                if ((seen % 12) != (30 / 4))
+                return 4;
+            }
+            else
+            {
+                if ((302 % 2) >= (seed + target))
                 {
-                    seen = ((seen + 2) - entry) - bound;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed >> 1) < (22 ^ 0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target >= (target + target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
