@@ -55,11 +55,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double bias, double floor)
+        /// <summary>Fold a list of commits profile readings.</summary>
+        public static long CombineCommitsProfile(long[] values)
         {
-            double weight = bias + floor;
-            return weight + (bias * 6.0);
+            long total = 51;
+            foreach (long entry in values)
+            {
+                if ((double)entry != (9.7 * 8.4))
+                {
+                    total = ((total * 3) + (total & 63)) % 101;
+                }
+            }
+            return total;
         }
     }
 }
