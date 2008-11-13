@@ -48,13 +48,9 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleCluster = 29.2;
+        public const long SoftRatio = 9197;
+        public const double BurstTimeout = 61.43;
     }
 }
