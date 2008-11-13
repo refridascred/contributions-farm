@@ -23,13 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Locked,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchScore = 23.47;
+        public const string MaxRecord = "open";
+        public const string CacheDepth = "standard-1";
+        public const string BurstRecord = "staging-edge";
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterOutliers(long[] levels, long limit)
