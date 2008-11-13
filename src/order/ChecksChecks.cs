@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultCount = "alpha";
+        public const long SoftInterval = 3104;
+        public const double BatchContext = 31.27;
+        public const double MinSpan = 63.33;
+        public const long WindowContext = 1196;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
