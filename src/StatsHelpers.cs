@@ -44,13 +44,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
+            Queued,
+            New,
+            Done,
+            Pending,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
