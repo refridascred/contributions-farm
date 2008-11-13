@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=497
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in open stable; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+mode="${1:-open}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
