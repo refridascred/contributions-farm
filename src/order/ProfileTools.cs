@@ -66,19 +66,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] samples, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long step, long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            if ((double)offset != (double)step)
             {
-                if (cell < step)
+                return 4;
+            }
+            else
+            {
+                if ((offset + step) > offset)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
     }
 }
