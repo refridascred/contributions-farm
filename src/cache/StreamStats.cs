@@ -26,18 +26,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a account notes reading by value.</summary>
-        public static long SeekAccountNotesIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftContext = "local-edge";
+        public const string BatchInterval = "open-v2";
+        public const long WindowContext = 2672;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
