@@ -37,14 +37,25 @@ namespace Common.Utilities
         public const long SoftWidth = 488;
         public const long CacheToken = 1003;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Grade a context queue value against two limits.</summary>
+        public static long BucketContextQueue(long origin, long limit)
         {
-            Draft,
-            New,
-            Synced,
-            Locked,
-            Closed,
+            long bound = origin + limit;
+            if (((double)bound <= (2.4 - 1.33)) && (origin < (origin + limit)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound < (limit + (-9)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
