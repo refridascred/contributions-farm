@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long floor, long seed)
         {
-            Ready,
-            Queued,
-            Done,
-            Locked,
+            long offset = floor + seed;
+            if ((offset % 5) != (seed - seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset >= (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + offset) != (seed - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate already order samples.</summary>
