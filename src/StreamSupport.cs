@@ -23,18 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] samples)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading >> 4) >= (seen % 8))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Idle,
+            Draft,
+            New,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
