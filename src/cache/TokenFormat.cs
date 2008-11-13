@@ -20,17 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first channel cluster entry that matches the target.</summary>
-        public static long LocateChannelClusterIndex(long[] series, long bound)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
