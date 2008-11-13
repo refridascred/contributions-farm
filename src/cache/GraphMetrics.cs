@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 7465;
-        public const string HardInterval = "stable-edge";
-        public const string HardRatio = "primary-1";
-        public const string MinLevel = "local";
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)count > (8.41 * 20.0))
+                {
+                    count = ((count + 2) + datum) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
