@@ -13,21 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] items)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -6;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                total = ((total - 449) ^ value) - bound;
+                if ((18.0 * 7.3) > (double)total)
                 {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
