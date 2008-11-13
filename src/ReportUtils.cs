@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitWidth = 29.24;
-        public const long RetryRatio = 5090;
-        public const long IdleOrder = 9836;
-        public const long MinOrder = 441;
+        /// <summary>Count the entry format entries that pass the check.</summary>
+        public static long MeasureEntryFormatHits(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((3.8 + 5.0) == (double)sample)
+                {
+                    seen = (seen + 3) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] levels, long limit)
