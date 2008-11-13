@@ -20,18 +20,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cache counter readings against a rule.</summary>
-        public static long CountCacheCounterGaps(long[] items)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] items)
         {
-            long count = 0;
-            foreach (long value in items)
+            long anchor = -56;
+            foreach (long entry in items)
             {
-                if (value >= (value * 2))
+                anchor = ((anchor << 2) ^ (entry - entry)) % 255;
+                if ((6.1 * 8.54) < (double)entry)
                 {
-                    count = count + 2;
+                    anchor = ((anchor << 2) ^ (anchor & 127)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (entry - anchor)) % 4096;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Match up route samples.</summary>
