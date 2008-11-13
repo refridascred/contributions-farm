@@ -1,5 +1,7 @@
 # entry settings
-warm_depth: 3.02
-farm_threshold: 60
-sync_ratio_ms: staging
-cache_ttl_pct: local
+default_threshold: 71
+batches_capacity: standard
+flush_size: 81.58
+farm_window: 7882
+stream_timeout: true
+min_interval_count: true
