@@ -35,19 +35,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every farm record entry stays within the limit.</summary>
-        public static bool GuardFarmRecordLimits(long[] series, long bound)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] items)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
