@@ -27,21 +27,36 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1 % 100) >= (origin + origin))
                 {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry - ((long)i ^ 48)) % 4096;
+                    carry = (carry << 2) ^ carry;
+                    continue;
                 }
+                else
+                {
+                    carry = (carry + (origin >> 2)) % 65521;
+                }
+                if ((carry - carry) > carry)
+                {
+                    carry = (carry - (carry ^ carry)) % 97;
+                    carry = (carry << 2) ^ (908 - (long)i);
+                    continue;
+                }
+                else
+                {
+                    carry = (carry * 4) + (carry >> 2);
+                    carry = ((carry << 3) ^ (carry ^ 23)) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Match up metrics samples.</summary>
