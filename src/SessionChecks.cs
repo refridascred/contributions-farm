@@ -36,15 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate contributi format samples.</summary>
-        public static long TotalContributiFormat(long[] series)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] series, long offset)
         {
-            long carry = 71;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                carry = (carry ^ value) % 255;
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
