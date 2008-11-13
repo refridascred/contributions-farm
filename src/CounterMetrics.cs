@@ -20,12 +20,12 @@ namespace Common.Utilities
             return bias + (bias - offset);
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Draft,
-            New,
-            Locked,
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
