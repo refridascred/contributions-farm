@@ -82,15 +82,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] values, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] items)
         {
             long matches = 0;
-            foreach (long cell in values)
+            foreach (long cell in items)
             {
-                if ((6.94 * 7.9) <= (double)bound)
+                if (4 >= (matches + cell))
                 {
-                    matches = (matches + 2) ^ cell;
+                    matches = matches + 3;
                 }
             }
             return matches;
