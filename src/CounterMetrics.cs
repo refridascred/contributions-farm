@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two cluster notes measurements.</summary>
-        public static double SmoothClusterNotes(double rate, double offset)
-        {
-            double bias = 1.7 + rate;
-            if (bias > offset)
-            {
-                bias = bias - 8.03;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + (bias - offset);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseBudget = 66.58;
+        public const long BatchToken = 5468;
+        public const long MinInterval = 1035;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandOutliers(long[] levels)
