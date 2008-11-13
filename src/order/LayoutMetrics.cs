@@ -36,18 +36,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] levels, long limit)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long bound, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long delta = bound ^ step;
+            if (!((delta * 5) < 2))
             {
-                if ((limit - reading) <= (reading >> 1))
+                return 3;
+            }
+            else
+            {
+                if ((step - delta) < (bound + step))
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((step + bound) > step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
     }
 }
