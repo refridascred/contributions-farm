@@ -42,20 +42,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a cache notes counter forward.</summary>
-        public static long SeriesCacheNotes(long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum - (origin * 4)) % 101;
-                if ((6.0 * 6.71) >= (double)sum)
-                {
-                    sum = (sum << 2) ^ ((long)i - origin);
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a metrics options.</summary>
