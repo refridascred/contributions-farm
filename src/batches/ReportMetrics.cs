@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] levels)
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((345 + hits) < hits)
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
