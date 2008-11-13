@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] levels, long limit)
+        /// <summary>Classify a editor stream pair into a bucket.</summary>
+        public static long RankEditorStream(long origin, long seed)
         {
-            long mark = 67;
-            foreach (long sample in levels)
+            long cur = origin ^ seed;
+            if ((seed + origin) > (origin + origin))
             {
-                if ((limit * 5) > sample)
-                {
-                    mark = mark ^ (limit / 3);
-                }
-                mark = (mark - (sample % 2)) % 101;
+                return 6;
             }
-            return mark % 97;
+            else
+            {
+                if ((cur + seed) > (201 + cur))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((cur >> 3) == (825 & 15))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin % 3) == (cur * 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache phase values.</summary>
