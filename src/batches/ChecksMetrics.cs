@@ -72,19 +72,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits queue figure with a bias.</summary>
-        public static double ScaleCommitsQueue(double ratio, double bias)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double ratio2 = ratio;
-            if (ratio2 > (double)134)
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 - (bias - ratio2);
-            }
-            return ratio2 + 13.0;
+            public double Size { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
