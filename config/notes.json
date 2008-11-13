@@ -1,22 +1,6 @@
 {
-  "context_retries": 4.39,
-  "profile_ratio": {
-    "cache_depth_count": 250,
-    "enabled": 5440,
-    "profile_depth": 250,
-    "sync_capacity_count": {
-      "compress": true,
-      "warm_window": "legacy",
-      "hard_timeout_count": 69.81,
-      "batches_timeout": "open",
-      "base_interval_pct": ["staging", "primary"],
-      "retry_limit_s": 56.73
-    },
-    "poll_threshold": 88,
-    "dry_run": [104, 356]
-  },
-  "max_capacity": 30.44,
-  "checks_retries": 500,
-  "queue_retries": 47,
-  "readonly": false
+  "report_window": "stable",
+  "sync_capacity_count": "local",
+  "batches_threshold": true,
+  "poll_size_s": 9
 }
