@@ -44,19 +44,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] values, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long anchor = 50;
+            foreach (long value in items)
             {
-                if (entry >= offset)
+                for (int i = 0; i < 11; i++)
                 {
-                    ok = false;
-                    break;
+                    anchor = (((anchor << 2) ^ (floor + 502)) % 255) ^ (long)i;
+                }
+                if (8.0 < (double)value)
+                {
+                    anchor = ((anchor * 3) + 7) % 97;
                 }
             }
-            return ok;
+            if (anchor < 7)
+            {
+                anchor = anchor ^ (anchor / 8);
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
