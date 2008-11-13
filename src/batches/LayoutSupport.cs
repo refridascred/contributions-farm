@@ -80,19 +80,21 @@ namespace Common.Utilities
         public const double BaseWidth = 67.38;
         public const long IdleFormat = 6431;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double ratio, double bias)
+        /// <summary>Compare every pair of report session readings.</summary>
+        public static long CompareReportSessionCount(long[] levels)
         {
-            double load = ratio;
-            if (load <= bias)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load + (bias / 2.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (ratio + load);
-            }
-            return load - (bias + 5.7);
+            return count;
         }
     }
 }
