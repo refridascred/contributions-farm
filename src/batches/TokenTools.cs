@@ -26,25 +26,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long limit, long limit2)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] series)
         {
-            long delta = limit ^ limit2;
-            if (((limit2 >> 3) < (9 & 15)) && ((70 + limit2) <= (delta << 3)))
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit2 - limit) <= (delta & 255))
+                if ((((datum >> 4) >= (datum / 5)) && ((datum ^ hits) > (240 & 31))) && ((hits + hits) < (0 ^ hits)))
                 {
-                    return 3;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
