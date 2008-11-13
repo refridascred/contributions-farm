@@ -34,22 +34,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] samples, long seed)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((seed >> 3) >= (entry - seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Queued,
+            Failed,
         }
     }
 }
