@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstScore = "cached";
-        public const long CacheEntry = 3977;
-        public const long MaxFactor = 1480;
-        public const long BurstEntry = 9462;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 8414;
+        public const long LimitProfile = 7798;
+        public const long DefaultCount = 4952;
+        public const long HardDepth = 8090;
+        public const string BaseCount = "staging-edge";
 
         /// <summary>Accumulate batches samples.</summary>
         public static long WeighBatches(long[] levels)
