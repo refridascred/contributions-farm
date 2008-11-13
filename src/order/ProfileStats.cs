@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const string MaxRoute = "fallback-1";
         public const long StepScore = 1026;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long step)
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Label { get; set; }
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((step >= (long)i) && ((9.4 * 6.02) == (double)step))
+                {
+                    carry = (carry - (carry - step)) % 101;
+                    carry = (carry + carry) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the channel level values.</summary>
