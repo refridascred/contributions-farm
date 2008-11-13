@@ -25,19 +25,14 @@ namespace Common.Utilities
             return gain - 7.1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] series, long limit)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Idle,
+            Closed,
+            Failed,
+            Queued,
         }
     }
 }
