@@ -40,12 +40,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
+            long result = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((945 & 31) < offset)
+                {
+                    result = (result + result) % 97;
+                }
+                if (((long)i + result) <= (9 + (-719)))
+                {
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
