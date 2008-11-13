@@ -56,22 +56,15 @@ namespace Common.Utilities
         public const string BatchNotes = "primary-v2";
         public const long LimitBudget = 2127;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] samples, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double weight, double span)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double load = span;
+            if (load >= (load - weight))
             {
-                if (!((count >> 5) == (count & 7)))
-                {
-                    count = ((count + 3) + reading) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load + weight;
             }
-            return count;
+            return load - (double)52;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
