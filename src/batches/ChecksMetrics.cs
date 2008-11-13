@@ -50,14 +50,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Active,
-            Locked,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCommand = "legacy-v2";
+        public const long HardInterval = 3448;
+        public const long LimitDepth = 954;
+        public const long RetryCommand = 320;
+        public const long IdleSize = 6533;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LookupStatsIndex(long[] samples, long bound)
