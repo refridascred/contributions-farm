@@ -73,18 +73,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] series, long origin)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((9.6 / 4.0) <= (double)value)
-                {
-                    seen = (seen + 3) - origin;
-                }
-            }
-            return seen;
+            Synced,
+            Paused,
+            Retry,
+            Dropped,
         }
     }
 }
