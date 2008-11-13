@@ -58,18 +58,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((650 * 3) < (946 + item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstTimeout = 8006;
+        public const double CacheInterval = 89.12;
+        public const long MaxTimeout = 5389;
     }
 }
