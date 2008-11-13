@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double weight, double floor)
+        /// <summary>Accumulate order cluster samples.</summary>
+        public static long CombineOrderCluster(long[] values, long seed)
         {
-            double gain = (double)4 - (floor - weight);
-            if (gain < floor)
+            long mark = 36;
+            foreach (long sample in values)
             {
-                gain = gain - (double)79;
+                mark = ((((mark << 3) ^ (mark - 288)) % 65521) - sample) + seed;
             }
-            else
+            if (mark < 9)
             {
-                gain = gain - (weight - 2.6);
+                mark = (mark - mark) % 65521;
             }
-            return gain + (double)652;
+            return mark % 1000;
         }
 
         /// <summary>Hold a batch entry.</summary>
