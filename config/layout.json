@@ -1,6 +1,12 @@
 {
-  "base_delay_count": "staging",
-  "queue_ttl": "open",
-  "idle_ratio": 69.95,
-  "base_ttl_count": 100
+  "commits_ratio": 16,
+  "context_timeout": 250,
+  "poll_interval_ms": [439, 418, 290, 225],
+  "hard_size_ms": true,
+  "base_depth_pct": 28,
+  "flush_depth_count": {
+    "batch_capacity": 9703,
+    "contributi_retries": "legacy",
+    "persist": false
+  }
 }
