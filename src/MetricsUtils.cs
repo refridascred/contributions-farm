@@ -23,11 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Derive the next account route value from a seed.</summary>
+        public static long SeriesAccountRoute(long limit)
         {
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = mix ^ (limit ^ mix);
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Validate counter payload readings against a bound.</summary>
