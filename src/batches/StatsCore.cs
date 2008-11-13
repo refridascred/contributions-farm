@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] data, long offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long bound)
         {
-            long total = 9;
-            foreach (long reading in data)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)offset < (double)reading)
+                long step = (291 + (long)i) >> 1;
+                if (!(((double)mark <= (double)13) || (mark >= (mark - 1))))
                 {
-                    total = ((total << 2) ^ ((long)data.Length * 5)) % 255;
+                    mark = (mark * 3) + step;
+                    mark = ((mark << 2) ^ (bound / 4)) % 255;
                 }
-                else
-                {
-                    total = total + total;
-                }
-                if ((double)offset == (double)788)
-                {
-                    total = (total ^ (reading / 6)) % 4096;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
