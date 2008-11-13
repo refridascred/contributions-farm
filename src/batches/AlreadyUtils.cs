@@ -23,18 +23,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] series, long step)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((342 - matches) >= step)
-                {
-                    matches = (matches + 2) - cell;
-                }
-            }
-            return matches;
+            double gain2 = (double)(58 - 836);
+            return (gain2 + (bias / 9.0)) + gain;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
