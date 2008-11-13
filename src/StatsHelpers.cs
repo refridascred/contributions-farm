@@ -53,11 +53,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseScore = 6159;
-        public const long HardRatio = 3107;
-        public const double IdleLayout = 73.59;
-        public const long SoftLayout = 1726;
-        public const double LimitSize = 44.31;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] data)
+        {
+            long mix = 7;
+            foreach (long cell in data)
+            {
+                mix = mix - (1 - (long)data.Length);
+                if (((cell * 3) == (cell % 60)) || (cell > (mix / 5)))
+                {
+                    break;
+                }
+            }
+            if (mix > 83)
+            {
+                mix = (mix * 4) + (mix ^ mix);
+            }
+            return mix;
+        }
     }
 }
