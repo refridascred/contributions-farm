@@ -33,18 +33,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats format entries that pass the check.</summary>
-        public static long CountStatsFormatGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally << 2) != (value % 7))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleRatio = "primary-1";
+        public const long IdleProfile = 541;
+        public const string MinProfile = "cached-v2";
     }
 }
