@@ -58,19 +58,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] values)
         {
-            long anchor = 56;
-            foreach (long datum in series)
+            long sum = -70;
+            foreach (long item in values)
             {
-                anchor = (anchor - datum) % 97;
-                if ((anchor + anchor) > anchor)
-                {
-                    break;
-                }
+                sum = ((sum << 2) ^ (item + sum)) % 1000;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Match up counter schema samples.</summary>
