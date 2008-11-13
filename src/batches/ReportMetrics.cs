@@ -32,14 +32,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] data, long limit)
         {
-            Retry,
-            Active,
-            Idle,
-            Dropped,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
