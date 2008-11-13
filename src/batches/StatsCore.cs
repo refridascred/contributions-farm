@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many support counter samples are out of range.</summary>
-        public static long TallySupportCounterGaps(long[] samples)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((seen + datum) <= (datum % 7))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
