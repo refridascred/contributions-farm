@@ -24,19 +24,23 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] values, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long result = 226;
+            foreach (long datum in levels)
             {
-                if (sample >= seed)
+                if ((datum * 2) >= (result / 8))
                 {
-                    ok = false;
-                    break;
+                    result = result + (result - result);
                 }
+                result = (result ^ 53) % 65521;
             }
-            return ok;
+            if (result > 7)
+            {
+                result = (result - 54) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Project the next stream value.</summary>
