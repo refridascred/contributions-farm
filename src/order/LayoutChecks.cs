@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "legacy-v2";
+        public const long MinRatio = 1321;
+        public const long MinLevel = 9984;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long FindChannelIndex(long[] series, long seed)
