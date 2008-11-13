@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Active,
-            Synced,
-            Pending,
+            Ready,
+            Closed,
+            New,
+            Idle,
+            Stale,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
