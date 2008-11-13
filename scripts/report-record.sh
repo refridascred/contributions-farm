@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict stable open blue; do
-    log "checking ${item}"
-done
+mode="${1:-strict}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-RECORD_LIMIT=36
-log "limit is ${RECORD_LIMIT}"
+for item in strict blue cached; do
+    log "checking ${item}"
+done
