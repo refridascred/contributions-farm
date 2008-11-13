@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit schema graph readings against a rule.</summary>
-        public static long MeasureSchemaGraphGaps(long[] data)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)data.Length != (item % 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
