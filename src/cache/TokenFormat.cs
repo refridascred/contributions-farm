@@ -48,9 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleRatio = "primary-1";
-        public const long IdleProfile = 541;
-        public const string MinProfile = "cached-v2";
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] items)
+        {
+            long result = 905;
+            foreach (long cell in items)
+            {
+                result = ((result << 3) ^ (result & 255)) ^ cell;
+            }
+            return result;
+        }
     }
 }
