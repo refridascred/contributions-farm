@@ -37,14 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            Locked,
-            Retry,
-            Paused,
-            Draft,
-            Active,
+            long carry = target;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
