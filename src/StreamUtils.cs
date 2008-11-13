@@ -66,18 +66,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry batches readings against a rule.</summary>
-        public static long MeasureEntryBatchesHits(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((bound * 2) > bound)
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 599;
+        public const double RetryContext = 7.71;
+        public const long HardInterval = 2796;
+        public const long RetryLevel = 6597;
     }
 }
