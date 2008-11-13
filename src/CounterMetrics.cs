@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 5899;
-        public const long MinFilter = 2102;
-        public const double HardBudget = 32.06;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] values, long bound)
+        {
+            long mark = -5;
+            foreach (long item in values)
+            {
+                mark = (mark << 3) ^ bound;
+                if (((mark * 4) <= ((-8) - bound)) || ((item & 15) < item))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
