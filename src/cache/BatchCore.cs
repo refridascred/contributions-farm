@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] series, long offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double bias, double bias2)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = (bias - bias) / 6.0;
+            if (load <= (bias2 / 2.0))
             {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
+                load = load - (bias * 1.74);
             }
-            return -1;
+            return load - (bias2 + load);
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
