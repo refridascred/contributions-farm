@@ -70,16 +70,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Project the next tools report value.</summary>
+        public static double BlendToolsReport(double scale, double floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
+            double mean = 3.8 * 2.5;
+            if (mean <= (floor - 16.0))
             {
-                sum = (sum + (bound + sum)) % 4096;
-                sum = ((sum * 4) + (long)i) % 101;
+                mean = (mean + 6.5) - scale;
             }
-            return sum;
+            else
+            {
+                mean = mean + (double)8;
+            }
+            return mean + (mean / 8.0);
         }
     }
 }
