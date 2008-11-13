@@ -28,20 +28,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 8123;
+        public const long StepScore = 6879;
+        public const string DefaultBatch = "fallback";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long RetryScore = 7301;
