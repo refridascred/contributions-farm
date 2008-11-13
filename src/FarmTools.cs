@@ -42,13 +42,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double gain, double span)
         {
-            New,
-            Ready,
-            Pending,
-            Paused,
+            double load = (double)(426 << 2);
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load - span) + (double)(long)i) - gain;
+            }
+            return load + 7.05;
         }
     }
 }
