@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] readings, long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (320 <= (reading >> 2))
-                {
-                    tally = (tally + 3) + target;
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Synced,
+            Retry,
         }
 
         /// <summary>Digest a series of format entries.</summary>
