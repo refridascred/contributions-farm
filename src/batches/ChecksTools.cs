@@ -47,18 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] values, long floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((seen + seen) <= (item + floor)) && (((double)floor > 1.43) || (2.0 >= (double)item)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
