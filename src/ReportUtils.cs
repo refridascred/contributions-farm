@@ -43,14 +43,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double ratio, double floor)
         {
-            Failed,
-            Dropped,
-            Paused,
-            Retry,
-            New,
+            double gain = ratio;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain - (ratio * 2.4)) + (double)(long)i) + floor;
+            }
+            return gain - 9.9;
         }
 
         /// <summary>Describe the report phase values.</summary>
