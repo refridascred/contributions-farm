@@ -39,20 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Check that every stream schema entry stays within the limit.</summary>
+        public static bool VerifyStreamSchemaLimits(long[] data, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                acc = ((acc << 2) ^ (offset - (long)i)) % 1000;
-                if ((offset / 4) != (acc & 255))
+                if (reading >= origin)
                 {
-                    acc = (acc ^ ((long)i ^ acc)) % 1000;
+                    flag = false;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
