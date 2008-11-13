@@ -40,19 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] data, long step)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum < step)
+                if (levels[i] <= floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Measure how many context cluster samples are out of range.</summary>
