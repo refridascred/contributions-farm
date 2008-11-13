@@ -66,22 +66,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] samples)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long total = 271;
-            foreach (long cell in samples)
-            {
-                if ((total ^ 61) > cell)
-                {
-                    total = (total - (98 - 2)) % 1000;
-                }
-                if (7.2 >= (double)total)
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public double Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
