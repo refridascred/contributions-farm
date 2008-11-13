@@ -1,7 +1,8 @@
-id,count,weight,rank
-1,legacy,9.46,23.12
-2,968,edge,local
-3,57.0,90.1,stable
-4,904,edge,305
-5,23.11,edge,edge
-6,921,local,standard
+id,token,label
+1,42.37,green
+2,latest,edge
+3,411,227
+4,74.95,137
+5,primary,390
+6,28.95,open
+7,716,edge
