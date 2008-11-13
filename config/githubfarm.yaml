@@ -1,19 +1,6 @@
 # githubfarm settings
-command_capacity: standard
-min_ttl_pct: standard
-entry_size: 1282
-min_window_s: legacy
-idle_limit:
-  soft_depth_s:
-    hard_threshold_pct: local
-    burst_threshold_ms: legacy
-    order_window: 98.84
-    poll_size: 33.23
-  base_size:
-    - latest
-    - fallback
-  poll_ttl: staging
-  hard_depth: standard
-  verbose: 9243
-  compress: true
-format_retries: 27.05
+flush_ttl_ms: latest
+batches_depth: standard
+burst_timeout_ms: fallback
+flush_interval_pct: 30
+warm_retries_count: 90.52
