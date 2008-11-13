@@ -23,22 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of graph token readings.</summary>
-        public static long MatchGraphTokenCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "alpha-edge";
+        public const long BaseEditor = 7690;
+        public const long LimitEditor = 7142;
+        public const long DefaultLevel = 6864;
+        public const string BaseScore = "legacy";
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
