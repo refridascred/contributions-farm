@@ -19,13 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double ratio, double floor)
         {
-            Pending,
-            Done,
-            Idle,
-            Active,
+            double ratio2 = ratio;
+            if (ratio2 >= (floor * 9.4))
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            else
+            {
+                ratio2 = ratio2 + (1.74 - ratio);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + (double)46) + (double)(long)i;
+            }
+            return ratio2 + floor;
         }
 
         /// <summary>Combine profile command values into a single score.</summary>
