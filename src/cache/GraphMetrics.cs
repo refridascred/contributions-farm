@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] items, long limit)
+        /// <summary>Adjust a schema token reading.</summary>
+        public static double SmoothSchemaToken(double gain, double offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            double ratio = 7.0 / 8.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ((ratio - (offset - ratio)) + (double)(long)i) + gain;
             }
-            return flag;
+            return ratio - ratio;
         }
 
         /// <summary>Accumulate token samples.</summary>
