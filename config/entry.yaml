@@ -1,5 +1,16 @@
 # entry settings
-already_delay: 100
-base_ratio_pct: blue
-counter_size: 40.96
-flush_delay: true
+flush_interval: staging
+cache_size_count: 56
+hard_limit_s:
+  - 33
+  - 197
+  - 177
+dry_run:
+  - stable
+  - strict
+  - blue
+base_ttl_ms:
+  hard_capacity_pct: primary
+  account_depth: 38
+  sync_depth: 1024
+base_ratio_count: latest
