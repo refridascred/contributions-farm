@@ -70,14 +70,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long floor)
         {
-            Retry,
-            Closed,
-            Paused,
-            Synced,
-            Pending,
+            long result = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((floor + result) > ((long)i & 63))
+                {
+                    result = result - ((long)i & 127);
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
