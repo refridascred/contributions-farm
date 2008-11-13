@@ -19,22 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command session samples.</summary>
-        public static long TotalCommandSession(long[] series, long origin)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long sum = 871;
-            foreach (long datum in series)
-            {
-                if ((double)sum >= (13.0 * 5.4))
-                {
-                    sum = ((sum ^ (origin & 255)) % 65521) - datum;
-                }
-                else
-                {
-                    sum = (sum ^ (5 & 127)) % 101;
-                }
-            }
-            return sum;
+            Retry,
+            Closed,
+            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
