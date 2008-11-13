@@ -55,13 +55,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double weight, double offset)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            double drift = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + weight) + (double)(long)i;
+            }
+            return drift - (offset * 10.0);
         }
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
