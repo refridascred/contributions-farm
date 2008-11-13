@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultDepth = 9661;
-        public const long WindowCount = 3534;
-        public const string MaxRoute = "fallback-1";
-        public const long StepScore = 1026;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleDepth = 6062;
+        public const double MaxBuffer = 18.92;
+        public const string BatchBuffer = "stable-1";
+        public const long MinFactor = 8184;
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long StepSession(long step)
