@@ -1,11 +1,8 @@
 # githubfarm settings
-max_size_count: 86
-audit: 51.24
-verbose: 8775
-poll_timeout_pct: 46.6
-base_depth_s:
-  - green
-  - standard
-  - edge
-  - cached
-payload_depth: false
+cache_timeout_s:
+  - 454
+  - 219
+burst_retries_count: 41
+hard_retries_pct: local
+default_capacity: local
+hard_delay_s: 88.0
