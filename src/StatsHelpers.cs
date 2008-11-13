@@ -35,18 +35,14 @@ namespace Common.Utilities
             return scale + (ratio - ratio);
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] series, long step)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((double)step >= (double)item)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Retry,
+            Paused,
+            Draft,
+            Active,
         }
 
         /// <summary>Adjust a window reading.</summary>
