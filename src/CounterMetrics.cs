@@ -13,11 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Validate batch token readings against a bound.</summary>
+        public static bool CheckBatchTokenLimits(long[] values, long bound)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the batches class values.</summary>
