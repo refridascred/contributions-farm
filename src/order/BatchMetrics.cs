@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardInterval = 1270;
-        public const long CacheSize = 1592;
-        public const long StepCommits = 9977;
-        public const long BatchBudget = 2001;
-        public const long CacheDepth = 7405;
+        /// <summary>Grade a order batch value against two limits.</summary>
+        public static long RankOrderBatch(long origin, long step)
+        {
+            long slot = origin + step;
+            if ((slot << 2) < step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)origin == (9.66 + 3.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryHits(long[] data)
