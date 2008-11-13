@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] levels)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((seen * 2) == (value ^ seen))
+                if ((datum / 2) == (datum - floor))
                 {
-                    seen = seen + 3;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a entry stats.</summary>
