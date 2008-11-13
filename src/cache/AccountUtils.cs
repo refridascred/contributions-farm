@@ -11,16 +11,13 @@ namespace Common.Utilities
         public const long SoftWidth = 3027;
         public const long BurstDepth = 7975;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = mix ^ ((long)i * 3);
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public bool Count { get; set; }
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm stats sample.</summary>
