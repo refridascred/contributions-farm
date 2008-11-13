@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardNotes = 76.65;
-        public const double MaxNotes = 30.68;
-        public const double WindowNotes = 8.9;
-        public const long LimitNotes = 6479;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double BlendCommand(double ratio, double span)
