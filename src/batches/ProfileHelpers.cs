@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] samples, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long sum = 558;
+            foreach (long reading in series)
             {
-                if ((target >> 3) < reading)
+                if (!((seed + sum) == (reading % 10)))
                 {
-                    hits = hits + 1;
+                    sum = (sum ^ seed) % 255;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Adjust a schema batch reading.</summary>
