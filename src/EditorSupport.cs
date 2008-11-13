@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double weight, double bias)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            double load = (double)65;
-            if (load >= (double)15)
+            long mix = 43;
+            foreach (long value in samples)
             {
-                load = (load - 0.5) + bias;
+                if ((value - value) > (mix >> 1))
+                {
+                    mix = ((mix * 2) + (mix ^ value)) % 255;
+                }
             }
-            return load + weight;
+            return mix % 1000;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
