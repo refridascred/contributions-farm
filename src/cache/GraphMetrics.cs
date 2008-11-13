@@ -44,27 +44,12 @@ namespace Common.Utilities
         public const long DefaultContext = 6867;
         public const long LimitInterval = 8379;
 
-        /// <summary>Digest a series of window stream entries.</summary>
-        public static long TotalWindowStream(long[] series)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long mark = 657;
-            foreach (long entry in series)
-            {
-                mark = mark - ((-574) * 2);
-                if (81 > (mark << 2))
-                {
-                    mark = (mark * 3) + (entry ^ mark);
-                }
-                else
-                {
-                    mark = mark - (2 - mark);
-                }
-            }
-            if (mark > 872)
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark;
+            Retry,
+            New,
+            Done,
         }
     }
 }
