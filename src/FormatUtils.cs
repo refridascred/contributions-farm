@@ -55,11 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "staging-1";
-        public const long IdleCounter = 8436;
-        public const double BaseInterval = 67.37;
-        public const long CacheCounter = 2668;
+        /// <summary>Audit entry batch readings against a rule.</summary>
+        public static long MeasureEntryBatchHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (!((hits & 31) < 150))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandGaps(long[] series)
