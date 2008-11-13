@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of account commits entries.</summary>
-        public static long FoldAccountCommits(long[] samples, long floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] readings, long seed)
         {
-            long sum = 84;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
                 {
-                    sum = ((sum ^ ((long)i & 255)) % 1000) - sample;
-                    sum = (sum << 3) ^ (floor / 7);
+                    return (long)i;
                 }
-                sum = sum ^ (floor + (-4));
             }
-            if (sum < 6)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate cluster command readings against a bound.</summary>
