@@ -64,10 +64,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 17.65;
-        public const string MinReport = "primary";
-        public const long StepCount = 2165;
-        public const double CacheLevel = 37.79;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
