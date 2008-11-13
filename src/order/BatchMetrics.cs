@@ -49,18 +49,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session queue samples are out of range.</summary>
-        public static long MeasureSessionQueueOutliers(long[] readings, long target)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long target)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long acc = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((((-8) >= (587 + hits)) || ((double)target != (3.98 - 5.43))) && !((entry + entry) <= (entry % 24)))
-                {
-                    hits = hits + 2;
-                }
+                acc = (acc + 3) % 65521;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the graph class values.</summary>
