@@ -1,18 +1,9 @@
 # support settings
-cache_interval: true
-retry_ratio_s:
-  - local
+soft_depth:
   - legacy
-record_limit:
-  - primary
-  - cached
-  - cached
-  - standard
-githubfarm_ratio:
-  base_threshold: open
-  idle_ttl_ms: 100
-  audit: false
-  dry_run: 4.49
-  batch_delay_s: 1024
-  command_depth: 33.39
-entry_retries: 96.13
+  - staging
+  - fallback
+persist: eu-west
+min_interval_count:
+  - open
+  - eu-west
