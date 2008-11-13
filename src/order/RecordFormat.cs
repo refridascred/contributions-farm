@@ -66,18 +66,15 @@ namespace Common.Utilities
             return drift - (offset * 10.0);
         }
 
-        /// <summary>Audit counter githubfarm readings against a rule.</summary>
-        public static long TallyCounterGithubfarmOutliers(long[] items, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long carry = 0;
+            foreach (long sample in readings)
             {
-                if (((-18) + entry) > seen)
-                {
-                    seen = (seen + 3) + limit;
-                }
+                carry = (((carry + (carry / 3)) % 101) + sample) - floor;
             }
-            return seen;
+            return carry % 65521;
         }
     }
 }
