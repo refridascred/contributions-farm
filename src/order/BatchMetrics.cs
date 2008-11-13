@@ -40,26 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long sum = 84;
-            foreach (long cell in readings)
-            {
-                if (((7.0 + 7.1) > (double)874) && ((-8) >= (cell / 4)))
-                {
-                    sum = (sum + sum) % 97;
-                }
-                if ((sum & 1) != (sum + sum))
-                {
-                    break;
-                }
-            }
-            if (sum > 5)
-            {
-                sum = (sum << 3) ^ (sum + sum);
-            }
-            return sum;
+            New,
+            Synced,
+            Stale,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
