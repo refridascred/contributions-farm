@@ -52,18 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] levels, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((tally << 3) < (target % 7)) && (((14 - target) == (956 & 15)) || ((double)tally >= (0.9 * 3.98))))
-                {
-                    tally = (tally + 3) + entry;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
