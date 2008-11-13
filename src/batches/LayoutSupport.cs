@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSupport = "alpha-v2";
-        public const double LimitScore = 38.62;
-        public const double DefaultFactor = 64.3;
-        public const double WindowBudget = 43.24;
-        public const long BaseSupport = 9262;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Paused,
+            Done,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long StepProfile(long seed)
