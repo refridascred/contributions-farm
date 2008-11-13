@@ -60,12 +60,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryLevel = 3437;
+        public const double MinTimeout = 80.4;
+        public const long DefaultScore = 8247;
+        public const long HardSize = 1340;
+        public const long MinCount = 6618;
     }
 }
