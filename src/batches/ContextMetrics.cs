@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double weight, double floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] series)
         {
-            double rate = weight;
-            if (rate >= (double)681)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                rate = rate - rate;
+                if (matches > (cell % 97))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (floor / 9.0)) + (double)(long)i;
-            }
-            return rate - (double)1;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
