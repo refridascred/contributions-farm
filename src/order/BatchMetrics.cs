@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a order batch value against two limits.</summary>
-        public static long RankOrderBatch(long origin, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] data)
         {
-            long slot = origin + step;
-            if ((slot << 2) < step)
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin == (9.66 + 3.0))
+                if (count > (353 * 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    count = (count + 1) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of already route readings.</summary>
