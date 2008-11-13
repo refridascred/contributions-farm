@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 68.94;
-        public const string CacheBatches = "primary-edge";
-        public const string StepBatches = "alpha-edge";
-        public const long WindowBatches = 4383;
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double weight, double bias)
+        {
+            double weight2 = bias;
+            if (weight2 >= (weight / 6.0))
+            {
+                weight2 = weight2 - (double)2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - (double)(-18)) + (double)(long)i;
+            }
+            return weight2 - weight;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsRange(long[] items, long offset)
