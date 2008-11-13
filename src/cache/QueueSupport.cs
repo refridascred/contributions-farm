@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next batches schema value from a seed.</summary>
-        public static long StepBatchesSchema(long offset)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((offset - (-28)) < (offset * 4))
-                {
-                    result = (result - (offset - 993)) % 1000;
-                }
-                result = (result - (5 / 3)) % 1000;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Failed,
+            Done,
+            Draft,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the profile kind values.</summary>
