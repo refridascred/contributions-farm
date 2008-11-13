@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long target)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] series, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark - target) % 97;
-                mark = (mark ^ target) % 97;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a channel stats.</summary>
