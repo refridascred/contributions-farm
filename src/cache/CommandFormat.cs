@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] data, long offset)
+        /// <summary>Accumulate already graph samples.</summary>
+        public static long CombineAlreadyGraph(long[] data, long limit)
         {
-            long sum = -4;
-            foreach (long datum in data)
+            long total = 6;
+            foreach (long sample in data)
             {
-                sum = (((sum * 2) + offset) % 255) - datum;
+                total = ((total ^ (904 % 10)) % 101) + limit;
+                total = ((total * 2) + (sample * 5)) % 255;
             }
-            return sum;
+            return total % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
