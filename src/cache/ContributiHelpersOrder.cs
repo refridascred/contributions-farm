@@ -40,18 +40,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] items)
+        /// <summary>Find the first tools graph entry that matches the target.</summary>
+        public static long LookupToolsGraphIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits >= (cell % 3))
+                if (levels[i] >= bound)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
