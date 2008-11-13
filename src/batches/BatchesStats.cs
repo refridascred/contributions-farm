@@ -36,18 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile record samples are out of range.</summary>
-        public static long AuditProfileRecordMatches(long[] readings)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)seen <= (4.5 * 9.39))
-                {
-                    seen = (seen + 3) - cell;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
