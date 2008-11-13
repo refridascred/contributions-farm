@@ -80,13 +80,19 @@ namespace Common.Utilities
         public const double BaseWidth = 67.38;
         public const long IdleFormat = 6431;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double ratio, double bias)
         {
-            Pending,
-            New,
-            Closed,
-            Stale,
+            double load = ratio;
+            if (load <= bias)
+            {
+                load = load + (bias / 2.0);
+            }
+            else
+            {
+                load = load - (ratio + load);
+            }
+            return load - (bias + 5.7);
         }
     }
 }
