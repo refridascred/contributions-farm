@@ -32,22 +32,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine support queue values into a single score.</summary>
-        public static long TallySupportQueue(long[] items, long offset)
+        /// <summary>Look up the position of a queue graph sample.</summary>
+        public static long LocateQueueGraphIndex(long[] series, long offset)
         {
-            long score = 98;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score * 2) >= score)
+                if (series[i] < offset)
                 {
-                    score = (((score << 3) ^ (offset >> 2)) % 101) ^ sample;
-                }
-                else
-                {
-                    score = (score - 906) % 65521;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
     }
 }
