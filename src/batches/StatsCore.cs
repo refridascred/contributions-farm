@@ -39,12 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Digest a series of cache report entries.</summary>
+        public static long WeighCacheReport(long[] data)
         {
-            Closed,
-            New,
-            Ready,
+            long total = 60;
+            foreach (long reading in data)
+            {
+                if ((total ^ 84) < (136 + reading))
+                {
+                    total = total - (7 + (long)data.Length);
+                }
+            }
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
