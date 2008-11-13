@@ -80,10 +80,23 @@ namespace Common.Utilities
         public const long MinBatches = 5960;
         public const string MaxRatio = "stable-v2";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 599;
-        public const double RetryContext = 7.71;
-        public const long HardInterval = 2796;
-        public const long RetryLevel = 6597;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double ratio, double offset)
+        {
+            double weight = (ratio * 9.54) / 4.0;
+            if (weight <= (7.0 - offset))
+            {
+                weight = weight + offset;
+            }
+            else
+            {
+                weight = weight - 7.4;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight - weight;
+        }
     }
 }
