@@ -1,9 +1,6 @@
-id,rank
-1,25.55
-2,234
-3,open
-4,721
-5,321
-6,382
-7,89.37
-8,83.9
+id,token,count,ratio,owner
+1,48.69,local,strict,staging
+2,cached,green,82.67,414
+3,blue,451,cached,95.56
+4,469,111,86.21,61.36
+5,41.33,3.71,649,44.35
