@@ -59,18 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] items)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (4 >= (matches + cell))
+                if ((series[i] > limit) && ((series[i] % 5) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
