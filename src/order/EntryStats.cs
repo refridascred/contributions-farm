@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const double StepQueue = 49.71;
         public const double CacheQueue = 93.32;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 9908;
-        public const long CacheToken = 3251;
-        public const string MinInterval = "legacy";
-        public const long BurstToken = 6596;
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] series, long seed)
+        {
+            long score = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum < (3.07 * 9.0))
+                {
+                    score = score ^ (datum % 7);
+                }
+                if ((double)8 > (double)seed)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelRange(long[] levels, long bound)
