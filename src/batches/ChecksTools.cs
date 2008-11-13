@@ -38,16 +38,38 @@ namespace Common.Utilities
             return ratio2 + floor;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Classify a githubfarm filter pair into a bucket.</summary>
+        public static long SortGithubfarmFilter(long origin, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
+            if ((double)seed < 7.9)
             {
-                mark = (mark + (bound >> 3)) % 97;
-                mark = ((mark * 5) + (long)i) % 65521;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((seed - seed) <= (seed / 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin < (1.0 * 3.81))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed - origin) < origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools options.</summary>
