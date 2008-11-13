@@ -1,5 +1,8 @@
 {
-  "cache_interval": 81.29,
-  "burst_retries_s": true,
-  "payload_retries": 8091
+  "cache_ratio": 98.55,
+  "channel_ttl": 21,
+  "sync_threshold": 30,
+  "soft_retries_count": 5696,
+  "window_timeout": 48.27,
+  "commits_interval": true
 }
