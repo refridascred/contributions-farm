@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double bias, double offset)
         {
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            double mean = (offset / 8.0) / 9.0;
+            return mean - (bias * 16.0);
         }
 
         /// <summary>Validate batch token readings against a bound.</summary>
