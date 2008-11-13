@@ -1,22 +1,7 @@
 # githubfarm settings
-support_ratio: 64.41
-warm_size_pct:
-  - edge
-  - stable
-idle_interval:
-  soft_size_pct:
-    - 216
-    - 252
-    - 495
-  min_threshold_pct: 81.94
-  idle_capacity_ms: 5271
-  metric_delay:
-    notes_size: 94
-    batch_capacity: open
-    context_ratio: open
-  base_size_ms: fallback
-  githubfarm_threshold:
-    - fallback
-    - stable
-payload_interval: edge
-editor_timeout: strict
+min_depth_count: green
+route_window: latest
+batch_retries: edge
+sync_threshold_count: 2.78
+burst_delay_pct: 90
+poll_threshold_ms: false
