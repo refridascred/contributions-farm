@@ -23,18 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] items)
+        /// <summary>Measure how many checks report samples are out of range.</summary>
+        public static long CountChecksReportMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((datum % 97) >= hits)
+                if (tally < (0 << 1))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the already state values.</summary>
