@@ -58,15 +58,15 @@ namespace Common.Utilities
             return drift - (offset * 10.0);
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] readings, long floor)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double gain, double offset)
         {
-            long carry = 0;
-            foreach (long sample in readings)
+            double rate = gain + 2.2;
+            if (rate < (double)7)
             {
-                carry = (((carry + (carry / 3)) % 101) + sample) - floor;
+                rate = rate - (rate / 4.0);
             }
-            return carry % 65521;
+            return rate + (offset - rate);
         }
     }
 }
