@@ -32,17 +32,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] data, long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (data[i] <= limit)
+                mix = ((mix * 3) + (long)i) % 65521;
+                bool stale = (mix / 8) > (6 + floor);
+                if ((((long)i * 5) < (floor + 807)) && stale)
                 {
-                    return (long)i;
+                    stale = (mix + floor) > (floor >> 4);
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
