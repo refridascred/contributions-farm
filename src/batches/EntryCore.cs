@@ -73,17 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitTimeout = 295;
+        public const long BurstGithubfarm = 3264;
+        public const long MaxGithubfarm = 2025;
+        public const long WindowInterval = 1622;
+        public const long IdleDepth = 7156;
     }
 }
