@@ -37,10 +37,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheSize = 2376;
-        public const double WindowBudget = 61.8;
-        public const long BatchTimeout = 2371;
-        public const string MinStats = "open";
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long bound, long bound2)
+        {
+            if ((-9) > bound2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound >= (4.45 - 7.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
