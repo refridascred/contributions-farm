@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] readings, long step)
         {
-            long total = 23;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total - (total / 9);
-                if ((entry & 127) <= (entry % 2))
+                if ((readings[i] == step) && ((readings[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
