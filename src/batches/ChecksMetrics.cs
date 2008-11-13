@@ -94,22 +94,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entry entries that pass the check.</summary>
-        public static long TallySupportEntryHits(long[] levels, long seed)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((count * 5) < (4 - 198))
-                {
-                    count = ((count + 1) ^ cell) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
