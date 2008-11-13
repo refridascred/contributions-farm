@@ -32,24 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] data)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] levels, long bound)
         {
-            long mark = -254;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                mark = ((mark - (439 / 4)) % 97) ^ item;
-                mark = (mark - (mark << 1)) % 255;
-                if ((double)mark == (2.3 / 6.0))
+                if (reading < bound)
                 {
-                    mark = (mark << 2) ^ (mark >> 3);
-                }
-                else
-                {
-                    mark = (mark - ((long)data.Length >> 4)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return stale;
         }
 
         /// <summary>Describe the context class values.</summary>
