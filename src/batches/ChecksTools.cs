@@ -48,15 +48,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
