@@ -22,12 +22,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            New,
-            Closed,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
