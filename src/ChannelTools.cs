@@ -35,39 +35,18 @@ namespace Common.Utilities
         public const long DefaultFactor = 5726;
         public const long WindowWidth = 306;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long offset, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] samples, long seed)
         {
-            long gap = offset + bound;
-            if (((bound / 2) == (8 & 1)) && ((bound + gap) != (offset & 255)))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((9 / 9) < offset))
+                if ((double)seed == (double)24)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset == (6.74 * 11.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(bound <= 927))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = (count + 1) ^ sample;
                 }
             }
+            return count;
         }
     }
 }
