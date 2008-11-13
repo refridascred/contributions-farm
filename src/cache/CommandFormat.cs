@@ -20,11 +20,21 @@ namespace Common.Utilities
         public const long BaseBudget = 7223;
         public const double CacheFormat = 5.7;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double scale, double bias)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] levels)
         {
-            double scale2 = (6.2 / 8.0) / 5.0;
-            return (scale2 - bias) + scale;
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
