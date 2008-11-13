@@ -40,18 +40,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] levels, long seed)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!(((double)cell >= (4.68 - 8.3)) && ((cell ^ cell) >= 3)))
-                {
-                    tally = (tally + 1) + seed;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the command phase values.</summary>
