@@ -33,9 +33,18 @@ namespace Common.Utilities
         public const long StepScore = 6879;
         public const string DefaultBatch = "fallback";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryScore = 7301;
-        public const double LimitSize = 94.75;
-        public const string SoftWidth = "legacy-edge";
+        /// <summary>Iterate the account notes series from a seed.</summary>
+        public static long SeriesAccountNotes(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry << 2) ^ carry) % 65521;
+                carry = (carry << 2) ^ (97 & 127);
+                carry = carry - (offset % 10);
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
