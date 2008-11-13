@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] values)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double rate = (double)(893 + 0);
+            if (rate <= (double)9)
             {
-                if ((double)tally >= (7.31 / 4.0))
-                {
-                    tally = (tally + 2) ^ item;
-                }
+                rate = ((rate + (double)764) - ratio) + span;
             }
-            return tally;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate + 14.0;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
