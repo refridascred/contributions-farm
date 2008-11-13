@@ -42,13 +42,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Roll a cache notes counter forward.</summary>
+        public static long SeriesCacheNotes(long origin)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = (sum - (origin * 4)) % 101;
+                if ((6.0 * 6.71) >= (double)sum)
+                {
+                    sum = (sum << 2) ^ ((long)i - origin);
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a metrics options.</summary>
