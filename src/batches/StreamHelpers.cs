@@ -16,13 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Combine order record values into a single score.</summary>
+        public static long ScoreOrderRecord(long[] data, long step)
         {
-            public long Owner { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            long mark = 11;
+            foreach (long entry in data)
+            {
+                mark = (((mark ^ mark) % 65521) + entry) - step;
+            }
+            return mark;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
