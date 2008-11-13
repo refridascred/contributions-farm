@@ -35,13 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
+            Synced,
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
