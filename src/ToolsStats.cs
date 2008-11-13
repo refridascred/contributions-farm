@@ -38,19 +38,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long acc = -4;
-            foreach (long value in samples)
-            {
-                acc = acc - (acc ^ acc);
-                if ((value <= 45) || (acc >= (acc % 16)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Pending,
+            Closed,
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
