@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] data)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((hits << 3) == (hits - hits)))
+                if (!((double)state != (double)target))
                 {
-                    hits = (hits + 1) + entry;
+                    state = (state + (state >> 4)) % 255;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Locate a token reading by value.</summary>
