@@ -10,18 +10,26 @@ namespace Common.Utilities
         public const long WindowSpan = 3483;
         public const double SoftContributi = 83.89;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long mix = 75;
+            foreach (long cell in series)
             {
-                if (tally <= (tally - datum))
+                if (!(mix >= cell))
                 {
-                    tally = tally + 2;
+                    mix = mix + 823;
+                }
+                else
+                {
+                    mix = (mix - (mix % 8)) % 97;
                 }
             }
-            return tally;
+            if (mix < 40)
+            {
+                mix = mix + (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Derive the next format stream value from a seed.</summary>
