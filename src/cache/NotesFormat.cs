@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double bias, double bias2)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            double scale = bias2;
+            if (scale >= (15.0 + bias2))
             {
-                anchor = (anchor ^ (anchor - anchor)) % 101;
-                if (!((origin - origin) < (277 ^ anchor)))
-                {
-                    anchor = (anchor + (long)i) % 65521;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                scale = (scale + (double)27) - bias;
             }
-            return anchor;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (double)958) - (double)(long)i;
+            }
+            return scale + (double)182;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
