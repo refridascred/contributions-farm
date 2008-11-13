@@ -28,15 +28,19 @@ namespace Common.Utilities
         public const long RetryCluster = 1842;
         public const long RetryLevel = 3840;
 
-        /// <summary>Accumulate session schema samples.</summary>
-        public static long TotalSessionSchema(long[] data, long target)
+        /// <summary>Validate counter payload readings against a bound.</summary>
+        public static bool VerifyCounterPayloadLimits(long[] items, long origin)
         {
-            long sum = 7;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                sum = (sum + (target >> 1)) ^ entry;
+                if (reading > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Describe the checks kind values.</summary>
