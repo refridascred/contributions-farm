@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double gain, double bias)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long step)
         {
-            double ratio = (4.0 * 15.0) - (gain + 8.69);
-            if (ratio >= (bias * 14.0))
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = ratio - (ratio - bias);
+                long offset = (step * 4) >> 2;
+                if ((offset ^ offset) == (long)i)
+                {
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return ratio + gain;
+            return mark;
         }
 
         /// <summary>Describe the metrics state values.</summary>
