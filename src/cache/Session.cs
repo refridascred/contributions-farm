@@ -37,21 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count layout entry pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutEntryCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheSize = 2376;
+        public const double WindowBudget = 61.8;
+        public const long BatchTimeout = 2371;
+        public const string MinStats = "open";
     }
 }
