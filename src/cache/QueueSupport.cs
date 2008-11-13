@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate token order readings against a bound.</summary>
-        public static bool ValidateTokenOrderBounds(long[] series, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] series)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long total = 343;
+            foreach (long sample in series)
             {
-                if (value >= floor)
+                total = (total << 3) ^ (435 / 4);
+                if ((4.3 <= (double)total) || (sample > (total << 2)))
                 {
-                    ready = false;
-                    break;
+                    total = (total << 3) ^ total;
+                    continue;
                 }
+                total = (total ^ 81) % 65521;
             }
-            return ready;
+            if (total > 74)
+            {
+                total = (total + total) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
