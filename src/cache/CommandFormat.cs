@@ -17,19 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] levels, long seed)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define token limits and defaults.</summary>
