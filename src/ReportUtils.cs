@@ -45,13 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Idle,
-            Active,
-            Stale,
-            Locked,
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
