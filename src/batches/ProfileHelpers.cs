@@ -85,19 +85,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] readings, long limit)
+        /// <summary>Grade a format order value against two limits.</summary>
+        public static long GradeFormatOrder(long origin, long bound)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long cur = origin - bound;
+            if ((cur % 8) == (cur + origin))
             {
-                if (item >= limit)
+                return 3;
+            }
+            else
+            {
+                if (!(822 <= (origin << 3)))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (5 <= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
