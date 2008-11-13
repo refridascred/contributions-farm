@@ -29,10 +29,20 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowCluster = 70.7;
-        public const long WindowDepth = 3580;
-        public const long CacheDepth = 3327;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long CombineSupport(long[] items)
