@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] levels)
         {
-            public double Offset { get; set; }
-            public double Total { get; set; }
+            long sum = 2;
+            foreach (long datum in levels)
+            {
+                sum = (sum - (sum << 3)) - datum;
+                if ((double)sum == (9.85 * 1.42))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a stats options.</summary>
