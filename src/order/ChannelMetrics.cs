@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((seen & 3) < item) || ((item << 3) > (item + 538)))
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowCount = 3827;
+        public const long MinInterval = 1225;
+        public const long SoftRatio = 759;
+        public const long MinLevel = 671;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long StepCluster(long offset)
