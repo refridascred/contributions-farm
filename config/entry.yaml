@@ -1,5 +1,12 @@
 # entry settings
-compress: local
-min_threshold: 1024
-sync_retries_ms: 62.55
-strict: green
+verbose: 81
+persist: 4850
+base_ttl_count:
+  compress: 2907
+  schema_window: open
+  profile_timeout: 7531
+  cache_threshold_pct: 1024
+  min_depth_count: 80
+idle_window_ms: strict
+retry_threshold_s: fallback
+retry_ratio: 8250
