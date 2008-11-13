@@ -52,11 +52,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowDepth = 3009;
-        public const long HardCache = 6427;
-        public const long RetryCount = 1373;
-        public const double BurstWidth = 86.12;
-        public const string DefaultCache = "latest-edge";
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Draft,
+            New,
+            Synced,
+            Locked,
+            Closed,
+        }
     }
 }
