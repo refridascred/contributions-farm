@@ -45,10 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowDepth = 6243;
-        public const long WindowBatches = 1301;
-        public const string MaxTimeout = "standard-edge";
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Failed,
+            Done,
+            New,
+        }
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
