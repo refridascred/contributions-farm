@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const double StepFormat = 91.6;
         public const string MinRatio = "cached";
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long result = step;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = ((result * 2) + (step ^ step)) ^ (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Paused,
+            Pending,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the buffer level values.</summary>
