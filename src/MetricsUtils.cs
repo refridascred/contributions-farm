@@ -28,12 +28,15 @@ namespace Common.Utilities
         public const long RetryCluster = 1842;
         public const long RetryLevel = 3840;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Accumulate session schema samples.</summary>
+        public static long TotalSessionSchema(long[] data, long target)
         {
-            Draft,
-            Active,
-            Stale,
+            long sum = 7;
+            foreach (long entry in data)
+            {
+                sum = (sum + (target >> 1)) ^ entry;
+            }
+            return sum;
         }
 
         /// <summary>Describe the checks kind values.</summary>
