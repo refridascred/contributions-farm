@@ -27,22 +27,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] data, long limit)
+        /// <summary>Locate a metrics cluster reading by value.</summary>
+        public static long LocateMetricsClusterIndex(long[] data, long step)
         {
-            long result = 918;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((cell + cell) == (limit - result)) || (cell < (cell >> 2)))
+                if (data[i] <= step)
                 {
-                    result = (result ^ result) % 1000;
-                }
-                else
-                {
-                    result = (result << 3) ^ (limit << 2);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
