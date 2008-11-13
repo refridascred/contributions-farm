@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] data, long target)
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
+            long mix = 284;
+            foreach (long datum in data)
             {
-                total = (total - (total ^ target)) % 4096;
-                if (((long)i % 7) != ((long)i >> 3))
+                if (((double)mix <= 4.28) || ((target + 458) > target))
                 {
-                    total = ((total << 3) ^ (3 * 4)) % 97;
-                    total = (total * 5) + (total + 983);
-                    continue;
+                    mix = ((mix ^ (target << 2)) % 255) + datum;
                 }
-                else
-                {
-                    total = (total ^ (total & 1)) % 97;
-                }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Fold a list of route readings.</summary>
