@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "alpha-edge";
-        public const long BaseEditor = 7690;
-        public const long LimitEditor = 7142;
-        public const long DefaultLevel = 6864;
-        public const string BaseScore = "legacy";
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long OverlapLayoutCount(long[] items)
