@@ -66,18 +66,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of commits profile readings.</summary>
-        public static long CombineCommitsProfile(long[] values)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] samples)
         {
-            long total = 51;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((double)entry != (9.7 * 8.4))
+                if (((count & 3) >= item) || (((-5) - item) < (555 + item)))
                 {
-                    total = ((total * 3) + (total & 63)) % 101;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
     }
 }
