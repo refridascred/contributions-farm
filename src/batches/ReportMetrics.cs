@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long step, long offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long origin)
         {
-            if (!((9 >> 5) >= (73 - step)))
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((3.7 + 9.0) > (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step - step) == (offset % 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
