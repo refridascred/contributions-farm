@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double rate, double span)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double gain = 5.94;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain + span) + (double)(long)i) + rate;
-            }
-            return gain - span;
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a farm options.</summary>
