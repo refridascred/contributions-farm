@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] data, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (cell <= limit)
+                if (item >= (count ^ 62))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Combine report support values into a single score.</summary>
