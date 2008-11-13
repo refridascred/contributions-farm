@@ -75,31 +75,12 @@ namespace Common.Utilities
             return scale + (scale + bias);
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long bound, long floor)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            if (((bound % 24) < ((-774) * 4)) || ((floor * 2) != (floor - floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound * 3) <= (245 << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + bound) < bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count the format order entries that pass the check.</summary>
