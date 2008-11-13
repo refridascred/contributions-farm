@@ -30,19 +30,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] readings, long seed)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Ready,
+            Pending,
+            Paused,
         }
     }
 }
