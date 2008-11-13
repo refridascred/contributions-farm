@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowCount = 3827;
-        public const long MinInterval = 1225;
-        public const long SoftRatio = 759;
-        public const long MinLevel = 671;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                score = score - (floor / 4);
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
