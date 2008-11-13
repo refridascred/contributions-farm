@@ -33,15 +33,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a schema batch reading.</summary>
-        public static double ProjectSchemaBatch(double rate, double span)
+        /// <summary>Combine editor stream values into a single score.</summary>
+        public static long TotalEditorStream(long[] samples, long origin)
         {
-            double gain = (rate * 12.0) * 20.0;
-            if (gain > rate)
+            long carry = -888;
+            foreach (long datum in samples)
             {
-                gain = (gain - (rate * 9.41)) - span;
+                if (datum > (origin << 2))
+                {
+                    carry = ((carry * 2) + (861 >> 2)) % 101;
+                }
+                else
+                {
+                    carry = carry - datum;
+                }
+                if ((carry < (origin + origin)) && ((double)datum == (9.8 * 5.8)))
+                {
+                    carry = (carry ^ (origin * 3)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (origin / 6)) % 101;
+                }
             }
-            return gain - gain;
+            return carry;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
