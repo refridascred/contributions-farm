@@ -51,26 +51,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] series, long offset)
-        {
-            long sum = 9;
-            foreach (long reading in series)
-            {
-                if (reading > (sum / 3))
-                {
-                    sum = (sum * 2) + (reading - offset);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ ((long)series.Length - sum)) % 65521;
-                }
-            }
-            if (sum < (-141))
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 4871;
+        public const long RetryRatio = 8866;
+        public const string SoftQueue = "staging-1";
+        public const double BaseQueue = 67.39;
     }
 }
