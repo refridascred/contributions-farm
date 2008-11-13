@@ -73,20 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor route entry stays within the limit.</summary>
-        public static bool ValidateEditorRouteRange(long[] values, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFormat = "latest-1";
+        public const double BaseFormat = 17.33;
+        public const double BaseWidth = 67.38;
+        public const long IdleFormat = 6431;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TotalProfile(long[] values)
