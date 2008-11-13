@@ -36,26 +36,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] samples, long step)
         {
-            long sum = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (!((datum - datum) != (datum >> 2)))
+                if (value > step)
                 {
-                    sum = ((sum << 3) ^ (sum + sum)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum & 63)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum > (-27))
-            {
-                sum = (sum + (sum + sum)) % 255;
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Project the next layout value.</summary>
