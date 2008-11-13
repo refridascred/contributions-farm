@@ -18,27 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] items, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] readings, long bound)
         {
-            long anchor = 868;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                for (int i = 0; i < 9; i++)
+                if (item <= bound)
                 {
-                    anchor = ((anchor - target) % 255) ^ (long)i;
-                }
-                anchor = ((anchor << 3) ^ (742 + anchor)) % 65521;
-                if ((double)sample != (3.9 / 7.0))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (anchor > 52)
-            {
-                anchor = anchor - target;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
