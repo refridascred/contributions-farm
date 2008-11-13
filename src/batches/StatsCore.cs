@@ -20,13 +20,12 @@ namespace Common.Utilities
             return gain + (double)652;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Locked,
-            New,
-            Pending,
-            Retry,
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
