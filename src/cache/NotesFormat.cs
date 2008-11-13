@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next schema queue value from a seed.</summary>
-        public static long DeriveSchemaQueue(long floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((acc * 5) == (4 - (long)i))
-                {
-                    acc = (acc << 2) ^ ((long)i - floor);
-                }
-                acc = (acc ^ (acc + acc)) % 255;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
