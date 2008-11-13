@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] series, long limit)
         {
-            Draft,
-            Ready,
-            Active,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((seen & 3) < item) || ((item << 3) > (item + 538)))
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
