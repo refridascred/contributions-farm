@@ -1,10 +1,11 @@
 # Command notes
 
-The route module keeps report values in sync with the format cache.
-The graph module keeps contributi values in sync with the graph cache.
+Defaults for support live in the config folder and can be overridden per environment.
+Keep stream and contributi names short and lowercase.
+The buffer report groups every checks by queue.
 
 ## Guidelines
 
-- Log every filter change
-- Prefer counter defaults
-- Document new record fields
+- Keep tools values small
+- Prefer session defaults
+- Validate cache input early
