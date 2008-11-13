@@ -1,5 +1,9 @@
 {
-  "default_capacity": ["staging", "fallback"],
-  "batch_ttl_ms": 39,
-  "readonly": 250
+  "poll_delay_count": {
+    "metrics_ttl": 30,
+    "hard_retries_s": 78.21,
+    "hard_threshold_s": "strict"
+  },
+  "token_window": [143, 204, 389],
+  "default_threshold_count": 51
 }
