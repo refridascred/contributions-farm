@@ -1,8 +1,10 @@
 {
-  "channel_ttl": 55,
-  "checks_capacity": 31.59,
-  "sync_ttl_ms": "eu-west",
-  "warm_size_s": false,
-  "batch_depth_s": 2068,
-  "default_interval_s": 5.97
+  "sync_size": "edge",
+  "verbose": "open",
+  "min_interval_s": 2.45,
+  "default_ratio": {
+    "sync_ratio_ms": "fallback",
+    "min_delay": 26.18,
+    "strict": "standard"
+  }
 }
