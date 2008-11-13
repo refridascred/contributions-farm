@@ -52,10 +52,12 @@ namespace Common.Utilities
         public const long DefaultFactor = 6805;
         public const long CacheCommand = 6857;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 3765;
-        public const long StepChecks = 1295;
-        public const double IdleBudget = 10.08;
-        public const double LimitChecks = 75.46;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
