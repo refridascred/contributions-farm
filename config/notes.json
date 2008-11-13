@@ -1,6 +1,5 @@
 {
-  "report_window": "stable",
-  "sync_capacity_count": "local",
-  "batches_threshold": true,
-  "poll_size_s": 9
+  "compress": 12.34,
+  "tools_retries": 60,
+  "notes_retries": 81
 }
