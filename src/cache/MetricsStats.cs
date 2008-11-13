@@ -13,25 +13,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long floor, long step)
+        /// <summary>Accumulate format order samples.</summary>
+        public static long FoldFormatOrder(long[] values, long origin)
         {
-            long delta = floor - step;
-            if ((step - floor) == (delta + delta))
+            long sum = 986;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6.8 - 11.0) == (double)step)
+                sum = (sum ^ (sum * 5)) % 101;
+                if ((sum > (origin + cell)) || ((sum - cell) < (origin ^ origin)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
