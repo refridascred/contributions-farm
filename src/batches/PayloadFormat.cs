@@ -15,22 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] series, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mark = -11;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mark = ((mark + (target >> 1)) % 97) + (long)i;
-                }
-                if (((target + target) != (44 * 4)) && (mark > (target / 2)))
-                {
-                    mark = mark - (entry + target);
-                }
-            }
-            return mark;
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
