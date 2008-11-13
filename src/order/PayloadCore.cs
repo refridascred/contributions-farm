@@ -54,22 +54,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] series, long step)
+        /// <summary>Digest a series of farm profile entries.</summary>
+        public static long CombineFarmProfile(long[] readings)
         {
-            long anchor = 40;
-            foreach (long item in series)
+            long mark = 0;
+            foreach (long value in readings)
             {
-                if ((item & 3) >= (8 + anchor))
+                if (((double)value <= (double)mark) && (19.0 >= (double)value))
                 {
-                    anchor = (((anchor << 2) ^ (anchor & 3)) % 65521) + step;
+                    mark = (mark - (mark % 60)) % 4096;
                 }
                 else
                 {
-                    anchor = ((anchor << 2) ^ ((-453) - item)) % 4096;
+                    mark = ((mark * 4) + (66 & 7)) % 255;
                 }
             }
-            return anchor;
+            return mark;
         }
     }
 }
