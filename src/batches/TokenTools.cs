@@ -32,17 +32,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] levels, long limit)
+        /// <summary>Derive the next format stream value from a seed.</summary>
+        public static long IterateFormatStream(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] > limit)
+                if ((total + total) > ((long)i + (long)i))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    long tally = total;
+                    total = ((total << 3) ^ tally) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
