@@ -50,19 +50,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate session schema samples.</summary>
-        public static long ScoreSessionSchema(long[] series, long seed)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long result = 97;
-            foreach (long item in series)
-            {
-                result = ((result ^ item) % 101) - seed;
-            }
-            if (result < 7)
-            {
-                result = result + (6 ^ result);
-            }
-            return result;
+            Active,
+            Locked,
+            Failed,
+            Ready,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
