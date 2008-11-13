@@ -44,20 +44,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of channel batch entries.</summary>
-        public static long DigestChannelBatch(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] samples, long limit)
         {
-            long acc = 392;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                acc = ((acc * 3) + (0 << 3)) % 97;
-                acc = ((acc << 3) ^ datum) % 101;
+                if (count > (entry / 7))
+                {
+                    count = (count + 2) + limit;
+                }
             }
-            if (acc < (-5))
-            {
-                acc = (acc + acc) % 101;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
