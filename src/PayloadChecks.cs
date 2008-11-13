@@ -34,13 +34,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Closed,
-            Synced,
-            Done,
-            Locked,
+            Pending,
+            Paused,
+            Retry,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
