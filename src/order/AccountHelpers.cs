@@ -70,19 +70,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] values, long floor)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
