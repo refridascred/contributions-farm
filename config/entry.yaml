@@ -1,6 +1,9 @@
 # entry settings
-retry_delay_ms: standard
-hard_interval: primary
-max_window_ms: 2850
-verbose: false
-base_retries_s: true
+channel_timeout: green
+batch_ttl: 56
+soft_retries_s: eu-west
+base_delay:
+  - 347
+  - 105
+  - 383
+persist: primary
