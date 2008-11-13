@@ -1,8 +1,8 @@
 {
-  "cache_ratio": 98.55,
-  "channel_ttl": 21,
-  "sync_threshold": 30,
-  "soft_retries_count": 5696,
-  "window_timeout": 48.27,
-  "commits_interval": true
+  "contributi_limit": true,
+  "commits_threshold": "staging",
+  "idle_limit": [466, 104, 192],
+  "schema_ratio": 2715,
+  "max_depth": ["latest", "strict", "green", "latest"],
+  "warm_depth_s": 250
 }
