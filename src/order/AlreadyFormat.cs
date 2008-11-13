@@ -56,13 +56,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            Ready,
+            Stale,
+            Pending,
+            Queued,
+            Dropped,
         }
     }
 }
