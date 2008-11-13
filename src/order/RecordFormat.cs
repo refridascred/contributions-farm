@@ -19,13 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Done,
-            New,
-            Locked,
-            Dropped,
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Match up context samples.</summary>
