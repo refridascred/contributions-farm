@@ -61,13 +61,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            long score = 28;
+            foreach (long item in series)
+            {
+                score = ((score ^ score) % 4096) + item;
+            }
+            return score % 1000;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
