@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the account order series from a seed.</summary>
-        public static long SeriesAccountOrder(long origin)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum ^ (origin >> 3)) % 97;
-                sum = (sum * 4) + (25 * 3);
-                sum = (sum + 6) % 101;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
