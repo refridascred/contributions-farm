@@ -29,14 +29,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] data, long origin)
         {
-            Synced,
-            Locked,
-            Dropped,
-            Ready,
-            Failed,
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
