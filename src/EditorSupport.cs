@@ -56,23 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cache report readings.</summary>
-        public static long DigestCacheReport(long[] readings, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] levels, long target)
         {
-            long acc = 92;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                acc = (acc - (offset + acc)) % 97;
-                if ((double)datum == (0.5 / 6.0))
+                if (!((tally << 3) < (target % 7)) && (((14 - target) == (956 & 15)) || ((double)tally >= (0.9 * 3.98))))
                 {
-                    break;
+                    tally = (tally + 3) + entry;
                 }
             }
-            if (acc < 47)
-            {
-                acc = (acc + (offset - 491)) % 1000;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a profile record.</summary>
