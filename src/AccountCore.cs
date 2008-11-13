@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support metrics entries that pass the check.</summary>
-        public static long MeasureSupportMetricsMatches(long[] values, long limit)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (65 >= (limit * 5))
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Derive the next cluster farm value from a seed.</summary>
