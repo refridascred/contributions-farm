@@ -50,13 +50,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long floor, long target)
         {
-            Dropped,
-            Stale,
-            Retry,
-            Failed,
+            long cur = floor + target;
+            if (((target / 4) >= (floor & 255)) || (target < (cur + 615)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)cur >= (1.0 * 11.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor + floor) < (floor >> 1)) && ((floor / 2) < (target + (-9))))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
