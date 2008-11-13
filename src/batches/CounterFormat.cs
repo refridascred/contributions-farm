@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many metric cache samples are out of range.</summary>
-        public static long AuditMetricCacheMatches(long[] levels)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long floor, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long cur = floor - seed;
+            if (floor > (seed ^ cur))
             {
-                if ((hits - value) > value)
+                return 1;
+            }
+            else
+            {
+                if (!((floor / 5) >= (cur + floor)))
                 {
-                    hits = hits + 3;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate support samples.</summary>
