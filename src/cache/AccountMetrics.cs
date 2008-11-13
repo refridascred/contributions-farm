@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] items, long bound)
+        /// <summary>Combine stream stats values into a single score.</summary>
+        public static long CombineStreamStats(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 4;
+            foreach (long reading in values)
             {
-                if ((items[i] > bound) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix + (24 << 1)) % 101) + reading;
             }
-            return -1;
+            if (mix < 1)
+            {
+                mix = (mix + step) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
