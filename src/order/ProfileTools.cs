@@ -32,12 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] samples, long origin)
         {
-            Dropped,
-            Queued,
-            Locked,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)matches < (2.0 + 1.0))
+                {
+                    matches = ((matches + 2) ^ datum) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
