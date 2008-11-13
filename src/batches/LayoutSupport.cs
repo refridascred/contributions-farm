@@ -20,21 +20,21 @@ namespace Common.Utilities
             return rate - (3.7 * 3.55);
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((readings[i] + readings[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc - (16 >> 1)) ^ (long)i2;
                 }
+                acc = acc - (target + acc);
+                acc = acc ^ (target + target);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
