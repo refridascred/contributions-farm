@@ -20,15 +20,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many stream schema samples are out of range.</summary>
-        public static long MeasureStreamSchemaGaps(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] readings)
         {
             long hits = 0;
-            foreach (long cell in series)
+            foreach (long value in readings)
             {
-                if ((double)hits == (17.0 / 9.0))
+                if ((double)value < 3.0)
                 {
-                    hits = (hits + 1) + cell;
+                    hits = hits + 2;
                 }
                 else
                 {
