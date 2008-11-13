@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up payload stream samples.</summary>
-        public static long OverlapPayloadStreamCount(long[] values)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 99;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((0.7 + 5.5) == (double)result)
                 {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (((result * 3) + (0 + 85)) % 65521) ^ datum;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
