@@ -17,13 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] readings, long origin)
         {
-            Pending,
-            Stale,
-            Failed,
-            Queued,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define token limits and defaults.</summary>
