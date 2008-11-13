@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Count the contributi already entries that pass the check.</summary>
+        public static long TallyContributiAlreadyHits(long[] levels)
         {
-            Dropped,
-            Ready,
-            Active,
-            New,
-            Locked,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample >> 5) < (sample ^ 25))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of session entries.</summary>
