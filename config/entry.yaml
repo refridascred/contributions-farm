@@ -1,18 +1,8 @@
 # entry settings
-batch_timeout_s: 60
-soft_ttl_count:
-  - 331
-  - 281
-  - 452
-dry_run:
-  burst_ttl_ms:
-    - 87
-    - 24
-    - 353
-  sync_window: 84.88
-  cache_retries: false
-idle_depth_count: staging
-counter_ratio: stable
-enabled:
-  - 124
-  - 317
+enabled: 6930
+report_retries: 100
+batch_size_count: 9.95
+soft_window:
+  - primary
+  - primary
+  - strict
