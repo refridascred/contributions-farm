@@ -34,10 +34,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 43.55;
-        public const double BatchLevel = 96.19;
-        public const long HardBudget = 6492;
-        public const string MinAlready = "alpha-v2";
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
