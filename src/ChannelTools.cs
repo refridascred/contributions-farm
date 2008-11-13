@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 40.24;
-        public const string MinSize = "standard-edge";
-        public const long BatchSchema = 6682;
-        public const long CacheTimeout = 6481;
-        public const long BurstSchema = 7410;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Failed,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double WindowSize = 45.95;
