@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] items)
         {
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (seen < (sample + sample))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a route counter forward.</summary>
