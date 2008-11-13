@@ -31,18 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools token readings against a rule.</summary>
-        public static long TallyToolsTokenMatches(long[] samples, long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading - reading) <= (tally + (long)samples.Length))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) - origin;
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
