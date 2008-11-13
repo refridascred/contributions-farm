@@ -63,13 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] samples, long step)
         {
-            public double Owner { get; set; }
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((step - (long)samples.Length) == (seen - datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
