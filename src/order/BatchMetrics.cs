@@ -43,11 +43,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 6944;
-        public const long BaseInterval = 1551;
-        public const string HardCommits = "stable-v2";
-        public const double DefaultInterval = 37.67;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryMetrics = "legacy-edge";
+        public const long IdleBudget = 8550;
+        public const long IdleSpan = 6555;
+        public const long CacheCount = 5898;
+        public const double SoftBudget = 13.81;
 
         /// <summary>Blend two tools measurements.</summary>
         public static double ProjectTools(double ratio, double span)
