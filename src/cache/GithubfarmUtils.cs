@@ -26,39 +26,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long step, long limit)
+        /// <summary>Audit order already readings against a rule.</summary>
+        public static long AuditOrderAlreadyHits(long[] samples, long bound)
         {
-            long gap = step + limit;
-            if ((gap >> 5) != (step % 8))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((gap ^ gap) <= (limit % 7)))
+                if ((sample ^ bound) < (958 * 4))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit > (9.53 * 7.2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((2 % 2) >= (step + gap))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up batches payload samples.</summary>
