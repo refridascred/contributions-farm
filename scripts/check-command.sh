@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue legacy eu-west fallback; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=432
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-staging}"
+mode="${1:-edge}"
 case "${mode}" in
-    blue)
+    stable)
         log "fast path"
         ;;
     *)
@@ -20,8 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in blue staging cached green; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
