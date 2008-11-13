@@ -29,15 +29,18 @@ namespace Common.Utilities
             return (scale2 - bias) + scale;
         }
 
-        /// <summary>Blend two metric account measurements.</summary>
-        public static double ScaleMetricAccount(double weight, double span)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] samples, long origin)
         {
-            double bias = (double)(70 << 3);
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                bias = ((bias - (2.0 / 8.0)) + (double)(long)i) - weight;
+                if (!!((double)count == (10.0 + 1.8)))
+                {
+                    count = ((count + 2) - cell) - origin;
+                }
             }
-            return bias + span;
+            return count;
         }
     }
 }
