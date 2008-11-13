@@ -57,12 +57,17 @@ namespace Common.Utilities
             return (load - (floor / 3.0)) + scale;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Find the first context notes entry that matches the target.</summary>
+        public static long FindContextNotesIndex(long[] series, long seed)
         {
-            Paused,
-            New,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
