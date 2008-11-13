@@ -31,12 +31,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series, long origin)
         {
-            Locked,
-            Dropped,
-            Closed,
+            long sum = 983;
+            foreach (long datum in series)
+            {
+                sum = (sum + ((-64) * 4)) % 1000;
+                sum = ((sum << 2) ^ (245 + datum)) % 1000;
+                if ((sum % 12) < sum)
+                {
+                    sum = (sum - (datum ^ datum)) % 65521;
+                }
+                else
+                {
+                    sum = sum ^ (origin + datum);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Blend two cluster notes measurements.</summary>
