@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Count the commits account entries that pass the check.</summary>
+        public static long CountCommitsAccountOutliers(long[] values)
         {
-            long mark = 293;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                long lane = (entry % 5) + entry;
-                if (!!(lane > ((-4) / 3)))
+                if (!(7 < ((long)values.Length - matches)))
                 {
-                    mark = ((mark * 2) + (lane >> 4)) % 1000;
-                }
-                mark = mark ^ (entry % 60);
-                if ((double)entry == (double)mark)
-                {
-                    break;
+                    matches = (matches + 2) + datum;
                 }
             }
-            if (mark > 874)
-            {
-                mark = (mark * 2) + (mark & 255);
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
