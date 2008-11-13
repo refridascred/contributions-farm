@@ -1,11 +1,5 @@
 {
-  "support_retries": ["blue", "latest", "green"],
-  "min_retries": {
-    "min_ratio_s": 42.67,
-    "strict": [200, 373],
-    "layout_capacity": 24.88,
-    "cache_ratio_pct": true
-  },
-  "audit": "edge",
-  "cache_ratio_count": true
+  "flush_capacity_pct": 24,
+  "route_timeout": "primary",
+  "editor_limit": [18, 164, 474]
 }
