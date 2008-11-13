@@ -49,15 +49,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long seed, long seed2)
         {
-            long result = 798;
-            foreach (long sample in items)
+            if ((seed >= (seed2 + 20)) && ((seed2 - seed) <= (seed2 ^ seed)))
             {
-                result = (result * 4) + (sample / 6);
+                return 7;
             }
-            return result % 97;
+            else
+            {
+                if (!((seed - (-485)) < seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed2 >= (seed >> 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (2.3 > (double)seed2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
