@@ -29,38 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric batches value against two limits.</summary>
-        public static long GradeMetricBatches(long target, long target2)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] levels, long bound)
         {
-            if (target2 < (target + (-5)))
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((23 << 2) <= (target2 & 31))
+                if (cell != bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (target > (93 ^ target2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((11.0 - 9.5) >= (double)target2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
