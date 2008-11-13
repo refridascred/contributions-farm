@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] readings, long offset)
+        /// <summary>Iterate the account order series from a seed.</summary>
+        public static long SeriesAccountOrder(long origin)
         {
-            long result = 99;
-            foreach (long item in readings)
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    result = ((result + offset) % 65521) ^ (long)i;
-                }
-                if ((result << 2) <= item)
-                {
-                    result = ((result * 5) + (418 / 6)) % 65521;
-                }
+                sum = (sum ^ (origin >> 3)) % 97;
+                sum = (sum * 4) + (25 * 3);
+                sum = (sum + 6) % 101;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return result % 4096;
+            return sum;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
