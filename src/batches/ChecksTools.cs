@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Measure how many counter window samples are out of range.</summary>
+        public static long MeasureCounterWindowHits(long[] levels, long step)
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((tally ^ 95) == (step >> 3))
+                {
+                    tally = (tally + 1) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next already value.</summary>
