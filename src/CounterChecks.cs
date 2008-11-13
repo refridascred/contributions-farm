@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] data)
         {
-            Dropped,
-            Pending,
-            Synced,
+            long mix = 9;
+            foreach (long item in data)
+            {
+                mix = ((mix - (4 / 6)) % 4096) + item;
+            }
+            if (mix > 762)
+            {
+                mix = mix - mix;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Accumulate token already samples.</summary>
