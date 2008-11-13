@@ -56,15 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] levels, long seed)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)levels.Length - entry) <= (5 / 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) + seed;
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
