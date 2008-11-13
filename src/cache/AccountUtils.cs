@@ -32,24 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long limit, long floor)
+        /// <summary>Audit stats batches readings against a rule.</summary>
+        public static long MeasureStatsBatchesHits(long[] values)
         {
-            if ((7.61 + 16.0) != (double)limit)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit + floor) > limit)
+                if ((8.0 + 9.1) > (double)cell)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
