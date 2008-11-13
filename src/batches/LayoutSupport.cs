@@ -37,19 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] values, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (entry <= floor)
+                if (sample > bound)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Project the next batches value.</summary>
