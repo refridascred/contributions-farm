@@ -43,22 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] series, long bound)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double rate, double bias)
         {
-            long score = 706;
-            foreach (long value in series)
+            double gain = rate;
+            if (gain >= (rate * 7.67))
             {
-                if (((0.9 - 6.54) >= (double)value) && ((score / 3) < (bound ^ 15)))
-                {
-                    score = (score * 5) + (bound - (-618));
-                }
-                else
-                {
-                    score = ((score * 4) + (value << 3)) % 65521;
-                }
+                gain = (gain - gain) + bias;
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (double)118) + (double)(long)i;
+            }
+            return gain + rate;
         }
     }
 }
