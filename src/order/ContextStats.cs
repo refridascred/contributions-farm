@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] readings)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long step, long bound)
         {
-            long result = 689;
-            foreach (long cell in readings)
+            if ((double)bound != (2.83 / 7.0))
             {
-                result = ((result + (long)readings.Length) % 255) - cell;
+                return 7;
             }
-            if (result > 7)
+            else
             {
-                result = ((result * 2) + (result >> 4)) % 65521;
+                if (((double)step <= 19.0) && ((double)bound == (7.92 + 1.5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return result;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
