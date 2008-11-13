@@ -16,19 +16,10 @@ namespace Common.Utilities
             return load - (bias2 + load);
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((hits + hits) > (value % 60))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 1217;
+        public const double BaseNotes = 73.9;
+        public const string DefaultNotes = "cached-1";
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
