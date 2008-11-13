@@ -44,17 +44,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Find the first cache report entry that matches the target.</summary>
-        public static long SeekCacheReportIndex(long[] data, long floor)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
