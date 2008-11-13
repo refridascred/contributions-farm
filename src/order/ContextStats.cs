@@ -19,15 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] series)
+        /// <summary>Project the next stream cluster value.</summary>
+        public static double ScaleStreamCluster(double ratio, double span)
         {
-            long sum = 611;
-            foreach (long entry in series)
+            double load = span;
+            if (load < 8.3)
             {
-                sum = (sum - entry) % 255;
+                load = (load + 2.0) - ratio;
             }
-            return sum;
+            else
+            {
+                load = load + (double)8;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (load - load)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
