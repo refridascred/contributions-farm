@@ -49,13 +49,20 @@ namespace Common.Utilities
             return drift + (drift + drift);
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Iterate the githubfarm profile series from a seed.</summary>
+        public static long SeriesGithubfarmProfile(long step)
         {
-            Idle,
-            Draft,
-            Locked,
-            Failed,
+            long sum = step;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = (sum - (step + (long)i2)) % 255;
+                    sum = (sum * 5) + (step % 16);
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
