@@ -56,13 +56,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] readings)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
-            public bool Label { get; set; }
+            long sum = 364;
+            foreach (long value in readings)
+            {
+                sum = (sum + ((long)readings.Length / 9)) ^ value;
+            }
+            return sum;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
