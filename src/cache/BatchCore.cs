@@ -48,19 +48,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long floor)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double ratio, double floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
+            double weight = 12.0;
+            if (weight > (double)298)
             {
-                if (!((19.0 / 8.0) <= (double)sum))
-                {
-                    sum = (sum ^ (floor & 15)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                weight = ((weight - (2.14 / 7.0)) - ratio) - floor;
             }
-            return sum;
+            return weight + (double)5;
         }
     }
 }
