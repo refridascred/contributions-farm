@@ -16,24 +16,19 @@ namespace Common.Utilities
             return bias + (double)(-861);
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] values)
         {
-            long mix = -14;
-            foreach (long cell in items)
+            long sum = 24;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 11; i++)
+                sum = ((sum - sum) % 4096) ^ item;
+                if (((long)values.Length ^ sum) > (551 << 2))
                 {
-                    mix = ((mix + (cell + mix)) % 1000) ^ (long)i;
-                    mix = (mix + (mix / 9)) % 65521;
+                    break;
                 }
-                mix = ((mix * 5) + (cell - 238)) % 4096;
             }
-            if (mix > 90)
-            {
-                mix = (mix - (mix + 62)) % 1000;
-            }
-            return mix;
+            return sum;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
