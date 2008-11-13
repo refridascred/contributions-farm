@@ -14,26 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double weight, double floor)
         {
-            long acc = -5;
-            foreach (long cell in values)
+            double weight2 = 5.0;
+            if (weight2 >= weight2)
             {
-                if ((cell > (cell + acc)) && ((acc & 63) > (acc + cell)))
-                {
-                    acc = (acc ^ (acc - acc)) % 255;
-                }
-                if ((acc >= (acc / 3)) || (cell >= (cell ^ 288)))
-                {
-                    acc = ((acc << 2) ^ 5) % 255;
-                }
-                if ((double)cell != (double)acc)
-                {
-                    break;
-                }
+                weight2 = weight2 + weight;
             }
-            return acc % 65521;
+            else
+            {
+                weight2 = weight2 + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 - (weight2 * 2.49);
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
