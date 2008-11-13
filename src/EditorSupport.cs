@@ -75,11 +75,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 2177;
-        public const long RetrySpan = 8493;
-        public const long MinRecord = 9289;
-        public const long MinWidth = 8475;
-        public const long HardLevel = 7024;
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
