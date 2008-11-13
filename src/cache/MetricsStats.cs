@@ -50,18 +50,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many profile checks samples are out of range.</summary>
-        public static long CountProfileChecksOutliers(long[] readings, long target)
+        /// <summary>Roll a context window counter forward.</summary>
+        public static long StepContextWindow(long target)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry > seen)
+                if ((target / 4) >= (target + target))
                 {
-                    seen = (seen + 1) - target;
+                    state = ((state * 4) + (86 - state)) % 97;
+                    continue;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
