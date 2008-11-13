@@ -1,11 +1,12 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-A cluster that stays idle for too long is moved to the session list.
-The cluster report groups every entry by support.
+The context report groups every token by counter.
+Keep account and batches names short and lowercase.
+The counter report groups every account by graph.
 
 ## Guidelines
 
-- Keep window values small
-- Log every metrics change
-- Review support limits each release
+- Document new support fields
+- Validate route input early
+- Log every batches change
+- Keep counter values small
