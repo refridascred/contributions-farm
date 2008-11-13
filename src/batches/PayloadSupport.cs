@@ -17,11 +17,16 @@ namespace Common.Utilities
         public const long RetryDepth = 5582;
         public const string RetryAccount = "standard-edge";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepInterval = 3285;
-        public const double SoftCluster = 23.36;
-        public const double MaxTimeout = 44.78;
-        public const string SoftDepth = "staging-edge";
-        public const double BaseCluster = 26.88;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = sum + (long)i;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
