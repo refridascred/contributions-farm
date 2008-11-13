@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+BUFFER_LIMIT=363
+log "limit is ${BUFFER_LIMIT}"
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-stable}"
 case "${mode}" in
-    primary)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in cached strict; do
-    log "checking ${item}"
-done
