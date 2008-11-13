@@ -46,12 +46,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 809;
-        public const double BaseTools = 70.86;
-        public const string HardTools = "latest";
-        public const long BurstTools = 4349;
-        public const long HardRatio = 1521;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long SeekLayoutIndex(long[] levels, long floor)
