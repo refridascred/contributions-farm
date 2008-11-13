@@ -65,9 +65,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "stable";
-        public const double DefaultFarm = 91.46;
-        public const long StepTimeout = 8032;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                state = state - (9 << 1);
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
