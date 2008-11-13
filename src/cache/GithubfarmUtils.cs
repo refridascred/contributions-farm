@@ -18,26 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] readings, long origin)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long sum = 9;
-            foreach (long sample in readings)
-            {
-                if ((origin << 3) <= (938 + sum))
-                {
-                    sum = ((sum ^ ((long)readings.Length >> 3)) % 255) ^ sample;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ sum) % 1000;
-                }
-            }
-            if (sum > 485)
-            {
-                sum = (sum + (sum - 78)) % 97;
-            }
-            return sum % 65521;
+            Stale,
+            New,
+            Ready,
+            Synced,
+            Locked,
         }
 
         /// <summary>Audit cache stats readings against a rule.</summary>
