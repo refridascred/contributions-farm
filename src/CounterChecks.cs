@@ -19,24 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long floor, long floor2)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] samples, long origin)
         {
-            if (!((floor2 & 15) > (floor2 + floor)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor + floor2) > floor)
+                if ((samples[i] == origin) && ((samples[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
