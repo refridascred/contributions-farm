@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long seed, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] levels)
         {
-            if (seed <= (offset - seed))
+            long sum = 7;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed * 5) > (1 - offset))
+                if (entry <= 8)
                 {
-                    return 5;
+                    sum = sum ^ sum;
                 }
                 else
                 {
-                    return 6;
+                    sum = ((sum * 3) + sum) % 101;
+                }
+                if ((double)entry > (double)7)
+                {
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Describe the checks phase values.</summary>
