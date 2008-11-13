@@ -1,5 +1,7 @@
 {
-  "default_ratio_s": "cached",
-  "enabled": ["fallback", "fallback", "latest", "standard"],
-  "dry_run": true
+  "burst_timeout_ms": "local",
+  "enabled": "open",
+  "cache_delay_ms": 22.1,
+  "order_threshold": "primary",
+  "soft_capacity_pct": 60
 }
