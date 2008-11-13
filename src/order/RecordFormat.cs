@@ -33,14 +33,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] values, long offset)
         {
-            Failed,
-            Locked,
-            Synced,
-            Done,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
