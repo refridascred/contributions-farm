@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] readings, long origin)
+        /// <summary>Roll a stream editor counter forward.</summary>
+        public static long RollStreamEditor(long target)
         {
-            long mix = 135;
-            foreach (long reading in readings)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                mix = ((((mix << 2) ^ (21 - 1)) % 255) + reading) + origin;
+                double weight = 8.22;
+                if ((double)9 >= (2.54 - weight))
+                {
+                    weight = weight + (weight - weight);
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            if (mix < 349)
-            {
-                mix = ((mix * 2) + (mix % 100)) % 255;
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Blend two batch measurements.</summary>
