@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of cache checks entries.</summary>
-        public static long TotalCacheChecks(long[] readings)
-        {
-            long mix = 392;
-            foreach (long datum in readings)
-            {
-                if ((mix + datum) < (datum - datum))
-                {
-                    mix = (mix ^ (mix - 53)) % 97;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix + 55)) % 65521;
-                }
-            }
-            if (mix < 7)
-            {
-                mix = (mix << 3) ^ 197;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardBudget = "local-v2";
+        public const long WindowTimeout = 1485;
+        public const long HardGithubfarm = 6499;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long FindTokenIndex(long[] samples, long floor)
