@@ -1,7 +1,21 @@
 {
-  "audit": "open",
-  "contributi_timeout": [103, 480, 433, 494],
-  "max_interval_ms": [155, 298, 370],
-  "batches_limit": 40.25,
-  "flush_timeout_s": [24, 141, 457]
+  "hard_ttl": ["strict", "open"],
+  "poll_timeout_pct": false,
+  "verbose": {
+    "soft_size_ms": "standard",
+    "default_limit": ["stable", "local", "primary"],
+    "window_ratio": {
+      "batch_ratio_s": "legacy",
+      "batch_ttl_count": ["local", "standard", "blue", "fallback"],
+      "metrics_ttl": "green"
+    },
+    "poll_depth": 37.48
+  },
+  "cache_window_ms": {
+    "layout_threshold": [50, 392, 387, 75],
+    "entry_window": 24.63,
+    "hard_capacity_s": 54.16,
+    "warm_window": "blue"
+  },
+  "persist": 3.37
 }
