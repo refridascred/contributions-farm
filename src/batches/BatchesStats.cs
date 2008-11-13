@@ -34,19 +34,15 @@ namespace Common.Utilities
             return ratio + (double)185;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] series, long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long bound)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long state = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (value != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
