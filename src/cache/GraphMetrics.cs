@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] samples, long seed)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)count > (8.41 * 20.0))
-                {
-                    count = ((count + 2) + datum) - seed;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
