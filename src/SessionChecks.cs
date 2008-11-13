@@ -19,13 +19,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Validate commits account readings against a bound.</summary>
+        public static bool CheckCommitsAccountRange(long[] readings, long seed)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate commits samples.</summary>
