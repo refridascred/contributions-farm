@@ -57,18 +57,18 @@ namespace Common.Utilities
         public const double BaseInterval = 67.37;
         public const long CacheCounter = 2668;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] readings)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] series)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (((double)reading >= (0.93 - 1.1)) && ((10.0 - 6.0) <= (double)count))
+                if (reading >= seen)
                 {
-                    count = count + 2;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
