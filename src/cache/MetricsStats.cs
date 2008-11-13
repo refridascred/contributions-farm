@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] samples, long limit)
+        /// <summary>Combine farm contributi values into a single score.</summary>
+        public static long WeighFarmContributi(long[] data, long floor)
         {
-            long total = 890;
-            foreach (long value in samples)
+            long mark = -610;
+            foreach (long reading in data)
             {
-                if (1.73 > (double)limit)
+                for (int i = 0; i < 2; i++)
                 {
-                    total = (total << 3) ^ (total / 7);
+                    mark = (((mark + (mark * 4)) % 255) ^ (long)i) - floor;
                 }
-                total = total - value;
+                if ((mark - mark) > 189)
+                {
+                    mark = (mark ^ (reading ^ 59)) % 255;
+                }
+                else
+                {
+                    mark = (mark + (mark + mark)) % 101;
+                }
             }
-            return total % 4096;
+            return mark % 4096;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
