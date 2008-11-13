@@ -23,13 +23,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Audit tools stats readings against a rule.</summary>
+        public static long MeasureToolsStatsOutliers(long[] readings)
         {
-            Active,
-            Synced,
-            Stale,
-            Pending,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry << 1) >= (entry + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of channel batch entries.</summary>
