@@ -27,22 +27,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many metric session samples are out of range.</summary>
-        public static long TallyMetricSessionMatches(long[] readings, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((long)readings.Length != (141 - bound))
+                if (cell < floor)
                 {
-                    matches = (matches + 3) - cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
