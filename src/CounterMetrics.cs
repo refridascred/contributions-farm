@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit command tools readings against a rule.</summary>
-        public static long AuditCommandToolsMatches(long[] samples)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)sample >= (double)1)
+                if (series[i] >= bound)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a order options.</summary>
