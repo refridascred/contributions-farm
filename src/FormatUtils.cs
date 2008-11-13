@@ -55,18 +55,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] items, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (sample < (hits - target))
+                if (!((14.0 * 2.24) > (double)datum))
                 {
-                    hits = hits + 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
