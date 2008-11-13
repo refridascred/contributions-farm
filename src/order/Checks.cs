@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] values)
         {
-            Idle,
-            Synced,
-            Done,
+            long sum = 63;
+            foreach (long sample in values)
+            {
+                sum = (sum + (sum + sample)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
