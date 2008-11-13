@@ -29,12 +29,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleScore = 45.39;
-        public const long StepFactor = 6920;
-        public const double BatchInterval = 52.29;
-        public const long BaseBuffer = 963;
-        public const long BaseLevel = 1130;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
