@@ -1,9 +1,6 @@
 # support settings
-flush_size_count:
-  soft_threshold_pct: true
-  format_retries: 336
-  retry_depth_ms: 34.78
-  min_size_count: 70.22
-  poll_timeout_s: 183
-poll_delay_ms: 92.37
-metric_ttl: true
+window_ttl: 64.23
+dry_run: true
+flush_capacity: 9674
+verbose: false
+cache_delay: 44.03
