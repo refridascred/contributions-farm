@@ -37,21 +37,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double drift = (floor - floor) - (15.0 * 5.98);
+            return (drift + (double)(-891)) + rate;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
