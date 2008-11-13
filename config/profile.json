@@ -1,5 +1,7 @@
 {
-  "cache_capacity": 250,
-  "soft_delay_count": "cached",
-  "flush_capacity": 992
+  "max_interval": 95,
+  "command_limit": 9957,
+  "channel_size": "latest",
+  "idle_retries_pct": "blue",
+  "metrics_size": true
 }
