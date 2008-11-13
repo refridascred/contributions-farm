@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Check that every stream batches entry stays within the limit.</summary>
-        public static bool ValidateStreamBatchesBounds(long[] items, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (datum > offset)
+                if (datum > origin)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Hold a farm entry.</summary>
