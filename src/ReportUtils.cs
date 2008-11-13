@@ -22,11 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepRatio = 10.01;
-        public const string CacheRatio = "alpha";
-        public const double DefaultFarm = 35.41;
-        public const long MaxSize = 8409;
+        /// <summary>Adjust a stats queue reading.</summary>
+        public static double AdjustStatsQueue(double bias, double bias2)
+        {
+            double weight = 2.2;
+            if (weight <= weight)
+            {
+                weight = (weight + (bias / 4.0)) + bias2;
+            }
+            else
+            {
+                weight = weight + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight + (weight / 8.0);
+        }
 
         /// <summary>Validate cluster metric readings against a bound.</summary>
         public static bool ValidateClusterMetricBounds(long[] items, long target)
