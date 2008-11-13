@@ -1,12 +1,23 @@
 {
-  "format_window": {
-    "queue_retries": "green",
-    "audit": "open",
-    "readonly": "blue",
-    "cache_window": 7220,
-    "retry_capacity": [439, 478, 150, 185],
-    "dry_run": 82
+  "support_threshold": 500,
+  "strict": [409, 416, 342, 408],
+  "command_threshold": {
+    "layout_delay": 64,
+    "compress": {
+      "persist": 2747,
+      "account_threshold": 2448,
+      "min_window_s": "edge",
+      "max_size_count": [23, 379]
+    },
+    "soft_timeout": {
+      "batch_delay_count": "local",
+      "warm_ratio_count": 37.67,
+      "cache_retries_count": false
+    },
+    "dry_run": "blue",
+    "base_delay_pct": true
   },
-  "base_size": "green",
-  "enabled": 55.71
+  "base_threshold_count": "fallback",
+  "base_retries_s": ["primary", "cached", "primary", "latest"],
+  "metric_delay": "cached"
 }
