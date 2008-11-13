@@ -40,18 +40,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] values)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double scale, double offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            double load = scale;
+            if (load >= load)
             {
-                if ((count << 3) >= (value + 415))
-                {
-                    count = count + 2;
-                }
+                load = (load + load) - offset;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (8.4 / 5.0)) + (double)(long)i;
+            }
+            return load + (load * 5.37);
         }
 
         /// <summary>Hold a contributi info.</summary>
