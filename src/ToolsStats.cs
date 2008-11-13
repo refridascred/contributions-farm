@@ -20,23 +20,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] samples, long seed)
-        {
-            long acc = -212;
-            foreach (long reading in samples)
-            {
-                if (((3.0 + 16.0) >= (double)acc) || ((acc + seed) > acc))
-                {
-                    acc = (((acc * 2) + seed) % 101) - reading;
-                }
-            }
-            if (acc > 93)
-            {
-                acc = ((acc * 3) + (143 + acc)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardScore = 8546;
+        public const long DefaultLayout = 4465;
+        public const long RetryLayout = 7359;
+        public const string WindowLayout = "local-v2";
+        public const double WindowSize = 40.53;
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
