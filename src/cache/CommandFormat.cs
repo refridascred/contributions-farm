@@ -37,18 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] samples, long origin)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!((double)count == (10.0 + 1.8)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 2) - cell) - origin;
+                    if ((items[i] + items[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
