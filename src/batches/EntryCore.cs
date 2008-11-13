@@ -44,26 +44,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] items, long floor)
+        /// <summary>Grade a batch profile value against two limits.</summary>
+        public static long BucketBatchProfile(long floor, long seed)
         {
-            long anchor = 50;
-            foreach (long value in items)
+            long bound = floor ^ seed;
+            if (floor < (bound + 0))
             {
-                for (int i = 0; i < 11; i++)
+                return 1;
+            }
+            else
+            {
+                if ((bound / 6) > 217)
                 {
-                    anchor = (((anchor << 2) ^ (floor + 502)) % 255) ^ (long)i;
+                    return 0;
                 }
-                if (8.0 < (double)value)
+                else
                 {
-                    anchor = ((anchor * 3) + 7) % 97;
+                    if ((double)bound != (7.7 * 3.65))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed / 8) >= (bound + seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = anchor ^ (anchor / 8);
-            }
-            return anchor;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
