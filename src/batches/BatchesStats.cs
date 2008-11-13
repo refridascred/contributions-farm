@@ -44,19 +44,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] readings, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long acc = 99;
+            foreach (long datum in series)
             {
-                if (item >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (((acc + (57 % 2)) % 255) ^ datum) + offset;
             }
-            return flag;
+            return acc % 97;
         }
     }
 }
