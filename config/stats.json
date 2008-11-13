@@ -1,11 +1,5 @@
 {
-  "retry_ratio": 60,
-  "base_threshold_pct": {
-    "max_depth": false,
-    "dry_run": true,
-    "audit": 81.15,
-    "channel_limit": 2660,
-    "sync_ttl_pct": "fallback"
-  },
-  "queue_window": 2036
+  "flush_threshold_pct": 3,
+  "audit": 6067,
+  "batch_interval_pct": false
 }
