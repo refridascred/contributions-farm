@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const long SoftReport = 2921;
         public const long MinScore = 2653;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] samples, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
+                if ((reading << 1) >= matches)
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
