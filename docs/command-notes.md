@@ -1,14 +1,14 @@
 # Command notes
 
-The commits report groups every cache by filter.
-The contributi module keeps batch values in sync with the cache cache.
+Keep stream and format names short and lowercase.
+Use schema settings to tune how often account data is refreshed.
 
-Run the tools check before changing any context limits.
-Run the window check before changing any account limits.
-A editor that stays idle for too long is moved to the token list.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Keep githubfarm and editor names short and lowercase.
+Use metric settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Document new context fields
+- Validate contributi input early
+- Document new graph fields
 - Log every cache change
-- Validate metrics input early
