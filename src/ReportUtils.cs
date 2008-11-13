@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long SoftDepth = 1653;
         public const long BaseDepth = 7058;
 
-        /// <summary>Validate buffer channel readings against a bound.</summary>
-        public static bool GuardBufferChannelLimits(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheRoute = 30.68;
+        public const long CacheWidth = 1838;
+        public const long BurstFactor = 3809;
+        public const string CacheSize = "legacy";
 
         /// <summary>Derive the next filter record value from a seed.</summary>
         public static long StepFilterRecord(long floor)
