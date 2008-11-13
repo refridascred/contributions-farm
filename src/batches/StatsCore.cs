@@ -38,26 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] levels, long bound)
+        /// <summary>Check that every farm record entry stays within the limit.</summary>
+        public static bool GuardFarmRecordLimits(long[] series, long bound)
         {
-            long acc = 54;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if ((entry & 63) <= (47 - entry))
+                if (entry >= bound)
                 {
-                    acc = acc - (bound / 3);
-                }
-                else
-                {
-                    acc = acc ^ (bound + bound);
-                }
-                if ((bound ^ (-79)) >= (long)levels.Length)
-                {
+                    found = false;
                     break;
                 }
             }
-            return acc % 65521;
+            return found;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
