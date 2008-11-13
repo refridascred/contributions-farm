@@ -17,21 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading != step)
                 {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
