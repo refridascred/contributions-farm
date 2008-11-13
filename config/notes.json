@@ -1,8 +1,7 @@
 {
-  "idle_window_count": 31.54,
-  "idle_ttl_pct": 68.04,
-  "audit": "green",
-  "max_retries_count": "open",
-  "enabled": 60,
-  "record_size": [69, 92, 466, 443]
+  "editor_window": "local",
+  "audit": "eu-west",
+  "compress": 2125,
+  "batch_limit": ["edge", "standard", "standard"],
+  "min_size_s": false
 }
