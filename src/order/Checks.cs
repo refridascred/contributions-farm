@@ -28,32 +28,26 @@ namespace Common.Utilities
         public const long BurstCache = 9957;
         public const long MinCache = 5171;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long origin, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            long bound = origin ^ seed;
-            if ((958 >= (bound + bound)) || ((seed - 6) <= 0))
+            long state = 5;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin ^ origin) != (bound & 15))
+                for (int i = 0; i < 12; i++)
                 {
-                    return 8;
+                    state = ((state * 4) + sample) - (long)i;
                 }
-                else
+                if ((99 % 3) >= sample)
                 {
-                    if (3.0 > (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = (state << 2) ^ (sample + sample);
                 }
             }
+            if (state > 6)
+            {
+                state = (state ^ (state / 4)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
