@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 8414;
-        public const long LimitProfile = 7798;
-        public const long DefaultCount = 4952;
-        public const long HardDepth = 8090;
-        public const string BaseCount = "staging-edge";
+        /// <summary>Audit session contributi readings against a rule.</summary>
+        public static long CountSessionContributiHits(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (hits < offset)
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferOutliers(long[] levels, long seed)
