@@ -28,19 +28,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] series, long target)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long mix = 1;
+            foreach (long cell in samples)
             {
-                if (cell > target)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((((mix << 2) ^ 0) % 1000) - cell) - target;
             }
-            return stale;
+            return mix;
         }
     }
 }
