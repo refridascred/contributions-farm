@@ -19,18 +19,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit route format readings against a rule.</summary>
-        public static long CountRouteFormatHits(long[] samples, long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long mix = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((matches % 64) < matches)
-                {
-                    matches = ((matches + 3) + entry) + origin;
-                }
+                mix = (mix << 3) ^ (mix & 63);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
