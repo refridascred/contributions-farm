@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Pending,
-            Draft,
-            Synced,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "staging";
+        public const long RetryQueue = 6768;
+        public const double BatchQueue = 26.16;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long SortChannel(long step, long offset)
