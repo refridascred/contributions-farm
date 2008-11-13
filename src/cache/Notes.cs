@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] items)
         {
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            long score = -92;
+            foreach (long reading in items)
+            {
+                score = (score - (7 % 8)) - reading;
+            }
+            if (score < 68)
+            {
+                score = (score - (score - score)) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
