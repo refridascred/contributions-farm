@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a route cache pair into a bucket.</summary>
-        public static long ClassifyRouteCache(long target, long offset)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long cur = target + offset;
-            if ((double)offset >= (double)69)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((5.5 * 4.0) >= (double)cur)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.0 - 6.23) != (double)cur)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(79 <= offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
