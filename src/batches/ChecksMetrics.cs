@@ -57,12 +57,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleCommand = "legacy-v2";
-        public const long HardInterval = 3448;
-        public const long LimitDepth = 954;
-        public const long RetryCommand = 320;
-        public const long IdleSize = 6533;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LookupStatsIndex(long[] samples, long bound)
