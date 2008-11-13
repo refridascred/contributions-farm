@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report support values into a single score.</summary>
-        public static long DigestReportSupport(long[] readings, long step)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long seed)
         {
-            long anchor = -43;
-            foreach (long sample in readings)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((sample - anchor) <= (anchor - anchor))
-                {
-                    anchor = ((anchor * 3) + (step / 5)) % 255;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return anchor % 4096;
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
