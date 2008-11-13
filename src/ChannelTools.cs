@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = (total - total) - (long)i2;
-                    total = (total ^ (total ^ (long)i)) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitCount = 6911;
+        public const string BatchSize = "open-v2";
+        public const double CacheRatio = 43.67;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long WeighCache(long[] values, long limit)
