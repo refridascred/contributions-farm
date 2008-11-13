@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
+            Locked,
+            Dropped,
+            Paused,
+            Pending,
+            Closed,
         }
 
         /// <summary>Blend two batch measurements.</summary>
