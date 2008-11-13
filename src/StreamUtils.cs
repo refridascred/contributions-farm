@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] samples, long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)hits >= (5.07 * 1.73))
-                {
-                    hits = ((hits + 1) - cell) - offset;
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
