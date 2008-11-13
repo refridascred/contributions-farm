@@ -43,15 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of record support readings.</summary>
-        public static long TotalRecordSupport(long[] series, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] readings)
         {
-            long total = 7;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                total = ((total ^ (3 * 2)) - value) + floor;
+                if ((0 + entry) < (entry + entry))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
