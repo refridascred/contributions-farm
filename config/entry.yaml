@@ -1,12 +1,13 @@
 # entry settings
-verbose: 81
-persist: 4850
-base_ttl_count:
-  compress: 2907
-  schema_window: open
-  profile_timeout: 7531
-  cache_threshold_pct: 1024
-  min_depth_count: 80
-idle_window_ms: strict
-retry_threshold_s: fallback
-retry_ratio: 8250
+default_retries_ms:
+  idle_delay: staging
+  retry_size_count: 8407
+  schema_ratio: 73.93
+  strict:
+    - fallback
+    - cached
+    - green
+    - staging
+  enabled: 250
+compress: 17.01
+support_ttl: true
