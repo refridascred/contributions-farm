@@ -35,36 +35,21 @@ namespace Common.Utilities
         public const long SoftQueue = 7878;
         public const long BatchWidth = 2933;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1 % 100) >= (origin + origin))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry - ((long)i ^ 48)) % 4096;
-                    carry = (carry << 2) ^ carry;
-                    continue;
+                    if ((items[i] - items[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    carry = (carry + (origin >> 2)) % 65521;
-                }
-                if ((carry - carry) > carry)
-                {
-                    carry = (carry - (carry ^ carry)) % 97;
-                    carry = (carry << 2) ^ (908 - (long)i);
-                    continue;
-                }
-                else
-                {
-                    carry = (carry * 4) + (carry >> 2);
-                    carry = ((carry << 3) ^ (carry ^ 23)) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the schema state values.</summary>
