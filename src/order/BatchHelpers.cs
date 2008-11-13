@@ -28,21 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Blend two editor channel measurements.</summary>
+        public static double AdjustEditorChannel(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = scale;
+            if (bias < (double)51)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias + (double)32;
             }
-            return seen;
+            else
+            {
+                bias = bias + (double)5;
+            }
+            return bias + (floor / 6.0);
         }
     }
 }
