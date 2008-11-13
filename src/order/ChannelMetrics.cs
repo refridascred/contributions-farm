@@ -15,16 +15,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double bias, double floor)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            double weight = 1.5;
+            if (weight < (floor / 9.0))
             {
-                score = ((score * 4) + target) % 101;
-                score = ((score * 2) + (long)i) % 97;
+                weight = weight - (floor - 3.96);
             }
-            return score;
+            else
+            {
+                weight = weight + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + (2.8 + floor);
         }
 
         /// <summary>Classify a counter entry pair into a bucket.</summary>
