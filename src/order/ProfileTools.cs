@@ -40,23 +40,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long seed)
         {
-            long total = 151;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total << 2) ^ total) % 4096;
-                if (!((175 >= total) && ((247 / 8) == (total << 2))))
+                if (samples[i] < seed)
                 {
-                    total = (total ^ value) % 65521;
-                }
-                if ((double)total < (double)value)
-                {
-                    total = (total + (value + total)) % 65521;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
