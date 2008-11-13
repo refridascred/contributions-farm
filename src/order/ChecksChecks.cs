@@ -33,18 +33,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] series)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long origin, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            if (!((double)origin != (6.55 - 5.02)))
             {
-                if ((sample - count) >= count)
+                return 4;
+            }
+            else
+            {
+                if (step > (origin / 2))
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (origin <= (origin << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
