@@ -27,29 +27,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long limit, long origin)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long limit, long seed)
         {
-            if ((limit / 2) >= (limit + 0))
+            long next = limit ^ seed;
+            if (seed <= next)
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if (origin > ((-44) - 583))
+                if (!((1.5 + 3.87) == (double)seed))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if (!((limit / 5) <= (limit * 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 5;
                 }
             }
         }
