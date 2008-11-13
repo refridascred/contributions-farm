@@ -28,21 +28,26 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -414;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((2.7 - 4.2) < (double)datum)
                 {
-                    if ((items[i] + items[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state ^ (datum - state);
+                }
+                else
+                {
+                    state = (state - (state + state)) % 4096;
                 }
             }
-            return tally;
+            if (state < 8)
+            {
+                state = (state - (state * 4)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
