@@ -70,19 +70,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 8053;
+        public const long IdleCache = 8058;
+        public const string HardCache = "primary";
+        public const long WindowCache = 5449;
+        public const long MinTimeout = 7024;
     }
 }
