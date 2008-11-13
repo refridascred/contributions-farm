@@ -22,21 +22,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of editor format readings.</summary>
-        public static long CompareEditorFormatCount(long[] values)
+        /// <summary>Accumulate batches order samples.</summary>
+        public static long CombineBatchesOrder(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 835;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)reading >= (7.0 * 16.0))
                 {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark - reading;
+                }
+                if ((reading + 662) >= (mark & 255))
+                {
+                    mark = (mark ^ (reading >> 1)) % 4096;
+                }
+                else
+                {
+                    mark = mark ^ reading;
+                }
+                if ((double)reading < (double)4)
+                {
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Combine session payload values into a single score.</summary>
