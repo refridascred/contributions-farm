@@ -49,14 +49,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] samples, long limit)
         {
-            Synced,
-            Paused,
-            Closed,
-            New,
-            Dropped,
+            long acc = 6;
+            foreach (long item in samples)
+            {
+                if (!((double)item >= (3.56 / 3.0)))
+                {
+                    acc = (acc << 2) ^ (limit >> 1);
+                }
+                else
+                {
+                    acc = (acc + limit) % 1000;
+                }
+                if (1 > acc)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
