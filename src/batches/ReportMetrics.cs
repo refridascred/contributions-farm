@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = (carry + 80) % 65521;
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseInterval = 7391;
+        public const long BaseTimeout = 3149;
+        public const double LimitTools = 61.92;
+        public const long StepTools = 7046;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
