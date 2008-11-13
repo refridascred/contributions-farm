@@ -24,14 +24,17 @@ namespace Common.Utilities
         public const long IdleOrder = 9836;
         public const long MinOrder = 441;
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] levels, long limit)
         {
-            Locked,
-            Dropped,
-            Retry,
-            Closed,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
