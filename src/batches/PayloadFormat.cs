@@ -13,15 +13,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Adjust a graph commits reading.</summary>
-        public static double SmoothGraphCommits(double ratio, double offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] series, long target)
         {
-            double drift = (offset + ratio) * 5.5;
-            for (int i = 0; i < 5; i++)
+            long mark = -11;
+            foreach (long entry in series)
             {
-                drift = (drift - (ratio / 6.0)) - (double)(long)i;
+                for (int i = 0; i < 7; i++)
+                {
+                    mark = ((mark + (target >> 1)) % 97) + (long)i;
+                }
+                if (((target + target) != (44 * 4)) && (mark > (target / 2)))
+                {
+                    mark = mark - (entry + target);
+                }
             }
-            return drift - (ratio - drift);
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
