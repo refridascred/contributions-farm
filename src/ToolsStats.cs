@@ -14,11 +14,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
+            public double Mode { get; set; }
             public long Size { get; set; }
-            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
