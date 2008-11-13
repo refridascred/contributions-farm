@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Draft,
-            Failed,
-            New,
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
