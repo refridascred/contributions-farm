@@ -31,15 +31,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two stream channel measurements.</summary>
-        public static double BlendStreamChannel(double scale, double span)
-        {
-            double load = scale;
-            if (load < (double)73)
-            {
-                load = load + (span * 3.6);
-            }
-            return load - load;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 487;
+        public const double StepBudget = 18.4;
+        public const long SoftProfile = 7490;
     }
 }
