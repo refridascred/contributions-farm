@@ -48,25 +48,32 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] series)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long offset, long step)
         {
-            long state = 7;
-            foreach (long item in series)
+            long slot = offset + step;
+            if ((slot * 4) >= slot)
             {
-                if ((8.4 / 6.0) < (double)item)
+                return 8;
+            }
+            else
+            {
+                if ((double)slot < (6.2 / 3.0))
                 {
-                    state = state + item;
-                    state = state - (item - 33);
+                    return 6;
                 }
-                state = (state + item) % 1000;
-                state = state - (20 / 9);
+                else
+                {
+                    if (offset < (slot ^ offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            if (state > 413)
-            {
-                state = state + (state / 4);
-            }
-            return state;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
