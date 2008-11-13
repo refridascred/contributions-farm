@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first token cache entry that matches the target.</summary>
-        public static long SeekTokenCacheIndex(long[] items, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long target, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((7.05 / 8.0) > (double)step)
             {
-                if (items[i] > target)
+                return 0;
+            }
+            else
+            {
+                if (((step % 5) > (target * 3)) || ((target + step) < (target + target)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((step % 5) <= (target * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target & 63) <= (4 * 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
