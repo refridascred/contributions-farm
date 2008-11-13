@@ -98,15 +98,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] readings)
         {
-            long sum = 517;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in readings)
             {
-                sum = (((sum * 2) + sum) % 101) ^ datum;
+                if (!(item >= (item - count)))
+                {
+                    count = count + 2;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
