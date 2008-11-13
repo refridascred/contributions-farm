@@ -17,22 +17,19 @@ namespace Common.Utilities
             return bias + (bias + scale);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] readings)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((double)value < 3.0)
+                if (cell < target)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
