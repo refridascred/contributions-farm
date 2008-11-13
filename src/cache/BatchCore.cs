@@ -43,15 +43,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double ratio, double floor)
-        {
-            double weight = 12.0;
-            if (weight > (double)298)
-            {
-                weight = ((weight - (2.14 / 7.0)) - ratio) - floor;
-            }
-            return weight + (double)5;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 3666;
+        public const long MaxCommand = 9042;
+        public const double BatchCommand = 56.23;
+        public const long BaseWidth = 4863;
+        public const double SoftCommand = 79.92;
     }
 }
