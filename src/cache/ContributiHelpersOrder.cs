@@ -29,14 +29,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] series, long limit)
         {
-            Ready,
-            Paused,
-            Dropped,
-            New,
-            Synced,
+            long mix = 81;
+            foreach (long entry in series)
+            {
+                mix = (mix - (entry << 1)) + limit;
+                mix = mix ^ (entry << 2);
+                mix = (mix ^ mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Combine support values into a single score.</summary>
