@@ -20,12 +20,24 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long floor, long floor2)
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public double Count { get; set; }
+            if (!((floor2 & 15) > (floor2 + floor)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor + floor2) > floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
