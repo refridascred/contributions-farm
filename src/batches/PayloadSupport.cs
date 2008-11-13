@@ -34,18 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((matches + matches) >= (69 << 1))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepInterval = 3285;
+        public const double SoftCluster = 23.36;
+        public const double MaxTimeout = 44.78;
+        public const string SoftDepth = "staging-edge";
+        public const double BaseCluster = 26.88;
     }
 }
