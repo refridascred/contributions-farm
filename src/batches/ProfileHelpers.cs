@@ -65,12 +65,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] values)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum > (double)tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
