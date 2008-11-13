@@ -1,15 +1,15 @@
 # Command notes
 
-The contributi module keeps payload values in sync with the contributi cache.
-A metrics that stays idle for too long is moved to the token list.
+The session helpers are pure functions, so they are safe to call from any thread.
+Defaults for window live in the config folder and can be overridden per environment.
 
-Defaults for entry live in the config folder and can be overridden per environment.
-Run the contributi check before changing any report limits.
-Each support is validated before it reaches the window queue.
+The window report groups every entry by batches.
+Run the schema check before changing any contributi limits.
+Run the tools check before changing any tools limits.
 
 ## Guidelines
 
-- Validate metrics input early
-- Keep cache values small
-- Review cache limits each release
-- Document new batches fields
+- Log every filter change
+- Prefer support defaults
+- Keep checks values small
+- Review token limits each release
