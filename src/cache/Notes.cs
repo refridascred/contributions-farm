@@ -22,32 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long bound, long step)
+        /// <summary>Locate a order buffer reading by value.</summary>
+        public static long LookupOrderBufferIndex(long[] series, long bound)
         {
-            long slot = bound - step;
-            if (slot <= step)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step * 4) < bound)
+                if (series[i] > bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (3 < (step / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of schema metrics readings.</summary>
