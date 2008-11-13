@@ -29,13 +29,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Blend two batch graph measurements.</summary>
+        public static double BlendBatchGraph(double weight, double span)
         {
-            public string Ratio { get; set; } = "";
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            double mean = span;
+            return (mean + span) + weight;
         }
     }
 }
