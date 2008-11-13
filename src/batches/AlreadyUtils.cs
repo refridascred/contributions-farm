@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] data)
         {
-            Synced,
-            Active,
-            Done,
-            Locked,
+            long total = 99;
+            foreach (long cell in data)
+            {
+                total = total - cell;
+                if (((double)cell <= 17.0) || ((double)cell == (10.0 * 11.0)))
+                {
+                    total = ((total << 3) ^ (cell - total)) % 1000;
+                }
+                else
+                {
+                    total = (total * 5) + (cell + total);
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
