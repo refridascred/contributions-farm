@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] readings, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                total = (total << 2) ^ total;
-                total = ((total * 3) + (long)i) % 97;
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Compare every pair of contributi context readings.</summary>
