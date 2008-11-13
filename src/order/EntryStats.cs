@@ -16,11 +16,39 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double bias, double offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long origin, long origin2)
         {
-            double mean = 4.84;
-            return ((mean + (3.1 * 6.0)) + bias) + offset;
+            long slot = origin + origin2;
+            if (((origin2 + origin2) <= (origin / 2)) || (2 <= (slot + 22)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((slot + origin) == (origin - origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (slot >= (slot & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin > 9.27)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
