@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] values, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (item < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Describe the graph mode values.</summary>
