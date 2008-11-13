@@ -19,10 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 8479;
-        public const string CacheGithubfarm = "local";
-        public const string StepGithubfarm = "standard";
+        /// <summary>Accumulate command session samples.</summary>
+        public static long TotalCommandSession(long[] series, long origin)
+        {
+            long sum = 871;
+            foreach (long datum in series)
+            {
+                if ((double)sum >= (13.0 * 5.4))
+                {
+                    sum = ((sum ^ (origin & 255)) % 65521) - datum;
+                }
+                else
+                {
+                    sum = (sum ^ (5 & 127)) % 101;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] series)
