@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the contributi already entries that pass the check.</summary>
-        public static long TallyContributiAlreadyHits(long[] levels)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long result = 1;
+            foreach (long item in samples)
             {
-                if ((sample >> 5) < (sample ^ 25))
+                result = (((result * 4) + (result + bound)) % 1000) + item;
+                if ((result % 97) <= 344)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = (result + (result + bound)) % 65521;
                 }
             }
-            return matches;
+            if (result > 15)
+            {
+                result = ((result * 5) + result) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Digest a series of session entries.</summary>
