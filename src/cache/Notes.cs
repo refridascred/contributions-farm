@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((hits - limit) <= hits) && ((datum + 2) >= (limit >> 4)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleSize = 3335;
+        public const long LimitContext = 9253;
+        public const long CacheBudget = 4655;
+        public const string BatchContext = "legacy-1";
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
