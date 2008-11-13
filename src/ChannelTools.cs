@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
             Failed,
             Stale,
-            Dropped,
+            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
