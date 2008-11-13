@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a buffer contributi reading.</summary>
-        public static double BlendBufferContributi(double scale, double offset)
+        /// <summary>Iterate the session channel series from a seed.</summary>
+        public static long IterateSessionChannel(long limit)
         {
-            double load = 19.0;
-            if (load <= scale)
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                load = (load + (scale + load)) - offset;
+                mix = (mix - mix) % 101;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = (((mix << 2) ^ (limit + 272)) % 4096) ^ (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                load = load + 7.7;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load - (scale * 4.1);
+            return mix;
         }
 
         /// <summary>Hold a account record.</summary>
