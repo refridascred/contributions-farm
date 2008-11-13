@@ -36,19 +36,12 @@ namespace Common.Utilities
         public const long IdleBatch = 5032;
         public const long RetryWidth = 7075;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] data, long origin)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Queued,
+            Retry,
         }
     }
 }
