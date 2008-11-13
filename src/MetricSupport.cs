@@ -28,15 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double ratio, double offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double mean = (double)(23 - 33);
-            if (mean >= offset)
-            {
-                mean = mean + (double)54;
-            }
-            return mean + (ratio / 7.0);
+            Dropped,
+            Stale,
+            Retry,
+            Failed,
         }
     }
 }
