@@ -50,13 +50,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Count cache batches pairs that satisfy a relation.</summary>
+        public static long MatchCacheBatchesCount(long[] readings)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
