@@ -1,7 +1,6 @@
-id,region,owner,weight
-1,primary,480,32.01
-2,eu-west,677,strict
-3,439,814,blue
-4,922,563,blue
-5,legacy,staging,eu-west
-6,817,77.89,98.99
+id,label,active
+1,open,708
+2,green,legacy
+3,273,9.56
+4,blue,87.32
+5,873,local
