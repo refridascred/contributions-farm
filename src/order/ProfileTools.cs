@@ -45,23 +45,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two cluster notes measurements.</summary>
-        public static double ProjectClusterNotes(double ratio, double span)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] series, long floor)
         {
-            double rate = (double)58 - (span * 1.13);
-            if (rate <= 9.7)
+            long anchor = 8;
+            foreach (long value in series)
             {
-                rate = rate + (ratio * 8.2);
+                if (!(anchor >= 48))
+                {
+                    anchor = ((anchor << 2) ^ floor) - value;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (double)307) - (double)(long)i;
-            }
-            return rate + (double)5;
+            return anchor;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
