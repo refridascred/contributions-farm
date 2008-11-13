@@ -41,16 +41,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Fold a list of format checks readings.</summary>
+        public static long CombineFormatChecks(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            long anchor = 404;
+            foreach (long item in samples)
             {
-                acc = (acc * 4) + (44 << 1);
-                acc = ((acc * 4) + (long)i) % 101;
+                anchor = (anchor ^ (anchor << 2)) + item;
+                if ((double)anchor <= 8.6)
+                {
+                    break;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Compare every pair of cluster payload readings.</summary>
