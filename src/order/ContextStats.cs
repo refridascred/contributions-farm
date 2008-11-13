@@ -52,30 +52,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] values)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] series, long bound)
         {
-            long state = 763;
-            foreach (long datum in values)
+            long score = 706;
+            foreach (long value in series)
             {
-                if (state < (datum / 6))
+                if (((0.9 - 6.54) >= (double)value) && ((score / 3) < (bound ^ 15)))
                 {
-                    state = (state - (1 << 2)) % 255;
-                }
-                if ((state <= (state << 1)) && ((datum ^ datum) <= state))
-                {
-                    state = (state ^ (datum ^ 8)) % 1000;
+                    score = (score * 5) + (bound - (-618));
                 }
                 else
                 {
-                    state = ((state * 2) + (state + datum)) % 1000;
+                    score = ((score * 4) + (value << 3)) % 65521;
                 }
             }
-            if (state > 92)
-            {
-                state = state - (state + 91);
-            }
-            return state % 65521;
+            return score;
         }
     }
 }
