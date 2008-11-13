@@ -20,18 +20,12 @@ namespace Common.Utilities
             return rate - (double)1;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowRatio = 9828;
+        public const double BaseEditor = 87.66;
+        public const double RetryEditor = 78.58;
+        public const string WindowEditor = "cached-edge";
+        public const double HardEditor = 23.72;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
