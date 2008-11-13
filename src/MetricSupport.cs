@@ -22,26 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload checks values into a single score.</summary>
-        public static long DigestPayloadChecks(long[] items, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] data, long seed)
         {
-            long result = 573;
-            foreach (long item in items)
+            long carry = 12;
+            foreach (long datum in data)
             {
-                if ((seed / 7) >= result)
+                carry = carry + seed;
+                if (((-1) << 1) <= (seed + datum))
                 {
-                    result = (result - (76 + item)) % 65521;
-                }
-                if ((((long)items.Length / 6) >= (result - seed)) || ((-61) <= (1 + item)))
-                {
-                    result = (result + (result - item)) % 4096;
-                }
-                else
-                {
-                    result = ((result * 4) + (result << 2)) % 255;
+                    break;
                 }
             }
-            return result % 4096;
+            return carry % 4096;
         }
 
         /// <summary>Describe the batch class values.</summary>
