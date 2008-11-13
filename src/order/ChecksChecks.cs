@@ -37,21 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample - count) >= count)
                 {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
