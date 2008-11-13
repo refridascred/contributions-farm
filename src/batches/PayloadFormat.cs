@@ -15,16 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a channel tools counter forward.</summary>
-        public static long SeriesChannelTools(long bound)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark * 3) + 568;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Retry,
+            Ready,
+            Synced,
+            Done,
+            Pending,
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
