@@ -14,15 +14,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] series, long limit)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long carry = 15;
-            foreach (long value in series)
-            {
-                carry = (carry + (carry - limit)) - value;
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the notes kind values.</summary>
