@@ -55,16 +55,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = mark ^ (3 * 2);
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Failed,
+            Idle,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
