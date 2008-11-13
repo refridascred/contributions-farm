@@ -21,13 +21,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Find the first checks account entry that matches the target.</summary>
+        public static long LocateChecksAccountIndex(long[] levels, long seed)
         {
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a layout reading.</summary>
