@@ -1,8 +1,7 @@
 {
-  "warm_capacity": [380, 482],
-  "farm_ttl": 39.88,
-  "profile_depth": false,
-  "layout_limit": "open",
-  "burst_limit": "eu-west",
-  "already_size": 100
+  "verbose": false,
+  "token_limit": "fallback",
+  "warm_size": true,
+  "max_limit": 58.56,
+  "batches_ratio": 60.15
 }
