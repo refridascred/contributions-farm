@@ -1,14 +1,24 @@
 # support settings
-dry_run: staging
-idle_timeout:
-  strict: fallback
-  hard_capacity_count: 6747
-  route_window: 95
-flush_interval: true
-poll_ttl_ms: 62.41
-format_limit: 21
-stats_window:
-  flush_size: 30
-  verbose: 49.43
-  strict: primary
-  soft_ttl_ms: staging
+support_interval: eu-west
+base_ratio_s: green
+poll_size:
+  audit: false
+  poll_window_count: legacy
+  cache_retries: 81.53
+  idle_ttl:
+    cache_timeout_s: stable
+    poll_size: false
+    batch_size_pct: staging
+    base_size_count: local
+    soft_threshold_s: 100
+notes_size: standard
+burst_retries: eu-west
+metric_delay:
+  channel_ratio: local
+  verbose: 22.29
+  compress: 16
+  context_depth:
+    - fallback
+    - eu-west
+    - standard
+  strict: 13
