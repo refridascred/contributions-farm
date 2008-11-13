@@ -1,28 +1,11 @@
 # githubfarm settings
-soft_depth_s: eu-west
-compress:
-  idle_ttl: false
-  filter_depth:
-    strict: true
-    audit: green
-    batches_limit: strict
-    sync_timeout_count: 100
-    dry_run: 30
-  poll_window_s: blue
-  flush_interval_count:
-    min_window: 51.69
-    strict: true
-    min_interval_s:
-      - open
-      - standard
-    poll_size_s:
-      - local
-      - primary
-    poll_size_ms:
-      - 453
-      - 369
-      - 152
-    sync_ratio_pct: standard
-readonly: 95.08
-payload_ratio: green
-default_size_s: 1416
+profile_timeout: open
+max_delay: standard
+max_ratio_count: stable
+flush_threshold_ms:
+  - legacy
+  - green
+  - green
+  - open
+hard_interval: 0.31
+idle_interval_pct: staging
