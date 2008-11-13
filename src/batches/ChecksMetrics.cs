@@ -72,13 +72,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public double Size { get; set; }
-            public bool Count { get; set; }
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstCount = "alpha-v2";
+        public const long BaseMetrics = 791;
+        public const long WindowDepth = 2131;
+        public const string WindowMetrics = "stable-1";
     }
 }
