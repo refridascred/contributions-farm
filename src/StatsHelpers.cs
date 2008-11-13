@@ -25,38 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long target, long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] levels, long step)
         {
-            if ((seed + 2) < (target * 2))
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target / 5) < seed)
+                if (entry < step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)seed != (9.85 + 7.38)) && (target >= (target + target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target <= (seed >> 2)) || ((seed - 59) > (target >> 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
