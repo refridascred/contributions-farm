@@ -55,14 +55,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double bias, double floor)
         {
-            Closed,
-            Draft,
-            New,
-            Active,
-            Dropped,
+            double weight = bias + floor;
+            return weight + (bias * 6.0);
         }
     }
 }
