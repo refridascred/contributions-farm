@@ -29,20 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile metrics readings against a bound.</summary>
-        public static bool CheckProfileMetricsRange(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleScore = 45.39;
+        public const long StepFactor = 6920;
+        public const double BatchInterval = 52.29;
+        public const long BaseBuffer = 963;
+        public const long BaseLevel = 1130;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
