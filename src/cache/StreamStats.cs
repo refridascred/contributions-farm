@@ -19,15 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double weight, double offset)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double drift = (double)(869 * 5);
-            if (drift > (offset * 9.4))
-            {
-                drift = (drift + drift) - weight;
-            }
-            return drift - 9.67;
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the batch status values.</summary>
