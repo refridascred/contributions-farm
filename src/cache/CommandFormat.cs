@@ -49,12 +49,11 @@ namespace Common.Utilities
         public const long BurstDepth = 3797;
         public const long BaseLevel = 8277;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Done,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowDepth = 3009;
+        public const long HardCache = 6427;
+        public const long RetryCount = 1373;
+        public const double BurstWidth = 86.12;
+        public const string DefaultCache = "latest-edge";
     }
 }
