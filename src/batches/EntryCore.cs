@@ -26,11 +26,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheChannel = 67.39;
-        public const long BaseChannel = 6702;
-        public const long BatchTimeout = 8774;
-        public const string WindowLevel = "alpha-1";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long RollChannel(long seed)
