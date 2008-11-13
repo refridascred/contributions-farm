@@ -1,12 +1,6 @@
 {
-  "metric_interval": "edge",
-  "warm_capacity_s": {
-    "batch_interval": ["cached", "open", "edge", "local"],
-    "flush_ttl_ms": "cached",
-    "warm_capacity_count": 4,
-    "burst_limit_s": "open",
-    "max_delay_ms": "fallback",
-    "min_size": true
-  },
-  "default_ttl_pct": true
+  "strict": "cached",
+  "idle_depth_s": "fallback",
+  "persist": ["stable", "local", "open"],
+  "poll_depth": 1024
 }
