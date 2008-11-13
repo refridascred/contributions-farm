@@ -19,25 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)total > (8.1 - 3.93))
-                {
-                    total = (total << 2) ^ 54;
-                }
-                if (!(((8.0 + 15.0) != (double)target) && ((long)i < (total % 8))))
-                {
-                    long edge = (target - total) - (total ^ (long)i);
-                    total = total - (edge / 4);
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 8479;
+        public const string CacheGithubfarm = "local";
+        public const string StepGithubfarm = "standard";
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] series)
