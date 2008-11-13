@@ -1,8 +1,8 @@
 {
-  "hard_limit_count": 22,
-  "persist": 45.61,
-  "strict": "stable",
-  "schema_interval": "blue",
-  "graph_depth": "fallback",
-  "flush_depth": "staging"
+  "cache_threshold_s": [306, 370, 83],
+  "default_capacity_ms": "staging",
+  "hard_interval": 250,
+  "cache_window_s": "edge",
+  "min_threshold_count": 30,
+  "enabled": 8704
 }
