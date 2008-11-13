@@ -81,10 +81,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstCount = "alpha-v2";
-        public const long BaseMetrics = 791;
-        public const long WindowDepth = 2131;
-        public const string WindowMetrics = "stable-1";
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((result - result) > step))
+                {
+                    result = (result << 3) ^ (step + step);
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
