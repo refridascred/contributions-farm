@@ -27,12 +27,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long limit, long floor)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
+            long cur = limit ^ floor;
+            if ((198 >> 3) < limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((278 + limit) <= cur))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
