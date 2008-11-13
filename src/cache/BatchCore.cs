@@ -21,22 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] readings, long bound)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen > (bound << 1)) && ((bound - 657) != (item & 3)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a route counter forward.</summary>
