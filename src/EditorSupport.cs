@@ -61,17 +61,23 @@ namespace Common.Utilities
             return scale + (scale + bias);
         }
 
-        /// <summary>Look up the position of a checks buffer sample.</summary>
-        public static long FindChecksBufferIndex(long[] items, long seed)
+        /// <summary>Fold a list of cache report readings.</summary>
+        public static long DigestCacheReport(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 92;
+            foreach (long datum in readings)
             {
-                if ((items[i] < seed) && ((items[i] % 3) == 0))
+                acc = (acc - (offset + acc)) % 97;
+                if ((double)datum == (0.5 / 6.0))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (acc < 47)
+            {
+                acc = (acc + (offset - 491)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
