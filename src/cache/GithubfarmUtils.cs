@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] readings, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 8;
+            foreach (long cell in samples)
             {
-                if ((readings[i] == step) && ((readings[i] % 5) == 0))
+                if ((carry - cell) >= carry)
                 {
-                    return (long)i;
+                    carry = (carry ^ (carry >> 1)) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ 642) % 65521;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
