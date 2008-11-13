@@ -1,16 +1,14 @@
 # Command notes
 
-Use graph settings to tune how often batches data is refreshed.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Keep stats and editor names short and lowercase.
+Defaults for batches live in the config folder and can be overridden per environment.
+Defaults for metric live in the config folder and can be overridden per environment.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
-Run the buffer check before changing any counter limits.
-Keep payload and filter names short and lowercase.
-The commits report groups every context by metrics.
+Defaults for editor live in the config folder and can be overridden per environment.
+Run the stats check before changing any stats limits.
 
 ## Guidelines
 
-- Document new filter fields
-- Keep cache values small
-- Log every cluster change
-- Prefer farm defaults
+- Review cache limits each release
+- Document new payload fields
+- Keep stats values small
