@@ -47,17 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] values, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (values[i] == offset)
+                if (item != floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
