@@ -1,10 +1,17 @@
 # githubfarm settings
-readonly: 82.42
-tools_interval: stable
-retry_ratio:
-  - 433
-  - 18
-  - 288
-route_window: 30
-enabled: edge
-flush_depth_s: 58.78
+idle_delay:
+  - 438
+  - 291
+  - 286
+  - 40
+soft_ratio_s: staging
+notes_ratio: 37
+editor_limit:
+  base_size_count:
+    - cached
+    - stable
+  sync_capacity_s: 189
+  metrics_depth: local
+  persist: 70.77
+  idle_capacity: 41
+retry_depth_count: 17.92
