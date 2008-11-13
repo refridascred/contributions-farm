@@ -40,17 +40,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] values, long offset)
+        /// <summary>Project the next stream record value.</summary>
+        public static double AdjustStreamRecord(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = bias * 6.23;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                weight = ((weight + 1.0) - (double)(long)i) - offset;
             }
-            return -1;
+            return weight - weight;
         }
     }
 }
