@@ -18,13 +18,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] samples, long target)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] levels, long floor)
         {
             bool ok = true;
-            foreach (long reading in samples)
+            foreach (long sample in levels)
             {
-                if (reading >= target)
+                if (sample <= floor)
                 {
                     ok = false;
                     break;
