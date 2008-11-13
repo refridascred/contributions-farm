@@ -1,10 +1,6 @@
 # support settings
-soft_capacity_count: 94.96
-cache_depth_ms: 91
-soft_timeout_count:
-  - 137
-  - 253
-cache_depth:
-  - 141
-  - 244
-strict: 18
+strict: 1443
+report_threshold: 60
+flush_timeout: standard
+sync_limit: 100
+persist: fallback
