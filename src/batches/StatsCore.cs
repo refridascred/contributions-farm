@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long bound)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double weight, double floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            double gain = (double)4 - (floor - weight);
+            if (gain < floor)
             {
-                long step = (291 + (long)i) >> 1;
-                if (!(((double)mark <= (double)13) || (mark >= (mark - 1))))
-                {
-                    mark = (mark * 3) + step;
-                    mark = ((mark << 2) ^ (bound / 4)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
+                gain = gain - (double)79;
             }
-            return mark;
+            else
+            {
+                gain = gain - (weight - 2.6);
+            }
+            return gain + (double)652;
         }
 
         /// <summary>Describe the stream status values.</summary>
