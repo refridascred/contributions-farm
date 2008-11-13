@@ -57,31 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a githubfarm entry value against two limits.</summary>
-        public static long RankGithubfarmEntry(long target, long limit)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            if ((6.08 / 5.0) > (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target % 10) != (21 + (-9)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)limit <= (4.38 - 7.5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
