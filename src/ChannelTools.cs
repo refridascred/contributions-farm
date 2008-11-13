@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long seed)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] series, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((series[i] < limit) && ((series[i] % 5) == 0))
                 {
-                    score = (((score * 2) + (score - score)) % 97) - (long)i2;
+                    return (long)i;
                 }
-                score = (score ^ seed) % 4096;
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
