@@ -13,24 +13,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long offset, long limit)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            if ((double)offset >= (8.0 / 8.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((5 + limit) > (limit - offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Idle,
+            Ready,
+            Retry,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
