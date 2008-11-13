@@ -61,17 +61,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] levels, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 271;
+            foreach (long cell in samples)
             {
-                if (levels[i] >= floor)
+                if ((total ^ 61) > cell)
                 {
-                    return (long)i;
+                    total = (total - (98 - 2)) % 1000;
+                }
+                if (7.2 >= (double)total)
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
