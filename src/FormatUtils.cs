@@ -49,11 +49,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 8406;
-        public const long MinInterval = 745;
-        public const long BurstFormat = 8383;
-        public const string HardRatio = "staging-1";
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] levels, long target)
+        {
+            long state = 22;
+            foreach (long datum in levels)
+            {
+                if ((double)target == (11.0 / 9.0))
+                {
+                    state = (((state * 3) + target) % 65521) + datum;
+                }
+            }
+            if (state < 22)
+            {
+                state = (state * 2) + (target / 3);
+            }
+            return state % 97;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardScore = 5942;
