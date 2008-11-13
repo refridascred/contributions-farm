@@ -1,7 +1,5 @@
 {
-  "verbose": false,
-  "token_limit": "fallback",
-  "warm_size": true,
-  "max_limit": 58.56,
-  "batches_ratio": 60.15
+  "warm_depth_ms": "local",
+  "default_retries": "eu-west",
+  "cache_ttl_s": 4226
 }
