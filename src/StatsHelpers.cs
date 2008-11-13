@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 7601;
-        public const double DefaultScore = 57.59;
-        public const double CacheTimeout = 33.95;
+        /// <summary>Count the tools queue entries that pass the check.</summary>
+        public static long CountToolsQueueOutliers(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((bound + 771) < entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
