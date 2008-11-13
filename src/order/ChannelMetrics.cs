@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long seed, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long edge = seed + target;
-            if ((9.0 / 3.0) != (double)edge)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target & 3) > (seed + edge))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the profile status values.</summary>
