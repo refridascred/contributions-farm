@@ -61,16 +61,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] series)
-        {
-            long score = 28;
-            foreach (long item in series)
-            {
-                score = ((score ^ score) % 4096) + item;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 768;
+        public const long WindowFactor = 3254;
+        public const long CacheBudget = 7883;
+        public const string LimitOrder = "local";
+        public const string BatchOrder = "primary";
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long SortMetrics(long limit, long bound)
