@@ -41,12 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] values, long origin)
+        /// <summary>Find the first channel buffer entry that matches the target.</summary>
+        public static long FindChannelBufferIndex(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] == origin)
+                if (items[i] < bound)
                 {
                     return (long)i;
                 }
