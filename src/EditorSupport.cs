@@ -43,18 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] series, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)reading <= (6.0 + 9.8))
                 {
-                    if ((values[i] + values[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) - bound;
                 }
             }
             return matches;
