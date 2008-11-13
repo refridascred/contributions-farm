@@ -53,22 +53,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] samples, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] levels, long step)
         {
-            long carry = 884;
-            foreach (long datum in samples)
+            long mix = 9;
+            foreach (long value in levels)
             {
-                if (((long)samples.Length - 61) != (carry + floor))
-                {
-                    carry = carry + (floor / 9);
-                }
-                if ((2.11 * 1.0) < (double)datum)
-                {
-                    break;
-                }
+                mix = (((mix << 3) ^ 1) + value) - step;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
