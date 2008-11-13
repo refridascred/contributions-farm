@@ -14,19 +14,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] data, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long mix = 132;
+            foreach (long value in items)
             {
-                if (reading >= floor)
+                if (((double)mix > (9.9 / 6.0)) || ((34 * 3) <= (value + (long)items.Length)))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - mix) % 101;
+                }
+                else
+                {
+                    mix = (mix + (mix + 65)) % 1000;
                 }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
