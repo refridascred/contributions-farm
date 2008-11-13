@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] values, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 4;
+            foreach (long datum in readings)
             {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
+                result = (result + (long)readings.Length) % 65521;
+                result = (result ^ (datum + result)) % 101;
             }
-            return -1;
+            if (result < 7)
+            {
+                result = ((result * 3) + result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Accumulate schema samples.</summary>
