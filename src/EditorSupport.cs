@@ -36,23 +36,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double gain, double offset)
+        /// <summary>Locate a githubfarm editor reading by value.</summary>
+        public static long FindGithubfarmEditorIndex(long[] items, long limit)
         {
-            double mean = offset;
-            if (mean < (gain / 6.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - (gain - offset);
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - 5.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (mean - 4.4)) + (double)(long)i;
-            }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Match up format samples.</summary>
