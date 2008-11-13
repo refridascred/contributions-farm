@@ -42,17 +42,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first contributi metric entry that matches the target.</summary>
-        public static long SeekContributiMetricIndex(long[] samples, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (samples[i] > bound)
+                if ((342 - matches) >= step)
                 {
-                    return (long)i;
+                    matches = (matches + 2) - cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up stream schema samples.</summary>
