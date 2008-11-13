@@ -76,12 +76,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Count the support entry entries that pass the check.</summary>
+        public static long TallySupportEntryHits(long[] levels, long seed)
         {
-            public double Size { get; set; }
-            public double Count { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count * 5) < (4 - 198))
+                {
+                    count = ((count + 1) ^ cell) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
