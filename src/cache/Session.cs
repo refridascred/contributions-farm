@@ -52,14 +52,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count layout entry pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutEntryCount(long[] samples)
         {
-            Active,
-            Queued,
-            Draft,
-            Paused,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
