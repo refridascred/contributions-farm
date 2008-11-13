@@ -1,11 +1,11 @@
 {
-  "burst_retries_s": 56.62,
-  "warm_window_count": 754,
-  "persist": {
-    "entry_ttl": [265, 210, 103],
-    "audit": true,
-    "report_retries": 53.37,
-    "default_limit": 69.98,
-    "default_limit_count": false
-  }
+  "poll_depth_count": 43,
+  "max_ratio_ms": 250,
+  "min_ttl": {
+    "notes_depth": "green",
+    "metrics_limit": 81.54,
+    "batch_ttl_count": 47,
+    "session_retries": 5986
+  },
+  "flush_window_s": "cached"
 }
