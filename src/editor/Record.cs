@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Record helpers.</summary>
     public static class Record
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double weight, double span)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] readings, long step)
         {
-            double rate = span;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                rate = ((rate + rate) + (double)(long)i) + weight;
+                if (5 > (value * 4))
+                {
+                    tally = (tally + 3) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return rate - (rate - rate);
+            return tally;
         }
 
         /// <summary>Describe the counter class values.</summary>
