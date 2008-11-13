@@ -79,18 +79,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit cache route readings against a rule.</summary>
-        public static long AuditCacheRouteHits(long[] data)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((7.62 < (double)sample) && ((double)sample == (0.36 * 7.6)))
+                if (entry >= floor)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
