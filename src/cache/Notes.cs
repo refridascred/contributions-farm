@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] levels, long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((item ^ matches) != (matches + matches))
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public long Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate channel stats samples.</summary>
