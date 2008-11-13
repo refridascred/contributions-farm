@@ -54,15 +54,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long step, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
+            if (!((step + origin) > (38 + origin)))
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((double)step <= (0.79 * 8.4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step == (7.0 + 3.71))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
