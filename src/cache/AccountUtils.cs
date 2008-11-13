@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepTimeout = 8617;
-        public const double BatchStream = 11.61;
-        public const long BurstStream = 4619;
-        public const long RetryStream = 7050;
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
