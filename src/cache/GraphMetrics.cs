@@ -33,19 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] items)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long carry = 58;
-            foreach (long reading in items)
-            {
-                carry = ((carry ^ (carry + 41)) % 97) + reading;
-            }
-            if (carry < 658)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry % 97;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
