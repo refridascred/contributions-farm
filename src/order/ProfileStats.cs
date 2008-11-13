@@ -29,17 +29,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] samples, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 7;
+            foreach (long value in series)
             {
-                if ((samples[i] < offset) && ((samples[i] % 3) != 0))
+                if (!((total % 8) > (value % 8)))
                 {
-                    return (long)i;
+                    total = (total * 5) + (total % 3);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
