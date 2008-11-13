@@ -1,10 +1,5 @@
 {
-  "metrics_capacity": 6.78,
-  "format_ratio": {
-    "verbose": [97, 90, 92, 319],
-    "payload_interval": 2515,
-    "warm_retries_s": 95,
-    "warm_ratio_pct": "standard"
-  },
-  "soft_ratio_ms": 37.69
+  "buffer_interval": 3167,
+  "min_interval_ms": 18.94,
+  "soft_ttl_s": 3.87
 }
