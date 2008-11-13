@@ -71,18 +71,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] data)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double scale, double span)
         {
-            long count = 0;
-            foreach (long value in data)
+            double mean = scale;
+            if (mean < mean)
             {
-                if (value > 345)
-                {
-                    count = count + 2;
-                }
+                mean = mean - (double)177;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - span;
         }
     }
 }
