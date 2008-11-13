@@ -51,12 +51,10 @@ namespace Common.Utilities
         public const long DefaultFactor = 6805;
         public const long CacheCommand = 6857;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public double Level { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 3765;
+        public const long StepChecks = 1295;
+        public const double IdleBudget = 10.08;
+        public const double LimitChecks = 75.46;
     }
 }
