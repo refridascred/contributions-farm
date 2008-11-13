@@ -1,15 +1,10 @@
 # Command notes
 
-Use githubfarm settings to tune how often command data is refreshed.
-When a token fails, the buffer handler retries a few times before giving up.
-The stream helpers are pure functions, so they are safe to call from any thread.
-
-Run the checks check before changing any channel limits.
-Use support settings to tune how often support data is refreshed.
+Run the stream check before changing any format limits.
+Each metrics is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Validate support input early
-- Review channel limits each release
-- Document new contributi fields
-- Keep layout values small
+- Prefer farm defaults
+- Review route limits each release
+- Document new editor fields
