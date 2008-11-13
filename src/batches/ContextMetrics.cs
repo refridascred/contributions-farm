@@ -36,19 +36,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double scale, double offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] samples, long origin)
         {
-            double load = scale;
-            if (load >= load)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load + load) - offset;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (8.4 / 5.0)) + (double)(long)i;
-            }
-            return load + (load * 5.37);
+            return -1;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
