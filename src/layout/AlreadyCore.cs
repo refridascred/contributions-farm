@@ -17,16 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a farm batches figure with a bias.</summary>
-        public static double ScaleFarmBatches(double weight, double bias)
-        {
-            double bias2 = 1.23 + bias;
-            if (bias2 <= bias2)
-            {
-                bias2 = (bias2 - 6.16) + weight;
-            }
-            return bias2 - bias;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 6994;
+        public const string BaseMetrics = "fallback-1";
+        public const double IdleWidth = 77.51;
+        public const string WindowMetrics = "strict";
+        public const long DefaultMetrics = 3163;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderHits(long[] samples, long offset)
