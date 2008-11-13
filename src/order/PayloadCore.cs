@@ -25,22 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route entry values into a single score.</summary>
-        public static long WeighRouteEntry(long[] samples)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] items)
         {
-            long anchor = 584;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item << 3) != (item & 255))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor - (item - item);
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 63)
-            {
-                anchor = (anchor << 2) ^ (anchor - anchor);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
