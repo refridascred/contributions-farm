@@ -44,11 +44,22 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchSize = "fallback-v2";
-        public const long WindowRatio = 3182;
-        public const long IdleScore = 8734;
-        public const long BaseBudget = 637;
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksGaps(long[] data, long origin)
