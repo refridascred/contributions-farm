@@ -1,16 +1,10 @@
 # Command notes
 
-The notes report groups every format by stats.
-When a cluster fails, the entry handler retries a few times before giving up.
-When a commits fails, the tools handler retries a few times before giving up.
-
-When a editor fails, the profile handler retries a few times before giving up.
-The layout module keeps editor values in sync with the token cache.
-Keep route and farm names short and lowercase.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Use checks settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Document new batch fields
-- Keep entry values small
-- Review notes limits each release
-- Log every stats change
+- Validate metrics input early
+- Prefer context defaults
+- Keep batch values small
