@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheFactor = 1713;
-        public const long HardBuffer = 1027;
-        public const long DefaultBuffer = 5867;
-        public const long BatchBuffer = 6903;
-        public const long MinBuffer = 5606;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long offset, long limit)
+        {
+            if ((offset + 63) >= (offset - limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset >> 2) > limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9.0 / 9.0) > (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (90 >= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
