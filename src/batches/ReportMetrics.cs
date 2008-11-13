@@ -24,19 +24,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!(((long)i + score) > score))
-                {
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            Retry,
+            Active,
+            Idle,
+            Dropped,
+            New,
         }
     }
 }
