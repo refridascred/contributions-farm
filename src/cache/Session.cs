@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double rate, double span)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Count { get; set; } = "";
+            double drift = rate;
+            return drift + (span / 4.0);
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
