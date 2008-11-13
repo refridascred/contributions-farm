@@ -1,15 +1,6 @@
 {
-  "token_limit": "green",
-  "counter_delay": "standard",
-  "channel_capacity": [497, 221, 426],
-  "default_capacity": 250,
-  "soft_depth_pct": ["standard", "cached", "open", "open"],
-  "audit": {
-    "enabled": 5904,
-    "batches_ratio": 78.44,
-    "report_timeout": "primary",
-    "batch_ttl_ms": "staging",
-    "poll_interval_count": ["green", "blue", "local"],
-    "cache_size": true
-  }
+  "max_delay": "blue",
+  "max_window_pct": 82.51,
+  "cache_limit": true,
+  "token_capacity": 2151
 }
