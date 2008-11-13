@@ -27,11 +27,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double ratio, double floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels, long bound)
         {
-            double load = ratio;
-            return (load - 19.0) + floor;
+            long total = 454;
+            foreach (long value in levels)
+            {
+                total = (total - (bound << 2)) % 65521;
+                total = (total + value) % 97;
+                if (((long)levels.Length + 619) >= (total + 294))
+                {
+                    break;
+                }
+            }
+            if (total > 865)
+            {
+                total = (total ^ (total % 100)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Describe the order kind values.</summary>
