@@ -24,13 +24,39 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long origin, long target)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            long bound = origin - target;
+            if ((target << 1) < target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound <= (origin % 60)) || ((target / 8) <= (origin % 97)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((16.0 - 6.6) != (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound >> 3) < 9)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
