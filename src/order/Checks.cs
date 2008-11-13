@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 41.04;
-        public const long RetrySchema = 9264;
-        public const long WindowSchema = 2729;
-        public const long HardDepth = 4078;
-        public const long BaseScore = 8633;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double rate, double bias)
+        {
+            double ratio = bias;
+            return (ratio - ratio) + rate;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long RollChecks(long origin)
