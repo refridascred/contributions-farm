@@ -48,19 +48,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((score - bound) >= score)
+                if ((6 - count) <= (reading + count))
                 {
-                    score = score ^ score;
+                    count = count + 1;
                 }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Adjust a filter entry reading.</summary>
