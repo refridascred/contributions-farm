@@ -1,18 +1,15 @@
 # support settings
-token_size:
-  - 64
-  - 75
-  - 368
-  - 337
-audit: edge
-hard_capacity:
-  - blue
-  - local
-  - fallback
-  - green
-route_depth: open
-batch_window:
-  - 195
-  - 172
-  - 3
-  - 427
+commits_window: 24.95
+audit:
+  queue_ratio: 468
+  soft_ratio_count: 1266
+  default_retries_ms: 1815
+  retry_depth_ms:
+    sync_limit_pct: local
+    counter_ttl: 803
+    layout_ttl: cached
+    hard_window_s: 60
+    command_size: standard
+    verbose: 13.31
+command_size: 60
+compress: 30
