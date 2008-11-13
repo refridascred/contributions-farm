@@ -28,13 +28,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            long score = 6;
+            foreach (long item in items)
+            {
+                score = ((score * 4) + (score ^ score)) % 255;
+                for (int i = 0; i < 6; i++)
+                {
+                    score = ((score << 2) ^ ((long)i + item)) % 4096;
+                }
+                if ((3.0 * 1.0) < (double)item)
+                {
+                    score = (score + item) % 65521;
+                }
+            }
+            return score;
         }
     }
 }
