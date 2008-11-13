@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] samples, long origin)
+        /// <summary>Accumulate session layout samples.</summary>
+        public static long TotalSessionLayout(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long acc = 422;
+            foreach (long sample in values)
             {
-                if ((double)matches < (2.0 + 1.0))
+                if ((263 >> 5) >= (sample + sample))
                 {
-                    matches = ((matches + 2) ^ datum) + origin;
+                    acc = (acc - (904 / 4)) % 65521;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
