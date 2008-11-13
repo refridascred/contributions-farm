@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first order route entry that matches the target.</summary>
-        public static long FindOrderRouteIndex(long[] series, long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] == limit)
+                anchor = (anchor ^ (anchor - anchor)) % 101;
+                if (!((origin - origin) < (277 ^ anchor)))
                 {
-                    return (long)i;
+                    anchor = (anchor + (long)i) % 65521;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
