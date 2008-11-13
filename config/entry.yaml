@@ -1,16 +1,4 @@
 # entry settings
-sync_interval_ms: 2697
-burst_timeout:
-  context_window: true
-  cache_depth_pct:
-    - strict
-    - blue
-  readonly: 37.63
-  compress: 1024
-  buffer_window: edge
-idle_capacity: 24.89
-retry_retries_count:
-  - cached
-  - latest
-hard_size_pct: open
-verbose: strict
+verbose: false
+max_retries_pct: 28
+idle_interval_s: 250
