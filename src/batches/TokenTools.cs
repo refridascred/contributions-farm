@@ -32,18 +32,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] data, long limit)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long limit, long limit2)
         {
-            long score = 706;
-            foreach (long value in data)
+            long delta = limit ^ limit2;
+            if (((limit2 >> 3) < (9 & 15)) && ((70 + limit2) <= (delta << 3)))
             {
-                if ((double)value != (4.4 + 1.2))
+                return 1;
+            }
+            else
+            {
+                if ((limit2 - limit) <= (delta & 255))
                 {
-                    score = (((score * 4) + (score / 4)) % 255) - limit;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return score;
         }
     }
 }
