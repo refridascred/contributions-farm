@@ -40,13 +40,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long bound, long target)
         {
-            Done,
-            Synced,
-            Locked,
-            Stale,
+            long prev = bound + target;
+            if (!((329 << 1) <= prev))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((0 + target) != (target - prev)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target - target) > (bound - target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (9.0 < (double)target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
