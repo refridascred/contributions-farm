@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((double)hits >= (4.89 * 20.0))
-                {
-                    hits = ((hits + 3) ^ value) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheInterval = 3491;
+        public const long IdleBudget = 9281;
+        public const long CacheToken = 5959;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterGaps(long[] data, long step)
