@@ -26,15 +26,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            Synced,
+            Closed,
+            Done,
+            Active,
         }
 
         /// <summary>Adjust a session reading.</summary>
