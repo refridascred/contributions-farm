@@ -96,17 +96,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics channel value from a seed.</summary>
-        public static long DeriveMetricsChannel(long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                mix = mix + ((-6) + target);
-                mix = ((mix << 3) ^ (284 + mix)) % 97;
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (value > 345)
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
