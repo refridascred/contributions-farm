@@ -42,18 +42,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] values, long origin)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((1.0 + 14.0) >= (double)reading) && ((double)origin != (7.0 + 20.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
