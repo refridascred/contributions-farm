@@ -1,19 +1,35 @@
 # githubfarm settings
-buffer_timeout: false
-window_limit: strict
-compress:
-  - green
-  - green
-token_window:
-  - edge
-  - staging
-  - fallback
-  - standard
-queue_limit: true
-dry_run:
-  verbose: legacy
-  enabled: 796
-  retry_delay:
-    - 219
-    - 375
-    - 482
+warm_limit_s: 66.36
+editor_threshold: true
+verbose: 100
+base_timeout_pct: 13.6
+warm_depth: 4930
+already_depth:
+  stats_limit:
+    base_timeout: true
+    persist: 250
+    flush_timeout: green
+    entry_timeout:
+      - open
+      - stable
+  checks_ttl: legacy
+  max_retries:
+    warm_delay:
+      - 451
+      - 415
+    audit: 87.75
+    stream_threshold:
+      - open
+      - cached
+      - cached
+    soft_ttl_count: 84.4
+    soft_retries_s: 41
+    farm_interval: 4259
+  poll_retries:
+    - legacy
+    - edge
+    - standard
+    - legacy
+  report_threshold:
+    - 256
+    - 473
