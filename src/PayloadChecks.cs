@@ -55,38 +55,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long origin, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] samples, long floor)
         {
-            if ((6.9 * 7.0) == (double)origin)
+            long carry = 884;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound < (bound + origin))
+                if (((long)samples.Length - 61) != (carry + floor))
                 {
-                    return 6;
+                    carry = carry + (floor / 9);
                 }
-                else
+                if ((2.11 * 1.0) < (double)datum)
                 {
-                    if ((double)origin != (6.0 - 0.96))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (origin < ((-3) * 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Hold a schema options.</summary>
