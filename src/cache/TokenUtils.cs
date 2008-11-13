@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Combine editor window values into a single score.</summary>
+        public static long FoldEditorWindow(long[] values)
         {
-            Retry,
-            Draft,
-            Pending,
-            Failed,
+            long anchor = 88;
+            foreach (long entry in values)
+            {
+                anchor = ((anchor << 2) ^ (anchor ^ entry)) % 4096;
+            }
+            if (anchor > (-4))
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
