@@ -44,13 +44,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
-            public long Size { get; set; }
+            Queued,
+            Closed,
+            Done,
+            Failed,
+            Dropped,
         }
     }
 }
