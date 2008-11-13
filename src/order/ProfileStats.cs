@@ -30,19 +30,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of contributi batch entries.</summary>
-        public static long WeighContributiBatch(long[] series, long limit)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] readings, long seed)
         {
-            long carry = 45;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry << 2) ^ (808 ^ carry)) + limit;
-                if (((item - (long)series.Length) <= (carry + 82)) && ((carry / 4) < (0 << 1)))
+                if (readings[i] > seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
     }
 }
