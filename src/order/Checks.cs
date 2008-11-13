@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a stream editor counter forward.</summary>
-        public static long RollStreamEditor(long target)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                double weight = 8.22;
-                if ((double)9 >= (2.54 - weight))
-                {
-                    weight = weight + (weight - weight);
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Blend two batch measurements.</summary>
