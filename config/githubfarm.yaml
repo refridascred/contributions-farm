@@ -1,7 +1,5 @@
 # githubfarm settings
-flush_retries: 55
-warm_size_count: edge
-idle_ttl_count: cached
-default_interval_s: 30
-base_ttl_ms: 94.8
-persist: edge
+compress: 78.38
+min_timeout_s: false
+audit: true
+counter_retries: 31.01
