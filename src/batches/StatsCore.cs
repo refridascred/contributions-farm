@@ -86,24 +86,20 @@ namespace Common.Utilities
         public const string LimitOrder = "local";
         public const string BatchOrder = "primary";
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long limit, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] series, long floor)
         {
-            if ((double)limit >= 13.0)
+            long mix = 372;
+            foreach (long datum in series)
             {
-                return 2;
+                mix = ((mix << 3) ^ (datum - datum)) % 65521;
+                mix = (mix ^ (datum / 9)) % 1000;
             }
-            else
+            if (mix < 53)
             {
-                if (((9.74 - 17.0) < (double)bound) || (limit < (limit ^ limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
+                mix = (mix + (floor - floor)) % 1000;
             }
+            return mix;
         }
     }
 }
