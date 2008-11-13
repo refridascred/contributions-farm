@@ -1,7 +1,15 @@
 {
-  "burst_threshold": 42,
-  "readonly": 40.24,
-  "soft_delay_pct": 9170,
-  "filter_capacity": false,
-  "strict": "strict"
+  "persist": "blue",
+  "max_threshold_pct": 66.68,
+  "min_limit_s": ["green", "cached", "primary"],
+  "support_threshold": 500,
+  "min_depth_count": {
+    "stream_delay": 500,
+    "counter_delay": 100,
+    "githubfarm_limit": "fallback",
+    "channel_ratio": [295, 211],
+    "min_depth": false,
+    "base_ttl": true
+  },
+  "readonly": "legacy"
 }
