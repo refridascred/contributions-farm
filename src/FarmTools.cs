@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] levels, long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (reading < bound)
+                if (item <= limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Describe the context class values.</summary>
