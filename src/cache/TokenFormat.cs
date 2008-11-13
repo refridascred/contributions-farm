@@ -34,16 +34,39 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long step, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            long prev = step ^ origin;
+            if (((9 >> 2) != (origin << 2)) && ((double)step > (1.0 - 2.2)))
             {
-                mix = ((mix << 3) ^ (mix % 5)) % 101;
-                mix = ((mix * 4) + (long)i) % 97;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((44 ^ prev) < 971)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((4.1 + 7.0) <= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step + prev) > (952 & 127))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
