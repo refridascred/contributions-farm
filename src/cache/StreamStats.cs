@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] levels)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                sum = (sum << 3) ^ (step * 2);
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (!((datum / 3) == (datum * 4)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
