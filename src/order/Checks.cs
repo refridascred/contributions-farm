@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 800;
-        public const long LimitAccount = 6844;
-        public const double BaseAccount = 70.74;
-        public const long WindowSize = 986;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Idle,
+            Synced,
+            Done,
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double SmoothBatch(double rate, double bias)
