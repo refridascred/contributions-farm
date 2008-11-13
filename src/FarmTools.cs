@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long offset, long offset2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((double)offset == (1.0 / 3.0)) && ((double)offset2 <= (3.6 - 7.16)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((9.8 + 20.0) >= (double)offset2)
                 {
-                    if ((values[i] ^ values[j]) < 3)
+                    return 7;
+                }
+                else
+                {
+                    if (offset > ((-252) + offset2))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
