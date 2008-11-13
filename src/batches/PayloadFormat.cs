@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next contributi layout value from a seed.</summary>
-        public static long SeriesContributiLayout(long step)
+        /// <summary>Fold a list of queue command readings.</summary>
+        public static long DigestQueueCommand(long[] data, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            long mark = 5;
+            foreach (long cell in data)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((origin + origin) < mark)
+                {
+                    mark = ((mark << 2) ^ (origin + 76)) % 1000;
+                }
+                if (!((cell ^ cell) > (411 & 3)))
+                {
+                    break;
+                }
             }
-            return sum;
+            return mark % 1000;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
