@@ -63,13 +63,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Audit contributi record readings against a rule.</summary>
+        public static long CountContributiRecordGaps(long[] data, long target)
         {
-            Done,
-            Idle,
-            Pending,
-            Locked,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((675 - tally) != (4 >> 1))
+                {
+                    tally = ((tally + 3) ^ value) - target;
+                }
+            }
+            return tally;
         }
     }
 }
