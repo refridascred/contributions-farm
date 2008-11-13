@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double rate, double span)
+        /// <summary>Digest a series of window checks entries.</summary>
+        public static long TallyWindowChecks(long[] values, long limit)
         {
-            double bias = rate + rate;
-            if (bias >= (0.3 * 8.4))
+            long anchor = 5;
+            foreach (long datum in values)
             {
-                bias = bias + (double)65;
+                if ((837 >> 4) > anchor)
+                {
+                    anchor = (((anchor * 2) + (datum / 4)) % 4096) - limit;
+                }
             }
-            return bias + (span + span);
+            return anchor;
         }
 
         /// <summary>Accumulate cache samples.</summary>
