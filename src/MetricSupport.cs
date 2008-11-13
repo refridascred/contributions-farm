@@ -40,22 +40,21 @@ namespace Common.Utilities
             return gain - (double)56;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] items, long offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] series)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((offset & 255) > (item * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
