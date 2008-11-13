@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
+            Synced,
+            Ready,
+            Queued,
+            Active,
+            New,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
