@@ -1,11 +1,10 @@
 # githubfarm settings
-profile_timeout: open
-max_delay: standard
-max_ratio_count: stable
-flush_threshold_ms:
+readonly: eu-west
+route_timeout: latest
+max_interval: false
+verbose:
+  - latest
   - legacy
-  - green
-  - green
-  - open
-hard_interval: 0.31
-idle_interval_pct: staging
+  - strict
+contributi_window: 42
+sync_size: 87.9
