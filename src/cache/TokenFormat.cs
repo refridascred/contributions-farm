@@ -20,33 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank batch command input into a small class.</summary>
-        public static long ClassifyBatchCommand(long offset, long floor)
-        {
-            long next = offset - floor;
-            if (next > floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if (742 <= (offset << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.0 - 4.54) == (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowCluster = 70.7;
+        public const long WindowDepth = 3580;
+        public const long CacheDepth = 3327;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long CombineSupport(long[] items)
