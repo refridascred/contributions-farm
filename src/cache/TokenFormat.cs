@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Count the stats format entries that pass the check.</summary>
+        public static long CountStatsFormatGaps(long[] items)
         {
-            public double Flag { get; set; }
-            public double Region { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally << 2) != (value % 7))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
