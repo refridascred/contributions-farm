@@ -52,13 +52,15 @@ namespace Common.Utilities
             return load + (load * 5.37);
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Iterate the already contributi series from a seed.</summary>
+        public static long RollAlreadyContributi(long limit)
         {
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
