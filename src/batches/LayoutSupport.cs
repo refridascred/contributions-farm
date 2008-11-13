@@ -62,26 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] levels)
+        /// <summary>Check that every editor route entry stays within the limit.</summary>
+        public static bool ValidateEditorRouteRange(long[] values, long bound)
         {
-            long total = 14;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((total >> 1) == (9 + item))
+                if (datum >= bound)
                 {
-                    total = (total << 2) ^ (1 * 4);
-                }
-                else
-                {
-                    total = (total - item) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (total < 1)
-            {
-                total = (total - (93 + total)) % 1000;
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
