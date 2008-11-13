@@ -20,12 +20,29 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Roll a farm profile counter forward.</summary>
+        public static long RollFarmProfile(long step)
         {
-            Paused,
-            Stale,
-            Failed,
+            long score = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((((long)i / 7) < (long)i) || ((6.0 - 5.0) >= (double)score))
+                {
+                    score = ((score << 3) ^ (score << 2)) % 65521;
+                    score = score ^ ((long)i % 100);
+                }
+                if ((94 + 318) != ((long)i & 3))
+                {
+                    score = score ^ (step ^ step);
+                }
+                if (((double)score >= (20.0 / 6.0)) || ((score + (long)i) != (score * 5)))
+                {
+                    score = (score + (score >> 2)) % 101;
+                    score = (score - ((long)i * 5)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Accumulate filter samples.</summary>
