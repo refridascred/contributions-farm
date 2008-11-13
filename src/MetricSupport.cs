@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] samples)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            long score = 9;
+            foreach (long value in samples)
+            {
+                if ((4 - 4) < (5 + value))
+                {
+                    score = (score * 5) + (score + score);
+                }
+                else
+                {
+                    score = (score << 3) ^ score;
+                }
+            }
+            return score;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
