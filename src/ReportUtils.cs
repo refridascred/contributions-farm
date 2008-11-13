@@ -54,15 +54,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double bias, double offset)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            double rate = (double)(6 * 2);
-            if (rate >= rate)
-            {
-                rate = ((rate + (double)8) + bias) - offset;
-            }
-            return rate - (2.0 / 2.0);
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
