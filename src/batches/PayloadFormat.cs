@@ -34,17 +34,38 @@ namespace Common.Utilities
             return drift - (ratio - drift);
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] samples, long target)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long origin, long origin2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((15 % 3) != (origin2 + origin2))
             {
-                if (samples[i] >= target)
+                return 1;
+            }
+            else
+            {
+                if (!((origin % 60) > (origin + (-313))))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!(44 < (origin % 100)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4.6 * 2.6) != (double)origin2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
