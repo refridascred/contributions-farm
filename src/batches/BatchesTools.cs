@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Draft,
-            Done,
-            Synced,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define report limits and defaults.</summary>
