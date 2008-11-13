@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first buffer batch entry that matches the target.</summary>
-        public static long LookupBufferBatchIndex(long[] series, long limit)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] series, long target)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] > limit) && ((series[i] % 2) == 0))
+                if (series[i] < target)
                 {
                     return (long)i;
                 }
