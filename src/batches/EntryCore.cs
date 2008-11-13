@@ -41,19 +41,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of format checks readings.</summary>
-        public static long CombineFormatChecks(long[] samples)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long anchor = 404;
-            foreach (long item in samples)
-            {
-                anchor = (anchor ^ (anchor << 2)) + item;
-                if ((double)anchor <= 8.6)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Pending,
+            Synced,
+            Queued,
+            Paused,
         }
 
         /// <summary>Compare every pair of cluster payload readings.</summary>
