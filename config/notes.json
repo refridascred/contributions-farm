@@ -1,5 +1,12 @@
 {
-  "cache_size": 1024,
-  "flush_size": 79.57,
-  "max_ttl_s": 2245
+  "metric_interval": "edge",
+  "warm_capacity_s": {
+    "batch_interval": ["cached", "open", "edge", "local"],
+    "flush_ttl_ms": "cached",
+    "warm_capacity_count": 4,
+    "burst_limit_s": "open",
+    "max_delay_ms": "fallback",
+    "min_size": true
+  },
+  "default_ttl_pct": true
 }
