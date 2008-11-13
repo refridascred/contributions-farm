@@ -21,11 +21,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double bias, double span)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] readings, long seed)
         {
-            double mean = (double)(84 ^ 5);
-            return (mean + (bias + bias)) + span;
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)count >= (7.4 * 0.46))
+                {
+                    count = ((count + 1) + cell) - seed;
+                }
+            }
+            return count;
         }
     }
 }
