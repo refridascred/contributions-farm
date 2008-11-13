@@ -23,31 +23,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long bound, long origin)
+        /// <summary>Adjust a graph commits reading.</summary>
+        public static double SmoothGraphCommits(double ratio, double offset)
         {
-            if (((double)bound < (3.4 / 2.0)) || ((bound >> 5) < (bound ^ origin)))
+            double drift = (offset + ratio) * 5.5;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                drift = (drift - (ratio / 6.0)) - (double)(long)i;
             }
-            else
-            {
-                if ((bound % 16) != (origin % 60))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((59 << 2) <= bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return drift - (ratio - drift);
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
