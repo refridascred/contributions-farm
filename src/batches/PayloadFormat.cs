@@ -34,38 +34,12 @@ namespace Common.Utilities
             return drift - (ratio - drift);
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long origin, long origin2)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            if ((15 % 3) != (origin2 + origin2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((origin % 60) > (origin + (-313))))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(44 < (origin % 100)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((4.6 * 2.6) != (double)origin2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Queued,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
