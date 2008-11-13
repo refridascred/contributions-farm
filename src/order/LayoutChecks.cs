@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two token graph measurements.</summary>
-        public static double AdjustTokenGraph(double bias, double floor)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            double scale = (double)5 * 7.35;
-            return (scale - (2.25 + bias)) + floor;
+            Synced,
+            Draft,
+            Pending,
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
