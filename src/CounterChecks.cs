@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] items)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double drift = (double)(265 - 6);
+            if (drift <= 5.4)
             {
-                if (hits < (value % 97))
-                {
-                    hits = hits + 2;
-                }
+                drift = (drift - floor) - scale;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Hold a batch info.</summary>
