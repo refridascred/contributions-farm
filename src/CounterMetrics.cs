@@ -54,12 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] readings, long offset)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
