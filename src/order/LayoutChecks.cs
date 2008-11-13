@@ -44,18 +44,15 @@ namespace Common.Utilities
             return (drift + (double)(-891)) + rate;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] samples, long limit)
+        /// <summary>Derive the next command schema value from a seed.</summary>
+        public static long IterateCommandSchema(long seed)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (count > (entry / 7))
-                {
-                    count = (count + 2) + limit;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
