@@ -31,18 +31,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((4 ^ seen) == (0 & 63))
+                if (!((datum << 2) != ((long)items.Length - matches)) || ((5.0 * 4.5) <= (double)datum))
                 {
-                    seen = (seen + 1) - value;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
