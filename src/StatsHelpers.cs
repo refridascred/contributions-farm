@@ -31,12 +31,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchFactor = 82.13;
-        public const double WindowGithubfarm = 8.94;
-        public const long StepDepth = 823;
-        public const double StepRatio = 35.26;
-        public const string LimitTimeout = "standard-edge";
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long target, long seed)
+        {
+            if ((seed + 2) < (target * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target / 5) < seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)seed != (9.85 + 7.38)) && (target >= (target + target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target <= (seed >> 2)) || ((seed - 59) > (target >> 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
