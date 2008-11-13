@@ -30,16 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 4) + (288 * 3)) % 97;
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseEditor = 23.31;
+        public const long BurstEditor = 2704;
+        public const double BatchEditor = 10.16;
+        public const long StepCount = 2390;
     }
 }
