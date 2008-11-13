@@ -18,19 +18,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] levels, long floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
