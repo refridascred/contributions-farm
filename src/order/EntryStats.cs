@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const double StepQueue = 49.71;
         public const double CacheQueue = 93.32;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Audit checks already readings against a rule.</summary>
+        public static long CountChecksAlreadyGaps(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (!(((step - anchor) <= anchor) || (anchor >= (step & 31))))
+                if (count >= (count ^ value))
                 {
-                    anchor = ((anchor * 4) + anchor) % 4096;
+                    count = count + 3;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Blend two stats session measurements.</summary>
