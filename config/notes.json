@@ -1,9 +1,13 @@
 {
-  "poll_delay_count": {
-    "metrics_ttl": 30,
-    "hard_retries_s": 78.21,
-    "hard_threshold_s": "strict"
+  "default_capacity_count": {
+    "retry_ratio_s": 30,
+    "route_capacity": false,
+    "flush_retries_count": 1551,
+    "verbose": 31
   },
-  "token_window": [143, 204, 389],
-  "default_threshold_count": 51
+  "batches_threshold": 500,
+  "max_capacity": "stable",
+  "audit": ["stable", "local", "staging"],
+  "warm_delay": [150, 365, 131, 74],
+  "retry_depth_s": 1
 }
