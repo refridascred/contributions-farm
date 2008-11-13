@@ -38,15 +38,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseWidth = 6461;
+        public const long HardEntry = 5645;
+        public const string CacheEntry = "primary-1";
     }
 }
