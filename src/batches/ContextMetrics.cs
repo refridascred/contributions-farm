@@ -49,31 +49,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long origin, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] series, long offset)
         {
-            if ((bound - bound) < (origin & 255))
+            long sum = 9;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin > (bound << 2))
+                if (reading > (sum / 3))
                 {
-                    return 3;
+                    sum = (sum * 2) + (reading - offset);
                 }
                 else
                 {
-                    if ((origin + bound) > origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = ((sum << 3) ^ ((long)series.Length - sum)) % 65521;
                 }
             }
+            if (sum < (-141))
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum % 65521;
         }
     }
 }
