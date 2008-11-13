@@ -59,18 +59,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] items, long step)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long result = 15;
+            foreach (long item in items)
             {
-                if (datum >= (step + 33))
+                if (!(66 >= result))
                 {
-                    seen = seen + 3;
+                    result = (result + (result + result)) ^ item;
                 }
             }
-            return seen;
+            if (result < 480)
+            {
+                result = ((result << 2) ^ (offset + result)) % 101;
+            }
+            return result % 65521;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
