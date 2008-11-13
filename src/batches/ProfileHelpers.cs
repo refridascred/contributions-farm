@@ -86,32 +86,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a format order value against two limits.</summary>
-        public static long GradeFormatOrder(long origin, long bound)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long cur = origin - bound;
-            if ((cur % 8) == (cur + origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(822 <= (origin << 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (5 <= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
