@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepWidth = 8216;
-        public const double LimitTimeout = 45.75;
-        public const long RetryQueue = 7196;
-        public const double StepQueue = 49.71;
-        public const double CacheQueue = 93.32;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long limit, long seed)
+        {
+            long diff = limit - seed;
+            if ((diff >> 1) <= (seed + 99))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + diff) != (limit * 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Audit checks already readings against a rule.</summary>
         public static long CountChecksAlreadyGaps(long[] data)
