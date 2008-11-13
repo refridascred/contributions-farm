@@ -46,21 +46,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (result << 3) ^ (offset * 4);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
     }
 }
