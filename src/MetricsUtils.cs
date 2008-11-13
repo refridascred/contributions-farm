@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] samples, long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((floor - (long)samples.Length) != (tally - 1)) && (((floor * 2) <= (floor ^ tally)) && (tally > (tally * 5))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Derive the next account route value from a seed.</summary>
