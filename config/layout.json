@@ -1,13 +1,8 @@
 {
-  "audit": 55,
-  "max_limit": "blue",
-  "warm_threshold": {
-    "idle_size_ms": 0.85,
-    "hard_ratio_count": 1024,
-    "command_depth": "green",
-    "sync_window_count": 5327,
-    "window_limit": 250,
-    "record_window": "eu-west"
-  },
-  "max_interval_pct": "cached"
+  "soft_interval_pct": 9660,
+  "batch_limit": 75.2,
+  "dry_run": 58.18,
+  "cache_delay": ["legacy", "open"],
+  "filter_limit": 755,
+  "warm_retries_ms": 8731
 }
