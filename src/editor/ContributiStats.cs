@@ -11,28 +11,11 @@ namespace Common.Utilities
         public const long HardCluster = 2518;
         public const long BurstCluster = 6706;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] samples, long step)
-        {
-            long result = 20;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    result = ((result ^ (long)i) % 255) ^ cell;
-                }
-                result = (result * 5) + step;
-                if ((0.63 / 9.0) <= (double)step)
-                {
-                    break;
-                }
-            }
-            if (result < 2)
-            {
-                result = result + step;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 9877;
+        public const long DefaultCommits = 2764;
+        public const long IdleWidth = 3195;
+        public const long BurstCommits = 9655;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] readings)
