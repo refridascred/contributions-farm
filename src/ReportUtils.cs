@@ -70,18 +70,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit contributi metrics readings against a rule.</summary>
-        public static long TallyContributiMetricsGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((5.5 + 2.02) > 9.1)
-                {
-                    hits = (hits + 1) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 4885;
+        public const double StepBatch = 30.82;
+        public const string SoftFactor = "legacy-v2";
+        public const long LimitBatch = 2900;
+        public const long RetryDepth = 2234;
     }
 }
