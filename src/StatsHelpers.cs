@@ -65,14 +65,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Queued,
-            New,
-            Done,
-            Pending,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 3209;
+        public const long BatchMetric = 464;
+        public const long StepMetric = 2139;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] data)
