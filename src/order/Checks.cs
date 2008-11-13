@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 135;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((((mix << 2) ^ (21 - 1)) % 255) + reading) + origin;
             }
-            return seen;
+            if (mix < 349)
+            {
+                mix = ((mix * 2) + (mix % 100)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Blend two batch measurements.</summary>
