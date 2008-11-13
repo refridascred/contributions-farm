@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache metric samples are out of range.</summary>
-        public static long TallyCacheMetricHits(long[] values)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((((419 * 2) > (tally >> 3)) || ((tally % 2) != (748 & 3))) && ((tally - 6) >= (sample << 3)))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    tally = tally + 2;
+                    score = (score - score) - (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Accumulate already samples.</summary>
