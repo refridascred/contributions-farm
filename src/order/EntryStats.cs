@@ -16,10 +16,12 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 5950;
-        public const long HardBuffer = 1908;
-        public const long BaseSpan = 900;
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double bias, double offset)
+        {
+            double mean = 4.84;
+            return ((mean + (3.1 * 6.0)) + bias) + offset;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelRange(long[] levels, long bound)
