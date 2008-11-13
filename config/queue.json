@@ -1,12 +1,11 @@
 {
-  "retry_timeout": false,
-  "batch_threshold_count": "local",
-  "readonly": {
-    "retry_timeout_ms": "latest",
-    "cache_timeout_ms": "open",
-    "soft_interval": ["local", "primary", "green"],
-    "warm_ratio_count": [230, 158, 66, 67]
-  },
-  "max_depth": true,
-  "retry_ratio_count": 1024
+  "persist": 500,
+  "readonly": "green",
+  "batches_ratio": {
+    "strict": 100,
+    "poll_threshold": "legacy",
+    "hard_capacity_count": ["cached", "stable"],
+    "hard_depth_pct": "fallback",
+    "verbose": "standard"
+  }
 }
