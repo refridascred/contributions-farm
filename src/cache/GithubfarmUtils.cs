@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 3574;
-        public const long DefaultWindow = 5035;
-        public const string MinWindow = "cached-1";
-        public const long BaseWindow = 2125;
-        public const long BatchWindow = 3992;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values, long origin)
+        {
+            long anchor = 32;
+            foreach (long entry in values)
+            {
+                anchor = (((anchor << 3) ^ (anchor + origin)) % 1000) ^ entry;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Audit cache stats readings against a rule.</summary>
         public static long TallyCacheStatsMatches(long[] series)
