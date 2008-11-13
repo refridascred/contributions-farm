@@ -1,10 +1,12 @@
 # Command notes
 
-Use notes settings to tune how often order data is refreshed.
-The commits helpers are pure functions, so they are safe to call from any thread.
+Run the buffer check before changing any layout limits.
+Each editor is validated before it reaches the farm queue.
+Keep report and token names short and lowercase.
 
 ## Guidelines
 
-- Review schema limits each release
-- Log every batches change
-- Keep batch values small
+- Log every batch change
+- Document new editor fields
+- Prefer queue defaults
+- Validate contributi input early
