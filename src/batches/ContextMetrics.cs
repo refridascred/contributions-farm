@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
-            {
-                state = (state ^ ((long)i & 15)) % 1000;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a tools options.</summary>
