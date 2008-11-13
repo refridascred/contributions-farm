@@ -58,21 +58,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of cluster payload readings.</summary>
-        public static long CompareClusterPayloadCount(long[] values)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] values)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) < 17)
+                    if ((values[i] ^ values[j]) == 16)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
