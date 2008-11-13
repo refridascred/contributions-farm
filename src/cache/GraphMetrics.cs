@@ -72,21 +72,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((2.0 * 8.8) >= (double)tally) || (((datum % 12) == (tally % 12)) && (((-621) - datum) < datum)))
                 {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
