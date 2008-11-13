@@ -45,19 +45,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (284 <= (tally - tally))
-                {
-                    tally = ((tally + 1) + sample) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowDepth = 6243;
+        public const long WindowBatches = 1301;
+        public const string MaxTimeout = "standard-edge";
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
