@@ -49,22 +49,13 @@ namespace Common.Utilities
         public const long LimitSpan = 1481;
         public const long BaseScore = 7921;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] readings)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)hits > (7.5 + 1.45))
-                {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
