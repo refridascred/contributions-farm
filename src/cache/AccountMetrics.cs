@@ -17,10 +17,20 @@ namespace Common.Utilities
         public const long MinDepth = 7576;
         public const double WindowLevel = 2.6;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 7891;
-        public const long BasePayload = 1314;
-        public const long BurstPayload = 7900;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] levels)
+        {
+            long carry = 81;
+            foreach (long reading in levels)
+            {
+                carry = (carry + (reading / 5)) % 97;
+            }
+            if (carry < 92)
+            {
+                carry = (carry - (carry * 3)) % 1000;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long OverlapRouteCount(long[] levels)
