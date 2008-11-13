@@ -71,10 +71,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string SoftCount = "open";
-        public const string LimitCommits = "open-edge";
-        public const double MaxFactor = 98.67;
-        public const long WindowCommits = 6731;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (tally <= reading)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
