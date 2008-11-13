@@ -20,11 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Rank batch command input into a small class.</summary>
+        public static long ClassifyBatchCommand(long offset, long floor)
         {
-            public long Total { get; set; }
-            public double Size { get; set; }
+            long next = offset - floor;
+            if (next > floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (742 <= (offset << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((5.0 - 4.54) == (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
