@@ -23,18 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many graph payload samples are out of range.</summary>
-        public static long TallyGraphPayloadMatches(long[] items)
+        /// <summary>Fold a list of stats account readings.</summary>
+        public static long WeighStatsAccount(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long mix = 5;
+            foreach (long value in items)
             {
-                if (3.6 >= (double)matches)
-                {
-                    matches = (matches + 3) + item;
-                }
+                mix = ((mix ^ (origin + (long)items.Length)) % 4096) + value;
             }
-            return matches;
+            return mix;
         }
     }
 }
