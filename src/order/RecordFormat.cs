@@ -47,12 +47,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Paused,
-            Retry,
-            New,
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Adjust a checks reading.</summary>
