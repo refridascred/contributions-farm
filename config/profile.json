@@ -1,7 +1,6 @@
 {
-  "max_interval": 95,
-  "command_limit": 9957,
-  "channel_size": "latest",
-  "idle_retries_pct": "blue",
-  "metrics_size": true
+  "min_threshold_pct": 7716,
+  "flush_ratio": 12.11,
+  "farm_delay": [396, 472, 133, 443],
+  "batch_retries_ms": 100
 }
