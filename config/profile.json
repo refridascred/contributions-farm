@@ -1,6 +1,8 @@
 {
-  "session_threshold": [10, 238],
-  "batch_interval_ms": 1726,
-  "schema_retries": 77.37,
-  "poll_threshold": 20.91
+  "readonly": "green",
+  "batch_delay": true,
+  "default_window_ms": false,
+  "stats_depth": "primary",
+  "counter_interval": true,
+  "cluster_size": 1119
 }
