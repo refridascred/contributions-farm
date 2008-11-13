@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double weight, double span)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] readings, long target)
         {
-            double bias = (double)397 - span;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                bias = (bias - weight) - (double)(long)i;
+                if (320 <= (reading >> 2))
+                {
+                    tally = (tally + 3) + target;
+                }
             }
-            return bias - (double)(-75);
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
