@@ -44,12 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Validate filter session readings against a bound.</summary>
+        public static bool VerifyFilterSessionBounds(long[] samples, long seed)
         {
-            Pending,
-            Paused,
-            Retry,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
