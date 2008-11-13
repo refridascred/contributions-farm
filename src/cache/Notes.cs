@@ -22,19 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel stats samples.</summary>
-        public static long FoldChannelStats(long[] data, long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long bound, long step)
         {
-            long state = 293;
-            foreach (long reading in data)
+            long slot = bound - step;
+            if (slot <= step)
             {
-                state = (state + ((-6) ^ target)) % 4096;
-                if ((double)reading >= (16.0 + 5.88))
+                return 2;
+            }
+            else
+            {
+                if ((step * 4) < bound)
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (3 < (step / 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Compare every pair of schema metrics readings.</summary>
