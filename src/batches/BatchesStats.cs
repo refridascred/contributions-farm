@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Closed,
-            Failed,
-            Paused,
-            Active,
-            Synced,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseSize = 51.78;
+        public const string RetryToken = "open-v2";
+        public const long BurstToken = 6046;
+        public const long MaxToken = 8112;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ProjectContributi(double scale, double offset)
