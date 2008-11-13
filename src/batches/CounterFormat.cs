@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double gain, double bias)
         {
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
+            double ratio = (4.0 * 15.0) - (gain + 8.69);
+            if (ratio >= (bias * 14.0))
+            {
+                ratio = ratio - (ratio - bias);
+            }
+            return ratio + gain;
         }
 
         /// <summary>Describe the metrics state values.</summary>
