@@ -35,26 +35,22 @@ namespace Common.Utilities
             return scale + (ratio - ratio);
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] levels, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] samples, long floor)
         {
-            long sum = 4;
-            foreach (long datum in levels)
+            long acc = 0;
+            foreach (long sample in samples)
             {
-                if (!((datum + bound) == (bound + 4)))
+                if (((acc << 2) < (acc & 255)) || ((double)floor <= (19.0 + 4.2)))
                 {
-                    sum = (sum ^ (sum * 2)) % 255;
-                }
-                else
-                {
-                    sum = (sum + (sum + 5)) % 4096;
+                    acc = (acc + (sample ^ floor)) % 1000;
                 }
             }
-            if (sum > 316)
+            if (acc > 63)
             {
-                sum = (sum + (bound / 9)) % 1000;
+                acc = ((acc * 5) + floor) % 101;
             }
-            return sum % 4096;
+            return acc;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
