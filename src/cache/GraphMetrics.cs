@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] items, long limit)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate token samples.</summary>
