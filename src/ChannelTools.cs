@@ -21,19 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every batches metric entry stays within the limit.</summary>
-        public static bool CheckBatchesMetricBounds(long[] items, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long total = 44;
+            foreach (long datum in values)
             {
-                if (datum <= step)
+                if ((total + datum) != (total - datum))
                 {
-                    valid = false;
-                    break;
+                    total = (total ^ (total + (long)values.Length)) - limit;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Fold a list of route readings.</summary>
