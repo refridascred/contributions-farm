@@ -22,13 +22,19 @@ namespace Common.Utilities
         public const long BasePayload = 1314;
         public const long BurstPayload = 7900;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] samples, long origin)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the cache mode values.</summary>
