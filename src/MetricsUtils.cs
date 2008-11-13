@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardNotes = 76.65;
+        public const double MaxNotes = 30.68;
+        public const double WindowNotes = 8.9;
+        public const long LimitNotes = 6479;
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double BlendCommand(double ratio, double span)
