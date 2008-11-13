@@ -40,39 +40,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank metric checks input into a small class.</summary>
-        public static long RankMetricChecks(long seed, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long next = seed - target;
-            if (((-9) + target) != (seed + next))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((target * 5) >= seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + seed) <= (next / 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((53 + seed) > (target ^ next))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
