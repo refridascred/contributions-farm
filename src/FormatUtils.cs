@@ -27,13 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] levels, long seed)
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!((seed * 5) > ((-6) / 3)))
+                {
+                    hits = (hits + 2) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
