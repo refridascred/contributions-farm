@@ -1,7 +1,16 @@
 {
-  "compress": "fallback",
-  "default_window_pct": 31.97,
-  "soft_limit": ["eu-west", "strict"],
-  "strict": 242,
-  "base_interval": ["cached", "local"]
+  "soft_timeout_pct": 42,
+  "base_size_count": 100,
+  "default_depth_ms": {
+    "cache_capacity": {
+      "batch_size": 70.47,
+      "base_limit_s": 47,
+      "stream_window": "latest",
+      "readonly": 3622,
+      "min_size": [345, 4]
+    },
+    "batch_window": 100,
+    "layout_retries": 86,
+    "checks_window": 13
+  }
 }
