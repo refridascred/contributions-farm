@@ -1,6 +1,20 @@
 {
-  "hard_depth_ms": 92,
-  "soft_threshold": 78,
-  "warm_timeout_pct": false,
-  "min_threshold_pct": "open"
+  "strict": 49.82,
+  "burst_delay_ms": "green",
+  "warm_interval_count": 8680,
+  "stream_window": {
+    "farm_retries": true,
+    "idle_limit": "eu-west",
+    "compress": {
+      "readonly": "fallback",
+      "max_ttl_ms": 53,
+      "warm_delay_pct": 7749,
+      "cache_size_ms": "eu-west",
+      "metric_size": "blue",
+      "hard_limit": "fallback"
+    },
+    "route_delay": "latest",
+    "hard_window": 100
+  },
+  "dry_run": "staging"
 }
