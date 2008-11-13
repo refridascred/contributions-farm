@@ -80,11 +80,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheDepth = 2733;
-        public const long BurstRatio = 3593;
-        public const double DefaultWidth = 45.43;
-        public const double DefaultSpan = 98.52;
-        public const long StepLevel = 4429;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
