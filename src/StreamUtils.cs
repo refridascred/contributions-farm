@@ -56,13 +56,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Retry,
-            Pending,
-            Synced,
-            Closed,
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
