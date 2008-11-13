@@ -22,16 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next account route value from a seed.</summary>
-        public static long SeriesAccountRoute(long limit)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double ratio, double span)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            double ratio2 = (double)(185 & 127);
+            for (int i = 0; i < 9; i++)
             {
-                mix = mix ^ (limit ^ mix);
-                mix = ((mix * 2) + (long)i) % 101;
+                ratio2 = ((ratio2 + ratio) + (double)(long)i) - span;
             }
-            return mix;
+            return ratio2 - (6.8 - ratio);
         }
 
         /// <summary>Validate counter payload readings against a bound.</summary>
