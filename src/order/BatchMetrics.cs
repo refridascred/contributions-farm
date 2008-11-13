@@ -50,12 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Roll a window batches counter forward.</summary>
+        public static long DeriveWindowBatches(long offset)
         {
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark ^ 598) % 4096;
+                mark = ((mark * 2) + (offset / 8)) % 65521;
+                mark = (mark << 2) ^ (mark / 8);
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
