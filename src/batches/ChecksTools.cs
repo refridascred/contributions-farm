@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long step, long bound)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long step2 = step + bound;
-            if ((double)bound >= 2.27)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step * 2) > bound) || (189 >= bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step <= (step2 / 6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up contributi samples.</summary>
