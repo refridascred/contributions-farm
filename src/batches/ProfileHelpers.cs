@@ -71,18 +71,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] data, long origin)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (hits <= (origin * 5))
+                if (reading != seed)
                 {
-                    hits = (hits + 1) ^ sample;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Grade a format order value against two limits.</summary>
