@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items, long offset)
         {
-            Pending,
-            Retry,
-            Active,
+            long result = 5;
+            foreach (long sample in items)
+            {
+                result = ((((result << 2) ^ (long)items.Length) % 4096) ^ sample) + offset;
+            }
+            return result;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
