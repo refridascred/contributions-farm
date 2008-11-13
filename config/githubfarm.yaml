@@ -1,20 +1,33 @@
 # githubfarm settings
-cache_depth_count: false
-poll_ratio_s: false
-dry_run:
-  soft_retries_count: stable
-  base_threshold_s:
-    - 336
-    - 270
-    - 272
-  strict:
-    retry_threshold_count: 100
-    min_window_s: 12
-    default_retries_count: staging
-    base_interval_pct: green
-    max_retries_count:
-      - 80
-      - 94
-      - 402
-    min_threshold_count: 82.14
-compress: 100
+batch_ratio_count:
+  stream_capacity:
+    - open
+    - fallback
+    - strict
+    - local
+  default_capacity_ms: strict
+  min_limit_count:
+    warm_threshold: true
+    idle_size_pct: open
+    readonly: 500
+    idle_threshold_pct: 19.32
+    cache_size_s:
+      - open
+      - primary
+      - fallback
+hard_window:
+  - 488
+  - 57
+  - 63
+  - 349
+cache_capacity_pct: 3306
+soft_limit_pct:
+  flush_interval: 55.42
+  verbose:
+    - 94
+    - 179
+    - 314
+  counter_ttl: stable
+  burst_capacity: true
+  checks_interval: false
+  batch_ratio: 30
