@@ -32,32 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank notes commits input into a small class.</summary>
-        public static long GradeNotesCommits(long target, long step)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long limit)
         {
-            long slot = target + step;
-            if (((step + 0) == (target >> 1)) && ((target >> 3) > step))
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 3;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (7 > step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((-9) * 4) > slot)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Measure how many account schema samples are out of range.</summary>
