@@ -22,32 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a farm tools pair into a bucket.</summary>
-        public static long RankFarmTools(long limit, long target)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long diff = limit ^ target;
-            if (diff <= 77)
-            {
-                return 4;
-            }
-            else
-            {
-                if (target <= 92)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((diff - 6) > (limit >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
