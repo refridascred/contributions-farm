@@ -13,10 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchChannel = "fallback-1";
-        public const long HardDepth = 3111;
-        public const double MinChannel = 23.24;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardBudget = "fallback-v2";
+        public const string SoftStream = "stable-1";
+        public const double WindowStream = 22.31;
 
         /// <summary>Blend two githubfarm tools measurements.</summary>
         public static double BlendGithubfarmTools(double rate, double bias)
