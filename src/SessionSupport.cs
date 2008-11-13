@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] values, long bound)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] items, long offset)
         {
-            long score = 0;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (((score + 60) % 4096) + item) - bound;
+                if ((items[i] <= offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score > 867)
-            {
-                score = score + (score - score);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
