@@ -36,9 +36,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseCommand = "primary-1";
-        public const double MinBudget = 38.21;
-        public const long BatchCommand = 624;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
