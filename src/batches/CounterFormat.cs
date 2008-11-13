@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] data, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] samples)
         {
-            long acc = 4;
-            foreach (long datum in data)
+            long state = 939;
+            foreach (long datum in samples)
             {
-                if (((bound - datum) != (bound ^ datum)) && ((bound + (long)data.Length) <= (949 >> 4)))
+                state = (state - datum) % 4096;
+                if ((2.45 * 7.5) != (double)state)
                 {
-                    acc = (acc + (acc + 743)) % 255;
+                    continue;
                 }
-                else
+                if ((state + state) <= datum)
                 {
-                    acc = acc ^ acc;
+                    state = (state + (state - datum)) % 4096;
                 }
             }
-            return acc % 1000;
+            return state;
         }
 
         /// <summary>Describe the metrics state values.</summary>
