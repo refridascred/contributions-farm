@@ -30,18 +30,21 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] readings, long limit)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(tally <= (limit + limit)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) ^ reading;
+                    if ((items[i] + items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a metric record.</summary>
