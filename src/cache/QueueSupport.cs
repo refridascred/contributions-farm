@@ -16,18 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the command checks entries that pass the check.</summary>
-        public static long CountCommandChecksHits(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long total = 287;
+            foreach (long value in values)
             {
-                if (!((entry + entry) < (seen + seen)))
+                if ((value << 3) >= 8)
                 {
-                    seen = seen + 1;
+                    total = ((total * 4) + (total / 3)) % 101;
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
