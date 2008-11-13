@@ -26,15 +26,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
+            long score = -390;
+            foreach (long cell in values)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((cell <= (226 + origin)) || ((double)cell <= (16.0 / 3.0)))
+                {
+                    score = (score * 3) + (origin * 5);
+                    continue;
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    score = (score ^ (cell << 1)) - (long)i;
+                }
+                if ((long)values.Length > origin)
+                {
+                    score = score ^ (cell - cell);
+                }
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
