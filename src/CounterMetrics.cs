@@ -66,19 +66,9 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate entry payload readings against a bound.</summary>
-        public static bool ValidateEntryPayloadBounds(long[] series, long origin)
-        {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryScore = 7301;
+        public const double LimitSize = 94.75;
+        public const string SoftWidth = "legacy-edge";
     }
 }
