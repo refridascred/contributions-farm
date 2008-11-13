@@ -29,12 +29,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Idle,
-            Done,
-            Dropped,
+            Stale,
+            Paused,
+            New,
+            Failed,
         }
 
         /// <summary>Measure how many account schema samples are out of range.</summary>
