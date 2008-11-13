@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long limit)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((total * 4) <= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total * 5) + (total - 6)) % 97;
-                    total = (total - (limit + total)) % 97;
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
