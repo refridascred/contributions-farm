@@ -19,15 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double bias, double floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            double scale = bias - (floor + floor);
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale + scale;
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
