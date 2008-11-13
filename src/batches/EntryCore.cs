@@ -24,18 +24,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] levels, long origin)
+        /// <summary>Digest a series of report metrics entries.</summary>
+        public static long TallyReportMetrics(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long acc = 6;
+            foreach (long sample in items)
             {
-                if ((tally * 2) != (tally + tally))
+                acc = (acc ^ seed) + sample;
+                if (((11.0 - 5.3) == (double)(long)items.Length) || (seed > (25 + seed)))
                 {
-                    tally = ((tally + 1) + datum) + origin;
+                    acc = (acc - (249 & 63)) % 4096;
                 }
             }
-            return tally;
+            if (acc < 19)
+            {
+                acc = (acc ^ acc) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Grade a batch profile value against two limits.</summary>
