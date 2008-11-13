@@ -43,21 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double mean = (double)(34 % 60);
+            return ((mean - 9.59) + bias) + span;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
