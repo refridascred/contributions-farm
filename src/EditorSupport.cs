@@ -55,24 +55,21 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Grade a queue order value against two limits.</summary>
-        public static long BucketQueueOrder(long origin, long target)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            if ((target + target) >= origin)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin + origin) > (51 / 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    if ((values[i] + values[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of cache report readings.</summary>
