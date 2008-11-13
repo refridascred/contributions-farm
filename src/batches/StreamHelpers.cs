@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Done,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 865;
+        public const double DefaultBudget = 75.93;
+        public const long IdleLevel = 9716;
+        public const long BaseEditor = 3831;
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
