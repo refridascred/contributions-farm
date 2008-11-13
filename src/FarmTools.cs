@@ -47,31 +47,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long target, long step)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if (target >= (target ^ target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step + target) <= (target % 97))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (target >= (3 ^ step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Pending,
+            Stale,
+            Retry,
         }
     }
 }
