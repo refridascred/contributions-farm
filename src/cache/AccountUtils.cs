@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item + 896) == (item >> 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepTimeout = 8617;
+        public const double BatchStream = 11.61;
+        public const long BurstStream = 4619;
+        public const long RetryStream = 7050;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
