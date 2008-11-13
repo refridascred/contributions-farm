@@ -41,10 +41,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 8957;
-        public const long BatchTimeout = 5977;
-        public const long MinMetrics = 2131;
-        public const long IdleScore = 7717;
+        /// <summary>Find the first cache report entry that matches the target.</summary>
+        public static long SeekCacheReportIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
