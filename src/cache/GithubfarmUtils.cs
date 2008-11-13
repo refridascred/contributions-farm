@@ -57,13 +57,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double rate, double span)
         {
-            Dropped,
-            Draft,
-            Ready,
-            Stale,
+            double ratio = (10.0 * 1.37) - (double)0;
+            if (ratio > (double)5)
+            {
+                ratio = (ratio + (double)26) - span;
+            }
+            return ratio + rate;
         }
     }
 }
