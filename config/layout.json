@@ -1,6 +1,13 @@
 {
-  "idle_capacity": "green",
-  "max_ratio": [321, 152],
-  "hard_depth_s": "fallback",
-  "flush_delay_ms": ["fallback", "primary", "legacy", "primary"]
+  "audit": 55,
+  "max_limit": "blue",
+  "warm_threshold": {
+    "idle_size_ms": 0.85,
+    "hard_ratio_count": 1024,
+    "command_depth": "green",
+    "sync_window_count": 5327,
+    "window_limit": 250,
+    "record_window": "eu-west"
+  },
+  "max_interval_pct": "cached"
 }
