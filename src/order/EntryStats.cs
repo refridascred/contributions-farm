@@ -78,9 +78,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 4801;
-        public const long IdleAlready = 3767;
-        public const long LimitAlready = 1090;
+        /// <summary>Fold a list of buffer record readings.</summary>
+        public static long CombineBufferRecord(long[] samples)
+        {
+            long score = 47;
+            foreach (long entry in samples)
+            {
+                score = (score - (entry << 3)) % 101;
+                if ((7.8 + 3.7) <= (double)entry)
+                {
+                    score = ((score * 5) + entry) % 1000;
+                }
+                if ((double)score != (13.0 / 5.0))
+                {
+                    break;
+                }
+            }
+            if (score > 79)
+            {
+                score = score ^ 6;
+            }
+            return score % 1000;
+        }
     }
 }
