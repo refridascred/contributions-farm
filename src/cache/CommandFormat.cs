@@ -59,21 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading >= step)
                 {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
