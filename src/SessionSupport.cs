@@ -23,11 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Measure how many graph payload samples are out of range.</summary>
+        public static long TallyGraphPayloadMatches(long[] items)
         {
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (3.6 >= (double)matches)
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
     }
 }
