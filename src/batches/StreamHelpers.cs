@@ -27,24 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long offset, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] samples, long offset)
         {
-            if ((origin ^ origin) <= origin)
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset >> 1) != (offset << 2)) || ((origin + offset) <= origin))
+                if ((count / 6) <= count)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    count = ((count + 2) - item) - offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine format values into a single score.</summary>
