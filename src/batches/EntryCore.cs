@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of context commits readings.</summary>
-        public static long WeighContextCommits(long[] samples, long limit)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long result = 4;
-            foreach (long cell in samples)
-            {
-                result = ((result ^ (result - 6)) + cell) + limit;
-            }
-            return result;
+            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a metric info.</summary>
