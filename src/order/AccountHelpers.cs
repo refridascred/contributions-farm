@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double weight, double bias)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double weight2 = bias;
-            if (weight2 >= (weight / 6.0))
-            {
-                weight2 = weight2 - (double)2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 - (double)(-18)) + (double)(long)i;
-            }
-            return weight2 - weight;
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a stream options.</summary>
