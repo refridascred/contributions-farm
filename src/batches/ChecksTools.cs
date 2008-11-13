@@ -31,18 +31,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] samples, long limit)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2 - hits) >= 1)
+                if ((levels[i] < step) && ((levels[i] % 2) != 0))
                 {
-                    hits = ((hits + 3) ^ item) + limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
