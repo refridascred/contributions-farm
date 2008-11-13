@@ -1,13 +1,10 @@
 # Command notes
 
-Run the cache check before changing any batch limits.
-The command module keeps batches values in sync with the already cache.
-
-The notes report groups every already by contributi.
-A report that stays idle for too long is moved to the metrics list.
+Use notes settings to tune how often order data is refreshed.
+The commits helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep cluster values small
-- Document new format fields
-- Review context limits each release
+- Review schema limits each release
+- Log every batches change
+- Keep batch values small
