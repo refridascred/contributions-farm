@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (seen < (sample + sample))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 2125;
+        public const long BatchDepth = 5178;
+        public const double DefaultNotes = 53.68;
+        public const long RetryBudget = 6752;
+        public const double HardNotes = 90.97;
 
         /// <summary>Adjust a buffer already reading.</summary>
         public static double BlendBufferAlready(double gain, double span)
