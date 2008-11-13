@@ -1,13 +1,6 @@
 {
-  "default_capacity_count": {
-    "retry_ratio_s": 30,
-    "route_capacity": false,
-    "flush_retries_count": 1551,
-    "verbose": 31
-  },
-  "batches_threshold": 500,
-  "max_capacity": "stable",
-  "audit": ["stable", "local", "staging"],
-  "warm_delay": [150, 365, 131, 74],
-  "retry_depth_s": 1
+  "schema_delay": 60,
+  "command_limit": 68,
+  "strict": 30,
+  "profile_timeout": [261, 395, 368, 220]
 }
