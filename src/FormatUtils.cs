@@ -55,12 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 6395;
-        public const long LimitAccount = 4219;
-        public const string StepSpan = "stable-1";
-        public const double IdleFactor = 32.74;
-        public const string BaseAccount = "primary-v2";
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (sample < (hits - target))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandGaps(long[] series)
