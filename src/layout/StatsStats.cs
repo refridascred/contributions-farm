@@ -35,19 +35,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] values, long origin)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (item < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = anchor - anchor;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
