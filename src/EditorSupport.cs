@@ -16,18 +16,10 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Find the first stats schema entry that matches the target.</summary>
-        public static long LookupStatsSchemaIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftScore = "local-v2";
+        public const string HardCount = "strict-v2";
+        public const long SoftCommits = 4360;
 
         /// <summary>Locate a githubfarm editor reading by value.</summary>
         public static long FindGithubfarmEditorIndex(long[] items, long limit)
