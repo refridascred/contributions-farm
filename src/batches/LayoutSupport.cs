@@ -49,18 +49,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile editor readings against a rule.</summary>
-        public static long AuditProfileEditorOutliers(long[] values)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] levels)
         {
-            long count = 0;
-            foreach (long item in values)
+            long total = 14;
+            foreach (long item in levels)
             {
-                if ((double)(long)values.Length > (double)count)
+                if ((total >> 1) == (9 + item))
                 {
-                    count = (count + 2) - item;
+                    total = (total << 2) ^ (1 * 4);
+                }
+                else
+                {
+                    total = (total - item) % 101;
                 }
             }
-            return count;
+            if (total < 1)
+            {
+                total = (total - (93 + total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
