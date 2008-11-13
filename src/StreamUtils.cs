@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a queue metrics figure with a bias.</summary>
-        public static double ScaleQueueMetrics(double weight, double bias)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] values)
         {
-            double ratio = 5.0;
-            if (ratio < ratio)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + (9.53 / 8.0)) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio + weight;
+            return matches;
         }
 
         /// <summary>Iterate the already context series from a seed.</summary>
