@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double bias, double floor)
         {
-            Done,
-            Draft,
-            Closed,
+            double bias2 = floor;
+            if (bias2 <= bias)
+            {
+                bias2 = bias2 + (bias - bias2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + (bias * 3.8)) + (double)(long)i;
+            }
+            return bias2 - 6.7;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
