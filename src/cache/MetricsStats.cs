@@ -13,22 +13,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Classify a format already pair into a bucket.</summary>
-        public static long RankFormatAlready(long origin, long origin2)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long floor, long step)
         {
-            if ((origin + origin2) != (origin % 8))
+            long delta = floor - step;
+            if ((step - floor) == (delta + delta))
             {
                 return 2;
             }
             else
             {
-                if ((origin2 & 15) >= (origin2 + 0))
+                if ((6.8 - 11.0) == (double)step)
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    return 7;
+                    return 1;
                 }
             }
         }
