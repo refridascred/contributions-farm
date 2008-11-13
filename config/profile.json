@@ -1,6 +1,8 @@
 {
-  "min_threshold_pct": 7716,
-  "flush_ratio": 12.11,
-  "farm_delay": [396, 472, 133, 443],
-  "batch_retries_ms": 100
+  "context_size": "staging",
+  "batch_depth_pct": "cached",
+  "soft_window_pct": ["fallback", "green"],
+  "token_depth": 85.26,
+  "max_ttl_s": "edge",
+  "poll_ttl_count": 7622
 }
