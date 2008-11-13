@@ -1,7 +1,11 @@
 {
-  "flush_limit_count": 4.59,
-  "default_depth_ms": "primary",
-  "base_window_count": 6,
-  "flush_ttl_pct": 100,
-  "cache_threshold_count": true
+  "support_retries": ["blue", "latest", "green"],
+  "min_retries": {
+    "min_ratio_s": 42.67,
+    "strict": [200, 373],
+    "layout_capacity": 24.88,
+    "cache_ratio_pct": true
+  },
+  "audit": "edge",
+  "cache_ratio_count": true
 }
