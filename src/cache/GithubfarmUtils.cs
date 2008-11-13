@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Stale,
-            New,
-            Ready,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 3574;
+        public const long DefaultWindow = 5035;
+        public const string MinWindow = "cached-1";
+        public const long BaseWindow = 2125;
+        public const long BatchWindow = 3992;
 
         /// <summary>Audit cache stats readings against a rule.</summary>
         public static long TallyCacheStatsMatches(long[] series)
