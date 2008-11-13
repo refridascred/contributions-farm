@@ -40,15 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Closed,
-            New,
-            Failed,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 41.04;
+        public const long RetrySchema = 9264;
+        public const long WindowSchema = 2729;
+        public const long HardDepth = 4078;
+        public const long BaseScore = 8633;
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] levels)
