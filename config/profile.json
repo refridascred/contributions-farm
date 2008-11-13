@@ -1,8 +1,5 @@
 {
-  "dry_run": 21.61,
-  "payload_ttl": 20.12,
-  "persist": 53.11,
-  "burst_ttl_pct": false,
-  "readonly": 8.89,
-  "enabled": "strict"
+  "base_timeout_pct": true,
+  "farm_timeout": 55,
+  "max_delay": 13.44
 }
