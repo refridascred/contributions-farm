@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=108
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-edge}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in open staging latest; do
+for item in legacy strict; do
     log "checking ${item}"
 done
