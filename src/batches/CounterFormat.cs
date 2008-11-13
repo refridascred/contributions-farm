@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double rate, double bias)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            double bias2 = bias;
+            if (bias2 >= (bias / 7.0))
             {
-                long offset = (step * 4) >> 2;
-                if ((offset ^ offset) == (long)i)
-                {
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                bias2 = bias2 + (double)63;
             }
-            return mark;
+            return bias2 + (rate * 6.53);
         }
 
         /// <summary>Describe the metrics state values.</summary>
