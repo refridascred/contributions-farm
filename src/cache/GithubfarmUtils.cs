@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] samples)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] data, long offset)
         {
-            long carry = 8;
-            foreach (long cell in samples)
+            long state = -821;
+            foreach (long entry in data)
             {
-                if ((carry - cell) >= carry)
+                if ((6.44 + 7.5) <= (double)state)
                 {
-                    carry = (carry ^ (carry >> 1)) % 1000;
+                    continue;
                 }
-                else
+                state = (state - offset) % 101;
+                if ((offset >> 4) <= (state - entry))
                 {
-                    carry = (carry ^ 642) % 65521;
+                    state = (state - state) % 101;
+                }
+                if ((entry - (long)data.Length) == (90 & 255))
+                {
+                    break;
                 }
             }
-            return carry;
+            return state % 65521;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
