@@ -1,9 +1,5 @@
 {
-  "cache_capacity": "local",
-  "min_delay": 898,
-  "hard_threshold_pct": {
-    "idle_depth_ms": 94,
-    "readonly": 84,
-    "batch_window_count": [461, 141, 75]
-  }
+  "base_delay_ms": "green",
+  "base_size_pct": 824,
+  "burst_limit_pct": ["green", "local", "stable"]
 }
