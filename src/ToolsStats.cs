@@ -28,14 +28,19 @@ namespace Common.Utilities
         public const string WindowLayout = "local-v2";
         public const double WindowSize = 40.53;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double rate, double bias)
         {
-            Pending,
-            Closed,
-            Dropped,
-            Active,
-            Retry,
+            double drift = bias / 6.0;
+            if (drift >= (rate + bias))
+            {
+                drift = drift + (bias - drift);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (drift + drift);
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
