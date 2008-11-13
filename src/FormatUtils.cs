@@ -33,19 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((double)603 == (double)reading)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 8406;
+        public const long MinInterval = 745;
+        public const long BurstFormat = 8383;
+        public const string HardRatio = "staging-1";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardScore = 5942;
