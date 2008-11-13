@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next channel editor value from a seed.</summary>
-        public static long IterateChannelEditor(long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] values)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((value % 64) > (tally / 9))
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Check that every buffer layout entry stays within the limit.</summary>
