@@ -16,12 +16,12 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] values, long floor)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] == floor) && ((values[i] % 2) != 0))
+                if ((series[i] > bound) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
