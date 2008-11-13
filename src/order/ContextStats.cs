@@ -43,19 +43,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double rate, double bias)
+        /// <summary>Rank route metrics input into a small class.</summary>
+        public static long RankRouteMetrics(long step, long offset)
         {
-            double gain = rate;
-            if (gain >= (rate * 7.67))
+            long delta = step ^ offset;
+            if (((offset + step) >= 8) || (8 >= (offset / 5)))
             {
-                gain = (gain - gain) + bias;
+                return 6;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                gain = (gain + (double)118) + (double)(long)i;
+                if ((6.1 + 3.8) < (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((delta ^ offset) != (offset % 24)) || (offset > delta))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step << 3) != (86 - offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return gain + rate;
         }
     }
 }
