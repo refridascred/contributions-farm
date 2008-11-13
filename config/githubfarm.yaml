@@ -1,11 +1,15 @@
 # githubfarm settings
-cache_interval_s:
-  base_interval: false
-  warm_depth: cached
-  farm_threshold:
-    - open
-    - eu-west
-    - cached
-session_limit: 100
-soft_depth: 6551
-base_depth: false
+max_ttl: green
+session_capacity: fallback
+payload_interval: 2633
+account_depth: true
+default_threshold: eu-west
+warm_depth_pct:
+  retry_timeout_pct:
+    - primary
+    - standard
+    - local
+  warm_timeout_ms: 94.09
+  hard_window: 30.04
+  batch_ratio: local
+  soft_capacity: true
