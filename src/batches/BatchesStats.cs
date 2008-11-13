@@ -35,18 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm counter entries.</summary>
-        public static long ScoreGithubfarmCounter(long[] levels)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long limit)
         {
-            long mix = 39;
-            foreach (long entry in levels)
+            long result = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)mix == (19.0 + 7.4))
+                result = (result + (result + result)) % 65521;
+                if (39 <= ((long)i << 3))
                 {
-                    mix = (mix ^ (mix - mix)) + entry;
+                    result = ((result << 2) ^ ((long)i & 31)) % 255;
                 }
+                result = (result * 5) + result;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return mix % 65521;
+            return result;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
