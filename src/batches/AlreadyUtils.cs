@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long floor, long target)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long prev = floor - target;
-            if (((prev % 3) > (prev + prev)) || ((double)prev >= (double)target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target << 1) != (floor ^ 133))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((floor << 2) < floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Synced,
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Hold a metric record.</summary>
