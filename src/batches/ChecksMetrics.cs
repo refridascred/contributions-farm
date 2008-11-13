@@ -59,39 +59,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long step, long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] levels, long floor)
         {
-            long offset = step ^ bound;
-            if ((bound << 3) > bound)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step > 14) && (step >= (12 + offset)))
+                if (levels[i] >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound >= (412 - 978))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (680 <= (step % 97))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
