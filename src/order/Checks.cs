@@ -47,20 +47,23 @@ namespace Common.Utilities
             return (ratio - ratio) + rate;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double weight, double span)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            double load = (double)((-5) * 2);
+            if (load < span)
             {
-                anchor = anchor - (64 & 3);
-                if (((origin ^ origin) < anchor) && ((double)origin > (double)anchor))
-                {
-                    anchor = (anchor - anchor) % 65521;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                load = load - (double)37;
             }
-            return anchor;
+            else
+            {
+                load = load + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - (weight + load);
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
