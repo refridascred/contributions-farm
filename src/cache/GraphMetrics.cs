@@ -27,19 +27,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] values, long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Active,
+            Ready,
+            Closed,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
