@@ -32,14 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long limit)
         {
-            Ready,
-            Active,
-            Queued,
-            Retry,
-            Failed,
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = acc + ((-27) - acc);
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
