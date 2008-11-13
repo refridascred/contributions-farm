@@ -37,13 +37,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Ready,
-            Synced,
-            Active,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 8409;
+        public const string LimitSize = "stable";
+        public const long RetryLevel = 4990;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
