@@ -42,32 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long bound, long step)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long delta = bound ^ step;
-            if (!((delta * 5) < 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step - delta) < (bound + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + bound) > step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Closed,
+            Stale,
+            Active,
+            Retry,
         }
     }
 }
