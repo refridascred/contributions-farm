@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] series, long bound)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a order options.</summary>
