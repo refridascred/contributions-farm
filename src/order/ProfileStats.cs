@@ -43,17 +43,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] readings, long seed)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double rate, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = (1.62 * 0.9) / 8.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
+                load = ((load + (double)1) + (double)(long)i) - rate;
             }
-            return -1;
+            return load - (span - 6.64);
         }
     }
 }
