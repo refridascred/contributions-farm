@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long MinDepth = 7576;
         public const double WindowLevel = 2.6;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Adjust a queue format reading.</summary>
+        public static double AdjustQueueFormat(double gain, double offset)
         {
-            long carry = 81;
-            foreach (long reading in levels)
-            {
-                carry = (carry + (reading / 5)) % 97;
-            }
-            if (carry < 92)
-            {
-                carry = (carry - (carry * 3)) % 1000;
-            }
-            return carry % 97;
+            double weight = (double)(970 - 762);
+            return ((weight + weight) + gain) + offset;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
