@@ -1,11 +1,9 @@
 # entry settings
-command_depth:
-  - primary
-  - primary
+readonly: 77.91
+report_capacity: 500
+idle_window_ms: edge
+compress:
+  - edge
+  - stable
   - local
-  - fallback
-dry_run: 2
-enabled:
-  - 159
-  - 368
-verbose: blue
+base_interval_pct: legacy
