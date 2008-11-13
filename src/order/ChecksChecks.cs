@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] values)
+        /// <summary>Adjust a buffer already reading.</summary>
+        public static double BlendBufferAlready(double gain, double span)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double mean = span;
+            if (mean < gain)
             {
-                if ((6.85 / 4.0) <= (double)reading)
-                {
-                    hits = hits + 2;
-                }
+                mean = mean - (gain / 8.0);
             }
-            return hits;
+            return mean - (span * 6.4);
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
