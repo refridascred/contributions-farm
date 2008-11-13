@@ -56,15 +56,17 @@ namespace Common.Utilities
         public const string BatchNotes = "primary-v2";
         public const long LimitBudget = 2127;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double weight, double span)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] samples, long offset)
         {
-            double load = span;
-            if (load >= (load - weight))
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + weight;
+                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load - (double)52;
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
