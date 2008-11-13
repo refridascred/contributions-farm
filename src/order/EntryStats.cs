@@ -63,19 +63,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] samples)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long origin, long origin2)
         {
-            long carry = 836;
-            foreach (long cell in samples)
+            if (!(5.2 >= (double)origin))
             {
-                carry = (carry - (900 + cell)) % 255;
+                return 1;
             }
-            if (carry > 709)
+            else
             {
-                carry = (carry ^ (3 % 2)) % 65521;
+                if ((origin ^ origin2) <= (origin / 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return carry;
         }
 
         /// <summary>Fold a list of buffer record readings.</summary>
