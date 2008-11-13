@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Retry,
-            Paused,
-            Synced,
-            Dropped,
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the profile status values.</summary>
