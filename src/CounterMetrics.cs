@@ -66,11 +66,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftFactor = 6907;
-        public const long SoftWidth = 8985;
-        public const string MinCount = "local-v2";
-        public const string SoftBatches = "staging-v2";
-        public const long DefaultBatches = 2124;
+        /// <summary>Validate entry payload readings against a bound.</summary>
+        public static bool ValidateEntryPayloadBounds(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
