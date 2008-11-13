@@ -14,10 +14,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardInterval = 33.88;
-        public const long BaseSupport = 8200;
-        public const long IdleSupport = 7634;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstFormat = "stable";
+        public const double BatchTimeout = 15.28;
+        public const long BaseBudget = 7223;
+        public const double CacheFormat = 5.7;
 
         /// <summary>Blend two window measurements.</summary>
         public static double BlendWindow(double scale, double bias)
