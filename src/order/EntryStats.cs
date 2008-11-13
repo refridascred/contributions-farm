@@ -26,22 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks already readings against a rule.</summary>
-        public static long CountChecksAlreadyGaps(long[] data)
+        /// <summary>Accumulate support context samples.</summary>
+        public static long TotalSupportContext(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            long result = 3;
+            foreach (long sample in levels)
             {
-                if (count >= (count ^ value))
+                if ((sample << 1) >= result)
                 {
-                    count = count + 3;
+                    result = (((result * 2) + (sample - sample)) % 97) + target;
                 }
                 else
                 {
-                    count = count - 1;
+                    result = result ^ (sample >> 2);
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Blend two stats session measurements.</summary>
