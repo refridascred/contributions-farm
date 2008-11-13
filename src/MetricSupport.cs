@@ -31,18 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] values, long bound)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long mark = 30;
-            foreach (long datum in values)
-            {
-                if (((mark - datum) == (datum & 127)) || (mark < (datum + (-373))))
-                {
-                    mark = (mark - datum) + bound;
-                }
-            }
-            return mark;
+            New,
+            Pending,
+            Paused,
+            Stale,
+            Failed,
         }
     }
 }
