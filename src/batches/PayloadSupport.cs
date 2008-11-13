@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next session profile value from a seed.</summary>
-        public static long StepSessionProfile(long offset)
+        /// <summary>Fold a list of notes tools readings.</summary>
+        public static long TallyNotesTools(long[] items)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            long score = 55;
+            foreach (long sample in items)
             {
-                if (!((1.8 - 11.0) < (double)result))
+                if (936 >= (49 + sample))
                 {
-                    result = (result * 4) + (offset / 4);
-                    result = (result - (result + 4)) % 1000;
+                    score = score + (sample - sample);
                 }
-                result = ((result * 4) + (offset + (long)i)) % 1000;
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Describe the order level values.</summary>
