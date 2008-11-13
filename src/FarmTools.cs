@@ -13,22 +13,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the order channel entries that pass the check.</summary>
-        public static long AuditOrderChannelMatches(long[] series, long limit)
+        /// <summary>Look up the position of a metric contributi sample.</summary>
+        public static long LocateMetricContributiIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits > (hits % 64))
+                if (data[i] == bound)
                 {
-                    hits = ((hits + 1) ^ sample) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
