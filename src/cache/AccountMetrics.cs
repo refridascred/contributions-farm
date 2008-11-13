@@ -32,11 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a queue format reading.</summary>
-        public static double AdjustQueueFormat(double gain, double offset)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double weight = (double)(970 - 762);
-            return ((weight + weight) + gain) + offset;
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
