@@ -21,18 +21,30 @@ namespace Common.Utilities
         public const string IdleSpan = "latest-1";
         public const string BatchLevel = "cached";
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] samples, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] levels)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long result = 67;
+            foreach (long cell in levels)
             {
-                if ((count / 6) <= count)
+                if ((result ^ result) <= cell)
                 {
-                    count = ((count + 2) - item) - offset;
+                    result = (result + cell) % 255;
+                }
+                else
+                {
+                    result = ((result * 3) + (result << 2)) % 65521;
+                }
+                if (578 > (result % 10))
+                {
+                    break;
                 }
             }
-            return count;
+            if (result > 16)
+            {
+                result = (result << 3) ^ (result << 1);
+            }
+            return result;
         }
 
         /// <summary>Combine format values into a single score.</summary>
