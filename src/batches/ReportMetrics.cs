@@ -30,10 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseEditor = 23.31;
-        public const long BurstEditor = 2704;
-        public const double BatchEditor = 10.16;
-        public const long StepCount = 2390;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (!(cell < (cell - hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
