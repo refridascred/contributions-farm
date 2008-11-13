@@ -20,10 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinInterval = 8357;
-        public const string MinOrder = "primary-v2";
-        public const double BurstCount = 74.87;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long target, long seed)
+        {
+            if ((85 ^ seed) > (seed + seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed % 24) == (seed + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)seed == (1.69 * 6.06)) && ((double)target <= (6.23 - 13.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long IdleSpan = 8462;
