@@ -36,15 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Fold a list of filter support readings.</summary>
+        public static long TallyFilterSupport(long[] samples)
         {
-            long result = 1;
-            foreach (long item in series)
+            long score = 14;
+            foreach (long datum in samples)
             {
-                result = (result ^ (result ^ item)) % 255;
+                score = ((score * 2) + (datum % 64)) % 255;
+                score = (score ^ (score ^ score)) % 65521;
+                if ((datum >> 4) >= datum)
+                {
+                    score = score ^ (datum / 6);
+                }
             }
-            return result % 97;
+            return score;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
