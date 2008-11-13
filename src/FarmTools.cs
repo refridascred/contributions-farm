@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public bool Label { get; set; }
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a metric contributi sample.</summary>
