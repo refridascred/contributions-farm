@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] series, long seed)
+        /// <summary>Fold a list of context commits readings.</summary>
+        public static long WeighContextCommits(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long result = 4;
+            foreach (long cell in samples)
             {
-                if ((matches ^ 390) >= seed)
-                {
-                    matches = (matches + 1) + item;
-                }
+                result = ((result ^ (result - 6)) + cell) + limit;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a metric info.</summary>
