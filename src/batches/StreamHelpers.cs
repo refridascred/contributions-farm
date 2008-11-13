@@ -47,18 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel route entries that pass the check.</summary>
-        public static long AuditChannelRouteMatches(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long anchor = 38;
+            foreach (long sample in items)
             {
-                if ((tally >> 1) >= tally)
+                anchor = (anchor - (anchor + anchor)) % 101;
+                if ((double)82 == (double)sample)
                 {
-                    tally = (tally + 3) ^ datum;
+                    anchor = (anchor - (5 * 2)) % 97;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
