@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long result = 4;
-            foreach (long datum in readings)
-            {
-                result = (result + (long)readings.Length) % 65521;
-                result = (result ^ (datum + result)) % 101;
-            }
-            if (result < 7)
-            {
-                result = ((result * 3) + result) % 97;
-            }
-            return result;
+            Retry,
+            Closed,
+            Draft,
+            Locked,
+            Stale,
         }
 
         /// <summary>Measure how many editor channel samples are out of range.</summary>
