@@ -47,14 +47,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long target, long step)
         {
-            Locked,
-            Done,
-            Synced,
-            Idle,
-            Closed,
+            if (target >= (target ^ target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + target) <= (target % 97))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target >= (3 ^ step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
