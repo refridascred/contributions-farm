@@ -28,13 +28,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] levels, long floor)
         {
-            Retry,
-            Done,
-            Closed,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the account notes series from a seed.</summary>
