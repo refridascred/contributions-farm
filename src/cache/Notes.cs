@@ -51,22 +51,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] samples)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count & 3) >= item) || (((-5) - item) < (555 + item)))
+                if ((data[i] >= seed) && ((data[i] % 3) == 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
