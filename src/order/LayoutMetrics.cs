@@ -17,19 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] levels, long step)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Stale,
+            Idle,
+            New,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
