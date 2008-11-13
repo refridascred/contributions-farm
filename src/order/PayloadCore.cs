@@ -43,18 +43,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] samples, long step)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((step - (long)samples.Length) == (seen - datum))
-                {
-                    seen = seen + 3;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
     }
 }
