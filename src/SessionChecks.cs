@@ -19,19 +19,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate commits account readings against a bound.</summary>
-        public static bool CheckCommitsAccountRange(long[] readings, long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Accumulate commits samples.</summary>
