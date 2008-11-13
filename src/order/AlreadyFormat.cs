@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseSize = 4799;
-        public const double MinAlready = 68.16;
-        public const double BurstScore = 23.51;
-        public const string IdleInterval = "strict-v2";
-        public const long HardDepth = 8329;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Dropped,
+            Ready,
+            Active,
+            New,
+            Locked,
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long WeighSession(long[] series)
