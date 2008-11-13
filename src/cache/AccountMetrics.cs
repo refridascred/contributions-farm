@@ -64,17 +64,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batches notes sample.</summary>
-        public static long LocateBatchesNotesIndex(long[] samples, long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
+                sum = (sum + (bound + sum)) % 4096;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
