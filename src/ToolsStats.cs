@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Pending,
-            Ready,
-            Synced,
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a entry entry.</summary>
