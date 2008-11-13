@@ -59,15 +59,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinLevel = 3611;
+        public const double BaseRatio = 52.72;
+        public const long CacheReport = 9250;
+        public const double HardSpan = 97.64;
+        public const long LimitReport = 5672;
     }
 }
