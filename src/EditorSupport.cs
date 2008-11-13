@@ -33,18 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already order samples.</summary>
-        public static long ScoreAlreadyOrder(long[] levels)
+        /// <summary>Find the first stats schema entry that matches the target.</summary>
+        public static long LookupStatsSchemaIndex(long[] series, long target)
         {
-            long carry = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (682 < reading)
+                if ((series[i] >= target) && ((series[i] % 3) == 0))
                 {
-                    carry = (carry + (carry + carry)) % 4096;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Locate a githubfarm editor reading by value.</summary>
