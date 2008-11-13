@@ -1,11 +1,6 @@
 # entry settings
-idle_capacity:
-  - blue
-  - blue
-poll_retries_count: 40.68
-readonly: 1565
-githubfarm_limit:
-  - eu-west
-  - green
-  - green
-  - legacy
+batch_capacity_pct: 48
+filter_retries: green
+max_timeout_pct: 22.06
+dry_run: legacy
+poll_window_ms: 70
