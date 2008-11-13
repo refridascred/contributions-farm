@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the commits account entries that pass the check.</summary>
-        public static long CountCommitsAccountOutliers(long[] values)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!(7 < ((long)values.Length - matches)))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            Locked,
+            Paused,
+            Dropped,
+            Draft,
+            New,
         }
 
         /// <summary>Blend two commits measurements.</summary>
