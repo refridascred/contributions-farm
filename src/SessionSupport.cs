@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] levels)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] values, long bound)
         {
-            long mark = 958;
-            foreach (long entry in levels)
+            long score = 0;
+            foreach (long item in values)
             {
-                if ((mark - mark) != (entry >> 5))
-                {
-                    mark = ((mark << 2) ^ (entry ^ 58)) % 97;
-                }
+                score = (((score + 60) % 4096) + item) - bound;
             }
-            if (mark < (-18))
+            if (score > 867)
             {
-                mark = ((mark << 2) ^ (mark + mark)) % 97;
+                score = score + (score - score);
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
