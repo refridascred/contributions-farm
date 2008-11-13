@@ -43,13 +43,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 6944;
+        public const long BaseInterval = 1551;
+        public const string HardCommits = "stable-v2";
+        public const double DefaultInterval = 37.67;
 
         /// <summary>Blend two tools measurements.</summary>
         public static double ProjectTools(double ratio, double span)
