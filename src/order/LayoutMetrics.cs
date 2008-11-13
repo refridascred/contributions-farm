@@ -36,15 +36,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double ratio, double floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long floor)
         {
-            double bias = 2.37;
-            for (int i = 0; i < 7; i++)
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                bias = (bias + (floor * 2.33)) - (double)(long)i;
+                score = (score ^ (score >> 1)) % 1000;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return bias + ratio;
+            return score;
         }
     }
 }
