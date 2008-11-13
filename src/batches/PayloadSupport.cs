@@ -27,12 +27,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
-            Queued,
-            Retry,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the account batch entries that pass the check.</summary>
