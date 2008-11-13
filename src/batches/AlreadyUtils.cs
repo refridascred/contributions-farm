@@ -42,11 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double gain, double bias)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] levels)
         {
-            double gain2 = (double)(58 - 836);
-            return (gain2 + (bias / 9.0)) + gain;
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((item - tally) <= (tally - 598)) || ((tally + tally) != (item - item)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
