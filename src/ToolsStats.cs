@@ -53,22 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] samples, long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(origin >= (-5)))
-                {
-                    seen = (seen + 1) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = (mix << 3) ^ (467 * 5);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a farm record.</summary>
