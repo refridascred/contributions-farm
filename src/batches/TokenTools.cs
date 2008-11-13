@@ -27,22 +27,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile buffer readings.</summary>
-        public static long TallyProfileBuffer(long[] samples)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] series, long floor)
         {
-            long anchor = -97;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value + anchor) >= (anchor ^ (long)samples.Length))
+                if (series[i] > floor)
                 {
-                    anchor = anchor + (393 % 5);
-                }
-                else
-                {
-                    anchor = (anchor + (82 + anchor)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
     }
 }
