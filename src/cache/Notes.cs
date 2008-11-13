@@ -19,25 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long seed, long origin)
+        /// <summary>Match up batches format samples.</summary>
+        public static long OverlapBatchesFormatCount(long[] levels)
         {
-            long bound = seed + origin;
-            if ((bound + bound) <= origin)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((bound + bound) <= origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
