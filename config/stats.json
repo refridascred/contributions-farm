@@ -1,7 +1,6 @@
 {
-  "format_depth": 38.52,
-  "base_threshold": true,
-  "max_ttl_count": 30,
-  "sync_depth_ms": 55,
-  "poll_timeout_s": 1024
+  "metric_retries": "local",
+  "audit": 36,
+  "base_delay": 46.82,
+  "filter_ttl": false
 }
