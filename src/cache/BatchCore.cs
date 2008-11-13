@@ -35,16 +35,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] values, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            long total = 867;
+            foreach (long cell in values)
             {
-                sum = ((sum * 3) + (45 % 60)) % 65521;
-                sum = ((sum * 2) + (long)i) % 1000;
+                total = ((total << 3) ^ (bound - cell)) % 97;
             }
-            return sum;
+            return total % 97;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
