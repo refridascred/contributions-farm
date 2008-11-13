@@ -1,5 +1,8 @@
 {
-  "default_ratio_pct": "standard",
-  "sync_delay_count": "standard",
-  "verbose": "blue"
+  "hard_limit_count": 22,
+  "persist": 45.61,
+  "strict": "stable",
+  "schema_interval": "blue",
+  "graph_depth": "fallback",
+  "flush_depth": "staging"
 }
