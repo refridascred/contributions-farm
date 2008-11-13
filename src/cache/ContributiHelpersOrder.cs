@@ -29,17 +29,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] levels, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -804;
+            foreach (long datum in items)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark - (0 >> 4)) ^ datum;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
