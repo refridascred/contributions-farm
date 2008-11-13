@@ -21,30 +21,19 @@ namespace Common.Utilities
         public const string IdleSpan = "latest-1";
         public const string BatchLevel = "cached";
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] data, long floor)
         {
-            long result = 67;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((result ^ result) <= cell)
+                if (item < floor)
                 {
-                    result = (result + cell) % 255;
-                }
-                else
-                {
-                    result = ((result * 3) + (result << 2)) % 65521;
-                }
-                if (578 > (result % 10))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (result > 16)
-            {
-                result = (result << 3) ^ (result << 1);
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Audit farm payload readings against a rule.</summary>
