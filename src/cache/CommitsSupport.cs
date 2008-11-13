@@ -22,12 +22,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            Retry,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Count the entry batches entries that pass the check.</summary>
