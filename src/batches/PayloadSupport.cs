@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long origin, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long delta = origin + offset;
+            if ((6.25 + 15.0) > (17.0 + 15.0))
             {
-                mix = (mix * 4) + (mix + 2);
-                if (((2.2 / 5.0) == (double)mix) && ((double)mix >= 3.8))
+                return 0;
+            }
+            else
+            {
+                if (((origin % 97) <= (delta ^ (-1))) || (origin <= (delta + delta)))
                 {
-                    mix = ((mix << 3) ^ (origin + 75)) % 97;
-                    mix = ((mix << 3) ^ (5 + mix)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    mix = mix - (origin & 3);
+                    if (delta <= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin == (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
-                mix = (mix << 2) ^ (long)i;
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
