@@ -1,8 +1,7 @@
 {
-  "context_size": "staging",
-  "batch_depth_pct": "cached",
-  "soft_window_pct": ["fallback", "green"],
-  "token_depth": 85.26,
-  "max_ttl_s": "edge",
-  "poll_ttl_count": 7622
+  "cache_window": 3.33,
+  "checks_threshold": 1066,
+  "soft_interval_ms": 79,
+  "max_capacity_count": "cached",
+  "persist": [178, 304]
 }
