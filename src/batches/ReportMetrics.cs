@@ -26,14 +26,16 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            Ready,
-            Draft,
-            Stale,
-            Idle,
-            Pending,
+            long acc = step;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 4) + (288 * 3)) % 97;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
