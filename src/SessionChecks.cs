@@ -52,19 +52,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double rate, double floor)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long bound)
         {
-            double weight = rate;
-            if (weight <= rate)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                weight = weight + (double)(-3);
+                score = ((score * 3) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight - (9.5 - rate);
-            }
-            return weight - floor;
+            return score;
         }
     }
 }
