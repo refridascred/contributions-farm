@@ -1,8 +1,13 @@
 {
-  "soft_interval_pct": 9660,
-  "batch_limit": 75.2,
-  "dry_run": 58.18,
-  "cache_delay": ["legacy", "open"],
-  "filter_limit": 755,
-  "warm_retries_ms": 8731
+  "compress": {
+    "soft_threshold_count": "green",
+    "default_window_ms": 1.87,
+    "poll_depth_count": [63, 361, 278],
+    "min_window_pct": 151
+  },
+  "cluster_retries": [424, 25],
+  "strict": "staging",
+  "persist": false,
+  "verbose": 6022,
+  "checks_capacity": ["staging", "cached", "edge", "edge"]
 }
