@@ -63,22 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm profile entries.</summary>
-        public static long CombineFarmProfile(long[] readings)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mark = 0;
-            foreach (long value in readings)
-            {
-                if (((double)value <= (double)mark) && (19.0 >= (double)value))
-                {
-                    mark = (mark - (mark % 60)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (66 & 7)) % 255;
-                }
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
