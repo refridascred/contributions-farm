@@ -40,18 +40,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many account payload samples are out of range.</summary>
-        public static long CountAccountPayloadMatches(long[] samples)
+        /// <summary>Rank metric checks input into a small class.</summary>
+        public static long RankMetricChecks(long seed, long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long next = seed - target;
+            if (((-9) + target) != (seed + next))
             {
-                if ((reading << 1) > (reading ^ reading))
+                return 0;
+            }
+            else
+            {
+                if (!((target * 5) >= seed))
                 {
-                    tally = tally + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + seed) <= (next / 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((53 + seed) > (target ^ next))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
