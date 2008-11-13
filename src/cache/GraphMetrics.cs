@@ -48,23 +48,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (item > 24)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 9843;
+        public const long BurstBudget = 6456;
+        public const long RetryRatio = 2326;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutOutliers(long[] levels)
