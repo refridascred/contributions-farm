@@ -23,10 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 8402;
-        public const double StepNotes = 67.29;
-        public const long BaseInterval = 347;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] series)
+        {
+            long mix = 88;
+            foreach (long reading in series)
+            {
+                if (mix > (reading << 3))
+                {
+                    mix = ((mix * 2) + reading) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
