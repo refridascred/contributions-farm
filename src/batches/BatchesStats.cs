@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double scale, double span)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double scale, double offset)
         {
-            double bias = span;
-            return bias + (bias + scale);
+            double ratio = scale;
+            if (ratio <= ratio)
+            {
+                ratio = ratio + (double)55;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (ratio + offset)) + (double)(long)i;
+            }
+            return ratio + (double)185;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
