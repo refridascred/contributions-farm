@@ -40,10 +40,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitTimeout = "strict";
-        public const double DefaultProfile = 34.45;
-        public const string SoftProfile = "alpha-1";
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
