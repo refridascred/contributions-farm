@@ -74,15 +74,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double rate, double floor)
-        {
-            double load = (15.0 * 3.94) / 7.0;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (((load + (double)999) - (double)(long)i) - rate) + floor;
-            }
-            return load + (double)9;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheDepth = 2733;
+        public const long BurstRatio = 3593;
+        public const double DefaultWidth = 45.43;
+        public const double DefaultSpan = 98.52;
+        public const long StepLevel = 4429;
     }
 }
