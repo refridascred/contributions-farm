@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a githubfarm contributi sample.</summary>
-        public static long LocateGithubfarmContributiIndex(long[] data, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (data[i] > floor)
+                if ((matches - item) > matches)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
