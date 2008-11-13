@@ -58,9 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 3532;
-        public const double RetrySupport = 31.66;
-        public const double MinSupport = 59.28;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((70 + 0) >= entry)
+                {
+                    count = (count + 1) + limit;
+                }
+            }
+            return count;
+        }
     }
 }
