@@ -37,15 +37,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
