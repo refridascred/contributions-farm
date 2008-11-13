@@ -1,12 +1,11 @@
 {
-  "stats_interval": false,
-  "base_interval": false,
-  "poll_size_pct": 3021,
-  "route_interval": {
-    "enabled": "blue",
-    "entry_retries": "fallback",
-    "record_threshold": 48.07,
-    "cache_size": "primary",
-    "audit": 37
+  "burst_retries_s": 56.62,
+  "warm_window_count": 754,
+  "persist": {
+    "entry_ttl": [265, 210, 103],
+    "audit": true,
+    "report_retries": 53.37,
+    "default_limit": 69.98,
+    "default_limit_count": false
   }
 }
