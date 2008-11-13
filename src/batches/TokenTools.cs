@@ -35,24 +35,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next format stream value from a seed.</summary>
-        public static long IterateFormatStream(long seed)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((total + total) > ((long)i + (long)i))
-                {
-                    continue;
-                }
-                else
-                {
-                    long tally = total;
-                    total = ((total << 3) ^ tally) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            New,
+            Active,
+            Pending,
+            Failed,
+            Dropped,
         }
     }
 }
