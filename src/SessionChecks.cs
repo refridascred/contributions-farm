@@ -20,18 +20,10 @@ namespace Common.Utilities
             return mean + (bias + mean);
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxFormat = "cached-v2";
+        public const long LimitFormat = 9012;
+        public const long WindowTimeout = 5523;
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LocateSessionIndex(long[] items, long bound)
