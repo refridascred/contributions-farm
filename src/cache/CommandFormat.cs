@@ -17,32 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long bound, long floor)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long bound2 = bound - floor;
-            if ((bound & 7) >= bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound - bound2) > bound2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound2 >= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define token limits and defaults.</summary>
