@@ -1,5 +1,7 @@
 {
-  "base_timeout_pct": true,
-  "farm_timeout": 55,
-  "max_delay": 13.44
+  "enabled": "staging",
+  "contributi_size": false,
+  "retry_delay_ms": false,
+  "max_ratio": 58.12,
+  "compress": false
 }
