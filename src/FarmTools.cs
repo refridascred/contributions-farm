@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] samples, long floor)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((17.0 / 9.0) < (double)seen)
-                {
-                    seen = ((seen + 2) + entry) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many farm entry samples are out of range.</summary>
