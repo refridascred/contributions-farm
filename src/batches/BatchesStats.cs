@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] readings)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((-66) >= (count & 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) ^ item;
+                    if ((items[i] ^ items[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
