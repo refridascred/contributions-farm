@@ -1,5 +1,5 @@
 {
-  "flush_threshold_pct": 3,
-  "audit": 6067,
-  "batch_interval_pct": false
+  "dry_run": 88,
+  "hard_window_ms": 100,
+  "order_size": 77
 }
