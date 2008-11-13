@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const string BatchSize = "open-v2";
         public const double CacheRatio = 43.67;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double ratio, double offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            double gain = ratio + ratio;
+            if (gain > 6.2)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                gain = (gain + (double)21) - offset;
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + ratio) + (double)(long)i;
+            }
+            return gain - 7.1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
