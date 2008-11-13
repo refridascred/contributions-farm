@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long origin, long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long target)
         {
-            long delta = origin + offset;
-            if ((6.25 + 15.0) > (17.0 + 15.0))
+            long sum = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin % 97) <= (delta ^ (-1))) || (origin <= (delta + delta)))
+                if (!(3.03 > (double)target))
                 {
-                    return 2;
+                    sum = sum - target;
                 }
-                else
+                if (!((5 + (long)i) == (target << 1)))
                 {
-                    if (delta <= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin == (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    sum = sum - (target >> 2);
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
