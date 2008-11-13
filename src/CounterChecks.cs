@@ -39,22 +39,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of batches notes readings.</summary>
-        public static long PairBatchesNotesCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 7414;
+        public const double WindowScore = 62.32;
+        public const long WindowInterval = 8075;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BaseNotes = 11.13;
