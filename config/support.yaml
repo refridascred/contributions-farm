@@ -1,10 +1,5 @@
 # support settings
-sync_size_count:
-  - cached
-  - latest
-  - standard
-idle_threshold:
-  - 179
-  - 5
-  - 233
-session_threshold: 6383
+burst_timeout: green
+batch_limit: 500
+idle_ttl_s: green
+soft_size: false
