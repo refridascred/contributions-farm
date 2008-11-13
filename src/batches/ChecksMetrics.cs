@@ -72,11 +72,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
+            public double Size { get; set; }
+            public bool Count { get; set; }
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
