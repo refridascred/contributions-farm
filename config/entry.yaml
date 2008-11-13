@@ -1,8 +1,9 @@
 # entry settings
-enabled: 6930
-report_retries: 100
-batch_size_count: 9.95
-soft_window:
-  - primary
-  - primary
+dry_run:
   - strict
+  - staging
+  - local
+channel_capacity: legacy
+audit:
+  - 252
+  - 220
