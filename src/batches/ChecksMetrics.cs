@@ -35,19 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate tools channel samples.</summary>
-        public static long FoldToolsChannel(long[] values, long limit)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long target)
         {
-            long state = 615;
-            foreach (long cell in values)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                state = (state + (cell - limit)) % 4096;
-                if (limit <= 4)
+                if (!!((double)target >= (3.59 / 6.0)))
                 {
-                    break;
+                    mix = (mix - ((long)i + 4)) % 255;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Describe the window class values.</summary>
