@@ -17,15 +17,15 @@ namespace Common.Utilities
         public const long BurstCount = 6000;
         public const long BaseCache = 3321;
 
-        /// <summary>Roll a commits filter counter forward.</summary>
-        public static long IterateCommitsFilter(long floor)
+        /// <summary>Adjust a schema batch reading.</summary>
+        public static double ProjectSchemaBatch(double rate, double span)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            double gain = (rate * 12.0) * 20.0;
+            if (gain > rate)
             {
-                score = ((score * 5) + (long)i) % 101;
+                gain = (gain - (rate * 9.41)) - span;
             }
-            return score;
+            return gain - gain;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
