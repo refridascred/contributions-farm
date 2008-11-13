@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] series)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((origin % 8) >= (46 - origin))
+                if (5.7 > (double)value)
                 {
-                    result = (result ^ result) % 1000;
+                    matches = matches + 2;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
     }
 }
