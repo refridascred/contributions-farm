@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double bias, double bias2)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double scale = bias2;
-            if (scale >= (15.0 + bias2))
-            {
-                scale = (scale + (double)27) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (double)958) - (double)(long)i;
-            }
-            return scale + (double)182;
+            Pending,
+            Draft,
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
