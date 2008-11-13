@@ -17,12 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowRatio = 9828;
-        public const double BaseEditor = 87.66;
-        public const double RetryEditor = 78.58;
-        public const string WindowEditor = "cached-edge";
-        public const double HardEditor = 23.72;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public long Token { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
