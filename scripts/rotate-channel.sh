@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green eu-west; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-mode="${1:-local}"
+CHANNEL_LIMIT=10
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-blue}"
 case "${mode}" in
-    blue)
+    latest)
         log "fast path"
         ;;
     *)
