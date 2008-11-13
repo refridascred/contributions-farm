@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = (acc + (acc + acc)) % 101;
-                if ((double)acc < (double)floor)
-                {
-                    acc = (acc - 416) % 65521;
-                    acc = (acc + (479 - floor)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc ^ floor) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            Stale,
+            Queued,
+            Dropped,
+            Synced,
+            New,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
