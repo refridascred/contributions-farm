@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheInterval = 3491;
-        public const long IdleBudget = 9281;
-        public const long CacheToken = 5959;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] readings, long target)
+        {
+            long mix = 8;
+            foreach (long cell in readings)
+            {
+                if ((261 + 66) < (target + cell))
+                {
+                    mix = (mix + (mix - cell)) % 4096;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
