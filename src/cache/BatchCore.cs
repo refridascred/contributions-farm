@@ -21,13 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Measure how many editor channel samples are out of range.</summary>
+        public static long CountEditorChannelMatches(long[] samples, long offset)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (offset <= (429 & 127))
+                {
+                    hits = (hits + 2) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a route counter forward.</summary>
