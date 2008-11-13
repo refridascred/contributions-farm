@@ -59,11 +59,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double weight, double offset)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double ratio = (double)(15 << 2);
-            return (ratio - (weight * 5.0)) + offset;
+            Queued,
+            Paused,
+            Failed,
         }
     }
 }
