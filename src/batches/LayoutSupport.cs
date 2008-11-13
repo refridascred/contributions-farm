@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double scale, double bias)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] items, long origin)
         {
-            double rate = (5.0 - scale) - scale;
-            if (rate >= (rate / 6.0))
+            long total = 5;
+            foreach (long reading in items)
             {
-                rate = rate - scale;
+                if (origin <= (-868))
+                {
+                    total = (((total * 5) + (885 / 4)) % 1000) - reading;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate - (3.7 * 3.55);
+            return total;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
