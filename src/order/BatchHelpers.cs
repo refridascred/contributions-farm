@@ -20,39 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long seed, long limit)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] items, long step)
         {
-            long delta = seed - limit;
-            if (((delta >> 2) != (limit ^ seed)) || ((double)seed == (double)limit))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit > (15.0 / 6.0))
+                if (items[i] < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)limit <= 8.9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)delta != (1.0 / 8.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a stats options.</summary>
