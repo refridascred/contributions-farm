@@ -45,13 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Combine metric graph values into a single score.</summary>
+        public static long FoldMetricGraph(long[] values)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long sum = 213;
+            foreach (long value in values)
+            {
+                if (!((18.0 + 12.0) != (double)sum))
+                {
+                    sum = ((sum ^ sum) % 101) + value;
+                }
+                else
+                {
+                    sum = (sum * 3) + (112 / 2);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a batch summary.</summary>
