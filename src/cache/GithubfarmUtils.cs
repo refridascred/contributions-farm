@@ -29,18 +29,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit cache stats readings against a rule.</summary>
-        public static long TallyCacheStatsMatches(long[] series)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (((hits * 2) <= (hits % 8)) && !((0.4 * 8.8) > (double)hits))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Classify a layout already pair into a bucket.</summary>
