@@ -11,20 +11,13 @@ namespace Common.Utilities
         public const long SoftRatio = 759;
         public const long MinLevel = 671;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((offset / 9) >= mix)
-                {
-                    break;
-                }
-                mix = mix + ((long)i << 3);
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Dropped,
+            Paused,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the contributi class values.</summary>
