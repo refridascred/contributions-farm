@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] items)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double bias, double floor)
         {
-            long score = -92;
-            foreach (long reading in items)
+            double scale = bias - (floor + floor);
+            for (int i = 0; i < 8; i++)
             {
-                score = (score - (7 % 8)) - reading;
+                scale = (scale + bias) + (double)(long)i;
             }
-            if (score < 68)
-            {
-                score = (score - (score - score)) % 4096;
-            }
-            return score % 65521;
+            return scale + scale;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
