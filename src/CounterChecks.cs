@@ -20,23 +20,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate token already samples.</summary>
-        public static long DigestTokenAlready(long[] levels)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long anchor = -81;
-            foreach (long entry in levels)
-            {
-                anchor = (anchor + (anchor - entry)) % 101;
-                if (3.77 <= (double)entry)
-                {
-                    anchor = (anchor - (3 << 1)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor >> 2)) % 101;
-                }
-            }
-            return anchor;
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
