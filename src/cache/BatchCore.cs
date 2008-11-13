@@ -47,19 +47,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] readings, long floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= floor)
+                if (values[i] < offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
