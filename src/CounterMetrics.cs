@@ -57,14 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Closed,
-            Done,
-            Active,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftScore = 50.96;
+        public const long BurstCount = 6733;
+        public const long MinRatio = 3739;
+        public const double BurstCounter = 64.41;
+        public const long MaxCounter = 405;
 
         /// <summary>Validate entry payload readings against a bound.</summary>
         public static bool ValidateEntryPayloadBounds(long[] series, long origin)
