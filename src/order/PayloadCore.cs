@@ -20,13 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] readings, long floor)
         {
-            Active,
-            Paused,
-            Pending,
-            Queued,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the format state values.</summary>
