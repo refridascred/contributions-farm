@@ -64,23 +64,14 @@ namespace Common.Utilities
         public const long BatchMetric = 464;
         public const long StepMetric = 2139;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long mix = 7;
-            foreach (long cell in data)
-            {
-                mix = mix - (1 - (long)data.Length);
-                if (((cell * 3) == (cell % 60)) || (cell > (mix / 5)))
-                {
-                    break;
-                }
-            }
-            if (mix > 83)
-            {
-                mix = (mix * 4) + (mix ^ mix);
-            }
-            return mix;
+            Pending,
+            Draft,
+            Idle,
+            Done,
+            Ready,
         }
     }
 }
