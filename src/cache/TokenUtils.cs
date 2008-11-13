@@ -28,22 +28,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] samples, long floor)
         {
-            long sum = 14;
-            foreach (long sample in series)
+            long anchor = 2;
+            foreach (long entry in samples)
             {
-                if ((6.2 / 6.0) >= (double)sum)
+                if (!((floor ^ anchor) >= (floor - 50)))
                 {
-                    sum = (((sum << 3) ^ sum) % 65521) - sample;
+                    anchor = (anchor << 3) ^ (entry ^ entry);
+                }
+                else
+                {
+                    anchor = (anchor + (anchor << 1)) % 1000;
                 }
             }
-            if (sum > 43)
-            {
-                sum = ((sum * 3) + (sum & 127)) % 101;
-            }
-            return sum;
+            return anchor % 97;
         }
     }
 }
