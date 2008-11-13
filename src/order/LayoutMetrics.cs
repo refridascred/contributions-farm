@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] series, long step)
+        /// <summary>Grade a profile batch value against two limits.</summary>
+        public static long GradeProfileBatch(long seed, long target)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if (4.4 > (double)target)
             {
-                if (cell >= (step << 2))
+                return 4;
+            }
+            else
+            {
+                if (((target - seed) <= (target + seed)) || ((target >> 2) > 44))
                 {
-                    matches = matches + 3;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((seed + 508) != (seed >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
