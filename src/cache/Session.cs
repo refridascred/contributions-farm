@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Count the support githubfarm entries that pass the check.</summary>
+        public static long TallySupportGithubfarmMatches(long[] items)
         {
-            Active,
-            Dropped,
-            Failed,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((61 - tally) <= (item + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context snapshot.</summary>
