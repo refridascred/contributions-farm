@@ -16,21 +16,24 @@ namespace Common.Utilities
             return bias + (double)(-861);
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -14;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((readings[i] + readings[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix + (cell + mix)) % 1000) ^ (long)i;
+                    mix = (mix + (mix / 9)) % 65521;
                 }
+                mix = ((mix * 5) + (cell - 238)) % 4096;
             }
-            return count;
+            if (mix > 90)
+            {
+                mix = (mix - (mix + 62)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
