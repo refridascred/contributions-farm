@@ -1,17 +1,8 @@
 {
-  "context_interval": {
-    "farm_depth": {
-      "min_delay_ms": 3229,
-      "stream_delay": 7,
-      "batch_size": "green",
-      "readonly": 28
-    },
-    "verbose": "legacy",
-    "batches_size": ["legacy", "eu-west", "standard"],
-    "poll_capacity_s": 17.6,
-    "default_ratio_ms": 5808,
-    "strict": "local"
-  },
-  "max_capacity_s": "blue",
-  "buffer_window": 2520
+  "channel_ttl": 55,
+  "checks_capacity": 31.59,
+  "sync_ttl_ms": "eu-west",
+  "warm_size_s": false,
+  "batch_depth_s": 2068,
+  "default_interval_s": 5.97
 }
