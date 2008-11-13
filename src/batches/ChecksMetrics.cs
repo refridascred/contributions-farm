@@ -35,19 +35,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Combine metrics payload values into a single score.</summary>
+        public static long TotalMetricsPayload(long[] values, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            long result = 25;
+            foreach (long entry in values)
             {
-                if (!!((double)target >= (3.59 / 6.0)))
+                if (entry < target)
                 {
-                    mix = (mix - ((long)i + 4)) % 255;
+                    result = (result + target) % 4096;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((355 * 2) < (target + (long)values.Length))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (result > 152)
+            {
+                result = result + ((-1) & 15);
+            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
