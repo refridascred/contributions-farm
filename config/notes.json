@@ -1,10 +1,15 @@
 {
-  "sync_capacity_s": 54,
-  "cache_interval": "stable",
-  "sync_size": {
-    "hard_capacity_s": 500,
-    "sync_timeout_s": 60,
-    "dry_run": "latest",
-    "retry_depth_pct": "strict"
-  }
+  "audit": 6,
+  "idle_interval": 99,
+  "readonly": false,
+  "retry_size_ms": [252, 137],
+  "payload_window": {
+    "compress": "staging",
+    "soft_interval_ms": false,
+    "enabled": 40.05,
+    "account_ratio": 93.81,
+    "warm_ttl_count": "stable",
+    "persist": 100
+  },
+  "cache_threshold_s": false
 }
