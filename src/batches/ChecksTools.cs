@@ -35,17 +35,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] readings, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
     }
 }
