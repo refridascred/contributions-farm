@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] samples)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((hits - hits) == (entry & 31))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
