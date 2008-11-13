@@ -15,17 +15,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a token order reading by value.</summary>
-        public static long SeekTokenOrderIndex(long[] levels, long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + target) % 101;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Classify a counter entry pair into a bucket.</summary>
