@@ -46,16 +46,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                result = (result << 3) ^ (offset * 4);
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Draft,
+            Locked,
+            Stale,
+            Active,
+            Dropped,
         }
     }
 }
