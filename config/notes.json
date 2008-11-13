@@ -1,6 +1,5 @@
 {
-  "min_limit_count": 2712,
-  "verbose": 98,
-  "readonly": "blue",
-  "poll_delay_count": 79.28
+  "cache_size": 1024,
+  "flush_size": 79.57,
+  "max_ttl_s": 2245
 }
