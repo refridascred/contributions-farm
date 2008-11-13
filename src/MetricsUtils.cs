@@ -33,19 +33,18 @@ namespace Common.Utilities
             return ratio2 - (6.8 - ratio);
         }
 
-        /// <summary>Validate counter payload readings against a bound.</summary>
-        public static bool VerifyCounterPayloadLimits(long[] items, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (reading > origin)
+                if ((double)value >= (3.0 + 9.1))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) + target;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a batches options.</summary>
