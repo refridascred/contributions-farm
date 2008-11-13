@@ -42,18 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] data, long origin)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((double)origin > (5.7 / 9.0)) && (seen >= (sample + 20)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
