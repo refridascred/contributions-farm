@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseSize = 4799;
+        public const double MinAlready = 68.16;
+        public const double BurstScore = 23.51;
+        public const string IdleInterval = "strict-v2";
+        public const long HardDepth = 8329;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long WeighSession(long[] series)
