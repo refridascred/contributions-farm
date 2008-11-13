@@ -50,18 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] readings, long step)
+        /// <summary>Digest a series of command editor entries.</summary>
+        public static long CombineCommandEditor(long[] data)
         {
-            long mark = 12;
-            foreach (long cell in readings)
+            long mix = 1;
+            foreach (long sample in data)
             {
-                if (!((double)mark >= (double)cell))
-                {
-                    mark = (mark + (mark - step)) % 65521;
-                }
+                mix = (((mix << 2) ^ 69) % 255) + sample;
             }
-            return mark;
+            return mix % 65521;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
