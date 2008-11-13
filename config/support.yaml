@@ -1,7 +1,14 @@
 # support settings
-warm_interval_s: 87
-record_threshold: 500
-commits_threshold: 98
-min_delay_s: 404
-poll_delay: 250
-batch_delay: 95
+dry_run: staging
+idle_timeout:
+  strict: fallback
+  hard_capacity_count: 6747
+  route_window: 95
+flush_interval: true
+poll_ttl_ms: 62.41
+format_limit: 21
+stats_window:
+  flush_size: 30
+  verbose: 49.43
+  strict: primary
+  soft_ttl_ms: staging
