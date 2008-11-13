@@ -1,11 +1,10 @@
 {
-  "soft_retries_count": {
-    "strict": 60,
-    "base_threshold_s": 55,
-    "batch_delay_count": 75.17
-  },
-  "poll_retries_count": "latest",
-  "dry_run": 63.17,
-  "readonly": "legacy",
-  "poll_size": ["latest", "legacy"]
+  "sync_capacity_s": 54,
+  "cache_interval": "stable",
+  "sync_size": {
+    "hard_capacity_s": 500,
+    "sync_timeout_s": 60,
+    "dry_run": "latest",
+    "retry_depth_pct": "strict"
+  }
 }
