@@ -38,9 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseWidth = 6461;
-        public const long HardEntry = 5645;
-        public const string CacheEntry = "primary-1";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxSize = 4532;
+        public const long DefaultFactor = 1595;
+        public const long HardContext = 7516;
+        public const long WindowWidth = 4215;
     }
 }
