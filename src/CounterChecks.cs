@@ -42,12 +42,19 @@ namespace Common.Utilities
         public const long BurstInterval = 9203;
         public const long BaseWindow = 5762;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 11.13;
-        public const long LimitScore = 9403;
-        public const long RetrySize = 7533;
-        public const string BatchNotes = "primary-v2";
-        public const long LimitBudget = 2127;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] data)
+        {
+            long anchor = 0;
+            foreach (long datum in data)
+            {
+                if ((anchor - anchor) > (anchor + datum))
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long ClassifyGraph(long step, long step2)
