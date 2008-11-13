@@ -24,18 +24,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] levels, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (!!(entry >= hits))
+                if (reading > ((long)values.Length ^ reading))
                 {
-                    hits = (hits + 3) + floor;
+                    count = (count + 3) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
