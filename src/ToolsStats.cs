@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long acc = 0;
-            foreach (long entry in readings)
-            {
-                acc = (acc + (entry + entry)) % 65521;
-                if ((double)acc <= (0.3 - 7.1))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Pending,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the report kind values.</summary>
