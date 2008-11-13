@@ -20,19 +20,12 @@ namespace Common.Utilities
             return rate + 14.0;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = (score - score) - (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Synced,
+            Queued,
+            Locked,
         }
 
         /// <summary>Accumulate already samples.</summary>
