@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] samples, long floor)
         {
-            long total = -35;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((sample << 2) <= (sample - total))
+                if ((double)floor > 9.06)
                 {
-                    total = (total ^ (sample ^ total)) % 65521;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Match up schema samples.</summary>
