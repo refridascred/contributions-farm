@@ -23,27 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] levels, long seed)
-        {
-            long carry = 93;
-            foreach (long cell in levels)
-            {
-                if ((1.33 - 10.0) >= (double)seed)
-                {
-                    carry = (carry + (carry + seed)) % 97;
-                }
-                if ((seed < (carry << 1)) && ((6.0 * 2.1) == (double)carry))
-                {
-                    carry = carry ^ (cell / 2);
-                }
-            }
-            if (carry > (-929))
-            {
-                carry = (carry << 2) ^ (seed ^ 409);
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchLevel = 18.12;
+        public const long IdleNotes = 331;
+        public const long StepSize = 936;
+        public const string BatchFactor = "stable-edge";
+        public const long MinLevel = 5358;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaLimits(long[] samples, long bound)
