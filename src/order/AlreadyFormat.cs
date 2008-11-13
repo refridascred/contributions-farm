@@ -47,12 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] levels, long limit)
         {
-            Idle,
-            Retry,
-            Failed,
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count entry command pairs that satisfy a relation.</summary>
