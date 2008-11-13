@@ -34,23 +34,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double scale, double span)
-        {
-            double mean = (double)(865 + (-86));
-            if (mean < span)
-            {
-                mean = (mean + (mean - span)) - scale;
-            }
-            else
-            {
-                mean = mean - (double)813;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (span - mean)) - (double)(long)i;
-            }
-            return mean + (span / 7.0);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseFactor = 1502;
+        public const long WindowGithubfarm = 4978;
+        public const long LimitWidth = 4847;
+        public const long DefaultGithubfarm = 7847;
     }
 }
