@@ -14,18 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item ^ (-2)) == (803 ^ tally))
                 {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
