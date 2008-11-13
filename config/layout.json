@@ -1,6 +1,15 @@
 {
-  "retry_limit": true,
-  "dry_run": 2918,
-  "strict": ["stable", "blue"],
-  "burst_interval_count": "legacy"
+  "retry_limit_ms": 500,
+  "retry_retries_count": 8491,
+  "strict": 15.25,
+  "base_window_ms": 4471,
+  "context_threshold": 74.6,
+  "enabled": {
+    "window_interval": 20,
+    "batch_delay_count": 420,
+    "soft_limit_ms": 74.99,
+    "record_capacity": 30,
+    "batch_size": "local",
+    "checks_threshold": 30
+  }
 }
