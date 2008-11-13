@@ -27,19 +27,31 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] values, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long limit, long origin)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            if ((limit / 2) >= (limit + 0))
             {
-                if (entry < step)
+                return 3;
+            }
+            else
+            {
+                if (origin > ((-44) - 583))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((limit / 5) <= (limit * 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Adjust a counter reading.</summary>
