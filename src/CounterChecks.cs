@@ -35,13 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepWindow = "primary";
+        public const string MinBudget = "fallback-edge";
+        public const long WindowBudget = 6158;
+        public const long BurstInterval = 9203;
+        public const long BaseWindow = 5762;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BaseNotes = 11.13;
