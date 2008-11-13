@@ -37,17 +37,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] values, long offset)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define command limits and defaults.</summary>
