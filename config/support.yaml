@@ -1,6 +1,15 @@
 # support settings
-strict: 1443
-report_threshold: 60
-flush_timeout: standard
-sync_limit: 100
-persist: fallback
+retry_window_ms:
+  - latest
+  - open
+  - latest
+cluster_depth: 89.19
+base_timeout:
+  layout_threshold: eu-west
+  base_depth_count: eu-west
+  sync_ratio: strict
+  readonly: 9825
+  idle_timeout_pct:
+    - fallback
+    - latest
+base_window_s: 9228
