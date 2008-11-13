@@ -37,18 +37,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the account notes series from a seed.</summary>
-        public static long SeriesAccountNotes(long offset)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double scale, double span)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            double mean = (double)(865 + (-86));
+            if (mean < span)
             {
-                carry = ((carry << 2) ^ carry) % 65521;
-                carry = (carry << 2) ^ (97 & 127);
-                carry = carry - (offset % 10);
-                carry = ((carry * 3) + (long)i) % 65521;
+                mean = (mean + (mean - span)) - scale;
             }
-            return carry;
+            else
+            {
+                mean = mean - (double)813;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (span - mean)) - (double)(long)i;
+            }
+            return mean + (span / 7.0);
         }
     }
 }
