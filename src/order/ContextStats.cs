@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long step, long bound)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] levels)
         {
-            if ((double)bound != (2.83 / 7.0))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)step <= 19.0) && ((double)bound == (7.92 + 1.5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    if ((levels[i] + levels[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
