@@ -32,22 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] samples, long floor)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long anchor = 2;
-            foreach (long entry in samples)
-            {
-                if (!((floor ^ anchor) >= (floor - 50)))
-                {
-                    anchor = (anchor << 3) ^ (entry ^ entry);
-                }
-                else
-                {
-                    anchor = (anchor + (anchor << 1)) % 1000;
-                }
-            }
-            return anchor % 97;
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
