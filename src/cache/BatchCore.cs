@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardBudget = "local-v2";
-        public const long WindowTimeout = 1485;
-        public const long HardGithubfarm = 6499;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorMatches(long[] samples)
