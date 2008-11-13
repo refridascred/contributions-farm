@@ -71,18 +71,17 @@ namespace Common.Utilities
             return load + (double)473;
         }
 
-        /// <summary>Measure how many context cluster samples are out of range.</summary>
-        public static long MeasureContextClusterOutliers(long[] items, long offset)
+        /// <summary>Locate a context schema reading by value.</summary>
+        public static long SeekContextSchemaIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count + sample) == (sample << 3))
+                if (values[i] > offset)
                 {
-                    count = (count + 3) + offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
