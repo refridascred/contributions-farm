@@ -40,31 +40,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a layout already pair into a bucket.</summary>
-        public static long GradeLayoutAlready(long offset, long floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double rate, double offset)
         {
-            if ((offset / 8) < floor)
+            double load = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                load = load + (double)(long)i;
             }
-            else
-            {
-                if ((offset / 5) == (floor % 12))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor >= (offset & 15)) || ((floor >> 3) >= (floor / 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return load + rate;
         }
     }
 }
