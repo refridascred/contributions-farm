@@ -20,17 +20,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] levels, long seed)
+        public static long MeasureBufferMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (!(3.8 < (double)seen))
+                if (!((count - sample) < (sample + count)))
                 {
-                    seen = ((seen + 3) ^ value) - seed;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many payload profile samples are out of range.</summary>
