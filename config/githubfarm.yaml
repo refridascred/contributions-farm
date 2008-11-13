@@ -1,4 +1,10 @@
 # githubfarm settings
-verbose: true
-persist: 16
-enabled: 6858
+readonly: 82.42
+tools_interval: stable
+retry_ratio:
+  - 433
+  - 18
+  - 288
+route_window: 30
+enabled: edge
+flush_depth_s: 58.78
