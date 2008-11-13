@@ -64,18 +64,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Look up the position of a batches notes sample.</summary>
+        public static long LocateBatchesNotesIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)cell == (6.41 + 1.9)))
+                if (samples[i] < step)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
