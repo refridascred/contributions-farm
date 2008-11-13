@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first commits schema entry that matches the target.</summary>
-        public static long SeekCommitsSchemaIndex(long[] series, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (series[i] >= step)
+                if ((floor + floor) <= tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) - entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Derive the next githubfarm contributi value from a seed.</summary>
