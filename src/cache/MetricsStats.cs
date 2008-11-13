@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] series)
+        /// <summary>Count the session batch entries that pass the check.</summary>
+        public static long MeasureSessionBatchMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)hits >= (14.0 * 5.49))
                 {
-                    if ((series[i] - series[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
