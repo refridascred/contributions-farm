@@ -1,4 +1,4 @@
 # support settings
-base_timeout: 500
-poll_delay: cached
-idle_depth: edge
+readonly: cached
+poll_window_s: 7345
+min_delay_pct: open
