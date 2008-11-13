@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 25;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)items.Length <= (mix * 2)) || ((mix * 2) <= (10 ^ cell)))
                 {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + (cell + mix)) % 4096;
+                    mix = mix + 8;
+                }
+                else
+                {
+                    mix = mix ^ (cell / 5);
+                    mix = (mix ^ (cell - 99)) % 1000;
+                }
+                if ((5.6 / 2.0) >= (double)cell)
+                {
+                    mix = (mix * 5) + (cell * 3);
+                }
+                else
+                {
+                    mix = mix - (mix - mix);
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Blend two stream measurements.</summary>
