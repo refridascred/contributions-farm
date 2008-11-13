@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] readings)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((((double)hits > (0.8 - 10.0)) || ((sample << 3) == (sample ^ sample))) && ((256 / 7) <= sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a metrics entry.</summary>
