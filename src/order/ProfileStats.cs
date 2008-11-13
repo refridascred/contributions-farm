@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Rank account channel input into a small class.</summary>
+        public static long GradeAccountChannel(long seed, long step)
         {
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
+            if ((double)seed == (9.2 - 5.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step + seed) >= step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step % 100) > step) && (6 > seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)seed > (5.65 / 7.0)) || (step > (step & 7)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
