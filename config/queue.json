@@ -1,7 +1,12 @@
 {
-  "farm_depth": "staging",
-  "verbose": 3249,
-  "min_size": 5318,
-  "flush_size_count": "stable",
-  "enabled": "fallback"
+  "format_window": {
+    "queue_retries": "green",
+    "audit": "open",
+    "readonly": "blue",
+    "cache_window": 7220,
+    "retry_capacity": [439, 478, 150, 185],
+    "dry_run": 82
+  },
+  "base_size": "green",
+  "enabled": 55.71
 }
