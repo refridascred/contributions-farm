@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitFactor = 92.6;
-        public const long WindowSpan = 3483;
-        public const double SoftContributi = 83.89;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((step >= (seen + step)) || (((step - step) <= (entry + seen)) && ((seen >> 5) > seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long WeighLayout(long[] series)
