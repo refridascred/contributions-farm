@@ -32,31 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long origin, long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            if ((921 * 2) == (origin + limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)origin == (0.45 - 7.65)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + origin) > (182 >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Queued,
+            Retry,
+            Failed,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
