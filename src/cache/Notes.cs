@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long CacheBudget = 4655;
         public const string BatchContext = "legacy-1";
 
-        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
-        public static long TallyGithubfarmQueueGaps(long[] samples)
+        /// <summary>Accumulate channel stats samples.</summary>
+        public static long FoldChannelStats(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long state = 293;
+            foreach (long reading in data)
             {
-                if (!!(526 < (hits * 4)))
+                state = (state + ((-6) ^ target)) % 4096;
+                if ((double)reading >= (16.0 + 5.88))
                 {
-                    hits = (hits + 1) - item;
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
