@@ -1,5 +1,27 @@
 {
-  "compress": false,
-  "default_ttl": 250,
-  "min_threshold_ms": 49
+  "default_window_ms": 89,
+  "default_limit_pct": {
+    "compress": "latest",
+    "batch_capacity": 2263,
+    "base_delay_ms": true,
+    "readonly": {
+      "base_ttl_count": false,
+      "queue_limit": false,
+      "token_size": true,
+      "order_capacity": "latest"
+    },
+    "hard_ratio": false
+  },
+  "hard_threshold_pct": {
+    "burst_capacity": "latest",
+    "max_depth_pct": 250,
+    "hard_capacity_s": [138, 368, 450, 40]
+  },
+  "stream_timeout": {
+    "batches_ratio": "eu-west",
+    "base_ttl_count": 500,
+    "verbose": true,
+    "report_depth": "latest"
+  },
+  "poll_ttl_count": [383, 115, 328]
 }
