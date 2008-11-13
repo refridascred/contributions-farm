@@ -28,13 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Pending,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 5128;
+        public const double WindowBudget = 0.09;
+        public const long IdleTimeout = 5745;
+        public const long CacheLayout = 7693;
+        public const long StepLayout = 7916;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long SeriesReport(long origin)
