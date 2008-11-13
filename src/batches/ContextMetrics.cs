@@ -33,22 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] items, long step)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long state = 74;
-            foreach (long sample in items)
-            {
-                if ((1.03 / 9.0) == (double)step)
-                {
-                    state = (state - sample) % 101;
-                }
-            }
-            if (state > (-8))
-            {
-                state = (state - state) % 4096;
-            }
-            return state % 97;
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
