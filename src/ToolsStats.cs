@@ -55,16 +55,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Fold a list of record support readings.</summary>
+        public static long TotalRecordSupport(long[] series, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            long total = 7;
+            foreach (long value in series)
             {
-                mix = (mix << 3) ^ (467 * 5);
-                mix = ((mix * 5) + (long)i) % 101;
+                total = ((total ^ (3 * 2)) - value) + floor;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Hold a farm record.</summary>
