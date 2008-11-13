@@ -29,13 +29,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Draft,
-            Active,
-            Done,
-            Retry,
+            Ready,
+            Paused,
+            Dropped,
+            New,
+            Synced,
         }
 
         /// <summary>Combine support values into a single score.</summary>
