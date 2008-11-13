@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] samples)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight2 = weight;
+            if (weight2 > 2.03)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight2 = (weight2 + weight) - floor;
             }
-            return tally;
+            else
+            {
+                weight2 = weight2 + (double)2;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
