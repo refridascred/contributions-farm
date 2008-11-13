@@ -55,10 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepMetric = 93.61;
-        public const long BatchScore = 6384;
-        public const string RetryMetric = "latest";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 6395;
+        public const long LimitAccount = 4219;
+        public const string StepSpan = "stable-1";
+        public const double IdleFactor = 32.74;
+        public const string BaseAccount = "primary-v2";
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandGaps(long[] series)
