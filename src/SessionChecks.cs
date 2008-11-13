@@ -46,14 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] samples, long seed)
         {
-            Draft,
-            Locked,
-            Stale,
-            Active,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seed >> 3) >= (entry - seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
