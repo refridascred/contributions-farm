@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long limit, long limit2)
+        /// <summary>Derive the next contributi layout value from a seed.</summary>
+        public static long SeriesContributiLayout(long step)
         {
-            long cur = limit + limit2;
-            if (!(limit < (cur + limit)))
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((15 < (limit2 & 255)) || ((double)limit > (9.94 - 2.3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
