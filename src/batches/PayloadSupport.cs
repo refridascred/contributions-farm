@@ -57,13 +57,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Project the next stream checks value.</summary>
+        public static double BlendStreamChecks(double ratio, double floor)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
+            double rate = ratio - (double)591;
+            return (rate - (rate + ratio)) + floor;
         }
     }
 }
