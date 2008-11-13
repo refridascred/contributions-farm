@@ -1,4 +1,19 @@
 # githubfarm settings
-cache_limit: 87
-order_size: true
-batch_threshold: 1024
+buffer_timeout: false
+window_limit: strict
+compress:
+  - green
+  - green
+token_window:
+  - edge
+  - staging
+  - fallback
+  - standard
+queue_limit: true
+dry_run:
+  verbose: legacy
+  enabled: 796
+  retry_delay:
+    - 219
+    - 375
+    - 482
