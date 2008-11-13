@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const double StepQueue = 49.71;
         public const double CacheQueue = 93.32;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] series, long seed)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long score = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum < (3.07 * 9.0))
-                {
-                    score = score ^ (datum % 7);
-                }
-                if ((double)8 > (double)seed)
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
