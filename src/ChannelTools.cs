@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string BatchSize = "open-v2";
         public const double CacheRatio = 43.67;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double ratio, double offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] samples, long origin)
         {
-            double gain = ratio + ratio;
-            if (gain > 6.2)
+            long anchor = 0;
+            foreach (long cell in samples)
             {
-                gain = (gain + (double)21) - offset;
+                if (!(471 > origin))
+                {
+                    anchor = (anchor - (cell * 3)) % 255;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + ratio) + (double)(long)i;
-            }
-            return gain - 7.1;
+            return anchor;
         }
 
         /// <summary>Hold a metrics summary.</summary>
