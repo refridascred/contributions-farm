@@ -50,19 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double gain, double bias)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] readings, long step)
         {
-            double scale = (double)(-59) - gain;
-            if (scale < bias)
+            long mark = 12;
+            foreach (long cell in readings)
             {
-                scale = scale + bias;
+                if (!((double)mark >= (double)cell))
+                {
+                    mark = (mark + (mark - step)) % 65521;
+                }
             }
-            else
-            {
-                scale = scale + 1.7;
-            }
-            return scale + (bias / 8.0);
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
