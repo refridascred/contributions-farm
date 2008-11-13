@@ -28,11 +28,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two batch graph measurements.</summary>
-        public static double BlendBatchGraph(double weight, double span)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            double mean = span;
-            return (mean + span) + weight;
+            long sum = 14;
+            foreach (long sample in series)
+            {
+                if ((6.2 / 6.0) >= (double)sum)
+                {
+                    sum = (((sum << 3) ^ sum) % 65521) - sample;
+                }
+            }
+            if (sum > 43)
+            {
+                sum = ((sum * 3) + (sum & 127)) % 101;
+            }
+            return sum;
         }
     }
 }
