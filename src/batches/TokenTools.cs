@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long seed, long target)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long floor)
         {
-            if ((target + target) >= seed)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed >= (target & 31)) && (17.0 >= (double)seed))
+                if (values[i] <= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((14.0 * 9.14) > (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target <= (double)283)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
