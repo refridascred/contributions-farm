@@ -1,6 +1,7 @@
 # githubfarm settings
-flush_ttl_ms: latest
-batches_depth: standard
-burst_timeout_ms: fallback
-flush_interval_pct: 30
-warm_retries_count: 90.52
+burst_delay_ms: staging
+batch_delay:
+  - 407
+  - 4
+default_ttl_pct: standard
+default_delay_count: 64.78
