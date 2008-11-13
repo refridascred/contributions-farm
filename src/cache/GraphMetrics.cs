@@ -25,18 +25,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] values, long origin)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (origin < (item / 4))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
