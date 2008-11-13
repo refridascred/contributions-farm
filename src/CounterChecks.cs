@@ -28,19 +28,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double bias, double span)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            double drift = (span - span) * 4.17;
-            if (drift <= (8.9 + 19.0))
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (double)327;
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
