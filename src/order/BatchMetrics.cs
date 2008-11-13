@@ -64,16 +64,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long seed)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double ratio, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                score = score - ((long)i ^ 389);
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            double weight = (double)30 / 9.0;
+            return (weight - (weight + ratio)) + span;
         }
     }
 }
