@@ -26,20 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long floor)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = sum + (27 + sum);
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = ((sum + (floor + floor)) % 101) - (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
