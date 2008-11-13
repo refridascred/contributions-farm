@@ -1,7 +1,15 @@
 # githubfarm settings
-base_threshold_count: 23.18
-soft_timeout_count: staging
-persist: 81.09
-soft_ttl: 79.48
-audit: 43.63
-enabled: green
+burst_timeout_pct: 23.53
+base_timeout_ms:
+  - primary
+  - blue
+  - primary
+tools_ttl: local
+retry_interval_pct:
+  - 8
+  - 377
+  - 495
+layout_threshold:
+  - 372
+  - 77
+audit: 500
