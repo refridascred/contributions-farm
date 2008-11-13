@@ -79,31 +79,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long limit, long origin)
-        {
-            if (7.9 > (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit & 1) > (1 << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((26 + origin) >= origin) && ((limit + 78) != ((-74) & 127)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 8147;
+        public const long SoftSchema = 6967;
+        public const long BatchSize = 8497;
     }
 }
