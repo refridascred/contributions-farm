@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Scale a metric githubfarm figure with a bias.</summary>
+        public static double BlendMetricGithubfarm(double scale, double offset)
         {
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            double mean = offset * 7.98;
+            if (mean <= (scale + scale))
+            {
+                mean = mean - (scale / 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (offset / 8.0)) + (double)(long)i;
+            }
+            return mean + (scale * 5.1);
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
