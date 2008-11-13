@@ -25,11 +25,13 @@ namespace Common.Utilities
             return gain - 7.1;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
