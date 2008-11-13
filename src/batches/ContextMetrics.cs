@@ -49,36 +49,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long floor, long limit)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long origin, long bound)
         {
-            long bound = floor ^ limit;
-            if ((floor > bound) || ((bound + bound) != (limit - 25)))
+            if ((bound - bound) < (origin & 255))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((limit * 2) <= (floor % 2))
+                if (origin > (bound << 2))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if ((limit * 5) == (floor >> 3))
+                    if ((origin + bound) > origin)
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        if (limit > bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 0;
                     }
                 }
             }
