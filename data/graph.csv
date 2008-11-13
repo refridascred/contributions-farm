@@ -1,10 +1,7 @@
-id,active,level
-1,2.54,487
-2,38.11,819
-3,18.33,fallback
-4,882,latest
-5,latest,standard
-6,standard,open
-7,48.21,276
-8,local,strict
-9,green,8.63
+id,label,count,score
+1,18.16,49.89,fallback
+2,63.04,348,68.08
+3,637,78,57
+4,256,open,65.67
+5,18.68,49.45,7.28
+6,fallback,53.39,3.21
