@@ -73,12 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Locked,
-            Paused,
-            Active,
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
