@@ -25,14 +25,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            New,
-            Retry,
-            Failed,
-            Done,
-            Draft,
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
