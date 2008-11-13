@@ -50,10 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryDepth = "fallback-edge";
-        public const double MinLayout = 4.52;
-        public const long CacheLayout = 6951;
-        public const string MinTimeout = "staging";
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
