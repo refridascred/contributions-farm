@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double rate, double floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] samples, long offset)
         {
-            double load = floor + floor;
-            if (load > (double)4)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - floor) - rate;
+                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - floor;
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
