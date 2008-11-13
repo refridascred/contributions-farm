@@ -24,9 +24,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheRecord = "staging-v2";
-        public const long MinRecord = 4599;
-        public const string BatchLevel = "open-1";
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Retry,
+            Pending,
+            Failed,
+            Queued,
+            Active,
+        }
     }
 }
