@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] series, long step)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((step >= (seen + step)) || (((step - step) <= (entry + seen)) && ((seen >> 5) > seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
