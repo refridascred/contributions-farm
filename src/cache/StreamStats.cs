@@ -47,18 +47,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] items, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!!((offset / 8) <= (hits << 2)))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseCommand = "primary-1";
+        public const double MinBudget = 38.21;
+        public const long BatchCommand = 624;
     }
 }
