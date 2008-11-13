@@ -1,6 +1,6 @@
 {
-  "session_depth": 5103,
-  "readonly": [289, 194],
-  "commits_ttl": [19, 35, 472],
-  "poll_window_s": "green"
+  "schema_interval": 65.87,
+  "idle_delay": [365, 92, 382],
+  "record_ttl": 88.09,
+  "payload_interval": true
 }
