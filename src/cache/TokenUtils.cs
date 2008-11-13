@@ -19,17 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] readings, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                mix = (mix - (origin >> 2)) % 1000;
-                mix = ((mix << 2) ^ (mix - (long)i)) % 4096;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Describe the route phase values.</summary>
