@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Locked,
-            Ready,
-            Idle,
-            Pending,
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
