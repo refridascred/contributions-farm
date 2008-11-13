@@ -42,12 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstBudget = "strict";
-        public const long StepStream = 1056;
-        public const string IdleFactor = "latest";
-        public const long BurstDepth = 3797;
-        public const long BaseLevel = 8277;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Queued,
+            Active,
+            Draft,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowDepth = 3009;
