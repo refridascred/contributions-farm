@@ -37,12 +37,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double rate, double floor)
-        {
-            double drift = (floor - floor) - (15.0 * 5.98);
-            return (drift + (double)(-891)) + rate;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultTimeout = 2013;
+        public const long RetryNotes = 7672;
+        public const string DefaultLevel = "strict-edge";
+        public const long MaxNotes = 7222;
 
         /// <summary>Derive the next command schema value from a seed.</summary>
         public static long IterateCommandSchema(long seed)
