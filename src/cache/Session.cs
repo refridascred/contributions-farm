@@ -39,18 +39,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] samples)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            if (limit >= (seed - 2))
             {
-                if (((value + value) < (329 - value)) && !(matches < (value * 3)))
+                return 6;
+            }
+            else
+            {
+                if ((44 + seed) != (651 + 502))
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
