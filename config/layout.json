@@ -1,5 +1,6 @@
 {
-  "readonly": "latest",
-  "default_window": false,
-  "queue_limit": "fallback"
+  "retry_retries": "latest",
+  "metric_ratio": 1024,
+  "verbose": 100,
+  "base_delay_ms": 1108
 }
