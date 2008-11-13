@@ -1,7 +1,9 @@
 # entry settings
-verbose: false
-default_ratio: true
-burst_limit_ms: 94.93
-base_interval_ms: 24.29
-persist: 26
-cache_retries_s: 1081
+burst_size_pct: false
+base_delay: 3919
+cache_limit_pct:
+  - 358
+  - 247
+soft_ratio_ms: 250
+persist: eu-west
+buffer_delay: 3
