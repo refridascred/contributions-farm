@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long floor, long floor2)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            if (13.0 > (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((floor << 3) <= 932))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            New,
+            Retry,
+            Idle,
         }
 
         /// <summary>Match up support samples.</summary>
