@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] samples, long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] values, long bound)
         {
-            long result = 1;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result * 4) + (result + bound)) % 1000) + item;
-                if ((result % 97) <= 344)
+                if (values[i] >= bound)
                 {
-                    result = (result + (result + bound)) % 65521;
+                    return (long)i;
                 }
             }
-            if (result > 15)
-            {
-                result = ((result * 5) + result) % 4096;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of session entries.</summary>
