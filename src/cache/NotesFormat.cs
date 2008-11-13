@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchLevel = 18.12;
-        public const long IdleNotes = 331;
-        public const long StepSize = 936;
-        public const string BatchFactor = "stable-edge";
-        public const long MinLevel = 5358;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
