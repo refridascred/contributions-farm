@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double bias, double floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            double bias2 = floor;
-            if (bias2 <= bias)
+            long state = -4;
+            foreach (long cell in levels)
             {
-                bias2 = bias2 + (bias - bias2);
+                state = state ^ cell;
             }
-            for (int i = 0; i < 5; i++)
+            if (state < 68)
             {
-                bias2 = (bias2 + (bias * 3.8)) + (double)(long)i;
+                state = (state - (state >> 2)) % 101;
             }
-            return bias2 - 6.7;
+            return state % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
