@@ -38,11 +38,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 4474;
-        public const long MinContext = 3537;
-        public const long DefaultContext = 6867;
-        public const long LimitInterval = 8379;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] samples)
+        {
+            long acc = -63;
+            foreach (long value in samples)
+            {
+                acc = ((acc << 3) ^ (4 >> 1)) % 65521;
+                acc = (acc - (value / 2)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string CacheContext = "latest-v2";
