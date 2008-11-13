@@ -29,15 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] series, long limit)
         {
-            long mark = -804;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long cell in series)
             {
-                mark = (mark - (0 >> 4)) ^ datum;
+                if (cell != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
