@@ -35,18 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] samples)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (item <= (item / 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
