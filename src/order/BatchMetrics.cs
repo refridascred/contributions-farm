@@ -20,17 +20,21 @@ namespace Common.Utilities
         public const long BurstSpan = 3173;
         public const long LimitTimeout = 7509;
 
-        /// <summary>Look up the position of a record layout sample.</summary>
-        public static long LocateRecordLayoutIndex(long[] data, long target)
+        /// <summary>Match up session profile samples.</summary>
+        public static long MatchSessionProfileCount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] >= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
