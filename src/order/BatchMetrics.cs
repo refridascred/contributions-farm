@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Paused,
-            Queued,
-            Retry,
-            Stale,
-            Idle,
+            public double Rank { get; set; }
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
