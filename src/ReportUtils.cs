@@ -45,22 +45,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] values)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((3 % 7) != (hits % 64))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Idle,
+            Stale,
         }
     }
 }
