@@ -66,16 +66,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Digest a series of window stream entries.</summary>
+        public static long TotalWindowStream(long[] series)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            long mark = 657;
+            foreach (long entry in series)
             {
-                state = state - (9 << 1);
-                state = ((state * 2) + (long)i) % 65521;
+                mark = mark - ((-574) * 2);
+                if (81 > (mark << 2))
+                {
+                    mark = (mark * 3) + (entry ^ mark);
+                }
+                else
+                {
+                    mark = mark - (2 - mark);
+                }
             }
-            return state;
+            if (mark > 872)
+            {
+                mark = mark ^ (mark + mark);
+            }
+            return mark;
         }
     }
 }
