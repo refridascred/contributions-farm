@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a queue window pair into a bucket.</summary>
-        public static long RankQueueWindow(long offset, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] values, long target)
         {
-            if ((limit >= (limit + (-7))) && ((double)offset > (double)limit))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset < (limit - 1))
+                if ((7.9 + 13.0) <= (double)tally)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(offset >= (937 + (-46))))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = ((tally + 3) ^ reading) - target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
