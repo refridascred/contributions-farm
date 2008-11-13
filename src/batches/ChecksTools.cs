@@ -21,23 +21,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double ratio, double floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long step)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= (floor * 9.4))
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                ratio2 = ratio2 + ratio2;
+                acc = (acc * 5) + (31 ^ 353);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                ratio2 = ratio2 + (1.74 - ratio);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + (double)46) + (double)(long)i;
-            }
-            return ratio2 + floor;
+            return acc;
         }
 
         /// <summary>Classify a githubfarm filter pair into a bucket.</summary>
