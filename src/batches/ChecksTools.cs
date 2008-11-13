@@ -33,15 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] values, long bound)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] data)
         {
             long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((double)item > (1.4 * 8.78)) && ((8.2 * 7.68) <= (double)count)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) + bound;
+                    if ((data[i] ^ data[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
