@@ -7,11 +7,20 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in fallback local blue eu-west; do
-    log "checking ${item}"
-done
+TOKEN_LIMIT=368
+log "limit is ${TOKEN_LIMIT}"
+
+mode="${1:-eu-west}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
