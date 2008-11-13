@@ -43,18 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many account schema samples are out of range.</summary>
-        public static long MeasureAccountSchemaOutliers(long[] levels)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((15.0 + 5.5) == (double)reading)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Done,
+            Synced,
+            Locked,
+            Stale,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
