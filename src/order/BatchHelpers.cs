@@ -14,19 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] series, long target)
         {
-            long sum = 2;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                sum = (sum - (sum << 3)) - datum;
-                if ((double)sum == (9.85 * 1.42))
+                if (item < ((long)series.Length % 5))
                 {
-                    break;
+                    count = (count + 1) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a context options.</summary>
