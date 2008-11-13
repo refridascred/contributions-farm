@@ -61,18 +61,11 @@ namespace Common.Utilities
         public const string BaseLayout = "open";
         public const long DefaultBudget = 6229;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (reading >= seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchInterval = 9295;
+        public const long BurstCommand = 2302;
+        public const double BurstTimeout = 94.96;
+        public const string LimitCommand = "legacy-1";
+        public const double WindowCommand = 29.19;
     }
 }
