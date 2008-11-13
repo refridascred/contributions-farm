@@ -18,18 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] series)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long bound, long target)
         {
-            long mix = 88;
-            foreach (long reading in series)
+            long cur = bound + target;
+            if (((cur + bound) <= (bound - bound)) || ((cur + bound) >= cur))
             {
-                if (mix > (reading << 3))
+                return 2;
+            }
+            else
+            {
+                if (((double)cur >= (6.85 - 9.0)) && ((target >> 4) <= bound))
                 {
-                    mix = ((mix * 2) + reading) % 1000;
+                    return 8;
+                }
+                else
+                {
+                    if (target >= 61)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
