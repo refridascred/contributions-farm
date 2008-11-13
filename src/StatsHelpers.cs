@@ -47,19 +47,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double rate, double bias)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long floor, long limit)
         {
-            double ratio = rate;
-            if (ratio < (ratio * 7.95))
+            if ((double)limit > 1.38)
             {
-                ratio = ratio + (rate - rate);
+                return 4;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                ratio = (ratio + bias) + (double)(long)i;
+                if ((limit + limit) >= (floor + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return ratio + (rate + rate);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
