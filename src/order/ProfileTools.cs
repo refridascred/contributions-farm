@@ -66,22 +66,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long step, long offset)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long offset, long origin)
         {
-            if ((double)offset != (double)step)
+            long offset2 = offset ^ origin;
+            if ((double)offset2 > (double)origin)
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((offset + step) > offset)
+                if ((origin * 4) != (5 & 63))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    return 6;
+                    if ((double)origin > (4.92 * 6.03))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin < (offset - offset)) || ((7 - offset) != (origin * 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
