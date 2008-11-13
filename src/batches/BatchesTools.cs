@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine entry layout values into a single score.</summary>
-        public static long TallyEntryLayout(long[] values, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] items, long origin)
         {
-            long carry = 90;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                carry = carry + (floor - cell);
-                carry = (carry ^ (4 - floor)) % 4096;
+                if (((tally >= (539 & 63)) || (entry < (49 / 5))) && ((tally << 1) >= entry))
+                {
+                    tally = (tally + 3) - origin;
+                }
             }
-            if (carry < 0)
-            {
-                carry = (carry + (floor >> 5)) % 65521;
-            }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
