@@ -21,10 +21,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 492;
-        public const double WindowMetric = 40.24;
-        public const double CacheScore = 19.97;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Locked,
+            New,
+            Active,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Blend two stream channel measurements.</summary>
         public static double BlendStreamChannel(double scale, double span)
