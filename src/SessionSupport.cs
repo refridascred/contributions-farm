@@ -33,19 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] values, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] values)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (reading >= offset)
+                if ((double)seen > 5.92)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
