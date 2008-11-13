@@ -22,12 +22,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 5318;
-        public const double StepMetrics = 85.2;
-        public const double RetryMetrics = 92.48;
-        public const long RetrySpan = 2261;
-        public const long MaxBudget = 9510;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] values)
+        {
+            long acc = 26;
+            foreach (long value in values)
+            {
+                acc = (acc * 3) + (340 % 7);
+                if ((value + value) >= (value / 2))
+                {
+                    acc = (acc - acc) % 4096;
+                }
+                if (((acc * 4) > (acc % 12)) && (acc > (value % 10)))
+                {
+                    break;
+                }
+            }
+            if (acc < 48)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] levels)
