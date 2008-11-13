@@ -1,31 +1,11 @@
 # support settings
-context_size:
-  - 227
-  - 139
-  - 229
-  - 404
-sync_window_pct:
-  burst_window_s: false
-  min_timeout: 7357
-  flush_threshold_ms:
-    commits_size: edge
-    entry_retries: false
-    strict: 26
-    max_size: 30
-  base_retries_pct: 2240
-  batches_threshold:
-    min_capacity_count:
-      - green
-      - edge
-    batch_capacity_count: 8777
-    stats_interval:
-      - 334
-      - 236
-      - 222
-      - 75
-    readonly:
-      - standard
-      - staging
-  enabled: 1597
-batch_window_count: 35
-warm_delay: 18.85
+record_depth: false
+checks_interval: stable
+enabled: 60
+retry_ttl_ms: latest
+already_capacity: edge
+graph_timeout:
+  - stable
+  - primary
+  - staging
+  - eu-west
