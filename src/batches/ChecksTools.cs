@@ -33,38 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a githubfarm filter pair into a bucket.</summary>
-        public static long SortGithubfarmFilter(long origin, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] samples, long limit)
         {
-            if ((double)seed < 7.9)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed - seed) <= (seed / 3))
+                if ((2 - hits) >= 1)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin < (1.0 * 3.81))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed - origin) < origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = ((hits + 3) ^ item) + limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
