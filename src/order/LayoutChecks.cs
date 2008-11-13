@@ -58,9 +58,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 6742;
-        public const double MaxNotes = 55.87;
-        public const string LimitRatio = "open";
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
