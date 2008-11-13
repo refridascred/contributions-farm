@@ -16,10 +16,19 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string SoftScore = "local-v2";
-        public const string HardCount = "strict-v2";
-        public const long SoftCommits = 4360;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)80 > (double)origin)
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a githubfarm editor reading by value.</summary>
         public static long FindGithubfarmEditorIndex(long[] items, long limit)
