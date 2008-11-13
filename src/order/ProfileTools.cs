@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] items)
         {
-            Done,
-            Dropped,
-            Active,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((datum % 97) >= hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate already samples.</summary>
