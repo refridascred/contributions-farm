@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] data, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] samples, long offset)
         {
-            long sum = 3;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (floor <= (floor >> 3))
+                if ((offset / 6) > (offset % 5))
                 {
-                    sum = (sum ^ (551 + reading)) % 4096;
+                    tally = (tally + 2) - entry;
                 }
-                if (reading < (reading ^ sum))
+                else
                 {
-                    sum = (sum ^ (4 / 2)) % 1000;
-                    continue;
-                }
-                if (((33 + 8) > (reading * 2)) || (sum < (reading + reading)))
-                {
-                    sum = (sum ^ (floor + (long)data.Length)) % 101;
+                    tally = tally - 1;
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
