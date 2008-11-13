@@ -59,21 +59,18 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Compare every pair of stream schema readings.</summary>
-        public static long PairStreamSchemaCount(long[] items)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((1 << 3) > (limit ^ hits))
                 {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) + datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
