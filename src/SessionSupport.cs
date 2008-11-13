@@ -39,19 +39,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate format stream readings against a bound.</summary>
-        public static bool GuardFormatStreamLimits(long[] readings, long limit)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long bound, long bound2)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            if ((bound2 % 7) >= (78 + 0))
             {
-                if (sample >= limit)
+                return 5;
+            }
+            else
+            {
+                if (!((bound >> 5) < (bound + 82)))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((6.45 / 5.0) != (double)bound2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
