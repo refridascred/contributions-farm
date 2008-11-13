@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge stable legacy eu-west; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=207
+BUFFER_LIMIT=180
 log "limit is ${BUFFER_LIMIT}"
