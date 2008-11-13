@@ -16,17 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] data, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (data[i] > floor)
+                if (tally > 70)
                 {
-                    return (long)i;
+                    tally = ((tally + 1) + value) + target;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
