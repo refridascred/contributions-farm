@@ -39,10 +39,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 922;
-        public const long WindowLevel = 3601;
-        public const long IdleWidth = 5034;
-        public const string BaseChannel = "cached-1";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftSpan = 66.3;
+        public const long BatchStream = 9186;
+        public const long CacheStream = 3983;
     }
 }
