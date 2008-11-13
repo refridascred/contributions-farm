@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 865;
-        public const double DefaultBudget = 75.93;
-        public const long IdleLevel = 9716;
-        public const long BaseEditor = 3831;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((offset + reading) >= offset)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
