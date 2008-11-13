@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double scale, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] samples)
         {
-            double drift = (double)(265 - 6);
-            if (drift <= 5.4)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                drift = (drift - floor) - scale;
+                if ((((tally << 1) > (tally >> 4)) && ((sample >> 4) <= (tally & 1))) || (20.0 >= (2.2 + 6.0)))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift + drift;
+            return tally;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
