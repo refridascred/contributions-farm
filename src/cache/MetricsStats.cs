@@ -41,11 +41,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 7247;
-        public const long CacheAccount = 3449;
-        public const long IdleFactor = 860;
-        public const long StepAccount = 7309;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double RetryReport = 17.65;
