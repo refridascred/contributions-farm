@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const string RetryInterval = "fallback-1";
         public const long StepCount = 4441;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Synced,
-            Active,
-            Closed,
-            Idle,
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
