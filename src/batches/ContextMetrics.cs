@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double weight, double span)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double weight, double floor)
         {
-            double mean = span;
-            if (mean <= (mean * 19.0))
+            double rate = weight;
+            if (rate >= (double)681)
             {
-                mean = mean + (mean + weight);
+                rate = rate - rate;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                mean = mean - weight;
+                rate = (rate - (floor / 9.0)) + (double)(long)i;
             }
-            return mean + 16.0;
+            return rate - (double)1;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
