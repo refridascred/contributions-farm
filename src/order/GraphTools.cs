@@ -47,19 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] samples, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] values)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long sum = 58;
+            foreach (long reading in values)
             {
-                if (item > target)
+                if (((double)sum >= (9.0 / 2.0)) && ((26 + sum) <= sum))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum ^ 7) % 65521) ^ reading;
                 }
             }
-            return valid;
+            return sum % 4096;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
