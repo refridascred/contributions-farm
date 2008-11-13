@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the cache queue entries that pass the check.</summary>
-        public static long TallyCacheQueueHits(long[] values, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] values, long target)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long state = 11;
+            foreach (long datum in values)
             {
-                if ((double)cell != (double)floor)
-                {
-                    count = count + 1;
-                }
+                state = ((state ^ ((long)values.Length + datum)) % 101) - target;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
