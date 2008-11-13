@@ -1,8 +1,4 @@
 # githubfarm settings
-batch_timeout: 9888
-format_depth:
-  - cached
-  - stable
-readonly: 60
-batch_ttl: 4211
-poll_window: latest
+verbose: true
+persist: 16
+enabled: 6858
