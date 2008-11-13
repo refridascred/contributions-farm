@@ -23,11 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultBatches = 86.73;
-        public const string BatchInterval = "legacy-1";
-        public const long IdleBatches = 576;
-        public const long SoftBatches = 1465;
+        /// <summary>Blend two profile graph measurements.</summary>
+        public static double ScaleProfileGraph(double rate, double span)
+        {
+            double weight = (double)881 / 4.0;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (((weight - (5.17 * 5.99)) - (double)(long)i) - rate) - span;
+            }
+            return weight + (double)8;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long CompareAlreadyCount(long[] items)
