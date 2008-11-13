@@ -1,4 +1,4 @@
 # support settings
-context_ratio: latest
-idle_window_pct: 39.86
-poll_interval: cached
+base_timeout: 500
+poll_delay: cached
+idle_depth: edge
