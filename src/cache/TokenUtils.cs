@@ -36,9 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 5.96;
-        public const string IdleStats = "legacy-edge";
-        public const long BaseStats = 5171;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            New,
+            Retry,
+            Failed,
+            Done,
+            Draft,
+        }
     }
 }
