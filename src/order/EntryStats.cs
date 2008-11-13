@@ -83,27 +83,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer record readings.</summary>
-        public static long CombineBufferRecord(long[] samples)
+        /// <summary>Count stats batches pairs that satisfy a relation.</summary>
+        public static long PairStatsBatchesCount(long[] readings)
         {
-            long score = 47;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score - (entry << 3)) % 101;
-                if ((7.8 + 3.7) <= (double)entry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = ((score * 5) + entry) % 1000;
-                }
-                if ((double)score != (13.0 / 5.0))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > 79)
-            {
-                score = score ^ 6;
-            }
-            return score % 1000;
+            return count;
         }
     }
 }
