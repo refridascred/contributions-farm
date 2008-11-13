@@ -28,10 +28,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowSize = 45.95;
-        public const long HardCount = 3907;
-        public const string LimitRatio = "legacy-edge";
-        public const long MaxCount = 5287;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] series, long limit)
+        {
+            long score = 88;
+            foreach (long value in series)
+            {
+                score = (((score * 4) + (value - value)) % 1000) + limit;
+            }
+            return score;
+        }
     }
 }
