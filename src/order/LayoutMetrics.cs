@@ -24,11 +24,27 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseSpan = 4821;
-        public const long WindowCluster = 1022;
-        public const string CacheCluster = "primary";
-        public const double BaseCluster = 1.99;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] values)
+        {
+            long acc = -5;
+            foreach (long cell in values)
+            {
+                if ((cell > (cell + acc)) && ((acc & 63) > (acc + cell)))
+                {
+                    acc = (acc ^ (acc - acc)) % 255;
+                }
+                if ((acc >= (acc / 3)) || (cell >= (cell ^ 288)))
+                {
+                    acc = ((acc << 2) ^ 5) % 255;
+                }
+                if ((double)cell != (double)acc)
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmRange(long[] readings, long floor)
