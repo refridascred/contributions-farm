@@ -20,18 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] values)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((sample < (59 + 4)) && ((8.79 * 4.2) == (double)sample)) && ((sample - hits) <= sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Paused,
+            Pending,
+            Queued,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
