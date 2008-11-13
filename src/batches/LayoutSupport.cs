@@ -37,19 +37,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] series, long bound)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > bound)
+                if (samples[i] >= limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Project the next batches value.</summary>
