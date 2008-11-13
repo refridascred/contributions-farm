@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] series)
+        /// <summary>Count the farm graph entries that pass the check.</summary>
+        public static long TallyFarmGraphGaps(long[] samples, long bound)
         {
-            long carry = 4;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (carry < (sample & 3))
+                if ((tally - value) <= (bound % 64))
                 {
-                    carry = carry - (carry << 2);
+                    tally = tally + 1;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
