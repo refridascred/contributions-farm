@@ -46,18 +46,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a window batches counter forward.</summary>
-        public static long DeriveWindowBatches(long offset)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark ^ 598) % 4096;
-                mark = ((mark * 2) + (offset / 8)) % 65521;
-                mark = (mark << 2) ^ (mark / 8);
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Blend two tools measurements.</summary>
