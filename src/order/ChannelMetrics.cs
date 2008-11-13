@@ -29,38 +29,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long step, long step2)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            if (((-515) >> 5) != (step & 3))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step + step) > step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((13.0 / 7.0) != (double)step2) || ((step2 * 4) >= (step2 >> 4)))
+                    if ((items[i] ^ items[j]) == 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step2 < 7.0)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
