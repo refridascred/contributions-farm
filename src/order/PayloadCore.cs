@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long floor, long origin)
+        /// <summary>Digest a series of token account entries.</summary>
+        public static long TallyTokenAccount(long[] series)
         {
-            if ((934 ^ (-1)) == (635 - floor))
+            long acc = 9;
+            foreach (long cell in series)
             {
-                return 5;
+                acc = acc + ((-6) + cell);
             }
-            else
+            if (acc < 19)
             {
-                if (8 < (floor + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                acc = ((acc * 5) + (acc ^ acc)) % 97;
             }
+            return acc;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
