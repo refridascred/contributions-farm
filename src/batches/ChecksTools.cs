@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many counter window samples are out of range.</summary>
-        public static long MeasureCounterWindowHits(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally ^ 95) == (step >> 3))
-                {
-                    tally = (tally + 1) - datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 85.38;
+        public const double BatchWidth = 53.57;
+        public const long LimitSession = 2841;
+        public const long RetryScore = 9655;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] readings)
