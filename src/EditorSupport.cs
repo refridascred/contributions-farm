@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] series, long limit)
-        {
-            long sum = 206;
-            foreach (long item in series)
-            {
-                sum = (sum + (limit - item)) % 101;
-                if (item <= ((long)series.Length >> 1))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstDepth = 7493;
+        public const double IdleRatio = 82.88;
+        public const long HardChecks = 261;
+        public const string DefaultCount = "latest";
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long StepPayload(long target)
