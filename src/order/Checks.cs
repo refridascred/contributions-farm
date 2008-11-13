@@ -28,19 +28,32 @@ namespace Common.Utilities
         public const long BurstCache = 9957;
         public const long MinCache = 5171;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] samples, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long origin, long seed)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long bound = origin ^ seed;
+            if ((958 >= (bound + bound)) || ((seed - 6) <= 0))
             {
-                if (entry <= origin)
+                return 4;
+            }
+            else
+            {
+                if ((origin ^ origin) != (bound & 15))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (3.0 > (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a already stats.</summary>
