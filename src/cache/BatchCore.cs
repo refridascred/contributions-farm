@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long WindowTimeout = 1485;
         public const long HardGithubfarm = 6499;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] samples, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
+                if ((hits + hits) > (value % 60))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
