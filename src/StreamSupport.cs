@@ -27,25 +27,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long limit, long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] items, long step)
         {
-            long next = limit ^ seed;
-            if (seed <= next)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((1.5 + 3.87) == (double)seed))
+                if (seen >= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    seen = (seen + 2) ^ sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a counter reading.</summary>
