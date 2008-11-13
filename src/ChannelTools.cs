@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitCount = 6911;
-        public const string BatchSize = "open-v2";
-        public const double CacheRatio = 43.67;
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] data, long floor)
+        {
+            long sum = 3;
+            foreach (long reading in data)
+            {
+                if (floor <= (floor >> 3))
+                {
+                    sum = (sum ^ (551 + reading)) % 4096;
+                }
+                if (reading < (reading ^ sum))
+                {
+                    sum = (sum ^ (4 / 2)) % 1000;
+                    continue;
+                }
+                if (((33 + 8) > (reading * 2)) || (sum < (reading + reading)))
+                {
+                    sum = (sum ^ (floor + (long)data.Length)) % 101;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TallyChecks(long[] samples, long origin)
