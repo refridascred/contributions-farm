@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] readings)
         {
-            Synced,
-            Idle,
-            Pending,
-            Stale,
-            Active,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (sample < (matches / 7))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
