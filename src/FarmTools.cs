@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long offset, long offset2)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] series, long step)
         {
-            if (((double)offset == (1.0 / 3.0)) && ((double)offset2 <= (3.6 - 7.16)))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((9.8 + 20.0) >= (double)offset2)
+                if ((step << 1) >= matches)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (offset > ((-252) + offset2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = (matches + 3) - cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
