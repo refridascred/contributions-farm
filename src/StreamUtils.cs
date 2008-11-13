@@ -75,19 +75,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry % 97) < 8)
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 2235;
+        public const long MinBatches = 5960;
+        public const string MaxRatio = "stable-v2";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleContext = 599;
