@@ -49,26 +49,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] samples, long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] readings, long limit)
         {
-            long acc = 6;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (!((double)item >= (3.56 / 3.0)))
+                if (item <= limit)
                 {
-                    acc = (acc << 2) ^ (limit >> 1);
-                }
-                else
-                {
-                    acc = (acc + limit) % 1000;
-                }
-                if (1 > acc)
-                {
+                    valid = false;
                     break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Define report limits and defaults.</summary>
