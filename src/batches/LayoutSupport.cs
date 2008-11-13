@@ -18,13 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long bound, long bound2)
         {
-            Paused,
-            Done,
-            Synced,
-            Ready,
+            long slot = bound - bound2;
+            if (bound2 > bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((3.6 + 6.9) >= (double)slot)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Classify a layout contributi pair into a bucket.</summary>
