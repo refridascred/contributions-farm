@@ -46,22 +46,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double bias, double offset)
         {
-            long state = 593;
-            foreach (long value in readings)
+            double rate = (double)(6 * 2);
+            if (rate >= rate)
             {
-                if (3 <= (state + value))
-                {
-                    state = (state + (value & 255)) % 4096;
-                }
+                rate = ((rate + (double)8) + bias) - offset;
             }
-            if (state > 2)
-            {
-                state = state + (state ^ 448);
-            }
-            return state % 65521;
+            return rate - (2.0 / 2.0);
         }
     }
 }
