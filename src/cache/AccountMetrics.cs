@@ -37,13 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Failed,
-            Done,
-            New,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryTimeout = "latest";
+        public const long BaseGraph = 6031;
+        public const double SoftFactor = 56.96;
+        public const long BaseFactor = 8796;
+        public const long RetryGraph = 6934;
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
