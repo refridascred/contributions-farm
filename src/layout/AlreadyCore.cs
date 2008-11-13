@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Already core helpers.</summary>
     public static class AlreadyCore
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long floor, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            if ((floor & 3) < (6 & 255))
             {
-                score = ((score * 2) + (offset + score)) % 97;
-                score = ((score * 3) + (long)i) % 1000;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((double)origin < (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((38 >> 1) != (floor - origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
