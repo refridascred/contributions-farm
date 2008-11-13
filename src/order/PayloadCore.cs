@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long floor, long origin)
         {
-            Synced,
-            New,
-            Retry,
-            Idle,
+            if ((934 ^ (-1)) == (635 - floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (8 < (floor + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
