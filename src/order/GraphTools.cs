@@ -31,15 +31,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] readings)
+        /// <summary>Audit route format readings against a rule.</summary>
+        public static long CountRouteFormatHits(long[] samples, long origin)
         {
-            long total = 608;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                total = total ^ (value ^ (-32));
+                if ((matches % 64) < matches)
+                {
+                    matches = ((matches + 3) + entry) + origin;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Accumulate schema account samples.</summary>
