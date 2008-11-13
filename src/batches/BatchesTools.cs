@@ -31,10 +31,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitSize = 6492;
-        public const string MaxReport = "open-edge";
-        public const long BaseScore = 7370;
-        public const string MaxInterval = "strict-1";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((4 ^ seen) == (0 & 63))
+                {
+                    seen = (seen + 1) - value;
+                }
+            }
+            return seen;
+        }
     }
 }
