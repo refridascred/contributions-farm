@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] readings)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long mix = 0;
+            foreach (long value in readings)
+            {
+                if ((mix - 472) < (value - mix))
+                {
+                    mix = (mix << 2) ^ value;
+                }
+            }
+            if (mix < (-65))
+            {
+                mix = (mix - (mix % 3)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
