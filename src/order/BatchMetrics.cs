@@ -49,16 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] data, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                acc = (acc + 3) % 65521;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (sample > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Describe the graph class values.</summary>
