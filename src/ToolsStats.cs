@@ -71,19 +71,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] readings, long seed)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
