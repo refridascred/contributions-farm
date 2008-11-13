@@ -38,19 +38,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] samples, long bound)
         {
-            long mix = 57;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                mix = ((mix << 2) ^ (mix ^ cell)) % 4096;
-                if ((cell % 2) < (cell - cell))
+                if (entry != bound)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return mix % 1000;
+            return ready;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
