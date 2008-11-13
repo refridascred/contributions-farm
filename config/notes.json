@@ -1,8 +1,5 @@
 {
-  "stats_retries": "eu-west",
-  "soft_capacity_ms": 100,
-  "readonly": "staging",
-  "route_limit": false,
-  "idle_threshold": 6710,
-  "tools_timeout": 83
+  "default_capacity": ["staging", "fallback"],
+  "batch_ttl_ms": 39,
+  "readonly": 250
 }
