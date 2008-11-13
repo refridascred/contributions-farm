@@ -74,21 +74,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count stats batches pairs that satisfy a relation.</summary>
-        public static long PairStatsBatchesCount(long[] readings)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
