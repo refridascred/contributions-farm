@@ -31,12 +31,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitSpan = "strict-edge";
-        public const double RetryFactor = 38.9;
-        public const long HardLevel = 3462;
-        public const long RetryRatio = 4637;
-        public const string LimitAlready = "standard-edge";
+        /// <summary>Measure how many stream context samples are out of range.</summary>
+        public static long TallyStreamContextOutliers(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((0.1 + 7.82) >= (double)step)
+                {
+                    seen = (seen + 2) - reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long RollBatches(long limit)
