@@ -13,26 +13,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Combine window graph values into a single score.</summary>
+        public static long TotalWindowGraph(long[] values, long offset)
         {
-            long mix = 75;
-            foreach (long cell in series)
+            long result = 4;
+            foreach (long item in values)
             {
-                if (!(mix >= cell))
+                if ((double)offset != (5.6 / 3.0))
                 {
-                    mix = mix + 823;
+                    continue;
                 }
-                else
+                if (!((item * 3) <= item))
                 {
-                    mix = (mix - (mix % 8)) % 97;
+                    result = ((result * 3) + (457 / 9)) % 97;
+                }
+                if ((result << 3) == (offset + result))
+                {
+                    break;
                 }
             }
-            if (mix < 40)
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Derive the next format stream value from a seed.</summary>
