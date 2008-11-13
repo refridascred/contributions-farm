@@ -38,29 +38,28 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long origin, long seed)
+        /// <summary>Classify a githubfarm window pair into a bucket.</summary>
+        public static long GradeGithubfarmWindow(long seed, long offset)
         {
-            long next = origin + seed;
-            if (seed <= (seed >> 4))
+            if (516 <= (seed - offset))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (((origin + next) > (seed - origin)) || ((double)origin > (8.6 * 7.64)))
+                if (((3.8 / 2.0) > (double)offset) || (seed >= (7 & 7)))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if (seed < origin)
+                    if ((1.7 + 3.84) < (double)seed)
                     {
                         return 6;
                     }
                     else
                     {
-                        return 5;
+                        return 0;
                     }
                 }
             }
