@@ -1,9 +1,18 @@
 # support settings
-soft_depth:
-  - legacy
-  - staging
+token_size:
+  - 64
+  - 75
+  - 368
+  - 337
+audit: edge
+hard_capacity:
+  - blue
+  - local
   - fallback
-persist: eu-west
-min_interval_count:
-  - open
-  - eu-west
+  - green
+route_depth: open
+batch_window:
+  - 195
+  - 172
+  - 3
+  - 427
