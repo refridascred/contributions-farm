@@ -46,19 +46,24 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double gain, double bias)
+        /// <summary>Grade a queue order value against two limits.</summary>
+        public static long BucketQueueOrder(long origin, long target)
         {
-            double scale = (double)(2 << 2);
-            if (scale < (gain * 2.0))
+            if ((target + target) >= origin)
             {
-                scale = scale - gain;
+                return 4;
             }
             else
             {
-                scale = scale - (0.78 * 9.6);
+                if ((origin + origin) > (51 / 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return scale + (scale + bias);
         }
 
         /// <summary>Fold a list of cache report readings.</summary>
