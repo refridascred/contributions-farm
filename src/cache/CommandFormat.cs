@@ -49,19 +49,12 @@ namespace Common.Utilities
         public const long BurstDepth = 3797;
         public const long BaseLevel = 8277;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] values, long step)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Queued,
+            Failed,
         }
     }
 }
