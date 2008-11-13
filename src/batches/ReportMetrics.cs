@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long seed)
         {
-            Synced,
-            Pending,
-            Draft,
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = (carry + 80) % 65521;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
