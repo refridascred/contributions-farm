@@ -24,18 +24,19 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] data, long step)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] values, long seed)
         {
-            long mark = 6;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((double)step < (double)reading)
+                if (sample >= seed)
                 {
-                    mark = (mark - (step - reading)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Project the next stream value.</summary>
