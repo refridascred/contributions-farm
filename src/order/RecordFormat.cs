@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the session channel series from a seed.</summary>
-        public static long IterateSessionChannel(long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                mix = (mix - mix) % 101;
-                for (int i2 = 0; i2 < 4; i2++)
+                if (((long)i << 3) < 3)
                 {
-                    mix = (((mix << 2) ^ (limit + 272)) % 4096) ^ (long)i2;
+                    anchor = (anchor * 2) + anchor;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (offset >= (5 + offset))
+                {
+                    anchor = anchor - (962 + 269);
+                    anchor = (anchor - (offset + anchor)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Hold a account record.</summary>
