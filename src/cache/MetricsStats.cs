@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine farm contributi values into a single score.</summary>
-        public static long WeighFarmContributi(long[] data, long floor)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] data, long origin)
         {
-            long mark = -610;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if (data[i] < origin)
                 {
-                    mark = (((mark + (mark * 4)) % 255) ^ (long)i) - floor;
-                }
-                if ((mark - mark) > 189)
-                {
-                    mark = (mark ^ (reading ^ 59)) % 255;
-                }
-                else
-                {
-                    mark = (mark + (mark + mark)) % 101;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
