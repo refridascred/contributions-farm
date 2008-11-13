@@ -84,18 +84,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long state = 72;
+            foreach (long entry in values)
             {
-                if (tally <= reading)
+                if (7.9 <= (double)state)
                 {
-                    tally = tally + 2;
+                    state = ((state + (3 + 2)) % 1000) ^ entry;
                 }
             }
-            return tally;
+            return state % 4096;
         }
     }
 }
