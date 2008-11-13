@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long limit, long bound)
-        {
-            long slot = limit + bound;
-            if (slot < (slot + limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)slot > 14.0)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 5899;
+        public const long MinFilter = 2102;
+        public const double HardBudget = 32.06;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
