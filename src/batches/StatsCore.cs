@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate order cluster samples.</summary>
-        public static long CombineOrderCluster(long[] values, long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] levels)
         {
-            long mark = 36;
-            foreach (long sample in values)
+            long mix = 82;
+            foreach (long entry in levels)
             {
-                mark = ((((mark << 3) ^ (mark - 288)) % 65521) - sample) + seed;
+                if ((2.2 + 5.84) == (double)mix)
+                {
+                    mix = (mix + mix) % 65521;
+                }
+                if ((506 <= mix) && ((double)entry != (8.8 / 3.0)))
+                {
+                    break;
+                }
             }
-            if (mark < 9)
+            if (mix > 3)
             {
-                mark = (mark - mark) % 65521;
+                mix = (mix << 3) ^ (mix >> 2);
             }
-            return mark % 1000;
+            return mix % 4096;
         }
 
         /// <summary>Hold a batch entry.</summary>
