@@ -34,21 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] items)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the tools phase values.</summary>
