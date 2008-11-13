@@ -45,18 +45,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] series, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] readings, long offset)
         {
-            long anchor = 8;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (!(anchor >= 48))
+                if ((value + hits) != (offset + offset))
                 {
-                    anchor = ((anchor << 2) ^ floor) - value;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
