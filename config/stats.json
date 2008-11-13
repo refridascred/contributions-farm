@@ -1,8 +1,6 @@
 {
-  "readonly": false,
-  "base_retries": "latest",
-  "enabled": [432, 376],
-  "max_retries_ms": 60,
-  "graph_threshold": "primary",
-  "burst_threshold_ms": true
+  "session_depth": 5103,
+  "readonly": [289, 194],
+  "commits_ttl": [19, 35, 472],
+  "poll_window_s": "green"
 }
