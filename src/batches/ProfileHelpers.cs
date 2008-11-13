@@ -26,23 +26,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine queue token values into a single score.</summary>
-        public static long TallyQueueToken(long[] data)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long score = 925;
-            foreach (long value in data)
-            {
-                if ((double)score <= (10.0 * 1.0))
-                {
-                    score = ((score * 3) + score) % 1000;
-                }
-                score = score ^ (score * 4);
-                if ((double)222 >= (double)value)
-                {
-                    score = score + (score - score);
-                }
-            }
-            return score;
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
