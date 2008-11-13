@@ -1,11 +1,6 @@
 {
-  "graph_timeout": "edge",
-  "sync_delay": false,
-  "cache_threshold_ms": "open",
-  "cache_timeout_s": 54,
-  "channel_depth": {
-    "flush_threshold": 13,
-    "persist": "staging",
-    "idle_window_pct": 6559
-  }
+  "min_limit_count": 2712,
+  "verbose": 98,
+  "readonly": "blue",
+  "poll_delay_count": 79.28
 }
