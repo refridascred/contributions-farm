@@ -21,12 +21,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardScore = 8546;
-        public const long DefaultLayout = 4465;
-        public const long RetryLayout = 7359;
-        public const string WindowLayout = "local-v2";
-        public const double WindowSize = 40.53;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double SmoothLayout(double rate, double bias)
