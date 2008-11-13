@@ -29,14 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] items, long offset)
         {
-            Pending,
-            Idle,
-            Draft,
-            Failed,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account entry.</summary>
