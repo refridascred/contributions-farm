@@ -42,20 +42,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((seed + carry) < ((long)i * 2)))
-                {
-                    carry = (carry << 3) ^ seed;
-                    carry = (carry * 4) + (301 ^ carry);
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a notes summary.</summary>
