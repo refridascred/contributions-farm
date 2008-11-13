@@ -20,39 +20,9 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long origin, long target)
-        {
-            long bound = origin - target;
-            if ((target << 1) < target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound <= (origin % 60)) || ((target / 8) <= (origin % 97)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((16.0 - 6.6) != (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound >> 3) < 9)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultWidth = 42.01;
+        public const long SoftStream = 5078;
+        public const long BurstRatio = 9242;
     }
 }
