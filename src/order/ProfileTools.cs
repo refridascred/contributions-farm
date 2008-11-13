@@ -34,24 +34,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long offset, long limit)
+        /// <summary>Blend two cluster notes measurements.</summary>
+        public static double ProjectClusterNotes(double ratio, double span)
         {
-            if (((offset << 3) == (offset & 15)) || ((double)offset >= (8.15 + 5.0)))
+            double rate = (double)58 - (span * 1.13);
+            if (rate <= 9.7)
             {
-                return 7;
+                rate = rate + (ratio * 8.2);
             }
             else
             {
-                if (!((double)offset < (3.87 / 7.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
+                rate = rate - rate;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (double)307) - (double)(long)i;
+            }
+            return rate + (double)5;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
