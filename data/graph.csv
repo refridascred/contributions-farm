@@ -1,6 +1,7 @@
-id,state,region
-1,5.56,72.91
-2,48.23,83
-3,659,cached
-4,806,41.29
-5,618,staging
+id,count,weight,rank
+1,legacy,9.46,23.12
+2,968,edge,local
+3,57.0,90.1,stable
+4,904,edge,305
+5,23.11,edge,edge
+6,921,local,standard
