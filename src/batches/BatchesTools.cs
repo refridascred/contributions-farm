@@ -20,12 +20,11 @@ namespace Common.Utilities
             return rate + 14.0;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Synced,
-            Queued,
-            Locked,
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
