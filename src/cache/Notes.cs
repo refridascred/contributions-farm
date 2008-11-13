@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every metric tools entry stays within the limit.</summary>
-        public static bool VerifyMetricToolsRange(long[] levels, long origin)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a counter options.</summary>
