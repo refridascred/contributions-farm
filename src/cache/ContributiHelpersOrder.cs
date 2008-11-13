@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] items, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (!((double)target != (11.0 + 7.08)) && (((double)target > 3.56) && ((reading % 16) < (reading / 6))))
+                if (cell <= limit)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
