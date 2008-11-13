@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const double StepQueue = 49.71;
         public const double CacheQueue = 93.32;
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long step)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!(((step - anchor) <= anchor) || (anchor >= (step & 31))))
+                {
+                    anchor = ((anchor * 4) + anchor) % 4096;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two stats session measurements.</summary>
