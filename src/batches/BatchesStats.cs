@@ -45,11 +45,26 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchScore = 2299;
-        public const long SoftFactor = 1665;
-        public const long WindowLevel = 9989;
-        public const string WindowWidth = "alpha-1";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] series)
+        {
+            long state = 7;
+            foreach (long item in series)
+            {
+                if ((8.4 / 6.0) < (double)item)
+                {
+                    state = state + item;
+                    state = state - (item - 33);
+                }
+                state = (state + item) % 1000;
+                state = state - (20 / 9);
+            }
+            if (state > 413)
+            {
+                state = state + (state / 4);
+            }
+            return state;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long ClassifyBuffer(long seed, long offset)
