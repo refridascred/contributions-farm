@@ -26,15 +26,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate cache stats samples.</summary>
-        public static long ScoreCacheStats(long[] series)
+        /// <summary>Compare every pair of layout graph readings.</summary>
+        public static long MatchLayoutGraphCount(long[] samples)
         {
-            long score = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score - (sample >> 1)) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
