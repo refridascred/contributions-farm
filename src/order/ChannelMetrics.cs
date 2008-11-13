@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long seed, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            long edge = seed + target;
+            if ((9.0 / 3.0) != (double)edge)
             {
-                score = score - (floor / 4);
-                score = ((score * 4) + (long)i) % 101;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((target & 3) > (seed + edge))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the profile status values.</summary>
