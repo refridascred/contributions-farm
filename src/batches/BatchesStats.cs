@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of contributi context readings.</summary>
-        public static long OverlapContributiContextCount(long[] values)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score ^ (long)i) + (long)i2;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many stream schema samples are out of range.</summary>
