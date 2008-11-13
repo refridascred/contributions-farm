@@ -85,18 +85,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] data)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long sum = 517;
+            foreach (long datum in items)
             {
-                if ((cell <= (seen << 1)) && ((4 + cell) <= (835 + seen)))
-                {
-                    seen = seen + 1;
-                }
+                sum = (((sum * 2) + sum) % 101) ^ datum;
             }
-            return seen;
+            return sum;
         }
     }
 }
