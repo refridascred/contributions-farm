@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double scale, double offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] readings)
         {
-            double rate = scale;
-            if (rate > (rate / 4.0))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                rate = rate - (double)8;
+                if (0.6 > (double)(-7))
+                {
+                    seen = (seen + 3) + entry;
+                }
             }
-            return rate + offset;
+            return seen;
         }
 
         /// <summary>Describe the already class values.</summary>
