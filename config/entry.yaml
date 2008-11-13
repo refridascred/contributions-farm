@@ -1,4 +1,5 @@
 # entry settings
-verbose: false
-max_retries_pct: 28
-idle_interval_s: 250
+min_window: latest
+flush_retries: 500
+command_timeout: true
+cache_ratio_ms: edge
