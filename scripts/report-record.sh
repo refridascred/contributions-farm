@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=383
+for item in primary green legacy open; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=239
 log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
