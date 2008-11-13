@@ -1,5 +1,8 @@
 # githubfarm settings
-compress: 78.38
-min_timeout_s: false
-audit: true
-counter_retries: 31.01
+batch_timeout: 9888
+format_depth:
+  - cached
+  - stable
+readonly: 60
+batch_ttl: 4211
+poll_window: latest
