@@ -1,7 +1,13 @@
 {
-  "hard_interval": 30,
-  "default_retries": "strict",
-  "support_timeout": "strict",
-  "persist": "eu-west",
-  "hard_ratio_pct": 30
+  "burst_delay_s": {
+    "cache_threshold": 1359,
+    "buffer_ratio": 6065,
+    "sync_limit": "staging",
+    "stream_interval": 69.25
+  },
+  "retry_size_ms": ["fallback", "staging", "legacy"],
+  "base_limit": "staging",
+  "soft_retries_s": 80.51,
+  "poll_timeout_count": 24,
+  "batch_retries": ["legacy", "stable", "green", "open"]
 }
