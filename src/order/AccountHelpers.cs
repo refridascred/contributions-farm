@@ -48,15 +48,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Project the next commits account value.</summary>
+        public static double ProjectCommitsAccount(double bias, double offset)
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
+            double scale = 4.0;
+            if (scale > (scale - offset))
             {
-                result = ((result * 4) + (long)i) % 65521;
+                scale = scale + (double)4;
             }
-            return result;
+            else
+            {
+                scale = scale + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + bias) - (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
