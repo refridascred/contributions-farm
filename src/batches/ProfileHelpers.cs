@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] readings, long bound)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (double)397 - span;
+            for (int i = 0; i < 9; i++)
             {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
+                bias = (bias - weight) - (double)(long)i;
             }
-            return -1;
+            return bias - (double)(-75);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
