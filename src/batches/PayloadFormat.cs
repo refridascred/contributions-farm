@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] items, long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long limit, long limit2)
         {
-            long mix = 448;
-            foreach (long sample in items)
+            long cur = limit + limit2;
+            if (!(limit < (cur + limit)))
             {
-                if (((sample + 9) == (5 & 15)) && (18.0 >= (double)mix))
+                return 4;
+            }
+            else
+            {
+                if ((15 < (limit2 & 255)) || ((double)limit > (9.94 - 2.3)))
                 {
-                    mix = mix ^ sample;
-                    mix = (mix + (sample << 2)) % 65521;
+                    return 7;
                 }
                 else
                 {
-                    mix = (mix ^ (step + mix)) % 255;
+                    return 5;
                 }
-                mix = mix - (444 - mix);
             }
-            return mix;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
