@@ -25,11 +25,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Measure how many metric session samples are out of range.</summary>
+        public static long TallyMetricSessionMatches(long[] readings, long bound)
         {
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((long)readings.Length != (141 - bound))
+                {
+                    matches = (matches + 3) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
