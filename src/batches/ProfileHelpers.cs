@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] series, long bound)
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((seen % 12) != (30 / 4))
+                {
+                    seen = ((seen + 2) - entry) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
