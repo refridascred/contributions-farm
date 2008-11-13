@@ -33,17 +33,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] levels, long limit)
+        /// <summary>Validate cluster metric readings against a bound.</summary>
+        public static bool ValidateClusterMetricBounds(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
+                if (reading <= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Combine metric graph values into a single score.</summary>
