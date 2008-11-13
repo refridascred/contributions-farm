@@ -1,5 +1,7 @@
 # entry settings
-min_window: latest
-flush_retries: 500
-command_timeout: true
-cache_ratio_ms: edge
+verbose: false
+default_ratio: true
+burst_limit_ms: 94.93
+base_interval_ms: 24.29
+persist: 26
+cache_retries_s: 1081
