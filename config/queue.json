@@ -1,5 +1,9 @@
 {
-  "flush_capacity_pct": 24,
-  "route_timeout": "primary",
-  "editor_limit": [18, 164, 474]
+  "cache_capacity": "local",
+  "min_delay": 898,
+  "hard_threshold_pct": {
+    "idle_depth_ms": 94,
+    "readonly": 84,
+    "batch_window_count": [461, 141, 75]
+  }
 }
