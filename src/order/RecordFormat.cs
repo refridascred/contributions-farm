@@ -49,14 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] samples, long origin)
         {
-            Dropped,
-            Closed,
-            Pending,
-            Ready,
-            Stale,
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
