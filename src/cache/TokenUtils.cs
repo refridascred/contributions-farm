@@ -36,18 +36,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value & 255) == (value + value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftStats = 5.96;
+        public const string IdleStats = "legacy-edge";
+        public const long BaseStats = 5171;
     }
 }
