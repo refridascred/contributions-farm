@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long floor, long floor2)
         {
-            public bool Count { get; set; }
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
+            if (13.0 > (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((floor << 3) <= 932))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine route entry values into a single score.</summary>
