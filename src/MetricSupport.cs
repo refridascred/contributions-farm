@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstDepth = 3575;
-        public const long SoftReport = 2921;
-        public const long MinScore = 2653;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsMatches(long[] items)
