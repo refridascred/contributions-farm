@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary green legacy open; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-RECORD_LIMIT=239
+RECORD_LIMIT=193
 log "limit is ${RECORD_LIMIT}"
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
