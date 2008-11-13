@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long step)
+        /// <summary>Fold a list of command account readings.</summary>
+        public static long FoldCommandAccount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 856;
+            foreach (long value in levels)
             {
-                if ((values[i] < step) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (362 << 3)) + value;
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Describe the checks phase values.</summary>
