@@ -35,19 +35,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Project the next counter stats value.</summary>
+        public static double ProjectCounterStats(double weight, double span)
         {
-            long sum = 65;
-            foreach (long value in series)
+            double drift = span;
+            if (drift <= (drift / 5.0))
             {
-                sum = (sum ^ (value - value)) % 65521;
+                drift = (drift + (span * 10.0)) - weight;
             }
-            if (sum > 3)
-            {
-                sum = sum - sum;
-            }
-            return sum % 4096;
+            return drift - 1.8;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
