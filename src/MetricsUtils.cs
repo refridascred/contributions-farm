@@ -38,21 +38,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 57;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = ((mix << 2) ^ (mix ^ cell)) % 4096;
+                if ((cell % 2) < (cell - cell))
                 {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Hold a batches options.</summary>
