@@ -23,21 +23,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of layout graph readings.</summary>
-        public static long MatchLayoutGraphCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryScore = "latest";
+        public const string WindowSpan = "legacy";
+        public const long LimitAlready = 9653;
+        public const long CacheAlready = 5339;
     }
 }
