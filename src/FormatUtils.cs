@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultSpan = 29.01;
-        public const long HardToken = 1124;
-        public const long LimitLevel = 6694;
-        public const long IdleRatio = 4566;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = (acc + (acc + acc)) % 101;
+                if ((double)acc < (double)floor)
+                {
+                    acc = (acc - 416) % 65521;
+                    acc = (acc + (479 - floor)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc ^ floor) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
