@@ -33,19 +33,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)value >= (3.0 + 9.1))
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 1305;
+        public const double IdleWindow = 38.63;
+        public const long WindowBudget = 4147;
+        public const long LimitWindow = 7987;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
