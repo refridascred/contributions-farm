@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "local-edge";
-        public const long HardChannel = 6519;
-        public const string RetryInterval = "fallback-1";
-        public const long StepCount = 4441;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
