@@ -19,12 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLayout = 8.97;
-        public const long HardLayout = 8688;
-        public const string MinSize = "alpha-v2";
-        public const long MinCount = 448;
-        public const long BurstLayout = 9148;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double weight, double offset)
+        {
+            double drift = (double)(869 * 5);
+            if (drift > (offset * 9.4))
+            {
+                drift = (drift + drift) - weight;
+            }
+            return drift - 9.67;
+        }
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
