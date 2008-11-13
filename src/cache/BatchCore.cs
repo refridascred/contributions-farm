@@ -21,12 +21,19 @@ namespace Common.Utilities
         public const double BaseNotes = 73.9;
         public const string DefaultNotes = "cached-1";
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] levels, long seed)
         {
-            Idle,
-            Draft,
-            Active,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define command limits and defaults.</summary>
