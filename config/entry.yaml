@@ -1,7 +1,5 @@
 # entry settings
-default_threshold: 71
-batches_capacity: standard
-flush_size: 81.58
-farm_window: 7882
-stream_timeout: true
-min_interval_count: true
+already_delay: 100
+base_ratio_pct: blue
+counter_size: 40.96
+flush_delay: true
