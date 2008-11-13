@@ -26,18 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] readings)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (((entry >> 4) >= (entry + (long)readings.Length)) || ((1.2 + 1.8) < (double)entry))
+                if (reading <= seed)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
