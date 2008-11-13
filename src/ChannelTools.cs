@@ -23,12 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryScore = 6156;
-        public const double SoftReport = 73.91;
-        public const long RetryReport = 6563;
-        public const long DefaultFactor = 5726;
-        public const long WindowWidth = 306;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 492;
+        public const double WindowMetric = 40.24;
+        public const double CacheScore = 19.97;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiMatches(long[] samples, long seed)
