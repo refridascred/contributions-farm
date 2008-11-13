@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double LimitTools = 61.92;
         public const long StepTools = 7046;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitBudget = "legacy";
-        public const long StepMetric = 319;
-        public const long HardMetric = 4013;
-        public const long RetrySize = 2765;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (cell <= (matches + cell))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long RollWindow(long step)
