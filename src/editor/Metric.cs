@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] samples, long floor)
+        /// <summary>Measure how many context stats samples are out of range.</summary>
+        public static long AuditContextStatsMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (sample >= floor)
+                if (seen > (seen >> 2))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
