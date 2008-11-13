@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a metric githubfarm figure with a bias.</summary>
-        public static double BlendMetricGithubfarm(double scale, double offset)
+        /// <summary>Project the next contributi schema value.</summary>
+        public static double AdjustContributiSchema(double bias, double floor)
         {
-            double mean = offset * 7.98;
-            if (mean <= (scale + scale))
+            double bias2 = floor + (double)67;
+            if (bias2 <= floor)
             {
-                mean = mean - (scale / 5.0);
+                bias2 = (bias2 - (double)42) - bias;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (offset / 8.0)) + (double)(long)i;
-            }
-            return mean + (scale * 5.1);
+            return bias2 + 3.4;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
