@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] readings, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstRatio = 1182;
+        public const long StepStats = 3728;
+        public const string BatchStats = "local-v2";
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long IterateLayout(long bound)
