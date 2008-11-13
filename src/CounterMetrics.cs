@@ -20,36 +20,18 @@ namespace Common.Utilities
             return bias + (bias - offset);
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] levels)
         {
-            long mix = 609;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((mix + sample) <= ((long)samples.Length >> 2))
+                if ((double)count != (double)(-237))
                 {
-                    mix = ((mix << 3) ^ (sample + sample)) % 255;
-                    mix = (mix ^ (sample - sample)) % 1000;
-                    break;
-                }
-                else
-                {
-                    mix = (mix ^ (sample & 3)) % 4096;
-                }
-                if ((sample + sample) != (sample - mix))
-                {
-                    mix = mix + (mix - mix);
-                }
-                else
-                {
-                    mix = mix ^ (mix ^ sample);
+                    count = (count + 1) + sample;
                 }
             }
-            if (mix > 452)
-            {
-                mix = mix - (mix << 3);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
