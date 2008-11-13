@@ -27,12 +27,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double weight, double offset)
         {
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
+            double bias = weight + weight;
+            if (bias > (13.0 * 15.0))
+            {
+                bias = bias + (offset / 4.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - 2.2;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
