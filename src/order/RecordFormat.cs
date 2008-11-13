@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] values, long offset)
         {
-            Pending,
-            Active,
-            Synced,
-            Dropped,
-            Done,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (reading < (reading % 7))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a account record.</summary>
