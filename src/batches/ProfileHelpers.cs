@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepRatio = "stable-1";
-        public const double MinCache = 84.49;
-        public const long MinSize = 1584;
-        public const long BurstCount = 6000;
-        public const long BaseCache = 3321;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((target >> 3) < reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a schema batch reading.</summary>
         public static double ProjectSchemaBatch(double rate, double span)
