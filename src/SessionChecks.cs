@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double ratio, double bias)
+        /// <summary>Look up the position of a githubfarm contributi sample.</summary>
+        public static long LocateGithubfarmContributiIndex(long[] data, long floor)
         {
-            double mean = bias;
-            if (mean > ratio)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - (double)98;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean + (bias + mean);
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
