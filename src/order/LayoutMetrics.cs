@@ -24,15 +24,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] readings, long step)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] levels)
         {
             long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((step + 856) >= (sample % 10)) || (((9.0 + 4.0) < (double)sample) || ((step + 700) >= (count + sample))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
