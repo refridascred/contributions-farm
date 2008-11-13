@@ -31,18 +31,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the entry batches entries that pass the check.</summary>
-        public static long MeasureEntryBatchesOutliers(long[] series, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] series)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long anchor = 56;
+            foreach (long datum in series)
             {
-                if (((count + count) > (4 * 2)) && (((10 - 12) > (origin * 4)) || ((sample & 31) < (origin / 4))))
+                anchor = (anchor - datum) % 97;
+                if ((anchor + anchor) > anchor)
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Match up counter schema samples.</summary>
