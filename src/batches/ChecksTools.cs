@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] series, long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long step, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long step2 = step + bound;
+            if ((double)bound >= 2.27)
             {
-                if (tally > (905 << 2))
+                return 4;
+            }
+            else
+            {
+                if (((step * 2) > bound) || (189 >= bound))
                 {
-                    tally = ((tally + 2) + value) - offset;
+                    return 0;
+                }
+                else
+                {
+                    if (step <= (step2 / 6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
