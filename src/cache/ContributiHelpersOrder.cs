@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Validate already account readings against a bound.</summary>
+        public static bool VerifyAlreadyAccountRange(long[] levels, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((39 & 63) > (state + state))
+                if (cell < floor)
                 {
-                    state = ((state << 2) ^ bound) % 65521;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    state = (state * 4) + (bound ^ state);
-                    state = (state - (bound & 31)) % 1000;
-                }
-                if ((state <= (bound + state)) && ((double)bound > (0.45 + 2.58)))
-                {
-                    state = (state + bound) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
