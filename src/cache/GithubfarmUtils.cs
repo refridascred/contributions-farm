@@ -26,27 +26,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)(long)i < (10.0 * 6.4))
-                {
-                    mark = mark ^ mark;
-                    mark = (mark + (507 - mark)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    mark = mark + (offset + mark);
-                    mark = ((mark << 3) ^ (offset + 661)) % 255;
-                }
-                mark = ((mark << 2) ^ (offset ^ mark)) % 255;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
