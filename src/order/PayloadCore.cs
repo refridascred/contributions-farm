@@ -35,12 +35,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long origin, long seed)
         {
-            Done,
-            Locked,
-            Queued,
+            long next = origin + seed;
+            if (seed <= (seed >> 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin + next) > (seed - origin)) || ((double)origin > (8.6 * 7.64)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed < origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of farm profile entries.</summary>
