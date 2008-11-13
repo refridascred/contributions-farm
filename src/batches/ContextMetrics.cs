@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] values)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double weight, double span)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double mean = span;
+            if (mean <= (mean * 19.0))
             {
-                if ((value % 64) > (tally / 9))
-                {
-                    tally = tally + 3;
-                }
+                mean = mean + (mean + weight);
             }
-            return tally;
+            else
+            {
+                mean = mean - weight;
+            }
+            return mean + 16.0;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
