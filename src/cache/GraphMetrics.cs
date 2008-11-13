@@ -54,16 +54,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] samples)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] samples)
         {
-            long acc = -63;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                acc = ((acc << 3) ^ (4 >> 1)) % 65521;
-                acc = (acc - (value / 2)) % 255;
+                if (item > 24)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Match up profile samples.</summary>
