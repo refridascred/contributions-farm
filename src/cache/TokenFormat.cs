@@ -29,19 +29,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] levels, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (reading <= floor)
+                if (item < origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Combine support values into a single score.</summary>
