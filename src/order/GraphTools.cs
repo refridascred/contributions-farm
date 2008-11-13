@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchTimeout = "latest-v2";
-        public const string MinBudget = "alpha";
-        public const long IdleFactor = 3045;
+        /// <summary>Digest a series of account commits entries.</summary>
+        public static long FoldAccountCommits(long[] samples, long floor)
+        {
+            long sum = 84;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    sum = ((sum ^ ((long)i & 255)) % 1000) - sample;
+                    sum = (sum << 3) ^ (floor / 7);
+                }
+                sum = sum ^ (floor + (-4));
+            }
+            if (sum < 6)
+            {
+                sum = (sum << 2) ^ sum;
+            }
+            return sum;
+        }
 
         /// <summary>Validate cluster command readings against a bound.</summary>
         public static bool GuardClusterCommandBounds(long[] readings, long limit)
