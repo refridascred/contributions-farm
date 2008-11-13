@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] data, long limit)
         {
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (((hits - limit) <= hits) && ((datum + 2) >= (limit >> 4)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
