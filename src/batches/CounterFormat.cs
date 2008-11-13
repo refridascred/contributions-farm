@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] items, long seed)
         {
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the cache queue entries that pass the check.</summary>
