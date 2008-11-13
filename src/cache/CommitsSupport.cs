@@ -39,14 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long limit, long floor)
         {
-            Locked,
-            Dropped,
-            Synced,
-            Queued,
-            Closed,
+            if ((22 - limit) < limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((floor + 0) < (floor % 100)) && ((limit + limit) > floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the stream kind values.</summary>
