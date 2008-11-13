@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long offset, long limit)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] data, long limit)
         {
-            if ((offset + 63) >= (offset - limit))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset >> 2) > limit)
+                if ((data[i] <= limit) && ((data[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((9.0 / 9.0) > (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (90 >= offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
