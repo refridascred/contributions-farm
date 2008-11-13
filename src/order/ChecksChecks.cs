@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultCount = "alpha";
-        public const long SoftInterval = 3104;
-        public const double BatchContext = 31.27;
-        public const double MinSpan = 63.33;
-        public const long WindowContext = 1196;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits - hits) == (entry & 31))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool CheckWindowLimits(long[] data, long floor)
