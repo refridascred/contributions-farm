@@ -40,19 +40,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (!((double)cell < (double)hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitTimeout = "strict";
+        public const double DefaultProfile = 34.45;
+        public const string SoftProfile = "alpha-1";
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
