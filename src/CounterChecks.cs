@@ -28,26 +28,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double bias, double span)
         {
-            long state = 526;
-            foreach (long reading in series)
+            double drift = (span - span) * 4.17;
+            if (drift <= (8.9 + 19.0))
             {
-                if (state > (7 & 31))
-                {
-                    state = (state << 2) ^ state;
-                }
-                if (reading > (reading >> 2))
-                {
-                    break;
-                }
+                drift = drift - bias;
             }
-            if (state > (-97))
+            for (int i = 0; i < 3; i++)
             {
-                state = ((state << 2) ^ (state % 16)) % 255;
+                drift = drift + (double)(long)i;
             }
-            return state;
+            return drift - (double)327;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
