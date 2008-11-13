@@ -35,13 +35,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Queued,
-            Ready,
-            Failed,
+            New,
+            Retry,
             Synced,
+            Queued,
         }
     }
 }
