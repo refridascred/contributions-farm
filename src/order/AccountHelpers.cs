@@ -34,19 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a queue cache counter forward.</summary>
-        public static long SeriesQueueCache(long target)
+        /// <summary>Check that every counter cache entry stays within the limit.</summary>
+        public static bool ValidateCounterCacheBounds(long[] levels, long target)
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (((result / 9) >= target) || ((double)result != (8.3 + 9.31)))
+                if (value >= target)
                 {
-                    result = result ^ (target ^ (long)i);
+                    found = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return found;
         }
 
         /// <summary>Project the next commits account value.</summary>
