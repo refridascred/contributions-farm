@@ -22,17 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metric contributi sample.</summary>
-        public static long LocateMetricContributiIndex(long[] data, long bound)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
