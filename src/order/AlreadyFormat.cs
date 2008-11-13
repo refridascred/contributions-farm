@@ -56,32 +56,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long floor, long origin)
-        {
-            if ((floor ^ origin) < floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (5 <= (origin * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor > (7.16 * 9.02))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 6900;
+        public const double StepLevel = 31.8;
+        public const double StepSpan = 94.85;
+        public const long DefaultFactor = 6805;
+        public const long CacheCommand = 6857;
 
         /// <summary>Count entry command pairs that satisfy a relation.</summary>
         public static long OverlapEntryCommandCount(long[] samples)
