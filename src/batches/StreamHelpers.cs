@@ -96,15 +96,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double bias, double span)
+        /// <summary>Derive the next metrics channel value from a seed.</summary>
+        public static long DeriveMetricsChannel(long target)
         {
-            double rate = 15.0 - span;
-            if (rate >= (rate * 2.57))
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                rate = (rate - (span / 7.0)) - bias;
+                mix = mix + ((-6) + target);
+                mix = ((mix << 3) ^ (284 + mix)) % 97;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return rate + (span + 5.0);
+            return mix;
         }
     }
 }
