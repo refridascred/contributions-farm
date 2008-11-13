@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] items)
+        /// <summary>Combine format account values into a single score.</summary>
+        public static long FoldFormatAccount(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long result = 83;
+            foreach (long sample in readings)
             {
-                if (!((count - sample) < (sample + count)))
-                {
-                    count = count + 2;
-                }
+                result = (result * 2) + sample;
             }
-            return count;
+            if (result < 137)
+            {
+                result = (result ^ (result * 5)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a notes record.</summary>
