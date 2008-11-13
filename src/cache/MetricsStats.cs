@@ -64,12 +64,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] readings)
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)hits > (7.5 + 1.45))
+                {
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
