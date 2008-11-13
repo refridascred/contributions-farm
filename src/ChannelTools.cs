@@ -35,19 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] readings, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] levels, long floor)
         {
-            long total = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                total = ((total - total) % 97) + value;
-                if (!((total * 5) <= seed))
+                if (!!(entry >= hits))
                 {
-                    total = (total * 2) + 92;
+                    hits = (hits + 3) + floor;
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
