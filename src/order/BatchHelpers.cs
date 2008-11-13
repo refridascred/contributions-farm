@@ -34,22 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] samples)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long acc = 224;
-            foreach (long cell in samples)
-            {
-                if ((double)(long)samples.Length == (9.0 + 7.99))
-                {
-                    acc = (acc + acc) - cell;
-                }
-            }
-            if (acc < 8)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
