@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
