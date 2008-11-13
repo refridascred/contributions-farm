@@ -56,22 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryFactor = 5135;
+        public const long SoftSize = 4859;
+        public const long WindowContext = 6702;
+        public const long WindowWidth = 9183;
+        public const string SoftContext = "cached-v2";
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
