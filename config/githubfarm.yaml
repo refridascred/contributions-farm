@@ -1,15 +1,10 @@
 # githubfarm settings
-max_ttl: green
-session_capacity: fallback
-payload_interval: 2633
-account_depth: true
-default_threshold: eu-west
-warm_depth_pct:
-  retry_timeout_pct:
-    - primary
-    - standard
-    - local
-  warm_timeout_ms: 94.09
-  hard_window: 30.04
-  batch_ratio: local
-  soft_capacity: true
+tools_ratio: 8758
+default_ratio_count:
+  idle_size: 31.53
+  max_window: 5941
+  flush_timeout_s: 34.58
+  filter_threshold: stable
+  verbose: 93
+sync_limit_count: 2483
+cache_delay_pct: 4728
