@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+BUFFER_LIMIT=255
+log "limit is ${BUFFER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-cached}"
 case "${mode}" in
-    staging)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in edge local strict latest; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
