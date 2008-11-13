@@ -79,10 +79,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 4248;
-        public const string MinFactor = "latest-edge";
-        public const long StepBatch = 5128;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool ValidateOrderLimits(long[] series, long floor)
