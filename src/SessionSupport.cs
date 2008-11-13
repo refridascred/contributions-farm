@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] readings, long floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Retry,
+            Active,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
