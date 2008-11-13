@@ -33,12 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] values, long offset)
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
