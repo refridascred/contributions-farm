@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] readings, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long sum = -29;
+            foreach (long reading in levels)
             {
-                if (datum >= floor)
+                sum = ((sum << 2) ^ (sum + reading)) % 97;
+                if (((sum >> 4) >= bound) || (((-68) + sum) > (4 + bound)))
                 {
-                    valid = false;
-                    break;
+                    sum = sum + (-462);
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Fold a list of counter queue readings.</summary>
