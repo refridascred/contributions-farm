@@ -1,6 +1,7 @@
 {
-  "batch_retries_count": 500,
-  "burst_window_pct": 67.8,
-  "counter_ratio": [477, 348],
-  "idle_window": 100
+  "flush_limit_count": 4.59,
+  "default_depth_ms": "primary",
+  "base_window_count": 6,
+  "flush_ttl_pct": 100,
+  "cache_threshold_count": true
 }
