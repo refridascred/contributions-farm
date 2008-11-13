@@ -37,10 +37,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 8409;
-        public const string LimitSize = "stable";
-        public const long RetryLevel = 4990;
+        /// <summary>Compare every pair of schema metrics readings.</summary>
+        public static long PairSchemaMetricsCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
