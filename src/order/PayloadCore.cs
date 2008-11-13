@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of token account entries.</summary>
-        public static long TallyTokenAccount(long[] series)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] readings, long bound)
         {
-            long acc = 9;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                acc = acc + ((-6) + cell);
+                if (value < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (acc < 19)
-            {
-                acc = ((acc * 5) + (acc ^ acc)) % 97;
-            }
-            return acc;
+            return flag;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
