@@ -44,10 +44,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchFormat = "legacy-v2";
-        public const long DefaultFormat = 7960;
-        public const double WindowFormat = 23.1;
-        public const long RetryDepth = 5546;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
