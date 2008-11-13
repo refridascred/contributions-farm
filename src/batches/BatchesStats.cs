@@ -62,31 +62,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long seed, long offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] levels, long step)
         {
-            if ((seed << 2) < (offset / 8))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed * 4) <= (seed >> 4))
+                if (levels[i] > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset & 255) < (-638))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
