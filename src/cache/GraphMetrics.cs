@@ -14,13 +14,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] values, long bound)
         {
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            long anchor = 272;
+            foreach (long cell in values)
+            {
+                anchor = (anchor - cell) % 255;
+                if ((bound - cell) <= anchor)
+                {
+                    anchor = (anchor ^ (cell / 4)) % 101;
+                }
+            }
+            if (anchor > (-393))
+            {
+                anchor = ((anchor << 3) ^ bound) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate metric samples.</summary>
