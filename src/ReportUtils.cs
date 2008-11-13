@@ -38,12 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Queued,
-            Idle,
-            Stale,
+            Active,
+            Pending,
+            Synced,
+            Paused,
         }
     }
 }
