@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] series, long limit)
         {
-            long anchor = 32;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long value in series)
             {
-                anchor = (((anchor << 3) ^ (anchor + origin)) % 1000) ^ entry;
+                if (value > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor % 65521;
+            return stale;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
