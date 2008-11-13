@@ -53,20 +53,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a context window counter forward.</summary>
-        public static long StepContextWindow(long target)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target / 4) >= (target + target))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state * 4) + (86 - state)) % 97;
-                    continue;
+                    if ((levels[i] + levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
