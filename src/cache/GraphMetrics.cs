@@ -66,11 +66,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "latest-v2";
-        public const long WindowContext = 1719;
-        public const long BatchContext = 6807;
-        public const long SoftContext = 6876;
-        public const long WindowCount = 5703;
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
