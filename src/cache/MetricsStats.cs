@@ -57,19 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] series, long bound)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
