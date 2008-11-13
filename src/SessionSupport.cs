@@ -39,31 +39,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long bound, long bound2)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            if ((bound2 % 7) >= (78 + 0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((bound >> 5) < (bound + 82)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((6.45 / 5.0) != (double)bound2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
