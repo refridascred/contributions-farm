@@ -75,21 +75,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftFactor = 6907;
+        public const long SoftWidth = 8985;
+        public const string MinCount = "local-v2";
+        public const string SoftBatches = "staging-v2";
+        public const long DefaultBatches = 2124;
     }
 }
