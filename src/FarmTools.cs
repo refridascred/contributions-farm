@@ -47,14 +47,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
+            Ready,
             Closed,
+            Paused,
             Done,
-            Pending,
-            Stale,
-            Retry,
         }
     }
 }
