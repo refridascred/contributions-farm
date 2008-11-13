@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate already graph samples.</summary>
-        public static long CombineAlreadyGraph(long[] data, long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long total = 6;
-            foreach (long sample in data)
-            {
-                total = ((total ^ (904 % 10)) % 101) + limit;
-                total = ((total * 2) + (sample * 5)) % 255;
-            }
-            return total % 4096;
+            Synced,
+            Retry,
+            Active,
         }
 
         /// <summary>Define support limits and defaults.</summary>
