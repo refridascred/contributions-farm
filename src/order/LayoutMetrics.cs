@@ -36,31 +36,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long seed, long origin)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double ratio, double floor)
         {
-            if (((6 + 3) >= seed) || ((double)seed <= (1.0 * 4.27)))
+            double bias = 2.37;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
+                bias = (bias + (floor * 2.33)) - (double)(long)i;
             }
-            else
-            {
-                if ((double)seed >= (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin & 63) <= (seed ^ seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return bias + ratio;
         }
     }
 }
