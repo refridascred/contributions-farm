@@ -29,19 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] series, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] values)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (cell != limit)
+                if (((count + 21) < count) && ((8 >> 1) == (entry << 1)))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
