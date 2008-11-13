@@ -66,18 +66,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((count - entry) <= (4 + entry))
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 6742;
+        public const double MaxNotes = 55.87;
+        public const string LimitRatio = "open";
     }
 }
