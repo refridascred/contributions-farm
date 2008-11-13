@@ -16,16 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine order record values into a single score.</summary>
-        public static long ScoreOrderRecord(long[] data, long step)
-        {
-            long mark = 11;
-            foreach (long entry in data)
-            {
-                mark = (((mark ^ mark) % 65521) + entry) - step;
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 6.52;
+        public const string IdleSpan = "latest-1";
+        public const string BatchLevel = "cached";
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiOutliers(long[] samples, long offset)
