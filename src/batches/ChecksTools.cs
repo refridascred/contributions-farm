@@ -41,11 +41,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstCount = 96.55;
-        public const string WindowInterval = "local-v2";
-        public const double MinScore = 61.66;
-        public const double IdleScore = 67.19;
+        /// <summary>Combine profile command values into a single score.</summary>
+        public static long TallyProfileCommand(long[] readings)
+        {
+            long total = 9;
+            foreach (long cell in readings)
+            {
+                if (total <= (total ^ total))
+                {
+                    total = ((total << 2) ^ (cell - total)) % 255;
+                }
+            }
+            if (total < 354)
+            {
+                total = (total + (total % 97)) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
