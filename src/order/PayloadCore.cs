@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long bound)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Paused,
+            New,
+            Done,
+            Locked,
         }
 
         /// <summary>Combine counter buffer values into a single score.</summary>
