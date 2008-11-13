@@ -1,13 +1,7 @@
 {
-  "burst_delay_s": {
-    "cache_threshold": 1359,
-    "buffer_ratio": 6065,
-    "sync_limit": "staging",
-    "stream_interval": 69.25
-  },
-  "retry_size_ms": ["fallback", "staging", "legacy"],
-  "base_limit": "staging",
-  "soft_retries_s": 80.51,
-  "poll_timeout_count": 24,
-  "batch_retries": ["legacy", "stable", "green", "open"]
+  "format_depth": 38.52,
+  "base_threshold": true,
+  "max_ttl_count": 30,
+  "sync_depth_ms": 55,
+  "poll_timeout_s": 1024
 }
