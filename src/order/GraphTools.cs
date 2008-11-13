@@ -12,20 +12,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long step)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((286 * 2) > step)
-                {
-                    carry = (carry - (carry / 9)) % 1000;
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Active,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
