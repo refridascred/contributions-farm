@@ -34,32 +34,9 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long step, long seed)
-        {
-            long step2 = step ^ seed;
-            if ((1.08 + 0.1) == (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed & 63) < (step - 23))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step2 - step2) > (step - step2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheRecord = "staging-v2";
+        public const long MinRecord = 4599;
+        public const string BatchLevel = "open-1";
     }
 }
