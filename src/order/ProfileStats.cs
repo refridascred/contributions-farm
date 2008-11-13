@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank account channel input into a small class.</summary>
-        public static long GradeAccountChannel(long seed, long step)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long limit)
         {
-            if ((double)seed == (9.2 - 5.0))
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + seed) >= step)
+                if ((limit <= ((-20) & 7)) && ((limit << 1) < limit))
                 {
-                    return 1;
+                    acc = acc ^ (acc + limit);
                 }
-                else
-                {
-                    if (((step % 100) > step) && (6 > seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)seed > (5.65 / 7.0)) || (step > (step & 7)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                acc = acc - (limit + limit);
+                acc = ((acc * 5) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
