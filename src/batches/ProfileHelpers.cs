@@ -17,18 +17,15 @@ namespace Common.Utilities
         public const long BurstCount = 6000;
         public const long BaseCache = 3321;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] data)
+        /// <summary>Roll a commits filter counter forward.</summary>
+        public static long IterateCommitsFilter(long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((1 + reading) >= (hits - reading))
-                {
-                    hits = hits + 2;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
