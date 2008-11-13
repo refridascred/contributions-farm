@@ -33,9 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstScore = 30.62;
-        public const long BatchChannel = 1492;
-        public const double WindowChannel = 27.75;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] items, long offset)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((offset & 255) > (item * 5))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
