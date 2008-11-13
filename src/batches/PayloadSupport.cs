@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes tools readings.</summary>
-        public static long TallyNotesTools(long[] items)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] readings, long bound)
         {
-            long score = 55;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (936 >= (49 + sample))
+                if (reading > bound)
                 {
-                    score = score + (sample - sample);
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Describe the account level values.</summary>
