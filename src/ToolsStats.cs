@@ -13,17 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first session contributi entry that matches the target.</summary>
-        public static long SeekSessionContributiIndex(long[] series, long step)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a buffer options.</summary>
