@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] levels)
         {
-            Locked,
-            New,
-            Dropped,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen * 2) == (value ^ seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a entry stats.</summary>
