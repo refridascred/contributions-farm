@@ -63,19 +63,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] data, long origin)
+        /// <summary>Adjust a filter entry reading.</summary>
+        public static double SmoothFilterEntry(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            double gain = ratio;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = ((gain + (gain + ratio)) + (double)(long)i) + span;
             }
-            return flag;
+            return gain + (double)477;
         }
 
         /// <summary>Describe the graph class values.</summary>
