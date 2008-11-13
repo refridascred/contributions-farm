@@ -28,12 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 5128;
-        public const double WindowBudget = 0.09;
-        public const long IdleTimeout = 5745;
-        public const long CacheLayout = 7693;
-        public const long StepLayout = 7916;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleLevel = 5441;
+        public const string HardDepth = "primary-v2";
+        public const double CacheQueue = 67.19;
+        public const long SoftQueue = 7878;
+        public const long BatchWidth = 2933;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long SeriesReport(long origin)
