@@ -18,20 +18,10 @@ namespace Common.Utilities
         public const long BurstFactor = 3809;
         public const string CacheSize = "legacy";
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 7428;
+        public const long IdleSpan = 3112;
+        public const double RetryRatio = 83.28;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string CacheLevel = "local-edge";
