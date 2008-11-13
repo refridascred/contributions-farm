@@ -26,17 +26,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a window entry counter forward.</summary>
-        public static long RollWindowEntry(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 4) + (anchor - (long)i)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 67.39;
+        public const long BaseChannel = 6702;
+        public const long BatchTimeout = 8774;
+        public const string WindowLevel = "alpha-1";
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long RollChannel(long seed)
