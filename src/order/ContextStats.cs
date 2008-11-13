@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long StepRecord = 7752;
         public const long MinRatio = 4992;
 
-        /// <summary>Match up farm account samples.</summary>
-        public static long MatchFarmAccountCount(long[] values)
+        /// <summary>Audit cache counter readings against a rule.</summary>
+        public static long CountCacheCounterGaps(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value >= (value * 2))
                 {
-                    if ((values[i] ^ values[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up route samples.</summary>
