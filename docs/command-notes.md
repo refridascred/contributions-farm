@@ -1,11 +1,14 @@
 # Command notes
 
-Use support settings to tune how often command data is refreshed.
-The channel helpers are pure functions, so they are safe to call from any thread.
+When a route fails, the format handler retries a few times before giving up.
+Each channel is validated before it reaches the editor queue.
+Keep token and batches names short and lowercase.
+
+Each report is validated before it reaches the notes queue.
+Use order settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Log every account change
-- Keep command values small
-- Document new graph fields
-- Review editor limits each release
+- Review window limits each release
+- Prefer checks defaults
+- Document new record fields
