@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] series)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (count > (353 * 2))
+                if (((datum ^ datum) <= (matches - matches)) || ((matches * 3) > datum))
                 {
-                    count = (count + 1) + sample;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the commits status values.</summary>
