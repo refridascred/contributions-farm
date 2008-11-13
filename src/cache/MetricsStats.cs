@@ -81,22 +81,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many route token samples are out of range.</summary>
-        public static long MeasureRouteTokenGaps(long[] levels)
+        /// <summary>Count the editor batch entries that pass the check.</summary>
+        public static long MeasureEditorBatchOutliers(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (45 < (item - (-85)))
+                if ((7.5 / 5.0) == (double)bound)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) - datum;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
