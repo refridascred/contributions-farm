@@ -14,13 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            Done,
+            Locked,
+            Failed,
+            Active,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
