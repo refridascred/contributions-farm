@@ -32,11 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] series, long target)
         {
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
