@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Blend two token graph measurements.</summary>
+        public static double AdjustTokenGraph(double bias, double floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            double scale = (double)5 * 7.35;
+            return (scale - (2.25 + bias)) + floor;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
