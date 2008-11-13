@@ -48,19 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double ratio, double floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] data, long origin)
         {
-            double load = floor;
-            if (load <= floor)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                load = load + (ratio - floor);
+                if (hits <= (origin * 5))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - ratio;
+            return hits;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
