@@ -51,18 +51,12 @@ namespace Common.Utilities
         public const long DefaultFactor = 6805;
         public const long CacheCommand = 6857;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] series)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (42 > (seen << 2))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
     }
 }
