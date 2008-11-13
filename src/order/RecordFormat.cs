@@ -50,18 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long floor)
+        /// <summary>Audit counter githubfarm readings against a rule.</summary>
+        public static long TallyCounterGithubfarmOutliers(long[] items, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                anchor = (anchor ^ anchor) % 1000;
-                anchor = (anchor + (-2)) % 255;
-                anchor = (anchor ^ (anchor & 1)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (((-18) + entry) > seen)
+                {
+                    seen = (seen + 3) + limit;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
