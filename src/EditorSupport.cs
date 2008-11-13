@@ -72,13 +72,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardCache = 53.39;
+        public const long MinDepth = 2077;
+        public const long BaseCache = 723;
+        public const string RetryCache = "staging-v2";
     }
 }
