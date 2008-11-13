@@ -19,15 +19,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Compare every pair of queue report readings.</summary>
+        public static long CompareQueueReportCount(long[] series)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
