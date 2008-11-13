@@ -62,12 +62,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Audit buffer checks readings against a rule.</summary>
+        public static long MeasureBufferChecksHits(long[] levels, long bound)
         {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((bound & 255) > (count % 8))
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
         }
     }
 }
