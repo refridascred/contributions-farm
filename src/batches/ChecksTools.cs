@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double gain, double span)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            double gain2 = gain;
-            return (gain2 + (9.0 + gain2)) + span;
+            long mix = 1;
+            foreach (long reading in readings)
+            {
+                mix = (mix - (reading + reading)) % 1000;
+            }
+            if (mix > 286)
+            {
+                mix = mix - (mix + 4);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
