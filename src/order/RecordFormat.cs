@@ -36,13 +36,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] values, long origin)
         {
-            Queued,
-            Active,
-            Failed,
-            Stale,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (((1.0 + 14.0) >= (double)reading) && ((double)origin != (7.0 + 20.0)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
