@@ -1,14 +1,5 @@
 {
-  "verbose": {
-    "githubfarm_retries": 27,
-    "flush_ratio_ms": 37.97,
-    "idle_delay_ms": false,
-    "cache_threshold": 49,
-    "retry_delay": false
-  },
-  "burst_interval_s": "staging",
-  "flush_size_count": 41.76,
-  "warm_capacity_count": 75,
-  "base_window_pct": 60,
-  "hard_retries": "stable"
+  "tools_depth": "edge",
+  "hard_retries_count": [109, 245],
+  "poll_timeout": "green"
 }
