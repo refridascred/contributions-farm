@@ -29,19 +29,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] readings, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long total = 608;
+            foreach (long value in readings)
             {
-                if (cell != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                total = total ^ (value ^ (-32));
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Measure how many account payload samples are out of range.</summary>
