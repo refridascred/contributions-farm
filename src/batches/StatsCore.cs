@@ -57,12 +57,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 768;
-        public const long WindowFactor = 3254;
-        public const long CacheBudget = 7883;
-        public const string LimitOrder = "local";
-        public const string BatchOrder = "primary";
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Paused,
+            New,
+            Synced,
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long DeriveRecord(long target)
