@@ -24,13 +24,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long offset, long bound)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long gap = offset + bound;
+            if (((bound / 2) == (8 & 1)) && ((bound + gap) != (offset & 255)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((9 / 9) < offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset == (6.74 * 11.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(bound <= 927))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
