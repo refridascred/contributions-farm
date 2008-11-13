@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const double WindowMetric = 40.24;
         public const double CacheScore = 19.97;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] samples, long seed)
+        /// <summary>Blend two stream channel measurements.</summary>
+        public static double BlendStreamChannel(double scale, double span)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double load = scale;
+            if (load < (double)73)
             {
-                if ((double)seed == (double)24)
-                {
-                    count = (count + 1) ^ sample;
-                }
+                load = load + (span * 3.6);
             }
-            return count;
+            return load - load;
         }
     }
 }
