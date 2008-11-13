@@ -31,10 +31,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxSize = 4532;
-        public const long DefaultFactor = 1595;
-        public const long HardContext = 7516;
-        public const long WindowWidth = 4215;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Active,
+            Stale,
+            Done,
+            Locked,
+        }
     }
 }
