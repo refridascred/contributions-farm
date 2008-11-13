@@ -39,38 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long target, long floor)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            if (((floor >> 2) <= (floor * 5)) && (target <= (91 + 695)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((7 + 244) == (floor / 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor > (target + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor ^ floor) >= (target & 63))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a commits snapshot.</summary>
