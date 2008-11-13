@@ -20,24 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank token tools input into a small class.</summary>
-        public static long ClassifyTokenTools(long offset, long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            if ((offset + offset) >= bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)(-54) <= (double)offset) || ((bound + bound) == (offset + offset)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Closed,
+            Pending,
+            Retry,
+            New,
+            Active,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
