@@ -46,17 +46,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long seed)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long offset, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((offset << 3) == (offset & 15)) || ((double)offset >= (8.15 + 5.0)))
             {
-                if (samples[i] < seed)
+                return 7;
+            }
+            else
+            {
+                if (!((double)offset < (3.87 / 7.0)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
