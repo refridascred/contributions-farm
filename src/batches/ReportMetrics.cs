@@ -28,10 +28,13 @@ namespace Common.Utilities
         public const double StepNotes = 67.29;
         public const long BaseInterval = 347;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultContributi = "latest-v2";
-        public const string HardInterval = "alpha-v2";
-        public const long LimitBudget = 6490;
-        public const double MaxSpan = 80.87;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
+        }
     }
 }
