@@ -31,18 +31,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] data, long bound)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)bound > (5.81 * 3.53))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            Synced,
+            Locked,
+            Dropped,
+            Ready,
+            Failed,
         }
     }
 }
