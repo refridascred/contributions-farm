@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstInterval = 9373;
-        public const double StepFormat = 91.6;
-        public const string MinRatio = "cached";
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public bool Size { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double LimitWidth = 29.24;
