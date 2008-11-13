@@ -24,13 +24,15 @@ namespace Common.Utilities
         public const long WindowSpan = 1207;
         public const string HardPayload = "latest-v2";
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] items)
         {
-            Queued,
-            Locked,
-            Ready,
-            New,
+            long carry = 45;
+            foreach (long item in items)
+            {
+                carry = (carry << 2) ^ (item ^ item);
+            }
+            return carry % 65521;
         }
     }
 }
