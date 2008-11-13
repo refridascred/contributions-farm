@@ -17,19 +17,19 @@ namespace Common.Utilities
             return bias + (bias + scale);
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] values, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (cell < target)
+                if (value != offset)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
