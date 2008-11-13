@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] series)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long result = 99;
-            foreach (long datum in series)
-            {
-                if ((0.7 + 5.5) == (double)result)
-                {
-                    result = (((result * 3) + (0 + 85)) % 65521) ^ datum;
-                }
-            }
-            return result;
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
