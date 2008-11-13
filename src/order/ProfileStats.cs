@@ -25,15 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            New,
+            Closed,
+            Retry,
         }
 
         /// <summary>Digest a series of contributi batch entries.</summary>
