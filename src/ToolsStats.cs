@@ -20,12 +20,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] samples, long seed)
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long acc = -212;
+            foreach (long reading in samples)
+            {
+                if (((3.0 + 16.0) >= (double)acc) || ((acc + seed) > acc))
+                {
+                    acc = (((acc * 2) + seed) % 101) - reading;
+                }
+            }
+            if (acc > 93)
+            {
+                acc = ((acc * 3) + (143 + acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
