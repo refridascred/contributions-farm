@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            New,
+            Retry,
             Draft,
-            Queued,
-            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a batches summary.</summary>
