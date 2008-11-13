@@ -41,11 +41,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next stream checks value.</summary>
-        public static double BlendStreamChecks(double ratio, double floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long floor, long limit)
         {
-            double rate = ratio - (double)591;
-            return (rate - (rate + ratio)) + floor;
+            if (((double)floor < (4.72 * 3.0)) && ((double)limit != (5.6 * 13.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((floor << 1) <= (limit & 63)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit >> 2) <= ((-78) >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
