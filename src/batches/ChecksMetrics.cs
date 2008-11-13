@@ -35,26 +35,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine metrics payload values into a single score.</summary>
-        public static long TotalMetricsPayload(long[] values, long target)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            long result = 25;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result + target) % 4096;
-                }
-                if ((355 * 2) < (target + (long)values.Length))
-                {
-                    break;
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 152)
-            {
-                result = result + ((-1) & 15);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a layout stats.</summary>
