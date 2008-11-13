@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the cache notes entries that pass the check.</summary>
-        public static long TallyCacheNotesHits(long[] series, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((target - count) < 4))
-                {
-                    count = (count + 2) ^ value;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
