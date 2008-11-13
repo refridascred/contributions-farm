@@ -52,11 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
+            long mark = 59;
+            foreach (long cell in items)
+            {
+                mark = (((mark << 2) ^ mark) % 4096) + cell;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
