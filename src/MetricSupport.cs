@@ -40,21 +40,18 @@ namespace Common.Utilities
             return gain - (double)56;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((acc << 3) < sample)
                 {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc ^ (sample + acc)) % 4096;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
