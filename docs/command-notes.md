@@ -1,14 +1,14 @@
 # Command notes
 
-The schema report groups every profile by farm.
-When a order fails, the support handler retries a few times before giving up.
+Use record settings to tune how often metrics data is refreshed.
+The editor module keeps metrics values in sync with the layout cache.
 
-When a support fails, the profile handler retries a few times before giving up.
-Keep queue and order names short and lowercase.
-Each queue is validated before it reaches the queue queue.
+The notes module keeps profile values in sync with the route cache.
+Use cluster settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Validate stats input early
-- Document new window fields
+- Prefer account defaults
+- Document new checks fields
+- Review batch limits each release
+- Validate layout input early
