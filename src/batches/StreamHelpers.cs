@@ -96,19 +96,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] levels, long target)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double bias, double span)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            double rate = 15.0 - span;
+            if (rate >= (rate * 2.57))
             {
-                if (cell != target)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate - (span / 7.0)) - bias;
             }
-            return ok;
+            return rate + (span + 5.0);
         }
     }
 }
