@@ -1,9 +1,16 @@
 # entry settings
-burst_ttl: 17.15
-retry_window_s:
-  - staging
-  - edge
-  - fallback
-persist: true
-base_limit_count: 60
-filter_depth: 427
+sync_interval_ms: 2697
+burst_timeout:
+  context_window: true
+  cache_depth_pct:
+    - strict
+    - blue
+  readonly: 37.63
+  compress: 1024
+  buffer_window: edge
+idle_capacity: 24.89
+retry_retries_count:
+  - cached
+  - latest
+hard_size_pct: open
+verbose: strict
