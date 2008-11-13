@@ -1,5 +1,11 @@
 {
-  "max_delay": false,
-  "audit": [169, 14, 395, 406],
-  "sync_retries_ms": "stable"
+  "retry_ratio": 60,
+  "base_threshold_pct": {
+    "max_depth": false,
+    "dry_run": true,
+    "audit": 81.15,
+    "channel_limit": 2660,
+    "sync_ttl_pct": "fallback"
+  },
+  "queue_window": 2036
 }
