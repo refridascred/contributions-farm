@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const double StepFormat = 91.6;
         public const string MinRatio = "cached";
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Paused,
-            Pending,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitWidth = 29.24;
+        public const long RetryRatio = 5090;
+        public const long IdleOrder = 9836;
+        public const long MinOrder = 441;
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
