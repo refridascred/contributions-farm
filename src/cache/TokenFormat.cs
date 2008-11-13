@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command commits entries that pass the check.</summary>
-        public static long CountCommandCommitsMatches(long[] values, long limit)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double load = floor;
+            if (load > (scale * 18.0))
             {
-                if ((value << 3) <= ((-583) << 3))
-                {
-                    hits = (hits + 1) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = load + (floor - load);
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (scale - floor)) + (double)(long)i;
+            }
+            return load + scale;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
