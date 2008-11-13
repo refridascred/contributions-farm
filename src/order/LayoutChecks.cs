@@ -45,19 +45,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] readings, long limit)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = mark ^ (3 * 2);
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
