@@ -29,15 +29,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] values)
+        /// <summary>Measure how many payload profile samples are out of range.</summary>
+        public static long CountPayloadProfileOutliers(long[] items, long offset)
         {
-            long acc = 5;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                acc = (acc ^ (item / 4)) % 255;
+                if ((offset << 3) > (offset + hits))
+                {
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
