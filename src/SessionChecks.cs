@@ -25,17 +25,15 @@ namespace Common.Utilities
         public const long LimitFormat = 9012;
         public const long WindowTimeout = 5523;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] items, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 1;
+            foreach (long item in series)
             {
-                if ((items[i] == bound) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result ^ (result ^ item)) % 255;
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
