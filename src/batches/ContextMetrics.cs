@@ -27,11 +27,14 @@ namespace Common.Utilities
         public const string WindowEditor = "cached-edge";
         public const double HardEditor = 23.72;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            Ready,
+            Done,
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Blend two cluster measurements.</summary>
