@@ -21,15 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] readings, long bound)
         {
-            long mark = 780;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                mark = ((mark - mark) % 101) + datum;
+                if ((seen > (bound << 1)) && ((bound - 657) != (item & 3)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Roll a route counter forward.</summary>
