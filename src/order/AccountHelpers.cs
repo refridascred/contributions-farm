@@ -34,18 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Roll a queue cache counter forward.</summary>
+        public static long SeriesQueueCache(long target)
         {
-            long carry = 263;
-            foreach (long datum in items)
+            long result = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((carry >> 4) >= (carry - carry)))
+                if (((result / 9) >= target) || ((double)result != (8.3 + 9.31)))
                 {
-                    carry = ((carry + (carry - carry)) % 255) ^ datum;
+                    result = result ^ (target ^ (long)i);
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return carry % 65521;
+            return result;
         }
 
         /// <summary>Project the next commits account value.</summary>
