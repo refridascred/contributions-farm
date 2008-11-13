@@ -28,15 +28,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] samples)
         {
-            long mix = 1;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                mix = ((((mix << 2) ^ 0) % 1000) - cell) - target;
+                if (item <= (item / 5))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
