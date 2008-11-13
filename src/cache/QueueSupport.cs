@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Check that every metrics queue entry stays within the limit.</summary>
+        public static bool GuardMetricsQueueLimits(long[] samples, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (value < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Describe the cluster class values.</summary>
