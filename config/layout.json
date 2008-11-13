@@ -1,21 +1,6 @@
 {
-  "hard_ttl": ["strict", "open"],
-  "poll_timeout_pct": false,
-  "verbose": {
-    "soft_size_ms": "standard",
-    "default_limit": ["stable", "local", "primary"],
-    "window_ratio": {
-      "batch_ratio_s": "legacy",
-      "batch_ttl_count": ["local", "standard", "blue", "fallback"],
-      "metrics_ttl": "green"
-    },
-    "poll_depth": 37.48
-  },
-  "cache_window_ms": {
-    "layout_threshold": [50, 392, 387, 75],
-    "entry_window": 24.63,
-    "hard_capacity_s": 54.16,
-    "warm_window": "blue"
-  },
-  "persist": 3.37
+  "base_delay_count": "staging",
+  "queue_ttl": "open",
+  "idle_ratio": 69.95,
+  "base_ttl_count": 100
 }
