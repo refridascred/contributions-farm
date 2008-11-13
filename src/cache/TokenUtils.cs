@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine editor window values into a single score.</summary>
-        public static long FoldEditorWindow(long[] values)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long anchor = 88;
-            foreach (long entry in values)
-            {
-                anchor = ((anchor << 2) ^ (anchor ^ entry)) % 4096;
-            }
-            if (anchor > (-4))
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 97;
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
