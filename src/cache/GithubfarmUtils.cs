@@ -28,19 +28,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] series, long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
