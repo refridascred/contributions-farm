@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Closed,
-            Pending,
-            Failed,
+            public bool Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
