@@ -1,14 +1,16 @@
 # Editor notes
 
-Run the support check before changing any editor limits.
-When a cluster fails, the session handler retries a few times before giving up.
+Each githubfarm is validated before it reaches the window queue.
+Keep channel and graph names short and lowercase.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
-Run the payload check before changing any profile limits.
-Run the graph check before changing any cluster limits.
-The payload module keeps support values in sync with the order cache.
+A editor that stays idle for too long is moved to the metric list.
+Each cache is validated before it reaches the token queue.
+Use queue settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Keep session values small
-- Validate already input early
-- Document new metric fields
+- Prefer command defaults
+- Keep payload values small
+- Review order limits each release
+- Validate stream input early
