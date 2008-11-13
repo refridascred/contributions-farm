@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
