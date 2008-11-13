@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] items)
         {
-            long mix = 9;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in items)
             {
-                mix = ((mix - (4 / 6)) % 4096) + item;
+                if (hits < (value % 97))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (mix > 762)
-            {
-                mix = mix - mix;
-            }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Hold a batch info.</summary>
