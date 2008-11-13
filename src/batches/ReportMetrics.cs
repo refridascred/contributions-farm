@@ -33,11 +33,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "stable";
-        public const string BurstSpan = "alpha-v2";
-        public const long BurstOrder = 533;
-        public const long WindowOrder = 1149;
-        public const long LimitInterval = 9691;
+        /// <summary>Compare every pair of githubfarm stats readings.</summary>
+        public static long CompareGithubfarmStatsCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
