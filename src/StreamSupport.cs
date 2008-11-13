@@ -41,19 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double gain, double bias)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double mean = bias;
-            if (mean > (bias + gain))
-            {
-                mean = mean + (bias - mean);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + bias) - (double)(long)i;
-            }
-            return mean - mean;
+            New,
+            Idle,
+            Pending,
+            Paused,
+            Ready,
         }
     }
 }
