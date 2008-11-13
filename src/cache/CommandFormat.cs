@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                state = state - (5 + (long)i);
-                state = ((state << 3) ^ (long)i) % 101;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Queued,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the route level values.</summary>
