@@ -19,13 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long seed, long origin)
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            long bound = seed + origin;
+            if ((bound + bound) <= origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((bound + bound) <= origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
