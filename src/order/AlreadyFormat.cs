@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] items, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (reading >= bound)
+                if ((entry + 96) < hits)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the token status values.</summary>
