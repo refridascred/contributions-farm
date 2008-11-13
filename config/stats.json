@@ -1,9 +1,5 @@
 {
-  "strict": 8055,
-  "persist": {
-    "sync_capacity_pct": "fallback",
-    "default_ttl": 10,
-    "readonly": 6886
-  },
-  "batch_depth_s": 1838
+  "max_depth_ms": "strict",
+  "flush_window": 47.64,
+  "retry_ttl_s": 58
 }
