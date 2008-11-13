@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Derive the next githubfarm contributi value from a seed.</summary>
+        public static long StepGithubfarmContributi(long seed)
         {
-            Failed,
-            Closed,
-            Stale,
-            Active,
-            Dropped,
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
