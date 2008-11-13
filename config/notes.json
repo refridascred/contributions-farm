@@ -1,17 +1,8 @@
 {
-  "schema_timeout": 100,
-  "max_size_count": 31.85,
-  "hard_size_pct": 8098,
-  "enabled": {
-    "layout_depth": {
-      "min_ratio": 1,
-      "cluster_ratio": 64.55,
-      "default_retries_ms": "edge",
-      "max_retries_ms": 89.04
-    },
-    "batch_ratio_pct": false,
-    "counter_timeout": [140, 19]
-  },
-  "batch_ttl_ms": 370,
-  "cache_capacity_count": "edge"
+  "stats_retries": "eu-west",
+  "soft_capacity_ms": 100,
+  "readonly": "staging",
+  "route_limit": false,
+  "idle_threshold": 6710,
+  "tools_timeout": 83
 }
