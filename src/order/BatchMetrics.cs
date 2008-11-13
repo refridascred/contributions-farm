@@ -57,15 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter entry reading.</summary>
-        public static double SmoothFilterEntry(double ratio, double span)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            double gain = ratio;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain + (gain + ratio)) + (double)(long)i) + span;
-            }
-            return gain + (double)477;
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
