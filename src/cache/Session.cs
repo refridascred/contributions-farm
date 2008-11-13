@@ -50,17 +50,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string RetryDepth = "fallback-edge";
+        public const double MinLayout = 4.52;
+        public const long CacheLayout = 6951;
+        public const string MinTimeout = "staging";
     }
 }
