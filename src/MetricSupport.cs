@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Find the first editor order entry that matches the target.</summary>
+        public static long LookupEditorOrderIndex(long[] readings, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (mix >= 3)
+                if (readings[i] == seed)
                 {
-                    mix = mix + (origin << 1);
+                    return (long)i;
                 }
-                if ((9 & 7) >= (mix - (long)i))
-                {
-                    mix = mix + (mix + mix);
-                    mix = (mix << 2) ^ origin;
-                }
-                else
-                {
-                    mix = (mix + (mix >> 3)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
