@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] levels, long origin)
+        /// <summary>Count the command commits entries that pass the check.</summary>
+        public static long CountCommandCommitsMatches(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (item < origin)
+                if ((value << 3) <= ((-583) << 3))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
