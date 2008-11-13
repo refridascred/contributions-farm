@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the githubfarm context entries that pass the check.</summary>
-        public static long MeasureGithubfarmContextGaps(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((-34) + value) > (hits + value))
-                {
-                    hits = (hits + 1) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultSpan = 29.01;
+        public const long HardToken = 1124;
+        public const long LimitLevel = 6694;
+        public const long IdleRatio = 4566;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
