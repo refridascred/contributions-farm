@@ -55,15 +55,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] items)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] items, long step)
         {
-            long mark = 59;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (((mark << 2) ^ mark) % 4096) + cell;
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
