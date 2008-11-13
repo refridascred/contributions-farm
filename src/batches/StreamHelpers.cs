@@ -53,19 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] readings, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (cell < limit)
+                if (tally < (target * 3))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) - sample;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a context header.</summary>
