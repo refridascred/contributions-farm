@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Derive the next stats farm value from a seed.</summary>
+        public static long SeriesStatsFarm(long offset)
         {
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((offset / 6) == (78 + (long)i)) || ((acc + (long)i) < (acc - 6)))
+                {
+                    acc = acc - (acc + offset);
+                }
+                else
+                {
+                    acc = acc + ((long)i ^ acc);
+                }
+                acc = ((acc << 2) ^ (acc % 10)) % 1000;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a metric info.</summary>
