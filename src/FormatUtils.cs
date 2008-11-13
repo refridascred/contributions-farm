@@ -55,13 +55,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Fold a list of metrics cluster readings.</summary>
+        public static long ScoreMetricsCluster(long[] series)
         {
-            Done,
-            Ready,
-            Pending,
-            Active,
+            long anchor = 30;
+            foreach (long cell in series)
+            {
+                anchor = ((anchor - (anchor ^ anchor)) % 4096) + cell;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
