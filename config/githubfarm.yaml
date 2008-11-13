@@ -1,7 +1,13 @@
 # githubfarm settings
-burst_delay_ms: staging
-batch_delay:
-  - 407
-  - 4
-default_ttl_pct: standard
-default_delay_count: 64.78
+max_timeout_count: 75.67
+session_size: eu-west
+persist:
+  - primary
+  - fallback
+base_interval:
+  soft_interval: 67.12
+  session_ratio: primary
+  base_limit: 60
+  flush_retries_pct: primary
+  dry_run: 500
+cache_depth: 65.98
