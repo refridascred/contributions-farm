@@ -56,15 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] readings, long target)
         {
-            long sum = 364;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                sum = (sum + ((long)readings.Length / 9)) ^ value;
+                if ((entry % 97) < 8)
+                {
+                    seen = (seen + 2) - target;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
