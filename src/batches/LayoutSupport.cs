@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] items, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] items)
         {
-            long total = 5;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (origin <= (-868))
+                if ((13 % 8) >= (tally / 9))
                 {
-                    total = (((total * 5) + (885 / 4)) % 1000) - reading;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
