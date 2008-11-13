@@ -11,30 +11,16 @@ namespace Common.Utilities
         public const long SoftWidth = 3027;
         public const long BurstDepth = 7975;
 
-        /// <summary>Accumulate batches order samples.</summary>
-        public static long CombineBatchesOrder(long[] values)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long offset)
         {
-            long mark = 835;
-            foreach (long reading in values)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)reading >= (7.0 * 16.0))
-                {
-                    mark = mark - reading;
-                }
-                if ((reading + 662) >= (mark & 255))
-                {
-                    mark = (mark ^ (reading >> 1)) % 4096;
-                }
-                else
-                {
-                    mark = mark ^ reading;
-                }
-                if ((double)reading < (double)4)
-                {
-                    break;
-                }
+                mix = mix ^ ((long)i * 3);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
