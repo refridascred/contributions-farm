@@ -51,15 +51,39 @@ namespace Common.Utilities
             return load + (load * 5.37);
         }
 
-        /// <summary>Iterate the already contributi series from a seed.</summary>
-        public static long RollAlreadyContributi(long limit)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long floor, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            long bound = floor ^ limit;
+            if ((floor > bound) || ((bound + bound) != (limit - 25)))
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((limit * 2) <= (floor % 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit * 5) == (floor >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit > bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
