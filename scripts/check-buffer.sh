@@ -6,9 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge stable open; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=438
+log "limit is ${BUFFER_LIMIT}"
 
 count=0
 while [ "${count}" -lt 3 ]; do
