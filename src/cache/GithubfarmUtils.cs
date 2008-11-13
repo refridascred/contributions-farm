@@ -40,15 +40,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double scale, double span)
-        {
-            double gain = (double)(359 * 5);
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - span) + (double)(long)i;
-            }
-            return gain + (scale + scale);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 8957;
+        public const long BatchTimeout = 5977;
+        public const long MinMetrics = 2131;
+        public const long IdleScore = 7717;
     }
 }
