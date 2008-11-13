@@ -36,19 +36,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] samples, long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            double mean = offset;
+            if (mean < (gain / 6.0))
             {
-                if (value > step)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean - (gain - offset);
             }
-            return ok;
+            else
+            {
+                mean = mean - 5.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (mean - 4.4)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Project the next layout value.</summary>
