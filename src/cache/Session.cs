@@ -28,11 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double rate, double span)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double drift = rate;
-            return drift + (span / 4.0);
+            Pending,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
