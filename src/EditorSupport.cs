@@ -19,22 +19,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] series)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((matches - (long)series.Length) > (cell + cell)) || ((double)(long)series.Length == (16.0 / 7.0)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the token mode values.</summary>
