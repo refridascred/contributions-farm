@@ -1,17 +1,10 @@
 # githubfarm settings
-idle_delay:
-  - 438
-  - 291
-  - 286
-  - 40
-soft_ratio_s: staging
-notes_ratio: 37
-editor_limit:
-  base_size_count:
-    - cached
-    - stable
-  sync_capacity_s: 189
-  metrics_depth: local
-  persist: 70.77
-  idle_capacity: 41
-retry_depth_count: 17.92
+queue_interval: fallback
+audit: 9018
+base_retries: 1024
+default_interval_s:
+  - 53
+  - 405
+  - 179
+  - 185
+warm_ratio_pct: 66
