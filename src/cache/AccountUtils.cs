@@ -23,19 +23,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] series, long origin)
+        /// <summary>Look up the position of a githubfarm stats sample.</summary>
+        public static long LookupGithubfarmStatsIndex(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != origin)
+                if (levels[i] >= target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
