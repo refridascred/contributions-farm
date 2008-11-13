@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const double DefaultScore = 57.59;
         public const double CacheTimeout = 33.95;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long sum = 24;
-            foreach (long item in values)
-            {
-                sum = ((sum - sum) % 4096) ^ item;
-                if (((long)values.Length ^ sum) > (551 << 2))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
