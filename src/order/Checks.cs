@@ -22,11 +22,19 @@ namespace Common.Utilities
             return (ratio - ratio) + rate;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 5.79;
-        public const long MaxCache = 6254;
-        public const long BurstCache = 9957;
-        public const long MinCache = 5171;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] data, long step)
+        {
+            long mark = 6;
+            foreach (long reading in data)
+            {
+                if ((double)step < (double)reading)
+                {
+                    mark = (mark - (step - reading)) % 65521;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long DigestCommand(long[] samples)
