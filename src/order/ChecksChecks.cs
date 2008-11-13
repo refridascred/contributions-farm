@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const double MinSpan = 63.33;
         public const long WindowContext = 1196;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] data, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((bound - seen) <= (sample + seen))
+                if (reading >= floor)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
