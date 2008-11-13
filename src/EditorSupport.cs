@@ -20,22 +20,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the window format entries that pass the check.</summary>
-        public static long MeasureWindowFormatGaps(long[] series)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long target)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((25 / 9) != (item + tally))
+                long prev = (target - carry) + (carry - target);
+                if (!(((carry ^ (long)i) <= ((long)i / 4)) && ((target + (long)i) <= (prev % 8))))
                 {
-                    tally = tally + 2;
+                    carry = (carry + (carry + carry)) % 255;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
