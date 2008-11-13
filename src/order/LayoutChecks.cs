@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long step, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] readings, long offset)
         {
-            if ((5.2 + 4.67) > (double)step)
+            long result = 99;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor - floor) > 96)
+                for (int i = 0; i < 4; i++)
                 {
-                    return 5;
+                    result = ((result + offset) % 65521) ^ (long)i;
                 }
-                else
+                if ((result << 2) <= item)
                 {
-                    return 8;
+                    result = ((result * 5) + (418 / 6)) % 65521;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
