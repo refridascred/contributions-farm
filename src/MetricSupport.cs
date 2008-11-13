@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] data, long offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (!!(((-673) >> 1) < ((long)data.Length & 31)))
+                if (mix >= 3)
                 {
-                    tally = ((tally + 1) + datum) - offset;
+                    mix = mix + (origin << 1);
                 }
+                if ((9 & 7) >= (mix - (long)i))
+                {
+                    mix = mix + (mix + mix);
+                    mix = (mix << 2) ^ origin;
+                }
+                else
+                {
+                    mix = (mix + (mix >> 3)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
