@@ -24,13 +24,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseSpan = 4821;
+        public const long WindowCluster = 1022;
+        public const string CacheCluster = "primary";
+        public const double BaseCluster = 1.99;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmRange(long[] readings, long floor)
