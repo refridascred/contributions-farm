@@ -29,18 +29,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((6.8 + 14.0) <= (double)count)
-                {
-                    count = ((count + 1) + reading) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 6874;
+        public const long MinFarm = 9533;
+        public const long RetrySize = 7362;
+        public const long HardFarm = 4065;
     }
 }
