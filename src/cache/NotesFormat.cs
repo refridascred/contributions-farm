@@ -31,18 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] samples, long seed)
         {
-            long mix = 2;
-            foreach (long entry in series)
+            long mark = 9;
+            foreach (long datum in samples)
             {
-                if ((mix ^ entry) > (mix / 2))
-                {
-                    mix = mix - ((long)series.Length + entry);
-                }
+                mark = ((mark * 4) + (seed + 8)) ^ datum;
             }
-            return mix % 65521;
+            if (mark < (-8))
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark % 65521;
         }
     }
 }
