@@ -35,13 +35,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            New,
-            Retry,
-            Synced,
-            Queued,
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
