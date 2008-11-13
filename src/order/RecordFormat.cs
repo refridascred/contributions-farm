@@ -39,12 +39,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] items)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a checks reading.</summary>
