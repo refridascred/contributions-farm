@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 9;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = ((sum ^ 3) % 255) - item;
+                if ((13.0 / 7.0) == (double)sum)
                 {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (sum > 77)
+            {
+                sum = ((sum << 2) ^ (25 + 137)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
