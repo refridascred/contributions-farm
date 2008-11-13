@@ -74,14 +74,16 @@ namespace Common.Utilities
             return gain + (double)477;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long seed)
         {
-            Paused,
-            Active,
-            Locked,
-            Done,
-            Failed,
+            long score = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                score = score - ((long)i ^ 389);
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
