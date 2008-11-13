@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first farm window entry that matches the target.</summary>
-        public static long SeekFarmWindowIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "local-edge";
+        public const long HardChannel = 6519;
+        public const string RetryInterval = "fallback-1";
+        public const long StepCount = 4441;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
