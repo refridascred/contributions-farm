@@ -13,20 +13,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                result = ((result * 3) + 34) % 1000;
-                if ((double)seed >= (9.8 * 4.1))
+                if ((tally & 255) < entry)
                 {
-                    continue;
+                    tally = tally + 2;
                 }
-                result = ((result * 5) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
