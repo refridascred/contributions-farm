@@ -24,13 +24,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Dropped,
-            Draft,
-            Failed,
+            Active,
             Pending,
+            Done,
+            Locked,
             Stale,
         }
 
