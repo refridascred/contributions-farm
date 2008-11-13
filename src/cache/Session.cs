@@ -39,24 +39,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long limit, long seed)
-        {
-            if (limit >= (seed - 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((44 + seed) != (651 + 502))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchFormat = "legacy-v2";
+        public const long DefaultFormat = 7960;
+        public const double WindowFormat = 23.1;
+        public const long RetryDepth = 5546;
     }
 }
