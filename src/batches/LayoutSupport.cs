@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((13 % 8) >= (tally / 9))
+                if (8.21 <= (double)count)
                 {
-                    tally = (tally + 1) ^ sample;
+                    count = (count + 3) + cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the queue kind values.</summary>
