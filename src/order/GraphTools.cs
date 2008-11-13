@@ -40,12 +40,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the account cache entries that pass the check.</summary>
+        public static long CountAccountCacheHits(long[] values, long floor)
         {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (((long)values.Length + seen) != ((long)values.Length % 10))
+                {
+                    seen = ((seen + 1) ^ cell) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
