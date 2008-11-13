@@ -49,13 +49,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Audit stats entry readings against a rule.</summary>
+        public static long CountStatsEntryGaps(long[] items, long floor)
         {
-            New,
-            Failed,
-            Stale,
-            Ready,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((floor + hits) >= (floor - 861))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
