@@ -17,19 +17,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] levels, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long origin)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry < step)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total - (total & 127)) % 97;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
