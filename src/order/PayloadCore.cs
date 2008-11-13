@@ -15,13 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Pending,
-            New,
-            Done,
-            Ready,
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a support record.</summary>
