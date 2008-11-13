@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] data, long limit)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (count <= (limit - count))
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
+            Closed,
+            Failed,
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
