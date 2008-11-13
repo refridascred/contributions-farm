@@ -59,39 +59,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long offset, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] data, long step)
         {
-            long offset2 = offset ^ origin;
-            if ((double)offset2 > (double)origin)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin * 4) != (5 & 63))
+                if (reading < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin > (4.92 * 6.03))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin < (offset - offset)) || ((7 - offset) != (origin * 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
