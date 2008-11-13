@@ -30,18 +30,21 @@ namespace Common.Utilities
         public const string BatchFactor = "stable-edge";
         public const long MinLevel = 5358;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] values, long bound)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell / 5) == (bound + cell))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((values[i] + values[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
