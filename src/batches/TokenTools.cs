@@ -53,21 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 706;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)value != (4.4 + 1.2))
                 {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    score = (((score * 4) + (score / 4)) % 255) - limit;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
