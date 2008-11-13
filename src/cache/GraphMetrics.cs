@@ -37,22 +37,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 4474;
+        public const long MinContext = 3537;
+        public const long DefaultContext = 6867;
+        public const long LimitInterval = 8379;
 
         /// <summary>Digest a series of window stream entries.</summary>
         public static long TotalWindowStream(long[] series)
