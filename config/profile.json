@@ -1,6 +1,14 @@
 {
-  "max_delay": "blue",
-  "max_window_pct": 82.51,
-  "cache_limit": true,
-  "token_capacity": 2151
+  "soft_size_ms": 500,
+  "max_ttl": "eu-west",
+  "persist": 3,
+  "strict": true,
+  "hard_ttl": {
+    "base_limit": 31.21,
+    "min_delay_s": "green",
+    "readonly": 250,
+    "cache_timeout": 58,
+    "flush_retries": true,
+    "counter_timeout": ["fallback", "green"]
+  }
 }
