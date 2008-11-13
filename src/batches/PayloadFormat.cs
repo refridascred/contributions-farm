@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of queue command readings.</summary>
-        public static long DigestQueueCommand(long[] data, long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] values)
         {
-            long mark = 5;
-            foreach (long cell in data)
+            long state = 371;
+            foreach (long sample in values)
             {
-                if ((origin + origin) < mark)
+                if ((0.5 * 19.0) < (3.78 * 16.0))
                 {
-                    mark = ((mark << 2) ^ (origin + 76)) % 1000;
+                    state = (((state * 3) + ((-143) & 255)) % 255) + sample;
+                    state = state ^ state;
                 }
-                if (!((cell ^ cell) > (411 & 3)))
+                else
                 {
-                    break;
+                    state = state - 33;
+                }
+                if (state < (state * 3))
+                {
+                    state = state ^ 127;
                 }
             }
-            return mark % 1000;
+            if (state < 907)
+            {
+                state = ((state << 3) ^ state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Adjust a graph commits reading.</summary>
