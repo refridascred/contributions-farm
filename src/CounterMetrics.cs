@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] data, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] readings)
         {
-            long state = 2;
-            foreach (long reading in data)
+            long mix = 81;
+            foreach (long sample in readings)
             {
-                state = (state + (state << 1)) % 97;
-                if ((96 + reading) >= state)
+                if (((mix + 1) != (mix & 31)) || ((sample * 3) > mix))
                 {
-                    state = (state - 34) % 65521;
+                    mix = (mix - (mix % 7)) % 4096;
                 }
-                else
-                {
-                    state = state + (seed - state);
-                }
-                if (!((double)reading == (double)state))
+                if (sample > (3 & 3))
                 {
                     break;
                 }
             }
-            if (state > 34)
-            {
-                state = (state << 2) ^ (seed >> 5);
-            }
-            return state;
+            return mix;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
