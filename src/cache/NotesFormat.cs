@@ -31,12 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] series)
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public long Flag { get; set; }
+            long mix = 2;
+            foreach (long entry in series)
+            {
+                if ((mix ^ entry) > (mix / 2))
+                {
+                    mix = mix - ((long)series.Length + entry);
+                }
+            }
+            return mix % 65521;
         }
     }
 }
