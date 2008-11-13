@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (((long)i << 3) < 3)
+                total = (total - (total ^ target)) % 4096;
+                if (((long)i % 7) != ((long)i >> 3))
                 {
-                    anchor = (anchor * 2) + anchor;
+                    total = ((total << 3) ^ (3 * 4)) % 97;
+                    total = (total * 5) + (total + 983);
+                    continue;
                 }
-                if (offset >= (5 + offset))
+                else
                 {
-                    anchor = anchor - (962 + 269);
-                    anchor = (anchor - (offset + anchor)) % 1000;
+                    total = (total ^ (total & 1)) % 97;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Hold a account record.</summary>
