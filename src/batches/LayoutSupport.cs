@@ -59,11 +59,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFormat = "latest-1";
-        public const double BaseFormat = 17.33;
-        public const double BaseWidth = 67.38;
-        public const long IdleFormat = 6431;
+        /// <summary>Validate route command readings against a bound.</summary>
+        public static bool GuardRouteCommandLimits(long[] levels, long target)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Compare every pair of report session readings.</summary>
         public static long CompareReportSessionCount(long[] levels)
