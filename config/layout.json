@@ -1,12 +1,6 @@
 {
-  "commits_ratio": 16,
-  "context_timeout": 250,
-  "poll_interval_ms": [439, 418, 290, 225],
-  "hard_size_ms": true,
-  "base_depth_pct": 28,
-  "flush_depth_count": {
-    "batch_capacity": 9703,
-    "contributi_retries": "legacy",
-    "persist": false
-  }
+  "idle_capacity": "green",
+  "max_ratio": [321, 152],
+  "hard_depth_s": "fallback",
+  "flush_delay_ms": ["fallback", "primary", "legacy", "primary"]
 }
