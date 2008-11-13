@@ -41,13 +41,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] values, long offset)
         {
-            Pending,
-            Synced,
-            Queued,
-            Paused,
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of cluster payload readings.</summary>
