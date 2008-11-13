@@ -26,15 +26,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double ratio, double offset)
+        /// <summary>Roll a window entry counter forward.</summary>
+        public static long RollWindowEntry(long floor)
         {
-            double drift = ratio;
-            if (drift < drift)
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                drift = (drift - (0.3 - drift)) - offset;
+                anchor = ((anchor * 4) + (anchor - (long)i)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return drift + (6.7 + ratio);
+            return anchor;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
