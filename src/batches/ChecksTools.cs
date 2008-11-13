@@ -31,21 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count cache batches pairs that satisfy a relation.</summary>
-        public static long MatchCacheBatchesCount(long[] readings)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 60;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(sample > (sample * 5)))
                 {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc + (acc * 4)) % 97;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
