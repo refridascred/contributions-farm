@@ -26,27 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values, long origin)
+        /// <summary>Audit payload record readings against a rule.</summary>
+        public static long CountPayloadRecordMatches(long[] levels)
         {
-            long score = -390;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((cell <= (226 + origin)) || ((double)cell <= (16.0 / 3.0)))
+                if (!((long)levels.Length >= (cell >> 2)) && ((count << 1) < (cell - (long)levels.Length)))
                 {
-                    score = (score * 3) + (origin * 5);
-                    continue;
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    score = (score ^ (cell << 1)) - (long)i;
-                }
-                if ((long)values.Length > origin)
-                {
-                    score = score ^ (cell - cell);
+                    count = count + 3;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
