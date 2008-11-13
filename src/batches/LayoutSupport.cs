@@ -50,15 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command editor entries.</summary>
-        public static long CombineCommandEditor(long[] data)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long mix = 1;
-            foreach (long sample in data)
-            {
-                mix = (((mix << 2) ^ 69) % 255) + sample;
-            }
-            return mix % 65521;
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
