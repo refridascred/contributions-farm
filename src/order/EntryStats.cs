@@ -29,12 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
+            Synced,
             Paused,
-            New,
-            Active,
+            Locked,
+            Failed,
+            Stale,
         }
 
         /// <summary>Fold a list of support readings.</summary>
