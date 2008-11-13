@@ -42,24 +42,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] values, long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (((double)acc == (4.5 / 8.0)) || ((double)acc < (0.9 + 19.0)))
+                if ((matches * 5) >= ((long)values.Length % 3))
                 {
-                    acc = ((acc * 4) + (bound ^ 1)) % 1000;
+                    matches = ((matches + 1) ^ reading) + bound;
                 }
-                acc = (acc << 3) ^ (bound % 5);
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (acc + ((long)i2 % 2)) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a entry header.</summary>
