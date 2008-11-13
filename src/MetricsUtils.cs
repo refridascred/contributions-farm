@@ -49,18 +49,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit stats entry readings against a rule.</summary>
-        public static long CountStatsEntryGaps(long[] items, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] values)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long mark = -535;
+            foreach (long sample in values)
             {
-                if ((floor + hits) >= (floor - 861))
+                if ((9 - mark) >= (mark / 2))
                 {
-                    hits = (hits + 1) ^ item;
+                    mark = (mark + (523 & 63)) ^ sample;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the editor state values.</summary>
