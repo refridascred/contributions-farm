@@ -1,17 +1,11 @@
 {
-  "dry_run": "fallback",
-  "soft_depth": 1024,
-  "strict": 60,
-  "cache_window_count": {
-    "route_delay": 7063,
-    "default_ratio_count": {
-      "flush_limit_s": [117, 88, 434],
-      "sync_delay": true,
-      "order_size": 60
-    },
-    "strict": false,
-    "poll_interval_count": 74
-  },
-  "base_timeout_count": "local",
-  "compress": "standard"
+  "graph_timeout": "edge",
+  "sync_delay": false,
+  "cache_threshold_ms": "open",
+  "cache_timeout_s": 54,
+  "channel_depth": {
+    "flush_threshold": 13,
+    "persist": "staging",
+    "idle_window_pct": 6559
+  }
 }
