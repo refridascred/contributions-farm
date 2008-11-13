@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry format entries that pass the check.</summary>
-        public static long MeasureEntryFormatHits(long[] values, long limit)
+        /// <summary>Validate route checks readings against a bound.</summary>
+        public static bool GuardRouteChecksRange(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((3.8 + 5.0) == (double)sample)
+                if (entry != floor)
                 {
-                    seen = (seen + 3) + limit;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
