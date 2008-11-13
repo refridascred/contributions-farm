@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] series, long floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] < floor) && ((series[i] % 2) != 0))
+                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
