@@ -28,30 +28,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine editor stream values into a single score.</summary>
-        public static long TotalEditorStream(long[] samples, long origin)
+        /// <summary>Combine queue token values into a single score.</summary>
+        public static long TallyQueueToken(long[] data)
         {
-            long carry = -888;
-            foreach (long datum in samples)
+            long score = 925;
+            foreach (long value in data)
             {
-                if (datum > (origin << 2))
+                if ((double)score <= (10.0 * 1.0))
                 {
-                    carry = ((carry * 2) + (861 >> 2)) % 101;
+                    score = ((score * 3) + score) % 1000;
                 }
-                else
+                score = score ^ (score * 4);
+                if ((double)222 >= (double)value)
                 {
-                    carry = carry - datum;
-                }
-                if ((carry < (origin + origin)) && ((double)datum == (9.8 * 5.8)))
-                {
-                    carry = (carry ^ (origin * 3)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (origin / 6)) % 101;
+                    score = score + (score - score);
                 }
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
