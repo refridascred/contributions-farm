@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every buffer layout entry stays within the limit.</summary>
-        public static bool CheckBufferLayoutLimits(long[] readings, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (entry != bound)
+                if (item > floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Measure how many stream context samples are out of range.</summary>
