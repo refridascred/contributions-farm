@@ -26,9 +26,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 8008;
-        public const long RetryDepth = 9982;
-        public const long BaseDepth = 6100;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] levels, long floor)
+        {
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
