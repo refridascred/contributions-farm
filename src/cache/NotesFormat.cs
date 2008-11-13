@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const string BatchFactor = "stable-edge";
         public const long MinLevel = 5358;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] samples, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (item < bound)
+                if ((cell / 5) == (bound + cell))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
