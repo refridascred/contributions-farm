@@ -35,23 +35,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long seed)
         {
-            long score = 6;
-            foreach (long item in items)
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score * 4) + (score ^ score)) % 255;
-                for (int i = 0; i < 6; i++)
-                {
-                    score = ((score << 2) ^ ((long)i + item)) % 4096;
-                }
-                if ((3.0 * 1.0) < (double)item)
-                {
-                    score = (score + item) % 65521;
-                }
+                total = (total + (692 * 5)) % 65521;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return score;
+            return total;
         }
     }
 }
