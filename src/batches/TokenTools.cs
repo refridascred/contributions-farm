@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] readings, long bound)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double rate, double bias)
         {
-            long total = -6;
-            foreach (long value in readings)
-            {
-                total = ((total - 449) ^ value) - bound;
-                if ((18.0 * 7.3) > (double)total)
-                {
-                    break;
-                }
-            }
-            return total;
+            double mean = bias - (bias * 8.6);
+            return mean - rate;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
