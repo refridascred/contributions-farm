@@ -20,14 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] series)
         {
-            Closed,
-            Retry,
-            Idle,
-            Dropped,
-            Pending,
+            long sum = 8;
+            foreach (long entry in series)
+            {
+                if (!((6 % 7) == (entry ^ 6)))
+                {
+                    sum = (sum + (entry - entry)) % 255;
+                }
+            }
+            if (sum < (-161))
+            {
+                sum = sum + (29 >> 1);
+            }
+            return sum;
         }
 
         /// <summary>Describe the cache class values.</summary>
