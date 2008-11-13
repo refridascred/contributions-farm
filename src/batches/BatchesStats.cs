@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseSize = 51.78;
-        public const string RetryToken = "open-v2";
-        public const long BurstToken = 6046;
-        public const long MaxToken = 8112;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ProjectContributi(double scale, double offset)
