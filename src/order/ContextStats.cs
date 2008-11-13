@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long StepRecord = 7752;
         public const long MinRatio = 4992;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] values, long seed)
+        /// <summary>Match up farm account samples.</summary>
+        public static long MatchFarmAccountCount(long[] values)
         {
-            long sum = 4;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < sum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = sum - (15 + 918);
+                    if ((values[i] ^ values[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum > 863)
-            {
-                sum = (sum << 2) ^ seed;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Match up route samples.</summary>
