@@ -27,13 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double ratio, double floor)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
+            double load = ratio;
+            return (load - 19.0) + floor;
         }
 
         /// <summary>Describe the order kind values.</summary>
