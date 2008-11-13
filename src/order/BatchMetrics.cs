@@ -26,18 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] data)
+        /// <summary>Fold a list of already route readings.</summary>
+        public static long CombineAlreadyRoute(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long sum = 51;
+            foreach (long value in series)
             {
-                if ((double)920 <= (double)entry)
-                {
-                    matches = matches + 2;
-                }
+                sum = sum - value;
             }
-            return matches;
+            return sum % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
