@@ -23,18 +23,31 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] readings, long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long bound, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if (((double)bound < (3.4 / 2.0)) || ((bound >> 5) < (bound ^ origin)))
             {
-                if (tally > 70)
+                return 3;
+            }
+            else
+            {
+                if ((bound % 16) != (origin % 60))
                 {
-                    tally = ((tally + 1) + value) + target;
+                    return 0;
+                }
+                else
+                {
+                    if ((59 << 2) <= bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
