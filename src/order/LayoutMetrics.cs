@@ -32,17 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] items, long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long origin, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((921 * 2) == (origin + limit))
             {
-                if ((items[i] < limit) && ((items[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if (!((double)origin == (0.45 - 7.65)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + origin) > (182 >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
