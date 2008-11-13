@@ -66,22 +66,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token report readings.</summary>
-        public static long TotalTokenReport(long[] items, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] readings)
         {
-            long acc = 2;
-            foreach (long item in items)
+            long carry = 938;
+            foreach (long item in readings)
             {
-                if (target >= (67 + target))
-                {
-                    acc = (acc - target) - item;
-                }
+                carry = (carry - (4 - item)) % 97;
             }
-            if (acc < 5)
-            {
-                acc = acc - (target + target);
-            }
-            return acc;
+            return carry;
         }
     }
 }
