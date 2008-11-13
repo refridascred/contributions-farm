@@ -63,10 +63,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 9039;
-        public const long LimitFactor = 6306;
-        public const long StepBudget = 3164;
-        public const long BatchOrder = 5072;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (((1 / 5) > item) && (bound <= (item - item)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
