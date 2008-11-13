@@ -1,6 +1,19 @@
 {
-  "metric_retries": "local",
-  "audit": 36,
-  "base_delay": 46.82,
-  "filter_ttl": false
+  "batch_timeout_s": "fallback",
+  "payload_ratio": "blue",
+  "default_depth": 13.2,
+  "min_depth_pct": 60,
+  "cache_ratio_ms": {
+    "flush_size_count": 4062,
+    "default_depth_ms": 97.85,
+    "retry_window": {
+      "readonly": 500,
+      "buffer_ratio": "staging",
+      "burst_threshold": 9756,
+      "checks_size": "edge",
+      "stream_ttl": 1501,
+      "max_depth": "strict"
+    },
+    "hard_window_count": false
+  }
 }
