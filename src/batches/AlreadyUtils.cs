@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] readings, long target)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long mix = 8;
-            foreach (long cell in readings)
-            {
-                if ((261 + 66) < (target + cell))
-                {
-                    mix = (mix + (mix - cell)) % 4096;
-                }
-            }
-            return mix % 1000;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a metric record.</summary>
