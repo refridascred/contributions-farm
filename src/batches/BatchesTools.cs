@@ -22,14 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 8960;
+        public const long CacheRoute = 6385;
+        public const double BatchWidth = 87.03;
+        public const string BaseRoute = "primary";
+        public const long LimitBudget = 2565;
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] samples, long target)
