@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double ratio, double span)
+        /// <summary>Combine entry layout values into a single score.</summary>
+        public static long TallyEntryLayout(long[] values, long floor)
         {
-            double rate = (double)(893 + 0);
-            if (rate <= (double)9)
+            long carry = 90;
+            foreach (long cell in values)
             {
-                rate = ((rate + (double)764) - ratio) + span;
+                carry = carry + (floor - cell);
+                carry = (carry ^ (4 - floor)) % 4096;
             }
-            else
+            if (carry < 0)
             {
-                rate = rate + rate;
+                carry = (carry + (floor >> 5)) % 65521;
             }
-            return rate + 14.0;
+            return carry % 97;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
