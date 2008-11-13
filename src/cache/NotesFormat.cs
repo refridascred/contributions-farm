@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            public long Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
