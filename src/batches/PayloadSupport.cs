@@ -37,16 +37,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Count the account batch entries that pass the check.</summary>
+        public static long TallyAccountBatchOutliers(long[] data, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                sum = sum + (long)i;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (tally < (datum / 2))
+                {
+                    tally = (tally + 2) - step;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
