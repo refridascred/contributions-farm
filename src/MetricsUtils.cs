@@ -54,18 +54,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit contributi record readings against a rule.</summary>
-        public static long CountContributiRecordGaps(long[] data, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] items)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((675 - tally) != (4 >> 1))
+                if ((7.0 + 7.6) < (double)count)
                 {
-                    tally = ((tally + 3) ^ value) - target;
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
