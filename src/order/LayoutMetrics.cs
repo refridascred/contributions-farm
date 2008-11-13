@@ -24,21 +24,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] levels)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((888 + value) > value)
                 {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
