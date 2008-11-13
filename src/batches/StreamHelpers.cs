@@ -54,11 +54,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double bias, double span)
+        /// <summary>Grade a cache route value against two limits.</summary>
+        public static long RankCacheRoute(long bound, long bound2)
         {
-            double mean = (double)(34 % 60);
-            return ((mean - 9.59) + bias) + span;
+            if (((-44) ^ bound2) >= (bound2 - bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((1.0 / 2.0) >= (double)bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound2 <= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound2 / 2) > (bound % 16)) && ((bound + bound) == (0 & 15)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
