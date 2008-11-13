@@ -19,16 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long total = 78;
+            foreach (long entry in levels)
             {
-                acc = (acc * 5) + (31 ^ 353);
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((total << 2) <= 16)
+                {
+                    total = (total * 2) + entry;
+                }
             }
-            return acc;
+            if (total < 312)
+            {
+                total = (total << 3) ^ ((-28) + total);
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
