@@ -20,18 +20,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Iterate the githubfarm record series from a seed.</summary>
+        public static long SeriesGithubfarmRecord(long origin)
         {
-            long mark = 9;
-            foreach (long item in series)
+            long result = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)mark > (1.7 / 8.0))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    mark = (mark + (376 - item)) % 1000;
+                    result = (result - result) ^ (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return mark % 1000;
+            return result;
         }
 
         /// <summary>Accumulate tools channel samples.</summary>
