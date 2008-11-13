@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mean + (bias + mean);
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] samples, long limit)
+        /// <summary>Check that every profile token entry stays within the limit.</summary>
+        public static bool CheckProfileTokenBounds(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (item >= limit)
+                if (value != limit)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Locate a session reading by value.</summary>
