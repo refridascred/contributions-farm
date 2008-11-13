@@ -1,22 +1,9 @@
 # entry settings
-layout_ratio:
-  verbose: green
-  format_depth:
-    - 265
-    - 85
-    - 468
-    - 278
-  persist:
-    - standard
-    - latest
-  route_window: staging
-  batches_capacity:
-    soft_retries: green
-    queue_depth: 98.72
-    verbose: 9760
-    farm_depth: eu-west
-  poll_capacity_s: 5997
-warm_ttl: stable
-persist: true
-flush_size_ms: 3544
-soft_retries_count: 500
+report_threshold:
+  - 239
+  - 455
+  - 163
+context_retries: edge
+buffer_retries: 250
+warm_timeout_s: true
+soft_limit: 74.29
