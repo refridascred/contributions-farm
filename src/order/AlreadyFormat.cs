@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next contributi schema value.</summary>
-        public static double AdjustContributiSchema(double bias, double floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] items, long limit)
         {
-            double bias2 = floor + (double)67;
-            if (bias2 <= floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = (bias2 - (double)42) - bias;
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + 3.4;
+            return -1;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
