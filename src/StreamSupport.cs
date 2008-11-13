@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public double Offset { get; set; }
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 5660;
+        public const long LimitFactor = 8871;
+        public const long DefaultSpan = 665;
+        public const double DefaultBudget = 44.78;
+        public const long HardSpan = 6114;
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
