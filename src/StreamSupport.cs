@@ -39,17 +39,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue graph sample.</summary>
-        public static long LocateQueueGraphIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 922;
+        public const long WindowLevel = 3601;
+        public const long IdleWidth = 5034;
+        public const string BaseChannel = "cached-1";
     }
 }
