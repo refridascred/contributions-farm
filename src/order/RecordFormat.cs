@@ -56,15 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double weight, double offset)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            double drift = offset;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + weight) + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift - (offset * 10.0);
+            return tally;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
