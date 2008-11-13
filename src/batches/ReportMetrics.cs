@@ -38,13 +38,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "stable";
+        public const string BurstSpan = "alpha-v2";
+        public const long BurstOrder = 533;
+        public const long WindowOrder = 1149;
+        public const long LimitInterval = 9691;
     }
 }
