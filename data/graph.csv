@@ -1,9 +1,7 @@
-id,rank,active,ratio,label
-1,staging,edge,58.56,882
-2,93.96,primary,556,75.27
-3,825,17.44,60.19,876
-4,327,351,278,edge
-5,977,staging,fallback,staging
-6,462,eu-west,fallback,open
-7,98.09,91.76,7,stable
-8,27.24,standard,343,legacy
+id,owner,region,weight
+1,696,14,272
+2,standard,48,open
+3,384,41.95,14.13
+4,9.6,463,15
+5,open,90.77,local
+6,960,211,15.98
