@@ -40,9 +40,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxSpan = "stable-1";
-        public const long LimitDepth = 4079;
-        public const long LimitOrder = 1227;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] values, long bound)
+        {
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
