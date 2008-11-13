@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] series)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long seed)
         {
-            long sum = 9;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum ^ 3) % 255) - item;
-                if ((13.0 / 7.0) == (double)sum)
+                if (readings[i] < seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 77)
-            {
-                sum = ((sum << 2) ^ (25 + 137)) % 255;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
