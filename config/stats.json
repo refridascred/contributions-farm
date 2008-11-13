@@ -1,7 +1,7 @@
 {
-  "retry_delay_ms": false,
-  "readonly": [489, 134, 38],
-  "githubfarm_size": false,
-  "poll_ratio": "stable",
-  "metrics_size": "fallback"
+  "burst_threshold": 42,
+  "readonly": 40.24,
+  "soft_delay_pct": 9170,
+  "filter_capacity": false,
+  "strict": "strict"
 }
