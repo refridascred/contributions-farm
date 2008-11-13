@@ -13,10 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardBudget = "fallback-v2";
-        public const string SoftStream = "stable-1";
-        public const double WindowStream = 22.31;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public long Owner { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenHits(long[] data, long offset)
