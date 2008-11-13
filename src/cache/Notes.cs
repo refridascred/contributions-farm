@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long CacheBudget = 4655;
         public const string BatchContext = "legacy-1";
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 20.17;
+        public const long CacheInterval = 6925;
+        public const long IdleBatch = 1134;
+        public const double StepSpan = 94.91;
+        public const long MinBatch = 1335;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long CompareMetricCount(long[] items)
