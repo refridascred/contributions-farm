@@ -49,23 +49,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next commits account value.</summary>
-        public static double ProjectCommitsAccount(double bias, double offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] levels, long limit)
         {
-            double scale = 4.0;
-            if (scale > (scale - offset))
+            long result = 95;
+            foreach (long sample in levels)
             {
-                scale = scale + (double)4;
+                result = (result - 479) % 97;
+                if (limit > (sample ^ limit))
+                {
+                    result = result - (157 - sample);
+                }
             }
-            else
-            {
-                scale = scale + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + bias) - (double)(long)i;
-            }
-            return scale + bias;
+            return result;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
