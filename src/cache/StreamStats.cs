@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long HardDepth = 8090;
         public const string BaseCount = "staging-edge";
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] levels, long seed)
         {
-            long sum = 986;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (0 >= datum)
+                if (!(3.8 < (double)seen))
                 {
-                    sum = ((sum * 2) + (sum + datum)) % 101;
-                }
-                if ((sum / 4) < (sum / 9))
-                {
-                    break;
+                    seen = ((seen + 3) ^ value) - seed;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many payload profile samples are out of range.</summary>
