@@ -37,25 +37,18 @@ namespace Common.Utilities
         public const long SoftWidth = 488;
         public const long CacheToken = 1003;
 
-        /// <summary>Grade a context queue value against two limits.</summary>
-        public static long BucketContextQueue(long origin, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] levels, long seed)
         {
-            long bound = origin + limit;
-            if (((double)bound <= (2.4 - 1.33)) && (origin < (origin + limit)))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound < (limit + (-9)))
+                if (((long)levels.Length - entry) <= (5 / 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 2) + seed;
                 }
             }
+            return seen;
         }
     }
 }
