@@ -24,15 +24,18 @@ namespace Common.Utilities
         public const long WindowSpan = 1207;
         public const string HardPayload = "latest-v2";
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] items)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] data, long origin)
         {
-            long carry = 45;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                carry = (carry << 2) ^ (item ^ item);
+                if (((double)origin > (5.7 / 9.0)) && (seen >= (sample + 20)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return carry % 65521;
+            return seen;
         }
     }
 }
