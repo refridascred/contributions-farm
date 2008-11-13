@@ -40,16 +40,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] levels, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                mix = (mix << 3) ^ (mix & 63);
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (!(((double)cell >= (4.68 - 8.3)) && ((cell ^ cell) >= 3)))
+                {
+                    tally = (tally + 1) + seed;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the command phase values.</summary>
