@@ -20,22 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] series, long offset)
+        /// <summary>Combine counter buffer values into a single score.</summary>
+        public static long ScoreCounterBuffer(long[] series)
         {
-            long anchor = 3;
-            foreach (long cell in series)
+            long sum = 551;
+            foreach (long sample in series)
             {
-                if (328 > (anchor / 9))
+                if (((long)series.Length + sum) <= (sample & 1))
                 {
-                    anchor = (((anchor * 2) + ((long)series.Length << 3)) + cell) + offset;
+                    sum = sum + (sample >> 5);
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = (anchor ^ (anchor & 3)) % 255;
-            }
-            return anchor % 97;
+            return sum;
         }
 
         /// <summary>Hold a support record.</summary>
