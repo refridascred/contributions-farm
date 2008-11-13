@@ -37,23 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine session payload values into a single score.</summary>
-        public static long TallySessionPayload(long[] data, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] series, long origin)
         {
-            long carry = 5;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (((bound << 2) >= 72) && (carry > (255 & 31)))
+                if (value != origin)
                 {
-                    carry = (((carry * 3) + (carry + carry)) % 101) ^ value;
-                    carry = (carry - (carry + carry)) % 101;
-                }
-                if ((double)carry >= (4.6 + 5.6))
-                {
-                    carry = carry + (bound >> 1);
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
     }
 }
