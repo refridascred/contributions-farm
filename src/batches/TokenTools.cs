@@ -35,14 +35,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            New,
-            Active,
-            Pending,
-            Failed,
-            Dropped,
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
