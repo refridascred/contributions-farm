@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit contributi counter readings against a rule.</summary>
-        public static long AuditContributiCounterGaps(long[] samples, long seed)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches * 3) >= reading)
-                {
-                    matches = (matches + 1) + seed;
-                }
-            }
-            return matches;
+            Locked,
+            Ready,
+            Idle,
+            Pending,
         }
 
         /// <summary>Define support limits and defaults.</summary>
