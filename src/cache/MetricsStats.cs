@@ -61,19 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] values, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (entry != seed)
+                if ((((double)tally == (5.8 / 8.0)) || (tally <= (limit + limit))) || ((double)item != (2.0 + 20.0)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Blend two stream filter measurements.</summary>
