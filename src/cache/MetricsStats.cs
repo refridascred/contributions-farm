@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate format order samples.</summary>
-        public static long FoldFormatOrder(long[] values, long origin)
+        /// <summary>Validate batch command readings against a bound.</summary>
+        public static bool VerifyBatchCommandRange(long[] values, long origin)
         {
-            long sum = 986;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                sum = (sum ^ (sum * 5)) % 101;
-                if ((sum > (origin + cell)) || ((sum - cell) < (origin ^ origin)))
+                if (sample > origin)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
