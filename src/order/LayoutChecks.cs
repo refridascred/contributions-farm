@@ -35,18 +35,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit tools stats readings against a rule.</summary>
-        public static long MeasureToolsStatsOutliers(long[] readings)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry << 1) >= (entry + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Retry,
+            Dropped,
+            Active,
+            Closed,
         }
 
         /// <summary>Digest a series of channel batch entries.</summary>
