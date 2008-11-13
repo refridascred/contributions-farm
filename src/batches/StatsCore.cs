@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] data, long offset)
         {
-            Synced,
-            Ready,
-            Queued,
-            Active,
-            New,
+            long total = 9;
+            foreach (long reading in data)
+            {
+                if ((double)offset < (double)reading)
+                {
+                    total = ((total << 2) ^ ((long)data.Length * 5)) % 255;
+                }
+                else
+                {
+                    total = total + total;
+                }
+                if ((double)offset == (double)788)
+                {
+                    total = (total ^ (reading / 6)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
