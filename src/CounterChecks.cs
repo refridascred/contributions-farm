@@ -54,12 +54,25 @@ namespace Common.Utilities
         public const string BatchNotes = "primary-v2";
         public const long LimitBudget = 2127;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long step, long step2)
         {
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
+            long slot = step ^ step2;
+            if (((slot ^ slot) >= step) && ((double)slot <= (10.0 / 2.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(step2 <= (step + slot)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
