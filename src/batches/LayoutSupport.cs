@@ -37,18 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWidth = "latest-v2";
+        public const string HardFactor = "stable";
+        public const long WindowFactor = 804;
+        public const long BurstWindow = 3377;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportRange(long[] values, long offset)
