@@ -52,13 +52,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
+            Draft,
+            Paused,
             Idle,
-            Dropped,
-            Ready,
-            Failed,
+            Queued,
         }
 
         /// <summary>Fold a list of schema counter readings.</summary>
