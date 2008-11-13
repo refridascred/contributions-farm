@@ -35,21 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Measure how many stream schema samples are out of range.</summary>
+        public static long MeasureStreamSchemaGaps(long[] series)
         {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                result = (result + (result + result)) % 65521;
-                if (39 <= ((long)i << 3))
+                if ((double)hits == (17.0 / 9.0))
                 {
-                    result = ((result << 2) ^ ((long)i & 31)) % 255;
+                    hits = (hits + 1) + cell;
                 }
-                result = (result * 5) + result;
-                result = ((result * 2) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
