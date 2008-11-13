@@ -28,24 +28,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long bound, long bound2)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] samples)
         {
-            if ((-9) > bound2)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound >= (4.45 - 7.0))
+                if (((value + value) < (329 - value)) && !(matches < (value * 3)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
