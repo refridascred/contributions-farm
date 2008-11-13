@@ -26,15 +26,39 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long step, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            long gap = step + limit;
+            if ((gap >> 5) != (step % 8))
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (!((gap ^ gap) <= (limit % 7)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit > (9.53 * 7.2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((2 % 2) >= (step + gap))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batches payload samples.</summary>
