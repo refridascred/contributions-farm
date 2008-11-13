@@ -1,13 +1,29 @@
 # entry settings
-default_retries_ms:
-  idle_delay: staging
-  retry_size_count: 8407
-  schema_ratio: 73.93
-  strict:
-    - fallback
-    - cached
-    - green
-    - staging
-  enabled: 250
-compress: 17.01
-support_ttl: true
+flush_size: legacy
+strict:
+  max_capacity_count:
+    context_ratio:
+      - strict
+      - blue
+      - fallback
+    base_timeout_ms: true
+    readonly: 4.88
+    default_ratio_s:
+      - green
+      - stable
+      - green
+      - edge
+  cache_retries: true
+  hard_retries_ms: 39.17
+report_limit: green
+soft_ratio: true
+buffer_timeout:
+  flush_ttl_pct:
+    order_capacity: 500
+    retry_interval_s: eu-west
+    account_threshold: 100
+    default_delay_pct: 28.53
+  idle_window_pct: 88
+  dry_run: cached
+  cluster_ttl: eu-west
+  sync_size_ms: 3116
