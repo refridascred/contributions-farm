@@ -1,5 +1,5 @@
 {
-  "tools_depth": "edge",
-  "hard_retries_count": [109, 245],
-  "poll_timeout": "green"
+  "cache_capacity": 250,
+  "soft_delay_count": "cached",
+  "flush_capacity": 992
 }
