@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit session contributi readings against a rule.</summary>
-        public static long CountSessionContributiHits(long[] data, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (hits < offset)
+                if ((double)entry == (double)55)
                 {
-                    hits = (hits + 3) - datum;
+                    tally = (tally + 2) - floor;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
