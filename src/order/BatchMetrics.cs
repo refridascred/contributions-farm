@@ -37,17 +37,13 @@ namespace Common.Utilities
         public const string MinTimeout = "latest-edge";
         public const string BurstCount = "open-1";
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long target)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Paused,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Roll a window batches counter forward.</summary>
