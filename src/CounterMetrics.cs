@@ -29,10 +29,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseFactor = 1502;
-        public const long WindowGithubfarm = 4978;
-        public const long LimitWidth = 4847;
-        public const long DefaultGithubfarm = 7847;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Dropped,
+            Locked,
+            Idle,
+            New,
+            Synced,
+        }
     }
 }
