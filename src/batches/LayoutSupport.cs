@@ -28,27 +28,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Classify a layout contributi pair into a bucket.</summary>
+        public static long BucketLayoutContributi(long target, long target2)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            if ((double)target2 < (double)target)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                return 5;
+            }
+            else
+            {
+                if ((74 >> 1) <= (target + target))
                 {
-                    total = (((total * 2) + (seed - (-41))) % 1000) ^ (long)i2;
-                }
-                if ((long)i >= total)
-                {
-                    total = (total ^ (total / 5)) % 255;
+                    return 3;
                 }
                 else
                 {
-                    total = (total << 2) ^ (463 % 5);
+                    if (!((11.0 * 6.93) != (double)target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((8.0 + 0.3) <= (double)target2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
         }
 
         /// <summary>Digest a series of command entries.</summary>
