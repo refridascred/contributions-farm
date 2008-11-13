@@ -1,8 +1,9 @@
-id,label,owner,state,level
-1,9.88,192,cached,green
-2,83,421,877,green
-3,758,748,53.53,30.67
-4,stable,65.94,88.39,740
-5,482,282,194,32.02
-6,945,55.22,26.93,415
-7,primary,29.68,52.52,blue
+id,state,count
+1,25.44,strict
+2,primary,1.46
+3,481,legacy
+4,green,eu-west
+5,915,standard
+6,30.13,488
+7,945,legacy
+8,stable,629
