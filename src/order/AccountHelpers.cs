@@ -40,13 +40,18 @@ namespace Common.Utilities
         public const long IdleStream = 7247;
         public const string BatchStream = "primary-edge";
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Fold a list of report schema readings.</summary>
+        public static long TotalReportSchema(long[] values, long target)
         {
-            public double Mode { get; set; }
-            public double Score { get; set; }
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
+            long anchor = 83;
+            foreach (long value in values)
+            {
+                if ((double)value != (6.6 - 1.3))
+                {
+                    anchor = ((anchor + (anchor << 2)) % 255) + target;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
