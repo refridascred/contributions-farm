@@ -14,21 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((sample < (59 + 4)) && ((8.79 * 4.2) == (double)sample)) && ((sample - hits) <= sample))
                 {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
