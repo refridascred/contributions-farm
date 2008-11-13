@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
