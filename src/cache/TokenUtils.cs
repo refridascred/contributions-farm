@@ -19,21 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count filter cluster pairs that satisfy a relation.</summary>
-        public static long CompareFilterClusterCount(long[] readings)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
