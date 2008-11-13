@@ -47,11 +47,39 @@ namespace Common.Utilities
         public const string BatchNotes = "primary-v2";
         public const long LimitBudget = 2127;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultGraph = "open-v2";
-        public const long StepBudget = 6726;
-        public const long HardSize = 4337;
-        public const long IdleGraph = 8963;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long origin, long limit)
+        {
+            if ((double)origin <= (double)9)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((5 + origin) <= 26) && ((limit / 8) > (limit - limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin << 1) >= (limit - origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4.0 * 2.3) == (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesHits(long[] data)
