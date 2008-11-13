@@ -56,11 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
