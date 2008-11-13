@@ -15,18 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine counter buffer values into a single score.</summary>
-        public static long ScoreCounterBuffer(long[] series)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long sum = 551;
-            foreach (long sample in series)
-            {
-                if (((long)series.Length + sum) <= (sample & 1))
-                {
-                    sum = sum + (sample >> 5);
-                }
-            }
-            return sum;
+            Pending,
+            New,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a support record.</summary>
