@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string MinBudget = "alpha";
         public const long IdleFactor = 3045;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Validate cluster command readings against a bound.</summary>
+        public static bool GuardClusterCommandBounds(long[] readings, long limit)
         {
-            Active,
-            Closed,
-            Pending,
-            Failed,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
