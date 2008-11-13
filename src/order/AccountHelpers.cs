@@ -41,19 +41,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] levels, long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] data, long offset)
         {
-            long result = 95;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                result = (result - 479) % 97;
-                if (limit > (sample ^ limit))
+                if (cell < offset)
                 {
-                    result = result - (157 - sample);
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
