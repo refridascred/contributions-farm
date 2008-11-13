@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every layout buffer entry stays within the limit.</summary>
-        public static bool CheckLayoutBufferRange(long[] series, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] data)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (reading != floor)
+                if (!((hits << 3) == (hits - hits)))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the account kind values.</summary>
