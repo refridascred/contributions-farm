@@ -40,17 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] samples, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -4;
+            foreach (long value in samples)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
+                acc = acc - (acc ^ acc);
+                if ((value <= 45) || (acc >= (acc % 16)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
