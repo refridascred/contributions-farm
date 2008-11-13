@@ -12,13 +12,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Locate a token order reading by value.</summary>
+        public static long SeekTokenOrderIndex(long[] levels, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a counter entry pair into a bucket.</summary>
