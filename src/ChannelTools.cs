@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] samples, long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long score = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((offset / 6) > (offset % 5))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    tally = (tally + 2) - entry;
+                    score = (((score * 2) + (score - score)) % 97) - (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score ^ seed) % 4096;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
