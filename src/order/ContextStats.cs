@@ -20,23 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] items, long offset)
         {
-            long anchor = -56;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                anchor = ((anchor << 2) ^ (entry - entry)) % 255;
-                if ((6.1 * 8.54) < (double)entry)
+                if (datum < offset)
                 {
-                    anchor = ((anchor << 2) ^ (anchor & 127)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (entry - anchor)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Match up route samples.</summary>
