@@ -40,18 +40,18 @@ namespace Common.Utilities
             return gain - (double)56;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] items, long target)
         {
-            long acc = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((acc << 3) < sample)
+                if (cell > (hits + target))
                 {
-                    acc = (acc ^ (sample + acc)) % 4096;
+                    hits = hits + 1;
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
