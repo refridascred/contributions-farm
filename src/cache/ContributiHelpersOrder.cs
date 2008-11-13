@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] data)
+        /// <summary>Match up payload stream samples.</summary>
+        public static long OverlapPayloadStreamCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= (count ^ 62))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 3;
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
