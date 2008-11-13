@@ -27,21 +27,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] items)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public double Rank { get; set; }
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
