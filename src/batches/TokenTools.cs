@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] values)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((0.2 * 20.0) <= (double)matches) && ((double)matches < 6.73))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
+            Ready,
+            Retry,
+            Synced,
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
