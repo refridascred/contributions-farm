@@ -16,18 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] values)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long total = 287;
-            foreach (long value in values)
-            {
-                if ((value << 3) >= 8)
-                {
-                    total = ((total * 4) + (total / 3)) % 101;
-                }
-            }
-            return total % 65521;
+            Dropped,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
