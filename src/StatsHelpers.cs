@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] levels, long step)
+        /// <summary>Project the next payload format value.</summary>
+        public static double ProjectPayloadFormat(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            double bias = (double)(339 + 42);
+            for (int i = 0; i < 8; i++)
             {
-                if (cell != step)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = ((bias + scale) + (double)(long)i) - offset;
             }
-            return valid;
+            return bias + (double)(-861);
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
