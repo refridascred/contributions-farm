@@ -57,13 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] values, long seed)
         {
-            Locked,
-            Failed,
-            Idle,
-            Active,
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a counter info.</summary>
