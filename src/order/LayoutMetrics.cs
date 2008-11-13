@@ -23,11 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchScore = 23.47;
-        public const string MaxRecord = "open";
-        public const string CacheDepth = "standard-1";
-        public const string BurstRecord = "staging-edge";
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterOutliers(long[] levels, long limit)
