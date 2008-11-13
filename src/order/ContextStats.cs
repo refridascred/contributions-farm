@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((8.0 + 7.32) < (double)hits)
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseBudget = 1348;
+        public const long StepAlready = 6021;
+        public const string LimitAlready = "fallback";
+        public const string DefaultBudget = "cached-edge";
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TotalBuffer(long[] values, long seed)
