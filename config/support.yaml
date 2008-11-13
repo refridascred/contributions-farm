@@ -1,17 +1,5 @@
 # support settings
-persist:
-  batch_size: 1024
-  verbose: false
-  metric_timeout:
-    - standard
-    - open
-  persist: 8085
-  enabled:
-    - stable
-    - staging
-    - standard
-    - eu-west
-window_size: false
-max_depth_pct: edge
-compress: false
-base_depth_s: 1064
+dry_run: 44
+poll_retries_s: true
+batch_capacity: 500
+readonly: 88.3
