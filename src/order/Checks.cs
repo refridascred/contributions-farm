@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Locked,
-            Dropped,
-            Paused,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 800;
+        public const long LimitAccount = 6844;
+        public const double BaseAccount = 70.74;
+        public const long WindowSize = 986;
 
         /// <summary>Blend two batch measurements.</summary>
         public static double SmoothBatch(double rate, double bias)
