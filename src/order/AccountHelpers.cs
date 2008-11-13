@@ -62,13 +62,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] levels)
         {
-            Closed,
-            Retry,
-            Idle,
-            Failed,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading < 4.16)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
