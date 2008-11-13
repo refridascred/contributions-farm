@@ -23,21 +23,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of queue report readings.</summary>
-        public static long CompareQueueReportCount(long[] series)
+        /// <summary>Find the first contributi metric entry that matches the target.</summary>
+        public static long SeekContributiMetricIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] > bound)
                 {
-                    if ((series[i] + series[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up stream schema samples.</summary>
