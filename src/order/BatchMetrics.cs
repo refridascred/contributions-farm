@@ -30,21 +30,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up session profile samples.</summary>
-        public static long MatchSessionProfileCount(long[] samples)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 84;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((7.0 + 7.1) > (double)874) && ((-8) >= (cell / 4)))
                 {
-                    if ((samples[i] ^ samples[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum + sum) % 97;
+                }
+                if ((sum & 1) != (sum + sum))
+                {
+                    break;
                 }
             }
-            return count;
+            if (sum > 5)
+            {
+                sum = (sum << 3) ^ (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Roll a token counter forward.</summary>
