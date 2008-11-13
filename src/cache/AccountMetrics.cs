@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] data, long bound)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long limit)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum > (datum * 5))
-                {
-                    seen = (seen + 2) + bound;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a batches info.</summary>
