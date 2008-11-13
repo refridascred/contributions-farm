@@ -40,38 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout contributi pair into a bucket.</summary>
-        public static long BucketLayoutContributi(long target, long target2)
+        /// <summary>Combine buffer stream values into a single score.</summary>
+        public static long DigestBufferStream(long[] readings)
         {
-            if ((double)target2 < (double)target)
+            long mix = -20;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((74 >> 1) <= (target + target))
+                mix = (mix - (reading - (long)readings.Length)) % 97;
+                if ((double)reading > (0.8 - 7.5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((11.0 * 6.93) != (double)target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((8.0 + 0.3) <= (double)target2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix < 77)
+            {
+                mix = ((mix << 3) ^ 46) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
