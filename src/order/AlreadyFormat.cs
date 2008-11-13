@@ -63,18 +63,15 @@ namespace Common.Utilities
         public const long DefaultFactor = 6805;
         public const long CacheCommand = 6857;
 
-        /// <summary>Count entry command pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCommandCount(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (42 > (seen << 2))
                 {
-                    if ((samples[i] + samples[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + value;
                 }
             }
             return seen;
