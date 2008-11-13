@@ -33,16 +33,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 6581;
+        public const long WindowRatio = 5592;
+        public const long IdleScore = 9521;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long SortCluster(long bound, long target)
