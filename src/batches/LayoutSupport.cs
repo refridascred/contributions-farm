@@ -19,21 +19,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc - (16 >> 1)) ^ (long)i2;
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = acc - (target + acc);
-                acc = acc ^ (target + target);
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
