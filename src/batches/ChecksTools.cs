@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (tally > (905 << 2))
                 {
-                    if ((readings[i] ^ readings[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally + 2) + value) - offset;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
