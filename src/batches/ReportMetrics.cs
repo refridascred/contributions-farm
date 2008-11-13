@@ -22,9 +22,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 6278;
-        public const long BatchAccount = 4633;
-        public const string SoftAccount = "open-v2";
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Ready,
+            Draft,
+            Stale,
+            Idle,
+            Pending,
+        }
     }
 }
