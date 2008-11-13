@@ -15,19 +15,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] values, long limit)
+        /// <summary>Roll a channel tools counter forward.</summary>
+        public static long SeriesChannelTools(long bound)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (mark * 3) + 568;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
