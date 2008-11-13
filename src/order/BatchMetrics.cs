@@ -50,11 +50,19 @@ namespace Common.Utilities
         public const long CacheCount = 5898;
         public const double SoftBudget = 13.81;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double ratio, double span)
+        /// <summary>Adjust a githubfarm format reading.</summary>
+        public static double BlendGithubfarmFormat(double bias, double floor)
         {
-            double weight = (double)30 / 9.0;
-            return (weight - (weight + ratio)) + span;
+            double load = bias - (floor * 1.0);
+            if (load < (bias * 1.01))
+            {
+                load = load - (1.3 - load);
+            }
+            else
+            {
+                load = load - (bias + 3.1);
+            }
+            return load - bias;
         }
     }
 }
