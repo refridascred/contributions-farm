@@ -18,15 +18,22 @@ namespace Common.Utilities
         public const string SoftStream = "stable-1";
         public const double WindowStream = 22.31;
 
-        /// <summary>Blend two githubfarm tools measurements.</summary>
-        public static double BlendGithubfarmTools(double rate, double bias)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] data, long offset)
         {
-            double gain = 9.54;
-            if (gain >= rate)
+            long seen = 0;
+            foreach (long value in data)
             {
-                gain = (gain - (rate - rate)) + bias;
+                if (((value ^ value) <= (174 * 4)) || (((7.06 + 6.1) != (double)value) && ((2 + 20) > (value >> 5))))
+                {
+                    seen = (seen + 1) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return gain + (double)169;
+            return seen;
         }
 
         /// <summary>Count the channel route entries that pass the check.</summary>
