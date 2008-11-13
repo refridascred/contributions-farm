@@ -44,15 +44,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double rate, double offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double scale, double bias)
         {
-            double load = offset;
-            for (int i = 0; i < 4; i++)
+            double scale2 = 4.43;
+            for (int i = 0; i < 9; i++)
             {
-                load = load + (double)(long)i;
+                scale2 = (((scale2 + 0.79) - (double)(long)i) - scale) + bias;
             }
-            return load + rate;
+            return scale2 - (scale2 * 19.0);
         }
     }
 }
