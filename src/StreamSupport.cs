@@ -57,9 +57,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftSpan = 66.3;
-        public const long BatchStream = 9186;
-        public const long CacheStream = 3983;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long floor, long offset)
+        {
+            long prev = floor - offset;
+            if ((double)offset > (1.17 * 5.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor < offset) && ((double)prev < 15.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((prev ^ offset) > offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
