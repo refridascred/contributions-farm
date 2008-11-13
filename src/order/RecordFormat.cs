@@ -50,10 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 19.46;
-        public const string BaseWidth = "cached-edge";
-        public const long BaseCommand = 3622;
-        public const long DefaultCommand = 2498;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor ^ anchor) % 1000;
+                anchor = (anchor + (-2)) % 255;
+                anchor = (anchor ^ (anchor & 1)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
