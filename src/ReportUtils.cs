@@ -18,16 +18,19 @@ namespace Common.Utilities
         public const long BurstFactor = 3809;
         public const string CacheSize = "legacy";
 
-        /// <summary>Derive the next filter record value from a seed.</summary>
-        public static long StepFilterRecord(long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                result = (result + (floor << 1)) % 97;
-                result = ((result * 5) + (long)i) % 1000;
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Check that every stream schema entry stays within the limit.</summary>
