@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] items, long seed)
+        /// <summary>Measure how many metric cache samples are out of range.</summary>
+        public static long AuditMetricCacheMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (datum != seed)
+                if ((hits - value) > value)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Accumulate support samples.</summary>
