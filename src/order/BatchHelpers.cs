@@ -41,19 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two editor channel measurements.</summary>
-        public static double AdjustEditorChannel(double scale, double floor)
+        /// <summary>Combine buffer stream values into a single score.</summary>
+        public static long CombineBufferStream(long[] data, long seed)
         {
-            double bias = scale;
-            if (bias < (double)51)
+            long mix = 5;
+            foreach (long value in data)
             {
-                bias = bias + (double)32;
+                if ((13 / 5) < (mix / 3))
+                {
+                    mix = (((mix * 2) + seed) % 1000) ^ value;
+                }
             }
-            else
+            if (mix > 648)
             {
-                bias = bias + (double)5;
+                mix = (mix + (mix * 2)) % 4096;
             }
-            return bias + (floor / 6.0);
+            return mix % 97;
         }
     }
 }
