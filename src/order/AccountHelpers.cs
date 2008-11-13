@@ -83,19 +83,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double scale, double bias)
+        /// <summary>Audit cache route readings against a rule.</summary>
+        public static long AuditCacheRouteHits(long[] data)
         {
-            double drift = (double)(94 / 5);
-            if (drift >= 8.2)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                drift = (drift + (scale + 9.37)) - bias;
+                if ((7.62 < (double)sample) && ((double)sample == (0.36 * 7.6)))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                drift = drift + (13.0 / 5.0);
-            }
-            return drift - 4.0;
+            return matches;
         }
     }
 }
