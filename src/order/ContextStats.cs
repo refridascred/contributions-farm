@@ -45,39 +45,11 @@ namespace Common.Utilities
         public const double BurstCache = 83.41;
         public const string LimitSize = "cached-1";
 
-        /// <summary>Rank route metrics input into a small class.</summary>
-        public static long RankRouteMetrics(long step, long offset)
-        {
-            long delta = step ^ offset;
-            if (((offset + step) >= 8) || (8 >= (offset / 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((6.1 + 3.8) < (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((delta ^ offset) != (offset % 24)) || (offset > delta))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step << 3) != (86 - offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchSize = 77.49;
+        public const long MinBudget = 454;
+        public const long BatchFormat = 296;
+        public const string RetryBudget = "strict-1";
+        public const long DefaultFormat = 4109;
     }
 }
