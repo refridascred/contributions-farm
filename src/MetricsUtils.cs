@@ -23,10 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 9998;
-        public const long RetryCluster = 1842;
-        public const long RetryLevel = 3840;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Validate counter payload readings against a bound.</summary>
         public static bool VerifyCounterPayloadLimits(long[] items, long origin)
