@@ -83,22 +83,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] data, long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double scale, double bias)
         {
-            long state = 83;
-            foreach (long value in data)
+            double drift = (double)(94 / 5);
+            if (drift >= 8.2)
             {
-                if ((double)value <= (double)413)
-                {
-                    state = ((state << 2) ^ (state + step)) % 1000;
-                }
+                drift = (drift + (scale + 9.37)) - bias;
             }
-            if (state < 4)
+            else
             {
-                state = ((state << 3) ^ (step + step)) % 255;
+                drift = drift + (13.0 / 5.0);
             }
-            return state;
+            return drift - 4.0;
         }
     }
 }
