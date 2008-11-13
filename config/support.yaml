@@ -1,4 +1,22 @@
 # support settings
-readonly: cached
-poll_window_s: 7345
-min_delay_pct: open
+poll_ratio:
+  burst_limit:
+    verbose: true
+    cache_ratio_count: cached
+    cache_interval: stable
+    warm_depth_ms: false
+    base_timeout_count:
+      - 425
+      - 171
+      - 457
+    idle_size_s: local
+  buffer_depth:
+    - 118
+    - 216
+    - 378
+    - 307
+  already_limit: true
+  strict: true
+  command_depth: true
+flush_timeout_s: 30
+max_delay: 90.87
