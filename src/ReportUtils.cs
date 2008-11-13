@@ -22,20 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route checks readings against a bound.</summary>
-        public static bool GuardRouteChecksRange(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepRatio = 10.01;
+        public const string CacheRatio = "alpha";
+        public const double DefaultFarm = 35.41;
+        public const long MaxSize = 8409;
 
         /// <summary>Validate cluster metric readings against a bound.</summary>
         public static bool ValidateClusterMetricBounds(long[] items, long target)
