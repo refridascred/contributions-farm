@@ -34,11 +34,31 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long seed, long origin)
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            if (((6 + 3) >= seed) || ((double)seed <= (1.0 * 4.27)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed >= (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin & 63) <= (seed ^ seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
