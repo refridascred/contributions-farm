@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSupport = "alpha-v2";
+        public const double LimitScore = 38.62;
+        public const double DefaultFactor = 64.3;
+        public const double WindowBudget = 43.24;
+        public const long BaseSupport = 9262;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long StepProfile(long seed)
