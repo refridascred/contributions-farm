@@ -14,22 +14,24 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long target)
         {
-            long mix = 132;
-            foreach (long value in items)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (((double)mix > (9.9 / 6.0)) || ((34 * 3) <= (value + (long)items.Length)))
+                if ((double)total > (8.1 - 3.93))
                 {
-                    mix = (mix - mix) % 101;
+                    total = (total << 2) ^ 54;
                 }
-                else
+                if (!(((8.0 + 15.0) != (double)target) && ((long)i < (total % 8))))
                 {
-                    mix = (mix + (mix + 65)) % 1000;
+                    long edge = (target - total) - (total ^ (long)i);
+                    total = total - (edge / 4);
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
