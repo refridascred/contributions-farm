@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=398
+BUFFER_LIMIT=72
 log "limit is ${BUFFER_LIMIT}"
 
 count=0
@@ -15,9 +15,9 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-open}"
+mode="${1:-blue}"
 case "${mode}" in
-    green)
+    staging)
         log "fast path"
         ;;
     *)
