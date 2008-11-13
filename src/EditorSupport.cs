@@ -16,18 +16,22 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] readings, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] series)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((double)80 > (double)origin)
+                if (((matches - (long)series.Length) > (cell + cell)) || ((double)(long)series.Length == (16.0 / 7.0)))
                 {
-                    count = (count + 1) ^ reading;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Locate a githubfarm editor reading by value.</summary>
