@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a buffer options.</summary>
