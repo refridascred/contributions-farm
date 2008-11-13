@@ -1,24 +1,4 @@
 # support settings
-support_interval: eu-west
-base_ratio_s: green
-poll_size:
-  audit: false
-  poll_window_count: legacy
-  cache_retries: 81.53
-  idle_ttl:
-    cache_timeout_s: stable
-    poll_size: false
-    batch_size_pct: staging
-    base_size_count: local
-    soft_threshold_s: 100
-notes_size: standard
-burst_retries: eu-west
-metric_delay:
-  channel_ratio: local
-  verbose: 22.29
-  compress: 16
-  context_depth:
-    - fallback
-    - eu-west
-    - standard
-  strict: 13
+context_ratio: latest
+idle_window_pct: 39.86
+poll_interval: cached
