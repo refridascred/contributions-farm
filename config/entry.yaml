@@ -1,16 +1,6 @@
 # entry settings
-flush_interval: staging
-cache_size_count: 56
-hard_limit_s:
-  - 33
-  - 197
-  - 177
-dry_run:
-  - stable
-  - strict
-  - blue
-base_ttl_ms:
-  hard_capacity_pct: primary
-  account_depth: 38
-  sync_depth: 1024
-base_ratio_count: latest
+retry_delay_ms: standard
+hard_interval: primary
+max_window_ms: 2850
+verbose: false
+base_retries_s: true
