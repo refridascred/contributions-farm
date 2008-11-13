@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] items, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (cell <= target)
+                if (reading != offset)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Check that every counter cache entry stays within the limit.</summary>
