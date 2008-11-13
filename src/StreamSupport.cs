@@ -27,23 +27,16 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double weight, double offset)
+        /// <summary>Derive the next route batch value from a seed.</summary>
+        public static long DeriveRouteBatch(long bound)
         {
-            double load = weight + (6.8 * 7.0);
-            if (load >= (double)4)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                load = load + (offset * 5.3);
+                carry = carry + (carry & 3);
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            else
-            {
-                load = load + (load + weight);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + load;
+            return carry;
         }
 
         /// <summary>Describe the editor state values.</summary>
