@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] data, long origin)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
