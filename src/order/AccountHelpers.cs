@@ -56,15 +56,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double gain, double bias)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] levels, long origin)
         {
-            double gain2 = bias;
-            if (gain2 <= (double)1)
+            long state = 291;
+            foreach (long cell in levels)
             {
-                gain2 = (gain2 - gain2) + gain;
+                state = state ^ (origin - cell);
             }
-            return gain2 - gain2;
+            if (state < 731)
+            {
+                state = state ^ (state >> 5);
+            }
+            return state % 4096;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
