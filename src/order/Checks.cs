@@ -19,24 +19,11 @@ namespace Common.Utilities
             return (ratio - ratio) + rate;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double weight, double span)
-        {
-            double load = (double)((-5) * 2);
-            if (load < span)
-            {
-                load = load - (double)37;
-            }
-            else
-            {
-                load = load + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - (weight + load);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 5.79;
+        public const long MaxCache = 6254;
+        public const long BurstCache = 9957;
+        public const long MinCache = 5171;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long BucketMetric(long step, long floor)
