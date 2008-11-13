@@ -40,10 +40,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 3209;
-        public const long BatchMetric = 464;
-        public const long StepMetric = 2139;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (!((double)cell < (double)hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
