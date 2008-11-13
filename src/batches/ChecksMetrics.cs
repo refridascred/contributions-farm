@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] readings, long seed)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long limit)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Iterate the githubfarm record series from a seed.</summary>
