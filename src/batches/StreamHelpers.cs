@@ -22,22 +22,24 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] data, long offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long value in data)
+            if ((origin ^ origin) <= origin)
             {
-                if (((value ^ value) <= (174 * 4)) || (((7.06 + 6.1) != (double)value) && ((2 + 20) > (value >> 5))))
+                return 4;
+            }
+            else
+            {
+                if (((offset >> 1) != (offset << 2)) || ((origin + offset) <= origin))
                 {
-                    seen = (seen + 1) - offset;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the channel route entries that pass the check.</summary>
