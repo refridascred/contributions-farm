@@ -55,19 +55,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry batch readings against a rule.</summary>
-        public static long MeasureEntryBatchHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!((hits & 31) < 150))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepMetric = 93.61;
+        public const long BatchScore = 6384;
+        public const string RetryMetric = "latest";
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandGaps(long[] series)
