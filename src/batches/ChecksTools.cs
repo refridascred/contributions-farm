@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long LimitSession = 2841;
         public const long RetryScore = 9655;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] samples, long floor)
         {
-            long mix = 1;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                mix = (mix - (reading + reading)) % 1000;
+                if (reading < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mix > 286)
-            {
-                mix = mix - (mix + 4);
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
