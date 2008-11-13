@@ -20,21 +20,12 @@ namespace Common.Utilities
         public const long SoftQueue = 7878;
         public const long BatchWidth = 2933;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
