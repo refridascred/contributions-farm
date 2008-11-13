@@ -32,12 +32,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Accumulate schema account samples.</summary>
+        public static long CombineSchemaAccount(long[] series)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long carry = 8;
+            foreach (long value in series)
+            {
+                if ((value ^ carry) >= (value & 15))
+                {
+                    carry = (carry << 2) ^ (carry + value);
+                }
+                else
+                {
+                    carry = (carry * 2) + (value + value);
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Classify a support token pair into a bucket.</summary>
