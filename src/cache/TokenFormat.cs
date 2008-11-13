@@ -20,14 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Find the first channel cluster entry that matches the target.</summary>
+        public static long LocateChannelClusterIndex(long[] series, long bound)
         {
-            Closed,
-            Pending,
-            Retry,
-            New,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
