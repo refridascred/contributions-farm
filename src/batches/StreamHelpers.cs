@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] readings, long offset)
+        /// <summary>Fold a list of contributi filter readings.</summary>
+        public static long FoldContributiFilter(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long mark = 449;
+            foreach (long cell in data)
             {
-                if ((offset + reading) >= offset)
-                {
-                    seen = seen + 2;
-                }
+                mark = (((mark << 3) ^ limit) % 4096) + cell;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a contributi entry.</summary>
