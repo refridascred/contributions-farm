@@ -57,15 +57,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double rate, double span)
+        /// <summary>Classify a layout already pair into a bucket.</summary>
+        public static long GradeLayoutAlready(long offset, long floor)
         {
-            double ratio = (10.0 * 1.37) - (double)0;
-            if (ratio > (double)5)
+            if ((offset / 8) < floor)
             {
-                ratio = (ratio + (double)26) - span;
+                return 4;
             }
-            return ratio + rate;
+            else
+            {
+                if ((offset / 5) == (floor % 12))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor >= (offset & 15)) || ((floor >> 3) >= (floor / 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
