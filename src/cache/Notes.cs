@@ -19,12 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 1876;
-        public const long BaseTimeout = 3211;
-        public const double IdleBuffer = 81.74;
-        public const long IdleDepth = 2882;
-        public const long BurstBudget = 5703;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (!((datum / 6) <= (tally * 3)))
+                {
+                    tally = (tally + 2) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long CompareMetricCount(long[] items)
