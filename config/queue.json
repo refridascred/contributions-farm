@@ -1,11 +1,8 @@
 {
-  "poll_depth_count": 43,
-  "max_ratio_ms": 250,
-  "min_ttl": {
-    "notes_depth": "green",
-    "metrics_limit": 81.54,
-    "batch_ttl_count": 47,
-    "session_retries": 5986
-  },
-  "flush_window_s": "cached"
+  "flush_depth_pct": 5587,
+  "compress": true,
+  "soft_interval_s": "strict",
+  "sync_depth_s": 9805,
+  "stats_ratio": 269,
+  "retry_timeout_ms": ["strict", "eu-west"]
 }
