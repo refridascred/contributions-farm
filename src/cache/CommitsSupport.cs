@@ -47,15 +47,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] samples)
         {
-            long sum = -70;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                sum = ((sum << 2) ^ (item + sum)) % 1000;
+                if ((reading << 3) == (seen - 802))
+                {
+                    seen = seen + 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a buffer options.</summary>
