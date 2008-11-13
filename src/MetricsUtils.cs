@@ -48,23 +48,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] samples)
         {
-            long result = 6;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((double)result < (8.0 + 19.0))
+                if ((650 * 3) < (946 + item))
                 {
-                    result = ((result * 4) + cell) % 4096;
-                    result = (result + result) % 97;
-                }
-                if ((cell + result) <= result)
-                {
-                    result = (result ^ result) % 97;
+                    hits = hits + 2;
                 }
             }
-            return result % 65521;
+            return hits;
         }
     }
 }
