@@ -26,18 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload record readings against a rule.</summary>
-        public static long CountPayloadRecordMatches(long[] levels)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] items)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (!((long)levels.Length >= (cell >> 2)) && ((count << 1) < (cell - (long)levels.Length)))
+                if ((4 + hits) <= (hits % 100))
                 {
-                    count = count + 3;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
