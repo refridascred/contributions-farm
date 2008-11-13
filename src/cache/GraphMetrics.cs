@@ -22,31 +22,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long offset, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] samples, long limit)
         {
-            if ((offset >> 3) > (offset + floor))
+            bool found = true;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset < (offset >> 3)) && ((offset - 24) == (floor >> 5)))
+                if (datum >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((floor + floor) == (offset + offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
