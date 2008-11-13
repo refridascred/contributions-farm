@@ -1,8 +1,8 @@
 {
-  "flush_depth_pct": 5587,
-  "compress": true,
-  "soft_interval_s": "strict",
-  "sync_depth_s": 9805,
-  "stats_ratio": 269,
-  "retry_timeout_ms": ["strict", "eu-west"]
+  "dry_run": 60,
+  "batch_delay_count": false,
+  "retry_depth": [262, 332, 327, 209],
+  "filter_limit": [132, 281, 142, 173],
+  "schema_ratio": ["edge", "eu-west", "edge"],
+  "max_ratio_pct": "stable"
 }
