@@ -1,21 +1,5 @@
 {
-  "verbose": 786,
-  "default_timeout": {
-    "audit": "latest",
-    "dry_run": {
-      "min_interval_ms": 4435,
-      "enabled": 98.61,
-      "record_threshold": "strict",
-      "stream_interval": true,
-      "warm_delay_ms": "primary"
-    },
-    "base_capacity_pct": {
-      "base_window_ms": "standard",
-      "hard_depth": "fallback",
-      "editor_timeout": [373, 31, 212, 378],
-      "min_depth": 37.46,
-      "sync_size_pct": 6371
-    }
-  },
-  "contributi_retries": 30
+  "default_limit_s": "staging",
+  "compress": ["strict", "stable", "legacy", "local"],
+  "max_interval_s": 47
 }
