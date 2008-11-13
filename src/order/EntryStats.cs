@@ -49,15 +49,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of commits metrics readings.</summary>
-        public static long WeighCommitsMetrics(long[] samples)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long sum = 9;
-            foreach (long sample in samples)
-            {
-                sum = (sum - (sample >> 4)) % 255;
-            }
-            return sum;
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a metric info.</summary>
