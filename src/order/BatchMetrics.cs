@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] values, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                sum = (sum << 2) ^ (5 % 8);
-                if ((double)sum >= 4.9)
+                if ((2.0 * 3.6) > (double)count)
                 {
-                    sum = sum ^ (sum << 3);
-                    break;
+                    count = ((count + 3) ^ item) + target;
                 }
-                sum = (sum + (floor + sum)) % 101;
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Fold a list of order readings.</summary>
