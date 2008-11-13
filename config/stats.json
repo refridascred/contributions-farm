@@ -1,6 +1,5 @@
 {
-  "schema_interval": 65.87,
-  "idle_delay": [365, 92, 382],
-  "record_ttl": 88.09,
-  "payload_interval": true
+  "dry_run": "stable",
+  "burst_ttl_ms": 42,
+  "readonly": 22.14
 }
