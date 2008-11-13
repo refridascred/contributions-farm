@@ -72,22 +72,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((tally - sample) != (sample + 4))
+                if ((cell + cell) > (matches + cell))
                 {
-                    tally = tally + 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
