@@ -34,12 +34,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] samples)
         {
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            long acc = 224;
+            foreach (long cell in samples)
+            {
+                if ((double)(long)samples.Length == (9.0 + 7.99))
+                {
+                    acc = (acc + acc) - cell;
+                }
+            }
+            if (acc < 8)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
     }
 }
