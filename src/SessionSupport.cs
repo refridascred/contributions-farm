@@ -31,15 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of stats account readings.</summary>
-        public static long WeighStatsAccount(long[] items, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] data, long bound)
         {
-            long mix = 5;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                mix = ((mix ^ (origin + (long)items.Length)) % 4096) + value;
+                if ((double)bound > (5.81 * 3.53))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
