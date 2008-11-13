@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long IdleBudget = 9281;
         public const long CacheToken = 5959;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] data, long step)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (!((step << 3) < (3 % 2)))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
