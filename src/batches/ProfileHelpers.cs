@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] series, long seed)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long sum = 558;
-            foreach (long reading in series)
-            {
-                if (!((seed + sum) == (reading % 10)))
-                {
-                    sum = (sum ^ seed) % 255;
-                }
-            }
-            return sum;
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a schema summary.</summary>
