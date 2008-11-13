@@ -33,21 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of githubfarm stats readings.</summary>
-        public static long CompareGithubfarmStatsCount(long[] series)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((long)i + score) > score))
                 {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
     }
 }
