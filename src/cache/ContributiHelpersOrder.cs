@@ -42,17 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first tools graph entry that matches the target.</summary>
-        public static long LookupToolsGraphIndex(long[] levels, long bound)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] >= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
