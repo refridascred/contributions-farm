@@ -1,6 +1,7 @@
 # support settings
-window_ttl: 64.23
-dry_run: true
-flush_capacity: 9674
-verbose: false
-cache_delay: 44.03
+warm_interval_s: 87
+record_threshold: 500
+commits_threshold: 98
+min_delay_s: 404
+poll_delay: 250
+batch_delay: 95
