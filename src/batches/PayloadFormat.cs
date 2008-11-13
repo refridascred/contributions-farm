@@ -42,13 +42,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] series, long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] data, long origin)
         {
             bool ok = true;
-            foreach (long cell in series)
+            foreach (long entry in data)
             {
-                if (cell >= target)
+                if (entry <= origin)
                 {
                     ok = false;
                     break;
