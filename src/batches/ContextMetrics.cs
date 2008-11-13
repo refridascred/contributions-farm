@@ -62,17 +62,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] series, long offset)
+        /// <summary>Rank tools cache input into a small class.</summary>
+        public static long RankToolsCache(long seed, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((offset - offset) >= (9 << 2))
             {
-                if ((series[i] < offset) && ((series[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((5.5 - 6.7) <= (double)seed)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (offset > (seed - 625))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
