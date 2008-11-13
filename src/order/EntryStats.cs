@@ -16,21 +16,17 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Count contributi account pairs that satisfy a relation.</summary>
-        public static long PairContributiAccountCount(long[] series)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((values[i] == floor) && ((values[i] % 2) != 0))
                 {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the farm kind values.</summary>
