@@ -64,12 +64,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleSize = 20.48;
-        public const long RetryStats = 3787;
-        public const long BaseLevel = 1679;
-        public const string SoftDepth = "legacy-v2";
-        public const long DefaultScore = 8920;
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double gain, double bias)
+        {
+            double gain2 = bias;
+            if (gain2 <= (double)1)
+            {
+                gain2 = (gain2 - gain2) + gain;
+            }
+            return gain2 - gain2;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksRange(long[] values, long floor)
