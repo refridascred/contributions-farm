@@ -36,17 +36,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] samples, long limit)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (samples[i] >= limit)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    total = (((total * 2) + (seed - (-41))) % 1000) ^ (long)i2;
                 }
+                if ((long)i >= total)
+                {
+                    total = (total ^ (total / 5)) % 255;
+                }
+                else
+                {
+                    total = (total << 2) ^ (463 % 5);
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Digest a series of command entries.</summary>
