@@ -33,23 +33,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of report metrics entries.</summary>
-        public static long TallyReportMetrics(long[] items, long seed)
+        /// <summary>Match up support buffer samples.</summary>
+        public static long OverlapSupportBufferCount(long[] readings)
         {
-            long acc = 6;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc ^ seed) + sample;
-                if (((11.0 - 5.3) == (double)(long)items.Length) || (seed > (25 + seed)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc - (249 & 63)) % 4096;
+                    if ((readings[i] - readings[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 19)
-            {
-                acc = (acc ^ acc) % 65521;
-            }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Grade a batch profile value against two limits.</summary>
