@@ -1,6 +1,5 @@
 {
-  "schema_delay": 60,
-  "command_limit": 68,
-  "strict": 30,
-  "profile_timeout": [261, 395, 368, 220]
+  "audit": true,
+  "poll_size": 8410,
+  "flush_delay": 7605
 }
