@@ -26,18 +26,27 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit order already readings against a rule.</summary>
-        public static long AuditOrderAlreadyHits(long[] samples, long bound)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((sample ^ bound) < (958 * 4))
+                if ((double)(long)i < (10.0 * 6.4))
                 {
-                    matches = matches + 2;
+                    mark = mark ^ mark;
+                    mark = (mark + (507 - mark)) % 1000;
+                    continue;
                 }
+                else
+                {
+                    mark = mark + (offset + mark);
+                    mark = ((mark << 3) ^ (offset + 661)) % 255;
+                }
+                mark = ((mark << 2) ^ (offset ^ mark)) % 255;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Match up batches payload samples.</summary>
