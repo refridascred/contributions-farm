@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the support order series from a seed.</summary>
-        public static long RollSupportOrder(long seed)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)seed < (15.0 - 1.12)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor + ((long)i + seed);
+                    if ((values[i] ^ values[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Digest a series of command entries.</summary>
