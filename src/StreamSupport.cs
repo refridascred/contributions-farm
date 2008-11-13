@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Idle,
-            Draft,
-            New,
+            Stale,
+            Queued,
+            Closed,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
