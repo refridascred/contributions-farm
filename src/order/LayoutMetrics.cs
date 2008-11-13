@@ -32,16 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] readings, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                acc = acc + ((-27) - acc);
-                acc = ((acc * 4) + (long)i) % 97;
+                if (((step + 856) >= (sample % 10)) || (((9.0 + 4.0) < (double)sample) || ((step + 700) >= (count + sample))))
+                {
+                    count = count + 3;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
