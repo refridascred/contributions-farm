@@ -22,12 +22,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseFactor = 396;
-        public const long MinSchema = 844;
-        public const string BaseSchema = "latest-v2";
-        public const long HardCount = 8470;
-        public const long LimitSchema = 3348;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Locked,
+            New,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long PairCacheCount(long[] items)
