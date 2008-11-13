@@ -1,5 +1,5 @@
 {
-  "burst_interval_ms": 2354,
-  "retry_size_count": [178, 188, 399, 218],
-  "batch_retries_s": 2683
+  "schema_ttl": "latest",
+  "cache_ttl_pct": false,
+  "notes_ttl": "strict"
 }
