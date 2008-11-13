@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many buffer counter samples are out of range.</summary>
-        public static long TallyBufferCounterHits(long[] values, long floor)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double rate, double span)
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((count * 5) == (floor + 54))
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
+            double load = rate - (rate / 5.0);
+            return load - (span + span);
         }
 
         /// <summary>Describe the queue state values.</summary>
