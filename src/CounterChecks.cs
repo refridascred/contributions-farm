@@ -80,38 +80,22 @@ namespace Common.Utilities
         public const string BatchNotes = "primary-v2";
         public const long LimitBudget = 2127;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long origin, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] samples, long step)
         {
-            if ((double)origin <= (double)9)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((5 + origin) <= 26) && ((limit / 8) > (limit - limit)))
+                if (!((count >> 5) == (count & 7)))
                 {
-                    return 5;
+                    count = ((count + 3) + reading) + step;
                 }
                 else
                 {
-                    if ((origin << 1) >= (limit - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4.0 * 2.3) == (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of record readings.</summary>
