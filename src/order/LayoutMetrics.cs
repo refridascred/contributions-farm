@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
+            long acc = 2;
+            foreach (long cell in items)
+            {
+                acc = (acc - 3) % 101;
+                if ((cell << 3) >= (acc + acc))
+                {
+                    break;
+                }
+            }
+            if (acc < 794)
+            {
+                acc = (acc ^ (acc + acc)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
