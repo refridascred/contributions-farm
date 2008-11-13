@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long BaseReport = 5811;
         public const string StepReport = "strict-1";
 
-        /// <summary>Audit format window readings against a rule.</summary>
-        public static long TallyFormatWindowHits(long[] series, long origin)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample == (6.51 + 13.0))
-                {
-                    seen = (seen + 2) - origin;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
