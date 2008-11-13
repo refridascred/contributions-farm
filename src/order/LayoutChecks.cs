@@ -13,12 +13,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Active,
-            Ready,
-            Closed,
+            Paused,
+            Pending,
+            Failed,
+            Done,
+            Idle,
         }
 
         /// <summary>Describe the metric phase values.</summary>
