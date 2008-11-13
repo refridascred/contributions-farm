@@ -32,13 +32,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Rank notes commits input into a small class.</summary>
+        public static long GradeNotesCommits(long target, long step)
         {
-            Stale,
-            Paused,
-            New,
-            Failed,
+            long slot = target + step;
+            if (((step + 0) == (target >> 1)) && ((target >> 3) > step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (7 > step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((-9) * 4) > slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many account schema samples are out of range.</summary>
