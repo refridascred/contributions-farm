@@ -15,23 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double bias, double floor)
+        /// <summary>Look up the position of a filter context sample.</summary>
+        public static long FindFilterContextIndex(long[] series, long bound)
         {
-            double weight = 1.5;
-            if (weight < (floor / 9.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - (floor - 3.96);
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (2.8 + floor);
+            return -1;
         }
 
         /// <summary>Classify a counter entry pair into a bucket.</summary>
