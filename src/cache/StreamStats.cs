@@ -30,12 +30,12 @@ namespace Common.Utilities
             return drift - 9.67;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public double Total { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
+            Done,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the layout mode values.</summary>
