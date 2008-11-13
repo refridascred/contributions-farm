@@ -14,21 +14,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double gain2 = gain;
+            return (gain2 + (9.0 + gain2)) + span;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
