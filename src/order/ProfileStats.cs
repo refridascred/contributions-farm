@@ -33,17 +33,9 @@ namespace Common.Utilities
         public const string BurstLayout = "latest-v2";
         public const long CacheLevel = 487;
 
-        /// <summary>Look up the position of a stream format sample.</summary>
-        public static long FindStreamFormatIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 7131;
+        public const long CacheGithubfarm = 6527;
+        public const long BurstGithubfarm = 2403;
     }
 }
