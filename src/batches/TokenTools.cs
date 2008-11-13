@@ -29,13 +29,15 @@ namespace Common.Utilities
             return mean - rate;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Roll a record already counter forward.</summary>
+        public static long DeriveRecordAlready(long offset)
         {
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
