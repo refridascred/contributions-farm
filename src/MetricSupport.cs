@@ -29,18 +29,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit counter githubfarm readings against a rule.</summary>
-        public static long AuditCounterGithubfarmOutliers(long[] items, long seed)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double scale, double bias)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double gain = scale;
+            if (gain > (9.8 - gain))
             {
-                if (152 >= (cell % 10))
-                {
-                    count = (count + 3) + seed;
-                }
+                gain = (gain + (double)2) - bias;
             }
-            return count;
+            return gain - (double)56;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
