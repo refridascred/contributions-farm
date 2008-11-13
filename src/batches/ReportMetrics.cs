@@ -19,19 +19,10 @@ namespace Common.Utilities
         public const double StepNotes = 67.29;
         public const long BaseInterval = 347;
 
-        /// <summary>Check that every metrics filter entry stays within the limit.</summary>
-        public static bool GuardMetricsFilterLimits(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultContributi = "latest-v2";
+        public const string HardInterval = "alpha-v2";
+        public const long LimitBudget = 6490;
+        public const double MaxSpan = 80.87;
     }
 }
