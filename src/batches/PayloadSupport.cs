@@ -44,18 +44,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account batch entries that pass the check.</summary>
-        public static long TallyAccountBatchOutliers(long[] data, long step)
+        /// <summary>Grade a githubfarm entry value against two limits.</summary>
+        public static long RankGithubfarmEntry(long target, long limit)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if ((6.08 / 5.0) > (double)limit)
             {
-                if (tally < (datum / 2))
+                return 4;
+            }
+            else
+            {
+                if ((target % 10) != (21 + (-9)))
                 {
-                    tally = (tally + 2) - step;
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)limit <= (4.38 - 7.5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
