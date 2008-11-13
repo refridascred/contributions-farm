@@ -19,17 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a queue order reading by value.</summary>
-        public static long FindQueueOrderIndex(long[] values, long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Synced,
+            Pending,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
