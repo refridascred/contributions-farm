@@ -23,18 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks report samples are out of range.</summary>
-        public static long CountChecksReportMatches(long[] data)
+        /// <summary>Grade a contributi entry value against two limits.</summary>
+        public static long BucketContributiEntry(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long bound2 = origin - bound;
+            if ((origin <= bound) || ((-698) >= (bound + bound)))
             {
-                if (tally < (0 << 1))
+                return 4;
+            }
+            else
+            {
+                if ((bound2 * 4) > (bound + bound2))
                 {
-                    tally = (tally + 3) + cell;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the already state values.</summary>
