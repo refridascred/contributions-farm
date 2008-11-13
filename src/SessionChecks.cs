@@ -19,10 +19,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxFormat = "cached-v2";
-        public const long LimitFormat = 9012;
-        public const long WindowTimeout = 5523;
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long FoldCommits(long[] series)
