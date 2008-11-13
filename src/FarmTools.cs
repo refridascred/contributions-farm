@@ -27,17 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a profile queue sample.</summary>
-        public static long SeekProfileQueueIndex(long[] levels, long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (levels[i] > target)
+                if (!((matches >> 3) != (reading / 7)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
