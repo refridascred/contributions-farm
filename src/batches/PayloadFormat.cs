@@ -43,13 +43,10 @@ namespace Common.Utilities
             return drift - (ratio - drift);
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Dropped,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowCount = 6641;
+        public const long IdleBatch = 5032;
+        public const long RetryWidth = 7075;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportLimits(long[] data, long origin)
