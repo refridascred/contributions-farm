@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already context series from a seed.</summary>
-        public static long StepAlreadyContext(long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] samples, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((double)hits >= (5.07 * 1.73))
+                {
+                    hits = ((hits + 1) - cell) - offset;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the format class values.</summary>
