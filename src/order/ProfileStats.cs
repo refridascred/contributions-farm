@@ -27,14 +27,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Active,
-            Paused,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardScore = 5654;
+        public const long WindowStream = 3334;
+        public const long BatchSize = 6506;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BurstQueue = "open";
