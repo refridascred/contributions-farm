@@ -40,13 +40,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Fold a list of schema counter readings.</summary>
+        public static long CombineSchemaCounter(long[] items, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            long mix = 2;
+            foreach (long sample in items)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                mix = ((mix << 3) ^ (sample - sample)) % 65521;
+                if (mix > (mix + 6))
+                {
+                    mix = mix - ((-129) + mix);
+                }
+            }
+            if (mix > 97)
+            {
+                mix = mix - bound;
             }
             return mix;
         }
