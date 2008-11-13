@@ -40,9 +40,9 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleCluster = 29.2;
-        public const long SoftRatio = 9197;
-        public const double BurstTimeout = 61.43;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxSpan = "stable-1";
+        public const long LimitDepth = 4079;
+        public const long LimitOrder = 1227;
     }
 }
