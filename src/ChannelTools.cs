@@ -28,19 +28,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] samples, long origin)
-        {
-            long anchor = 0;
-            foreach (long cell in samples)
-            {
-                if (!(471 > origin))
-                {
-                    anchor = (anchor - (cell * 3)) % 255;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryScore = 6156;
+        public const double SoftReport = 73.91;
+        public const long RetryReport = 6563;
+        public const long DefaultFactor = 5726;
+        public const long WindowWidth = 306;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long BucketLayout(long offset, long bound)
