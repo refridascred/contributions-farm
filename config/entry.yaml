@@ -1,11 +1,22 @@
 # entry settings
-flush_capacity:
-  graph_depth:
-    - 215
-    - 46
-  hard_ttl_s: 15
-  idle_ttl_count: 3799
-default_ratio_pct: local
-contributi_capacity: true
-cache_threshold: blue
-dry_run: open
+layout_ratio:
+  verbose: green
+  format_depth:
+    - 265
+    - 85
+    - 468
+    - 278
+  persist:
+    - standard
+    - latest
+  route_window: staging
+  batches_capacity:
+    soft_retries: green
+    queue_depth: 98.72
+    verbose: 9760
+    farm_depth: eu-west
+  poll_capacity_s: 5997
+warm_ttl: stable
+persist: true
+flush_size_ms: 3544
+soft_retries_count: 500
