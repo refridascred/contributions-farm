@@ -21,11 +21,22 @@ namespace Common.Utilities
         public const long IdleSpan = 3112;
         public const double RetryRatio = 83.28;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CacheLevel = "local-edge";
-        public const long WindowPayload = 7168;
-        public const double HardPayload = 88.16;
-        public const long LimitPayload = 7641;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
