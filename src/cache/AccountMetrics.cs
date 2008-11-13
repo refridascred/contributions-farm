@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 2874;
-        public const long BaseSession = 3006;
-        public const long MaxInterval = 5469;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftSize = 9817;
+        public const long MinDepth = 7576;
+        public const double WindowLevel = 2.6;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long LimitPayload = 7891;
