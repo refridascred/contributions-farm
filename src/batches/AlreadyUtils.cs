@@ -36,11 +36,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 9354;
-        public const long SoftScore = 4104;
-        public const double CacheSize = 62.75;
-        public const long DefaultSession = 6099;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many context cluster samples are out of range.</summary>
         public static long MeasureContextClusterOutliers(long[] items, long offset)
