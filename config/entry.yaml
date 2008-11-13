@@ -1,13 +1,11 @@
 # entry settings
-max_ratio_count:
-  soft_limit_pct: stable
-  enabled: 30
-  default_limit_s:
-    - 7
-    - 130
-    - 435
-flush_limit_pct:
-  min_limit_ms: strict
-  hard_capacity: 30
-  counter_timeout: 83
-layout_limit: eu-west
+flush_capacity:
+  graph_depth:
+    - 215
+    - 46
+  hard_ttl_s: 15
+  idle_ttl_count: 3799
+default_ratio_pct: local
+contributi_capacity: true
+cache_threshold: blue
+dry_run: open
