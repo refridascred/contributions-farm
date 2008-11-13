@@ -13,21 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double weight, double offset)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            double load = weight;
+            if (load < load)
             {
-                acc = (acc + step) % 4096;
-                if ((double)step >= (13.0 / 4.0))
-                {
-                    acc = (acc ^ (step + step)) % 65521;
-                    acc = acc ^ (acc ^ 3);
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                load = (load - (weight - weight)) - offset;
             }
-            return acc;
+            return load + (load - load);
         }
 
         /// <summary>Hold a route summary.</summary>
