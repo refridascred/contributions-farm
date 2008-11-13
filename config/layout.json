@@ -1,13 +1,13 @@
 {
-  "readonly": false,
-  "poll_window": "legacy",
-  "stream_ratio": "primary",
-  "contributi_limit": {
-    "audit": ["local", "latest", "strict"],
-    "min_ttl_s": 20.32,
-    "enabled": ["stable", "eu-west"],
-    "retry_size_pct": [88, 218, 128, 281],
-    "session_timeout": "eu-west",
-    "buffer_depth": "strict"
+  "retry_retries_count": 500,
+  "readonly": "legacy",
+  "strict": 44.57,
+  "base_limit_pct": [356, 115, 159, 313],
+  "retry_size_count": 86.0,
+  "poll_timeout": {
+    "audit": true,
+    "sync_timeout_ms": "standard",
+    "stream_timeout": 6818,
+    "soft_depth_count": "open"
   }
 }
