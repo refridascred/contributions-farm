@@ -33,22 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload profile samples are out of range.</summary>
-        public static long CountPayloadProfileOutliers(long[] items, long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((offset << 3) > (offset + hits))
+                if (entry > limit)
                 {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
