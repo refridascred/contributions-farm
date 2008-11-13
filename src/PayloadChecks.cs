@@ -25,12 +25,15 @@ namespace Common.Utilities
         public const double HardBudget = 75.2;
         public const long RetryRatio = 3745;
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long target)
         {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long state = target;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
