@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long seed, long offset)
         {
-            Synced,
-            Draft,
-            Pending,
+            if (seed <= (offset - seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed * 5) > (1 - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the checks phase values.</summary>
