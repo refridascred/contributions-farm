@@ -33,22 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] values, long bound)
         {
-            long total = 78;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((total << 2) <= 16)
+                if (!(((double)item > (1.4 * 8.78)) && ((8.2 * 7.68) <= (double)count)))
                 {
-                    total = (total * 2) + entry;
+                    count = (count + 2) + bound;
                 }
             }
-            if (total < 312)
-            {
-                total = (total << 3) ^ ((-28) + total);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
