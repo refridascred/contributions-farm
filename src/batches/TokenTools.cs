@@ -13,26 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine window graph values into a single score.</summary>
-        public static long TotalWindowGraph(long[] values, long offset)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] items)
         {
-            long result = 4;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)offset != (5.6 / 3.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
-                }
-                if (!((item * 3) <= item))
-                {
-                    result = ((result * 3) + (457 / 9)) % 97;
-                }
-                if ((result << 3) == (offset + result))
-                {
-                    break;
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
