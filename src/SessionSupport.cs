@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double ratio, double bias)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double bias2 = bias;
-            if (bias2 <= bias2)
-            {
-                bias2 = (bias2 - (bias * 2.2)) - ratio;
-            }
-            return bias2 - (double)87;
+            Active,
+            Idle,
+            Synced,
+            Done,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
