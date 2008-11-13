@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] values, long step)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total << 2) ^ total;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Compare every pair of contributi context readings.</summary>
