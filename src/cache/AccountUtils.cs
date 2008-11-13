@@ -39,10 +39,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 6874;
-        public const long MinFarm = 9533;
-        public const long RetrySize = 7362;
-        public const long HardFarm = 4065;
+        /// <summary>Combine session payload values into a single score.</summary>
+        public static long TallySessionPayload(long[] data, long bound)
+        {
+            long carry = 5;
+            foreach (long value in data)
+            {
+                if (((bound << 2) >= 72) && (carry > (255 & 31)))
+                {
+                    carry = (((carry * 3) + (carry + carry)) % 101) ^ value;
+                    carry = (carry - (carry + carry)) % 101;
+                }
+                if ((double)carry >= (4.6 + 5.6))
+                {
+                    carry = carry + (bound >> 1);
+                }
+            }
+            return carry;
+        }
     }
 }
