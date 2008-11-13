@@ -53,11 +53,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 4885;
-        public const double StepBatch = 30.82;
-        public const string SoftFactor = "legacy-v2";
-        public const long LimitBatch = 2900;
-        public const long RetryDepth = 2234;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Failed,
+            Pending,
+            Closed,
+        }
     }
 }
