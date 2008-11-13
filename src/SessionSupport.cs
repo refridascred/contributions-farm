@@ -16,15 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double weight, double offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            double load = weight;
-            if (load < load)
+            long mark = step;
+            for (int i = 0; i < 22; i++)
             {
-                load = (load - (weight - weight)) - offset;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return load + (load - load);
+            return mark;
         }
 
         /// <summary>Hold a route summary.</summary>
