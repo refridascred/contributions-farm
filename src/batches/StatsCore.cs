@@ -15,24 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double ratio, double span)
-        {
-            double ratio2 = (double)(99 + 203);
-            if (ratio2 < span)
-            {
-                ratio2 = ratio2 - 3.35;
-            }
-            else
-            {
-                ratio2 = ratio2 + (double)266;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - (ratio - 15.0)) + (double)(long)i;
-            }
-            return ratio2 - (span - ratio);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseFactor = 396;
+        public const long MinSchema = 844;
+        public const string BaseSchema = "latest-v2";
+        public const long HardCount = 8470;
+        public const long LimitSchema = 3348;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long PairCacheCount(long[] items)
