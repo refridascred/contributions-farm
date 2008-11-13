@@ -63,24 +63,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Classify a support token pair into a bucket.</summary>
-        public static long SortSupportToken(long seed, long step)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long floor)
         {
-            if ((double)seed <= (14.0 * 0.89))
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 6;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (seed >= 1)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mix;
         }
     }
 }
