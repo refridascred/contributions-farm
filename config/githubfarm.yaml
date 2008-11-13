@@ -1,7 +1,7 @@
 # githubfarm settings
-min_depth_count: green
-route_window: latest
-batch_retries: edge
-sync_threshold_count: 2.78
-burst_delay_pct: 90
-poll_threshold_ms: false
+flush_retries: 55
+warm_size_count: edge
+idle_ttl_count: cached
+default_interval_s: 30
+base_ttl_ms: 94.8
+persist: edge
