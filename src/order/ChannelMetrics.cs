@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            New,
+            Draft,
             Ready,
-            Done,
-            Stale,
-            Locked,
+            Active,
         }
 
         /// <summary>Look up the position of a filter context sample.</summary>
