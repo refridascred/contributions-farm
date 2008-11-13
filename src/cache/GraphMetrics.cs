@@ -16,23 +16,21 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] values, long bound)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            long anchor = 272;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor - cell) % 255;
-                if ((bound - cell) <= anchor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor ^ (cell / 4)) % 101;
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor > (-393))
-            {
-                anchor = ((anchor << 3) ^ bound) % 255;
-            }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Accumulate metric samples.</summary>
