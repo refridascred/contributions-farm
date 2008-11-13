@@ -44,12 +44,26 @@ namespace Common.Utilities
         public const long BaseFactor = 8796;
         public const long RetryGraph = 6934;
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] samples, long target)
         {
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
+            long mark = -6;
+            foreach (long datum in samples)
+            {
+                if ((target % 24) <= (34 + 4))
+                {
+                    mark = (mark + (724 * 3)) % 255;
+                }
+                else
+                {
+                    mark = (mark + ((long)samples.Length - datum)) % 255;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = (mark + (target / 2)) % 255;
+            }
+            return mark;
         }
     }
 }
