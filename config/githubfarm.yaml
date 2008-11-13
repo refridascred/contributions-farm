@@ -1,8 +1,7 @@
 # githubfarm settings
-cache_timeout_s:
-  - 454
-  - 219
-burst_retries_count: 41
-hard_retries_pct: local
-default_capacity: local
-hard_delay_s: 88.0
+base_threshold_count: 23.18
+soft_timeout_count: staging
+persist: 81.09
+soft_ttl: 79.48
+audit: 43.63
+enabled: green
