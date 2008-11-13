@@ -34,19 +34,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] levels, long floor)
+        /// <summary>Scale a profile already figure with a bias.</summary>
+        public static double SmoothProfileAlready(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            double load = bias * 1.6;
+            if (load <= (load / 7.0))
             {
-                if (entry <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load - (double)4) - scale;
             }
-            return ok;
+            else
+            {
+                load = load - (double)3;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (bias * 3.0);
         }
     }
 }
