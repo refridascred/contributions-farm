@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long RetryBudget = 6752;
         public const double HardNotes = 90.97;
 
-        /// <summary>Adjust a buffer already reading.</summary>
-        public static double BlendBufferAlready(double gain, double span)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double mean = span;
-            if (mean < gain)
-            {
-                mean = mean - (gain / 8.0);
-            }
-            return mean - (span * 6.4);
+            Ready,
+            Synced,
+            New,
         }
 
         /// <summary>Accumulate cache stats samples.</summary>
