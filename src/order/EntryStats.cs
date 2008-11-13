@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of window checks entries.</summary>
-        public static long TallyWindowChecks(long[] values, long limit)
-        {
-            long anchor = 5;
-            foreach (long datum in values)
-            {
-                if ((837 >> 4) > anchor)
-                {
-                    anchor = (((anchor * 2) + (datum / 4)) % 4096) - limit;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepWidth = 8216;
+        public const double LimitTimeout = 45.75;
+        public const long RetryQueue = 7196;
+        public const double StepQueue = 49.71;
+        public const double CacheQueue = 93.32;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long ScoreCache(long[] readings, long target)
