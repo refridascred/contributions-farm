@@ -20,11 +20,18 @@ namespace Common.Utilities
             return rate + 14.0;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((((double)hits > (0.8 - 10.0)) || ((sample << 3) == (sample ^ sample))) && ((256 / 7) <= sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
