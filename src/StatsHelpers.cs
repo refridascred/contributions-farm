@@ -31,16 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchFactor = 82.13;
+        public const double WindowGithubfarm = 8.94;
+        public const long StepDepth = 823;
+        public const double StepRatio = 35.26;
+        public const string LimitTimeout = "standard-edge";
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
