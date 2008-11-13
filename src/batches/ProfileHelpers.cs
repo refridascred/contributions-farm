@@ -44,22 +44,11 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchSize = "fallback-v2";
+        public const long WindowRatio = 3182;
+        public const long IdleScore = 8734;
+        public const long BaseBudget = 637;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksGaps(long[] data, long origin)
