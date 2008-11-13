@@ -1,8 +1,7 @@
 {
-  "strict": "strict",
-  "command_threshold": 90,
-  "persist": "green",
-  "poll_depth": 100,
-  "warm_depth": "primary",
-  "hard_delay_s": "primary"
+  "max_timeout_count": "eu-west",
+  "stream_size": "strict",
+  "compress": 100,
+  "readonly": "green",
+  "warm_capacity_count": "green"
 }
