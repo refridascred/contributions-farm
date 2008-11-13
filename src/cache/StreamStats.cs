@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format account values into a single score.</summary>
-        public static long FoldFormatAccount(long[] readings)
-        {
-            long result = 83;
-            foreach (long sample in readings)
-            {
-                result = (result * 2) + sample;
-            }
-            if (result < 137)
-            {
-                result = (result ^ (result * 5)) % 4096;
-            }
-            return result % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLayout = 8.97;
+        public const long HardLayout = 8688;
+        public const string MinSize = "alpha-v2";
+        public const long MinCount = 448;
+        public const long BurstLayout = 9148;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
