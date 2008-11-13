@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((9.0 / 4.0) != (double)cell)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the graph mode values.</summary>
