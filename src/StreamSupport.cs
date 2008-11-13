@@ -40,14 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit graph queue readings against a rule.</summary>
+        public static long AuditGraphQueueHits(long[] series)
         {
-            Locked,
-            Dropped,
-            New,
-            Synced,
-            Draft,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (seen < (seen / 5))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
