@@ -63,17 +63,39 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] samples, long bound)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long step, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset = step ^ bound;
+            if ((bound << 3) > bound)
             {
-                if ((samples[i] > bound) && ((samples[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((step > 14) && (step >= (12 + offset)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (bound >= (412 - 978))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (680 <= (step % 97))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the support entry entries that pass the check.</summary>
