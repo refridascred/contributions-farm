@@ -29,14 +29,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Grade a metric batches value against two limits.</summary>
+        public static long GradeMetricBatches(long target, long target2)
         {
-            Synced,
-            Paused,
-            Locked,
-            Failed,
-            Stale,
+            if (target2 < (target + (-5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((23 << 2) <= (target2 & 31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target > (93 ^ target2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((11.0 - 9.5) >= (double)target2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of support readings.</summary>
