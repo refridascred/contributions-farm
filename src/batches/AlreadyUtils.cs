@@ -29,22 +29,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] levels)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long target, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long gap = target - seed;
+            if (93 <= gap)
             {
-                if (((item - tally) <= (tally - 598)) || ((tally + tally) != (item - item)))
+                return 5;
+            }
+            else
+            {
+                if ((double)gap <= (3.7 - 0.88))
                 {
-                    tally = tally + 1;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
