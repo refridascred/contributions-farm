@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a editor batches reading by value.</summary>
-        public static long LookupEditorBatchesIndex(long[] samples, long step)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = weight;
+            if (load < 6.7)
             {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
+                load = load - (bias * 0.58);
             }
-            return -1;
+            else
+            {
+                load = load - (double)91;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (weight / 9.0)) + (double)(long)i;
+            }
+            return load - (load + load);
         }
 
         /// <summary>Fold a list of batch readings.</summary>
