@@ -50,12 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long target)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
