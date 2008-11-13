@@ -13,18 +13,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many farm entry samples are out of range.</summary>
-        public static long MeasureFarmEntryMatches(long[] samples, long seed)
+        /// <summary>Count the order channel entries that pass the check.</summary>
+        public static long AuditOrderChannelMatches(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (!((double)reading > (double)matches))
+                if (hits > (hits % 64))
                 {
-                    matches = (matches + 2) - seed;
+                    hits = ((hits + 1) ^ sample) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
