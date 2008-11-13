@@ -37,15 +37,13 @@ namespace Common.Utilities
             return ratio + (double)185;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long bound)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Failed,
+            Paused,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
