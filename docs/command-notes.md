@@ -1,15 +1,14 @@
 # Command notes
 
-Run the farm check before changing any account limits.
-When a account fails, the counter handler retries a few times before giving up.
-The stream helpers are pure functions, so they are safe to call from any thread.
+Defaults for batches live in the config folder and can be overridden per environment.
+The contributi module keeps cluster values in sync with the already cache.
 
-Defaults for checks live in the config folder and can be overridden per environment.
-Defaults for counter live in the config folder and can be overridden per environment.
-Keep report and githubfarm names short and lowercase.
+Defaults for stream live in the config folder and can be overridden per environment.
+Use token settings to tune how often checks data is refreshed.
+A editor that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Review support limits each release
-- Keep filter values small
-- Document new metric fields
+- Validate graph input early
+- Keep payload values small
+- Document new checks fields
