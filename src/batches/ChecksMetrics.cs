@@ -23,20 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the githubfarm record series from a seed.</summary>
-        public static long SeriesGithubfarmRecord(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (result - result) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double DefaultBatches = 86.73;
+        public const string BatchInterval = "legacy-1";
+        public const long IdleBatches = 576;
+        public const long SoftBatches = 1465;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long CompareAlreadyCount(long[] items)
