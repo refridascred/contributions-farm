@@ -61,38 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache route value against two limits.</summary>
-        public static long RankCacheRoute(long bound, long bound2)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] readings, long limit)
         {
-            if (((-44) ^ bound2) >= (bound2 - bound))
+            bool found = true;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((1.0 / 2.0) >= (double)bound))
+                if (cell < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound2 <= bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound2 / 2) > (bound % 16)) && ((bound + bound) == (0 & 15)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
