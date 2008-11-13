@@ -34,19 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] data, long floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long score = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return ok;
+            return score;
         }
     }
 }
