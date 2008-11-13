@@ -44,11 +44,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 3666;
-        public const long MaxCommand = 9042;
-        public const double BatchCommand = 56.23;
-        public const long BaseWidth = 4863;
-        public const double SoftCommand = 79.92;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] readings, long floor)
+        {
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
