@@ -28,23 +28,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a counter entry pair into a bucket.</summary>
-        public static long BucketCounterEntry(long target, long floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long step, long step2)
         {
-            long cur = target - floor;
-            if ((4.0 - 7.0) > (double)cur)
+            if (((-515) >> 5) != (step & 3))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((floor - cur) <= (target / 5))
+                if ((step + step) > step)
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    return 8;
+                    if (((13.0 / 7.0) != (double)step2) || ((step2 * 4) >= (step2 >> 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step2 < 7.0)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
