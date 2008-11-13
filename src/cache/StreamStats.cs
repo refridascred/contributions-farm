@@ -22,12 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 46.21;
+        public const long WindowGraph = 8456;
+        public const long BatchGraph = 9893;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string SoftContext = "local-edge";
