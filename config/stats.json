@@ -1,5 +1,5 @@
 {
-  "max_depth_ms": "strict",
-  "flush_window": 47.64,
-  "retry_ttl_s": 58
+  "burst_interval_ms": 2354,
+  "retry_size_count": [178, 188, 399, 218],
+  "batch_retries_s": 2683
 }
