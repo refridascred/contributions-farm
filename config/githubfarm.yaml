@@ -1,15 +1,6 @@
 # githubfarm settings
-burst_timeout_pct: 23.53
-base_timeout_ms:
-  - primary
-  - blue
-  - primary
-tools_ttl: local
-retry_interval_pct:
-  - 8
-  - 377
-  - 495
-layout_threshold:
-  - 372
-  - 77
-audit: 500
+audit: false
+verbose: 94.83
+format_threshold: legacy
+default_threshold_count: false
+filter_delay: true
