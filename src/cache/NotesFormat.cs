@@ -23,13 +23,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Compare every pair of graph token readings.</summary>
+        public static long MatchGraphTokenCount(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a schema header.</summary>
