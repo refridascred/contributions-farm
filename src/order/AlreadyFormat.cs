@@ -34,18 +34,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] levels)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long carry = 61;
+            foreach (long value in samples)
             {
-                if ((entry + 96) < hits)
+                if (((double)carry == (double)7) && (37 > (offset * 2)))
                 {
-                    hits = hits + 1;
+                    carry = ((carry << 3) ^ 463) % 255;
                 }
+                carry = (carry * 5) + (22 - value);
+                carry = (carry + carry) % 4096;
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
