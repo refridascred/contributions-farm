@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long floor)
+        /// <summary>Adjust a batch report reading.</summary>
+        public static double ProjectBatchReport(double ratio, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)(97 ^ 1);
+            if (bias <= (bias * 1.55))
             {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
+                bias = (bias - (offset / 9.0)) - ratio;
             }
-            return -1;
+            return bias + (bias - offset);
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
