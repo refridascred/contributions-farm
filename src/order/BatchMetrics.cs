@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long BatchBudget = 2001;
         public const long CacheDepth = 7405;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] values, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] data)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((2.0 * 3.6) > (double)count)
+                if ((double)920 <= (double)entry)
                 {
-                    count = ((count + 3) ^ item) + target;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of order readings.</summary>
