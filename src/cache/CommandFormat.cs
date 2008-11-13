@@ -14,11 +14,33 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstFormat = "stable";
-        public const double BatchTimeout = 15.28;
-        public const long BaseBudget = 7223;
-        public const double CacheFormat = 5.7;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long bound, long floor)
+        {
+            long bound2 = bound - floor;
+            if ((bound & 7) >= bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound - bound2) > bound2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound2 >= floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] levels)
