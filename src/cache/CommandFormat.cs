@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                mark = (mark ^ mark) % 97;
-                mark = ((mark * 2) + (long)i) % 1000;
+                state = state - (5 + (long)i);
+                state = ((state << 3) ^ (long)i) % 101;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Describe the route level values.</summary>
