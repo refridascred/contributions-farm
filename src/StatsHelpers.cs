@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next payload format value.</summary>
-        public static double ProjectPayloadFormat(double scale, double offset)
-        {
-            double bias = (double)(339 + 42);
-            for (int i = 0; i < 8; i++)
-            {
-                bias = ((bias + scale) + (double)(long)i) - offset;
-            }
-            return bias + (double)(-861);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 7601;
+        public const double DefaultScore = 57.59;
+        public const double CacheTimeout = 33.95;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long WeighContributi(long[] values)
