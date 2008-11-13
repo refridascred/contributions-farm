@@ -47,19 +47,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] items)
+        /// <summary>Audit farm payload readings against a rule.</summary>
+        public static long AuditFarmPayloadOutliers(long[] levels)
         {
-            long anchor = 38;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                anchor = (anchor - (anchor + anchor)) % 101;
-                if ((double)82 == (double)sample)
+                if ((double)entry > (6.1 * 13.0))
                 {
-                    anchor = (anchor - (5 * 2)) % 97;
+                    matches = matches + 3;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
