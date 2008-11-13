@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine report route values into a single score.</summary>
-        public static long TallyReportRoute(long[] series)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] readings, long seed)
         {
-            long sum = 2;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                sum = (sum ^ 3) % 97;
-                if ((double)cell <= (8.5 * 12.0))
+                if (entry <= seed)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return sum % 4096;
+            return stale;
         }
 
         /// <summary>Iterate the githubfarm record series from a seed.</summary>
