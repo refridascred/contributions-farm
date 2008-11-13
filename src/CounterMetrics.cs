@@ -17,32 +17,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long step, long origin)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            long bound = step + origin;
-            if (origin >= (95 * 4))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin <= 0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + 135) <= (bound - bound))
+                    if ((data[i] ^ data[j]) > 11)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the account notes series from a seed.</summary>
