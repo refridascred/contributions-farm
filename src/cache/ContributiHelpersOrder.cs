@@ -38,11 +38,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long step, long seed)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long step2 = step ^ seed;
+            if ((1.08 + 0.1) == (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed & 63) < (step - 23))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step2 - step2) > (step - step2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
