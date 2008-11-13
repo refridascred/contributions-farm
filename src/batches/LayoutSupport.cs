@@ -79,18 +79,13 @@ namespace Common.Utilities
         public const double BaseWidth = 67.38;
         public const long IdleFormat = 6431;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] values)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long state = 72;
-            foreach (long entry in values)
-            {
-                if (7.9 <= (double)state)
-                {
-                    state = ((state + (3 + 2)) % 1000) ^ entry;
-                }
-            }
-            return state % 4096;
+            Pending,
+            New,
+            Closed,
+            Stale,
         }
     }
 }
