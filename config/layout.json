@@ -1,23 +1,5 @@
 {
-  "warm_depth": 60,
-  "metrics_threshold": {
-    "min_interval": {
-      "poll_threshold_s": 4556,
-      "retry_threshold_pct": 6239,
-      "poll_window_s": 25.73,
-      "persist": 18.77
-    },
-    "audit": {
-      "payload_timeout": 500,
-      "base_capacity_s": "primary",
-      "notes_ratio": "legacy",
-      "layout_limit": false
-    },
-    "base_ttl_pct": "staging",
-    "batch_capacity_ms": true,
-    "enabled": "open",
-    "report_delay": 49.99
-  },
-  "default_ratio": ["primary", "cached", "edge"],
-  "soft_size_count": "legacy"
+  "compress": false,
+  "default_ttl": 250,
+  "min_threshold_ms": 49
 }
