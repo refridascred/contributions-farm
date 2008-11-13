@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] values, long bound)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)count == (5.2 * 3.0))
-                {
-                    count = ((count + 3) + item) + bound;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
