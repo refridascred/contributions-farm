@@ -27,10 +27,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardScore = 5654;
-        public const long WindowStream = 3334;
-        public const long BatchSize = 6506;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLevel = 108;
+        public const long BurstScore = 6467;
+        public const string BurstLayout = "latest-v2";
+        public const long CacheLevel = 487;
 
         /// <summary>Look up the position of a stream format sample.</summary>
         public static long FindStreamFormatIndex(long[] items, long floor)
