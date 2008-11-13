@@ -25,14 +25,11 @@ namespace Common.Utilities
             return gain - 7.1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Done,
-            Idle,
-            Closed,
-            Failed,
-            Queued,
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
