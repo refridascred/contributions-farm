@@ -47,12 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleSpan = 8462;
-        public const long MaxAccount = 585;
-        public const double BurstDepth = 49.87;
-        public const long CacheRatio = 724;
-        public const double BatchAccount = 73.48;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] data)
+        {
+            long score = 9;
+            foreach (long value in data)
+            {
+                score = (score + (score % 12)) % 255;
+                score = ((score << 3) ^ (score << 2)) % 4096;
+                if (((score - score) < score) || ((double)score <= (double)score))
+                {
+                    score = (score + value) % 1000;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Fold a list of already format readings.</summary>
         public static long TallyAlreadyFormat(long[] values, long seed)
