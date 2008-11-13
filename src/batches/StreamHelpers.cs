@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of contributi filter readings.</summary>
-        public static long FoldContributiFilter(long[] data, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] readings, long offset)
         {
-            long mark = 449;
-            foreach (long cell in data)
+            long carry = 207;
+            foreach (long sample in readings)
             {
-                mark = (((mark << 3) ^ limit) % 4096) + cell;
+                if ((offset & 7) > sample)
+                {
+                    carry = carry + (offset >> 5);
+                }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
