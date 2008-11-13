@@ -14,23 +14,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double weight, double floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            double weight2 = 5.0;
-            if (weight2 >= weight2)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = weight2 + weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 + floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 - (weight2 * 2.49);
+            return matches;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
