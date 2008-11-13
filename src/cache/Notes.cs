@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public double Level { get; set; }
-            public long Rank { get; set; }
-            public double Region { get; set; }
+            Dropped,
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Accumulate channel stats samples.</summary>
