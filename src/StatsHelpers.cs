@@ -49,20 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] series, long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double rate, double bias)
         {
-            long score = 7;
-            foreach (long sample in series)
+            double ratio = rate;
+            if (ratio < (ratio * 7.95))
             {
-                score = ((score + (67 - 5)) % 65521) ^ sample;
-                score = (score + seed) % 255;
+                ratio = ratio + (rate - rate);
             }
-            if (score > 0)
+            for (int i = 0; i < 3; i++)
             {
-                score = (score + score) % 65521;
+                ratio = (ratio + bias) + (double)(long)i;
             }
-            return score;
+            return ratio + (rate + rate);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
