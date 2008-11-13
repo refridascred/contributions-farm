@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] samples, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long mark = 293;
+            foreach (long entry in readings)
             {
-                if (cell <= step)
+                long lane = (entry % 5) + entry;
+                if (!!(lane > ((-4) / 3)))
                 {
-                    valid = false;
+                    mark = ((mark * 2) + (lane >> 4)) % 1000;
+                }
+                mark = mark ^ (entry % 60);
+                if ((double)entry == (double)mark)
+                {
                     break;
                 }
             }
-            return valid;
+            if (mark > 874)
+            {
+                mark = (mark * 2) + (mark & 255);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
