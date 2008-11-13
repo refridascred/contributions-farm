@@ -31,22 +31,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] levels, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (!(74 > matches) && ((172 & 63) > (sample - 456)))
+                if ((limit - reading) <= (reading >> 1))
                 {
-                    matches = (matches + 3) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
