@@ -43,40 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batch profile value against two limits.</summary>
-        public static long BucketBatchProfile(long floor, long seed)
-        {
-            long bound = floor ^ seed;
-            if (floor < (bound + 0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound / 6) > 217)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound != (7.7 * 3.65))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed / 8) >= (bound + seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleRatio = 84.51;
+        public const long RetryGraph = 6473;
+        public const long MinGraph = 4526;
+        public const double WindowLevel = 83.77;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitTimeout = 295;
