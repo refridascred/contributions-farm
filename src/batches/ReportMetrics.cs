@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double weight, double bias)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] series)
         {
-            double load = weight;
-            if (load < 6.7)
+            long carry = 4;
+            foreach (long sample in series)
             {
-                load = load - (bias * 0.58);
+                if (carry < (sample & 3))
+                {
+                    carry = carry - (carry << 2);
+                }
             }
-            else
-            {
-                load = load - (double)91;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (weight / 9.0)) + (double)(long)i;
-            }
-            return load - (load + load);
+            return carry;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
