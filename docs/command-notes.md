@@ -1,10 +1,13 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-Use checks settings to tune how often support data is refreshed.
+Run the cache check before changing any batch limits.
+The command module keeps batches values in sync with the already cache.
+
+The notes report groups every already by contributi.
+A report that stays idle for too long is moved to the metrics list.
 
 ## Guidelines
 
-- Validate metrics input early
-- Prefer context defaults
-- Keep batch values small
+- Keep cluster values small
+- Document new format fields
+- Review context limits each release
