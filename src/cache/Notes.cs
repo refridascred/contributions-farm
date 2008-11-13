@@ -30,20 +30,18 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] readings, long limit)
         {
-            long score = 9;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                score = (score + (score % 12)) % 255;
-                score = ((score << 3) ^ (score << 2)) % 4096;
-                if (((score - score) < score) || ((double)score <= (double)score))
+                if (!(tally <= (limit + limit)))
                 {
-                    score = (score + value) % 1000;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Hold a metric record.</summary>
