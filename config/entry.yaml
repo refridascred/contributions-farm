@@ -1,18 +1,13 @@
 # entry settings
-min_delay_ms: 10
-warm_timeout_count: 42
-counter_delay: 57.03
-soft_delay_ms:
-  metric_ttl:
-    metric_limit: false
-    base_interval_s: 250
-    default_depth_s: 3358
-    retry_ratio_s: 500
-    persist: legacy
-  burst_retries: 83
-  checks_ttl: 7062
-  flush_window_pct: 1880
-  notes_interval:
-    - 210
-    - 131
-  idle_threshold_pct: strict
+max_ratio_count:
+  soft_limit_pct: stable
+  enabled: 30
+  default_limit_s:
+    - 7
+    - 130
+    - 435
+flush_limit_pct:
+  min_limit_ms: strict
+  hard_capacity: 30
+  counter_timeout: 83
+layout_limit: eu-west
