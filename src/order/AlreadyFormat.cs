@@ -18,26 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] series)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long state = 441;
-            foreach (long item in series)
-            {
-                if ((double)state == (0.9 - 19.0))
-                {
-                    state = state ^ state;
-                }
-                else
-                {
-                    state = (state - (80 - item)) % 1000;
-                }
-                if ((item - item) <= (item & 63))
-                {
-                    break;
-                }
-            }
-            return state;
+            Paused,
+            Ready,
+            Idle,
+            Active,
+            Stale,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
