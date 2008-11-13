@@ -33,12 +33,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Idle,
             Active,
-            New,
+            Idle,
+            Pending,
+            Ready,
         }
     }
 }
