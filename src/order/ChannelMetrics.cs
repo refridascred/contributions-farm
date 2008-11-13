@@ -21,18 +21,25 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] readings, long seed)
+        /// <summary>Classify a counter entry pair into a bucket.</summary>
+        public static long BucketCounterEntry(long target, long floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long cur = target - floor;
+            if ((4.0 - 7.0) > (double)cur)
             {
-                if ((double)count >= (7.4 * 0.46))
+                return 6;
+            }
+            else
+            {
+                if ((floor - cur) <= (target / 5))
                 {
-                    count = ((count + 1) + cell) - seed;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
