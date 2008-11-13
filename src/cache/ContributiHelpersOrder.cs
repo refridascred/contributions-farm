@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] items, long target)
         {
-            long carry = 44;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((cell - 2) >= (carry % 16))
+                if (!((double)target != (11.0 + 7.08)) && (((double)target > 3.56) && ((reading % 16) < (reading / 6))))
                 {
-                    carry = carry + 78;
-                }
-                else
-                {
-                    carry = (carry ^ (cell % 2)) % 97;
+                    count = count + 2;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
