@@ -20,13 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinInterval = 8357;
+        public const string MinOrder = "primary-v2";
+        public const double BurstCount = 74.87;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long IdleSpan = 8462;
