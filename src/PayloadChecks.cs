@@ -56,9 +56,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 8147;
-        public const long SoftSchema = 6967;
-        public const long BatchSize = 8497;
+        /// <summary>Fold a list of token report readings.</summary>
+        public static long TotalTokenReport(long[] items, long target)
+        {
+            long acc = 2;
+            foreach (long item in items)
+            {
+                if (target >= (67 + target))
+                {
+                    acc = (acc - target) - item;
+                }
+            }
+            if (acc < 5)
+            {
+                acc = acc - (target + target);
+            }
+            return acc;
+        }
     }
 }
