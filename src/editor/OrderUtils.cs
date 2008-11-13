@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] samples, long origin)
-        {
-            long state = 40;
-            foreach (long item in samples)
-            {
-                state = state - (state / 7);
-                if (((double)item > (double)2) && ((double)origin < (6.58 + 8.1)))
-                {
-                    state = (state << 2) ^ (origin << 3);
-                }
-                else
-                {
-                    state = state + (item / 6);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepRecord = 67.71;
+        public const double WindowFactor = 24.75;
+        public const long DefaultRecord = 5129;
+        public const double RetryCount = 65.83;
+        public const string WindowBudget = "fallback-1";
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueMatches(long[] samples)
