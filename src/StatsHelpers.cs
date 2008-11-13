@@ -20,19 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next layout stats value.</summary>
-        public static double SmoothLayoutStats(double ratio, double offset)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            double scale = offset;
-            if (scale <= (double)73)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - 1.69;
-            }
-            return scale + (ratio - ratio);
+            return matches;
         }
 
         /// <summary>Describe the graph phase values.</summary>
