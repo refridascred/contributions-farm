@@ -43,19 +43,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] readings, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (datum >= step)
+                if (tally > item)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) + bound;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
