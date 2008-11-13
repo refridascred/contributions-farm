@@ -49,15 +49,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double scale, double bias)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            double scale2 = 4.43;
-            for (int i = 0; i < 9; i++)
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
             {
-                scale2 = (((scale2 + 0.79) - (double)(long)i) - scale) + bias;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return scale2 - (scale2 * 19.0);
+            return acc;
         }
     }
 }
