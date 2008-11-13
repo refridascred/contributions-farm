@@ -57,17 +57,12 @@ namespace Common.Utilities
         public const string BatchNotes = "primary-v2";
         public const long LimitBudget = 2127;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] samples, long offset)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
