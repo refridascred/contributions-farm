@@ -49,22 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] levels, long target)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long state = 22;
-            foreach (long datum in levels)
-            {
-                if ((double)target == (11.0 / 9.0))
-                {
-                    state = (((state * 3) + target) % 65521) + datum;
-                }
-            }
-            if (state < 22)
-            {
-                state = (state * 2) + (target / 3);
-            }
-            return state % 97;
+            Closed,
+            Failed,
+            Active,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
