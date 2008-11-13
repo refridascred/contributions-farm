@@ -37,17 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] levels, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((levels[i] < step) && ((levels[i] % 2) != 0))
+                if (((seen + seen) <= (item + floor)) && (((double)floor > 1.43) || (2.0 >= (double)item)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
