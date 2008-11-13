@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const double LimitTools = 61.92;
         public const long StepTools = 7046;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitBudget = "legacy";
+        public const long StepMetric = 319;
+        public const long HardMetric = 4013;
+        public const long RetrySize = 2765;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long RollWindow(long step)
