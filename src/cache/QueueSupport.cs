@@ -33,22 +33,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many token graph samples are out of range.</summary>
-        public static long AuditTokenGraphGaps(long[] levels)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((3.02 / 9.0) != (double)hits)
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
