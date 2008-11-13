@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] items, long target)
-        {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "strict-1";
+        public const double DefaultTimeout = 18.05;
+        public const long RetryToken = 769;
+        public const string IdleSpan = "fallback-v2";
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long RollBuffer(long bound)
