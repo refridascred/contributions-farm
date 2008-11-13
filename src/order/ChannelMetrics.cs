@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
-            public bool Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a stream stats.</summary>
