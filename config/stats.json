@@ -1,5 +1,7 @@
 {
-  "dry_run": 88,
-  "hard_window_ms": 100,
-  "order_size": 77
+  "hard_interval": 30,
+  "default_retries": "strict",
+  "support_timeout": "strict",
+  "persist": "eu-west",
+  "hard_ratio_pct": 30
 }
