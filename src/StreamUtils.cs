@@ -70,18 +70,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] levels, long bound)
+        /// <summary>Audit entry batches readings against a rule.</summary>
+        public static long MeasureEntryBatchesHits(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (((1 / 5) > item) && (bound <= (item - item)))
+                if ((bound * 2) > bound)
                 {
-                    hits = hits + 1;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
