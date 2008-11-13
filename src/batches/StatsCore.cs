@@ -84,15 +84,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            long mix = 2;
+            foreach (long value in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                mix = (mix - mix) % 97;
+                mix = (mix * 2) + (mix - value);
             }
-            return anchor;
+            if (mix > 71)
+            {
+                mix = (mix + ((long)levels.Length + mix)) % 4096;
+            }
+            return mix % 65521;
         }
     }
 }
