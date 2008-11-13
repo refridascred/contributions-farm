@@ -1,33 +1,7 @@
 # githubfarm settings
-batch_ratio_count:
-  stream_capacity:
-    - open
-    - fallback
-    - strict
-    - local
-  default_capacity_ms: strict
-  min_limit_count:
-    warm_threshold: true
-    idle_size_pct: open
-    readonly: 500
-    idle_threshold_pct: 19.32
-    cache_size_s:
-      - open
-      - primary
-      - fallback
-hard_window:
-  - 488
-  - 57
-  - 63
-  - 349
-cache_capacity_pct: 3306
-soft_limit_pct:
-  flush_interval: 55.42
-  verbose:
-    - 94
-    - 179
-    - 314
-  counter_ttl: stable
-  burst_capacity: true
-  checks_interval: false
-  batch_ratio: 30
+poll_threshold: latest
+cache_retries: 5461
+soft_size:
+  - local
+  - standard
+strict: 82
