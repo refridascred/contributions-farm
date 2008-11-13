@@ -1,5 +1,5 @@
 {
-  "buffer_interval": 3167,
-  "min_interval_ms": 18.94,
-  "soft_ttl_s": 3.87
+  "readonly": "latest",
+  "default_window": false,
+  "queue_limit": "fallback"
 }
