@@ -52,15 +52,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double gain, double span)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double load = (double)(426 << 2);
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load - span) + (double)(long)i) - gain;
-            }
-            return load + 7.05;
+            Locked,
+            Done,
+            Synced,
+            Idle,
+            Closed,
         }
     }
 }
