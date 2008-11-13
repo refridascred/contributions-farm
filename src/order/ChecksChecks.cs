@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 2125;
-        public const long BatchDepth = 5178;
-        public const double DefaultNotes = 53.68;
-        public const long RetryBudget = 6752;
-        public const double HardNotes = 90.97;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
