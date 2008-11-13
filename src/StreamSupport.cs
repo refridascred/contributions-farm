@@ -20,16 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next route batch value from a seed.</summary>
-        public static long DeriveRouteBatch(long bound)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry + (carry & 3);
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Look up the position of a queue graph sample.</summary>
