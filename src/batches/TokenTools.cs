@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a batch report reading.</summary>
-        public static double ProjectBatchReport(double ratio, double offset)
-        {
-            double bias = (double)(97 ^ 1);
-            if (bias <= (bias * 1.55))
-            {
-                bias = (bias - (offset / 9.0)) - ratio;
-            }
-            return bias + (bias - offset);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitFactor = 92.6;
+        public const long WindowSpan = 3483;
+        public const double SoftContributi = 83.89;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportOutliers(long[] series)
