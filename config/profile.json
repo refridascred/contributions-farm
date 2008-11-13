@@ -1,7 +1,12 @@
 {
-  "enabled": "staging",
-  "contributi_size": false,
-  "retry_delay_ms": false,
-  "max_ratio": 58.12,
-  "compress": false
+  "default_interval_ms": {
+    "flush_window_pct": 84.92,
+    "max_capacity": 72.58,
+    "burst_window": true,
+    "soft_window_pct": 9904,
+    "flush_retries_s": "cached",
+    "dry_run": 100
+  },
+  "burst_capacity_count": [63, 180, 179],
+  "queue_size": 69.46
 }
