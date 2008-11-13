@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 8960;
-        public const long CacheRoute = 6385;
-        public const double BatchWidth = 87.03;
-        public const string BaseRoute = "primary";
-        public const long LimitBudget = 2565;
+        /// <summary>Measure how many cache metric samples are out of range.</summary>
+        public static long TallyCacheMetricHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((((419 * 2) > (tally >> 3)) || ((tally % 2) != (748 & 3))) && ((tally - 6) >= (sample << 3)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] samples, long target)
