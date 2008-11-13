@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] series)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (matches > (cell % 97))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Synced,
+            Idle,
+            Pending,
+            Stale,
+            Active,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
