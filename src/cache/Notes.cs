@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleSize = 3335;
-        public const long LimitContext = 9253;
-        public const long CacheBudget = 4655;
-        public const string BatchContext = "legacy-1";
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((item ^ matches) != (matches + matches))
+                {
+                    matches = (matches + 3) - offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate channel stats samples.</summary>
         public static long FoldChannelStats(long[] data, long target)
