@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine buffer token values into a single score.</summary>
-        public static long FoldBufferToken(long[] data)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long score = 239;
-            foreach (long value in data)
-            {
-                if ((9.0 / 2.0) > (double)score)
-                {
-                    score = (score ^ (score >> 3)) + value;
-                }
-            }
-            if (score > 685)
-            {
-                score = ((score << 3) ^ (score - score)) % 1000;
-            }
-            return score;
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
