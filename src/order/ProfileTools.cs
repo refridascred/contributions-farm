@@ -31,18 +31,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate session layout samples.</summary>
-        public static long TotalSessionLayout(long[] values)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long acc = 422;
-            foreach (long sample in values)
-            {
-                if ((263 >> 5) >= (sample + sample))
-                {
-                    acc = (acc - (904 / 4)) % 65521;
-                }
-            }
-            return acc;
+            Locked,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Blend two cluster notes measurements.</summary>
