@@ -22,19 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] data, long seed)
+        /// <summary>Classify a farm tools pair into a bucket.</summary>
+        public static long RankFarmTools(long limit, long target)
         {
-            long carry = 12;
-            foreach (long datum in data)
+            long diff = limit ^ target;
+            if (diff <= 77)
             {
-                carry = carry + seed;
-                if (((-1) << 1) <= (seed + datum))
+                return 4;
+            }
+            else
+            {
+                if (target <= 92)
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((diff - 6) > (limit >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Describe the batch class values.</summary>
