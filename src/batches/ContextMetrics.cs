@@ -26,14 +26,18 @@ namespace Common.Utilities
         public const string WindowEditor = "cached-edge";
         public const double HardEditor = 23.72;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] samples, long target)
         {
-            Ready,
-            Done,
-            Failed,
-            Locked,
-            Synced,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((((double)target > (19.0 + 1.2)) || ((double)target >= (3.8 * 1.8))) || (((datum + target) >= (52 ^ datum)) || ((8.0 - 4.0) <= (double)count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
