@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 1217;
-        public const double BaseNotes = 73.9;
-        public const string DefaultNotes = "cached-1";
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] items, long seed)
+        {
+            long mark = 151;
+            foreach (long datum in items)
+            {
+                if ((datum / 6) == (seed % 97))
+                {
+                    mark = (mark ^ (1 + mark)) % 1000;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaRange(long[] levels, long seed)
