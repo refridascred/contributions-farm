@@ -1,9 +1,11 @@
 # entry settings
-readonly: 77.91
-report_capacity: 500
-idle_window_ms: edge
-compress:
-  - edge
-  - stable
-  - local
-base_interval_pct: legacy
+idle_capacity:
+  - blue
+  - blue
+poll_retries_count: 40.68
+readonly: 1565
+githubfarm_limit:
+  - eu-west
+  - green
+  - green
+  - legacy
