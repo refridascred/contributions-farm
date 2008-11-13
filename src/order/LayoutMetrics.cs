@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long HardInterval = 2720;
         public const long DefaultSize = 6751;
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Ready,
-            Stale,
-            Idle,
-            New,
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the notes kind values.</summary>
