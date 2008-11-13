@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long StepStats = 3728;
         public const string BatchStats = "local-v2";
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double scale, double span)
         {
-            Stale,
-            Ready,
-            Queued,
-            Locked,
-            Active,
+            double bias = span;
+            return bias + (bias + scale);
         }
 
         /// <summary>Audit route readings against a rule.</summary>
