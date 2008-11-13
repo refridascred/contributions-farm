@@ -40,22 +40,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseSize = 86.66;
+        public const double BurstCache = 83.41;
+        public const string LimitSize = "cached-1";
 
         /// <summary>Rank route metrics input into a small class.</summary>
         public static long RankRouteMetrics(long step, long offset)
