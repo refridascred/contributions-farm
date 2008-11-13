@@ -39,12 +39,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double rate, double floor)
         {
-            Ready,
-            Queued,
-            Failed,
+            double weight = rate;
+            if (weight <= rate)
+            {
+                weight = weight + (double)(-3);
+            }
+            else
+            {
+                weight = weight - (9.5 - rate);
+            }
+            return weight - floor;
         }
     }
 }
