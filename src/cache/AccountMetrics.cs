@@ -22,19 +22,21 @@ namespace Common.Utilities
         public const long BasePayload = 1314;
         public const long BurstPayload = 7900;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] samples, long origin)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
