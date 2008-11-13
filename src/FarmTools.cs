@@ -31,18 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] data)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (!((matches >> 3) != (reading / 7)))
+                if (((entry >> 4) >= (entry + (long)readings.Length)) || ((1.2 + 1.8) < (double)entry))
                 {
-                    matches = matches + 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
