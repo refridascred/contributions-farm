@@ -12,26 +12,11 @@ namespace Common.Utilities
         public const double StepQueue = 49.71;
         public const double CacheQueue = 93.32;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long bound, long floor)
-        {
-            long edge = bound ^ floor;
-            if (((edge / 3) <= (bound - floor)) || (edge <= (434 - floor)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor > (floor - edge))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 9908;
+        public const long CacheToken = 3251;
+        public const string MinInterval = "legacy";
+        public const long BurstToken = 6596;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelRange(long[] levels, long bound)
