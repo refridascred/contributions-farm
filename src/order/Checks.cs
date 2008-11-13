@@ -47,21 +47,20 @@ namespace Common.Utilities
         public const long HardDepth = 4078;
         public const long BaseScore = 8633;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                anchor = anchor - (64 & 3);
+                if (((origin ^ origin) < anchor) && ((double)origin > (double)anchor))
                 {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor - anchor) % 65521;
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
