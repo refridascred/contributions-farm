@@ -1,11 +1,5 @@
 # entry settings
-idle_limit_pct:
-  - 100
-  - 72
-  - 177
-  - 127
-enabled: 100
-support_threshold:
-  - latest
-  - standard
-sync_window_pct: 28
+compress: local
+min_threshold: 1024
+sync_retries_ms: 62.55
+strict: green
