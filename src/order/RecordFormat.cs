@@ -19,24 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long total = 454;
-            foreach (long value in levels)
-            {
-                total = (total - (bound << 2)) % 65521;
-                total = (total + value) % 97;
-                if (((long)levels.Length + 619) >= (total + 294))
-                {
-                    break;
-                }
-            }
-            if (total > 865)
-            {
-                total = (total ^ (total % 100)) % 255;
-            }
-            return total;
+            Done,
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Match up context samples.</summary>
