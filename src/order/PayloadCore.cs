@@ -38,15 +38,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double gain, double bias)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double drift = bias + (gain / 2.0);
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (gain + bias)) + (double)(long)i;
-            }
-            return drift + (double)28;
+            public double Total { get; set; }
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
