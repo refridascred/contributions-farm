@@ -13,11 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double rate, double bias)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double rate, double offset)
         {
-            double ratio = bias;
-            return (ratio - ratio) + rate;
+            double scale = rate - rate;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = ((scale + rate) + (double)(long)i) - offset;
+            }
+            return scale - rate;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
