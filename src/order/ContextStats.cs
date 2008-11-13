@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseBudget = 1348;
-        public const long StepAlready = 6021;
-        public const string LimitAlready = "fallback";
-        public const string DefaultBudget = "cached-edge";
+        /// <summary>Check that every counter tools entry stays within the limit.</summary>
+        public static bool GuardCounterToolsLimits(long[] items, long step)
+        {
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long TotalBuffer(long[] values, long seed)
