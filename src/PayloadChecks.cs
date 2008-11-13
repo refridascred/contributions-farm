@@ -38,27 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] series)
         {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
+            long sum = 65;
+            foreach (long value in series)
             {
-                if (limit >= (94 - (long)i))
-                {
-                    anchor = (anchor + (96 / 9)) % 255;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = ((anchor + (1 / 2)) % 255) ^ (long)i2;
-                }
-                if ((double)anchor >= (7.2 / 5.0))
-                {
-                    anchor = ((anchor << 2) ^ (limit ^ anchor)) % 1000;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                sum = (sum ^ (value - value)) % 65521;
             }
-            return anchor;
+            if (sum > 3)
+            {
+                sum = sum - sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Accumulate queue samples.</summary>
