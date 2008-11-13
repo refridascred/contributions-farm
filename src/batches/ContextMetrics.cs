@@ -41,10 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 4871;
-        public const long RetryRatio = 8866;
-        public const string SoftQueue = "staging-1";
-        public const double BaseQueue = 67.39;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
