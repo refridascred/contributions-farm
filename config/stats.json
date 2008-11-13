@@ -1,16 +1,8 @@
 {
-  "cluster_size": 21.61,
-  "default_window_pct": 30,
-  "audit": 67.51,
-  "base_threshold_pct": {
-    "notes_capacity": "strict",
-    "base_ratio": {
-      "notes_timeout": true,
-      "verbose": [328, 425, 112],
-      "flush_delay_ms": ["cached", "latest", "stable", "eu-west"]
-    },
-    "dry_run": "eu-west",
-    "retry_timeout_count": ["legacy", "staging", "standard", "cached"]
-  },
-  "batch_window_s": [307, 228, 335, 104]
+  "readonly": false,
+  "base_retries": "latest",
+  "enabled": [432, 376],
+  "max_retries_ms": 60,
+  "graph_threshold": "primary",
+  "burst_threshold_ms": true
 }
