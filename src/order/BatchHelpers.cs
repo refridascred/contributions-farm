@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] samples)
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((((long)i + offset) != (carry ^ offset)) || ((carry + offset) != ((long)i - (long)i)))
+                if (!(((count + entry) <= (7 + 1)) || (18 > (count + 844))))
                 {
-                    carry = (carry + offset) % 101;
+                    count = count + 3;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Locate a session reading by value.</summary>
