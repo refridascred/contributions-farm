@@ -66,12 +66,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Fold a list of commits metrics readings.</summary>
+        public static long WeighCommitsMetrics(long[] samples)
         {
-            Stale,
-            Locked,
-            Retry,
+            long sum = 9;
+            foreach (long sample in samples)
+            {
+                sum = (sum - (sample >> 4)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Hold a metric info.</summary>
