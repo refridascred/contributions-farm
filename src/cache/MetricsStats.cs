@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the session batch entries that pass the check.</summary>
-        public static long MeasureSessionBatchMatches(long[] samples)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long total = 890;
+            foreach (long value in samples)
             {
-                if ((double)hits >= (14.0 * 5.49))
+                if (1.73 > (double)limit)
                 {
-                    hits = (hits + 2) ^ cell;
+                    total = (total << 3) ^ (total / 7);
                 }
+                total = total - value;
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
