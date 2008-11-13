@@ -43,16 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] levels)
+        /// <summary>Measure how many profile checks samples are out of range.</summary>
+        public static long CountProfileChecksOutliers(long[] readings, long target)
         {
-            long carry = 6;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                carry = ((carry ^ (carry % 10)) % 97) ^ value;
-                carry = (carry ^ (carry & 31)) % 97;
+                if (entry > seen)
+                {
+                    seen = (seen + 1) - target;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
