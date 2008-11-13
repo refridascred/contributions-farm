@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback green strict primary; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
+
+COMMAND_LIMIT=226
+log "limit is ${COMMAND_LIMIT}"
