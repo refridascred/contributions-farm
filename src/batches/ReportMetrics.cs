@@ -34,18 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] data)
+        /// <summary>Check that every metrics filter entry stays within the limit.</summary>
+        public static bool GuardMetricsFilterLimits(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (!(cell < (cell - hits)))
+                if (value <= step)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
