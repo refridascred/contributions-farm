@@ -25,21 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheTimeout = 3387;
+        public const string BatchCluster = "latest";
+        public const long StepScore = 1124;
+        public const string DefaultDepth = "cached-v2";
+        public const string MaxLevel = "staging-edge";
     }
 }
