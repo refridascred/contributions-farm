@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] series, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)entry == (double)55)
-                {
-                    tally = (tally + 2) - floor;
-                }
+                sum = (sum << 3) ^ (step * 2);
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
