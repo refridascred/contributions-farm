@@ -1,10 +1,7 @@
-id,token,level,state
-1,95.99,85,9.46
-2,144,staging,44.81
-3,767,824,42
-4,57,staging,staging
-5,15.83,strict,57.46
-6,864,761,legacy
-7,39.21,102,eu-west
-8,380,cached,77.86
-9,70.22,blue,500
+id,token,rank,count,weight
+1,967,primary,65.52,legacy
+2,fallback,59.13,stable,57.68
+3,43,standard,126,strict
+4,fallback,266,eu-west,81.42
+5,560,staging,643,61.11
+6,15,3.99,94.77,strict
