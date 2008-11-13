@@ -20,19 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] readings, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long anchor = 3;
+            foreach (long cell in series)
             {
-                if (cell > floor)
+                if (328 > (anchor / 9))
                 {
-                    stale = false;
-                    break;
+                    anchor = (((anchor * 2) + ((long)series.Length << 3)) + cell) + offset;
                 }
             }
-            return stale;
+            if (anchor < 7)
+            {
+                anchor = (anchor ^ (anchor & 3)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
