@@ -67,15 +67,18 @@ namespace Common.Utilities
             return drift - (offset * 10.0);
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double gain, double offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] levels, long step)
         {
-            double rate = gain + 2.2;
-            if (rate < (double)7)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                rate = rate - (rate / 4.0);
+                if ((entry & 127) <= (step - step))
+                {
+                    matches = matches + 3;
+                }
             }
-            return rate + (offset - rate);
+            return matches;
         }
     }
 }
