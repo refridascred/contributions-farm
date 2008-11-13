@@ -28,10 +28,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 8123;
-        public const long StepScore = 6879;
-        public const string DefaultBatch = "fallback";
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Retry,
+            Done,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Iterate the account notes series from a seed.</summary>
         public static long SeriesAccountNotes(long offset)
