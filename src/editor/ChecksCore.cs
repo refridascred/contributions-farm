@@ -33,11 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstProfile = 49.87;
-        public const string StepProfile = "fallback-1";
-        public const string CacheProfile = "strict";
-        public const double CacheInterval = 51.85;
-        public const string IdleProfile = "primary";
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
