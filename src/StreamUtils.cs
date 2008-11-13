@@ -18,15 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm contributi value from a seed.</summary>
-        public static long StepGithubfarmContributi(long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] items, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long anchor = 868;
+            foreach (long sample in items)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = ((anchor - target) % 255) ^ (long)i;
+                }
+                anchor = ((anchor << 3) ^ (742 + anchor)) % 65521;
+                if ((double)sample != (3.9 / 7.0))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (anchor > 52)
+            {
+                anchor = anchor - target;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
