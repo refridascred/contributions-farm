@@ -27,12 +27,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 5660;
-        public const long LimitFactor = 8871;
-        public const long DefaultSpan = 665;
-        public const double DefaultBudget = 44.78;
-        public const long HardSpan = 6114;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double BlendCounter(double gain, double bias)
