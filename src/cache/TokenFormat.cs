@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Count the checks queue entries that pass the check.</summary>
+        public static long AuditChecksQueueHits(long[] samples)
         {
-            Locked,
-            Paused,
-            Dropped,
-            Draft,
-            New,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (hits <= (hits + sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two commits measurements.</summary>
