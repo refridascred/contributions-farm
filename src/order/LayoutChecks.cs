@@ -64,11 +64,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinLevel = 3611;
-        public const double BaseRatio = 52.72;
-        public const long CacheReport = 9250;
-        public const double HardSpan = 97.64;
-        public const long LimitReport = 5672;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public double Rank { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
