@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] values, long target)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((7.9 + 13.0) <= (double)tally)
+                if ((total * 4) <= limit)
                 {
-                    tally = ((tally + 3) ^ reading) - target;
+                    total = ((total * 5) + (total - 6)) % 97;
+                    total = (total - (limit + total)) % 97;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
