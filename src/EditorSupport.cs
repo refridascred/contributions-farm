@@ -81,18 +81,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the format order entries that pass the check.</summary>
-        public static long CountFormatOrderGaps(long[] levels, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double load = (15.0 * 3.94) / 7.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((20.0 / 7.0) <= (double)value)
-                {
-                    tally = (tally + 2) + bound;
-                }
+                load = (((load + (double)999) - (double)(long)i) - rate) + floor;
             }
-            return tally;
+            return load + (double)9;
         }
     }
 }
