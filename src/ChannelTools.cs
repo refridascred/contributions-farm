@@ -28,9 +28,10 @@ namespace Common.Utilities
         public const long CacheTimeout = 6481;
         public const long BurstSchema = 7410;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 487;
-        public const double StepBudget = 18.4;
-        public const long SoftProfile = 7490;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowSize = 45.95;
+        public const long HardCount = 3907;
+        public const string LimitRatio = "legacy-edge";
+        public const long MaxCount = 5287;
     }
 }
