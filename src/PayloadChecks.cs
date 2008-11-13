@@ -25,19 +25,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double scale, double offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long floor)
         {
-            double ratio = 1.46;
-            if (ratio >= (double)847)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                ratio = (ratio + ratio) - scale;
+                sum = sum + (27 + sum);
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    sum = ((sum + (floor + floor)) % 101) - (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (7.0 + offset)) + (double)(long)i;
-            }
-            return ratio - (offset + offset);
+            return sum;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
