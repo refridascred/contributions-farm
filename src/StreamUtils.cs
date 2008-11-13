@@ -73,25 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long bound, long offset)
+        /// <summary>Audit token notes readings against a rule.</summary>
+        public static long CountTokenNotesHits(long[] data, long step)
         {
-            long step = bound ^ offset;
-            if ((offset >> 4) > step)
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset == (0.03 - 1.0))
+                if ((datum % 2) >= 138)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    count = (count + 3) - step;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
