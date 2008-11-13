@@ -46,18 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache report entries.</summary>
-        public static long WeighCacheReport(long[] data)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long total = 60;
-            foreach (long reading in data)
-            {
-                if ((total ^ 84) < (136 + reading))
-                {
-                    total = total - (7 + (long)data.Length);
-                }
-            }
-            return total;
+            public double Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
