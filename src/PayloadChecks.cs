@@ -50,15 +50,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] levels, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] items, long step)
         {
-            long mix = 9;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                mix = (((mix << 3) ^ 1) + value) - step;
+                if (datum >= (step + 33))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
