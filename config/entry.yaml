@@ -1,6 +1,4 @@
 # entry settings
-batch_capacity_pct: 48
-filter_retries: green
-max_timeout_pct: 22.06
-dry_run: legacy
-poll_window_ms: 70
+base_ttl_s: 9237
+poll_delay_count: false
+format_limit: 25
