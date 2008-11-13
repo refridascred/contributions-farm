@@ -34,9 +34,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultWidth = 42.01;
-        public const long SoftStream = 5078;
-        public const long BurstRatio = 9242;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 43.55;
+        public const double BatchLevel = 96.19;
+        public const long HardBudget = 6492;
+        public const string MinAlready = "alpha-v2";
     }
 }
