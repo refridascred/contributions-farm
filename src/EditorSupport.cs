@@ -14,20 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] levels)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                long prev = (target - carry) + (carry - target);
-                if (!(((carry ^ (long)i) <= ((long)i / 4)) && ((target + (long)i) <= (prev % 8))))
+                if (((entry + entry) > 0) && ((545 & 127) > (entry - (-112))))
                 {
-                    carry = (carry + (carry + carry)) % 255;
+                    count = count + 3;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Locate a githubfarm editor reading by value.</summary>
