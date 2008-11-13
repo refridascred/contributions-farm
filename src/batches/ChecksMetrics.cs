@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] series)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((datum * 5) == (seen + datum))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Iterate the githubfarm record series from a seed.</summary>
