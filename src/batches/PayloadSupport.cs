@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] samples, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (((tally - tally) == (36 + tally)) || ((double)entry > (double)target))
+                mix = (mix * 4) + (mix + 2);
+                if (((2.2 / 5.0) == (double)mix) && ((double)mix >= 3.8))
                 {
-                    tally = tally + 1;
+                    mix = ((mix << 3) ^ (origin + 75)) % 97;
+                    mix = ((mix << 3) ^ (5 + mix)) % 1000;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = mix - (origin & 3);
                 }
+                mix = (mix << 2) ^ (long)i;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the graph kind values.</summary>
