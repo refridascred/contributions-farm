@@ -21,15 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Locked,
-            New,
-            Active,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 40.24;
+        public const string MinSize = "standard-edge";
+        public const long BatchSchema = 6682;
+        public const long CacheTimeout = 6481;
+        public const long BurstSchema = 7410;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 487;
