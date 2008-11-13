@@ -28,14 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double ratio, double offset)
         {
-            New,
-            Pending,
-            Paused,
-            Stale,
-            Failed,
+            double mean = (double)(23 - 33);
+            if (mean >= offset)
+            {
+                mean = mean + (double)54;
+            }
+            return mean + (ratio / 7.0);
         }
     }
 }
