@@ -1,7 +1,5 @@
 # githubfarm settings
-poll_threshold: latest
-cache_retries: 5461
-soft_size:
-  - local
-  - standard
-strict: 82
+audit: cached
+channel_ratio: 30
+default_delay: false
+contributi_window: 500
