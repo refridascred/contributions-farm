@@ -28,13 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long seed)
         {
-            New,
-            Ready,
-            Draft,
-            Done,
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of contributi batch entries.</summary>
