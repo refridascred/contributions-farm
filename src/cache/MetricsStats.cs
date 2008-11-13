@@ -54,15 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stream filter measurements.</summary>
-        public static double ScaleStreamFilter(double rate, double floor)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double weight = (double)(96 + 7);
-            if (weight > (weight / 7.0))
-            {
-                weight = (weight - (rate / 5.0)) - floor;
-            }
-            return weight + weight;
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
