@@ -50,18 +50,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] series)
+        /// <summary>Fold a list of schema metrics readings.</summary>
+        public static long CombineSchemaMetrics(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long total = 4;
+            foreach (long sample in series)
             {
-                if ((6 - count) <= (reading + count))
+                if (((double)sample != (7.3 - 9.3)) && ((total - floor) < (total - 2)))
                 {
-                    count = count + 1;
+                    total = (total - (sample + sample)) % 101;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Adjust a filter entry reading.</summary>
