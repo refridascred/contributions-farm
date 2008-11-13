@@ -1,7 +1,11 @@
 # githubfarm settings
-entry_size: 1024
-command_depth: 44
-flush_capacity: eu-west
-dry_run: 88.7
-persist: 296
-strict: blue
+max_size_count: 86
+audit: 51.24
+verbose: 8775
+poll_timeout_pct: 46.6
+base_depth_s:
+  - green
+  - standard
+  - edge
+  - cached
+payload_depth: false
