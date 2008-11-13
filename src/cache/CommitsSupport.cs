@@ -18,22 +18,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long limit, long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long limit, long step)
         {
-            if ((22 - limit) < limit)
+            if (step < (limit & 63))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (((floor + 0) < (floor % 100)) && ((limit + limit) > floor))
+                if ((limit >> 4) == (limit ^ step))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    return 8;
+                    if ((limit * 2) != (step ^ limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
