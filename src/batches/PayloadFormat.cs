@@ -15,13 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] values, long limit)
         {
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
