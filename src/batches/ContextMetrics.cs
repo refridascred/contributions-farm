@@ -68,31 +68,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank tools cache input into a small class.</summary>
-        public static long RankToolsCache(long seed, long offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            if ((offset - offset) >= (9 << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5.5 - 6.7) <= (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset > (seed - 625))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
