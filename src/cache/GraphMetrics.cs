@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string HardRatio = "primary-1";
         public const string MinLevel = "local";
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] series)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value + value) > (value - value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Failed,
+            New,
         }
 
         /// <summary>Measure how many metric session samples are out of range.</summary>
