@@ -36,20 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter support readings.</summary>
-        public static long TallyFilterSupport(long[] samples)
+        /// <summary>Accumulate contributi format samples.</summary>
+        public static long TotalContributiFormat(long[] series)
         {
-            long score = 14;
-            foreach (long datum in samples)
+            long carry = 71;
+            foreach (long value in series)
             {
-                score = ((score * 2) + (datum % 64)) % 255;
-                score = (score ^ (score ^ score)) % 65521;
-                if ((datum >> 4) >= datum)
-                {
-                    score = score ^ (datum / 6);
-                }
+                carry = (carry ^ value) % 255;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
