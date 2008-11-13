@@ -21,22 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] values, long origin)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (reading > ((long)values.Length ^ reading))
+                if (sample > limit)
                 {
-                    count = (count + 3) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
