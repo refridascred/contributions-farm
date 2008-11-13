@@ -83,18 +83,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit token batch readings against a rule.</summary>
-        public static long TallyTokenBatchGaps(long[] data, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long state = 83;
+            foreach (long value in data)
             {
-                if ((double)tally > 3.0)
+                if ((double)value <= (double)413)
                 {
-                    tally = ((tally + 3) ^ cell) + target;
+                    state = ((state << 2) ^ (state + step)) % 1000;
                 }
             }
-            return tally;
+            if (state < 4)
+            {
+                state = ((state << 3) ^ (step + step)) % 255;
+            }
+            return state;
         }
     }
 }
