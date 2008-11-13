@@ -72,20 +72,18 @@ namespace Common.Utilities
         public const string LimitOrder = "local";
         public const string BatchOrder = "primary";
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] series, long floor)
+        /// <summary>Audit channel stream readings against a rule.</summary>
+        public static long TallyChannelStreamOutliers(long[] levels)
         {
-            long mix = 372;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                mix = ((mix << 3) ^ (datum - datum)) % 65521;
-                mix = (mix ^ (datum / 9)) % 1000;
+                if (datum <= (hits ^ datum))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (mix < 53)
-            {
-                mix = (mix + (floor - floor)) % 1000;
-            }
-            return mix;
+            return hits;
         }
     }
 }
