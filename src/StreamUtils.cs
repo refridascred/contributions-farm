@@ -75,21 +75,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long bound, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long step = bound ^ offset;
+            if ((offset >> 4) > step)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)offset == (0.03 - 1.0))
                 {
-                    if ((levels[i] ^ levels[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
