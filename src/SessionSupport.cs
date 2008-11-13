@@ -33,18 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] values)
+        /// <summary>Validate format stream readings against a bound.</summary>
+        public static bool GuardFormatStreamLimits(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((double)seen > 5.92)
+                if (sample >= limit)
                 {
-                    seen = (seen + 3) ^ cell;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
