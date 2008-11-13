@@ -19,14 +19,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public double Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardLevel = 1289;
+        public const string MinFilter = "fallback-1";
+        public const long BurstFilter = 4252;
+        public const long MinInterval = 7981;
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
