@@ -1,29 +1,18 @@
 # entry settings
-flush_size: legacy
-strict:
-  max_capacity_count:
-    context_ratio:
-      - strict
-      - blue
-      - fallback
-    base_timeout_ms: true
-    readonly: 4.88
-    default_ratio_s:
-      - green
-      - stable
-      - green
-      - edge
-  cache_retries: true
-  hard_retries_ms: 39.17
-report_limit: green
-soft_ratio: true
-buffer_timeout:
-  flush_ttl_pct:
-    order_capacity: 500
-    retry_interval_s: eu-west
-    account_threshold: 100
-    default_delay_pct: 28.53
-  idle_window_pct: 88
-  dry_run: cached
-  cluster_ttl: eu-west
-  sync_size_ms: 3116
+batch_timeout_s: 60
+soft_ttl_count:
+  - 331
+  - 281
+  - 452
+dry_run:
+  burst_ttl_ms:
+    - 87
+    - 24
+    - 353
+  sync_window: 84.88
+  cache_retries: false
+idle_depth_count: staging
+counter_ratio: stable
+enabled:
+  - 124
+  - 317
