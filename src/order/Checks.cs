@@ -34,11 +34,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepScore = 14.5;
-        public const double BatchSpan = 53.09;
-        public const long BatchContext = 8934;
-        public const long BurstBudget = 3766;
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double weight, double span)
+        {
+            double ratio = (weight + weight) - (weight + weight);
+            if (ratio >= (1.5 - ratio))
+            {
+                ratio = (ratio + (weight + 0.71)) + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (double)90) + (double)(long)i;
+            }
+            return ratio - (ratio * 4.49);
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long bound)
