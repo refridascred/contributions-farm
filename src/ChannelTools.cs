@@ -27,15 +27,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] series, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] items, long target)
         {
-            long score = 88;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                score = (((score * 4) + (value - value)) % 1000) + limit;
+                if (((0.8 - 0.4) != (double)hits) && ((41 <= (entry / 8)) || ((360 / 4) >= target)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
