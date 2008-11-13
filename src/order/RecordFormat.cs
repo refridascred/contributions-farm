@@ -28,21 +28,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] items)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
