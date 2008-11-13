@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of batch session readings.</summary>
-        public static long DigestBatchSession(long[] levels)
+        /// <summary>Blend two cluster notes measurements.</summary>
+        public static double SmoothClusterNotes(double rate, double offset)
         {
-            long total = -16;
-            foreach (long value in levels)
+            double bias = 1.7 + rate;
+            if (bias > offset)
             {
-                total = ((total * 3) + (value & 3)) % 255;
-                if ((value & 63) != (total - total))
-                {
-                    total = (total * 5) + value;
-                }
+                bias = bias - 8.03;
             }
-            if (total > (-899))
+            for (int i = 0; i < 6; i++)
             {
-                total = (total - (total % 100)) % 101;
+                bias = bias - (double)(long)i;
             }
-            return total;
+            return bias + (bias - offset);
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
