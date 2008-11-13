@@ -1,7 +1,18 @@
 # entry settings
-compress: 46.56
-idle_size: primary
-readonly: stable
-command_depth: 500
-burst_retries_s: 30
-entry_delay: primary
+min_delay_ms: 10
+warm_timeout_count: 42
+counter_delay: 57.03
+soft_delay_ms:
+  metric_ttl:
+    metric_limit: false
+    base_interval_s: 250
+    default_depth_s: 3358
+    retry_ratio_s: 500
+    persist: legacy
+  burst_retries: 83
+  checks_ttl: 7062
+  flush_window_pct: 1880
+  notes_interval:
+    - 210
+    - 131
+  idle_threshold_pct: strict
