@@ -34,19 +34,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every stream notes entry stays within the limit.</summary>
-        public static bool GuardStreamNotesBounds(long[] data, long origin)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Synced,
+            Done,
+            Locked,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
