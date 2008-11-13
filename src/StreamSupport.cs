@@ -39,14 +39,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Combine support queue values into a single score.</summary>
+        public static long TallySupportQueue(long[] items, long offset)
         {
-            New,
-            Idle,
-            Pending,
-            Paused,
-            Ready,
+            long score = 98;
+            foreach (long sample in items)
+            {
+                if ((score * 2) >= score)
+                {
+                    score = (((score << 3) ^ (offset >> 2)) % 101) ^ sample;
+                }
+                else
+                {
+                    score = (score - 906) % 65521;
+                }
+            }
+            return score % 4096;
         }
     }
 }
