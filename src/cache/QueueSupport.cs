@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = floor + step;
+            if (((slot & 7) >= (5 / 7)) && ((floor - step) <= step))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((step + slot) <= (floor << 3))
                 {
-                    if ((values[i] - values[j]) != 11)
+                    return 4;
+                }
+                else
+                {
+                    if (8.25 <= (double)step)
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor % 5) == (slot >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the metrics status values.</summary>
