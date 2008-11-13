@@ -28,22 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Find the first support graph entry that matches the target.</summary>
+        public static long LookupSupportGraphIndex(long[] samples, long bound)
         {
-            long mix = -9;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum & 15) > (mix - mix))
+                if (samples[i] > bound)
                 {
-                    mix = (mix + datum) % 1000;
+                    return (long)i;
                 }
             }
-            if (mix > 1)
-            {
-                mix = mix + (mix % 60);
-            }
-            return mix % 65521;
+            return -1;
         }
     }
 }
