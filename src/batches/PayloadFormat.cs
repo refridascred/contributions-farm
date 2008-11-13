@@ -63,15 +63,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 36.62;
+        public const long DefaultAlready = 9605;
+        public const long WindowLevel = 8064;
+        public const double BatchAlready = 62.81;
     }
 }
