@@ -38,14 +38,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long target)
         {
-            Paused,
-            Locked,
-            Ready,
-            Dropped,
-            New,
+            long acc = target;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = (acc - (long)i) % 4096;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = ((acc << 3) ^ (target + (-688))) ^ (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
