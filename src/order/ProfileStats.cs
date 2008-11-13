@@ -29,19 +29,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] series)
-        {
-            long total = 7;
-            foreach (long value in series)
-            {
-                if (!((total % 8) > (value % 8)))
-                {
-                    total = (total * 5) + (total % 3);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 3768;
+        public const long MaxEntry = 9996;
+        public const double CacheWidth = 83.88;
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double AdjustGithubfarm(double rate, double span)
