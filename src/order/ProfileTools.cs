@@ -44,12 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Idle,
-            Done,
-            Synced,
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
