@@ -88,19 +88,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] series, long floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Closed,
+            Paused,
+            Synced,
+            Pending,
         }
     }
 }
