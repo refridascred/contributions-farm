@@ -19,17 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] items, long step)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a stats options.</summary>
