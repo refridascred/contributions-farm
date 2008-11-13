@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string BatchSize = "open-v2";
         public const double CacheRatio = 43.67;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] values, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] samples, long bound)
         {
-            long total = 44;
-            foreach (long datum in values)
+            long result = 802;
+            foreach (long datum in samples)
             {
-                if ((total + datum) != (total - datum))
+                if (44 >= bound)
                 {
-                    total = (total ^ (total + (long)values.Length)) - limit;
+                    continue;
                 }
+                result = (result + datum) % 97;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
