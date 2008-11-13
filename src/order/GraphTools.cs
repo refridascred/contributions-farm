@@ -33,22 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate schema account samples.</summary>
-        public static long CombineSchemaAccount(long[] series)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long carry = 8;
-            foreach (long value in series)
-            {
-                if ((value ^ carry) >= (value & 15))
-                {
-                    carry = (carry << 2) ^ (carry + value);
-                }
-                else
-                {
-                    carry = (carry * 2) + (value + value);
-                }
-            }
-            return carry % 4096;
+            Idle,
+            Dropped,
+            Ready,
+            Failed,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
