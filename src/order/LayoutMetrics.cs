@@ -24,22 +24,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] values)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((888 + value) > value)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
