@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] readings)
+        /// <summary>Look up the position of a tools token sample.</summary>
+        public static long LocateToolsTokenIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (8.21 <= (double)count)
+                if (series[i] < offset)
                 {
-                    count = (count + 3) + cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the queue kind values.</summary>
