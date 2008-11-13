@@ -1,10 +1,15 @@
 {
-  "hard_depth_s": 86,
-  "min_size_s": "primary",
-  "dry_run": 82,
-  "hard_limit": {
-    "cache_window_ms": "stable",
-    "batch_limit": 66.02,
-    "batch_depth_s": 5029
+  "token_limit": "green",
+  "counter_delay": "standard",
+  "channel_capacity": [497, 221, 426],
+  "default_capacity": 250,
+  "soft_depth_pct": ["standard", "cached", "open", "open"],
+  "audit": {
+    "enabled": 5904,
+    "batches_ratio": 78.44,
+    "report_timeout": "primary",
+    "batch_ttl_ms": "staging",
+    "poll_interval_count": ["green", "blue", "local"],
+    "cache_size": true
   }
 }
