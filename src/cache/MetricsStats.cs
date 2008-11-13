@@ -37,40 +37,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long floor, long origin)
-        {
-            long span = floor - origin;
-            if ((span >> 4) != (span % 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((span * 4) == (span << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.6 / 2.0) == (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((span & 127) == (origin + span))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardBudget = "alpha";
+        public const long RetryContributi = 557;
+        public const long BaseContributi = 7091;
+        public const long LimitSpan = 1481;
+        public const long BaseScore = 7921;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyOutliers(long[] readings)
