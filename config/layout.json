@@ -1,20 +1,8 @@
 {
-  "strict": 49.82,
-  "burst_delay_ms": "green",
-  "warm_interval_count": 8680,
-  "stream_window": {
-    "farm_retries": true,
-    "idle_limit": "eu-west",
-    "compress": {
-      "readonly": "fallback",
-      "max_ttl_ms": 53,
-      "warm_delay_pct": 7749,
-      "cache_size_ms": "eu-west",
-      "metric_size": "blue",
-      "hard_limit": "fallback"
-    },
-    "route_delay": "latest",
-    "hard_window": 100
-  },
-  "dry_run": "staging"
+  "strict": "strict",
+  "command_threshold": 90,
+  "persist": "green",
+  "poll_depth": 100,
+  "warm_depth": "primary",
+  "hard_delay_s": "primary"
 }
