@@ -1,10 +1,12 @@
 # Already notes
 
-Use graph settings to tune how often editor data is refreshed.
-When a filter fails, the entry handler retries a few times before giving up.
+A farm that stays idle for too long is moved to the queue list.
+When a stream fails, the format handler retries a few times before giving up.
+Use entry settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Prefer cluster defaults
+- Prefer buffer defaults
 - Validate githubfarm input early
-- Keep report values small
+- Keep cache values small
+- Review report limits each release
