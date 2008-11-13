@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Iterate the support order series from a seed.</summary>
+        public static long RollSupportOrder(long seed)
         {
-            Failed,
-            Paused,
-            Idle,
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((double)seed < (15.0 - 1.12)))
+                {
+                    anchor = anchor + ((long)i + seed);
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of command entries.</summary>
