@@ -66,12 +66,17 @@ namespace Common.Utilities
             return scale + (scale + bias);
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] levels, long limit)
         {
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a channel reading.</summary>
