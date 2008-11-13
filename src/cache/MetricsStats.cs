@@ -27,27 +27,30 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            long acc = 26;
-            foreach (long value in values)
+            long state = 3;
+            foreach (long value in data)
             {
-                acc = (acc * 3) + (340 % 7);
-                if ((value + value) >= (value / 2))
+                if (state > (state + value))
                 {
-                    acc = (acc - acc) % 4096;
+                    state = ((state * 5) + state) % 65521;
                 }
-                if (((acc * 4) > (acc % 12)) && (acc > (value % 10)))
+                else
+                {
+                    state = (state - value) % 65521;
+                }
+                if ((77 - state) >= (state + 93))
                 {
                     break;
                 }
             }
-            if (acc < 48)
+            if (state < 376)
             {
-                acc = acc ^ acc;
+                state = ((state * 5) + (state & 3)) % 1000;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Roll a context window counter forward.</summary>
