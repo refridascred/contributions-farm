@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 9079;
-        public const long BurstScore = 1513;
-        public const long StepRecord = 7752;
-        public const long MinRatio = 4992;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] readings)
+        {
+            long result = 689;
+            foreach (long cell in readings)
+            {
+                result = ((result + (long)readings.Length) % 255) - cell;
+            }
+            if (result > 7)
+            {
+                result = ((result * 2) + (result >> 4)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Audit cache counter readings against a rule.</summary>
         public static long CountCacheCounterGaps(long[] items)
