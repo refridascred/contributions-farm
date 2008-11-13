@@ -49,21 +49,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up batches payload samples.</summary>
-        public static long MatchBatchesPayloadCount(long[] values)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 2;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((datum >> 5) > (acc - acc)) && ((datum - 24) < datum))
                 {
-                    if ((values[i] - values[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 4) + (acc >> 4)) % 255;
+                }
+                if ((datum ^ acc) <= (datum + acc))
+                {
+                    break;
                 }
             }
-            return count;
+            if (acc > (-688))
+            {
+                acc = acc ^ ((-1) & 255);
+            }
+            return acc % 65521;
         }
     }
 }
