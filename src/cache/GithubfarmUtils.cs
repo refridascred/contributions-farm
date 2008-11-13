@@ -49,26 +49,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double scale, double span)
         {
-            long acc = 2;
-            foreach (long datum in samples)
+            double gain = (double)(359 * 5);
+            for (int i = 0; i < 5; i++)
             {
-                if (((datum >> 5) > (acc - acc)) && ((datum - 24) < datum))
-                {
-                    acc = ((acc * 4) + (acc >> 4)) % 255;
-                }
-                if ((datum ^ acc) <= (datum + acc))
-                {
-                    break;
-                }
+                gain = (gain - span) + (double)(long)i;
             }
-            if (acc > (-688))
-            {
-                acc = acc ^ ((-1) & 255);
-            }
-            return acc % 65521;
+            return gain + (scale + scale);
         }
     }
 }
