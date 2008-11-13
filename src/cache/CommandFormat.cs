@@ -45,15 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Queued,
-            Active,
-            Draft,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitDepth = 6133;
+        public const long SoftWidth = 488;
+        public const long CacheToken = 1003;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
