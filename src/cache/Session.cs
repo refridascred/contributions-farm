@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] series, long limit)
+        /// <summary>Fold a list of cache metrics readings.</summary>
+        public static long TallyCacheMetrics(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = -71;
+            foreach (long item in samples)
             {
-                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                if ((mark & 1) >= (mark * 2))
                 {
-                    return (long)i;
+                    break;
+                }
+                if (((mark + mark) < (item / 6)) && ((double)mark < 4.72))
+                {
+                    mark = mark + (item - mark);
+                    mark = ((mark * 5) + (mark + mark)) % 65521;
+                }
+                if ((item % 3) < item)
+                {
+                    mark = ((mark * 4) + (item >> 2)) % 4096;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Adjust a stats reading.</summary>
