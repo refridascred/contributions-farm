@@ -59,19 +59,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double rate, double offset)
+        /// <summary>Locate a graph tools reading by value.</summary>
+        public static long LookupGraphToolsIndex(long[] series, long origin)
         {
-            double scale = offset;
-            if (scale >= (offset / 5.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - (double)6) + rate;
+                if ((series[i] == origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - 9.3) + (double)(long)i;
-            }
-            return scale - scale;
+            return -1;
         }
     }
 }
