@@ -74,11 +74,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] values, long offset)
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
