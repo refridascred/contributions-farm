@@ -29,11 +29,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            Draft,
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
