@@ -49,18 +49,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] values)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mark = -535;
-            foreach (long sample in values)
-            {
-                if ((9 - mark) >= (mark / 2))
-                {
-                    mark = (mark + (523 & 63)) ^ sample;
-                }
-            }
-            return mark;
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit contributi record readings against a rule.</summary>
