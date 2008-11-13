@@ -24,15 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double gain, double floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] items)
         {
-            double load = gain;
-            if (load >= gain)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                load = (load + (gain / 9.0)) - floor;
+                if (hits >= (cell % 3))
+                {
+                    hits = hits + 1;
+                }
             }
-            return load - (double)87;
+            return hits;
         }
     }
 }
