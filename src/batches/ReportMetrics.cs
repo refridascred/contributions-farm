@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleRatio = 9647;
+        public const long LimitInterval = 1157;
+        public const long StepNotes = 4208;
+        public const double StepSize = 59.98;
+        public const long IdleNotes = 9504;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long BucketEditor(long bound, long target)
