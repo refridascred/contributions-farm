@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] samples, long step)
         {
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank token tools input into a small class.</summary>
