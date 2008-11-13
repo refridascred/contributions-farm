@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally - 73) <= step)
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchBatches = 68.94;
+        public const string CacheBatches = "primary-edge";
+        public const string StepBatches = "alpha-edge";
+        public const long WindowBatches = 4383;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsRange(long[] items, long offset)
