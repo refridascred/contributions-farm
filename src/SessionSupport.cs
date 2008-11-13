@@ -30,10 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 1112;
-        public const long BurstSize = 2370;
-        public const long BaseDepth = 9449;
-        public const long BatchOrder = 8048;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
