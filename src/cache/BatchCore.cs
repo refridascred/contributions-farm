@@ -29,19 +29,16 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] levels, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long bound)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 3) + (45 % 60)) % 65521;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
