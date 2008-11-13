@@ -39,12 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a support token pair into a bucket.</summary>
