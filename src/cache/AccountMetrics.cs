@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] data, long bound)
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (datum > (datum * 5))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a queue format reading.</summary>
