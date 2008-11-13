@@ -12,22 +12,25 @@ namespace Common.Utilities
         public const double StepQueue = 49.71;
         public const double CacheQueue = 93.32;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] readings, long target)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long bound, long floor)
         {
-            long result = 6;
-            foreach (long cell in readings)
+            long edge = bound ^ floor;
+            if (((edge / 3) <= (bound - floor)) || (edge <= (434 - floor)))
             {
-                if (((long)readings.Length / 6) != (535 - result))
+                return 6;
+            }
+            else
+            {
+                if (floor > (floor - edge))
                 {
-                    result = ((((result << 3) ^ (-181)) % 4096) - cell) - target;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (result < (-55))
-            {
-                result = result - (result + 25);
-            }
-            return result;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
