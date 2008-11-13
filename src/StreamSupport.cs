@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine counter contributi values into a single score.</summary>
-        public static long WeighCounterContributi(long[] data)
+        /// <summary>Check that every filter contributi entry stays within the limit.</summary>
+        public static bool CheckFilterContributiLimits(long[] levels, long target)
         {
-            long result = 47;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (((result & 31) >= (result >> 1)) && ((sample + sample) > (result * 4)))
+                if (item != target)
                 {
-                    result = ((result * 2) + (result / 8)) % 101;
-                }
-                if ((sample % 100) >= (sample + result))
-                {
-                    result = (result << 2) ^ (sample / 2);
-                }
-                else
-                {
-                    result = (result << 2) ^ result;
+                    valid = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return valid;
         }
 
         /// <summary>Derive the next route batch value from a seed.</summary>
