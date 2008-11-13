@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((limit <= ((-20) & 7)) && ((limit << 1) < limit))
-                {
-                    acc = acc ^ (acc + limit);
-                }
-                acc = acc - (limit + limit);
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultDepth = 9661;
+        public const long WindowCount = 3534;
+        public const string MaxRoute = "fallback-1";
+        public const long StepScore = 1026;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
