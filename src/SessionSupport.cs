@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double ratio, double bias)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            double bias2 = bias;
+            if (bias2 <= bias2)
+            {
+                bias2 = (bias2 - (bias * 2.2)) - ratio;
+            }
+            return bias2 - (double)87;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
