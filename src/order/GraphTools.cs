@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster command readings against a bound.</summary>
-        public static bool GuardClusterCommandBounds(long[] readings, long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (entry <= limit)
+                if (sample < target)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
