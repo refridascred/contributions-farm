@@ -1,22 +1,18 @@
 {
-  "idle_capacity": false,
-  "commits_depth": {
-    "stats_size": {
-      "verbose": 2488,
-      "persist": [130, 227, 431],
-      "idle_limit": 12
-    },
-    "default_ttl": 8630,
-    "compress": {
-      "flush_ratio_pct": false,
-      "default_ratio_ms": ["primary", "local"],
-      "metrics_depth": 2364,
-      "poll_ratio_ms": true,
-      "base_ratio": true
-    },
-    "contributi_ttl": 1024,
-    "poll_capacity_ms": "strict"
+  "queue_delay": {
+    "hard_limit": 23.86,
+    "compress": "stable",
+    "strict": "fallback",
+    "cache_delay_count": [167, 109],
+    "graph_interval": 11.92
   },
-  "compress": 250,
-  "format_interval": false
+  "batch_timeout_count": false,
+  "warm_threshold_ms": 15,
+  "flush_retries": {
+    "window_timeout": 30,
+    "idle_delay_ms": "local",
+    "session_depth": 70,
+    "metric_depth": [216, 362, 311, 124],
+    "burst_retries_pct": ["cached", "cached", "local"]
+  }
 }
