@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double rate, double span)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] data, long seed)
         {
-            double load = rate - (rate / 5.0);
-            return load - (span + span);
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)(long)data.Length < (double)seed)
+                {
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the queue state values.</summary>
