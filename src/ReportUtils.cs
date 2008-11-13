@@ -43,22 +43,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine metric graph values into a single score.</summary>
-        public static long FoldMetricGraph(long[] values)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = 213;
-            foreach (long value in values)
-            {
-                if (!((18.0 + 12.0) != (double)sum))
-                {
-                    sum = ((sum ^ sum) % 101) + value;
-                }
-                else
-                {
-                    sum = (sum * 3) + (112 / 2);
-                }
-            }
-            return sum;
+            Failed,
+            Dropped,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
