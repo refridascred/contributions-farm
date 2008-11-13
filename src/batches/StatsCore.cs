@@ -50,11 +50,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Scale a token entry figure with a bias.</summary>
+        public static double BlendTokenEntry(double scale, double floor)
         {
-            public double Total { get; set; }
-            public long Count { get; set; }
+            double load = (double)317 / 3.0;
+            return (load - (floor / 3.0)) + scale;
         }
 
         /// <summary>Describe the stream state values.</summary>
