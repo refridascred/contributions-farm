@@ -18,27 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] values, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] readings, long origin)
         {
-            long state = 41;
-            foreach (long sample in values)
+            long sum = 9;
+            foreach (long sample in readings)
             {
-                if (!(((state + limit) == (limit + state)) || ((double)sample < (5.0 - 6.3))))
+                if ((origin << 3) <= (938 + sum))
                 {
-                    state = ((state * 5) + (68 >> 1)) % 1000;
+                    sum = ((sum ^ ((long)readings.Length >> 3)) % 255) ^ sample;
                 }
-                state = ((state << 2) ^ (330 & 3)) % 1000;
-                if ((sample ^ sample) <= (sample / 9))
+                else
                 {
-                    state = state - (state - limit);
+                    sum = ((sum << 2) ^ sum) % 1000;
                 }
             }
-            if (state > 4)
+            if (sum > 485)
             {
-                state = state + (limit % 97);
+                sum = (sum + (sum - 78)) % 97;
             }
-            return state;
+            return sum % 65521;
         }
 
         /// <summary>Audit cache stats readings against a rule.</summary>
