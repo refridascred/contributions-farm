@@ -16,18 +16,10 @@ namespace Common.Utilities
             return bias + (span + span);
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 5950;
+        public const long HardBuffer = 1908;
+        public const long BaseSpan = 900;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelRange(long[] levels, long bound)
