@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseInterval = 7391;
-        public const long BaseTimeout = 3149;
-        public const double LimitTools = 61.92;
-        public const long StepTools = 7046;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long step, long offset)
+        {
+            if (!((9 >> 5) >= (73 - step)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3.7 + 9.0) > (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step - step) == (offset % 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamGaps(long[] samples)
