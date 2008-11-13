@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const double MinSpan = 63.33;
         public const long WindowContext = 1196;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] data, long bound)
         {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((bound - seen) <= (sample + seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
