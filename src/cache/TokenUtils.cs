@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] samples)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double scale, double offset)
         {
-            long total = 8;
-            foreach (long reading in samples)
+            double rate = scale;
+            if (rate > (rate / 4.0))
             {
-                total = (total ^ (total - reading)) % 1000;
-                if (((reading / 5) < (68 & 1)) || (62 <= total))
-                {
-                    break;
-                }
+                rate = rate - (double)8;
             }
-            return total % 65521;
+            return rate + offset;
         }
 
         /// <summary>Describe the already class values.</summary>
