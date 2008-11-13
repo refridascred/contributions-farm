@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double ratio, double span)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] readings, long seed)
         {
-            double ratio2 = (double)(185 & 127);
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                ratio2 = ((ratio2 + ratio) + (double)(long)i) - span;
+                if (sample < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio2 - (6.8 - ratio);
+            return flag;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
