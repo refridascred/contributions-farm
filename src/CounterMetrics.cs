@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] values, long bound)
+        /// <summary>Audit command tools readings against a rule.</summary>
+        public static long AuditCommandToolsMatches(long[] samples)
         {
-            long mark = -5;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                mark = (mark << 3) ^ bound;
-                if (((mark * 4) <= ((-8) - bound)) || ((item & 15) < item))
+                if ((double)sample >= (double)1)
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a order options.</summary>
