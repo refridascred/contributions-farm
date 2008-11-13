@@ -56,19 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every payload queue entry stays within the limit.</summary>
-        public static bool ValidatePayloadQueueRange(long[] samples, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (item != origin)
+                if ((seed & 7) < entry)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the stats mode values.</summary>
