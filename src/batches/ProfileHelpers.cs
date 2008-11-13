@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 3637;
+        public const long BurstProfile = 2372;
+        public const long IdleLevel = 6287;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string StepRatio = "stable-1";
