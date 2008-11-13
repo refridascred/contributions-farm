@@ -48,21 +48,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Classify a support token pair into a bucket.</summary>
+        public static long SortSupportToken(long seed, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)seed <= (14.0 * 0.89))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (seed >= 1)
                 {
-                    if ((values[i] - values[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
