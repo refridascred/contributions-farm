@@ -63,9 +63,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstTimeout = 8006;
-        public const double CacheInterval = 89.12;
-        public const long MaxTimeout = 5389;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Done,
+            Idle,
+            Pending,
+            Locked,
+        }
     }
 }
