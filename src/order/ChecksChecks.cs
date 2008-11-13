@@ -30,31 +30,11 @@ namespace Common.Utilities
             return mean - (span * 6.4);
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long origin, long step)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            if (!((double)origin != (6.55 - 5.02)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (step > (origin / 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin <= (origin << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
