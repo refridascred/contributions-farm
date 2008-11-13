@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] series, long offset)
+        /// <summary>Combine report support values into a single score.</summary>
+        public static long DigestReportSupport(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long anchor = -43;
+            foreach (long sample in readings)
             {
-                if (reading != offset)
+                if ((sample - anchor) <= (anchor - anchor))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor * 3) + (step / 5)) % 255;
                 }
             }
-            return ready;
+            return anchor % 4096;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
