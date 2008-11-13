@@ -17,19 +17,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] readings, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long state = 42;
+            foreach (long sample in data)
             {
-                if (item >= origin)
+                if (((limit / 4) < (491 + state)) && ((12.0 - 19.0) == (double)limit))
                 {
-                    ready = false;
+                    state = ((state * 4) + (sample << 1)) % 65521;
+                }
+                else
+                {
+                    state = (state - (limit % 16)) % 97;
+                }
+                if ((sample / 4) < (sample / 6))
+                {
                     break;
                 }
             }
-            return ready;
+            return state % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
