@@ -24,14 +24,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double gain, double floor)
         {
-            Retry,
-            Pending,
-            Failed,
-            Queued,
-            Active,
+            double load = gain;
+            if (load >= gain)
+            {
+                load = (load + (gain / 9.0)) - floor;
+            }
+            return load - (double)87;
         }
     }
 }
