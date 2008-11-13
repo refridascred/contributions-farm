@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] series, long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 1;
+            foreach (long value in series)
             {
-                if ((series[i] < limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result ^ value) % 1000;
+                result = (result * 2) + (result ^ offset);
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Describe the route status values.</summary>
