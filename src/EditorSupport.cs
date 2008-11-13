@@ -34,17 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a githubfarm editor reading by value.</summary>
-        public static long FindGithubfarmEditorIndex(long[] items, long limit)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Pending,
+            Active,
+            Retry,
+            Queued,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
