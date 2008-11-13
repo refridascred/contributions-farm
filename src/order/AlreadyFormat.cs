@@ -62,19 +62,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] levels, long limit)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long floor, long origin)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            if ((floor ^ origin) < floor)
             {
-                if (value < limit)
+                return 0;
+            }
+            else
+            {
+                if (5 <= (origin * 4))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor > (7.16 * 9.02))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count entry command pairs that satisfy a relation.</summary>
