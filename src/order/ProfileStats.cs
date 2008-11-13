@@ -32,11 +32,17 @@ namespace Common.Utilities
         public const long WindowStream = 3334;
         public const long BatchSize = 6506;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstQueue = "open";
-        public const string LimitQueue = "open-edge";
-        public const double HardTimeout = 97.15;
-        public const long HardCount = 2138;
-        public const long BaseCount = 3763;
+        /// <summary>Look up the position of a stream format sample.</summary>
+        public static long FindStreamFormatIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
