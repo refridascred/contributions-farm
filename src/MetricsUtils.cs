@@ -53,17 +53,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] series, long origin)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] <= origin) && ((series[i] % 3) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
