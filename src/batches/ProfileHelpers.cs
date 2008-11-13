@@ -68,12 +68,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            Queued,
-            Paused,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
