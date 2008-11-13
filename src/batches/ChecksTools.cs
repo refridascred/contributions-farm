@@ -38,22 +38,16 @@ namespace Common.Utilities
             return ratio2 + floor;
         }
 
-        /// <summary>Combine profile command values into a single score.</summary>
-        public static long TallyProfileCommand(long[] readings)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long bound)
         {
-            long total = 9;
-            foreach (long cell in readings)
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (total <= (total ^ total))
-                {
-                    total = ((total << 2) ^ (cell - total)) % 255;
-                }
+                mark = (mark + (bound >> 3)) % 97;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            if (total < 354)
-            {
-                total = (total + (total % 97)) % 1000;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Hold a tools options.</summary>
