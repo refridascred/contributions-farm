@@ -23,11 +23,15 @@ namespace Common.Utilities
             return mean - (span * 6.4);
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Accumulate cache stats samples.</summary>
+        public static long ScoreCacheStats(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
+            long score = 0;
+            foreach (long sample in series)
+            {
+                score = (score - (sample >> 1)) % 101;
+            }
+            return score;
         }
     }
 }
