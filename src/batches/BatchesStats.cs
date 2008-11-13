@@ -36,12 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many profile record samples are out of range.</summary>
+        public static long AuditProfileRecordMatches(long[] readings)
         {
-            Paused,
-            Closed,
-            Stale,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)seen <= (4.5 * 9.39))
+                {
+                    seen = (seen + 3) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
