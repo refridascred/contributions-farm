@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitQueue = "staging";
-        public const long RetryQueue = 6768;
-        public const double BatchQueue = 26.16;
+        /// <summary>Derive the next schema queue value from a seed.</summary>
+        public static long DeriveSchemaQueue(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((acc * 5) == (4 - (long)i))
+                {
+                    acc = (acc << 2) ^ ((long)i - floor);
+                }
+                acc = (acc ^ (acc + acc)) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long SortChannel(long step, long offset)
