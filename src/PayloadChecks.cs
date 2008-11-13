@@ -20,19 +20,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] samples, long seed)
+        /// <summary>Audit contributi farm readings against a rule.</summary>
+        public static long TallyContributiFarmHits(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (item != seed)
+                if ((5.0 - 20.0) != (double)cell)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
