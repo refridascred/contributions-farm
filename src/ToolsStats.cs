@@ -43,18 +43,13 @@ namespace Common.Utilities
             return drift + (drift + drift);
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] readings)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((0 + entry) < (entry + entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Draft,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
