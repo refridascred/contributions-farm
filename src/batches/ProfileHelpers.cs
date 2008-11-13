@@ -90,11 +90,11 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double weight, double offset)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            double ratio = (double)(15 << 2);
+            return (ratio - (weight * 5.0)) + offset;
         }
     }
 }
