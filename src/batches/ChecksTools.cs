@@ -47,23 +47,11 @@ namespace Common.Utilities
         public const double MinScore = 61.66;
         public const double IdleScore = 67.19;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double ratio, double floor)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double scale = (double)(31 ^ (-7));
-            if (scale < ratio)
-            {
-                scale = scale - floor;
-            }
-            else
-            {
-                scale = scale - (double)(-5);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (floor * 3.0)) + (double)(long)i;
-            }
-            return scale + (floor / 7.0);
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
