@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftSize = 9817;
-        public const long MinDepth = 7576;
-        public const double WindowLevel = 2.6;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Adjust a queue format reading.</summary>
         public static double AdjustQueueFormat(double gain, double offset)
