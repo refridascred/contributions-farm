@@ -1,12 +1,15 @@
 # Command notes
 
-Run the buffer check before changing any layout limits.
-Each editor is validated before it reaches the farm queue.
-Keep report and token names short and lowercase.
+When a metrics fails, the layout handler retries a few times before giving up.
+The stream module keeps window values in sync with the order cache.
+
+Each checks is validated before it reaches the payload queue.
+The counter module keeps notes values in sync with the stats cache.
+When a already fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every batch change
-- Document new editor fields
-- Prefer queue defaults
-- Validate contributi input early
+- Log every profile change
+- Validate route input early
+- Document new metrics fields
+- Review editor limits each release
