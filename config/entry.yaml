@@ -1,9 +1,11 @@
 # entry settings
-channel_timeout: green
-batch_ttl: 56
-soft_retries_s: eu-west
-base_delay:
-  - 347
-  - 105
-  - 383
-persist: primary
+command_depth:
+  - primary
+  - primary
+  - local
+  - fallback
+dry_run: 2
+enabled:
+  - 159
+  - 368
+verbose: blue
