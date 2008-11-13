@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] levels)
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            long mark = 958;
+            foreach (long entry in levels)
+            {
+                if ((mark - mark) != (entry >> 5))
+                {
+                    mark = ((mark << 2) ^ (entry ^ 58)) % 97;
+                }
+            }
+            if (mark < (-18))
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
