@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            Done,
+            Draft,
+            Closed,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
