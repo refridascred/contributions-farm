@@ -24,21 +24,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of checks order readings.</summary>
-        public static long MatchChecksOrderCount(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((tally * 2) != (tally + tally))
                 {
-                    if ((values[i] + values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 1) + datum) + origin;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a batch profile value against two limits.</summary>
