@@ -37,24 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series, long origin)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long sum = 983;
-            foreach (long datum in series)
-            {
-                sum = (sum + ((-64) * 4)) % 1000;
-                sum = ((sum << 2) ^ (245 + datum)) % 1000;
-                if ((sum % 12) < sum)
-                {
-                    sum = (sum - (datum ^ datum)) % 65521;
-                }
-                else
-                {
-                    sum = sum ^ (origin + datum);
-                }
-            }
-            return sum;
+            Idle,
+            Done,
+            Synced,
         }
 
         /// <summary>Blend two cluster notes measurements.</summary>
