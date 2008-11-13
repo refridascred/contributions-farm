@@ -45,12 +45,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Compare every pair of stream schema readings.</summary>
+        public static long PairStreamSchemaCount(long[] items)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the record kind values.</summary>
