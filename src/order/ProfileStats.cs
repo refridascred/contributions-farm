@@ -29,10 +29,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 3768;
-        public const long MaxEntry = 9996;
-        public const double CacheWidth = 83.88;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Active,
+            Paused,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double AdjustGithubfarm(double rate, double span)
