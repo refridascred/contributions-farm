@@ -29,18 +29,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] levels)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen > (seen * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) ^ reading;
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Rank route metrics input into a small class.</summary>
