@@ -55,16 +55,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics cluster readings.</summary>
-        public static long ScoreMetricsCluster(long[] series)
-        {
-            long anchor = 30;
-            foreach (long cell in series)
-            {
-                anchor = ((anchor - (anchor ^ anchor)) % 4096) + cell;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardScore = 5942;
+        public const long CacheLayout = 8407;
+        public const string BaseLayout = "open";
+        public const long DefaultBudget = 6229;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandGaps(long[] series)
