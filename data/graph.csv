@@ -1,7 +1,6 @@
-id,label,count,score
-1,18.16,49.89,fallback
-2,63.04,348,68.08
-3,637,78,57
-4,256,open,65.67
-5,18.68,49.45,7.28
-6,fallback,53.39,3.21
+id,ratio,rank,level,label
+1,open,528,local,803
+2,33.06,stable,922,107
+3,37.99,4.91,fallback,strict
+4,7.04,818,green,651
+5,46.35,106,961,latest
