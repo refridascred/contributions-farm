@@ -28,15 +28,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double rate, double span)
-        {
-            double load = (1.62 * 0.9) / 8.0;
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load + (double)1) + (double)(long)i) - rate;
-            }
-            return load - (span - 6.64);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstQueue = "open";
+        public const string LimitQueue = "open-edge";
+        public const double HardTimeout = 97.15;
+        public const long HardCount = 2138;
+        public const long BaseCount = 3763;
     }
 }
