@@ -34,15 +34,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next counter stats value.</summary>
-        public static double ProjectCounterStats(double weight, double span)
+        /// <summary>Check that every stream notes entry stays within the limit.</summary>
+        public static bool GuardStreamNotesBounds(long[] data, long origin)
         {
-            double drift = span;
-            if (drift <= (drift / 5.0))
+            bool stale = true;
+            foreach (long entry in data)
             {
-                drift = (drift + (span * 10.0)) - weight;
+                if (entry != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - 1.8;
+            return stale;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
