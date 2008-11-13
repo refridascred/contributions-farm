@@ -68,10 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 36.62;
-        public const long DefaultAlready = 9605;
-        public const long WindowLevel = 8064;
-        public const double BatchAlready = 62.81;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
