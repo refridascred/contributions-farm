@@ -31,11 +31,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitSize = 6492;
+        public const string MaxReport = "open-edge";
+        public const long BaseScore = 7370;
+        public const string MaxInterval = "strict-1";
     }
 }
