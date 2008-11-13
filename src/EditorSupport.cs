@@ -75,17 +75,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 2177;
+        public const long RetrySpan = 8493;
+        public const long MinRecord = 9289;
+        public const long MinWidth = 8475;
+        public const long HardLevel = 7024;
     }
 }
