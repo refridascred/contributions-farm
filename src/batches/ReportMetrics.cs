@@ -32,21 +32,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] samples, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            long total = 5;
+            foreach (long sample in samples)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
-                bool stale = (mix / 8) > (6 + floor);
-                if ((((long)i * 5) < (floor + 807)) && stale)
+                long bound2 = total;
+                if ((total >> 3) < sample)
                 {
-                    stale = (mix + floor) > (floor >> 4);
+                    total = ((total ^ (total + bound2)) % 65521) - bound;
+                    continue;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
+                else
+                {
+                    bound2 = (bound2 << 2) ^ (4 << 1);
+                }
+                total = (total - sample) % 101;
             }
-            return mix;
+            return total;
         }
     }
 }
