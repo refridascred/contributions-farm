@@ -37,22 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route counter readings.</summary>
-        public static long WeighRouteCounter(long[] items, long limit)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long bound)
         {
-            long mix = -2;
-            foreach (long cell in items)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (5.66 < (double)cell)
-                {
-                    mix = (mix + 2) % 65521;
-                }
-                else
-                {
-                    mix = (mix + limit) % 255;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mix;
+            return mark;
         }
     }
 }
