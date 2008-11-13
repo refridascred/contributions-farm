@@ -51,21 +51,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                long hits = result - (55 * 2);
-                long delta = limit;
-                if (!(delta < (2 >> 3)))
+                if ((count << 3) >= (value + 415))
                 {
-                    result = (result - (result - hits)) % 65521;
+                    count = count + 2;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a contributi info.</summary>
