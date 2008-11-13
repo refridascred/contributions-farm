@@ -80,23 +80,21 @@ namespace Common.Utilities
         public const long MinBatches = 5960;
         public const string MaxRatio = "stable-v2";
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double ratio, double offset)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] items)
         {
-            double weight = (ratio * 9.54) / 4.0;
-            if (weight <= (7.0 - offset))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - 7.4;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight - weight;
+            return seen;
         }
     }
 }
