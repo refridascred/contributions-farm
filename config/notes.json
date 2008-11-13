@@ -1,14 +1,7 @@
 {
-  "batch_limit_count": 4,
-  "route_size": {
-    "retry_threshold_s": true,
-    "command_ratio": 6818,
-    "sync_depth_ms": 30,
-    "enabled": false,
-    "persist": 98
-  },
-  "notes_window": true,
-  "dry_run": 43,
-  "entry_retries": "standard",
-  "warm_ratio_count": 59.44
+  "dry_run": 500,
+  "verbose": "strict",
+  "idle_threshold_pct": "edge",
+  "session_interval": 1.78,
+  "counter_delay": "local"
 }
