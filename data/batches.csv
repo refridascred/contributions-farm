@@ -1,8 +1,6 @@
-id,token,level,active
-1,301,846,25.23
-2,474,fallback,52
-3,675,591,732
-4,752,local,499
-5,534,97.75,26.33
-6,8.6,477,16.2
-7,eu-west,910,staging
+id,score,level,weight,ratio
+1,staging,853,842,66.87
+2,stable,standard,413,490
+3,59.32,108,398,15.14
+4,39.54,903,162,624
+5,blue,eu-west,318,blue
