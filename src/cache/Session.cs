@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of cache metrics readings.</summary>
-        public static long TallyCacheMetrics(long[] samples)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long mark = -71;
-            foreach (long item in samples)
-            {
-                if ((mark & 1) >= (mark * 2))
-                {
-                    break;
-                }
-                if (((mark + mark) < (item / 6)) && ((double)mark < 4.72))
-                {
-                    mark = mark + (item - mark);
-                    mark = ((mark * 5) + (mark + mark)) % 65521;
-                }
-                if ((item % 3) < item)
-                {
-                    mark = ((mark * 4) + (item >> 2)) % 4096;
-                }
-            }
-            return mark;
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
