@@ -33,20 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every stream schema entry stays within the limit.</summary>
-        public static bool VerifyStreamSchemaLimits(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CacheLevel = "local-edge";
+        public const long WindowPayload = 7168;
+        public const double HardPayload = 88.16;
+        public const long LimitPayload = 7641;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
