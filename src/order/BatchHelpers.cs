@@ -28,12 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long mix = -9;
+            foreach (long datum in levels)
+            {
+                if ((datum & 15) > (mix - mix))
+                {
+                    mix = (mix + datum) % 1000;
+                }
+            }
+            if (mix > 1)
+            {
+                mix = mix + (mix % 60);
+            }
+            return mix % 65521;
         }
     }
 }
