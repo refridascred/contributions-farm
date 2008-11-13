@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] readings)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            long mix = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix - 472) < (value - mix))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix << 2) ^ value;
+                    if ((levels[i] - levels[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < (-65))
-            {
-                mix = (mix - (mix % 3)) % 4096;
-            }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Describe the stats phase values.</summary>
