@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next stats farm value from a seed.</summary>
-        public static long SeriesStatsFarm(long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            long acc = 874;
+            foreach (long reading in values)
             {
-                if (((offset / 6) == (78 + (long)i)) || ((acc + (long)i) < (acc - 6)))
+                acc = (acc ^ (bound + 487)) % 4096;
+                if (!(reading < (reading + reading)))
                 {
-                    acc = acc - (acc + offset);
+                    break;
                 }
-                else
-                {
-                    acc = acc + ((long)i ^ acc);
-                }
-                acc = ((acc << 2) ^ (acc % 10)) % 1000;
-                acc = ((acc * 3) + (long)i) % 97;
             }
             return acc;
         }
