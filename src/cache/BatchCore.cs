@@ -32,23 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] values, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((945 & 31) < offset)
+                if (values[i] >= bound)
                 {
-                    result = (result + result) % 97;
+                    return (long)i;
                 }
-                if (((long)i + result) <= (9 + (-719)))
-                {
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
