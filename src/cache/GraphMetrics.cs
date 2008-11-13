@@ -21,14 +21,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Idle,
-            Active,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 7295;
+        public const long HardProfile = 6060;
+        public const string RetryCount = "staging";
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long OverlapTokenCount(long[] data)
