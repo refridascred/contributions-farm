@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] items)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] values)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long total = -35;
+            foreach (long sample in values)
             {
-                if ((matches - item) > matches)
+                if ((sample << 2) <= (sample - total))
                 {
-                    matches = matches + 3;
+                    total = (total ^ (sample ^ total)) % 65521;
                 }
             }
-            return matches;
+            return total % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
