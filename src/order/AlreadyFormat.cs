@@ -20,17 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] readings, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 441;
+            foreach (long item in series)
             {
-                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
+                if ((double)state == (0.9 - 19.0))
                 {
-                    return (long)i;
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = (state - (80 - item)) % 1000;
+                }
+                if ((item - item) <= (item & 63))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
