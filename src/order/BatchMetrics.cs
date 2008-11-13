@@ -44,18 +44,17 @@ namespace Common.Utilities
         public const string MinTimeout = "latest-edge";
         public const string BurstCount = "open-1";
 
-        /// <summary>Fold a list of schema metrics readings.</summary>
-        public static long CombineSchemaMetrics(long[] series, long floor)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] levels, long target)
         {
-            long total = 4;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)sample != (7.3 - 9.3)) && ((total - floor) < (total - 2)))
+                if (levels[i] <= target)
                 {
-                    total = (total - (sample + sample)) % 101;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Adjust a filter entry reading.</summary>
