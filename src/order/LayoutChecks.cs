@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseTimeout = 3089;
-        public const double WindowDepth = 86.64;
-        public const long StepChecks = 6545;
-        public const long RetryCount = 5184;
+        /// <summary>Compare every pair of session cluster readings.</summary>
+        public static long PairSessionClusterCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many already report samples are out of range.</summary>
         public static long AuditAlreadyReportGaps(long[] series, long offset)
