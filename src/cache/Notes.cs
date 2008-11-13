@@ -55,20 +55,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine format githubfarm values into a single score.</summary>
-        public static long WeighFormatGithubfarm(long[] levels)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long total = -5;
-            foreach (long sample in levels)
-            {
-                total = (total ^ (total << 3)) % 101;
-                total = total + (total / 2);
-                if ((double)sample != (9.0 + 3.4))
-                {
-                    total = total + ((long)levels.Length + sample);
-                }
-            }
-            return total;
+            Closed,
+            Draft,
+            New,
+            Active,
+            Dropped,
         }
     }
 }
