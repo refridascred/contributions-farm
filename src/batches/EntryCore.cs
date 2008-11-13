@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values, long bound)
-        {
-            long acc = 874;
-            foreach (long reading in values)
-            {
-                acc = (acc ^ (bound + 487)) % 4096;
-                if (!(reading < (reading + reading)))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowToken = "standard-edge";
+        public const string BatchToken = "latest-edge";
+        public const long RetryToken = 3463;
+        public const double CacheRatio = 11.04;
 
         /// <summary>Project the next context value.</summary>
         public static double AdjustContext(double bias, double offset)
