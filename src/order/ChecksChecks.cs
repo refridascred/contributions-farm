@@ -19,14 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Blend two contributi commits measurements.</summary>
+        public static double AdjustContributiCommits(double ratio, double span)
         {
-            Retry,
-            Closed,
-            Pending,
-            Active,
-            Dropped,
+            double mean = ratio;
+            if (mean > span)
+            {
+                mean = mean + mean;
+            }
+            return mean - (double)7;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
