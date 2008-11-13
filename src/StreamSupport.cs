@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long target, long step)
+        /// <summary>Combine counter contributi values into a single score.</summary>
+        public static long WeighCounterContributi(long[] data)
         {
-            if ((7.05 / 8.0) > (double)step)
+            long result = 47;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((step % 5) > (target * 3)) || ((target + step) < (target + target)))
+                if (((result & 31) >= (result >> 1)) && ((sample + sample) > (result * 4)))
                 {
-                    return 6;
+                    result = ((result * 2) + (result / 8)) % 101;
+                }
+                if ((sample % 100) >= (sample + result))
+                {
+                    result = (result << 2) ^ (sample / 2);
                 }
                 else
                 {
-                    if ((step % 5) <= (target * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target & 63) <= (4 * 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = (result << 2) ^ result;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
