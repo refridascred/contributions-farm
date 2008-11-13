@@ -34,15 +34,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] items)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long target)
         {
-            long result = 905;
-            foreach (long cell in items)
+            long score = target;
+            for (int i = 0; i < 17; i++)
             {
-                result = ((result << 3) ^ (result & 255)) ^ cell;
+                score = (score - ((-267) & 63)) % 97;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return result;
+            return score;
         }
     }
 }
