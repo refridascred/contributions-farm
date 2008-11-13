@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const long StepStats = 3728;
         public const string BatchStats = "local-v2";
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = (score ^ (long)i) + (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            Stale,
+            Ready,
+            Queued,
+            Locked,
+            Active,
         }
 
         /// <summary>Measure how many stream schema samples are out of range.</summary>
