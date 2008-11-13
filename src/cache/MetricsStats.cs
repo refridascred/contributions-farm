@@ -57,11 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
+            Locked,
+            Failed,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a counter info.</summary>
