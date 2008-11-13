@@ -20,22 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] series)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long sum = 8;
-            foreach (long entry in series)
-            {
-                if (!((6 % 7) == (entry ^ 6)))
-                {
-                    sum = (sum + (entry - entry)) % 255;
-                }
-            }
-            if (sum < (-161))
-            {
-                sum = sum + (29 >> 1);
-            }
-            return sum;
+            Active,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the cache class values.</summary>
