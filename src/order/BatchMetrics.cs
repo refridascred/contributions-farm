@@ -40,15 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            New,
-            Synced,
-            Stale,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 51.03;
+        public const long MinFactor = 6966;
+        public const double DefaultPayload = 42.54;
+        public const string MinTimeout = "latest-edge";
+        public const string BurstCount = "open-1";
 
         /// <summary>Fold a list of schema metrics readings.</summary>
         public static long CombineSchemaMetrics(long[] series, long floor)
