@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long floor, long seed)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long cur = floor - seed;
-            if (floor > (seed ^ cur))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((floor / 5) >= (cur + floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Accumulate support samples.</summary>
