@@ -96,18 +96,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] series, long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (limit <= item)
+                if (cell <= floor)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
