@@ -20,31 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long target, long seed)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            if ((85 ^ seed) > (seed + seed))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed % 24) == (seed + seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)seed == (1.69 * 6.06)) && ((double)target <= (6.23 - 13.0)))
+                    if ((values[i] ^ values[j]) == 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
