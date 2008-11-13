@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] readings, long floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long sum = 618;
-            foreach (long item in readings)
-            {
-                sum = (((sum ^ (918 >> 2)) % 97) + item) + floor;
-            }
-            return sum % 65521;
+            Stale,
+            Closed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Accumulate support samples.</summary>
