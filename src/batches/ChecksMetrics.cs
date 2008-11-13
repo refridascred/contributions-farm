@@ -78,21 +78,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Scale a commits queue figure with a bias.</summary>
+        public static double ScaleCommitsQueue(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio2 = ratio;
+            if (ratio2 > (double)134)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio2 = ratio2 + ratio;
             }
-            return tally;
+            else
+            {
+                ratio2 = ratio2 - (bias - ratio2);
+            }
+            return ratio2 + 13.0;
         }
     }
 }
