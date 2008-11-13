@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long limit, long step)
+        /// <summary>Find the first order route entry that matches the target.</summary>
+        public static long FindOrderRouteIndex(long[] series, long limit)
         {
-            if ((double)step == (5.52 / 7.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step ^ (-4)) >= (2 - step))
+                if (series[i] == limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
