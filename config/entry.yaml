@@ -1,24 +1,5 @@
 # entry settings
-soft_ttl_s: true
-sync_ttl_s:
-  cluster_delay: 78.03
-  hard_interval: 52.06
-  graph_limit:
-    - open
-    - staging
-  min_timeout:
-    - 426
-    - 456
-    - 445
-    - 306
-  retry_retries_ms: local
-  persist:
-    cache_ratio: 1024
-    base_interval_pct: 69
-    metric_interval:
-      - 217
-      - 366
-hard_window: fallback
-compress: 58
-base_delay_ms: 100
-commits_size: blue
+warm_depth: 3.02
+farm_threshold: 60
+sync_ratio_ms: staging
+cache_ttl_pct: local
