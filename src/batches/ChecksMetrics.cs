@@ -78,19 +78,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] items)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            long score = 8;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score * 3) + (value * 5);
-                if ((long)items.Length >= (score * 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score * 5) + value) % 255;
+                    if ((levels[i] + levels[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
