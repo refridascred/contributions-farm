@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long limit, long step)
         {
-            public long Token { get; set; }
-            public bool Rank { get; set; }
+            if ((double)step == (5.52 / 7.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step ^ (-4)) >= (2 - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
