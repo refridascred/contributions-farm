@@ -13,11 +13,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] series, long bound)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (52 < bound)
+                {
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a tools info.</summary>
