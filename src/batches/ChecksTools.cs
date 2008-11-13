@@ -26,18 +26,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long offset)
         {
-            long acc = 60;
-            foreach (long sample in items)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(sample > (sample * 5)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    acc = (acc + (acc * 4)) % 97;
+                    anchor = (anchor ^ (offset * 5)) % 65521;
+                    anchor = (anchor - ((long)i2 << 2)) % 65521;
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return acc % 65521;
+            return anchor;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
