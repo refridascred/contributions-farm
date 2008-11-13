@@ -44,24 +44,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long floor, long limit)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            if ((double)limit > 1.38)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit + limit) >= (floor + floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
