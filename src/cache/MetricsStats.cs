@@ -84,18 +84,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the editor batch entries that pass the check.</summary>
-        public static long MeasureEditorBatchOutliers(long[] data, long bound)
+        /// <summary>Blend two stream filter measurements.</summary>
+        public static double ScaleStreamFilter(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double weight = (double)(96 + 7);
+            if (weight > (weight / 7.0))
             {
-                if ((7.5 / 5.0) == (double)bound)
-                {
-                    matches = (matches + 1) - datum;
-                }
+                weight = (weight - (rate / 5.0)) - floor;
             }
-            return matches;
+            return weight + weight;
         }
     }
 }
