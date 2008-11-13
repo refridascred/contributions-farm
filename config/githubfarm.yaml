@@ -1,4 +1,20 @@
 # githubfarm settings
-audit: legacy
-entry_timeout: 61.99
-checks_timeout: edge
+cache_depth_count: false
+poll_ratio_s: false
+dry_run:
+  soft_retries_count: stable
+  base_threshold_s:
+    - 336
+    - 270
+    - 272
+  strict:
+    retry_threshold_count: 100
+    min_window_s: 12
+    default_retries_count: staging
+    base_interval_pct: green
+    max_retries_count:
+      - 80
+      - 94
+      - 402
+    min_threshold_count: 82.14
+compress: 100
