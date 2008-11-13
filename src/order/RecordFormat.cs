@@ -59,13 +59,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Synced,
-            Paused,
-            Retry,
             Dropped,
+            Closed,
+            Pending,
+            Ready,
+            Stale,
         }
     }
 }
