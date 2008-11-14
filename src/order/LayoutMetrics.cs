@@ -24,17 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] readings, long seed)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = weight;
+            for (int i = 0; i < 7; i++)
             {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + offset) + (double)(long)i;
             }
-            return -1;
+            return ratio - (offset + offset);
         }
 
         /// <summary>Fold a list of contributi order readings.</summary>
