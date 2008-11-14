@@ -10,26 +10,21 @@ namespace Common.Utilities
         public const long BatchSpan = 6828;
         public const long StepAlready = 9764;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] data, long step)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] items)
         {
-            long result = -84;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.4 + 4.0) < (double)result)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result + result) ^ datum;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (85 + step)) % 4096;
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result < 33)
-            {
-                result = ((result * 4) + (2 + result)) % 1000;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Find the first schema batches entry that matches the target.</summary>
