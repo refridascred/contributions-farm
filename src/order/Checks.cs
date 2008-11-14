@@ -25,10 +25,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 6509;
-        public const string LimitCount = "local";
-        public const long SoftCount = 2705;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Active,
+            Synced,
+            Closed,
+            Queued,
+            New,
+        }
 
         /// <summary>Grade a graph notes value against two limits.</summary>
         public static long BucketGraphNotes(long offset, long origin)
