@@ -1,13 +1,6 @@
 {
-  "soft_delay": "eu-west",
-  "max_timeout_count": [89, 409, 158],
-  "base_capacity": {
-    "compress": true,
-    "support_ttl": false,
-    "order_size": true,
-    "default_delay": 80,
-    "counter_interval": 15
-  },
-  "warm_depth_ms": 100,
-  "tools_capacity": "edge"
+  "dry_run": [18, 414, 32, 500],
+  "burst_ratio_pct": false,
+  "graph_window": "open",
+  "sync_threshold": 100
 }
