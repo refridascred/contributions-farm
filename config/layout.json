@@ -1,6 +1,5 @@
 {
-  "cluster_depth": ["staging", "strict", "legacy", "strict"],
-  "hard_ttl_count": 87.37,
-  "min_depth": 80,
-  "support_ratio": "open"
+  "default_ratio": [459, 474, 95, 55],
+  "poll_timeout": "primary",
+  "soft_threshold": false
 }
