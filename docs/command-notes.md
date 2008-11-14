@@ -1,16 +1,15 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the session list.
-The graph report groups every filter by session.
-Defaults for contributi live in the config folder and can be overridden per environment.
+The buffer module keeps profile values in sync with the payload cache.
+Keep format and metric names short and lowercase.
+Keep buffer and stream names short and lowercase.
 
-Each metrics is validated before it reaches the payload queue.
-Run the stats check before changing any farm limits.
-Defaults for format live in the config folder and can be overridden per environment.
+A cluster that stays idle for too long is moved to the format list.
+When a batch fails, the notes handler retries a few times before giving up.
+Each record is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Document new editor fields
-- Prefer route defaults
-- Review farm limits each release
-- Keep context values small
+- Prefer queue defaults
+- Validate farm input early
+- Document new graph fields
