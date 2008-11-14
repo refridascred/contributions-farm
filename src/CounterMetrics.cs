@@ -32,14 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheScore = "fallback-1";
+        public const double BurstSpan = 63.63;
+        public const long DefaultStats = 4353;
+        public const double LimitScore = 38.64;
 
         /// <summary>Find the first counter metric entry that matches the target.</summary>
         public static long FindCounterMetricIndex(long[] readings, long step)
