@@ -22,13 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            New,
+            Stale,
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a account entry.</summary>
