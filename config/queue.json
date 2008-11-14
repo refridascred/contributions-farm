@@ -1,14 +1,10 @@
 {
-  "soft_delay_count": true,
-  "contributi_threshold": {
-    "default_ratio_ms": 8595,
-    "compress": 68,
-    "max_threshold_count": 250,
-    "editor_timeout": "eu-west",
-    "batch_depth": 79.78
+  "strict": "cached",
+  "route_threshold": [461, 318, 296, 404],
+  "cluster_size": {
+    "warm_interval_s": 90,
+    "flush_interval_count": ["legacy", "local", "local", "strict"],
+    "batch_ratio_ms": false
   },
-  "min_depth": false,
-  "warm_delay": true,
-  "poll_capacity_count": true,
-  "already_window": ["cached", "legacy"]
+  "entry_timeout": 76
 }
