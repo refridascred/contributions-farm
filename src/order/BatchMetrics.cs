@@ -54,20 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double bias, double span)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            double rate = 14.0;
+            if (rate < (double)234)
             {
-                acc = (acc << 3) ^ (target % 16);
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc + ((long)i + 13)) % 1000) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
+                rate = (rate - (span - 2.93)) - bias;
             }
-            return acc;
+            return rate + span;
         }
 
         /// <summary>Define command limits and defaults.</summary>
