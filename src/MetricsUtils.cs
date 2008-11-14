@@ -36,12 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] series)
         {
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((993 * 3) > item)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
