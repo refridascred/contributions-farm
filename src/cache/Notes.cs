@@ -64,13 +64,21 @@ namespace Common.Utilities
         public const long CacheToken = 3810;
         public const long HardToken = 3792;
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
