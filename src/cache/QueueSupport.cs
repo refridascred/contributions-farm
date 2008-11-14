@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] items, long target)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = span - (double)373;
+            if (weight < 4.22)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                weight = weight + (double)808;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (weight + weight)) + (double)(long)i;
+            }
+            return weight + (scale / 2.0);
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
