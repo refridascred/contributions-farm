@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if (seed <= (seed / 9))
-                {
-                    total = (total * 2) + total;
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetrySize = 30.29;
+        public const long BaseLevel = 2920;
+        public const string HardRoute = "local-1";
 
         /// <summary>Count the layout payload entries that pass the check.</summary>
         public static long CountLayoutPayloadHits(long[] samples, long limit)
