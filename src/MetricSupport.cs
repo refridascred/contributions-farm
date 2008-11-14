@@ -36,32 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long floor, long target)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long cur = floor + target;
-            if (((target / 4) >= (floor & 255)) || (target < (cur + 615)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)cur >= (1.0 * 11.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor + floor) < (floor >> 1)) && ((floor / 2) < (target + (-9))))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            Stale,
+            Draft,
+            Paused,
         }
     }
 }
