@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two contributi entry measurements.</summary>
-        public static double SmoothContributiEntry(double rate, double offset)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] samples, long floor)
         {
-            double bias = offset;
-            if (bias <= (double)69)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + (rate * 8.55);
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias - (double)2;
+            return -1;
         }
 
         /// <summary>Locate a support reading by value.</summary>
