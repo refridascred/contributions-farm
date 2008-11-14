@@ -103,11 +103,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long target)
         {
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
+            long acc = target;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
