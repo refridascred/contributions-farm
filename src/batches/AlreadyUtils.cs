@@ -27,15 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double ratio, double floor)
+        /// <summary>Check that every account session entry stays within the limit.</summary>
+        public static bool VerifyAccountSessionRange(long[] data, long target)
         {
-            double scale = 9.4 + (ratio - 4.53);
-            if (scale <= floor)
+            bool valid = true;
+            foreach (long value in data)
             {
-                scale = scale - (ratio + scale);
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale + 16.0;
+            return valid;
         }
 
         /// <summary>Adjust a commits githubfarm reading.</summary>
