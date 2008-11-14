@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] items)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double rate2 = offset / 7.0;
+            if (rate2 > rate)
             {
-                if (cell > tally)
-                {
-                    tally = tally + 2;
-                }
+                rate2 = rate2 + (double)781;
             }
-            return tally;
+            else
+            {
+                rate2 = rate2 - rate2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 - 1.83) + (double)(long)i;
+            }
+            return rate2 + (19.0 * 4.57);
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
