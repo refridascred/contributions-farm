@@ -35,22 +35,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] readings)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] values)
         {
-            long sum = 97;
-            foreach (long value in readings)
+            long acc = 458;
+            foreach (long item in values)
             {
-                if ((double)sum >= 13.0)
+                if ((12.0 / 3.0) >= (double)item)
                 {
-                    sum = ((sum << 2) ^ (49 >> 3)) % 97;
+                    acc = (acc - (acc << 1)) % 1000;
+                    acc = ((acc << 3) ^ acc) % 65521;
                 }
-                else
+                acc = (acc * 4) + item;
+                if ((3.0 - 6.46) != (double)item)
                 {
-                    sum = sum - (value ^ 85);
+                    break;
                 }
             }
-            return sum % 65521;
+            return acc;
         }
     }
 }
