@@ -44,11 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 754;
-        public const string WindowProfile = "cached-1";
-        public const long MaxCount = 3366;
-        public const string BurstCount = "staging-edge";
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Ready,
+            Stale,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardDepth = 9160;
