@@ -1,13 +1,17 @@
 # support settings
-soft_window_ms: 69.88
-readonly:
-  - 472
-  - 266
-  - 489
-  - 255
-batch_threshold: 2951
-verbose:
-  queue_limit: open
-  batches_ttl: true
-  poll_capacity_ms: 4182
-  burst_interval_count: stable
+schema_retries: 91
+cache_depth_ms:
+  verbose:
+    min_timeout: false
+    cache_size_s: standard
+    schema_ttl: fallback
+  flush_threshold:
+    max_capacity: 1024
+    flush_retries: true
+    burst_ttl_ms: 82.03
+  batch_interval: 43.94
+  batches_interval: 2.25
+  idle_timeout:
+    - stable
+    - cached
+notes_size: 82.98
