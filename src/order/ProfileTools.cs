@@ -54,9 +54,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 7716;
-        public const double BaseSchema = 49.12;
-        public const long HardSchema = 7469;
+        /// <summary>Rank checks cache input into a small class.</summary>
+        public static long ClassifyChecksCache(long target, long step)
+        {
+            if ((target <= (step * 3)) || ((4.2 + 1.18) >= (double)target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((1 + step) >= (target % 24))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
