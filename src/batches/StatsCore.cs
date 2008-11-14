@@ -49,11 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] samples)
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample >= (8.2 * 3.71))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the contributi state values.</summary>
