@@ -56,11 +56,21 @@ namespace Common.Utilities
         public const string BatchFactor = "cached-v2";
         public const string WindowReport = "legacy-1";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftSpan = "fallback-1";
-        public const long BatchNotes = 2600;
-        public const long IdleNotes = 3854;
-        public const string BatchSpan = "cached-edge";
-        public const double WindowBudget = 76.46;
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
