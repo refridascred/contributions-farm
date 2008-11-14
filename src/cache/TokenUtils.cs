@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] readings, long limit)
         {
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
