@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Idle,
-            Done,
-            Stale,
-            New,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheSpan = 862;
+        public const string CacheReport = "stable-edge";
+        public const long MaxReport = 6376;
+        public const long StepSize = 8917;
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LocateCommitsIndex(long[] series, long step)
