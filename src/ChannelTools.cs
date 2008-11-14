@@ -27,13 +27,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
     }
 }
