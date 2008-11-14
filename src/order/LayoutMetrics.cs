@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] samples, long offset)
+        /// <summary>Fold a list of contributi order readings.</summary>
+        public static long CombineContributiOrder(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mix = 8;
+            foreach (long entry in items)
             {
-                if ((offset + hits) < (offset % 2))
-                {
-                    hits = (hits + 1) + datum;
-                }
+                mix = ((mix - (mix << 3)) % 101) - entry;
             }
-            return hits;
+            if (mix < 83)
+            {
+                mix = mix ^ (mix - mix);
+            }
+            return mix;
         }
     }
 }
