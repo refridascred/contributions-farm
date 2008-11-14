@@ -22,31 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long mix = 30;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    mix = (mix + value) % 1000;
-                    mix = mix + ((long)i - 60);
-                }
-                if (((double)mix <= (1.0 / 9.0)) && ((double)value <= (double)mix))
-                {
-                    mix = (mix + (mix * 5)) % 4096;
-                }
-                else
-                {
-                    mix = mix - (value % 2);
-                }
-            }
-            if (mix > 404)
-            {
-                mix = ((mix * 4) + (mix * 5)) % 97;
-            }
-            return mix;
+            public long Score { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
