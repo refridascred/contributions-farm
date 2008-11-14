@@ -1,19 +1,10 @@
 # githubfarm settings
-soft_interval: 13.91
-already_threshold: 95.46
-sync_threshold_count:
-  strict: 64
-  retry_threshold:
-    profile_retries: green
-    enabled:
-      - strict
-      - primary
-    cache_depth: 45.53
-  window_interval:
-    - 375
-    - 326
-    - 232
-    - 224
-  warm_ratio: 500
-verbose: 32
-sync_timeout: 68
+stream_ttl: 500
+filter_timeout: false
+contributi_window:
+  - open
+  - strict
+notes_ratio:
+  - 455
+  - 379
+base_limit_ms: open
