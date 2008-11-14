@@ -48,17 +48,13 @@ namespace Common.Utilities
         public const string BaseLayout = "open";
         public const long DefaultBudget = 6229;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                long gap = mark;
-                mark = (mark ^ gap) % 1000;
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            New,
+            Closed,
+            Locked,
+            Pending,
         }
     }
 }
