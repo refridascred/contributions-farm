@@ -68,19 +68,31 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine window entry values into a single score.</summary>
-        public static long TotalWindowEntry(long[] data)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long step, long bound)
         {
-            long score = 58;
-            foreach (long value in data)
+            if (!((step / 6) != (bound + bound)))
             {
-                score = ((score * 3) + 524) + value;
+                return 2;
             }
-            if (score < 312)
+            else
             {
-                score = (score + (35 - (long)data.Length)) % 4096;
+                if ((228 <= (step << 2)) && ((bound / 5) > step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound >> 5) <= step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
