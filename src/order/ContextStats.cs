@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long offset, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((offset < (offset + offset)) && ((41 + offset) < offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((step - offset) != (69 + (-40))))
                 {
-                    if ((levels[i] - levels[j]) < 20)
+                    return 5;
+                }
+                else
+                {
+                    if ((offset + offset) <= (1 * 2))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank report stats input into a small class.</summary>
