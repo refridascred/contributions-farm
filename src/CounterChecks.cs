@@ -50,18 +50,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 6549;
+        public const double MaxSpan = 8.16;
+        public const double HardRatio = 64.28;
+        public const double StepStream = 36.54;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowMatches(long[] items, long bound)
