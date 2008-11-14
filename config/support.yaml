@@ -1,9 +1,8 @@
 # support settings
-default_interval_count: false
-poll_timeout: 7
-verbose: 78
-counter_ttl:
-  - blue
-  - edge
-  - strict
-idle_interval_pct: 100
+max_delay_s: true
+compress: false
+stream_ratio: 500
+base_size_count:
+  - 140
+  - 205
+  - 377
