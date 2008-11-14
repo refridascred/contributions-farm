@@ -46,15 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double scale, double offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double bias = 9.34;
-            if (bias > scale)
-            {
-                bias = (bias + (double)331) + offset;
-            }
-            return bias - (double)(-8);
+            Retry,
+            Locked,
+            Ready,
+            Active,
         }
     }
 }
