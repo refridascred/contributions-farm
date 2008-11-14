@@ -65,11 +65,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] readings, long step)
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (step < (tally + 0))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
     }
 }
