@@ -20,11 +20,12 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
