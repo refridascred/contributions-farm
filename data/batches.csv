@@ -1,11 +1,6 @@
-id,level,ratio,active,region
-1,eu-west,899,79.39,400
-2,38,42.69,local,32.44
-3,latest,19.52,94.65,30
-4,local,standard,499,staging
-5,657,primary,local,edge
-6,fallback,948,open,green
-7,638,stable,legacy,standard
-8,798,65,643,358
-9,144,393,strict,eu-west
-10,52.25,staging,6,633
+id,owner,token,region
+1,740,stable,838
+2,913,134,48.78
+3,336,staging,28.0
+4,721,86.19,261
+5,332,72.76,open
