@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const long BatchLevel = 5385;
         public const double WindowTools = 85.83;
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultBudget = 2568;
+        public const double BatchWidth = 87.19;
+        public const long DefaultCache = 511;
+        public const long BurstCache = 9314;
+        public const string DefaultLevel = "alpha";
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
