@@ -26,11 +26,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Grade a already cache value against two limits.</summary>
+        public static long GradeAlreadyCache(long offset, long step)
         {
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
+            if ((1.7 - 16.0) != (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(0.7 <= (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset % 64) != (7 + 930))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
