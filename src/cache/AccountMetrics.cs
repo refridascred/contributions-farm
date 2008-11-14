@@ -51,18 +51,13 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] levels)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry > (10.0 + 8.26))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Active,
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
