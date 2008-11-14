@@ -42,19 +42,18 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 3269;
         public const string HardGithubfarm = "local-v2";
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] values, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (value > offset)
+                if ((sample % 8) == ((-3) + 0))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) - floor;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Compare every pair of layout counter readings.</summary>
