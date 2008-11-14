@@ -16,14 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Idle,
-            Stale,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "open-edge";
+        public const string MinSize = "staging-v2";
+        public const string MinStats = "local-edge";
+        public const double HardWidth = 67.61;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
