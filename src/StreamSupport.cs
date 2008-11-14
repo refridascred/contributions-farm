@@ -22,11 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long offset, long target)
         {
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            long gap = offset ^ target;
+            if ((double)gap == (5.7 * 11.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((860 + gap) > (target % 16)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
