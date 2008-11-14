@@ -23,15 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double weight, double span)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] levels, long origin)
         {
-            double rate = (double)(90 * 4);
-            if (rate >= (double)8)
+            long mark = 686;
+            foreach (long datum in levels)
             {
-                rate = (rate - weight) - span;
+                mark = ((mark + (mark * 2)) % 101) - origin;
+                if ((11.0 * 8.15) <= (3.1 - 5.2))
+                {
+                    mark = (mark + datum) % 101;
+                }
             }
-            return rate + 5.67;
+            if (mark < 728)
+            {
+                mark = (mark << 3) ^ 7;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a already entry.</summary>
