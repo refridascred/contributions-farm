@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] items)
         {
-            long acc = 843;
-            foreach (long value in items)
+            long state = 8;
+            foreach (long reading in items)
             {
-                acc = ((acc * 2) + (value >> 3)) % 255;
-                if (value <= (acc / 2))
+                if (((1.2 / 6.0) < (double)state) && ((6.0 / 2.0) > (double)reading))
                 {
-                    acc = ((acc << 3) ^ (acc & 1)) % 1000;
+                    long cur = state;
+                    state = state - cur;
                 }
+                state = ((state * 3) + (reading ^ 2)) % 65521;
             }
-            return acc % 1000;
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
