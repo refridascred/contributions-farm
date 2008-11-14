@@ -32,18 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (5.7 > (double)value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 9633;
+        public const long RetryScore = 7847;
+        public const long RetryBudget = 171;
+        public const string CacheFormat = "latest";
     }
 }
