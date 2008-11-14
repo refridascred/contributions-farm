@@ -29,19 +29,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double gain, double span)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long step, long offset)
         {
-            double load = (double)447 - gain;
-            if (load >= (double)2)
+            if (12.0 >= (double)offset)
             {
-                load = load + gain;
+                return 5;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                load = (load - span) + (double)(long)i;
+                if (step > (offset >> 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return load + (load + span);
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
