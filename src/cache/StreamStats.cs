@@ -22,10 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 46.21;
-        public const long WindowGraph = 8456;
-        public const long BatchGraph = 9893;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultLevel = 7098;
+        public const long CacheTimeout = 429;
+        public const double MinTools = 79.47;
+        public const string RetryTools = "latest-v2";
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
