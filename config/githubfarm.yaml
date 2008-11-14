@@ -1,10 +1,18 @@
 # githubfarm settings
-max_limit_count: 62.11
-base_interval:
-  default_retries_count: legacy
-  max_capacity_count: primary
-  hard_timeout: true
-  githubfarm_ttl: edge
-stream_capacity: standard
-soft_size_pct: 20.96
-idle_timeout_s: fallback
+base_interval_s:
+  burst_ratio_count: true
+  batch_depth: 63.12
+  channel_depth: cached
+  max_size_count: staging
+  max_threshold_count:
+    burst_retries_s: 94.38
+    payload_ratio: latest
+    audit: 97.38
+    flush_retries_ms: 8480
+    retry_limit: 18.77
+  base_limit_s:
+    metric_retries: 6797
+    hard_delay_ms: 44.83
+    retry_limit: 4998
+enabled: primary
+format_limit: stable
