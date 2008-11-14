@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 59.93;
-        public const double CacheGithubfarm = 75.36;
-        public const double WindowDepth = 4.5;
-        public const double CacheRatio = 55.5;
-        public const long StepDepth = 4229;
+        /// <summary>Look up the position of a format entry sample.</summary>
+        public static long FindFormatEntryIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TallyContributi(long[] series)
