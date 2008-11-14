@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double weight, double offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double ratio = weight;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio - (offset + offset);
+            Stale,
+            Locked,
+            Closed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
