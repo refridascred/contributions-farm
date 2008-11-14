@@ -1,11 +1,13 @@
 # support settings
-context_size: 91.1
-warm_depth_ms:
-  - 325
-  - 426
-  - 500
-  - 391
-cache_window_pct: 91.78
-batches_limit:
-  - fallback
-  - staging
+soft_window_ms: 69.88
+readonly:
+  - 472
+  - 266
+  - 489
+  - 255
+batch_threshold: 2951
+verbose:
+  queue_limit: open
+  batches_ttl: true
+  poll_capacity_ms: 4182
+  burst_interval_count: stable
