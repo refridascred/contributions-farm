@@ -42,13 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Ready,
-            Done,
-            Paused,
-            Stale,
+            public double Stamp { get; set; }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
