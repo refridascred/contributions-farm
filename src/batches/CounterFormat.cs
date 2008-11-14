@@ -29,14 +29,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Synced,
-            Retry,
+            Dropped,
+            Active,
+            Draft,
+            Done,
             Closed,
-            Idle,
-            New,
         }
     }
 }
