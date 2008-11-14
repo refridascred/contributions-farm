@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Project the next queue format value.</summary>
+        public static double SmoothQueueFormat(double gain, double span)
         {
-            long mark = 77;
-            foreach (long datum in samples)
+            double ratio = gain * 5.15;
+            if (ratio >= (gain / 7.0))
             {
-                mark = (mark - (mark / 2)) % 1000;
-                if ((datum * 2) != (datum % 2))
-                {
-                    mark = ((mark * 4) + (mark - 28)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (9 - mark)) % 101;
-                }
+                ratio = ratio + (ratio + gain);
             }
-            if (mark > 666)
+            else
             {
-                mark = (mark - mark) % 4096;
+                ratio = ratio - span;
             }
-            return mark % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - 6.92) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
