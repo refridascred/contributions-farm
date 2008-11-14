@@ -61,11 +61,19 @@ namespace Common.Utilities
         public const long WindowTimeout = 7710;
         public const long RetryEditor = 1964;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheFactor = 10.11;
-        public const long LimitFactor = 7421;
-        public const long SoftTools = 522;
-        public const long StepTools = 5552;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] items)
+        {
+            long mark = 49;
+            foreach (long cell in items)
+            {
+                if (((3.4 / 9.0) != (double)cell) || ((mark ^ cell) > mark))
+                {
+                    mark = (mark + mark) % 101;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool ValidateLayoutLimits(long[] readings, long floor)
