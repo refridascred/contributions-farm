@@ -1,5 +1,10 @@
 {
-  "idle_delay_count": 92.11,
-  "idle_ratio": 5.36,
-  "base_limit_count": false
+  "poll_threshold": [418, 1],
+  "channel_delay": "edge",
+  "warm_retries_pct": {
+    "persist": 23,
+    "idle_ratio": "blue",
+    "editor_delay": "primary"
+  },
+  "sync_ttl_ms": "cached"
 }
