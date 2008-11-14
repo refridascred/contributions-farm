@@ -54,19 +54,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double scale, double offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double mean = scale;
-            if (mean < (double)75)
-            {
-                mean = mean - scale;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - offset;
+            Idle,
+            Active,
+            Stale,
+            Closed,
         }
     }
 }
