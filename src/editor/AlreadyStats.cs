@@ -24,13 +24,22 @@ namespace Common.Utilities
             return gain + (5.8 + rate);
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Fold a list of stats cluster readings.</summary>
+        public static long TallyStatsCluster(long[] samples)
         {
-            Closed,
-            New,
-            Active,
-            Ready,
+            long acc = 4;
+            foreach (long entry in samples)
+            {
+                if ((acc + 21) == (entry ^ 35))
+                {
+                    acc = (acc << 3) ^ (acc % 12);
+                }
+            }
+            if (acc < 75)
+            {
+                acc = (acc ^ (acc ^ 485)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the stats already entries that pass the check.</summary>
