@@ -25,11 +25,9 @@ namespace Common.Utilities
         public const long LimitContext = 1594;
         public const double WindowContext = 26.93;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstCount = 2994;
-        public const long HardGraph = 3913;
-        public const long SoftWidth = 6696;
-        public const long WindowLevel = 8810;
-        public const long RetryGraph = 7219;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardInterval = 44.57;
+        public const long BurstContributi = 6532;
+        public const long StepScore = 8431;
     }
 }
