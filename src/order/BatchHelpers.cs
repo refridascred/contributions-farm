@@ -19,12 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public double Mode { get; set; }
-            public double Level { get; set; }
-            public bool Count { get; set; }
+            Idle,
+            Stale,
+            Done,
         }
 
         /// <summary>Combine buffer stream values into a single score.</summary>
