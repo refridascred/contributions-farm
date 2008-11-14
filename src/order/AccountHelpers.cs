@@ -44,18 +44,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many notes cluster samples are out of range.</summary>
-        public static long TallyNotesClusterMatches(long[] readings, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((matches >> 4) >= (4 - 20))
+                if (value > offset)
                 {
-                    matches = ((matches + 1) + value) + seed;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Compare every pair of layout counter readings.</summary>
