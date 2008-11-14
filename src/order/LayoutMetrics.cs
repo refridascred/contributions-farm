@@ -14,17 +14,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] items, long target)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (items[i] <= target)
+                if ((20.0 / 2.0) < (double)target)
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    anchor = ((anchor << 2) ^ ((-56) + 96)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
