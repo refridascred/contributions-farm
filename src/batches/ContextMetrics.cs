@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] series, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (52 < bound)
-                {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepTimeout = 5540;
+        public const string BaseRatio = "cached-1";
+        public const double HardCluster = 75.32;
+        public const double LimitCluster = 91.48;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] levels, long origin)
