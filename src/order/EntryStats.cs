@@ -44,19 +44,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stats session measurements.</summary>
-        public static double BlendStatsSession(double weight, double bias)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long step)
         {
-            double scale = (double)98 * 1.74;
-            if (scale <= (bias - bias))
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                scale = (scale - 7.69) - weight;
+                result = (result ^ ((long)i - step)) % 255;
+                if ((step & 1) >= result)
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result ^ (result + (long)i)) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + scale;
+            return result;
         }
 
         /// <summary>Combine format values into a single score.</summary>
