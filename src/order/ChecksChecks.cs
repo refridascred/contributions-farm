@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Closed,
-            Paused,
-            Failed,
-            Draft,
-            Idle,
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
