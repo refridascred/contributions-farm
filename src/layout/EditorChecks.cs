@@ -23,15 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long step)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double gain, double span)
         {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            double scale = gain;
+            return (scale - (double)(-267)) + span;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
