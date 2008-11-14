@@ -1,14 +1,24 @@
 # entry settings
-format_retries:
-  compress: local
-  cache_limit: 42
-  report_size: 30
-  batch_threshold_pct: 30
-idle_delay_pct:
-  metric_threshold: 24
-  max_threshold_pct: latest
-  verbose: 6913
-  hard_size: 9079
-entry_ttl: 88.53
-soft_size: 250
-cache_size_pct: 4.27
+readonly: false
+flush_threshold: 1990
+batch_threshold_count:
+  hard_size_ms:
+    - staging
+    - primary
+    - primary
+  compress: cached
+  max_delay_s: 70.79
+  batch_size:
+    - blue
+    - standard
+  batch_retries_s:
+    - 215
+    - 246
+    - 429
+min_capacity_s:
+  - cached
+  - legacy
+  - edge
+  - standard
+enabled: fallback
+min_depth_count: standard
