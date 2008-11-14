@@ -55,12 +55,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] series)
         {
-            public bool Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
