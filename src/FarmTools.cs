@@ -32,18 +32,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the githubfarm metric entries that pass the check.</summary>
-        public static long AuditGithubfarmMetricHits(long[] values)
+        /// <summary>Validate context batch readings against a bound.</summary>
+        public static bool CheckContextBatchLimits(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((double)value >= (double)seen)
+                if (entry > limit)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
