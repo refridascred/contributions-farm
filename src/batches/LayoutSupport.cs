@@ -55,31 +55,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a already schema pair into a bucket.</summary>
-        public static long SortAlreadySchema(long offset, long bound)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            if ((double)offset <= (7.7 + 7.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 5) <= (offset + 160))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (804 < (bound >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Synced,
+            Idle,
+            New,
+            Draft,
+            Done,
         }
 
         /// <summary>Combine order values into a single score.</summary>
