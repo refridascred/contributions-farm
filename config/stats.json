@@ -1,18 +1,7 @@
 {
-  "warm_ttl_count": true,
-  "hard_size": false,
-  "readonly": 73.39,
-  "verbose": {
-    "warm_interval_pct": "eu-west",
-    "retry_capacity_ms": "strict",
-    "poll_delay": "latest",
-    "tools_limit": {
-      "idle_interval": 81.9,
-      "payload_capacity": 30,
-      "poll_window_ms": "legacy",
-      "base_delay_s": 1024,
-      "default_size": 66.15,
-      "batch_timeout": [361, 13]
-    }
-  }
+  "contributi_window": 100,
+  "audit": true,
+  "idle_threshold": 55.7,
+  "soft_limit": 76.13,
+  "report_timeout": false
 }
