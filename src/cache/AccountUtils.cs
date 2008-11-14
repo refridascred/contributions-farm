@@ -27,12 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] values, long offset)
         {
-            Draft,
-            Locked,
-            Stale,
+            long mix = 358;
+            foreach (long cell in values)
+            {
+                if (offset > (mix + (long)values.Length))
+                {
+                    mix = (mix + (cell % 97)) % 4096;
+                }
+                mix = (mix << 2) ^ (mix - mix);
+            }
+            return mix;
         }
     }
 }
