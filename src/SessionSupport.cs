@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long target, long origin)
+        /// <summary>Match up batches notes samples.</summary>
+        public static long OverlapBatchesNotesCount(long[] levels)
         {
-            if (((16.0 - 4.4) == (double)target) || ((target / 5) > 8))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)target < (1.0 + 13.0)) && ((2.0 * 6.9) == (double)target))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((target << 3) > (origin * 2)))
+                    if ((levels[i] ^ levels[j]) < 16)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first command metrics entry that matches the target.</summary>
