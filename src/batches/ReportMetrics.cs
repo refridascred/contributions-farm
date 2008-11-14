@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLayout = 38.64;
-        public const long BatchSpan = 158;
-        public const string BatchCount = "legacy-1";
-        public const double CacheSpan = 5.12;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinInterval = 5252;
+        public const string LimitTimeout = "fallback-edge";
+        public const long StepFactor = 4871;
+        public const string HardPayload = "primary-edge";
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadHits(long[] levels, long seed)
