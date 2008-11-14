@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] data, long seed)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((double)(long)data.Length < (double)seed)
-                {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
