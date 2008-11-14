@@ -30,19 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] series, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (value <= step)
+                if ((9.95 + 11.0) != (double)tally)
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 1) + reading) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
