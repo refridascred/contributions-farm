@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up batches notes samples.</summary>
-        public static long OverlapBatchesNotesCount(long[] levels)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 23;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (limit <= (limit / 3))
                 {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total << 2) ^ (limit / 4)) ^ entry;
+                }
+                else
+                {
+                    total = (total << 3) ^ (limit + limit);
                 }
             }
-            return hits;
+            if (total > 51)
+            {
+                total = ((total << 2) ^ (limit - 56)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Digest a series of report entries.</summary>
