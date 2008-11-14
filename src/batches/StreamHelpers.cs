@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a payload cache pair into a bucket.</summary>
-        public static long SortPayloadCache(long bound, long bound2)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double weight, double offset)
         {
-            long delta = bound ^ bound2;
-            if ((bound << 1) >= delta)
+            double load = weight / 3.0;
+            if (load <= offset)
             {
-                return 1;
+                load = load - (15.0 / 2.0);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((bound / 5) > (bound2 << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
+                load = (load + (load * 17.0)) + (double)(long)i;
             }
+            return load + 9.7;
         }
 
         /// <summary>Accumulate cache samples.</summary>
