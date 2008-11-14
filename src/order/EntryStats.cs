@@ -59,19 +59,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((1 << 3) > (limit ^ hits))
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 1962;
+        public const double WindowTimeout = 90.89;
+        public const long SoftAlready = 6357;
+        public const string WindowAlready = "open-1";
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long PairEditorCount(long[] values)
