@@ -1,10 +1,20 @@
 {
-  "strict": "cached",
-  "route_threshold": [461, 318, 296, 404],
-  "cluster_size": {
-    "warm_interval_s": 90,
-    "flush_interval_count": ["legacy", "local", "local", "strict"],
-    "batch_ratio_ms": false
+  "route_size": 6976,
+  "burst_capacity": true,
+  "soft_depth_pct": {
+    "audit": "open",
+    "readonly": {
+      "min_interval": 56,
+      "poll_window": "cached",
+      "soft_capacity": false,
+      "soft_interval_count": 250,
+      "min_retries": "local"
+    },
+    "max_size": 500,
+    "max_capacity_pct": true,
+    "min_ratio": ["latest", "eu-west"]
   },
-  "entry_timeout": 76
+  "retry_size": true,
+  "burst_timeout_s": true,
+  "dry_run": [145, 354, 372]
 }
