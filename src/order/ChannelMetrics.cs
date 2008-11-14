@@ -47,18 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] items, long offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((sample + (long)items.Length) == (sample * 5)) && ((sample + offset) != (offset * 5)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Dropped,
+            Ready,
+            Queued,
+            Active,
+            Failed,
         }
     }
 }
