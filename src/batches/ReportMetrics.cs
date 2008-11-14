@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((((2.33 * 13.0) > (double)bound) || ((bound + matches) == ((long)data.Length / 9))) && (((matches + 2) < (matches + matches)) && ((matches << 1) <= bound)))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLayout = 38.64;
+        public const long BatchSpan = 158;
+        public const string BatchCount = "legacy-1";
+        public const double CacheSpan = 5.12;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadHits(long[] levels, long seed)
