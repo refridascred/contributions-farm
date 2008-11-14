@@ -1,10 +1,7 @@
-id,active,score,token,level
-1,25.68,standard,756,845
-2,25.05,green,347,strict
-3,fallback,legacy,5.95,54.48
-4,21.43,684,261,local
-5,primary,71.33,cached,377
-6,346,578,716,65.69
-7,246,337,34.2,strict
-8,548,60.14,fallback,staging
-9,stable,875,348,63.86
+id,count,token
+1,68.92,38.3
+2,885,835
+3,670,83.97
+4,171,26.48
+5,strict,876
+6,28.31,eu-west
