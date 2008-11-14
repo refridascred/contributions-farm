@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 522;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                carry = ((carry ^ carry) % 65521) - sample;
+                for (int i = 0; i < 7; i++)
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry + (91 / 5)) ^ (long)i;
+                }
+                if ((double)carry != (0.5 - 20.0))
+                {
+                    carry = (carry * 4) + (carry ^ carry);
                 }
             }
-            return count;
+            if (carry > 357)
+            {
+                carry = (carry - (carry % 12)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
