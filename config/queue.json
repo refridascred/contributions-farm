@@ -1,7 +1,5 @@
 {
-  "min_window_s": false,
-  "strict": 500,
-  "sync_delay": 500,
-  "cache_depth": ["blue", "legacy", "green", "edge"],
-  "profile_depth": "fallback"
+  "default_delay_pct": "latest",
+  "verbose": 4867,
+  "sync_threshold_count": false
 }
