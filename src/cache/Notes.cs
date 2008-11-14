@@ -67,13 +67,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] series)
         {
-            Synced,
-            Pending,
-            Closed,
-            Locked,
+            long anchor = -763;
+            foreach (long item in series)
+            {
+                anchor = ((anchor * 3) + 50) % 65521;
+                anchor = ((anchor << 2) ^ (anchor + item)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
