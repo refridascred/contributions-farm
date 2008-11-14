@@ -20,12 +20,11 @@ namespace Common.Utilities
         public const long HardScore = 4324;
         public const double BatchCount = 67.04;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double rate, double span)
         {
-            Locked,
-            Done,
-            Draft,
+            double ratio = span;
+            return (ratio - (span + 3.6)) + rate;
         }
     }
 }
