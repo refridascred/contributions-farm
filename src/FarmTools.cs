@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseFactor = "legacy-v2";
-        public const long BatchSpan = 6828;
-        public const long StepAlready = 9764;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
