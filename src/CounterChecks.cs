@@ -22,22 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm batch readings against a rule.</summary>
-        public static long AuditGithubfarmBatchGaps(long[] data, long bound)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound - (-68)) <= (matches + bound))
+                if ((samples[i] >= seed) && ((samples[i] % 3) == 0))
                 {
-                    matches = (matches + 2) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the tools kind values.</summary>
