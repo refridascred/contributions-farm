@@ -11,17 +11,10 @@ namespace Common.Utilities
         public const long MinSize = 5786;
         public const string DefaultFactor = "fallback-v2";
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] items, long target)
-        {
-            long acc = 79;
-            foreach (long item in items)
-            {
-                acc = ((acc - (item + acc)) % 97) - target;
-                acc = (acc << 2) ^ item;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetrySize = 51.34;
+        public const double BatchChecks = 64.94;
+        public const long IdleChecks = 5265;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphMatches(long[] items)
