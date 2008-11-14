@@ -14,32 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long floor, long limit)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long offset = floor + limit;
-            if ((offset << 2) < limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset / 7) != (640 << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((1 <= floor) || ((479 >> 5) > offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine githubfarm report values into a single score.</summary>
