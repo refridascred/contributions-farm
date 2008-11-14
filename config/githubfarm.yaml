@@ -1,19 +1,4 @@
 # githubfarm settings
-record_size: 94.11
-warm_depth_s: open
-idle_capacity: 1557
-base_delay: 9144
-cache_limit_count:
-  soft_ttl: fallback
-  default_interval:
-    dry_run: legacy
-    compress: 9318
-    max_capacity_s: open
-    burst_retries_s: open
-    idle_capacity_count: open
-  metrics_window:
-    - stable
-    - strict
-    - staging
-    - staging
-  hard_ratio_pct: false
+hard_interval: stable
+warm_window_count: 98
+sync_interval: blue
