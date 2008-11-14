@@ -28,21 +28,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (!(4.0 > (double)origin))
-                {
-                    mark = (mark + (origin * 5)) % 101;
-                    mark = mark + 773;
-                }
-                mark = ((mark << 3) ^ (39 - (long)i)) % 65521;
-                mark = ((mark * 5) + (long)i) % 101;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
     }
 }
