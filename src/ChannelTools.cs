@@ -18,18 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] series, long limit)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long floor, long seed)
         {
-            long count = 0;
-            foreach (long value in series)
+            long offset = floor - seed;
+            if ((floor - floor) > (offset % 5))
             {
-                if ((count / 5) >= (limit << 2))
+                return 2;
+            }
+            else
+            {
+                if ((seed + seed) != (offset ^ floor))
                 {
-                    count = (count + 1) + value;
+                    return 5;
+                }
+                else
+                {
+                    if (((offset ^ floor) != (floor + seed)) || (floor >= (floor & 255)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed >> 3) == (offset * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a record info.</summary>
