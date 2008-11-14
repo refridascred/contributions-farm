@@ -53,12 +53,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 17.05;
-        public const long BurstRatio = 5139;
-        public const long BaseRoute = 454;
-        public const long BatchRatio = 4349;
-        public const string MinRoute = "stable-v2";
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)tally >= (5.53 - 14.0))
+                {
+                    tally = ((tally + 1) - reading) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long DigestCommits(long[] data)
