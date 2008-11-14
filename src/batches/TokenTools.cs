@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double rate, double bias)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] readings)
         {
-            double mean = bias - (bias * 8.6);
-            return mean - rate;
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + seen) != ((-39) + entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a record already counter forward.</summary>
