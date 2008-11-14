@@ -49,26 +49,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] items, long origin)
         {
-            long carry = 54;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (((long)items.Length ^ carry) > (value >> 2))
+                if (origin > ((long)items.Length + count))
                 {
-                    carry = ((carry * 2) + value) % 65521;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (value + value)) % 4096;
+                    count = (count + 2) + entry;
                 }
             }
-            if (carry < 82)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return count;
         }
     }
 }
