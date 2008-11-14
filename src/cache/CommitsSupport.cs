@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const string LimitFarm = "primary-1";
         public const double RetryFarm = 94.25;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long offset)
         {
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = (mark - (mark >> 5)) % 65521;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
