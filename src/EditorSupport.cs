@@ -23,18 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] readings, long seed)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((matches + seed) < matches)
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            Done,
+            Failed,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
