@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up contributi support samples.</summary>
-        public static long MatchContributiSupportCount(long[] readings)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
