@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate record format readings against a bound.</summary>
-        public static bool ValidateRecordFormatRange(long[] series, long step)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Closed,
+            Pending,
+            New,
+            Active,
         }
 
         /// <summary>Describe the contributi state values.</summary>
