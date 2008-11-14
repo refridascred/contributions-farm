@@ -66,19 +66,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] items)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long target, long bound)
         {
-            long mix = 6;
-            foreach (long item in items)
+            long slot = target ^ bound;
+            if ((target - slot) > bound)
             {
-                mix = (mix + (item << 3)) % 65521;
+                return 7;
             }
-            if (mix < 8)
+            else
             {
-                mix = ((mix * 4) + (mix + mix)) % 255;
+                if ((bound >= (slot << 3)) && (8 <= (target % 97)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return mix % 97;
         }
     }
 }
