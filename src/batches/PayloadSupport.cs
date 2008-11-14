@@ -26,22 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format cache entries that pass the check.</summary>
-        public static long CountFormatCacheGaps(long[] data, long target)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long score = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((matches / 8) >= (target % 100))
+                if (!(seed <= (seed - (long)i)))
                 {
-                    matches = (matches + 2) - reading;
+                    score = ((score << 3) ^ ((long)i + seed)) % 65521;
+                    score = (score ^ score) % 4096;
                 }
-                else
+                if ((seed + seed) <= seed)
                 {
-                    matches = matches - 1;
+                    score = score ^ (score + score);
                 }
+                score = (score + (score - 66)) % 4096;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the stream mode values.</summary>
