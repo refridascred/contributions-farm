@@ -62,27 +62,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] samples, long limit)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] data, long limit)
         {
-            long mark = 2;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((limit / 4) != (limit + item)))
+                if ((data[i] >= limit) && ((data[i] % 5) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark + (mark >> 1)) % 255;
-                }
-                mark = (mark + (item / 5)) % 4096;
             }
-            if (mark < 12)
-            {
-                mark = (mark ^ limit) % 4096;
-            }
-            return mark;
+            return -1;
         }
     }
 }
