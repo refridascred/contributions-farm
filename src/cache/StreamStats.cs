@@ -33,12 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] items, long limit)
         {
-            Ready,
-            Active,
-            Retry,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
