@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Dropped,
-            Active,
-            New,
-            Paused,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepLevel = 3228;
+        public const long MinLevel = 6597;
+        public const long WindowTimeout = 606;
+        public const double LimitScore = 40.11;
+        public const long DefaultEditor = 6781;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleScore = 5610;
