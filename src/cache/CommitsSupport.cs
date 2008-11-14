@@ -26,17 +26,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] series, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = -5;
+            foreach (long reading in items)
             {
-                if (series[i] == offset)
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (long)i) % 255;
+                }
+                acc = acc - acc;
+                if (reading >= (reading * 2))
+                {
+                    acc = (acc + (967 + reading)) % 255;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
