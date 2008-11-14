@@ -28,22 +28,37 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long floor, long offset)
+        /// <summary>Grade a buffer profile value against two limits.</summary>
+        public static long BucketBufferProfile(long offset, long offset2)
         {
-            if (!((double)offset == (2.0 * 11.0)))
+            long span = offset ^ offset2;
+            if (!((offset + offset2) < span))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((96 >= (offset ^ offset)) && ((floor + offset) == (floor & 127)))
+                if (!((9.7 * 2.6) < (double)span))
                 {
                     return 4;
                 }
                 else
                 {
-                    return 1;
+                    if (((1.96 / 2.0) == (double)offset2) || (offset2 < (offset << 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((span << 3) >= (offset - span))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
