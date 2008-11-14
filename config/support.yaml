@@ -1,7 +1,5 @@
 # support settings
-poll_capacity: eu-west
-batch_timeout_s: false
-batch_timeout_ms:
-  retry_window: true
-  dry_run: staging
-  verbose: 99
+readonly: 89.88
+verbose: true
+record_ratio: cached
+burst_window_ms: false
