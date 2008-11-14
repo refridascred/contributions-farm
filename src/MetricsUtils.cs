@@ -32,18 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] series)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((993 * 3) > item)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Paused,
+            Done,
         }
 
         /// <summary>Grade a counter payload value against two limits.</summary>
