@@ -1,14 +1,6 @@
 {
-  "tools_threshold": "primary",
-  "base_threshold_count": "green",
-  "soft_ttl_s": {
-    "warm_depth": ["standard", "stable", "standard"],
-    "flush_timeout_s": {
-      "payload_capacity": 49.75,
-      "stats_window": 1024,
-      "format_threshold": "staging",
-      "editor_depth": 8463
-    },
-    "schema_timeout": false
-  }
+  "strict": "stable",
+  "hard_depth_ms": 1024,
+  "dry_run": true,
+  "compress": 0.45
 }
