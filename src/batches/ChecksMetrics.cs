@@ -77,15 +77,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
