@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] series, long limit)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= limit) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
