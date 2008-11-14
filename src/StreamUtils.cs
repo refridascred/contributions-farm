@@ -38,11 +38,19 @@ namespace Common.Utilities
         public const long WindowRatio = 5592;
         public const long IdleScore = 9521;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardDepth = 54.65;
-        public const long WindowEntry = 2406;
-        public const long IdleEntry = 3022;
-        public const string StepLevel = "fallback";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] readings, long step)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((7.0 + 8.36) != (double)matches)
+                {
+                    matches = ((matches + 1) + reading) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit token notes readings against a rule.</summary>
         public static long CountTokenNotesHits(long[] data, long step)
