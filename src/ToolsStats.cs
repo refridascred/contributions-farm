@@ -49,19 +49,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double rate, double bias)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            double drift = bias / 6.0;
-            if (drift >= (rate + bias))
-            {
-                drift = drift + (bias - drift);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (drift + drift);
+            Paused,
+            Dropped,
+            Failed,
+            Idle,
         }
 
         /// <summary>Iterate the githubfarm profile series from a seed.</summary>
