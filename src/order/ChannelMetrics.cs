@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long HardRatio = 9025;
         public const string BatchDepth = "legacy-v2";
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Combine metrics format values into a single score.</summary>
+        public static long CombineMetricsFormat(long[] readings, long step)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            long mark = 76;
+            foreach (long item in readings)
+            {
+                if (mark > (38 ^ item))
+                {
+                    mark = (((mark << 2) ^ mark) % 255) + step;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a batch command sample.</summary>
