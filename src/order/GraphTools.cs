@@ -40,11 +40,15 @@ namespace Common.Utilities
         public const long StepAccount = 4986;
         public const long LimitAccount = 9255;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstFarm = 86.94;
-        public const string BaseFarm = "alpha";
-        public const long MinCount = 3581;
-        public const long BaseDepth = 836;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            New,
+            Ready,
+            Queued,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool GuardOrderRange(long[] data, long floor)
