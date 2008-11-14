@@ -15,12 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] items, long limit)
         {
-            Locked,
-            Synced,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
