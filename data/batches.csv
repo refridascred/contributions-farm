@@ -1,6 +1,10 @@
-id,owner,weight
-1,48.86,37.48
-2,700,11.72
-3,52.17,latest
-4,14.2,3.74
-5,legacy,722
+id,active,token,level
+1,eu-west,307,46.63
+2,54.6,50.94,standard
+3,13.76,strict,34.87
+4,201,513,stable
+5,primary,cached,6.77
+6,74.11,66.19,52.52
+7,26.33,standard,22.65
+8,63.93,36.55,legacy
+9,35.75,54.37,251
