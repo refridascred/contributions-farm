@@ -16,15 +16,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double weight, double bias)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] readings, long floor)
         {
-            double scale = bias;
-            if (scale > (bias - scale))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                scale = (scale + (double)95) - weight;
+                if ((18.0 - 0.04) <= (double)entry)
+                {
+                    tally = (tally + 3) - floor;
+                }
             }
-            return scale + (scale + bias);
+            return tally;
         }
 
         /// <summary>Project the next session report value.</summary>
