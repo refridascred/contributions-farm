@@ -21,19 +21,15 @@ namespace Common.Utilities
         public const long IdleRatio = 1934;
         public const long MinOrder = 1460;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] values, long limit)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long target)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long sum = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (value <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
