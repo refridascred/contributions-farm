@@ -34,12 +34,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 51.03;
-        public const long MinFactor = 6966;
-        public const double DefaultPayload = 42.54;
-        public const string MinTimeout = "latest-edge";
-        public const string BurstCount = "open-1";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 5967;
+        public const long BaseCount = 6676;
+        public const string LimitScore = "primary-edge";
+        public const long HardStream = 1243;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long DigestRecord(long[] items, long target)
