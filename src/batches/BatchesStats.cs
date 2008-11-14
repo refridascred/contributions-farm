@@ -51,18 +51,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] readings, long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long offset, long offset2)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long prev = offset - offset2;
+            if ((offset2 / 9) == (offset % 10))
             {
-                if ((4.42 + 1.0) == (double)tally)
+                return 3;
+            }
+            else
+            {
+                if ((offset2 + 52) != (prev - offset))
                 {
-                    tally = ((tally + 3) + entry) + step;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the report level values.</summary>
