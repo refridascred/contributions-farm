@@ -49,18 +49,18 @@ namespace Common.Utilities
         public const long BurstInterval = 9203;
         public const long BaseWindow = 5762;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] levels, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((hits % 24) < entry)
+                if (((double)seen != (4.54 + 8.7)) || ((seed & 15) == (111 ^ seed)))
                 {
-                    hits = (hits + 1) + target;
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate record channel readings against a bound.</summary>
