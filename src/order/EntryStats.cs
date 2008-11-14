@@ -20,11 +20,20 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 9882;
-        public const long IdleCount = 5036;
-        public const string SoftLevel = "fallback-edge";
-        public const double IdleSpan = 66.47;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double ScaleContext(double scale, double span)
