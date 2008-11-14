@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] data, long origin)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] data, long seed)
         {
-            long result = 48;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((64 << 3) == (item + (-406))) && ((origin << 1) >= result))
+                if ((data[i] <= seed) && ((data[i] % 2) == 0))
                 {
-                    result = result ^ item;
-                    break;
-                }
-                result = result + (item - result);
-                if ((371 % 12) > item)
-                {
-                    result = (result * 3) + (result & 3);
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
