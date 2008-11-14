@@ -1,6 +1,6 @@
-id,count,ratio
-1,local,blue
-2,latest,94.36
-3,190,92.88
-4,66.11,136
-5,100,77.42
+id,region,rank,owner,count
+1,119,stable,edge,local
+2,92.92,46.91,85.36,edge
+3,fallback,614,766,434
+4,448,246,cached,71.63
+5,open,275,514,12
