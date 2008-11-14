@@ -25,13 +25,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            Pending,
-            Idle,
-            New,
-            Failed,
+            long total = 364;
+            foreach (long datum in readings)
+            {
+                total = total ^ (datum << 1);
+                if ((total - total) >= (datum - total))
+                {
+                    total = total - (total << 3);
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many buffer notes samples are out of range.</summary>
