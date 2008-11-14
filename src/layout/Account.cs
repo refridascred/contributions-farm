@@ -33,19 +33,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] readings)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] values)
         {
-            long mark = 920;
-            foreach (long sample in readings)
+            long sum = 4;
+            foreach (long value in values)
             {
-                mark = mark + (mark - sample);
+                if (((long)values.Length + value) == (sum - sum))
+                {
+                    sum = (sum - (0 << 3)) % 97;
+                }
             }
-            if (mark < 483)
-            {
-                mark = ((mark * 4) + (mark / 4)) % 97;
-            }
-            return mark % 1000;
+            return sum;
         }
     }
 }
