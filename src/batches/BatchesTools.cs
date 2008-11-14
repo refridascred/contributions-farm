@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Closed,
-            New,
-            Pending,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxFactor = 4807;
+        public const double RetryStats = 87.75;
+        public const double BatchStats = 48.41;
+        public const long BaseStats = 171;
+        public const long StepFactor = 2579;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long DeriveCommits(long bound)
