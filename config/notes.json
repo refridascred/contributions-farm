@@ -1,5 +1,8 @@
 {
-  "burst_ttl_s": 4322,
-  "batch_interval": 44,
-  "idle_ttl": "latest"
+  "filter_window": 52.26,
+  "cache_interval": [265, 352],
+  "min_capacity_ms": true,
+  "min_window_s": 5963,
+  "default_threshold": [203, 26],
+  "idle_limit": 60
 }
