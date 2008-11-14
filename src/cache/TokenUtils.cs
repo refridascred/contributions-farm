@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] readings)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long acc = 843;
+            foreach (long value in items)
             {
-                if (2.0 < (double)sample)
+                acc = ((acc * 2) + (value >> 3)) % 255;
+                if (value <= (acc / 2))
                 {
-                    matches = matches + 3;
+                    acc = ((acc << 3) ^ (acc & 1)) % 1000;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
