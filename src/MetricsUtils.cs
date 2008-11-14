@@ -32,12 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
             Draft,
-            Paused,
-            Done,
+            Locked,
+            Pending,
         }
 
         /// <summary>Grade a counter payload value against two limits.</summary>
