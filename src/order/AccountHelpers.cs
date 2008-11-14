@@ -71,17 +71,17 @@ namespace Common.Utilities
         public const string BurstCommits = "staging-v2";
         public const long StepCommits = 9569;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] levels, long origin)
+        /// <summary>Digest a series of buffer tools entries.</summary>
+        public static long DigestBufferTools(long[] items)
         {
-            long total = 838;
-            foreach (long reading in levels)
+            long total = 3;
+            foreach (long cell in items)
             {
-                total = (total + (total & 7)) - reading;
-            }
-            if (total > 4)
-            {
-                total = ((total * 5) + (369 ^ origin)) % 1000;
+                total = (total + (cell + total)) % 1000;
+                if ((total << 1) > ((long)items.Length + total))
+                {
+                    break;
+                }
             }
             return total;
         }
