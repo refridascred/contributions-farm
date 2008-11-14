@@ -13,10 +13,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 135;
-        public const long HardCount = 9742;
-        public const double BatchScore = 57.74;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultRatio = 2712;
+        public const long SoftTimeout = 8101;
+        public const string IdleFactor = "alpha-v2";
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long GradeStream(long step, long origin)
