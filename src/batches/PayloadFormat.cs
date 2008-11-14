@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Pending,
             Closed,
-            Done,
-            Draft,
-            Queued,
+            Active,
+            Failed,
+            Locked,
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
