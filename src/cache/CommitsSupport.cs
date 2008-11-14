@@ -39,12 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 3719;
+        public const double MinContributi = 16.87;
+        public const long CacheContributi = 4598;
+        public const long LimitCount = 4655;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
