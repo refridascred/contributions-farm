@@ -63,14 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] data, long seed)
         {
-            Failed,
-            Dropped,
-            Paused,
-            Idle,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the editor kind values.</summary>
