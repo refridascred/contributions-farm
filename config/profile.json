@@ -1,5 +1,6 @@
 {
-  "enabled": "legacy",
-  "audit": "edge",
-  "retry_ttl_ms": 19
+  "batch_limit": 6740,
+  "soft_window_pct": 1024,
+  "hard_depth_s": 100,
+  "idle_timeout": 250
 }
