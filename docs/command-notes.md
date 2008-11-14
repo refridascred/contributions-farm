@@ -1,13 +1,10 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-Run the batch check before changing any metrics limits.
-
-Each entry is validated before it reaches the layout queue.
-Each record is validated before it reaches the stats queue.
+When a batch fails, the layout handler retries a few times before giving up.
+Each format is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Log every tools change
-- Validate session input early
-- Keep layout values small
+- Review context limits each release
+- Validate tools input early
+- Document new notes fields
