@@ -37,11 +37,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchInterval = 1553;
-        public const long BatchMetrics = 7670;
-        public const long MinMetrics = 97;
-        public const long BurstMetrics = 8335;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportGaps(long[] samples)
