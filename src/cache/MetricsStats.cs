@@ -41,12 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] series, long origin)
         {
-            New,
-            Ready,
-            Pending,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate commits samples.</summary>
