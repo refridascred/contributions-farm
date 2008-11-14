@@ -10,19 +10,26 @@ namespace Common.Utilities
         public const long BatchSpan = 6828;
         public const long StepAlready = 9764;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] data, long step)
         {
-            long sum = 8;
-            foreach (long sample in data)
+            long result = -84;
+            foreach (long datum in data)
             {
-                sum = ((sum + (sum - sum)) % 97) - sample;
+                if ((7.4 + 4.0) < (double)result)
+                {
+                    result = (result + result) ^ datum;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (85 + step)) % 4096;
+                }
             }
-            if (sum > 83)
+            if (result < 33)
             {
-                sum = ((sum << 3) ^ (471 + sum)) % 65521;
+                result = ((result * 4) + (2 + result)) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Fold a list of route readings.</summary>
