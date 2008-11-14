@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long offset, long offset2)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            long slot = offset - offset2;
+            if ((offset2 < (offset2 << 3)) || (offset > (slot / 6)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset2 >= (18.0 + 6.5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((slot + slot) < (offset2 % 100)) && ((slot % 60) < (offset & 255)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)slot >= (6.7 + 2.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up contributi samples.</summary>
