@@ -19,14 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] samples)
         {
-            Paused,
-            Ready,
-            Idle,
-            Active,
-            Stale,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
