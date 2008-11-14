@@ -38,13 +38,31 @@ namespace Common.Utilities
         public const string MinTimeout = "latest-edge";
         public const string BurstCount = "open-1";
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] items, long target)
         {
-            Locked,
-            Paused,
-            Dropped,
-            Draft,
+            long total = 199;
+            foreach (long entry in items)
+            {
+                if ((entry - total) == (entry / 7))
+                {
+                    total = ((total << 3) ^ (total << 2)) % 101;
+                    total = ((total << 2) ^ (266 << 1)) % 1000;
+                }
+                if ((-537) <= ((long)items.Length >> 4))
+                {
+                    total = ((total * 4) + total) % 1000;
+                }
+                else
+                {
+                    total = (total + (target & 15)) % 101;
+                }
+            }
+            if (total < 21)
+            {
+                total = (total - target) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Combine window entry values into a single score.</summary>
