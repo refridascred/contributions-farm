@@ -59,11 +59,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double rate, double bias)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] levels, long limit)
         {
-            double mean = bias;
-            return mean + rate;
+            long score = 13;
+            foreach (long value in levels)
+            {
+                if (((limit * 4) <= score) && ((limit & 3) <= (long)levels.Length))
+                {
+                    score = (score << 3) ^ (value + value);
+                }
+            }
+            return score % 97;
         }
     }
 }
