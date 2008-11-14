@@ -20,23 +20,17 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double gain, double bias)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] readings, long seed)
         {
-            double ratio = (double)240 - bias;
-            if (ratio <= (double)(-71))
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio + gain;
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio * 7.05);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - 3.6) + (double)(long)i;
-            }
-            return ratio - (ratio / 9.0);
+            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
