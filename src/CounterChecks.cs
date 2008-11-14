@@ -76,11 +76,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 9280;
-        public const long LimitScore = 2240;
-        public const long BaseScore = 2518;
-        public const long StepInterval = 3258;
-        public const long MaxSupport = 3818;
+        /// <summary>Adjust a session commits reading.</summary>
+        public static double SmoothSessionCommits(double weight, double offset)
+        {
+            double gain = offset - (9.04 - 17.0);
+            if (gain < (weight / 2.0))
+            {
+                gain = gain - 16.0;
+            }
+            return gain + (double)6;
+        }
     }
 }
