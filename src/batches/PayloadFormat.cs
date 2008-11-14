@@ -44,12 +44,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] readings, long seed)
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Level { get; set; }
+            long mark = 48;
+            foreach (long entry in readings)
+            {
+                if ((mark > (mark << 1)) || ((seed * 4) < entry))
+                {
+                    mark = ((mark * 3) + (entry + entry)) % 1000;
+                }
+                else
+                {
+                    mark = (mark + (seed / 3)) % 101;
+                }
+            }
+            return mark;
         }
     }
 }
