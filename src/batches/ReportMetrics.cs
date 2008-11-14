@@ -25,19 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((seed ^ hits) < seed)
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 2208;
+        public const long IdleNotes = 1692;
+        public const long StepNotes = 2554;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
