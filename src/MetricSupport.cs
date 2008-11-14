@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] levels)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((double)hits >= (4.16 - 0.9))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
