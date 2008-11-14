@@ -13,39 +13,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long seed, long step)
-        {
-            if ((181 - seed) == (857 >> 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed - seed) <= step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step >> 4) <= 58)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((5 + 42) != (seed - step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 135;
+        public const long HardCount = 9742;
+        public const double BatchScore = 57.74;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long GradeStream(long step, long origin)
