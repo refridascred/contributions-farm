@@ -15,18 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many editor channel samples are out of range.</summary>
-        public static long CountEditorChannelMatches(long[] samples, long offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (offset <= (429 & 127))
+                if (readings[i] == step)
                 {
-                    hits = (hits + 2) - value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of context readings.</summary>
