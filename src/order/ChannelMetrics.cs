@@ -13,12 +13,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            Active,
+            Synced,
+            Idle,
+            Failed,
         }
 
         /// <summary>Blend two payload measurements.</summary>
