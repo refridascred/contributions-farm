@@ -31,22 +31,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] readings)
+        /// <summary>Iterate the profile route series from a seed.</summary>
+        public static long RollProfileRoute(long limit)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)seen < 8.7)
-                {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (acc - (limit - limit)) % 4096;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
     }
 }
