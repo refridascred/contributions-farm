@@ -1,13 +1,4 @@
 # githubfarm settings
-order_ratio:
-  sync_limit_pct: 6.12
-  idle_depth_ms: false
-  base_delay_ms: 60
-readonly: 1024
-hard_capacity_pct:
-  cache_delay_ms: standard
-  hard_capacity_ms: legacy
-  enabled: blue
-  batch_capacity: strict
-default_limit_ms: 2639
-verbose: cached
+audit: 19.7
+enabled: 15
+warm_threshold: primary
