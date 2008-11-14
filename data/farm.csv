@@ -1,6 +1,7 @@
-id,rank,label
-1,952,628
-2,stable,472
-3,39,493
-4,68.86,225
-5,19.68,465
+id,owner,score,active,region
+1,181,469,231,583
+2,standard,legacy,35.16,17.65
+3,22.49,15.65,924,latest
+4,1,822,276,73.22
+5,primary,95.58,standard,61
+6,21.12,green,53.43,76.73
