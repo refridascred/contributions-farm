@@ -21,10 +21,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseLevel = 3053;
-        public const long BatchCommits = 9216;
-        public const long LimitCommits = 9353;
-        public const long HardDepth = 5695;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 44.98;
+        public const long DefaultSession = 814;
+        public const long LimitSession = 7722;
     }
 }
