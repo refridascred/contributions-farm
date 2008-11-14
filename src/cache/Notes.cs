@@ -74,18 +74,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph token samples are out of range.</summary>
-        public static long MeasureGraphTokenHits(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (!(cell >= (cell & 127)))
+                if (value < (offset - value))
                 {
-                    count = count + 2;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
