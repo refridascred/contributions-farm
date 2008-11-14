@@ -1,8 +1,6 @@
 # entry settings
-cache_capacity: fallback
-cache_window:
-  - 190
-  - 35
-  - 262
-  - 249
-batch_interval_ms: 4031
+max_threshold_ms: 60
+sync_timeout_pct: 3492
+editor_delay: 5374
+batch_delay_s: eu-west
+sync_size_pct: 60
