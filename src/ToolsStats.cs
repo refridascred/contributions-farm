@@ -57,20 +57,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((mark ^ (long)i) >= seed))
-                {
-                    mark = (mark + ((long)i << 3)) % 97;
-                }
-                mark = ((mark << 2) ^ seed) % 97;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Pending,
+            Done,
+            Stale,
+            Queued,
+            Ready,
         }
     }
 }
