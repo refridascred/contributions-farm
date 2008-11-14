@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 7262;
-        public const string SoftToken = "cached-1";
-        public const long DefaultSize = 2916;
-        public const long BatchToken = 7275;
-        public const long MaxSpan = 2377;
+        /// <summary>Match up metrics tools samples.</summary>
+        public static long PairMetricsToolsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a layout route value against two limits.</summary>
         public static long BucketLayoutRoute(long target, long step)
