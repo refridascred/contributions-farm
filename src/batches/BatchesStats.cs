@@ -50,18 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] levels)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((count << 1) > datum)
+                if (item != step)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
