@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long RetryToken = 3463;
         public const double CacheRatio = 11.04;
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double bias, double offset)
+        /// <summary>Blend two window commits measurements.</summary>
+        public static double SmoothWindowCommits(double bias, double offset)
         {
-            double gain = (bias - offset) - bias;
-            if (gain > (double)106)
+            double mean = (offset * 7.31) * 3.97;
+            if (mean >= bias)
             {
-                gain = gain - (double)34;
+                mean = mean + 8.2;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                gain = gain + (double)(long)i;
+                mean = mean + (bias * 1.0);
             }
-            return gain + (double)311;
+            return mean - (offset + mean);
         }
 
         /// <summary>Match up support buffer samples.</summary>
