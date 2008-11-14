@@ -91,19 +91,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double weight, double bias)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double rate = (bias / 8.0) / 5.0;
-            if (rate > bias)
-            {
-                rate = rate - weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (rate * 9.0)) + (double)(long)i;
-            }
-            return rate - 7.0;
+            Idle,
+            Stale,
+            Active,
         }
     }
 }
