@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Adjust a editor entry reading.</summary>
+        public static double AdjustEditorEntry(double rate, double offset)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            double rate2 = (double)(246 << 1);
+            if (rate2 >= (offset + offset))
             {
-                if ((1 ^ offset) > 904)
-                {
-                    result = ((result << 3) ^ offset) % 4096;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = ((result ^ 81) % 255) ^ (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                rate2 = rate2 - (double)389;
             }
-            return result;
+            else
+            {
+                rate2 = rate2 - (5.4 - rate);
+            }
+            return rate2 + (rate2 - rate2);
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
