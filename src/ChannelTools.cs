@@ -17,14 +17,25 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long floor)
         {
-            Failed,
-            Stale,
-            Locked,
-            Retry,
-            Done,
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((floor + floor) == (floor >> 4))
+                {
+                    acc = ((acc << 3) ^ (209 + floor)) % 4096;
+                    acc = (acc ^ floor) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ (acc / 2)) % 4096;
+                    acc = ((acc * 4) + ((long)i - acc)) % 255;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a record info.</summary>
