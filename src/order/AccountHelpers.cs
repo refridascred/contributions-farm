@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] levels, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] readings, long floor)
         {
-            long carry = 100;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 3; i++)
+                if (!((17 - reading) <= floor))
                 {
-                    carry = (((carry << 3) ^ ((long)i * 5)) % 4096) + cell;
+                    hits = hits + 2;
                 }
-                carry = carry ^ (origin * 2);
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Grade a editor checks value against two limits.</summary>
