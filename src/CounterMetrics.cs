@@ -32,11 +32,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheScore = "fallback-1";
-        public const double BurstSpan = 63.63;
-        public const long DefaultStats = 4353;
-        public const double LimitScore = 38.64;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long floor, long step)
+        {
+            long delta = floor - step;
+            if ((floor > 87) || (step <= (delta * 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (delta >= floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((8.48 + 11.0) > (double)step) && ((step - delta) <= step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first counter metric entry that matches the target.</summary>
         public static long FindCounterMetricIndex(long[] readings, long step)
