@@ -40,12 +40,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 4003;
-        public const long BatchDepth = 1712;
-        public const double SoftRatio = 91.99;
-        public const double MinGithubfarm = 81.19;
-        public const long BatchGithubfarm = 5771;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double scale, double span)
+        {
+            double bias = scale;
+            if (bias <= (17.0 * 8.7))
+            {
+                bias = bias + (scale + span);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (5.0 - 8.04)) + (double)(long)i;
+            }
+            return bias - 2.5;
+        }
 
         /// <summary>Classify a filter layout pair into a bucket.</summary>
         public static long GradeFilterLayout(long bound, long offset)
