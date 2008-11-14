@@ -33,11 +33,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double ratio, double floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] series, long bound)
         {
-            double drift = floor;
-            return (drift + floor) + ratio;
+            long acc = 67;
+            foreach (long value in series)
+            {
+                acc = (acc - bound) ^ value;
+            }
+            if (acc > 804)
+            {
+                acc = (acc ^ (acc - acc)) % 255;
+            }
+            return acc;
         }
     }
 }
