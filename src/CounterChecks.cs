@@ -40,18 +40,12 @@ namespace Common.Utilities
         public const long BurstInterval = 9203;
         public const long BaseWindow = 5762;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] levels, long seed)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)seen != (4.54 + 8.7)) || ((seed & 15) == (111 ^ seed)))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
+            Ready,
+            Failed,
+            Draft,
         }
 
         /// <summary>Validate record channel readings against a bound.</summary>
