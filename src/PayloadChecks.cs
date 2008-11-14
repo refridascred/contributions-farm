@@ -36,14 +36,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Draft,
-            Locked,
-            New,
-            Idle,
-            Pending,
+            public double Region { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the format level values.</summary>
