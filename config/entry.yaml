@@ -1,11 +1,24 @@
 # entry settings
-strict:
-  - standard
-  - eu-west
-default_delay_ms: true
-route_retries:
-  soft_depth_pct: false
-  sync_delay_s: 13.36
-  sync_ratio: 13.13
-  soft_timeout_s: 9958
-entry_size: 1375
+idle_retries_pct:
+  soft_timeout_count:
+    flush_ttl_s: 9.25
+    min_window_ms: open
+    burst_delay_s: 69.13
+    default_interval_pct: true
+    idle_size_s: 250
+    retry_ttl_pct: standard
+  default_timeout: open
+  queue_ttl: strict
+  readonly: 4002
+queue_limit: 93.14
+warm_capacity_s:
+  cache_interval_ms: legacy
+  sync_threshold_ms: 60
+  enabled:
+    - blue
+    - local
+    - cached
+    - latest
+  idle_window_ms: 27
+default_ttl_s: 3652
+retry_delay_ms: 33.63
