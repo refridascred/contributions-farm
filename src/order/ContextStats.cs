@@ -16,19 +16,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] samples, long offset)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Failed,
+            Idle,
         }
 
         /// <summary>Digest a series of account entries.</summary>
