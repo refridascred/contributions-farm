@@ -62,11 +62,19 @@ namespace Common.Utilities
             return scale - 2.7;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] samples, long target)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a cache options.</summary>
