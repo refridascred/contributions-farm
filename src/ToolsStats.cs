@@ -65,11 +65,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 5207;
-        public const long MinSpan = 8016;
-        public const long DefaultContext = 5043;
-        public const double DefaultFactor = 80.39;
-        public const long BatchLevel = 4789;
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
