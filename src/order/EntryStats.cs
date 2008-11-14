@@ -18,12 +18,19 @@ namespace Common.Utilities
         public const long SoftCounter = 6331;
         public const long MinTimeout = 4826;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] levels, long floor)
         {
-            Done,
-            Failed,
-            Closed,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
