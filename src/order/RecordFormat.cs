@@ -24,16 +24,21 @@ namespace Common.Utilities
         public const long HardTimeout = 3912;
         public const long LimitChecks = 9218;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score << 2) ^ (score * 5)) % 4096;
-                score = ((score * 3) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
