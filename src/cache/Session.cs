@@ -45,21 +45,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)hits < (1.0 - 3.09))
                 {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) - item;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
