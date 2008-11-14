@@ -20,13 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] series, long floor)
         {
-            public double Total { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
