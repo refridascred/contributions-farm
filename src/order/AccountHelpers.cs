@@ -54,13 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public double Label { get; set; }
-            public double Region { get; set; }
-            public string Count { get; set; } = "";
-            public double Size { get; set; }
+            Ready,
+            Draft,
+            Active,
+            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
