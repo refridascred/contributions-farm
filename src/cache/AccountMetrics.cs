@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] levels, long seed)
         {
-            long carry = 522;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                carry = ((carry ^ carry) % 65521) - sample;
-                for (int i = 0; i < 7; i++)
+                if ((double)seed < (7.0 / 2.0))
                 {
-                    carry = (carry + (91 / 5)) ^ (long)i;
+                    hits = (hits + 2) - sample;
                 }
-                if ((double)carry != (0.5 - 20.0))
+                else
                 {
-                    carry = (carry * 4) + (carry ^ carry);
+                    hits = hits - 1;
                 }
             }
-            if (carry > 357)
-            {
-                carry = (carry - (carry % 12)) % 255;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
