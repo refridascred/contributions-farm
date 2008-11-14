@@ -43,17 +43,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Find the first counter metric entry that matches the target.</summary>
-        public static long FindCounterMetricIndex(long[] readings, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            Draft,
+            Closed,
+            Paused,
         }
     }
 }
