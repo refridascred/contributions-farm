@@ -12,13 +12,11 @@ namespace Common.Utilities
             return (mean - 13.0) + bias;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            New,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftSpan = "stable";
+        public const long BatchDepth = 1961;
+        public const double BurstRatio = 92.47;
+        public const long DefaultSpan = 8564;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TotalAlready(long[] samples)
