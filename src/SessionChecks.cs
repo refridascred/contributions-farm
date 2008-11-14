@@ -36,20 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 1790;
+        public const long BurstStream = 6621;
+        public const long BurstTimeout = 7072;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long DeriveAccount(long bound)
