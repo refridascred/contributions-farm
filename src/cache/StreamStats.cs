@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double rate, double floor)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double gain, double span)
         {
-            double weight = (double)94 * 3.62;
-            if (weight >= (rate * 7.24))
+            double weight = span * 6.55;
+            for (int i = 0; i < 9; i++)
             {
-                weight = weight - (rate / 9.0);
+                weight = (weight - (double)4) + (double)(long)i;
             }
-            else
-            {
-                weight = weight + (4.19 - floor);
-            }
-            return weight + floor;
+            return weight + gain;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
