@@ -51,12 +51,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] values, long offset)
         {
-            Locked,
-            Pending,
-            Stale,
+            long state = -6;
+            foreach (long datum in values)
+            {
+                state = ((((state * 3) + (state * 4)) % 255) ^ datum) - offset;
+            }
+            if (state < 9)
+            {
+                state = ((state << 2) ^ (state >> 4)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
