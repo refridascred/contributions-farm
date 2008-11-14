@@ -1,8 +1,7 @@
 # entry settings
-persist: 100
-idle_ratio_count:
-  - 266
-  - 281
-  - 474
-metrics_size: true
-token_limit: 34
+batch_delay_count: false
+verbose: primary
+idle_ratio_pct: primary
+dry_run: false
+base_threshold_s: standard
+min_depth_s: blue
