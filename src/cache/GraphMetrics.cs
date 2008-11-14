@@ -33,11 +33,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a support layout figure with a bias.</summary>
-        public static double SmoothSupportLayout(double bias, double bias2)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double bias3 = bias2;
-            return bias3 - (bias + bias3);
+            Synced,
+            Paused,
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
