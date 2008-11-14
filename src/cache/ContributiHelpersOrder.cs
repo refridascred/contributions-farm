@@ -33,15 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] data, long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] items, long origin)
         {
-            long anchor = 8;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                anchor = ((((anchor << 2) ^ anchor) % 4096) ^ sample) + limit;
+                if (sample <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor % 1000;
+            return valid;
         }
     }
 }
