@@ -1,21 +1,9 @@
 # entry settings
-poll_interval_count: eu-west
-readonly: 2523
-channel_delay: primary
-profile_ratio:
+hard_delay_pct: false
+record_size: staging
+cache_delay: open
+batch_ttl: 92.37
+flush_depth_s:
   - open
-  - cached
-soft_window_pct:
-  batch_capacity_ms:
-    batch_timeout_pct: 30
-    warm_size_ms: 21
-    farm_threshold: standard
-  retry_delay_pct: 1024
-  queue_capacity:
-    flush_ttl_count: true
-    window_ttl:
-      - 498
-      - 75
-      - 412
-    poll_threshold_s: standard
-  soft_delay: green
+  - blue
+  - green
