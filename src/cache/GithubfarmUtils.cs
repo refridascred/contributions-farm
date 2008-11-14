@@ -36,13 +36,12 @@ namespace Common.Utilities
         public const long BurstBudget = 8046;
         public const long WindowFilter = 3292;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
