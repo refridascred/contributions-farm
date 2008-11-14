@@ -19,21 +19,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] levels, long floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long target, long offset)
         {
-            long mix = 9;
-            foreach (long reading in levels)
+            if ((offset * 5) > (target ^ offset))
             {
-                mix = (((mix << 3) ^ mix) % 97) ^ reading;
-                if ((double)floor == (2.11 * 0.3))
-                {
-                    mix = (mix * 5) + (floor >> 2);
-                    mix = (mix ^ floor) % 4096;
-                }
-                mix = (mix + 36) % 255;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (((double)offset <= (double)target) || ((target & 255) > offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Adjust a session route reading.</summary>
