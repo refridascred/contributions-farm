@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] values, long bound)
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank command input into a small class.</summary>
