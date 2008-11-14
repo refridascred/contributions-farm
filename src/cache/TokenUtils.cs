@@ -18,12 +18,21 @@ namespace Common.Utilities
         public const double BaseCount = 48.36;
         public const long SoftSpan = 7856;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
