@@ -51,38 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cache metrics input into a small class.</summary>
-        public static long GradeCacheMetrics(long step, long bound)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            if (((step ^ 2) <= 9) || ((step + step) >= step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (109 > step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step ^ step) <= (bound - step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((step / 5) < (53 + step)) || ((step / 6) > (step - bound)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
