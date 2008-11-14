@@ -24,10 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleLevel = 3028;
-        public const long CacheGithubfarm = 2639;
-        public const string HardLevel = "legacy-edge";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading * 3) < (reading / 2))
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long CompareWindowCount(long[] values)
