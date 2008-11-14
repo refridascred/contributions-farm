@@ -35,10 +35,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 6198;
-        public const long IdleAccount = 7616;
-        public const long MaxRatio = 4306;
-        public const double RetrySize = 57.68;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxWidth = 76.91;
+        public const long StepChecks = 8047;
+        public const string HardChecks = "standard-edge";
     }
 }
