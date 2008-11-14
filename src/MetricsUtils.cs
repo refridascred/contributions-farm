@@ -34,21 +34,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long target, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((5.46 * 15.0) > (double)target) && ((46 % 2) > (target + seed)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((0.2 * 5.0) >= (double)seed)
                 {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
