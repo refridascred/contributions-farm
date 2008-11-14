@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double ratio, double offset)
         {
-            public bool Level { get; set; }
-            public double Label { get; set; }
+            double ratio2 = offset;
+            return ratio2 - (ratio2 - ratio);
         }
 
         /// <summary>Hold a stream options.</summary>
