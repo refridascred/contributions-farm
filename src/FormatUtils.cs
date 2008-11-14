@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long limit)
         {
-            Stale,
-            Queued,
-            Dropped,
-            Synced,
-            New,
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = (carry ^ carry) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Blend two token measurements.</summary>
