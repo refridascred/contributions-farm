@@ -14,22 +14,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 4510;
+        public const long LimitPayload = 3306;
+        public const long RetrySize = 81;
 
         /// <summary>Check that every already account entry stays within the limit.</summary>
         public static bool ValidateAlreadyAccountRange(long[] series, long bound)
