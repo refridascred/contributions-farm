@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] levels, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 48;
+            foreach (long item in data)
             {
-                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
+                if (((64 << 3) == (item + (-406))) && ((origin << 1) >= result))
                 {
-                    return (long)i;
+                    result = result ^ item;
+                    break;
+                }
+                result = result + (item - result);
+                if ((371 % 12) > item)
+                {
+                    result = (result * 3) + (result & 3);
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Describe the buffer level values.</summary>
