@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long state = 41;
+            foreach (long cell in series)
             {
-                if (sample < origin)
+                if ((state * 5) <= (state & 7))
                 {
-                    ready = false;
-                    break;
+                    state = (state ^ 16) % 101;
+                }
+                else
+                {
+                    state = (state << 3) ^ (cell >> 4);
                 }
             }
-            return ready;
+            if (state > (-265))
+            {
+                state = ((state << 3) ^ (977 + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the context mode values.</summary>
