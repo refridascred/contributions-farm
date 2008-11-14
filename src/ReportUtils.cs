@@ -53,13 +53,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] levels, long origin)
         {
-            Locked,
-            Ready,
-            Active,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
