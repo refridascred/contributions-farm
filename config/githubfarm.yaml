@@ -1,4 +1,4 @@
 # githubfarm settings
-hard_ttl: 72
-cache_timeout: 91.82
-warm_delay: true
+stats_retries: 14
+audit: 500
+dry_run: 9.91
