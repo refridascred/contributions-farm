@@ -19,18 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] series)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long limit, long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            if (limit < (560 << 3))
             {
-                if ((count << 1) <= (count >> 3))
+                return 4;
+            }
+            else
+            {
+                if ((double)limit > 2.0)
                 {
-                    count = (count + 2) ^ sample;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + target) >= 7)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit stream already readings against a rule.</summary>
