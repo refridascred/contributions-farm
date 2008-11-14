@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] series)
+        /// <summary>Combine record format values into a single score.</summary>
+        public static long DigestRecordFormat(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 6;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((carry - value) == (carry + value))
                 {
-                    if ((series[i] ^ series[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry + (690 >> 5);
+                }
+                if ((463 + value) < (value - carry))
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many counter support samples are out of range.</summary>
