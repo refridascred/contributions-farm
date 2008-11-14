@@ -32,24 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report stats input into a small class.</summary>
-        public static long GradeReportStats(long offset, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] samples, long offset)
         {
-            if ((offset & 3) < (46 % 24))
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (target < (offset + 327))
+                if (sample != offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of account entries.</summary>
