@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long origin, long step)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long offset = origin ^ step;
-            if (((double)origin < (4.7 * 1.0)) && ((step - origin) >= step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin * 4) >= offset) || (step > (2 % 24)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin * 5) > step) || ((2.4 - 10.0) == (double)offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin + origin) <= (offset & 15))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Retry,
+            Idle,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
