@@ -41,23 +41,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] data)
-        {
-            long total = 5;
-            foreach (long sample in data)
-            {
-                total = (total + (641 / 7)) % 101;
-                if (!((long)data.Length >= (sample + 265)))
-                {
-                    total = (total + sample) % 1000;
-                }
-            }
-            if (total < 469)
-            {
-                total = total ^ (total & 255);
-            }
-            return total % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchCount = 2193;
+        public const long StepInterval = 5965;
+        public const string HardFarm = "alpha-1";
+        public const string MaxFarm = "cached-v2";
     }
 }
