@@ -85,13 +85,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Project the next contributi account value.</summary>
+        public static double BlendContributiAccount(double ratio, double bias)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            double mean = 6.77 * 0.3;
+            if (mean < mean)
+            {
+                mean = (mean + bias) + ratio;
+            }
+            else
+            {
+                mean = mean + 0.4;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (mean - mean);
         }
     }
 }
