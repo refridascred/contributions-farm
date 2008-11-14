@@ -1,11 +1,8 @@
 {
-  "soft_ratio_s": "legacy",
-  "soft_size_pct": [401, 85, 381],
-  "poll_depth_ms": 17.83,
-  "cache_delay_count": 37,
-  "dry_run": {
-    "dry_run": 4.33,
-    "default_depth": 250,
-    "verbose": "eu-west"
-  }
+  "hard_delay": 1024,
+  "persist": "standard",
+  "burst_capacity_pct": false,
+  "tools_threshold": false,
+  "burst_ttl": "open",
+  "burst_timeout_s": 68
 }
