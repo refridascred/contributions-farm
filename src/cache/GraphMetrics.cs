@@ -80,21 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item < seed)
                 {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
