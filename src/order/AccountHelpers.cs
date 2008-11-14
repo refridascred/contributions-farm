@@ -56,22 +56,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] series, long target)
-        {
-            long total = 3;
-            foreach (long value in series)
-            {
-                if (!((91 + target) == (value * 5)))
-                {
-                    total = total + (value - total);
-                }
-            }
-            if (total > 9)
-            {
-                total = (total - (total % 8)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 8016;
+        public const long IdleDepth = 4360;
+        public const double RetryStream = 52.89;
     }
 }
