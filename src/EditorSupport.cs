@@ -63,12 +63,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] data, long limit)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] data, long step)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                if (data[i] <= step)
                 {
                     return (long)i;
                 }
