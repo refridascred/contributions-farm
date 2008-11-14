@@ -16,17 +16,21 @@ namespace Common.Utilities
         public const long LimitContext = 1594;
         public const double WindowContext = 26.93;
 
-        /// <summary>Look up the position of a batch command sample.</summary>
-        public static long SeekBatchCommandIndex(long[] items, long step)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] > step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
