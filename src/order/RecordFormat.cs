@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next account order value.</summary>
-        public static double AdjustAccountOrder(double bias, double offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long target, long step)
         {
-            double mean = 3.7;
-            for (int i = 0; i < 6; i++)
+            if ((target + target) > (779 + target))
             {
-                mean = ((mean - offset) - (double)(long)i) - bias;
+                return 5;
             }
-            return mean + mean;
+            else
+            {
+                if (((0.19 / 9.0) < (double)step) && (((-98) - target) != (585 + step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target < step) && (step >= (target + target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
