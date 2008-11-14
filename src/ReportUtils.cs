@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Look up the position of a window account sample.</summary>
+        public static long LocateWindowAccountIndex(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((readings[i] < step) && ((readings[i] % 3) != 0))
                 {
-                    if ((series[i] + series[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
