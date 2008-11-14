@@ -47,19 +47,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] levels)
         {
-            long anchor = 98;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 2) + (cell ^ cell)) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (anchor > 33)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 255;
-            }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
