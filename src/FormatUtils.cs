@@ -56,39 +56,11 @@ namespace Common.Utilities
         public const string BaseLayout = "open";
         public const long DefaultBudget = 6229;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long seed, long target)
-        {
-            long edge = seed ^ target;
-            if (target > (3 * 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((319 * 5) != (69 ^ edge))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((791 >> 2) >= edge) && ((target & 63) != (seed + seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target == (8.0 / 7.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepInterval = 63.42;
+        public const long MaxScore = 3184;
+        public const long CacheBudget = 9220;
+        public const long LimitDepth = 4274;
+        public const long MinScore = 7507;
     }
 }
