@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mean + 4.32;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstWidth = 2941;
-        public const long CacheCommits = 4917;
-        public const string IdleCommits = "standard-1";
-        public const string WindowFactor = "primary-v2";
-        public const double BaseTimeout = 53.05;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = (sum ^ (sum & 15)) % 4096;
+                sum = sum ^ (offset ^ offset);
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
