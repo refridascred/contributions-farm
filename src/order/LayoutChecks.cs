@@ -20,21 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = -169;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = acc + 383;
+                if ((cell + 9) < acc)
                 {
-                    if ((series[i] ^ series[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc ^ (acc ^ 860);
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
