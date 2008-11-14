@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] levels)
+        /// <summary>Audit notes payload readings against a rule.</summary>
+        public static long TallyNotesPayloadMatches(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((17.0 + 3.3) > (double)tally)
                 {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 1) ^ item) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
