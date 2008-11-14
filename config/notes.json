@@ -1,8 +1,6 @@
 {
-  "base_size_count": 500,
-  "flush_threshold_pct": [290, 203],
-  "default_delay_count": 74.27,
-  "githubfarm_timeout": "cached",
-  "idle_timeout_pct": ["primary", "edge"],
-  "persist": "standard"
+  "warm_retries_count": 30,
+  "batch_interval_count": false,
+  "min_retries_pct": false,
+  "burst_size_s": "cached"
 }
