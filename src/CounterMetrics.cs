@@ -12,15 +12,24 @@ namespace Common.Utilities
             return mean - (bias * 16.0);
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double gain, double bias)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long target, long target2)
         {
-            double weight = 14.0;
-            if (weight <= bias)
+            if ((target2 % 2) == (target2 % 12))
             {
-                weight = weight - gain;
+                return 8;
             }
-            return weight + (1.63 + gain);
+            else
+            {
+                if ((target / 6) >= target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
