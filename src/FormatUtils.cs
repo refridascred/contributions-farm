@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long StepReport = 2880;
         public const long BaseTimeout = 370;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] readings, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -102;
+            foreach (long reading in levels)
             {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor * 2) + (reading & 127);
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
