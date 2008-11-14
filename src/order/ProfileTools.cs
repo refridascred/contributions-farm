@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long limit, long offset)
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
+            long lane = limit - offset;
+            if ((offset - limit) != (limit + limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((lane & 7) != (limit + lane))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset >= (limit / 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((lane <= limit) || ((double)limit > (14.0 / 7.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
