@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a counter commits sample.</summary>
-        public static long SeekCounterCommitsIndex(long[] series, long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] levels, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (series[i] < bound)
+                if (item <= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
