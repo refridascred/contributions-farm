@@ -34,10 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseSize = 86.66;
-        public const double BurstCache = 83.41;
-        public const string LimitSize = "cached-1";
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Ready,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double BatchSize = 77.49;
