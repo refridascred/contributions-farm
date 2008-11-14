@@ -29,15 +29,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] data, long origin)
+        /// <summary>Audit support format readings against a rule.</summary>
+        public static long AuditSupportFormatHits(long[] items)
         {
-            long mix = 345;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                mix = (mix - ((long)data.Length + origin)) ^ value;
+                if ((value + value) >= (value - value))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
