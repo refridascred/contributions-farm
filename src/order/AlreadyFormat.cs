@@ -19,12 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 5477;
-        public const long WindowLevel = 7586;
-        public const string BurstFactor = "latest-v2";
-        public const long RetryAccount = 3728;
-        public const long IdleAccount = 5310;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Stale,
+            Active,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] items, long seed)
