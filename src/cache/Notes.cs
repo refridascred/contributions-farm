@@ -32,23 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double rate, double offset)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double load = 4.5;
-            if (load <= offset)
-            {
-                load = (load + (7.5 + load)) + rate;
-            }
-            else
-            {
-                load = load + 5.05;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)57) + (double)(long)i;
-            }
-            return load - (double)(-99);
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Roll a command counter forward.</summary>
