@@ -30,14 +30,11 @@ namespace Common.Utilities
         public const long StepBuffer = 3936;
         public const long MaxRatio = 559;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Retry,
-            Locked,
-            New,
-            Stale,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstFarm = 86.94;
+        public const string BaseFarm = "alpha";
+        public const long MinCount = 3581;
+        public const long BaseDepth = 836;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool GuardOrderRange(long[] data, long floor)
