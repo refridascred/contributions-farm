@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultWidth = "primary-1";
-        public const double CacheWidth = 23.64;
-        public const long HardTimeout = 6638;
-        public const string HardWidth = "primary-v2";
-        public const long LimitOrder = 5178;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (item > seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double SmoothStats(double gain, double floor)
