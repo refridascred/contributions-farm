@@ -57,19 +57,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] readings, long seed)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Closed,
+            Done,
+            Active,
+            Draft,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
