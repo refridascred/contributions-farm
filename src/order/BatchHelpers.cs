@@ -49,18 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] data)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] items)
         {
-            long count = 0;
-            foreach (long item in data)
+            long mark = -23;
+            foreach (long item in items)
             {
-                if ((count >> 5) > (item & 7))
-                {
-                    count = count + 1;
-                }
+                mark = (((mark << 2) ^ (mark << 1)) % 1000) + item;
             }
-            return count;
+            return mark % 1000;
         }
     }
 }
