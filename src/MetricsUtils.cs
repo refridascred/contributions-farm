@@ -31,20 +31,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Look up the position of a metric cache sample.</summary>
+        public static long SeekMetricCacheIndex(long[] levels, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total + (total - (long)i)) % 4096;
-                if (((bound * 5) > (bound / 5)) || ((2.5 / 5.0) != (double)bound))
+                if (levels[i] > step)
                 {
-                    total = (total ^ (total + total)) % 97;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
