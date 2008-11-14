@@ -36,18 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] levels)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((item - item) != (554 & 127)) || ((((long)levels.Length ^ matches) <= (matches - matches)) && ((81 % 60) < (item + matches))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Find the first counter metric entry that matches the target.</summary>
