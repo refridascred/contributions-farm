@@ -26,22 +26,21 @@ namespace Common.Utilities
         public const long WindowEntry = 2006;
         public const string LimitScore = "cached";
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] samples, long limit)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)entry < (1.0 * 9.06))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine token values into a single score.</summary>
