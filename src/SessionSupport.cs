@@ -31,22 +31,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] values, long offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (hits > offset)
-                {
-                    hits = (hits + 3) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
