@@ -1,5 +1,13 @@
 {
-  "cache_window_ms": [110, 488, 61],
-  "burst_size_count": 4344,
-  "sync_ttl_pct": false
+  "burst_ratio": {
+    "readonly": 1024,
+    "enabled": "cached",
+    "cache_timeout": ["legacy", "blue", "fallback"]
+  },
+  "poll_size_pct": true,
+  "flush_depth_s": {
+    "cache_interval_pct": ["edge", "stable"],
+    "verbose": false,
+    "idle_window_pct": 45.76
+  }
 }
