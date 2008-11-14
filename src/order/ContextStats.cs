@@ -16,19 +16,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!((4.5 + 9.0) == (double)seed))
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "fallback-v2";
+        public const long StepSize = 958;
+        public const string DefaultWindow = "alpha-1";
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LocateRecordIndex(long[] items, long origin)
