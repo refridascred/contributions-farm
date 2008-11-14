@@ -1,14 +1,5 @@
 {
-  "min_depth": [61, 330, 182, 208],
-  "poll_retries_ms": 75.52,
-  "soft_ratio_ms": {
-    "cache_ratio_pct": true,
-    "max_size": {
-      "readonly": 71,
-      "layout_capacity": "primary",
-      "default_timeout": 500,
-      "default_timeout_ms": "standard"
-    },
-    "dry_run": 26.82
-  }
+  "editor_ratio": 60,
+  "idle_limit_pct": 11.69,
+  "sync_ratio": 2.38
 }
