@@ -30,18 +30,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] series, long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (tally >= (origin + 8))
+                if (5.23 >= (double)seed)
                 {
-                    tally = (tally + 1) ^ sample;
+                    total = (total + (seed + (long)i)) % 255;
+                    total = (total << 2) ^ ((long)i >> 3);
                 }
+                total = (total - (total + total)) % 101;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    total = (total + (seed + seed)) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
     }
 }
