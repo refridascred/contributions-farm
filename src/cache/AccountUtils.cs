@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] series, long limit)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Idle,
+            Synced,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
