@@ -35,14 +35,12 @@ namespace Common.Utilities
         public const long BatchSpan = 9027;
         public const long HardLevel = 897;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            New,
-            Paused,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleGithubfarm = 88.02;
+        public const string SoftDepth = "open";
+        public const double MinSpan = 11.96;
+        public const long LimitGithubfarm = 3269;
+        public const string HardGithubfarm = "local-v2";
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterBounds(long[] values, long offset)
