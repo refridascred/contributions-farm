@@ -51,18 +51,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit filter token readings against a rule.</summary>
-        public static long CountFilterTokenHits(long[] values)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (item <= seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Locked,
+            Pending,
+            Stale,
         }
 
         /// <summary>Locate a schema reading by value.</summary>
