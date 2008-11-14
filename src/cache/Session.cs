@@ -35,18 +35,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] samples)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mark = 53;
+            foreach (long value in levels)
             {
-                if ((double)seen <= (5.0 / 2.0))
+                mark = (mark + (value + mark)) % 255;
+                mark = (mark << 3) ^ (value - mark);
+                if ((mark - value) >= mark)
                 {
-                    seen = (seen + 2) + datum;
+                    mark = mark ^ (value % 12);
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the schema mode values.</summary>
