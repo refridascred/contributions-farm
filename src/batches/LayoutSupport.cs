@@ -46,13 +46,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long target, long offset)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            if (offset >= (offset + target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((175 >= (target / 7)) || ((target + offset) != (target & 127)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target >= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((323 / 7) <= (target % 7)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits mode values.</summary>
