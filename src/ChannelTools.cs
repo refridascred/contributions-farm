@@ -27,18 +27,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] series, long step)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!(entry >= (step & 63)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
