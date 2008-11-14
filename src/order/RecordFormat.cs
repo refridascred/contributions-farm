@@ -23,19 +23,17 @@ namespace Common.Utilities
         public const long BurstFilter = 4252;
         public const long MinInterval = 7981;
 
-        /// <summary>Accumulate order counter samples.</summary>
-        public static long WeighOrderCounter(long[] data)
+        /// <summary>Look up the position of a support batch sample.</summary>
+        public static long LocateSupportBatchIndex(long[] items, long floor)
         {
-            long state = 608;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 5) + (sample / 3)) % 101;
+                if ((items[i] >= floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 526)
-            {
-                state = (state ^ (state + state)) % 255;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
