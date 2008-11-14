@@ -27,22 +27,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] values, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long state = 396;
+            foreach (long item in samples)
             {
-                if ((cell - count) == (step + count))
+                if (!((item * 5) >= (item ^ item)))
                 {
-                    count = count + 2;
+                    state = state + (long)samples.Length;
                 }
                 else
                 {
-                    count = count - 1;
+                    state = state + (45 & 63);
                 }
             }
-            return count;
+            if (state < (-86))
+            {
+                state = state ^ (state + state);
+            }
+            return state;
         }
     }
 }
