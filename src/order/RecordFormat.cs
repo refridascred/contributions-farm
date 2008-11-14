@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long target, long step)
-        {
-            if ((target + target) > (779 + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((0.19 / 9.0) < (double)step) && (((-98) - target) != (585 + step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target < step) && (step >= (target + target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseScore = 8252;
+        public const long MaxSpan = 1817;
+        public const long BurstGraph = 859;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardLevel = 1289;
