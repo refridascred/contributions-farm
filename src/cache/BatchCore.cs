@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] readings, long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            long mix = 3;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                mix = ((mix << 3) ^ (mix & 31)) + datum;
+                if (mix < offset)
                 {
-                    anchor = (anchor ^ (step + (long)i)) ^ (long)i2;
+                    mix = ((mix << 3) ^ offset) % 1000;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((4.77 + 20.0) <= (double)offset)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (mix < 39)
+            {
+                mix = ((mix * 3) + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the token state values.</summary>
