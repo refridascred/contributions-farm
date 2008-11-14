@@ -22,17 +22,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first schema batches entry that matches the target.</summary>
-        public static long LocateSchemaBatchesIndex(long[] levels, long offset)
+        /// <summary>Count the githubfarm metric entries that pass the check.</summary>
+        public static long AuditGithubfarmMetricHits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((levels[i] > offset) && ((levels[i] % 3) != 0))
+                if ((double)value >= (double)seen)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
