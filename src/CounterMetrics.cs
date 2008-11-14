@@ -32,14 +32,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Find the first counter metric entry that matches the target.</summary>
+        public static long FindCounterMetricIndex(long[] readings, long step)
         {
-            Dropped,
-            Locked,
-            Idle,
-            New,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
