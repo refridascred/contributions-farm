@@ -32,19 +32,11 @@ namespace Common.Utilities
             return bias - 2.2;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] samples, long floor)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a command info.</summary>
