@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long limit, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] samples)
         {
-            if (origin < (limit % 60))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((17.0 / 3.0) < (double)limit) && (((-913) + limit) < (origin / 4)))
+                if (seen >= ((long)samples.Length % 12))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    seen = (seen + 3) ^ datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a context options.</summary>
