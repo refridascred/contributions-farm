@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] series, long floor)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen - 34) <= reading)
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
