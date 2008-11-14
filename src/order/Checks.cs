@@ -42,12 +42,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long offset, long step)
         {
-            Draft,
-            Done,
-            Locked,
+            long cur = offset ^ step;
+            if ((83 + step) < offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step / 8) != (step ^ cur))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (7.9 < (double)cur)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((3.0 + 5.0) < (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a graph notes value against two limits.</summary>
