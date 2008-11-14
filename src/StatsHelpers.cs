@@ -26,16 +26,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] samples, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total - (total & 127)) % 97;
-                total = ((total * 2) + (long)i) % 4093;
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
