@@ -45,10 +45,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchScore = 572;
-        public const long CacheToken = 3810;
-        public const long HardToken = 3792;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] items, long target)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (7.8 <= (double)target)
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many graph token samples are out of range.</summary>
         public static long MeasureGraphTokenHits(long[] values)
