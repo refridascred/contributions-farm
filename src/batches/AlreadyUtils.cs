@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long BurstFactor = 7792;
         public const long CachePayload = 8591;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            New,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 2400;
+        public const long CacheScore = 2151;
+        public const string WindowLevel = "open-v2";
+        public const string CacheLevel = "legacy-edge";
 
         /// <summary>Adjust a commits githubfarm reading.</summary>
         public static double ProjectCommitsGithubfarm(double rate, double bias)
