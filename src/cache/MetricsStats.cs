@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch command readings against a bound.</summary>
-        public static bool VerifyBatchCommandRange(long[] values, long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Synced,
+            Pending,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a metrics header.</summary>
