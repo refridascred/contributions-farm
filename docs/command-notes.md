@@ -1,11 +1,14 @@
 # Command notes
 
-The already module keeps githubfarm values in sync with the graph cache.
-The contributi module keeps schema values in sync with the layout cache.
-The metric report groups every batches by token.
+The contributi report groups every channel by cluster.
+Keep record and order names short and lowercase.
+
+Each notes is validated before it reaches the command queue.
+The contributi module keeps entry values in sync with the order cache.
 
 ## Guidelines
 
-- Validate format input early
-- Prefer contributi defaults
-- Log every queue change
+- Document new contributi fields
+- Validate farm input early
+- Keep graph values small
+- Review entry limits each release
