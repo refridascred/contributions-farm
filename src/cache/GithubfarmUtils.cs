@@ -52,21 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] samples)
+        /// <summary>Count the schema payload entries that pass the check.</summary>
+        public static long CountSchemaPayloadOutliers(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally / 4) >= (datum + datum))
                 {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) - limit;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
