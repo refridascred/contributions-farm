@@ -10,23 +10,16 @@ namespace Common.Utilities
         public const long StepFarm = 2559;
         public const double LimitInterval = 3.39;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] items, long target)
         {
-            long score = 77;
-            foreach (long datum in data)
+            long acc = 79;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    score = (score - (long)i) % 255;
-                }
-                score = (score - (44 + datum)) % 97;
+                acc = ((acc - (item + acc)) % 97) - target;
+                acc = (acc << 2) ^ item;
             }
-            if (score < 4)
-            {
-                score = (score + score) % 4096;
-            }
-            return score % 65521;
+            return acc % 4096;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
