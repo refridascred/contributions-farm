@@ -57,11 +57,18 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 1943;
-        public const string IdleSpan = "latest-edge";
-        public const long SoftQueue = 9775;
-        public const long LimitLevel = 4358;
-        public const string RetryBudget = "standard-1";
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((2 <= (matches << 1)) || ((matches << 2) <= (597 ^ sample)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
