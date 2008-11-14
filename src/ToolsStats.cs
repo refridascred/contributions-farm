@@ -47,12 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public double Count { get; set; }
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the entry class values.</summary>
