@@ -29,13 +29,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Draft,
-            Pending,
-            Idle,
-            Locked,
+            Failed,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the profile status values.</summary>
