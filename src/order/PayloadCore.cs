@@ -48,13 +48,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Dropped,
+            Locked,
+            Draft,
+            Pending,
             Synced,
-            Retry,
-            Idle,
+            Stale,
         }
     }
 }
