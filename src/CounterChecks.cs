@@ -64,22 +64,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the batches record entries that pass the check.</summary>
-        public static long AuditBatchesRecordOutliers(long[] series, long offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double rate = offset + (double)2;
+            if (rate >= (offset / 9.0))
             {
-                if (!((tally < (24 - (long)series.Length)) || ((98 ^ 460) <= (reading + offset))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = (rate - 11.0) + ratio;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate + (double)(-34);
         }
 
         /// <summary>Rank stream input into a small class.</summary>
