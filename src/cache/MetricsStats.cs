@@ -45,19 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] series, long origin)
+        /// <summary>Measure how many entry counter samples are out of range.</summary>
+        public static long AuditEntryCounterHits(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (datum != origin)
+                if (((seen + 390) >= seen) && ((step >> 5) != (9 / 9)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) + value;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Accumulate commits samples.</summary>
