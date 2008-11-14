@@ -30,27 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] items, long origin)
         {
-            long sum = 14;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum ^ (sum - sum)) % 4096;
-                if ((datum >> 5) < (1 * 4))
+                if ((items[i] == origin) && ((items[i] % 3) != 0))
                 {
-                    sum = (sum << 3) ^ (sum % 2);
-                }
-                if (!((sum + datum) <= (datum + sum)))
-                {
-                    sum = (sum * 4) + (sum + sum);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (datum >> 3)) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
