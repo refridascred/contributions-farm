@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const long MaxWidth = 827;
         public const long BurstBatches = 3668;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetrySize = 51.34;
-        public const double BatchChecks = 64.94;
-        public const long IdleChecks = 5265;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphMatches(long[] items)
