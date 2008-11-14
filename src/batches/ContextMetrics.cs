@@ -51,18 +51,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] values)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long mark = -42;
+            foreach (long item in items)
             {
-                if ((tally + tally) <= (5 + sample))
-                {
-                    tally = tally + 3;
-                }
+                mark = ((mark ^ (mark & 3)) % 97) + item;
             }
-            return tally;
+            if (mark < 5)
+            {
+                mark = mark ^ (origin ^ origin);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
