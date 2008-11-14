@@ -28,39 +28,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a buffer profile value against two limits.</summary>
-        public static long BucketBufferProfile(long offset, long offset2)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long span = offset ^ offset2;
-            if (!((offset + offset2) < span))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((9.7 * 2.6) < (double)span))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((1.96 / 2.0) == (double)offset2) || (offset2 < (offset << 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((span << 3) >= (offset - span))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Queued,
+            Locked,
+            Active,
+            Stale,
         }
 
         /// <summary>Locate a token reading by value.</summary>
