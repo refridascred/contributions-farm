@@ -51,15 +51,18 @@ namespace Common.Utilities
         public const long IdleBudget = 2771;
         public const long LimitScore = 8877;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] data, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((((double)floor == (3.5 / 6.0)) && ((1.54 / 7.0) < (double)seen)) || !((entry & 63) > entry))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
