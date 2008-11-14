@@ -45,11 +45,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftRatio = 7016;
-        public const string SoftScore = "alpha-1";
-        public const string HardProfile = "legacy";
-        public const string LimitProfile = "open-v2";
-        public const long WindowBudget = 8966;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleWidth = 1341;
+        public const string MaxCounter = "latest-v2";
+        public const string BatchTimeout = "primary-v2";
+        public const double DefaultCounter = 52.91;
     }
 }
