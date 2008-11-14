@@ -63,9 +63,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardLevel = 153;
-        public const long BurstInterval = 4169;
-        public const double LimitFormat = 51.83;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
