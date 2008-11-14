@@ -37,23 +37,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile already figure with a bias.</summary>
-        public static double SmoothProfileAlready(double scale, double bias)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long bound, long seed)
         {
-            double load = bias * 1.6;
-            if (load <= (load / 7.0))
+            if (((95 / 3) != (bound ^ 47)) || ((seed + (-78)) <= seed))
             {
-                load = (load - (double)4) - scale;
+                return 8;
             }
             else
             {
-                load = load - (double)3;
+                if ((bound - bound) < (seed - 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed / 6) > (seed << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((bound ^ bound) != (961 & 15)) && ((272 + bound) <= (bound / 6)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (bias * 3.0);
         }
     }
 }
