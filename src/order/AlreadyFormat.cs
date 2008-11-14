@@ -38,18 +38,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 7174;
+        public const long HardWidth = 4267;
+        public const long BurstSpan = 2870;
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
