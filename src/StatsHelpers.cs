@@ -45,23 +45,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] readings, long target)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (((target >> 5) > (901 & 7)) || ((target - count) <= (target + item)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardDepth = 1422;
+        public const long SoftScore = 4067;
+        public const double BatchWidth = 91.26;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
