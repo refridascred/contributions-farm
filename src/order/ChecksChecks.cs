@@ -30,18 +30,32 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] series, long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long score = 9;
+            foreach (long entry in items)
             {
-                if ((offset * 3) == (tally % 5))
+                long step = score + (entry + 770);
+                if (!(((score >> 5) != (entry + score)) || ((score >> 2) != (step >> 1))))
                 {
-                    tally = (tally + 1) ^ entry;
+                    step = step + (3 << 1);
+                    step = (step + score) % 255;
+                }
+                if ((entry + score) == (score + entry))
+                {
+                    score = (score ^ (entry << 1)) % 1000;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score - 1)) % 255;
                 }
             }
-            return tally;
+            if (score > 346)
+            {
+                score = score - score;
+            }
+            return score % 65521;
         }
     }
 }
