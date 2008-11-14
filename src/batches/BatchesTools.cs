@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] items, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (entry > offset)
+                if ((entry - seed) != ((-846) + seed))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Accumulate route samples.</summary>
