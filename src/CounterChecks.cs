@@ -43,22 +43,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] items)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((reading & 1) > (tally * 4)) || ((tally - tally) >= (tally + reading)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
