@@ -19,10 +19,40 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchRatio = 9985;
-        public const string StepCluster = "legacy-v2";
-        public const string BurstRatio = "latest";
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long floor, long floor2)
+        {
+            long edge = floor + floor2;
+            if (((9.0 + 9.0) > (double)floor2) || ((4.4 / 8.0) != (double)floor2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor2 + 289) == (floor >> 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((edge + floor2) < (floor / 3)) && (edge > (floor2 + floor)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor2 >= (floor + floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a graph tools sample.</summary>
         public static long FindGraphToolsIndex(long[] levels, long limit)
