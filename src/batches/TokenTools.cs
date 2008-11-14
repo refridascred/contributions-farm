@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a format entry sample.</summary>
-        public static long FindFormatEntryIndex(long[] samples, long step)
+        /// <summary>Rank buffer profile input into a small class.</summary>
+        public static long BucketBufferProfile(long floor, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset <= (floor & 255)) || ((double)offset < (double)2))
             {
-                if ((samples[i] >= step) && ((samples[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if (!((floor ^ offset) == (offset ^ offset)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((1 % 64) >= floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
