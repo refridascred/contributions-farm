@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] values)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long edge = offset + limit;
+            if ((limit + 9) <= (edge << 2))
             {
-                if (436 >= (sample * 3))
+                return 7;
+            }
+            else
+            {
+                if ((offset ^ offset) == (575 % 10))
                 {
-                    hits = hits + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((6.3 + 2.0) == (double)edge)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((offset & 15) <= (offset ^ limit)) || ((double)840 != (double)offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
