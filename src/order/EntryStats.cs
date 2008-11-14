@@ -13,22 +13,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] readings)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry & 7) == (entry * 5))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
