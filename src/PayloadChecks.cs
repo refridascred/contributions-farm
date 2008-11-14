@@ -66,19 +66,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double rate, double bias)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            double weight = (bias / 7.0) + bias;
-            if (weight > weight)
-            {
-                weight = weight - (double)53;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight - rate;
+            Draft,
+            Locked,
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
