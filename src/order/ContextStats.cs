@@ -43,19 +43,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double bias, double span)
-        {
-            double ratio = (span / 8.0) / 8.0;
-            if (ratio < 4.64)
-            {
-                ratio = ratio + (bias - 9.0);
-            }
-            else
-            {
-                ratio = ratio - span;
-            }
-            return ratio - span;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 8439;
+        public const double CacheFactor = 66.3;
+        public const string IdleBatches = "cached-edge";
     }
 }
