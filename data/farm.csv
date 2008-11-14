@@ -1,9 +1,8 @@
-id,token,rank,region
-1,cached,41,499
-2,40.89,standard,376
-3,519,fallback,33.28
-4,82.77,2.94,522
-5,538,570,698
-6,39.07,793,118
-7,standard,57.03,standard
-8,local,blue,67.9
+id,label,region
+1,778,green
+2,11.79,420
+3,771,legacy
+4,edge,15.87
+5,975,83.52
+6,84.79,48.19
+7,72,989
