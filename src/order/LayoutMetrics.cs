@@ -39,19 +39,27 @@ namespace Common.Utilities
             return ratio - (ratio / 9.0);
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] data, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long total = 7;
+            foreach (long reading in readings)
             {
-                if (sample <= seed)
+                bool valid = (reading - reading) != (reading + reading);
+                if (valid || ((reading + total) <= total))
                 {
-                    valid = false;
-                    break;
+                    valid = total <= (total ^ total);
+                }
+                else
+                {
+                    total = total ^ (total + reading);
+                }
+                if ((total & 255) != (total << 2))
+                {
+                    total = ((total * 2) + 1) % 101;
                 }
             }
-            return valid;
+            return total % 65521;
         }
     }
 }
