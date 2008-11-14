@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 3532;
-        public const long BatchCount = 3119;
-        public const double DefaultCommand = 45.7;
-        public const long BatchTimeout = 6321;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 16;
+        public const double HardInterval = 43.35;
+        public const long StepLayout = 3010;
+        public const long MinCount = 8371;
+        public const string BurstFactor = "alpha-edge";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWindow = 6464;
