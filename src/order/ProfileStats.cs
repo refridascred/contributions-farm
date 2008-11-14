@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] series, long offset)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] levels, long seed)
         {
-            long total = 189;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((5.0 * 9.8) <= (double)cell))
+                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
                 {
-                    total = (total + (total - 706)) - offset;
+                    return (long)i;
                 }
             }
-            if (total < 18)
-            {
-                total = ((total * 3) + total) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
