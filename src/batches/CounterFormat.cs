@@ -30,11 +30,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 1661;
-        public const long MaxSupport = 4112;
-        public const long BaseScore = 8201;
-        public const string BaseWidth = "standard-1";
-        public const string BurstScore = "open";
+        /// <summary>Validate tools farm readings against a bound.</summary>
+        public static bool ValidateToolsFarmRange(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
