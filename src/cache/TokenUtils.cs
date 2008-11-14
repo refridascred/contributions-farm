@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long seed, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
+            long edge = seed + bound;
+            if ((edge + edge) == (bound * 2))
             {
-                if (!((double)state != (double)target))
-                {
-                    state = (state + (state >> 4)) % 255;
-                }
-                state = ((state * 5) + (long)i) % 101;
+                return 2;
             }
-            return state;
+            else
+            {
+                if ((double)edge >= 9.1)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed <= (8.0 + 4.12))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound < (seed << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a token reading by value.</summary>
