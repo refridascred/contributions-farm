@@ -33,19 +33,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] items, long offset)
+        /// <summary>Scale a support layout figure with a bias.</summary>
+        public static double SmoothSupportLayout(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double bias3 = bias2;
+            return bias3 - (bias + bias3);
         }
 
         /// <summary>Grade a support value against two limits.</summary>
