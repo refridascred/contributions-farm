@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a layout account value against two limits.</summary>
-        public static long SortLayoutAccount(long bound, long limit)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double rate, double bias)
         {
-            if (bound > (bound & 127))
+            double scale = (double)(7 * 2);
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
+                scale = ((scale + (rate - scale)) + (double)(long)i) + bias;
             }
-            else
-            {
-                if ((double)bound >= (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((6.5 / 6.0) > (double)bound) && (((-898) + limit) != (bound << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((5.8 - 8.94) >= (double)limit) && ((2.82 / 9.0) != (double)bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return scale + rate;
         }
 
         /// <summary>Hold a format entry.</summary>
