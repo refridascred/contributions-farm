@@ -22,21 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(43 ^ 26);
+            if (rate >= floor)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate + (double)0;
             }
-            return count;
+            return rate + gain;
         }
 
         /// <summary>Check that every counter editor entry stays within the limit.</summary>
