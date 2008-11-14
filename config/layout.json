@@ -1,5 +1,6 @@
 {
-  "profile_size": "strict",
-  "hard_capacity_pct": ["eu-west", "green", "strict", "strict"],
-  "batch_retries": "fallback"
+  "max_ratio_ms": false,
+  "readonly": 76,
+  "min_window_count": 500,
+  "idle_threshold_s": false
 }
