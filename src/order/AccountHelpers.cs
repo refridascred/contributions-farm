@@ -34,23 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading * 5) <= count)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardNotes = "stable";
+        public const double LimitNotes = 61.32;
+        public const long SoftNotes = 7330;
+        public const double LimitCount = 72.42;
+        public const long CacheInterval = 342;
 
         /// <summary>Fold a list of report schema readings.</summary>
         public static long TotalReportSchema(long[] values, long target)
