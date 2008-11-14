@@ -45,10 +45,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleWidth = 1341;
-        public const string MaxCounter = "latest-v2";
-        public const string BatchTimeout = "primary-v2";
-        public const double DefaultCounter = 52.91;
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double scale, double offset)
+        {
+            double bias = 9.34;
+            if (bias > scale)
+            {
+                bias = (bias + (double)331) + offset;
+            }
+            return bias - (double)(-8);
+        }
     }
 }
