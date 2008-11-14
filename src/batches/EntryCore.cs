@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long RetryToken = 3463;
         public const double CacheRatio = 11.04;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((step & 7) != (step - step))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 6464;
+        public const long RetryWindow = 2723;
+        public const long BatchWidth = 2822;
+        public const long LimitInterval = 7914;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long WeighSchema(long[] readings)
