@@ -49,11 +49,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Blend two cache window measurements.</summary>
-        public static double ProjectCacheWindow(double bias, double offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            double scale = offset;
-            return (scale + (scale - scale)) + bias;
+            Dropped,
+            Active,
+            Done,
+            Paused,
         }
 
         /// <summary>Iterate the githubfarm profile series from a seed.</summary>
