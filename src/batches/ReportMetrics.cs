@@ -34,17 +34,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] levels, long origin)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long origin, long origin2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin2 << 1) >= (origin2 - 2))
             {
-                if (levels[i] < origin)
+                return 2;
+            }
+            else
+            {
+                if ((origin2 - origin2) > (74 << 2))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin >> 2) < origin2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
