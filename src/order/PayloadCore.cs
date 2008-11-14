@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Pending,
-            Paused,
-            New,
+            Synced,
+            Retry,
             Done,
-            Locked,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
