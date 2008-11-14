@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchCount = 4939;
+        public const long LimitStats = 4469;
+        public const long BurstStats = 6665;
+        public const double DefaultStats = 68.34;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
