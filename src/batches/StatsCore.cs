@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double weight, double offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] values, long origin)
         {
-            double bias = weight + weight;
-            if (bias > (13.0 * 15.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias + (offset / 4.0);
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias - 2.2;
+            return -1;
         }
 
         /// <summary>Count the githubfarm editor entries that pass the check.</summary>
