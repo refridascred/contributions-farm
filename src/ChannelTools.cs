@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const double LimitScore = 40.11;
         public const long DefaultEditor = 6781;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleScore = 5610;
-        public const long MaxCounter = 4435;
-        public const double SoftCounter = 66.71;
-        public const long DefaultCounter = 5811;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((count / 5) >= (limit << 2))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
