@@ -1,18 +1,7 @@
 {
-  "tools_delay": "legacy",
-  "cache_ratio_count": 8477,
-  "notes_limit": 9,
-  "default_ttl_s": {
-    "burst_capacity_pct": "local",
-    "audit": false,
-    "commits_timeout": 3257,
-    "batch_ttl": "blue",
-    "readonly": {
-      "cache_window_count": 34,
-      "command_ratio": true,
-      "burst_threshold_pct": true
-    },
-    "channel_timeout": 8570
-  },
-  "tools_window": "staging"
+  "audit": 74.57,
+  "warm_window": false,
+  "base_depth": true,
+  "format_interval": ["strict", "stable", "cached", "legacy"],
+  "idle_window": "primary"
 }
