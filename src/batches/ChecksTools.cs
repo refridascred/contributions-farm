@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate token commits samples.</summary>
-        public static long FoldTokenCommits(long[] items)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] items, long seed)
         {
-            long sum = -456;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum ^ (28 + sum)) % 101;
-                if (((double)value >= (20.0 * 6.3)) && ((sum & 15) > (value % 2)))
+                if ((items[i] >= seed) && ((items[i] % 5) == 0))
                 {
-                    continue;
-                }
-                if ((sum >= (value - sum)) && ((sum * 5) >= (sum - sum)))
-                {
-                    sum = (sum << 2) ^ (sum + sum);
+                    return (long)i;
                 }
             }
-            if (sum < 65)
-            {
-                sum = ((sum * 5) + (sum >> 4)) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Match up account samples.</summary>
