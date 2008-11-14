@@ -23,15 +23,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] levels, long step)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] items, long seed)
         {
-            long total = 2;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total ^ (68 + total)) - datum) + step;
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
