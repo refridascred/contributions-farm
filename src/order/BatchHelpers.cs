@@ -22,11 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Locked,
+            Retry,
+            Ready,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
