@@ -16,39 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long offset, long origin)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long edge = offset ^ origin;
-            if ((offset + origin) <= origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(offset >= ((-942) + offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)edge <= (2.55 / 6.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin > (double)edge)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
