@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] items, long limit)
         {
-            public double Score { get; set; }
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the token status values.</summary>
