@@ -41,22 +41,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] data, long limit)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long carry = 967;
-            foreach (long sample in data)
-            {
-                if (!((double)carry >= (0.73 + 4.49)))
-                {
-                    carry = ((carry - (sample & 3)) % 4096) + limit;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ carry;
-                }
-            }
-            return carry;
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
