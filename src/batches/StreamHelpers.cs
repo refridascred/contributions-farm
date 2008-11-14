@@ -24,13 +24,13 @@ namespace Common.Utilities
         public const string IdleSpan = "latest-1";
         public const string BatchLevel = "cached";
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] data, long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] readings, long offset)
         {
             bool stale = true;
-            foreach (long item in data)
+            foreach (long item in readings)
             {
-                if (item < floor)
+                if (item <= offset)
                 {
                     stale = false;
                     break;
