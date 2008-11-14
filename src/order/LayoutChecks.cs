@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values)
         {
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (((entry * 4) > 103) && (5 <= (entry >> 5)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
