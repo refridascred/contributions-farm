@@ -31,18 +31,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] items, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (origin > ((long)items.Length + count))
+                if (hits > offset)
                 {
-                    count = (count + 2) + entry;
+                    hits = (hits + 3) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
