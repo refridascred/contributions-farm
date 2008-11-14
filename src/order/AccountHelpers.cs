@@ -53,19 +53,13 @@ namespace Common.Utilities
         public const double LimitCount = 72.42;
         public const long CacheInterval = 342;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] readings, long bound)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
