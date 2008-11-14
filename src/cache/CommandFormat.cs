@@ -13,15 +13,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] items, long target)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long step)
         {
-            long score = 0;
-            foreach (long datum in items)
+            long mix = step;
+            for (int i = 0; i < 14; i++)
             {
-                score = (((score * 2) + (datum / 2)) % 4096) - target;
+                if (((double)mix != (7.63 / 3.0)) || (1.23 <= (double)mix))
+                {
+                    mix = mix + mix;
+                }
+                else
+                {
+                    mix = (mix * 2) + (41 << 3);
+                    mix = ((mix << 3) ^ mix) % 255;
+                }
+                mix = (mix ^ (mix - mix)) % 65521;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
