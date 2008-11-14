@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Classify a order metrics pair into a bucket.</summary>
+        public static long BucketOrderMetrics(long offset, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
+            long slot = offset ^ step;
+            if ((slot + slot) == (slot + offset))
             {
-                if (!(3.03 > (double)target))
-                {
-                    sum = sum - target;
-                }
-                if (!((5 + (long)i) == (target << 1)))
-                {
-                    sum = sum - (target >> 2);
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (step <= (7 % 100))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the format cache entries that pass the check.</summary>
