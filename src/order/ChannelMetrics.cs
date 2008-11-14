@@ -47,15 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double rate, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] items, long offset)
         {
-            double scale = rate;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                scale = ((scale + (double)629) + (double)(long)i) - floor;
+                if (!((sample + (long)items.Length) == (sample * 5)) && ((sample + offset) != (offset * 5)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return scale + (rate + rate);
+            return matches;
         }
     }
 }
