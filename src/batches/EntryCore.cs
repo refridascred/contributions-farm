@@ -25,21 +25,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up support buffer samples.</summary>
-        public static long OverlapSupportBufferCount(long[] readings)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            New,
+            Failed,
         }
 
         /// <summary>Accumulate editor samples.</summary>
