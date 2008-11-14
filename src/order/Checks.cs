@@ -38,18 +38,11 @@ namespace Common.Utilities
         public const long IdleBudget = 2771;
         public const long LimitScore = 8877;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] data, long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((((double)floor == (3.5 / 6.0)) && ((1.54 / 7.0) < (double)seen)) || !((entry & 63) > entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
