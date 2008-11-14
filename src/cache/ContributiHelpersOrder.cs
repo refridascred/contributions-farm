@@ -24,22 +24,15 @@ namespace Common.Utilities
         public const double LimitTimeout = 96.59;
         public const long CacheAlready = 5195;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] values, long seed)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double scale = ratio;
+            if (scale > (ratio - scale))
             {
-                if ((seed - entry) < (matches / 9))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = (scale - 7.0) - bias;
             }
-            return matches;
+            return scale + ratio;
         }
     }
 }
