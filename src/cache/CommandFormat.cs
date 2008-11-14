@@ -46,15 +46,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format batch series from a seed.</summary>
-        public static long DeriveFormatBatch(long limit)
+        /// <summary>Rank batches cluster input into a small class.</summary>
+        public static long SortBatchesCluster(long bound, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
+            long cur = bound - step;
+            if (((bound << 2) <= 969) || ((cur << 3) == (bound + step)))
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (((step << 2) < (cur << 3)) || (bound <= cur))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound < 6.2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
