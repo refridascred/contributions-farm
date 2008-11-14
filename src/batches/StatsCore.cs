@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum << 3) ^ ((long)i + offset)) % 97;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardSize = "cached";
+        public const string RetryStats = "cached-v2";
+        public const long StepStats = 8636;
+        public const long IdleCount = 7193;
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double ScaleToken(double weight, double offset)
