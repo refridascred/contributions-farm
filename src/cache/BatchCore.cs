@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if (floor <= (score * 5))
-                {
-                    score = (score + (floor ^ score)) % 65521;
-                }
-                if (((-179) - (long)i) > floor)
-                {
-                    score = (score - score) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Idle,
+            Draft,
+            Retry,
+            Failed,
+            Locked,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
