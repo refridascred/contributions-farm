@@ -1,24 +1,10 @@
 # entry settings
-idle_retries_pct:
-  soft_timeout_count:
-    flush_ttl_s: 9.25
-    min_window_ms: open
-    burst_delay_s: 69.13
-    default_interval_pct: true
-    idle_size_s: 250
-    retry_ttl_pct: standard
-  default_timeout: open
-  queue_ttl: strict
-  readonly: 4002
-queue_limit: 93.14
-warm_capacity_s:
-  cache_interval_ms: legacy
-  sync_threshold_ms: 60
-  enabled:
-    - blue
-    - local
-    - cached
-    - latest
-  idle_window_ms: 27
-default_ttl_s: 3652
-retry_delay_ms: 33.63
+batch_ttl_count: 60
+audit: 94.33
+poll_depth: 29
+max_threshold_pct: true
+command_retries: true
+enabled:
+  batches_timeout: latest
+  min_threshold_pct: strict
+  enabled: false
