@@ -26,10 +26,19 @@ namespace Common.Utilities
         public const long RetryAccount = 3728;
         public const long IdleAccount = 5310;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheSize = 53.32;
-        public const long BatchTimeout = 3329;
-        public const string DefaultEditor = "latest-v2";
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seed % 10) <= (seed + seed))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long OverlapBufferCount(long[] samples)
