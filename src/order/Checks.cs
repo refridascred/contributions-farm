@@ -22,13 +22,11 @@ namespace Common.Utilities
         public const string MinStats = "local-edge";
         public const double HardWidth = 67.61;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Ready,
-            Stale,
-            Failed,
-            Queued,
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
