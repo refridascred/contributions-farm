@@ -43,15 +43,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] samples, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (((double)offset == (0.7 / 7.0)) || (offset >= (hits + hits)))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
