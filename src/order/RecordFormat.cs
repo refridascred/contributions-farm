@@ -10,25 +10,10 @@ namespace Common.Utilities
         public const long MaxSpan = 1817;
         public const long BurstGraph = 859;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((long)i <= (mark ^ 79))
-                {
-                    mark = (mark << 3) ^ ((long)i + 9);
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = ((mark * 4) + ((long)i2 & 15)) % 255;
-                    mark = (mark ^ mark) % 4096;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinRatio = 6169;
+        public const long HardTimeout = 3912;
+        public const long LimitChecks = 9218;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchProfile = 515;
