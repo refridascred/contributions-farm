@@ -20,31 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long floor, long floor2)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long seed)
         {
-            if ((double)floor2 >= 7.9)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.5 / 8.0) != (double)floor)
+                mark = ((mark * 4) + ((long)i ^ (long)i)) % 101;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 7;
+                    mark = (mark ^ 6) ^ (long)i2;
                 }
-                else
-                {
-                    if ((floor2 * 5) <= floor2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Describe the tools phase values.</summary>
