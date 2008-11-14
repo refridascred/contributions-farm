@@ -27,19 +27,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double gain, double span)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] values)
         {
-            double mean = gain;
-            if (mean > 0.75)
+            long carry = 4;
+            foreach (long datum in values)
             {
-                mean = mean + (double)7;
+                carry = carry + ((-70) - datum);
             }
-            else
-            {
-                mean = mean - (gain * 7.1);
-            }
-            return mean - (span / 8.0);
+            return carry;
         }
     }
 }
