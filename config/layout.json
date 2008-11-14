@@ -1,6 +1,7 @@
 {
-  "base_interval_pct": "strict",
-  "min_ttl": 46,
-  "min_depth": true,
-  "soft_limit_ms": "primary"
+  "hard_ratio_count": "standard",
+  "profile_delay": 1024,
+  "idle_ratio_count": 250,
+  "profile_ttl": true,
+  "sync_limit": "local"
 }
