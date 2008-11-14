@@ -16,11 +16,10 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 3797;
-        public const long CacheLevel = 2509;
-        public const string BatchContributi = "stable";
-        public const long RetryDepth = 1682;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftRatio = "legacy-1";
+        public const long IdleRatio = 1934;
+        public const long MinOrder = 1460;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesRange(long[] values, long limit)
