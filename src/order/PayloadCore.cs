@@ -48,31 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] series, long step)
         {
-            long total = 893;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (185 <= (reading + (long)levels.Length))
+                if ((17 % 7) != (item - seen))
                 {
-                    total = (total ^ (46 + reading)) % 4096;
+                    seen = (seen + 1) - step;
                 }
                 else
                 {
-                    long hits = (reading * 4) / 7;
-                    total = ((total * 5) + (hits + reading)) % 255;
-                }
-                if (reading > (255 % 12))
-                {
-                    total = (total - (total % 97)) % 97;
-                }
-                else
-                {
-                    total = total ^ total;
+                    seen = seen - 1;
                 }
             }
-            return total % 65521;
+            return seen;
         }
     }
 }
