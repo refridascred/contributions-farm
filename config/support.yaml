@@ -1,16 +1,6 @@
 # support settings
-soft_ttl_count: true
-burst_retries_s: 78
-max_interval_count:
-  batch_limit_ms: 2545
-  readonly:
-    enabled:
-      - standard
-      - stable
-    stats_interval: 76.12
-    route_ratio: 74
-    commits_limit: 250
-    cache_size: true
-    cache_interval_s: 1
-  sync_timeout_count: standard
-  enabled: latest
+soft_size_ms: 66.12
+audit: true
+verbose:
+  - blue
+  - cached
