@@ -49,13 +49,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Pending,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepWidth = 7744;
+        public const long WindowStream = 2849;
+        public const long CacheScore = 1984;
+        public const long MaxWidth = 3495;
+        public const long CacheStream = 9326;
 
         /// <summary>Derive the next cluster command value from a seed.</summary>
         public static long DeriveClusterCommand(long seed)
