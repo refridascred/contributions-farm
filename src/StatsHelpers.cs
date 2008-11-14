@@ -23,26 +23,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] readings, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] samples, long target)
         {
-            long result = 89;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                for (int i = 0; i < 10; i++)
+                if (value != target)
                 {
-                    result = ((result << 2) ^ (value + (long)i)) - target;
-                }
-                if ((67 << 2) == (result - result))
-                {
-                    result = (result << 3) ^ (1 >> 4);
-                }
-                else
-                {
-                    result = result ^ (result - result);
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the order level values.</summary>
