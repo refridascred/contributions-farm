@@ -1,5 +1,7 @@
 {
-  "burst_ttl": "edge",
-  "idle_depth": 44.53,
-  "cache_size_count": "staging"
+  "base_window_ms": 4266,
+  "dry_run": "stable",
+  "compress": "eu-west",
+  "schema_limit": 6.26,
+  "readonly": 14.68
 }
