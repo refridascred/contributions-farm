@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxFactor = 4807;
-        public const double RetryStats = 87.75;
-        public const double BatchStats = 48.41;
-        public const long BaseStats = 171;
-        public const long StepFactor = 2579;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 6972;
+        public const long RetryRatio = 6102;
+        public const long DefaultEditor = 8140;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long DeriveCommits(long bound)
