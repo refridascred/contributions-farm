@@ -28,26 +28,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate stats already samples.</summary>
-        public static long FoldStatsAlready(long[] samples, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] data, long limit)
         {
-            long mix = 791;
-            foreach (long entry in samples)
+            long carry = 967;
+            foreach (long sample in data)
             {
-                if (((floor % 64) > mix) && (784 <= (mix & 31)))
+                if (!((double)carry >= (0.73 + 4.49)))
                 {
-                    mix = ((mix * 2) + (entry - 46)) % 255;
+                    carry = ((carry - (sample & 3)) % 4096) + limit;
                 }
                 else
                 {
-                    mix = (mix - (entry + entry)) % 65521;
+                    carry = (carry << 3) ^ carry;
                 }
             }
-            if (mix < (-178))
-            {
-                mix = ((mix * 5) + (floor + (-494))) % 97;
-            }
-            return mix;
+            return carry;
         }
     }
 }
