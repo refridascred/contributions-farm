@@ -51,38 +51,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long floor, long target)
+        /// <summary>Locate a support contributi reading by value.</summary>
+        public static long LocateSupportContributiIndex(long[] items, long offset)
         {
-            if ((6.77 > (double)target) || ((floor % 10) <= floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor >= (13.0 + 1.68))
+                if ((items[i] == offset) && ((items[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (floor <= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target * 5) < (target + floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
