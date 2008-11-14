@@ -18,32 +18,15 @@ namespace Common.Utilities
         public const double MaxProfile = 24.06;
         public const string CacheProfile = "strict-edge";
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long step, long seed)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double gain, double span)
         {
-            long edge = step ^ seed;
-            if ((6.5 / 5.0) >= (double)step)
+            double mean = span;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                mean = ((mean - (mean / 4.0)) + (double)(long)i) - gain;
             }
-            else
-            {
-                if ((step >> 3) != (edge ^ edge))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed <= 8.11)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mean - span;
         }
     }
 }
