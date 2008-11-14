@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double bias, double bias2)
         {
-            Queued,
-            Locked,
-            Stale,
+            double weight = bias2;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight - (19.0 - bias2)) + (double)(long)i) - bias;
+            }
+            return weight + weight;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
