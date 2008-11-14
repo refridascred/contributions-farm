@@ -49,11 +49,13 @@ namespace Common.Utilities
         public const double StepLevel = 37.59;
         public const long SoftRatio = 613;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleTimeout = 1298;
-        public const long DefaultSize = 2653;
-        public const long MinCount = 2895;
-        public const string BaseBatches = "legacy";
-        public const long WindowBatches = 6841;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Pending,
+            New,
+            Idle,
+            Active,
+        }
     }
 }
