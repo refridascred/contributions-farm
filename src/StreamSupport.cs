@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph queue readings against a rule.</summary>
-        public static long AuditGraphQueueHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (seen < (seen / 5))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinSpan = 2587;
+        public const long RetryEntry = 4857;
+        public const long IdleEntry = 1664;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long floor, long offset)
