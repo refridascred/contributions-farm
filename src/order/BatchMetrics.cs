@@ -80,19 +80,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a githubfarm format reading.</summary>
-        public static double BlendGithubfarmFormat(double bias, double floor)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double weight, double bias)
         {
-            double load = bias - (floor * 1.0);
-            if (load < (bias * 1.01))
+            double rate = (bias / 8.0) / 5.0;
+            if (rate > bias)
             {
-                load = load - (1.3 - load);
+                rate = rate - weight;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                load = load - (bias + 3.1);
+                rate = (rate - (rate * 9.0)) + (double)(long)i;
             }
-            return load - bias;
+            return rate - 7.0;
         }
     }
 }
