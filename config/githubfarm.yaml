@@ -1,28 +1,4 @@
 # githubfarm settings
-default_timeout:
-  commits_ratio: false
-  record_capacity:
-    - local
-    - open
-    - green
-  cache_limit_count: staging
-burst_interval_pct: 4083
-enabled: 100
-poll_threshold_ms:
-  compress: local
-  default_interval_count: true
-  min_delay: latest
-  burst_depth: 12.13
-  batch_capacity_s:
-    profile_limit: cached
-    strict:
-      - staging
-      - standard
-      - local
-    sync_ttl:
-      - 416
-      - 409
-      - 287
-      - 499
-  flush_threshold_ms: 48
-retry_retries: cached
+readonly: staging
+base_capacity_count: 62
+persist: staging
