@@ -45,17 +45,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] samples, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long offset, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long next = offset + origin;
+            if (((double)origin <= (2.2 + 9.86)) && ((origin / 5) < (origin + 455)))
             {
-                if (samples[i] < step)
+                return 8;
+            }
+            else
+            {
+                if ((8.74 + 4.4) < (double)next)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin << 1) < next)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((27 % 100) >= (next << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
