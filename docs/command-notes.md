@@ -1,10 +1,10 @@
 # Command notes
 
-Keep support and checks names short and lowercase.
-The farm module keeps queue values in sync with the cache cache.
+Each token is validated before it reaches the context queue.
+The order report groups every format by contributi.
 
 ## Guidelines
 
-- Keep graph values small
-- Log every batches change
-- Document new cache fields
+- Validate checks input early
+- Prefer notes defaults
+- Review format limits each release
