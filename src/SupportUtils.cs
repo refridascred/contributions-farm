@@ -24,24 +24,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] levels, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (((43 + (long)i) == (42 ^ mark)) || ((mark & 1) >= (seed * 2)))
+                if (sample <= target)
                 {
-                    mark = (mark ^ 77) % 1000;
-                }
-                if ((seed <= (mark + 2)) && ((8 << 1) > (mark ^ (long)i)))
-                {
-                    mark = ((mark << 3) ^ (long)i) % 4096;
+                    stale = false;
                     break;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Project the next queue value.</summary>
