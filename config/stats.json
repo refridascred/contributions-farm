@@ -1,12 +1,19 @@
 {
-  "sync_ratio": {
-    "idle_window": 79.12,
-    "default_interval_pct": 41.99,
-    "strict": 16,
-    "warm_delay_count": "local",
-    "warm_limit": "legacy"
+  "idle_window_pct": ["primary", "primary"],
+  "enabled": "green",
+  "batches_ttl": {
+    "metric_ratio": 10,
+    "batch_ttl": 2535,
+    "readonly": "local",
+    "enabled": ["stable", "legacy"],
+    "tools_window": 92.41
   },
-  "batch_timeout_count": 24,
-  "metrics_window": 30,
-  "order_interval": false
+  "hard_ratio_count": "staging",
+  "retry_delay": {
+    "batch_retries_count": "local",
+    "sync_interval_s": 604,
+    "readonly": 4264,
+    "min_timeout_ms": 42.92
+  },
+  "soft_ttl_ms": false
 }
