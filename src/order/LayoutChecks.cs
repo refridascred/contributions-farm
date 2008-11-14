@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long floor, long target)
         {
-            Ready,
-            Closed,
-            Pending,
-            New,
-            Active,
+            if ((target ^ floor) <= (453 - target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor / 9) > target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
