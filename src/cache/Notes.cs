@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a command batches reading by value.</summary>
-        public static long LookupCommandBatchesIndex(long[] values, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long origin, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((limit * 3) <= (origin << 1)))
             {
-                if (values[i] <= seed)
+                return 6;
+            }
+            else
+            {
+                if (origin > limit)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((7.11 * 7.0) < (double)origin) || (origin > (limit - origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate notes samples.</summary>
