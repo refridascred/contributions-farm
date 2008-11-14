@@ -51,18 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema payload entries that pass the check.</summary>
-        public static long CountSchemaPayloadOutliers(long[] samples, long limit)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally / 4) >= (datum + datum))
+                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
                 {
-                    tally = (tally + 1) - limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
