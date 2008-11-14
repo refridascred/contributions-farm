@@ -36,12 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Adjust a session route reading.</summary>
+        public static double BlendSessionRoute(double scale, double offset)
         {
-            Dropped,
-            Active,
-            Idle,
+            double scale2 = scale / 6.0;
+            if (scale2 >= offset)
+            {
+                scale2 = scale2 + scale2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 - scale2) - (double)(long)i;
+            }
+            return scale2 - (1.3 * 5.6);
         }
     }
 }
