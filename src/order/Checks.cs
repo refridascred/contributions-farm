@@ -36,13 +36,31 @@ namespace Common.Utilities
         public const string LimitCount = "local";
         public const long SoftCount = 2705;
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Grade a graph notes value against two limits.</summary>
+        public static long BucketGraphNotes(long offset, long origin)
         {
-            Failed,
-            Retry,
-            New,
-            Draft,
+            if (offset <= (offset - origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)origin < 9.0) || (10.0 <= (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (307 < offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
