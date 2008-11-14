@@ -19,18 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] series, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long origin, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            if (((double)origin <= (double)step) || (origin < step))
             {
-                if (count <= (sample * 5))
+                return 7;
+            }
+            else
+            {
+                if ((4.0 / 6.0) >= (6.93 - 2.1))
                 {
-                    count = (count + 3) - limit;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin % 2) == (268 % 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine buffer stream values into a single score.</summary>
