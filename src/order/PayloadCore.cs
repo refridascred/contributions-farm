@@ -48,14 +48,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Locked,
-            Draft,
-            Pending,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitRatio = 2523;
+        public const long MaxRatio = 8091;
+        public const long IdleToken = 740;
+        public const long SoftLevel = 4006;
+        public const long DefaultTimeout = 4020;
     }
 }
