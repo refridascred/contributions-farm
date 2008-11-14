@@ -45,17 +45,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] series, long floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long origin, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = origin + offset;
+            if ((2.0 / 6.0) >= (double)offset)
             {
-                if ((series[i] > floor) && ((series[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)delta < (2.08 + 7.93))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
