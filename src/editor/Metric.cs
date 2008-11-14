@@ -20,22 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many context stats samples are out of range.</summary>
-        public static long AuditContextStatsMatches(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long seed)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (seen > (seen >> 2))
+                score = (score + (seed - (long)i)) % 65521;
+                if ((3 >> 2) < seed)
                 {
-                    seen = (seen + 2) + value;
+                    score = score ^ (seed + seed);
+                    score = ((score * 3) + (71 ^ (long)i)) % 97;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
