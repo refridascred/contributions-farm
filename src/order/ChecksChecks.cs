@@ -26,12 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public bool Weight { get; set; }
+            public long Total { get; set; }
             public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
         }
     }
 }
