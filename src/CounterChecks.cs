@@ -22,23 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] items)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            long mix = -417;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix - (1 * 2)) - entry;
-                if ((15.0 * 0.91) <= (double)(long)items.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix < 88)
-            {
-                mix = (mix * 4) + (mix / 9);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Check that every counter editor entry stays within the limit.</summary>
