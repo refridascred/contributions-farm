@@ -26,18 +26,22 @@ namespace Common.Utilities
         public const long WindowEntry = 2006;
         public const string LimitScore = "cached";
 
-        /// <summary>Combine tools session values into a single score.</summary>
-        public static long TallyToolsSession(long[] levels, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] samples, long limit)
         {
-            long sum = 151;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((17 + entry) > (sum / 2))
+                if ((double)entry < (1.0 * 9.06))
                 {
-                    sum = (sum ^ entry) - target;
+                    matches = (matches + 2) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Fold a list of report readings.</summary>
