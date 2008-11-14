@@ -60,20 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((3.73 - 4.98) != (double)(long)i)
-                {
-                    mark = mark - (floor % 60);
-                }
-                mark = (mark ^ mark) % 101;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryRatio = 6409;
+        public const double HardWidth = 89.6;
+        public const string DefaultGithubfarm = "local-edge";
+        public const string LimitCount = "legacy-1";
+        public const long BatchGithubfarm = 6986;
     }
 }
