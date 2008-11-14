@@ -28,22 +28,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the already contributi entries that pass the check.</summary>
-        public static long MeasureAlreadyContributiHits(long[] items, long seed)
+        /// <summary>Check that every order contributi entry stays within the limit.</summary>
+        public static bool ValidateOrderContributiLimits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((seed & 127) < (14 >> 1))
+                if (datum != step)
                 {
-                    seen = (seen + 3) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a command info.</summary>
