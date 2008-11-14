@@ -13,19 +13,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] levels, long seed)
+        /// <summary>Grade a cache route value against two limits.</summary>
+        public static long ClassifyCacheRoute(long floor, long bound)
         {
-            bool found = true;
-            foreach (long item in levels)
+            if ((2.0 - 6.76) > (double)floor)
             {
-                if (item > seed)
+                return 5;
+            }
+            else
+            {
+                if (((double)floor == (7.1 / 9.0)) || ((bound & 63) == (floor >> 5)))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound >> 4) != (869 & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
