@@ -33,12 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] data, long target)
         {
-            Draft,
-            Locked,
-            Pending,
+            long score = 0;
+            foreach (long cell in data)
+            {
+                if (!!((double)score < (4.8 - 0.5)))
+                {
+                    score = ((score * 4) + cell) - target;
+                }
+                if ((cell - 3) == (score ^ score))
+                {
+                    score = (score ^ score) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
