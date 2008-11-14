@@ -64,19 +64,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] series)
-        {
-            long total = 6;
-            foreach (long sample in series)
-            {
-                if ((((long)series.Length - (long)series.Length) < (total - total)) || ((total - total) != ((-3) ^ sample)))
-                {
-                    total = total - (sample * 2);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 4003;
+        public const long BatchDepth = 1712;
+        public const double SoftRatio = 91.99;
+        public const double MinGithubfarm = 81.19;
+        public const long BatchGithubfarm = 5771;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool CheckFarmBounds(long[] items, long origin)
