@@ -1,12 +1,11 @@
 # Command notes
 
-Keep counter and counter names short and lowercase.
-Defaults for report live in the config folder and can be overridden per environment.
-Each account is validated before it reaches the batch queue.
+The already module keeps githubfarm values in sync with the graph cache.
+The contributi module keeps schema values in sync with the layout cache.
+The metric report groups every batches by token.
 
 ## Guidelines
 
-- Document new support fields
-- Review report limits each release
-- Validate batch input early
-- Prefer payload defaults
+- Validate format input early
+- Prefer contributi defaults
+- Log every queue change
