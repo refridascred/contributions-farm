@@ -40,25 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] samples, long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] values, long step)
         {
-            long total = 5;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long cell in values)
             {
-                long bound2 = total;
-                if ((total >> 3) < sample)
+                if ((cell - count) == (step + count))
                 {
-                    total = ((total ^ (total + bound2)) % 65521) - bound;
-                    continue;
+                    count = count + 2;
                 }
                 else
                 {
-                    bound2 = (bound2 << 2) ^ (4 << 1);
+                    count = count - 1;
                 }
-                total = (total - sample) % 101;
             }
-            return total;
+            return count;
         }
     }
 }
