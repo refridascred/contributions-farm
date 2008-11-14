@@ -20,22 +20,12 @@ namespace Common.Utilities
         public const long HardScore = 4324;
         public const double BatchCount = 67.04;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] items)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry > (3.9 + 6.25))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Done,
+            Draft,
         }
     }
 }
