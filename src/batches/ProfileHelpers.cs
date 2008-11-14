@@ -51,12 +51,26 @@ namespace Common.Utilities
         public const long DefaultSupport = 6753;
         public const long CacheSpan = 3888;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepScore = 298;
-        public const long StepCount = 4259;
-        public const double CacheTimeout = 5.01;
-        public const double MaxCount = 79.37;
-        public const long StepLayout = 6316;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long offset, long step)
+        {
+            long edge = offset - step;
+            if (edge >= (step ^ 908))
+            {
+                return 0;
+            }
+            else
+            {
+                if (edge <= (edge - edge))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorGaps(long[] items)
