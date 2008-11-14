@@ -1,4 +1,9 @@
 # githubfarm settings
-batch_ttl: green
-payload_ratio: 64
-tools_capacity: 30
+max_timeout_s:
+  channel_threshold: 7357
+  notes_threshold: eu-west
+  already_delay: true
+  dry_run: 89.02
+channel_retries: 53.09
+verbose: fallback
+soft_threshold_ms: latest
