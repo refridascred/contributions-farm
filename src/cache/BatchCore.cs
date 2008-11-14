@@ -43,11 +43,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long target, long origin)
         {
-            public bool Rank { get; set; }
-            public double Total { get; set; }
+            if (((11 + 3) == (target % 10)) || ((double)target == (5.9 - 3.2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin <= 7.39)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
