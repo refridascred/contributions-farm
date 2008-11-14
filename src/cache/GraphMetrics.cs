@@ -20,19 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] series, long floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a counter options.</summary>
