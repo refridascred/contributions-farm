@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next contributi metric value.</summary>
-        public static double AdjustContributiMetric(double ratio, double floor)
-        {
-            double load = ratio / 4.0;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (floor - load)) - (double)(long)i;
-            }
-            return load + (double)197;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchSpan = 2057;
+        public const long MaxProfile = 4190;
+        public const long SoftSpan = 367;
+        public const long BatchProfile = 9178;
+        public const long StepProfile = 2620;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long MatchOrderCount(long[] items)
