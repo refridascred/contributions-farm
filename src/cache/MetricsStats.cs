@@ -38,12 +38,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardBudget = "alpha";
-        public const long RetryContributi = 557;
-        public const long BaseContributi = 7091;
-        public const long LimitSpan = 1481;
-        public const long BaseScore = 7921;
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] levels, long origin)
+        {
+            long anchor = 35;
+            foreach (long reading in levels)
+            {
+                anchor = (((anchor << 3) ^ (origin * 5)) % 4096) - reading;
+            }
+            if (anchor > 294)
+            {
+                anchor = (anchor + (origin << 3)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
