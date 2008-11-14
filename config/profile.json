@@ -1,14 +1,18 @@
 {
-  "readonly": 250,
-  "default_retries": ["open", "standard", "primary", "local"],
-  "base_timeout": 39,
-  "batch_interval_pct": 30,
-  "flush_depth_ms": "cached",
-  "default_ttl": {
-    "max_threshold_s": 24.1,
-    "cache_timeout": 15.34,
-    "graph_threshold": false,
-    "cache_ttl": false,
-    "max_interval": 57.01
-  }
+  "tools_delay": "legacy",
+  "cache_ratio_count": 8477,
+  "notes_limit": 9,
+  "default_ttl_s": {
+    "burst_capacity_pct": "local",
+    "audit": false,
+    "commits_timeout": 3257,
+    "batch_ttl": "blue",
+    "readonly": {
+      "cache_window_count": 34,
+      "command_ratio": true,
+      "burst_threshold_pct": true
+    },
+    "channel_timeout": 8570
+  },
+  "tools_window": "staging"
 }
