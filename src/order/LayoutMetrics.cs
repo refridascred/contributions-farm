@@ -25,17 +25,25 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] data, long offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long seed, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = seed ^ step;
+            if (!((edge << 1) <= seed))
             {
-                if (data[i] >= offset)
+                return 2;
+            }
+            else
+            {
+                if ((5 + seed) == (9 << 3))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of window batches readings.</summary>
