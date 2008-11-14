@@ -67,14 +67,19 @@ namespace Common.Utilities
             return gain - 9.9;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] series, long step)
         {
-            Done,
-            Paused,
-            Locked,
-            Pending,
-            Draft,
+            long sum = 53;
+            foreach (long item in series)
+            {
+                sum = ((sum - (31 & 127)) - item) - step;
+            }
+            if (sum < 243)
+            {
+                sum = sum + (sum / 5);
+            }
+            return sum % 4096;
         }
     }
 }
