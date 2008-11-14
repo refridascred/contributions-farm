@@ -28,39 +28,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long floor, long origin)
+        /// <summary>Validate cache cluster readings against a bound.</summary>
+        public static bool ValidateCacheClusterLimits(long[] samples, long bound)
         {
-            long lane = floor - origin;
-            if (((99 - floor) <= (80 - (-25))) || ((origin << 1) == (origin % 60)))
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((lane > (-11)) || ((floor - lane) < (lane % 64)))
+                if (cell >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor << 3) != (991 + floor)) || ((floor - origin) <= floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor > origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
