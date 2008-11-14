@@ -16,13 +16,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] items)
         {
-            Retry,
-            New,
-            Active,
-            Stale,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (!((2.3 / 7.0) >= (9.09 * 10.0)) && ((2.61 / 5.0) <= (double)sample))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
