@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] values, long target)
+        /// <summary>Look up the position of a counter githubfarm sample.</summary>
+        public static long FindCounterGithubfarmIndex(long[] series, long target)
         {
-            long anchor = -4;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < (item % 24))
+                if (series[i] >= target)
                 {
-                    anchor = anchor ^ (item + anchor);
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ target;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
