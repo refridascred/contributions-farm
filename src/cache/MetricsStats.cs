@@ -16,15 +16,12 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Paused,
-            Synced,
-            Pending,
-            New,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 3663;
+        public const long RetryChecks = 3219;
+        public const long MaxChecks = 2081;
+        public const long WindowWidth = 948;
+        public const long SoftFactor = 8215;
 
         /// <summary>Roll a batches window counter forward.</summary>
         public static long DeriveBatchesWindow(long bound)
