@@ -49,21 +49,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Blend two cache window measurements.</summary>
+        public static double ProjectCacheWindow(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double scale = offset;
+            return (scale + (scale - scale)) + bias;
         }
 
         /// <summary>Iterate the githubfarm profile series from a seed.</summary>
