@@ -63,11 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 6272;
-        public const long BatchTimeout = 5848;
-        public const long RetryRatio = 7397;
-        public const long SoftEditor = 8605;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Failed,
+            Dropped,
+            Paused,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
