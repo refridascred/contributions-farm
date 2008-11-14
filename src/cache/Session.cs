@@ -45,15 +45,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] values)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
             long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen + seen) <= (entry * 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
