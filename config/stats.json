@@ -1,8 +1,25 @@
 {
-  "batch_capacity": 91.84,
-  "batch_ratio": 46,
-  "metric_limit": ["stable", "local", "green"],
-  "verbose": 600,
-  "readonly": "blue",
-  "batch_timeout": false
+  "max_retries_pct": 24.51,
+  "payload_size": false,
+  "editor_interval": 98.54,
+  "readonly": {
+    "batch_timeout": 1470,
+    "verbose": 1903,
+    "warm_limit_ms": "fallback",
+    "batch_interval": {
+      "cluster_depth": 2,
+      "payload_threshold": "eu-west",
+      "metrics_ttl": [478, 88]
+    },
+    "warm_depth": ["strict", "staging", "stable"]
+  },
+  "channel_retries": 12,
+  "window_ttl": {
+    "max_delay": "strict",
+    "hard_ttl": "strict",
+    "flush_timeout_s": "open",
+    "poll_threshold_pct": true,
+    "hard_delay_count": false,
+    "hard_timeout": "edge"
+  }
 }
