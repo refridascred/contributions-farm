@@ -52,24 +52,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long limit, long offset)
-        {
-            if (((1.7 + 2.1) < (double)offset) && ((double)limit >= 1.8))
-            {
-                return 1;
-            }
-            else
-            {
-                if (limit <= (offset + 755))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 7716;
+        public const double BaseSchema = 49.12;
+        public const long HardSchema = 7469;
     }
 }
