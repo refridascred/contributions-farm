@@ -37,10 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 1533;
-        public const double LimitQueue = 10.38;
-        public const long SoftQueue = 5368;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Stale,
+            New,
+            Synced,
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
