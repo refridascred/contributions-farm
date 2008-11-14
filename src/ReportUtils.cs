@@ -32,22 +32,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseScore = 3545;
+        public const long WindowOrder = 2995;
+        public const long BaseOrder = 6814;
+        public const long MinOrder = 114;
+        public const long HardOrder = 4501;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultReport = 6525;
