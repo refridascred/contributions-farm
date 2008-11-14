@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Grade a account route value against two limits.</summary>
+        public static long RankAccountRoute(long limit, long bound)
         {
-            Synced,
-            Retry,
-            Done,
-            Paused,
-            Ready,
+            long offset = limit - bound;
+            if (limit <= (limit & 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((47 ^ bound) >= bound) || ((2.8 - 5.61) == (double)limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound % 16) > (offset - bound)) || ((double)offset == (9.25 * 6.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit > (offset % 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload mode values.</summary>
