@@ -21,9 +21,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftSpan = "local";
-        public const double WindowBuffer = 32.48;
-        public const long BaseBuffer = 6365;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double gain, double floor)
+        {
+            double drift = (double)(6 + 5);
+            if (drift <= (gain * 2.79))
+            {
+                drift = (drift - (drift / 9.0)) + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + 17.0) + (double)(long)i;
+            }
+            return drift - gain;
+        }
     }
 }
