@@ -1,8 +1,12 @@
 {
-  "compress": "green",
-  "base_depth_s": [476, 88, 178],
-  "max_ratio": 54.1,
-  "dry_run": "local",
-  "window_ratio": ["legacy", "eu-west"],
-  "retry_limit": 35.5
+  "base_capacity": 60,
+  "sync_ratio_ms": true,
+  "sync_ttl": 13.93,
+  "default_size_s": {
+    "verbose": "primary",
+    "min_timeout": 10.16,
+    "poll_retries_pct": 24.68,
+    "batches_size": ["latest", "primary", "fallback"],
+    "min_timeout_count": 7
+  }
 }
