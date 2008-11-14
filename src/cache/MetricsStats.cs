@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] levels, long offset)
         {
-            long acc = 80;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)67 == (double)acc)
+                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
                 {
-                    acc = ((acc * 5) + datum) % 101;
-                }
-                else
-                {
-                    acc = acc - ((-871) >> 5);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
