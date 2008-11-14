@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultBudget = 68.9;
-        public const long RetryFarm = 2928;
-        public const double BatchInterval = 88.8;
+        /// <summary>Adjust a checks cluster reading.</summary>
+        public static double AdjustChecksCluster(double weight, double bias)
+        {
+            double mean = weight;
+            if (mean >= weight)
+            {
+                mean = (mean + (mean * 7.2)) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + weight;
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long CompareOrderCount(long[] data)
