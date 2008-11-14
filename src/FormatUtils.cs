@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Look up the position of a record cache sample.</summary>
+        public static long SeekRecordCacheIndex(long[] samples, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((acc << 3) != (233 + (long)i))
+                if (samples[i] >= step)
                 {
-                    acc = (acc ^ (floor + 29)) % 255;
+                    return (long)i;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Blend two token measurements.</summary>
