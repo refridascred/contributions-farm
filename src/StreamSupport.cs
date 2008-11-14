@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            long anchor = 4;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8 + anchor) <= (entry + 49))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor - (anchor >> 3);
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 255;
-                }
-                if (!(entry < (anchor >> 3)))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a editor stats.</summary>
