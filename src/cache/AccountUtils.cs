@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long RetryFarm = 2928;
         public const double BatchInterval = 88.8;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] data)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7 >> 4) != (entry << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the checks class values.</summary>
