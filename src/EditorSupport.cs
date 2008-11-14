@@ -34,12 +34,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Match up route buffer samples.</summary>
+        public static long MatchRouteBufferCount(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the layout kind values.</summary>
