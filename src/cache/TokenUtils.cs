@@ -18,24 +18,12 @@ namespace Common.Utilities
         public const double BaseCount = 48.36;
         public const long SoftSpan = 7856;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long offset, long bound)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            if ((double)offset != (4.26 * 5.7))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound ^ offset) > bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
