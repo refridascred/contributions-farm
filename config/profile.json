@@ -1,20 +1,8 @@
 {
-  "max_size": ["primary", "open", "local"],
-  "poll_ttl_count": 30.35,
-  "poll_window_count": true,
-  "audit": 19.82,
-  "strict": {
-    "burst_retries_s": "legacy",
-    "payload_depth": {
-      "strict": 78.77,
-      "command_retries": 500,
-      "default_interval_ms": 5736,
-      "queue_retries": 63
-    },
-    "metrics_ttl": 7,
-    "default_interval": true,
-    "strict": [235, 65, 11, 73],
-    "batch_delay": true
-  },
-  "cache_delay_pct": 57.08
+  "min_retries": 9207,
+  "hard_timeout_s": "staging",
+  "cache_window_count": 4739,
+  "verbose": 20,
+  "retry_window": "legacy",
+  "max_delay_count": 97.45
 }
