@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] items, long bound)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long mark = 7;
-            foreach (long value in items)
-            {
-                if (!((57 % 2) >= mark))
-                {
-                    mark = ((((mark * 2) + mark) % 255) ^ value) + bound;
-                }
-                mark = ((mark * 3) + mark) % 97;
-            }
-            return mark;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
