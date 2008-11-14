@@ -16,10 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleAccount = "standard";
-        public const long MinInterval = 2752;
-        public const double CacheRatio = 64.45;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Synced,
+            Closed,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long RollCluster(long offset)
