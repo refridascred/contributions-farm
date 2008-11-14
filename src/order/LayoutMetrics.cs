@@ -12,13 +12,17 @@ namespace Common.Utilities
             return scale + (gain - bias);
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] items, long target)
         {
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
