@@ -27,18 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] items, long bound)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((-9) % 7) <= tally)
-                {
-                    tally = ((tally + 1) ^ datum) - bound;
-                }
-            }
-            return tally;
+            New,
+            Draft,
+            Idle,
         }
 
         /// <summary>Adjust a commits githubfarm reading.</summary>
