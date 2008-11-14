@@ -12,15 +12,12 @@ namespace Common.Utilities
             return (mean - 13.0) + bias;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double gain, double floor)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double rate = floor - floor;
-            for (int i = 0; i < 4; i++)
-            {
-                rate = ((rate - floor) - (double)(long)i) - gain;
-            }
-            return rate - (floor * 9.4);
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Fold a list of already readings.</summary>
