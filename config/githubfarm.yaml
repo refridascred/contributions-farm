@@ -1,11 +1,20 @@
 # githubfarm settings
-dry_run:
-  - primary
-  - open
-  - cached
-  - primary
-route_interval: blue
-githubfarm_capacity: true
-readonly: false
-record_delay: 1024
-enabled: standard
+verbose:
+  support_size:
+    - green
+    - eu-west
+  compress: 56
+  burst_timeout_s: open
+  farm_retries: eu-west
+default_threshold: 60
+base_depth_pct: local
+base_ratio_pct:
+  tools_window: 77
+  verbose: 956
+  flush_depth_ms: blue
+  audit: eu-west
+  poll_ttl: 83.64
+enabled:
+  - legacy
+  - strict
+notes_interval: 47
