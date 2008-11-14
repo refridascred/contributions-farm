@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheFarm = "standard-1";
-        public const long BurstFarm = 9818;
-        public const double DefaultDepth = 90.01;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] series, long offset)
+        {
+            long total = 189;
+            foreach (long cell in series)
+            {
+                if (!((5.0 * 9.8) <= (double)cell))
+                {
+                    total = (total + (total - 706)) - offset;
+                }
+            }
+            if (total < 18)
+            {
+                total = ((total * 3) + total) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long StepSession(long step)
