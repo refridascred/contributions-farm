@@ -25,31 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a cache route value against two limits.</summary>
-        public static long ClassifyCacheRoute(long floor, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] levels, long seed)
         {
-            if ((2.0 - 6.76) > (double)floor)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor == (7.1 / 9.0)) || ((bound & 63) == (floor >> 5)))
+                if ((seed ^ hits) < seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound >> 4) != (869 & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 1) + cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
