@@ -32,23 +32,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit commits window readings against a rule.</summary>
-        public static long AuditCommitsWindowMatches(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((matches >> 2) <= target)
-                {
-                    matches = (matches + 1) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinEditor = 86.26;
+        public const long RetryScore = 9318;
+        public const long BurstEditor = 4316;
+        public const double WindowDepth = 87.3;
+        public const double HardEditor = 23.44;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
