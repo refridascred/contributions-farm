@@ -44,11 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitTimeout = 29.57;
-        public const long HardLevel = 7504;
-        public const string MaxBudget = "local-1";
-        public const string BaseDepth = "latest-v2";
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((double)matches >= (1.76 / 7.0))
+                {
+                    matches = ((matches + 3) ^ reading) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] items)
