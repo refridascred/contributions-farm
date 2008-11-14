@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 8186;
-        public const long DefaultFarm = 81;
-        public const long LimitFarm = 3756;
-        public const long HardFarm = 4897;
+        /// <summary>Look up the position of a batch tools sample.</summary>
+        public static long LocateBatchToolsIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
