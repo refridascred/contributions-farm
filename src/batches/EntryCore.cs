@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long MinCount = 8371;
         public const string BurstFactor = "alpha-edge";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 6464;
-        public const long RetryWindow = 2723;
-        public const long BatchWidth = 2822;
-        public const long LimitInterval = 7914;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TallySession(long[] data, long limit)
