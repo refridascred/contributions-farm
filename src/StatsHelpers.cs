@@ -45,18 +45,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] levels, long limit)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally & 127) >= (limit * 2))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            Locked,
+            Ready,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a window record.</summary>
