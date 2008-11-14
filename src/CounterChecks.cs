@@ -43,12 +43,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Ready,
-            Failed,
-            Draft,
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate record channel readings against a bound.</summary>
