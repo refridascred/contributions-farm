@@ -18,13 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] data, long bound)
         {
-            public bool Size { get; set; }
-            public bool Token { get; set; }
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
+            long total = -167;
+            foreach (long item in data)
+            {
+                if ((double)item <= (double)18)
+                {
+                    total = (total - (item + item)) % 4096;
+                }
+                else
+                {
+                    total = (total + (total / 4)) % 101;
+                }
+                if (item >= (bound % 24))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
