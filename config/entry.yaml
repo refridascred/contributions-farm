@@ -1,9 +1,12 @@
 # entry settings
-persist: false
-metrics_window: blue
-dry_run: 35.55
-warm_capacity:
-  - green
-  - green
-  - cached
-  - eu-west
+base_delay_ms: 51.56
+retry_depth_pct: 1804
+githubfarm_interval: 65
+cache_ttl:
+  farm_threshold: 492
+  entry_timeout: latest
+  dry_run: cached
+  record_threshold: open
+  base_size_pct: 9163
+  batch_ttl_count: false
+sync_size: staging
