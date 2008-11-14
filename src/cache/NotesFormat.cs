@@ -28,18 +28,39 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] series)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long lane = floor - origin;
+            if (((99 - floor) <= (80 - (-25))) || ((origin << 1) == (origin % 60)))
             {
-                if ((sample >= (seen / 9)) || ((double)sample != (double)73))
+                return 5;
+            }
+            else
+            {
+                if ((lane > (-11)) || ((floor - lane) < (lane % 64)))
                 {
-                    seen = seen + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (((floor << 3) != (991 + floor)) || ((floor - origin) <= floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor > origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
