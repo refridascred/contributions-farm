@@ -29,16 +29,13 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                result = (result * 4) + result;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
