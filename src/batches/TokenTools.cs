@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of commits layout readings.</summary>
-        public static long FoldCommitsLayout(long[] levels, long origin)
-        {
-            long sum = 27;
-            foreach (long sample in levels)
-            {
-                if ((double)origin == (4.0 + 8.39))
-                {
-                    sum = ((sum << 2) ^ sample) % 255;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxCount = 7188;
+        public const long DefaultStats = 7940;
+        public const string HardBudget = "strict-1";
+        public const long IdleSize = 4471;
+        public const long BurstCount = 5103;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long ClassifyToken(long step, long origin)
