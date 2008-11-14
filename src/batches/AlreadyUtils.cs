@@ -46,25 +46,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long target, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] series, long limit)
         {
-            long gap = target - seed;
-            if (93 <= gap)
+            bool found = true;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)gap <= (3.7 - 0.88))
+                if (datum != limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
