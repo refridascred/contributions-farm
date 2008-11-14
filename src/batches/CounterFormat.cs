@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] samples)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long state = 939;
-            foreach (long datum in samples)
-            {
-                state = (state - datum) % 4096;
-                if ((2.45 * 7.5) != (double)state)
-                {
-                    continue;
-                }
-                if ((state + state) <= datum)
-                {
-                    state = (state + (state - datum)) % 4096;
-                }
-            }
-            return state;
+            Pending,
+            Closed,
+            Dropped,
+            Synced,
+            Ready,
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
