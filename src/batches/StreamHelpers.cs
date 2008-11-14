@@ -77,12 +77,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] data, long seed)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
