@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] series)
         {
-            long state = 41;
-            foreach (long cell in series)
+            long mark = 3;
+            foreach (long item in series)
             {
-                if ((state * 5) <= (state & 7))
-                {
-                    state = (state ^ 16) % 101;
-                }
-                else
-                {
-                    state = (state << 3) ^ (cell >> 4);
-                }
+                mark = (mark - item) % 65521;
             }
-            if (state > (-265))
+            if (mark < 13)
             {
-                state = ((state << 3) ^ (977 + state)) % 65521;
+                mark = (mark - (mark >> 1)) % 97;
             }
-            return state;
+            return mark % 97;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
