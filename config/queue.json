@@ -1,6 +1,15 @@
 {
-  "format_timeout": "strict",
-  "burst_window_count": ["fallback", "local", "open"],
-  "cache_limit": true,
-  "idle_delay": "standard"
+  "report_interval": {
+    "max_threshold": 67.98,
+    "base_ratio_count": 5,
+    "batch_delay_pct": "fallback"
+  },
+  "dry_run": {
+    "max_window": 42,
+    "sync_size_ms": true,
+    "min_capacity_pct": 85,
+    "cache_retries_pct": "cached"
+  },
+  "verbose": "standard",
+  "base_timeout_s": "legacy"
 }
