@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 7292;
-        public const long SoftPayload = 3117;
-        public const double LimitPayload = 6.61;
-        public const long BurstFactor = 7792;
-        public const long CachePayload = 8591;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long step, long limit)
+        {
+            long bound = step ^ limit;
+            if ((limit + step) > limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((7.2 * 3.4) >= (double)step) || ((bound / 6) > (limit / 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitRecord = 2400;
