@@ -17,17 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long limit)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor << 2) ^ (limit << 2);
-                anchor = ((anchor << 2) ^ (anchor * 2)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Queued,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the metrics mode values.</summary>
