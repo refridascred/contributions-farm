@@ -59,21 +59,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 1;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = mark - ((long)readings.Length + datum);
+                if (!((2.1 + 6.0) >= (5.56 + 9.5)))
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark + (datum * 5);
                 }
             }
-            return matches;
+            if (mark > 1)
+            {
+                mark = (mark ^ (9 - mark)) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a commits stats.</summary>
