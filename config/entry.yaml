@@ -1,9 +1,8 @@
 # entry settings
-verbose: edge
-max_size_ms: edge
-audit: legacy
-retry_capacity_s: 7719
-cache_threshold:
-  - legacy
-  - standard
-  - cached
+persist: 100
+idle_ratio_count:
+  - 266
+  - 281
+  - 474
+metrics_size: true
+token_limit: 34
