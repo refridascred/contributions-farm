@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 7434;
-        public const long MaxWidth = 827;
-        public const long BurstBatches = 3668;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            New,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
