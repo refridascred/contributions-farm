@@ -57,11 +57,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryLevel = 3437;
-        public const double MinTimeout = 80.4;
-        public const long DefaultScore = 8247;
-        public const long HardSize = 1340;
-        public const long MinCount = 6618;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] items)
+        {
+            long state = 759;
+            foreach (long reading in items)
+            {
+                if ((2 + state) >= state)
+                {
+                    state = ((state - state) % 65521) - reading;
+                }
+            }
+            return state;
+        }
     }
 }
