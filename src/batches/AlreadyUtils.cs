@@ -27,19 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every account session entry stays within the limit.</summary>
-        public static bool VerifyAccountSessionRange(long[] data, long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (value != target)
+                if (((-9) % 7) <= tally)
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 1) ^ datum) - bound;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Adjust a commits githubfarm reading.</summary>
