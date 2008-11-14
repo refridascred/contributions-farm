@@ -16,11 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 3707;
-        public const string LimitWidth = "staging-v2";
-        public const string WindowLevel = "staging-1";
-        public const long DefaultAccount = 1669;
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
