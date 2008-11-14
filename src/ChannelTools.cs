@@ -27,18 +27,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] items, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (((0.8 - 0.4) != (double)hits) && ((41 <= (entry / 8)) || ((360 / 4) >= target)))
+                if (!(entry >= (step & 63)))
                 {
-                    hits = hits + 2;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
