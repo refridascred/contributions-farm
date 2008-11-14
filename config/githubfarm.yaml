@@ -1,7 +1,7 @@
 # githubfarm settings
-burst_window: cached
-flush_retries_ms: standard
-idle_ratio_pct: 3550
-dry_run: 448
-flush_window_s: standard
-format_window: strict
+dry_run: open
+compress: 30
+sync_size: true
+stream_size: local
+cache_interval_ms: staging
+persist: 9.25
