@@ -30,16 +30,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxBudget = 37.58;
+        public const long HardDepth = 5623;
+        public const long BurstBudget = 8046;
+        public const long WindowFilter = 3292;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long StepDepth = 7529;
