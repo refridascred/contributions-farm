@@ -41,14 +41,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Dropped,
-            Active,
-            Done,
-            Paused,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstTimeout = 8433;
+        public const string BatchBuffer = "staging-1";
+        public const long MinBuffer = 1024;
+        public const long WindowBuffer = 806;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] levels, long bound)
