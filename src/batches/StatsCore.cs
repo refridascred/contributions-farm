@@ -64,11 +64,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a token entry figure with a bias.</summary>
-        public static double BlendTokenEntry(double scale, double floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] samples)
         {
-            double load = (double)317 / 3.0;
-            return (load - (floor / 3.0)) + scale;
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((seen % 60) > (value >> 4))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a record reading.</summary>
