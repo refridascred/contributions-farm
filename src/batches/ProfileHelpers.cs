@@ -53,17 +53,18 @@ namespace Common.Utilities
         public const long DefaultSupport = 6753;
         public const long CacheSpan = 3888;
 
-        /// <summary>Locate a commits window reading by value.</summary>
-        public static long SeekCommitsWindowIndex(long[] samples, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (samples[i] >= target)
+                if (!!((double)origin <= (2.77 / 9.0)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
