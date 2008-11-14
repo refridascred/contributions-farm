@@ -51,25 +51,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long offset, long offset2)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] items, long floor)
         {
-            long prev = offset - offset2;
-            if ((offset2 / 9) == (offset % 10))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset2 + 52) != (prev - offset))
+                if (items[i] > floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the report level values.</summary>
