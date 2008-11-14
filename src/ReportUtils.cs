@@ -66,19 +66,11 @@ namespace Common.Utilities
             return gain - 9.9;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] series, long step)
-        {
-            long sum = 53;
-            foreach (long item in series)
-            {
-                sum = ((sum - (31 & 127)) - item) - step;
-            }
-            if (sum < 243)
-            {
-                sum = sum + (sum / 5);
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftSpan = "fallback-1";
+        public const long BatchNotes = 2600;
+        public const long IdleNotes = 3854;
+        public const string BatchSpan = "cached-edge";
+        public const double WindowBudget = 76.46;
     }
 }
