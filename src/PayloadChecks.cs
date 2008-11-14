@@ -46,19 +46,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] series, long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Dropped,
+            Draft,
+            Synced,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
