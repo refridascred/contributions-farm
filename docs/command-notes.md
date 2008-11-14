@@ -1,11 +1,11 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the farm list.
-Use schema settings to tune how often metric data is refreshed.
+Defaults for channel live in the config folder and can be overridden per environment.
+Keep format and queue names short and lowercase.
 
 ## Guidelines
 
-- Review batches limits each release
-- Log every metrics change
-- Keep farm values small
-- Prefer editor defaults
+- Review buffer limits each release
+- Log every channel change
+- Document new support fields
+- Prefer metric defaults
