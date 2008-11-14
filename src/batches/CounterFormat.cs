@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] items, long limit)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (items[i] > limit)
+                if ((1 ^ offset) > 904)
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ offset) % 4096;
                 }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = ((result ^ 81) % 255) ^ (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
