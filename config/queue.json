@@ -1,8 +1,10 @@
 {
-  "default_limit_pct": 72,
-  "batch_retries_ms": [394, 313, 126],
-  "hard_depth": 8621,
-  "persist": [17, 315, 442, 43],
-  "cache_capacity_count": 100,
-  "soft_ttl": 1024
+  "context_size": {
+    "farm_retries": 83.99,
+    "cache_ratio": 52.99,
+    "checks_retries": ["staging", "blue", "fallback", "eu-west"],
+    "checks_size": 21
+  },
+  "batch_depth": 84.22,
+  "compress": "blue"
 }
