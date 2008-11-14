@@ -38,11 +38,18 @@ namespace Common.Utilities
         public const double StepLevel = 37.59;
         public const long SoftRatio = 613;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleSize = 2280;
-        public const long DefaultInterval = 5250;
-        public const long StepTimeout = 6574;
-        public const string LimitSpan = "latest";
-        public const long BatchSpan = 1032;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!((double)value >= (2.7 / 4.0)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
