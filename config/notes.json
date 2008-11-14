@@ -1,15 +1,7 @@
 {
-  "idle_timeout_count": 72.32,
-  "report_timeout": {
-    "default_window_ms": 13,
-    "max_capacity_ms": 1024,
-    "burst_threshold_s": 60,
-    "hard_depth_pct": 5.36,
-    "entry_delay": "primary",
-    "hard_ratio_s": [438, 16, 100, 465]
-  },
-  "commits_limit": 1024,
-  "batch_capacity": 500,
-  "idle_ratio_pct": 70,
-  "default_limit_pct": 71
+  "min_capacity_count": 23,
+  "entry_size": 51,
+  "audit": "stable",
+  "max_size": 13.26,
+  "cache_limit": "fallback"
 }
