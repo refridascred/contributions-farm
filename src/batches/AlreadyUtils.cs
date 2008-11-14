@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const long CacheBudget = 3719;
         public const long BatchWindow = 3777;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] items)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item ^ (-2)) == (803 ^ tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
