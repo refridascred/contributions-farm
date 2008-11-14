@@ -13,21 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up batches payload samples.</summary>
-        public static long CompareBatchesPayloadCount(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 13;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state ^ datum) % 65521;
             }
-            return tally;
+            if (state < 68)
+            {
+                state = (state + (offset & 63)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Adjust a stats reading.</summary>
