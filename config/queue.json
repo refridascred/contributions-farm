@@ -1,7 +1,11 @@
 {
-  "soft_ratio_pct": 75.88,
-  "warm_ratio": 6.49,
-  "idle_size_s": 60,
-  "burst_timeout": "local",
-  "stats_ratio": 57
+  "verbose": ["staging", "latest"],
+  "audit": false,
+  "enabled": {
+    "default_capacity_pct": "eu-west",
+    "tools_ratio": "fallback",
+    "warm_retries_count": 9402,
+    "max_timeout": 81.35
+  },
+  "warm_limit_s": false
 }
