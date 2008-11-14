@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a window account sample.</summary>
-        public static long LocateWindowAccountIndex(long[] readings, long step)
+        /// <summary>Count already cluster pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyClusterCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] < step) && ((readings[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
