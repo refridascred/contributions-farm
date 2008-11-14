@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a window cache sample.</summary>
-        public static long LookupWindowCacheIndex(long[] data, long floor)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            New,
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
