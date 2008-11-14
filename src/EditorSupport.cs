@@ -55,18 +55,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] data)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((count + (long)data.Length) > count) || ((sample ^ sample) <= (349 ^ count)))
+                if (levels[i] >= floor)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
