@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] values)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (436 >= (sample * 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
