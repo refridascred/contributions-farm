@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] values, long limit)
+        /// <summary>Match up contributi support samples.</summary>
+        public static long MatchContributiSupportCount(long[] readings)
         {
-            long total = 23;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (limit <= (limit / 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total << 2) ^ (limit / 4)) ^ entry;
-                }
-                else
-                {
-                    total = (total << 3) ^ (limit + limit);
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 51)
-            {
-                total = ((total << 2) ^ (limit - 56)) % 255;
-            }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
