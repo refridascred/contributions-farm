@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of record context readings.</summary>
-        public static long FoldRecordContext(long[] data)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] items)
         {
-            long carry = 986;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((carry <= (value >> 3)) || (carry < (value / 4)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = carry - (carry - carry);
-                }
-                else
-                {
-                    carry = (carry + (carry % 60)) % 65521;
-                }
-                if (value > ((long)data.Length ^ value))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the metric phase values.</summary>
