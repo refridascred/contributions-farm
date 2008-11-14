@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const double RetrySize = 37.88;
         public const long BurstNotes = 3955;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 865;
-        public const long DefaultInterval = 8176;
-        public const string WindowInterval = "local";
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((hits - hits) > hits)
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long PairSchemaCount(long[] values)
