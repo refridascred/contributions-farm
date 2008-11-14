@@ -27,15 +27,21 @@ namespace Common.Utilities
         public const long MaxSpan = 1401;
         public const long DefaultDepth = 6463;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
