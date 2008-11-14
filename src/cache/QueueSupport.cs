@@ -32,22 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] items, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((9.95 + 11.0) != (double)tally)
-                {
-                    tally = ((tally + 1) + reading) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            Draft,
         }
     }
 }
