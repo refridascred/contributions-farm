@@ -33,12 +33,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Blend two buffer farm measurements.</summary>
+        public static double AdjustBufferFarm(double rate, double offset)
         {
-            Locked,
-            Idle,
-            Done,
+            double scale = 6.48;
+            return (scale - offset) + rate;
         }
     }
 }
