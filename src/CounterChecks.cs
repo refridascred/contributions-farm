@@ -56,25 +56,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long step, long step2)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long slot = step ^ step2;
-            if (((slot ^ slot) >= step) && ((double)slot <= (10.0 / 2.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(step2 <= (step + slot)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Queued,
+            Ready,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
