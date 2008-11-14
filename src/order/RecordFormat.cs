@@ -52,14 +52,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] values)
         {
-            Pending,
-            Retry,
-            Synced,
-            New,
-            Ready,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((378 + cell) > (matches + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
