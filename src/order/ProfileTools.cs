@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] values, long origin)
         {
-            Idle,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (hits >= (hits * 3))
+                {
+                    hits = ((hits + 1) - value) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
