@@ -27,13 +27,11 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 754;
+        public const string WindowProfile = "cached-1";
+        public const long MaxCount = 3366;
+        public const string BurstCount = "staging-edge";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardDepth = 9160;
