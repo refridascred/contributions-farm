@@ -37,11 +37,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a record metric reading.</summary>
-        public static double AdjustRecordMetric(double gain, double bias)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double scale = bias;
-            return (scale - (double)7) + gain;
+            Done,
+            Stale,
+            Idle,
+            New,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
