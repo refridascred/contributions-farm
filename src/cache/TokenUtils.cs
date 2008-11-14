@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long state = 8;
-            foreach (long reading in items)
-            {
-                if (((1.2 / 6.0) < (double)state) && ((6.0 / 2.0) > (double)reading))
-                {
-                    long cur = state;
-                    state = state - cur;
-                }
-                state = ((state * 3) + (reading ^ 2)) % 65521;
-            }
-            return state;
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
