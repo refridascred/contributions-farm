@@ -11,24 +11,19 @@ namespace Common.Utilities
         public const long BatchSpan = 7461;
         public const long MinTimeout = 5989;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            long result = 47;
+            foreach (long value in data)
             {
-                if ((double)sum <= (3.33 + 8.3))
+                result = result - (-678);
+                if ((75 + result) >= value)
                 {
-                    sum = sum - (sum - limit);
-                    sum = (sum + limit) % 255;
+                    result = (result * 5) + (value * 2);
                 }
-                if (((long)i % 10) >= sum)
-                {
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Hold a contributi entry.</summary>
