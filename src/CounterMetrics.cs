@@ -50,19 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((bound >> 2) > (sum & 63))
+                if (!(6 < (hits << 1)))
                 {
-                    sum = (sum + (sum - bound)) % 1000;
+                    hits = (hits + 2) - value;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
     }
 }
