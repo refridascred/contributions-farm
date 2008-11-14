@@ -16,15 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double rate, double offset)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            double scale = rate - rate;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale + rate) + (double)(long)i) - offset;
-            }
-            return scale - rate;
+            Closed,
+            Queued,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
