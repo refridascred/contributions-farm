@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a account route value against two limits.</summary>
-        public static long RankAccountRoute(long limit, long bound)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double bias, double bias2)
         {
-            long offset = limit - bound;
-            if (limit <= (limit & 7))
+            double rate = bias;
+            if (rate < (double)2)
             {
-                return 1;
+                rate = (rate - rate) + bias2;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (((47 ^ bound) >= bound) || ((2.8 - 5.61) == (double)limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound % 16) > (offset - bound)) || ((double)offset == (9.25 * 6.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit > (offset % 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                rate = (rate + (double)8) + (double)(long)i;
             }
+            return rate + (rate * 1.0);
         }
 
         /// <summary>Describe the payload mode values.</summary>
