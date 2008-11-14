@@ -27,11 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long offset)
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
+            long state = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                state = (state ^ (13 + 2)) % 65521;
+                state = ((state << 3) ^ (offset % 8)) % 1000;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
