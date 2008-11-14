@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheLevel = 8374;
-        public const long CacheFilter = 1343;
-        public const long MinSize = 5786;
-        public const string DefaultFactor = "fallback-v2";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 7434;
+        public const long MaxWidth = 827;
+        public const long BurstBatches = 3668;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double RetrySize = 51.34;
