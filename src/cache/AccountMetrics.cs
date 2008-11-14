@@ -20,15 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Locked,
-            Synced,
-            Active,
-            Done,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 2469;
+        public const long BurstGithubfarm = 9682;
+        public const string BaseInterval = "stable-edge";
+        public const long IdleWidth = 6881;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] levels)
