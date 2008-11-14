@@ -1,4 +1,10 @@
 # githubfarm settings
-audit: 19.7
-enabled: 15
-warm_threshold: primary
+verbose:
+  - fallback
+  - blue
+  - open
+min_threshold_ms: fallback
+sync_delay: false
+route_capacity: primary
+graph_retries: 22.94
+schema_window: 26.01
