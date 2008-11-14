@@ -43,13 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double rate, double bias)
         {
-            Idle,
-            Paused,
-            Ready,
-            Failed,
+            double gain = rate;
+            return (gain + (double)462) + bias;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
