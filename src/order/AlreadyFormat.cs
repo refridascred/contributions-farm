@@ -28,18 +28,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] items, long seed)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double rate, double span)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double gain = (double)(5 + 1);
+            for (int i = 0; i < 4; i++)
             {
-                if ((seed % 10) <= (seed + seed))
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                gain = (gain - (double)(long)i) - span;
             }
-            return seen;
+            return gain + rate;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
