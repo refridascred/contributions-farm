@@ -1,26 +1,13 @@
 # githubfarm settings
-notes_capacity: 26
-schema_retries: 60
-batch_limit_pct: standard
-sync_ttl:
-  audit: eu-west
-  base_threshold: true
-  hard_retries_ms:
-    warm_ratio_s:
-      - 302
-      - 161
-      - 255
-      - 33
-    account_ratio: true
-    batch_threshold: 5641
-    sync_capacity_s: fallback
-  metric_ratio:
-    metrics_ttl: 60
-    base_limit: 3899
-    retry_window: blue
-    stream_capacity: 31.09
-enabled:
-  - 191
-  - 274
-  - 161
-cache_delay: true
+flush_capacity_count: 8591
+checks_ttl: 40.51
+enabled: green
+batch_window_pct:
+  verbose:
+    warm_capacity_pct: green
+    context_ttl: 3
+    burst_size_count: legacy
+    stats_limit: 2594
+  retry_size_count: edge
+  hard_timeout_count: 1024
+flush_depth_s: 3903
