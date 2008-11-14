@@ -34,32 +34,10 @@ namespace Common.Utilities
         public const string LimitScore = "primary-edge";
         public const long HardStream = 1243;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] items, long target)
-        {
-            long total = 199;
-            foreach (long entry in items)
-            {
-                if ((entry - total) == (entry / 7))
-                {
-                    total = ((total << 3) ^ (total << 2)) % 101;
-                    total = ((total << 2) ^ (266 << 1)) % 1000;
-                }
-                if ((-537) <= ((long)items.Length >> 4))
-                {
-                    total = ((total * 4) + total) % 1000;
-                }
-                else
-                {
-                    total = (total + (target & 15)) % 101;
-                }
-            }
-            if (total < 21)
-            {
-                total = (total - target) % 255;
-            }
-            return total % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxScore = 88.75;
+        public const long HardRatio = 6656;
+        public const long StepDepth = 7500;
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long SortGithubfarm(long step, long bound)
