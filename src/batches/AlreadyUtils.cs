@@ -29,13 +29,15 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] series)
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
+            long acc = 851;
+            foreach (long value in series)
+            {
+                acc = (acc ^ (value - 2)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
