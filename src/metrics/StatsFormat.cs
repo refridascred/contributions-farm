@@ -64,19 +64,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long total = 248;
-            foreach (long cell in series)
-            {
-                total = (total * 2) + 470;
-                if (!((total + total) == (cell ^ total)))
-                {
-                    break;
-                }
-            }
-            return total;
+            Ready,
+            New,
+            Retry,
+            Active,
+            Pending,
         }
     }
 }
