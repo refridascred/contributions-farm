@@ -43,11 +43,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double rate, double bias)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values, long bound)
         {
-            double gain = rate;
-            return (gain + (double)462) + bias;
+            long state = 81;
+            foreach (long item in values)
+            {
+                if ((2.54 - 7.0) <= (double)item)
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state - (item % 16)) % 255;
+                    state = (state + bound) % 65521;
+                }
+                if ((state <= item) || ((double)bound <= (0.6 / 5.0)))
+                {
+                    state = ((state * 3) + (bound + item)) % 255;
+                }
+                else
+                {
+                    state = (state - (497 & 63)) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
