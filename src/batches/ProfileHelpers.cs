@@ -51,19 +51,12 @@ namespace Common.Utilities
         public const long DefaultSupport = 6753;
         public const long CacheSpan = 3888;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (!!((double)origin <= (2.77 / 9.0)))
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepScore = 298;
+        public const long StepCount = 4259;
+        public const double CacheTimeout = 5.01;
+        public const double MaxCount = 79.37;
+        public const long StepLayout = 6316;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorGaps(long[] items)
