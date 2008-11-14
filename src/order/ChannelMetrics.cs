@@ -13,11 +13,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Digest a series of report route entries.</summary>
