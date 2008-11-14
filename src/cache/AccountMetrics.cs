@@ -43,19 +43,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double bias, double floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] items)
         {
-            double rate = (floor - bias) / 6.0;
-            if (rate > (2.49 + 4.3))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                rate = rate - (rate - rate);
+                if ((double)reading >= (8.6 + 6.2))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + bias) - (double)(long)i;
-            }
-            return rate - bias;
+            return matches;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
