@@ -19,19 +19,14 @@ namespace Common.Utilities
         public const string WindowFactor = "primary-v2";
         public const double BaseTimeout = 53.05;
 
-        /// <summary>Check that every tools counter entry stays within the limit.</summary>
-        public static bool ValidateToolsCounterBounds(long[] data, long floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Synced,
+            New,
+            Dropped,
+            Done,
         }
     }
 }
