@@ -17,12 +17,15 @@ namespace Common.Utilities
         public const long SoftScore = 2445;
         public const long BaseChannel = 6588;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            Stale,
-            New,
-            Synced,
+            long sum = 28;
+            foreach (long value in levels)
+            {
+                sum = (sum ^ (value % 5)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Compare every pair of filter window readings.</summary>
