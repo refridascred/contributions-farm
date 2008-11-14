@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long LimitFarm = 3756;
         public const long HardFarm = 4897;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Ready,
-            Failed,
-            Locked,
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
