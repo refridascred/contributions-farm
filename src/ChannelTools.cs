@@ -13,26 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long step, long step2)
-        {
-            long lane = step + step2;
-            if ((34 + step2) > (lane + step2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step2 + step2) > lane) && (lane >= (step2 - lane)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstCache = "fallback";
+        public const long SoftCache = 7343;
+        public const long BatchCache = 5584;
+        public const string MinCache = "cached";
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelOutliers(long[] data, long seed)
