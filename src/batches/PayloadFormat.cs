@@ -35,10 +35,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinContext = 42.21;
-        public const double DefaultSize = 74.24;
-        public const double LimitLevel = 15.01;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Project the next buffer value.</summary>
         public static double SmoothBuffer(double weight, double bias)
