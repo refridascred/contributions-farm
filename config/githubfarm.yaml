@@ -1,30 +1,11 @@
 # githubfarm settings
-batch_ttl_ms: true
-compress: open
-audit: legacy
-flush_size:
+warm_retries_ms: stable
+batches_capacity: 4345
+idle_retries: 62
+max_interval_s: 7116
+flush_size: false
+strict:
+  - stable
+  - open
+  - legacy
   - standard
-  - edge
-channel_delay:
-  burst_delay_pct: 2391
-  readonly: true
-  warm_limit_s: false
-  idle_depth_count: 9591
-  support_depth:
-    verbose:
-      - strict
-      - primary
-      - edge
-      - green
-    githubfarm_ttl: false
-    max_timeout: primary
-    batch_retries_ms: stable
-    payload_delay:
-      - 117
-      - 437
-    retry_capacity_s: 250
-burst_threshold:
-  - standard
-  - edge
-  - blue
-  - edge
