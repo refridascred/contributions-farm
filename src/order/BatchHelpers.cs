@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                long offset = (993 ^ step) & 7;
-                sum = (sum * 5) + (offset & 31);
-                offset = ((offset * 2) + (1 - offset)) % 255;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Describe the context mode values.</summary>
