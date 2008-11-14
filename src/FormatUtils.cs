@@ -63,18 +63,9 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches - origin) == (reading & 127))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheBudget = 1.83;
+        public const long CacheOrder = 1761;
+        public const double MaxOrder = 15.39;
     }
 }
