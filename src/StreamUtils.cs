@@ -46,26 +46,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] data)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] series)
         {
-            long anchor = 8;
-            foreach (long reading in data)
+            long mark = 95;
+            foreach (long sample in series)
             {
-                if ((reading - reading) == (anchor + anchor))
+                mark = mark ^ (-294);
+                if ((sample + sample) <= (sample - sample))
                 {
-                    anchor = anchor - reading;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (88 & 15)) % 101;
+                    break;
                 }
             }
-            if (anchor < 54)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 4096;
+            return mark % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
