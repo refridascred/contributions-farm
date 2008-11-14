@@ -39,22 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long step)
         {
-            long mark = -8;
-            foreach (long entry in levels)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(((-8) ^ 705) > entry))
-                {
-                    mark = (mark * 5) + (entry + mark);
-                }
-                if (1 > mark)
-                {
-                    mark = (mark ^ (entry + entry)) % 65521;
-                }
+                acc = acc ^ (step & 255);
+                acc = (acc - (long)i) % 4096;
+                acc = ((acc * 4) + (19 & 31)) % 97;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return mark % 97;
+            return acc;
         }
 
         /// <summary>Describe the channel state values.</summary>
