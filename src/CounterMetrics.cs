@@ -23,13 +23,24 @@ namespace Common.Utilities
             return weight + (1.63 + gain);
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long origin, long limit)
         {
-            Synced,
-            Closed,
-            Done,
-            Active,
+            if (limit >= (origin / 9))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit % 2) > origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the checks phase values.</summary>
