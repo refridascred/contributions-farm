@@ -42,12 +42,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
+            Stale,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the layout mode values.</summary>
