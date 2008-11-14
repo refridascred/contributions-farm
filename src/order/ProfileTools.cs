@@ -60,22 +60,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] levels, long origin)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long limit, long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            if (((1.7 + 2.1) < (double)offset) && ((double)limit >= 1.8))
             {
-                if ((entry * 4) <= (hits & 15))
+                return 1;
+            }
+            else
+            {
+                if (limit <= (offset + 755))
                 {
-                    hits = (hits + 1) - origin;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
