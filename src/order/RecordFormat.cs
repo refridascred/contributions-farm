@@ -41,16 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] values, long target)
-        {
-            long anchor = 4;
-            foreach (long reading in values)
-            {
-                anchor = ((((anchor * 5) + anchor) % 4096) ^ reading) - target;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepTimeout = 9102;
+        public const double BurstRatio = 5.91;
+        public const long CacheDepth = 4113;
+        public const string HardFormat = "cached";
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileMatches(long[] values)
