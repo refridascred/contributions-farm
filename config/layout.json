@@ -1,6 +1,8 @@
 {
-  "min_capacity_s": true,
-  "batches_depth": true,
-  "max_limit_pct": 71.05,
-  "idle_limit": "strict"
+  "min_ratio": false,
+  "retry_depth_pct": true,
+  "cache_limit_count": 9,
+  "editor_depth": "latest",
+  "max_window": 70.31,
+  "verbose": "eu-west"
 }
