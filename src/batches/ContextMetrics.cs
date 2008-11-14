@@ -58,17 +58,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] levels, long bound)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = floor;
+            return (drift + floor) + ratio;
         }
     }
 }
