@@ -36,19 +36,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 495;
         public const string MaxCounter = "legacy-v2";
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] levels, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] values)
         {
-            long anchor = 35;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                anchor = (((anchor << 3) ^ (origin * 5)) % 4096) - reading;
+                if ((double)seen <= (7.07 - 1.0))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
             }
-            if (anchor > 294)
-            {
-                anchor = (anchor + (origin << 3)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the order state values.</summary>
