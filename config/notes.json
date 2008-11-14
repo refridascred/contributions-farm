@@ -1,17 +1,6 @@
 {
-  "warm_retries": {
-    "base_delay": 250,
-    "base_timeout": 48.63,
-    "already_timeout": 60,
-    "verbose": 71.27,
-    "buffer_size": "cached",
-    "stream_delay": {
-      "tools_threshold": "stable",
-      "sync_capacity": 65.47,
-      "warm_threshold": "standard"
-    }
-  },
-  "batch_window": 78.93,
-  "metric_capacity": 30,
-  "cache_ratio": 74
+  "already_depth": 250,
+  "soft_timeout": "staging",
+  "min_size_s": "latest",
+  "enabled": "blue"
 }
