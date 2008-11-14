@@ -24,19 +24,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every cache editor entry stays within the limit.</summary>
-        public static bool VerifyCacheEditorBounds(long[] readings, long offset)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
