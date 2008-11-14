@@ -32,13 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Failed,
-            Active,
-            Ready,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstSize = 6119;
+        public const string IdleInterval = "alpha-1";
+        public const long BurstContributi = 3188;
+        public const long DefaultContributi = 5539;
+        public const long SoftContributi = 8733;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
