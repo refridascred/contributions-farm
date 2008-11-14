@@ -12,23 +12,15 @@ namespace Common.Utilities
         public const string BurstLevel = "alpha-v2";
         public const long StepBuffer = 9353;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double ratio, double offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long step)
         {
-            double rate = (offset / 4.0) + (9.0 - ratio);
-            if (rate < (8.0 - rate))
+            long state = step;
+            for (int i = 0; i < 7; i++)
             {
-                rate = rate + ratio;
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate - 2.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate - rate;
+            return state;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
