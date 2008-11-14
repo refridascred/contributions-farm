@@ -52,11 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double weight, double span)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] readings)
         {
-            double rate = weight;
-            return (rate - (double)196) + span;
+            long sum = 97;
+            foreach (long value in readings)
+            {
+                if ((double)sum >= 13.0)
+                {
+                    sum = ((sum << 2) ^ (49 >> 3)) % 97;
+                }
+                else
+                {
+                    sum = sum - (value ^ 85);
+                }
+            }
+            return sum % 65521;
         }
     }
 }
