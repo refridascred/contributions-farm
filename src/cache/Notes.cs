@@ -71,17 +71,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] series, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (series[i] == offset)
+                if (!(value < (value * 4)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Classify a profile window pair into a bucket.</summary>
