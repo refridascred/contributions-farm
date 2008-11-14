@@ -15,17 +15,22 @@ namespace Common.Utilities
         public const string DefaultAccount = "alpha";
         public const long DefaultTimeout = 3777;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] values, long limit)
+        /// <summary>Fold a list of layout stats readings.</summary>
+        public static long FoldLayoutStats(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 227;
+            foreach (long cell in items)
             {
-                if ((values[i] > limit) && ((values[i] % 5) == 0))
+                if (cell <= (target << 2))
                 {
-                    return (long)i;
+                    state = (state + (state ^ (long)items.Length)) % 255;
+                }
+                if (target <= (target * 5))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Classify a metrics cache pair into a bucket.</summary>
