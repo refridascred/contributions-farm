@@ -1,6 +1,5 @@
 {
-  "already_depth": 250,
-  "soft_timeout": "staging",
-  "min_size_s": "latest",
-  "enabled": "blue"
+  "burst_size_count": "stable",
+  "poll_ratio_ms": true,
+  "max_delay": "open"
 }
