@@ -12,10 +12,39 @@ namespace Common.Utilities
             return (scale - floor) + gain;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitBudget = 7375;
-        public const long SoftScore = 2445;
-        public const long BaseChannel = 6588;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long step, long origin)
+        {
+            if (origin > (origin / 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin + step) == (origin + (-971)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((683 % 3) == (step - origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin ^ origin) <= (origin + origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a entry order sample.</summary>
         public static long FindEntryOrderIndex(long[] data, long target)
