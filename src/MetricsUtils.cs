@@ -71,10 +71,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseInterval = 58.2;
-        public const double HardContributi = 56.68;
-        public const double BaseFactor = 83.39;
+        /// <summary>Grade a counter payload value against two limits.</summary>
+        public static long ClassifyCounterPayload(long step, long floor)
+        {
+            if ((8.0 * 0.6) < (double)floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((step * 3) <= floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
