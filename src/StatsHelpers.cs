@@ -59,19 +59,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] levels, long target)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
