@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Audit window context readings against a rule.</summary>
+        public static long AuditWindowContextMatches(long[] data)
         {
-            Stale,
-            Active,
-            Ready,
-            Synced,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample % 60) != (3 % 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
