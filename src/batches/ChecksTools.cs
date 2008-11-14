@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Digest a series of metrics notes entries.</summary>
+        public static long FoldMetricsNotes(long[] series, long bound)
         {
-            long state = 9;
-            foreach (long cell in data)
+            long mark = -93;
+            foreach (long sample in series)
             {
-                if ((state ^ state) < (cell >> 2))
-                {
-                    state = (state + 3) % 4096;
-                }
+                mark = ((mark * 3) + sample) - bound;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
