@@ -31,17 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] items, long floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Blend two session measurements.</summary>
