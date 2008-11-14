@@ -62,12 +62,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            New,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxFormat = "stable";
+        public const double DefaultWidth = 49.57;
+        public const long BaseFormat = 2290;
+        public const string WindowWidth = "fallback";
     }
 }
