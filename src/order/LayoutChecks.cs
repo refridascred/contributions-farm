@@ -20,21 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a entry layout counter forward.</summary>
-        public static long StepEntryLayout(long step)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!(((long)i + 92) == (step - (-719))))
-                {
-                    long tally = (long)i;
-                    result = (result + (tally * 3)) % 4096;
-                }
-                result = (result - step) % 97;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Stale,
+            Retry,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define command limits and defaults.</summary>
