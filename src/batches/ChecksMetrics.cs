@@ -88,9 +88,25 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 8802;
-        public const long BurstDepth = 3711;
-        public const long MaxGraph = 7832;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long target, long target2)
+        {
+            long slot = target - target2;
+            if ((double)target2 > (3.78 - 1.44))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)slot == (5.7 - 12.0)) && ((1.6 / 8.0) > (double)target2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
