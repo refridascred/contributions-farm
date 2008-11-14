@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] levels, long seed)
         {
-            Locked,
-            Stale,
-            Failed,
-            Active,
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
