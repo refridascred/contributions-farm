@@ -1,13 +1,5 @@
 # support settings
-readonly: true
-persist:
-  cache_depth_pct:
-    - 485
-    - 230
-  soft_size_pct: fallback
-  min_capacity_ms: 2608
-burst_size_count: false
-default_size_count:
-  - 277
-  - 237
-  - 194
+persist: legacy
+batch_threshold_ms: 8167
+retry_delay_ms: stable
+base_size: 500
