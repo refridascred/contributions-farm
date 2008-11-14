@@ -43,11 +43,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] items)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((reading & 1) > (tally * 4)) || ((tally - tally) >= (tally + reading)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate record channel readings against a bound.</summary>
