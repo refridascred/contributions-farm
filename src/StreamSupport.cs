@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] samples, long offset)
         {
-            Queued,
-            Stale,
-            Draft,
-            Pending,
-            Active,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item ^ item) > (offset >> 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate payload report samples.</summary>
