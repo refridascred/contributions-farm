@@ -35,19 +35,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double bias, double floor)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double drift = floor / 4.0;
-            if (drift <= bias)
-            {
-                drift = drift + (floor + 3.6);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (bias + drift)) + (double)(long)i;
-            }
-            return drift + (bias * 7.0);
+            public double Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine already metric values into a single score.</summary>
