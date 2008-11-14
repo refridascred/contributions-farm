@@ -54,18 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a graph tools sample.</summary>
-        public static long FindGraphToolsIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBudget = 27.52;
+        public const long IdleBatches = 4078;
+        public const double HardSize = 21.12;
+        public const string BurstBatches = "primary-1";
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long PairSchemaCount(long[] data)
