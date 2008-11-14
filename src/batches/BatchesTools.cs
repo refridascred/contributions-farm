@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long score = 607;
-            foreach (long item in samples)
-            {
-                score = (score ^ (item % 97)) % 1000;
-            }
-            return score % 65521;
+            Closed,
+            New,
+            Pending,
+            Done,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
