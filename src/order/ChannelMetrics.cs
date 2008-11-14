@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 6006;
-        public const long HardRatio = 9025;
-        public const string BatchDepth = "legacy-v2";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((9.0 + 17.0) != (double)floor) || ((floor - seen) < (0 << 2)))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long StepContext = 5841;
