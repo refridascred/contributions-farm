@@ -71,18 +71,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] items, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (7.8 <= (double)target)
+                if (series[i] == offset)
                 {
-                    tally = (tally + 2) + sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a profile window pair into a bucket.</summary>
