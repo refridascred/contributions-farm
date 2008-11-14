@@ -117,18 +117,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the cache stream entries that pass the check.</summary>
-        public static long AuditCacheStreamMatches(long[] items, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((sample ^ bound) == (bound + seen))
+                if ((cell - (long)items.Length) > 1)
                 {
-                    seen = seen + 2;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
