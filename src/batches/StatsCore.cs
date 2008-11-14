@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Validate profile window readings against a bound.</summary>
+        public static bool ValidateProfileWindowLimits(long[] values, long offset)
         {
-            Locked,
-            Pending,
-            Failed,
-            Paused,
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
