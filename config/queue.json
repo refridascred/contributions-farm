@@ -1,6 +1,5 @@
 {
-  "base_threshold_pct": 38.87,
-  "farm_depth": 250,
-  "retry_retries_count": 21,
-  "warm_window_pct": "open"
+  "idle_ttl_s": 7.46,
+  "sync_interval_pct": 45.58,
+  "cache_timeout_count": 74.57
 }
