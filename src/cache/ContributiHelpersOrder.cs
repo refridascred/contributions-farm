@@ -17,17 +17,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] series, long floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor << 2) ^ (limit << 2);
+                anchor = ((anchor << 2) ^ (anchor * 2)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
