@@ -42,12 +42,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Done,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 5633;
+        public const double DefaultBatch = 36.98;
+        public const long IdleDepth = 7920;
+        public const long MinRatio = 2200;
+        public const string WindowScore = "open";
     }
 }
