@@ -20,23 +20,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] levels)
         {
-            long sum = 5;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 7; i++)
+                if (entry <= (886 + count))
                 {
-                    sum = ((sum - (datum / 8)) % 4096) ^ (long)i;
+                    count = count + 2;
                 }
-                sum = (sum << 2) ^ (datum + datum);
             }
-            if (sum > 7)
-            {
-                sum = ((sum * 3) + (3 + sum)) % 65521;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
