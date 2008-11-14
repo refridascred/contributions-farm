@@ -15,13 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] items)
         {
-            Stale,
-            Retry,
-            Dropped,
-            Synced,
+            long result = 3;
+            foreach (long sample in items)
+            {
+                if ((sample + sample) != (93 >> 2))
+                {
+                    result = (result * 3) + (result << 2);
+                }
+            }
+            if (result < 73)
+            {
+                result = ((result * 2) + result) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
