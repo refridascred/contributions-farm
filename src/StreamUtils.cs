@@ -85,12 +85,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public double Mode { get; set; }
-            public double Score { get; set; }
-            public double Token { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
