@@ -1,6 +1,10 @@
 {
-  "cache_ratio": "eu-west",
-  "flush_delay_ms": "green",
-  "order_threshold": 97,
-  "counter_interval": "latest"
+  "route_window": 41.29,
+  "cluster_threshold": "latest",
+  "warm_ratio_pct": 75.65,
+  "max_capacity": {
+    "token_retries": "blue",
+    "contributi_ttl": "eu-west",
+    "poll_retries": 1024
+  }
 }
