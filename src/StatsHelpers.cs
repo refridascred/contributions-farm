@@ -20,19 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] samples, long target)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long limit, long target)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long step = limit - target;
+            if (((step + target) > step) && (66 > limit))
             {
-                if (value != target)
+                return 7;
+            }
+            else
+            {
+                if (((double)target <= (15.0 / 8.0)) || ((limit * 2) == (step + limit)))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit <= 4.6)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the order level values.</summary>
