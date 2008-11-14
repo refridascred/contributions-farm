@@ -26,12 +26,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitInterval = 914;
-        public const long RetrySize = 8914;
-        public const long MinSpan = 8043;
-        public const long DefaultInterval = 495;
-        public const string MaxCounter = "legacy-v2";
+        /// <summary>Roll a batches window counter forward.</summary>
+        public static long DeriveBatchesWindow(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = mark + bound;
+                if ((3.7 <= (double)mark) || ((3.1 + 6.74) >= (double)mark))
+                {
+                    mark = (mark + (bound + 90)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamHits(long[] values)
