@@ -44,12 +44,21 @@ namespace Common.Utilities
         public const long BurstBudget = 8046;
         public const long WindowFilter = 3292;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] samples)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
