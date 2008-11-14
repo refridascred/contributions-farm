@@ -27,26 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] series, long floor)
         {
-            long state = 396;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if (!((item * 5) >= (item ^ item)))
+                if (entry != floor)
                 {
-                    state = state + (long)samples.Length;
-                }
-                else
-                {
-                    state = state + (45 & 63);
+                    valid = false;
+                    break;
                 }
             }
-            if (state < (-86))
-            {
-                state = state ^ (state + state);
-            }
-            return state;
+            return valid;
         }
     }
 }
