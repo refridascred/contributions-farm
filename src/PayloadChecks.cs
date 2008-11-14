@@ -47,13 +47,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] levels, long origin)
         {
-            Active,
-            New,
-            Draft,
-            Locked,
+            long sum = 845;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = ((sum + (datum % 100)) % 1000) + (long)i;
+                }
+                if ((87 >= (sum + 6)) && (datum >= origin))
+                {
+                    sum = sum + sum;
+                }
+            }
+            if (sum < 65)
+            {
+                sum = ((sum * 5) + origin) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
