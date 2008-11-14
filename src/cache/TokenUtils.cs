@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long seed, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] readings)
         {
-            long edge = seed + bound;
-            if ((edge + edge) == (bound * 2))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)edge >= 9.1)
+                if (2.0 < (double)sample)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed <= (8.0 + 4.12))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound < (seed << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a token reading by value.</summary>
