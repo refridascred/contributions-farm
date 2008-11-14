@@ -1,10 +1,4 @@
 # githubfarm settings
-soft_depth_ms: fallback
-readonly: strict
-compress:
-  - 69
-  - 393
-  - 58
-  - 135
-strict: 30
-checks_timeout: cached
+hard_ttl: 72
+cache_timeout: 91.82
+warm_delay: true
