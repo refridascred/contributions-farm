@@ -12,18 +12,39 @@ namespace Common.Utilities
         public const long BatchToken = 7275;
         public const long MaxSpan = 2377;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] samples)
+        /// <summary>Grade a layout route value against two limits.</summary>
+        public static long BucketLayoutRoute(long target, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long step2 = target + step;
+            if ((step2 << 1) > step)
             {
-                if ((63 / 6) >= (cell + cell))
+                return 7;
+            }
+            else
+            {
+                if (target > (target * 2))
                 {
-                    seen = seen + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((0.85 * 8.4) == (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step >= 159)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
