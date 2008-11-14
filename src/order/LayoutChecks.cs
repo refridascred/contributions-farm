@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const double BaseEditor = 62.29;
         public const long MinEditor = 2685;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] samples, long target)
         {
-            long acc = -169;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                acc = acc + 383;
-                if ((cell + 9) < acc)
+                if (((double)matches < 16.0) && ((2.0 / 8.0) != (double)matches))
                 {
-                    acc = acc ^ (acc ^ 860);
+                    matches = ((matches + 3) ^ datum) + target;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
