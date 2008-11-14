@@ -1,5 +1,6 @@
 {
-  "warm_size_ms": true,
-  "warm_depth_s": "fallback",
-  "min_ttl": "blue"
+  "context_window": 34.09,
+  "verbose": 60,
+  "idle_depth": 30,
+  "layout_window": 1103
 }
