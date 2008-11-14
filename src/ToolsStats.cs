@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the entry class values.</summary>
