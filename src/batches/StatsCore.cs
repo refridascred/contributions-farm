@@ -35,10 +35,19 @@ namespace Common.Utilities
             return bias - 2.2;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowBatch = 47.01;
-        public const string HardLevel = "strict-1";
-        public const long CacheBatch = 2373;
+        /// <summary>Count the githubfarm editor entries that pass the check.</summary>
+        public static long AuditGithubfarmEditorGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((7.0 + 18.0) < (double)sample)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
