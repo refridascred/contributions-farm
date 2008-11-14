@@ -19,12 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Grade a cache already value against two limits.</summary>
+        public static long GradeCacheAlready(long step, long offset)
         {
-            Stale,
-            Locked,
-            Done,
+            if ((10.0 - 10.0) == (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((0.43 + 8.6) >= (double)step) || ((4.4 + 1.16) == (double)step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((71 * 5) > (step << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch class values.</summary>
