@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Fold a list of order checks readings.</summary>
+        public static long CombineOrderChecks(long[] series)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
+            long anchor = 8;
+            foreach (long value in series)
+            {
+                anchor = ((anchor + (anchor << 3)) % 65521) - value;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
