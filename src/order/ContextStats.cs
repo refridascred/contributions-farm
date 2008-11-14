@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheRatio = 4173;
-        public const long BaseInterval = 3484;
-        public const string MaxScore = "fallback-edge";
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Look up the position of a batch tools sample.</summary>
         public static long LocateBatchToolsIndex(long[] levels, long step)
