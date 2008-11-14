@@ -1,15 +1,14 @@
 # Payload notes
 
-Use context settings to tune how often schema data is refreshed.
-The window report groups every stream by token.
-A checks that stays idle for too long is moved to the account list.
+Each command is validated before it reaches the queue queue.
+Defaults for metrics live in the config folder and can be overridden per environment.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
-The metric module keeps entry values in sync with the route cache.
-Defaults for cluster live in the config folder and can be overridden per environment.
+Each already is validated before it reaches the metric queue.
+Run the command check before changing any context limits.
 
 ## Guidelines
 
-- Document new channel fields
-- Validate support input early
-- Keep context values small
-- Review route limits each release
+- Review metric limits each release
+- Validate tools input early
+- Log every account change
