@@ -1,9 +1,18 @@
 # githubfarm settings
-retry_interval_count: 96.11
-audit: 60
-soft_window_ms: edge
-cache_size: edge
-idle_threshold_pct:
+max_window:
+  - 456
+  - 288
   - 248
-  - 309
-max_delay_count: fallback
+window_size:
+  cache_threshold: open
+  graph_delay:
+    metrics_interval: 55
+    verbose: false
+    default_depth: strict
+    readonly: staging
+    max_window_pct: 42
+  retry_size_ms: 4247
+compress: 29.36
+metric_limit: 30
+sync_size_ms: 22
+sync_threshold_pct: 6.34
