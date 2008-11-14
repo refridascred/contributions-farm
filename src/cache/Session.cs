@@ -22,18 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support githubfarm entries that pass the check.</summary>
-        public static long TallySupportGithubfarmMatches(long[] items)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long step)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((61 - tally) <= (item + tally))
+                if ((792 & 3) == (score >> 5))
                 {
-                    tally = tally + 1;
+                    score = score + (score - step);
+                    score = (score << 3) ^ (long)i;
+                    break;
                 }
+                score = score + step;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a context snapshot.</summary>
