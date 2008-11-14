@@ -19,16 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Validate context githubfarm readings against a bound.</summary>
+        public static bool CheckContextGithubfarmBounds(long[] values, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                mark = (mark << 2) ^ (67 & 127);
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (value > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Iterate the profile route series from a seed.</summary>
