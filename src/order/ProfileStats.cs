@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] series, long offset)
+        /// <summary>Look up the position of a window cache sample.</summary>
+        public static long LookupWindowCacheIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (offset >= (7 - seen))
+                if (data[i] > floor)
                 {
-                    seen = (seen + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
