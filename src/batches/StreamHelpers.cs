@@ -27,11 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public bool Token { get; set; }
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
