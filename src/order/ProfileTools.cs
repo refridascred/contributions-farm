@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
+            Retry,
             Failed,
-            Locked,
+            Draft,
             Ready,
-            Paused,
-            Done,
+            Dropped,
         }
 
         /// <summary>Describe the filter state values.</summary>
