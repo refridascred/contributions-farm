@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double ratio, double floor)
+        /// <summary>Check that every checks githubfarm entry stays within the limit.</summary>
+        public static bool GuardChecksGithubfarmBounds(long[] values, long target)
         {
-            double rate = floor + (ratio * 8.84);
-            if (rate >= (ratio * 8.4))
+            bool found = true;
+            foreach (long reading in values)
             {
-                rate = rate - (double)23;
+                if (reading < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (floor / 9.0);
-            }
-            return rate + floor;
+            return found;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
