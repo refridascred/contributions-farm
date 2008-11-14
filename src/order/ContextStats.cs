@@ -44,22 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order queue entries that pass the check.</summary>
-        public static long TallyOrderQueueMatches(long[] items)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((3.55 * 3.0) > (double)cell)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Stale,
+            Dropped,
         }
     }
 }
