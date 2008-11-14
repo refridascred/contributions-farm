@@ -4,7 +4,11 @@ CREATE TABLE IF NOT EXISTS commits_records (
     ratio REAL,
     label TEXT,
     region TEXT,
-    score REAL NOT NULL DEFAULT 0
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
 CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
+
+INSERT INTO commits_records (ratio, label, region, state) VALUES (37.75, 'standard', 'green', 'standard');
+INSERT INTO commits_records (ratio, label, region, state) VALUES (6.42, 'open', 'eu-west', 'strict');
+INSERT INTO commits_records (ratio, label, region, state) VALUES (59.52, 'fallback', 'primary', 'primary');
