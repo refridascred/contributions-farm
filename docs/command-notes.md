@@ -1,14 +1,11 @@
 # Command notes
 
-The contributi report groups every channel by cluster.
-Keep record and order names short and lowercase.
-
-Each notes is validated before it reaches the command queue.
-The contributi module keeps entry values in sync with the order cache.
+A graph that stays idle for too long is moved to the farm list.
+Use schema settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Document new contributi fields
-- Validate farm input early
-- Keep graph values small
-- Review entry limits each release
+- Review batches limits each release
+- Log every metrics change
+- Keep farm values small
+- Prefer editor defaults
