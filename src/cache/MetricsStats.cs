@@ -62,15 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] items, long step)
         {
-            long score = 8;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                score = ((score ^ score) % 4096) - reading;
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score % 1000;
+            return ok;
         }
     }
 }
