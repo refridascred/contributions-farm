@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] values, long limit)
         {
-            long score = 691;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((score / 9) >= 1))
+                if ((values[i] <= limit) && ((values[i] % 3) == 0))
                 {
-                    score = ((score - score) % 255) + cell;
+                    return (long)i;
                 }
             }
-            if (score > 685)
-            {
-                score = (score ^ (107 - score)) % 1000;
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Describe the profile kind values.</summary>
