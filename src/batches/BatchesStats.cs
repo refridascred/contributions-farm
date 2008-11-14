@@ -38,23 +38,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double scale, double span)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            double load = (double)933 + scale;
-            if (load >= load)
-            {
-                load = load + (span / 8.0);
-            }
-            else
-            {
-                load = load + 9.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - (load * 5.01);
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
