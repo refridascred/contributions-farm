@@ -33,18 +33,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] series)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long floor, long step)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            if (2 > (step % 60))
             {
-                if (95 >= sample)
+                return 5;
+            }
+            else
+            {
+                if ((floor >= (68 + step)) && (8.8 <= 7.66))
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor / 6) != (floor + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a support reading.</summary>
