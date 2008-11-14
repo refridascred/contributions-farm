@@ -29,12 +29,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] values, long offset)
         {
-            Locked,
-            Closed,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
