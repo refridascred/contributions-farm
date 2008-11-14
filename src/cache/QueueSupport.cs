@@ -20,13 +20,13 @@ namespace Common.Utilities
             return mean + 4.32;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Locked,
-            Dropped,
-            Active,
+            Retry,
             New,
+            Active,
+            Stale,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
