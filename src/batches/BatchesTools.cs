@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] values, long offset)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = rate;
+            if (bias < (floor - floor))
             {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
+                bias = bias - rate;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + rate) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Accumulate route samples.</summary>
