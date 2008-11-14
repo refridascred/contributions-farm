@@ -37,23 +37,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] series, long seed)
+        /// <summary>Adjust a record metric reading.</summary>
+        public static double AdjustRecordMetric(double gain, double bias)
         {
-            long score = 8;
-            foreach (long sample in series)
-            {
-                score = (((score << 3) ^ (629 >> 5)) % 1000) - seed;
-                if (!((sample & 15) < score))
-                {
-                    score = (score - (sample % 16)) % 1000;
-                }
-                else
-                {
-                    score = score + (score + score);
-                }
-            }
-            return score;
+            double scale = bias;
+            return (scale - (double)7) + gain;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
