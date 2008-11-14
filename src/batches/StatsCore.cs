@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] levels)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double weight, double bias)
         {
-            long mix = 82;
-            foreach (long entry in levels)
+            double mean = bias;
+            if (mean >= (double)5)
             {
-                if ((2.2 + 5.84) == (double)mix)
-                {
-                    mix = (mix + mix) % 65521;
-                }
-                if ((506 <= mix) && ((double)entry != (8.8 / 3.0)))
-                {
-                    break;
-                }
+                mean = (mean - mean) - weight;
             }
-            if (mix > 3)
-            {
-                mix = (mix << 3) ^ (mix >> 2);
-            }
-            return mix % 4096;
+            return mean + (double)67;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
