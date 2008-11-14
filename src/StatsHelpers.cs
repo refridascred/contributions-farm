@@ -50,23 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] data, long seed)
+        /// <summary>Audit commits window readings against a rule.</summary>
+        public static long AuditCommitsWindowMatches(long[] values, long target)
         {
-            long acc = 79;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (seed >= item)
+                if ((matches >> 2) <= target)
                 {
-                    acc = acc ^ item;
+                    matches = (matches + 1) - sample;
                 }
-                acc = (acc - (302 % 8)) % 255;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (acc < 61)
-            {
-                acc = ((acc << 2) ^ 34) % 1000;
-            }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
