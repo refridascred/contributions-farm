@@ -54,18 +54,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] samples)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value + 5) > (value - value))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
