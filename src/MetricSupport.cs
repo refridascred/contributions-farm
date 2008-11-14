@@ -14,12 +14,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchFactor = 7943;
-        public const double LimitCount = 90.11;
-        public const long SoftRoute = 4784;
-        public const string RetryScore = "latest-edge";
-        public const double BaseRoute = 92.73;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (matches < ((long)series.Length >> 5))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
