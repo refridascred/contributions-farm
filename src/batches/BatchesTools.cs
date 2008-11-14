@@ -54,21 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks queue counter forward.</summary>
-        public static long DeriveChecksQueue(long limit)
+        /// <summary>Project the next session report value.</summary>
+        public static double ScaleSessionReport(double rate, double bias)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            double mean = rate;
+            if (mean <= rate)
             {
-                double rate = 4.5;
-                sum = ((sum * 5) + (limit - (long)i)) % 101;
-                if (6.9 <= rate)
-                {
-                    rate = rate - rate;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                mean = (mean - mean) + bias;
             }
-            return sum;
+            return mean + (double)4;
         }
     }
 }
