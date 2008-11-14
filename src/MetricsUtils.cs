@@ -58,22 +58,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] items)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long limit, long target)
         {
-            long count = 0;
-            foreach (long entry in items)
+            if ((double)limit <= 8.0)
             {
-                if ((7.0 + 7.6) < (double)count)
+                return 6;
+            }
+            else
+            {
+                if ((8.5 * 6.22) > (double)target)
                 {
-                    count = (count + 3) + entry;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (9 >= (target ^ target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
