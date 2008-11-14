@@ -31,15 +31,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double gain, double bias)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double rate, double floor)
         {
-            double bias2 = bias;
-            if (bias2 <= (double)40)
+            double scale = rate;
+            for (int i = 0; i < 3; i++)
             {
-                bias2 = bias2 - 7.0;
+                scale = ((scale + (double)629) + (double)(long)i) - floor;
             }
-            return bias2 - gain;
+            return scale + (rate + rate);
         }
     }
 }
