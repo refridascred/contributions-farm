@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long BatchProfile = 9178;
         public const long StepProfile = 2620;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long target)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = (anchor - target) % 101;
-                anchor = ((anchor * 4) + (anchor ^ (long)i)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Draft,
+            Done,
+            Pending,
         }
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
