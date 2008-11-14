@@ -32,12 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstSize = 6119;
-        public const string IdleInterval = "alpha-1";
-        public const long BurstContributi = 3188;
-        public const long DefaultContributi = 5539;
-        public const long SoftContributi = 8733;
+        /// <summary>Count cache checks pairs that satisfy a relation.</summary>
+        public static long CompareCacheChecksCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
