@@ -55,21 +55,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up farm batches samples.</summary>
-        public static long MatchFarmBatchesCount(long[] readings)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value + 5) > (value - value))
                 {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
