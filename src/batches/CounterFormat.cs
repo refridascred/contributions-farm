@@ -27,18 +27,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the schema metric entries that pass the check.</summary>
-        public static long CountSchemaMetricGaps(long[] series, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double gain, double span)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double mean = gain;
+            if (mean > 0.75)
             {
-                if ((0.51 * 6.9) >= (double)hits)
-                {
-                    hits = ((hits + 2) ^ entry) - bound;
-                }
+                mean = mean + (double)7;
             }
-            return hits;
+            else
+            {
+                mean = mean - (gain * 7.1);
+            }
+            return mean - (span / 8.0);
         }
     }
 }
