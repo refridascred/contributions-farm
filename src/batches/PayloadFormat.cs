@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] values, long floor)
+        /// <summary>Audit farm stream readings against a rule.</summary>
+        public static long AuditFarmStreamHits(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((double)hits < 9.4)
+                if ((cell << 3) != (cell + limit))
                 {
-                    hits = ((hits + 1) + sample) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
