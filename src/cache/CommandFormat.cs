@@ -46,12 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Adjust a commits reading.</summary>
