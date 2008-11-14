@@ -46,19 +46,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double bias, double bias2)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] series, long bound)
         {
-            double weight = (double)(82 * 3);
-            if (weight < (bias + bias2))
+            bool valid = true;
+            foreach (long cell in series)
             {
-                weight = weight + (bias - weight);
+                if (cell >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + 6.68;
-            }
-            return weight - weight;
+            return valid;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
