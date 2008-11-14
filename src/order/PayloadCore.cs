@@ -28,12 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] series)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((double)6 > (double)cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
