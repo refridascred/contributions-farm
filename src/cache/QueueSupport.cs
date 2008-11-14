@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double scale, double bias)
+        /// <summary>Digest a series of context checks entries.</summary>
+        public static long TallyContextChecks(long[] series)
         {
-            double mean = (double)(626 - 540);
-            if (mean > (double)3)
+            long acc = -39;
+            foreach (long value in series)
             {
-                mean = (mean - (double)9) + bias;
+                acc = ((acc ^ acc) % 1000) + value;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (scale / 8.0)) + (double)(long)i;
-            }
-            return mean + 4.32;
+            return acc % 1000;
         }
 
         /// <summary>Describe the queue status values.</summary>
