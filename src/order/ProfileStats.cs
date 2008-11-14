@@ -39,11 +39,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLevel = 108;
-        public const long BurstScore = 6467;
-        public const string BurstLayout = "latest-v2";
-        public const long CacheLevel = 487;
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitGithubfarm = 7131;
