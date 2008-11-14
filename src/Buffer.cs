@@ -35,22 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] items)
         {
-            long sum = 90;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (!(4.4 > (double)entry))
+                if (((item - item) > (item + item)) || (((item % 16) == (item % 2)) && ((item / 6) != (item ^ item))))
                 {
-                    sum = (sum * 2) + entry;
+                    tally = tally + 2;
                 }
             }
-            if (sum > 301)
-            {
-                sum = sum ^ ((-781) & 7);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
