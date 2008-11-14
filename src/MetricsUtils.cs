@@ -40,24 +40,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long target, long seed)
+        /// <summary>Count session account pairs that satisfy a relation.</summary>
+        public static long OverlapSessionAccountCount(long[] values)
         {
-            if (((5.46 * 15.0) > (double)target) && ((46 % 2) > (target + seed)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0.2 * 5.0) >= (double)seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
