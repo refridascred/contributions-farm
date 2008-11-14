@@ -20,17 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a window batches reading by value.</summary>
-        public static long SeekWindowBatchesIndex(long[] samples, long limit)
+        /// <summary>Grade a token cluster value against two limits.</summary>
+        public static long GradeTokenCluster(long target, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((target + target) < (125 >> 3))
             {
-                if (samples[i] > limit)
+                return 6;
+            }
+            else
+            {
+                if ((double)offset >= (18.0 - 8.78))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the tools phase values.</summary>
