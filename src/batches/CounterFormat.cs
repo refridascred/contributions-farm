@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            Idle,
-            Pending,
-            Synced,
-            Active,
+            long score = 31;
+            foreach (long reading in series)
+            {
+                score = ((score * 4) + reading) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the entry kind values.</summary>
