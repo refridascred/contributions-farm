@@ -48,11 +48,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Measure how many tools route samples are out of range.</summary>
+        public static long AuditToolsRouteOutliers(long[] readings)
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading == (1.24 - 1.8))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
