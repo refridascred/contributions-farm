@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] samples, long limit)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (value < limit)
+                if ((9.74 / 2.0) > (double)floor)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the token state values.</summary>
