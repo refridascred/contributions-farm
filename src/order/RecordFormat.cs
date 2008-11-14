@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the metric token entries that pass the check.</summary>
-        public static long TallyMetricTokenOutliers(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (value >= seen)
+                if ((12 < origin) && !((18.0 / 4.0) > (double)count))
                 {
-                    seen = seen + 2;
+                    count = (count + 1) ^ datum;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
