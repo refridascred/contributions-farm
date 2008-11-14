@@ -12,32 +12,19 @@ namespace Common.Utilities
         public const double StepSize = 59.98;
         public const long IdleNotes = 9504;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long bound, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] levels, long seed)
         {
-            long cur = bound + target;
-            if (((cur + bound) <= (bound - bound)) || ((cur + bound) >= cur))
+            bool found = true;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)cur >= (6.85 - 9.0)) && ((target >> 4) <= bound))
+                if (item > seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (target >= 61)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
