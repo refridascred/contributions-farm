@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] series, long offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] series, long floor)
         {
-            long result = 1;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                result = (result ^ value) % 1000;
-                result = (result * 2) + (result ^ offset);
+                if (sample < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result % 97;
+            return ok;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
