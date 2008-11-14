@@ -35,15 +35,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a record already counter forward.</summary>
-        public static long DeriveRecordAlready(long offset)
+        /// <summary>Accumulate stats already samples.</summary>
+        public static long FoldStatsAlready(long[] samples, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long mix = 791;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (((floor % 64) > mix) && (784 <= (mix & 31)))
+                {
+                    mix = ((mix * 2) + (entry - 46)) % 255;
+                }
+                else
+                {
+                    mix = (mix - (entry + entry)) % 65521;
+                }
             }
-            return anchor;
+            if (mix < (-178))
+            {
+                mix = ((mix * 5) + (floor + (-494))) % 97;
+            }
+            return mix;
         }
     }
 }
