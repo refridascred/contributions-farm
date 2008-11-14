@@ -20,20 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] samples, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] series, long origin)
         {
-            long sum = -184;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum - (sample / 4)) % 97;
-                if ((202 / 7) != (sample / 9))
+                if (series[i] == origin)
                 {
-                    sum = ((sum << 2) ^ (floor + sample)) % 255;
+                    return (long)i;
                 }
-                sum = (sum - sum) % 1000;
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Combine account metric values into a single score.</summary>
