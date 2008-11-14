@@ -24,21 +24,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Count the format cache entries that pass the check.</summary>
+        public static long CountFormatCacheGaps(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((matches / 8) >= (target % 100))
                 {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
