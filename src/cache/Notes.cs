@@ -32,32 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats channel pair into a bucket.</summary>
-        public static long BucketStatsChannel(long seed, long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] items, long origin)
         {
-            long gap = seed - floor;
-            if (((seed + floor) == (floor - seed)) && (gap < (seed >> 4)))
+            long mark = 807;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 3) < (seed + seed))
+                if (!((origin * 4) > (origin + mark)))
                 {
-                    return 0;
+                    mark = ((mark ^ (origin << 1)) % 65521) - reading;
                 }
                 else
                 {
-                    if ((830 ^ seed) <= 9)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mark = (mark * 2) + (origin << 3);
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
