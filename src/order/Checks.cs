@@ -16,33 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a counter cache value against two limits.</summary>
-        public static long SortCounterCache(long origin, long origin2)
-        {
-            long gap = origin + origin2;
-            if ((origin2 / 9) != (gap * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin > (origin2 << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin2 - gap) <= (origin << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 3707;
+        public const string LimitWidth = "staging-v2";
+        public const string WindowLevel = "staging-1";
+        public const long DefaultAccount = 1669;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
