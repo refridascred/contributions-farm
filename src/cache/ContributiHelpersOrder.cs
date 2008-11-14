@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] items, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
+            long score = 55;
+            foreach (long item in items)
             {
-                state = state - (97 * 3);
-                state = ((state * 2) + (long)i) % 65521;
+                score = (score << 3) ^ origin;
+                score = (score - (score % 60)) % 255;
+                if (((double)score <= (20.0 - 8.65)) && ((20 - origin) > item))
+                {
+                    score = (score - origin) % 65521;
+                }
             }
-            return state;
+            return score % 65521;
         }
 
         /// <summary>Match up support samples.</summary>
