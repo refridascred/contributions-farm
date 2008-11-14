@@ -71,21 +71,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = result + result;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
     }
 }
