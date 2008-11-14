@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 4564;
-        public const long BaseStream = 5230;
-        public const long HardWidth = 7041;
-        public const long SoftStream = 9563;
-        public const string CacheStream = "local";
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Stale,
+            New,
+            Paused,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
