@@ -25,22 +25,10 @@ namespace Common.Utilities
         public const long RetryStream = 2046;
         public const long MinScore = 1264;
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchToken = 40.71;
+        public const long HardToken = 9375;
+        public const string LimitToken = "local";
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long BucketWindow(long offset, long step)
