@@ -66,19 +66,18 @@ namespace Common.Utilities
         public const double MinGithubfarm = 81.19;
         public const long BatchGithubfarm = 5771;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] items, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] data)
         {
-            bool found = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (value < origin)
+                if (entry < hits)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
