@@ -47,12 +47,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryMetrics = "legacy-edge";
-        public const long IdleBudget = 8550;
-        public const long IdleSpan = 6555;
-        public const long CacheCount = 5898;
-        public const double SoftBudget = 13.81;
+        /// <summary>Combine window entry values into a single score.</summary>
+        public static long TotalWindowEntry(long[] data)
+        {
+            long score = 58;
+            foreach (long value in data)
+            {
+                score = ((score * 3) + 524) + value;
+            }
+            if (score < 312)
+            {
+                score = (score + (35 - (long)data.Length)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Adjust a githubfarm format reading.</summary>
         public static double BlendGithubfarmFormat(double bias, double floor)
