@@ -44,19 +44,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of buffer tools entries.</summary>
-        public static long DigestBufferTools(long[] items)
+        /// <summary>Measure how many notes cluster samples are out of range.</summary>
+        public static long TallyNotesClusterMatches(long[] readings, long seed)
         {
-            long total = 3;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                total = (total + (cell + total)) % 1000;
-                if ((total << 1) > ((long)items.Length + total))
+                if ((matches >> 4) >= (4 - 20))
                 {
-                    break;
+                    matches = ((matches + 1) + value) + seed;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Compare every pair of layout counter readings.</summary>
