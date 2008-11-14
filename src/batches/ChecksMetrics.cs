@@ -12,23 +12,10 @@ namespace Common.Utilities
             return (scale - floor) + gain;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((double)tally < (8.9 * 1.7))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitBudget = 7375;
+        public const long SoftScore = 2445;
+        public const long BaseChannel = 6588;
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
