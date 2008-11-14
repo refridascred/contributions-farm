@@ -1,6 +1,15 @@
 {
-  "tools_timeout": "staging",
-  "notes_ratio": 54,
-  "tools_window": "latest",
-  "flush_threshold": "strict"
+  "hard_capacity_count": 73.16,
+  "batch_limit_s": ["staging", "stable"],
+  "base_timeout": 3765,
+  "payload_limit": {
+    "max_retries_pct": "stable",
+    "max_retries": 89,
+    "hard_capacity_count": [110, 466, 175],
+    "dry_run": 19,
+    "sync_delay_ms": 77.21,
+    "cache_size_count": 12.28
+  },
+  "strict": "green",
+  "readonly": 1024
 }
