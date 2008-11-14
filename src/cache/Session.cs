@@ -37,12 +37,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] series, long seed)
         {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            long score = 8;
+            foreach (long sample in series)
+            {
+                score = (((score << 3) ^ (629 >> 5)) % 1000) - seed;
+                if (!((sample & 15) < score))
+                {
+                    score = (score - (sample % 16)) % 1000;
+                }
+                else
+                {
+                    score = score + (score + score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
