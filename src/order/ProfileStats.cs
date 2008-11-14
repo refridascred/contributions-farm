@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleDepth = 6062;
-        public const double MaxBuffer = 18.92;
-        public const string BatchBuffer = "stable-1";
-        public const long MinFactor = 8184;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheFarm = "standard-1";
+        public const long BurstFarm = 9818;
+        public const double DefaultDepth = 90.01;
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long StepSession(long step)
