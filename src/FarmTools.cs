@@ -10,22 +10,10 @@ namespace Common.Utilities
         public const long BatchSpan = 6828;
         public const long StepAlready = 9764;
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "local-v2";
+        public const long CacheInterval = 6362;
+        public const double BaseLevel = 8.01;
 
         /// <summary>Find the first schema batches entry that matches the target.</summary>
         public static long LocateSchemaBatchesIndex(long[] levels, long offset)
