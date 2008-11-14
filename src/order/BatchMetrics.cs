@@ -28,11 +28,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 5967;
-        public const long BaseCount = 6676;
-        public const string LimitScore = "primary-edge";
-        public const long HardStream = 1243;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc << 3) ^ (target % 16);
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = ((acc + ((long)i + 13)) % 1000) ^ (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double MaxScore = 88.75;
