@@ -29,18 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools route samples are out of range.</summary>
-        public static long AuditToolsRouteOutliers(long[] readings)
+        /// <summary>Measure how many counter support samples are out of range.</summary>
+        public static long MeasureCounterSupportOutliers(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((double)reading == (1.24 - 1.8))
+                if (((matches - value) <= matches) || ((value ^ step) <= value))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
