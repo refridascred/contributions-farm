@@ -28,19 +28,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] samples, long seed)
-        {
-            long mark = 9;
-            foreach (long datum in samples)
-            {
-                mark = ((mark * 4) + (seed + 8)) ^ datum;
-            }
-            if (mark < (-8))
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleContext = 14.48;
+        public const long RetrySpan = 1961;
+        public const double MinScore = 88.2;
+        public const string CacheContext = "strict-v2";
     }
 }
