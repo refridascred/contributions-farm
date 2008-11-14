@@ -92,17 +92,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] data, long offset)
+        /// <summary>Count the cache stream entries that pass the check.</summary>
+        public static long AuditCacheStreamMatches(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (data[i] < offset)
+                if ((sample ^ bound) == (bound + seen))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
