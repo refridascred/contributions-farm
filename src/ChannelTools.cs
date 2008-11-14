@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] readings, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] data, long seed)
         {
-            long mix = 158;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (reading < (reading >> 4))
+                if ((714 + datum) > count)
                 {
-                    mix = ((mix * 4) + (origin + origin)) % 255;
+                    count = (count + 3) + seed;
                 }
             }
-            return mix % 4096;
+            return count;
         }
     }
 }
