@@ -38,13 +38,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            Retry,
+            Done,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the layout state values.</summary>
