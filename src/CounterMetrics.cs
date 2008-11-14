@@ -36,32 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long floor, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] levels)
         {
-            long delta = floor - step;
-            if ((floor > 87) || (step <= (delta * 2)))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (delta >= floor)
+                if (((item - item) != (554 & 127)) || ((((long)levels.Length ^ matches) <= (matches - matches)) && ((81 % 60) < (item + matches))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((8.48 + 11.0) > (double)step) && ((step - delta) <= step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first counter metric entry that matches the target.</summary>
