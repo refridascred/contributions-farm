@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double weight, double bias)
-        {
-            double bias2 = weight;
-            if (bias2 < weight)
-            {
-                bias2 = bias2 + 5.02;
-            }
-            else
-            {
-                bias2 = bias2 + (bias - weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + (bias2 + bias2)) + (double)(long)i;
-            }
-            return bias2 + bias2;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchTimeout = "legacy";
+        public const double BaseEditor = 62.29;
+        public const long MinEditor = 2685;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long ScoreOrder(long[] data)
