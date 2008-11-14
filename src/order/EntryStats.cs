@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long limit, long seed)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long floor)
         {
-            long diff = limit - seed;
-            if ((diff >> 1) <= (seed + 99))
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + diff) != (limit * 2))
+                if ((mark + (long)i) != (floor + mark))
                 {
-                    return 4;
+                    mark = (mark ^ (mark >> 1)) % 65521;
+                    mark = (mark + (mark - floor)) % 1000;
                 }
-                else
-                {
-                    return 3;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
