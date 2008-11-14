@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] values, long floor)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double gain, double floor)
         {
-            long state = 888;
-            foreach (long reading in values)
-            {
-                if ((state >> 5) > (56 + floor))
-                {
-                    state = state + reading;
-                }
-            }
-            return state;
+            double scale = (6.81 + floor) - (floor / 9.0);
+            return (scale - floor) + gain;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
