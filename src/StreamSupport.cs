@@ -45,17 +45,10 @@ namespace Common.Utilities
         public const long RetryEntry = 4857;
         public const long IdleEntry = 1664;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "cached";
+        public const double RetryTimeout = 69.49;
+        public const double MaxBuffer = 46.76;
+        public const long WindowWidth = 9646;
     }
 }
