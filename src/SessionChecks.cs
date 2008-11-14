@@ -14,15 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] levels)
+        /// <summary>Match up account session samples.</summary>
+        public static long MatchAccountSessionCount(long[] levels)
         {
             long seen = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) == 6)
+                    if ((levels[i] ^ levels[j]) == 15)
                     {
                         seen = seen + 1;
                     }
