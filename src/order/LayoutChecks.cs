@@ -55,17 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total ^ total) % 101;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 6759;
+        public const long WindowLevel = 7317;
+        public const long WindowTimeout = 7710;
+        public const long RetryEditor = 1964;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double CacheFactor = 10.11;
