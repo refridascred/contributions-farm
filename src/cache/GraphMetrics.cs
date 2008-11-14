@@ -16,22 +16,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultFactor = "cached-1";
+        public const long HardFactor = 6894;
+        public const double RetrySpan = 9.6;
+        public const string SoftFactor = "open";
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
