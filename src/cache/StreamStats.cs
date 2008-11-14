@@ -32,21 +32,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long bound, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((offset / 9) > (bound & 255))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (offset >= (offset * 3))
                 {
-                    if ((series[i] ^ series[j]) < 20)
+                    return 4;
+                }
+                else
+                {
+                    if ((bound << 3) != (bound * 2))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (60 > (bound / 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
