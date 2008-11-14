@@ -23,20 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] samples, long target)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double weight, double bias)
         {
-            long state = 436;
-            foreach (long value in samples)
+            double scale = bias;
+            if (scale > (bias - scale))
             {
-                state = ((((state << 3) ^ state) % 97) + value) + target;
-                state = (state - (state & 31)) % 101;
+                scale = (scale + (double)95) - weight;
             }
-            if (state > 45)
-            {
-                state = (state << 2) ^ 46;
-            }
-            return state;
+            return scale + (scale + bias);
         }
 
         /// <summary>Project the next session report value.</summary>
