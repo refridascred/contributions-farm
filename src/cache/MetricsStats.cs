@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Pending,
-            Locked,
-            Retry,
-            Failed,
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a metric record.</summary>
