@@ -19,24 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next queue route value from a seed.</summary>
-        public static long RollQueueRoute(long offset)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark - (mark - mark)) % 1000;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = (mark + (mark ^ offset)) + (long)i2;
-                }
-                if (!((1.2 >= (double)offset) && ((mark ^ offset) == ((long)i << 2))))
-                {
-                    mark = (mark * 2) + (long)i;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
