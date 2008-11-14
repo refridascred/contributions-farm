@@ -1,12 +1,8 @@
 {
   "compress": "green",
-  "idle_window": "staging",
-  "min_timeout": [344, 493, 442, 167],
-  "sync_capacity": 5,
-  "burst_timeout": {
-    "hard_depth_pct": 16.49,
-    "min_ratio_count": 250,
-    "readonly": 58.53,
-    "base_ratio": "primary"
-  }
+  "base_depth_s": [476, 88, 178],
+  "max_ratio": 54.1,
+  "dry_run": "local",
+  "window_ratio": ["legacy", "eu-west"],
+  "retry_limit": 35.5
 }
