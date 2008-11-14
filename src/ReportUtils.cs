@@ -40,12 +40,20 @@ namespace Common.Utilities
         public const long MinOrder = 114;
         public const long HardOrder = 4501;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 6525;
-        public const long IdleReport = 1867;
-        public const long BatchReport = 7950;
-        public const string BatchFactor = "cached-v2";
-        public const string WindowReport = "legacy-1";
+        /// <summary>Validate format window readings against a bound.</summary>
+        public static bool VerifyFormatWindowRange(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long OverlapCounterCount(long[] readings)
