@@ -1,13 +1,12 @@
 {
-  "compress": 33,
-  "dry_run": {
-    "retry_limit_pct": true,
-    "idle_delay_s": 30,
-    "layout_limit": ["legacy", "primary", "blue", "primary"],
-    "poll_timeout_ms": "latest",
-    "idle_interval_pct": true,
-    "hard_window": 78.78
+  "max_retries_s": "fallback",
+  "format_ttl": false,
+  "warm_timeout_pct": "strict",
+  "hard_size_pct": {
+    "flush_size_count": 73,
+    "burst_timeout": "fallback",
+    "channel_delay": "strict"
   },
-  "base_threshold": false,
-  "persist": "open"
+  "retry_retries_ms": 9167,
+  "hard_interval_ms": "primary"
 }
