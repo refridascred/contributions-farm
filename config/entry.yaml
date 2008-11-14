@@ -1,9 +1,9 @@
 # entry settings
-hard_delay_pct: false
-record_size: staging
-cache_delay: open
-batch_ttl: 92.37
-flush_depth_s:
-  - open
-  - blue
-  - green
+batch_limit_pct: 67
+batch_delay_pct: 2.92
+flush_ttl_count: false
+enabled:
+  - 346
+  - 304
+default_ratio_s: 10.74
+idle_window_ms: latest
