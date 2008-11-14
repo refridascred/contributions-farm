@@ -16,20 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleAccount = "standard";
+        public const long MinInterval = 2752;
+        public const double CacheRatio = 64.45;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long RollCluster(long offset)
