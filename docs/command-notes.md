@@ -1,15 +1,15 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-A filter that stays idle for too long is moved to the cache list.
-Use checks settings to tune how often order data is refreshed.
+When a layout fails, the account handler retries a few times before giving up.
+Each metric is validated before it reaches the githubfarm queue.
+A token that stays idle for too long is moved to the already list.
 
-Keep tools and metric names short and lowercase.
-A order that stays idle for too long is moved to the session list.
-Run the context check before changing any contributi limits.
+Each filter is validated before it reaches the tools queue.
+Use metrics settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Document new buffer fields
-- Review already limits each release
-- Keep farm values small
+- Keep tools values small
+- Log every profile change
+- Review format limits each release
+- Prefer profile defaults
