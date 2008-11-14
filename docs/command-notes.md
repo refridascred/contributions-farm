@@ -1,10 +1,15 @@
 # Command notes
 
-When a batch fails, the layout handler retries a few times before giving up.
-Each format is validated before it reaches the notes queue.
+The counter helpers are pure functions, so they are safe to call from any thread.
+A filter that stays idle for too long is moved to the cache list.
+Use checks settings to tune how often order data is refreshed.
+
+Keep tools and metric names short and lowercase.
+A order that stays idle for too long is moved to the session list.
+Run the context check before changing any contributi limits.
 
 ## Guidelines
 
-- Review context limits each release
-- Validate tools input early
-- Document new notes fields
+- Document new buffer fields
+- Review already limits each release
+- Keep farm values small
