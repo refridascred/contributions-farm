@@ -18,12 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetrySession = "standard-edge";
-        public const double MinLevel = 84.81;
-        public const double BaseInterval = 56.54;
-        public const long BurstSession = 1055;
-        public const long SoftSession = 6675;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long offset, long step)
+        {
+            long cur = offset ^ step;
+            if (((step + cur) == (step & 127)) && ((offset ^ cur) <= step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (cur > (offset >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step != (double)528)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsGaps(long[] values, long seed)
