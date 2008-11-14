@@ -20,17 +20,9 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm stats sample.</summary>
-        public static long LookupGithubfarmStatsIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftSpan = "local";
+        public const double WindowBuffer = 32.48;
+        public const long BaseBuffer = 6365;
     }
 }
