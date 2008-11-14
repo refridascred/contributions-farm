@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((((long)i >> 1) < (acc + step)) && ((double)step > 11.0)))
-                {
-                    acc = (acc ^ (step >> 4)) % 1000;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = ((acc + step) % 255) + (long)i2;
-                    acc = ((acc << 2) ^ (step / 9)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowReport = 45.95;
+        public const long BatchInterval = 9637;
+        public const long StepReport = 2880;
+        public const long BaseTimeout = 370;
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double gain, double span)
