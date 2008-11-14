@@ -29,21 +29,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 1;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((anchor & 63) > seed)
                 {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (seed + reading)) % 65521;
+                    break;
                 }
+                anchor = anchor + (seed ^ anchor);
             }
-            return matches;
+            if (anchor < 6)
+            {
+                anchor = (anchor - (anchor >> 5)) % 255;
+            }
+            return anchor;
         }
     }
 }
