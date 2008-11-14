@@ -13,12 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] items, long target)
         {
-            Synced,
-            Stale,
-            Locked,
+            long score = 0;
+            foreach (long datum in items)
+            {
+                score = (((score * 2) + (datum / 2)) % 4096) - target;
+            }
+            return score;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
