@@ -22,23 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stats queue reading.</summary>
-        public static double AdjustStatsQueue(double bias, double bias2)
+        /// <summary>Classify a graph support pair into a bucket.</summary>
+        public static long RankGraphSupport(long floor, long target)
         {
-            double weight = 2.2;
-            if (weight <= weight)
+            if ((floor & 127) <= floor)
             {
-                weight = (weight + (bias / 4.0)) + bias2;
+                return 8;
             }
             else
             {
-                weight = weight + bias;
+                if (((floor * 4) <= target) && ((4.76 + 9.0) < (double)target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight + (weight / 8.0);
         }
 
         /// <summary>Match up contributi samples.</summary>
