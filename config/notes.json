@@ -1,6 +1,13 @@
 {
-  "warm_retries_count": 30,
-  "batch_interval_count": false,
-  "min_retries_pct": false,
-  "burst_size_s": "cached"
+  "context_capacity": [52, 123, 317, 336],
+  "layout_ratio": {
+    "report_capacity": ["legacy", "standard", "legacy", "open"],
+    "compress": 85.53,
+    "idle_window_ms": "standard",
+    "idle_limit_s": [189, 15, 364],
+    "burst_threshold_ms": 500
+  },
+  "default_ratio_pct": true,
+  "base_interval_pct": true,
+  "sync_ratio": ["primary", "staging", "primary"]
 }
