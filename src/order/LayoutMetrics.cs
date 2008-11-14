@@ -18,14 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            Stale,
-            Locked,
-            Closed,
+            Dropped,
+            Idle,
             Pending,
-            Draft,
+            Retry,
+            New,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
