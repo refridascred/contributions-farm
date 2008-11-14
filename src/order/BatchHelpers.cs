@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleSize = 88.92;
-        public const long MinBatch = 80;
-        public const long BatchFactor = 4087;
-        public const long RetryTimeout = 7282;
-        public const long SoftBatch = 8439;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportGaps(long[] data)
