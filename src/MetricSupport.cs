@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] data, long offset)
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
