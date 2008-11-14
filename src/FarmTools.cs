@@ -21,19 +21,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate context batch readings against a bound.</summary>
-        public static bool CheckContextBatchLimits(long[] items, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (entry > limit)
+                if (((long)readings.Length - (long)readings.Length) <= (seen + seen))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
