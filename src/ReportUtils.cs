@@ -59,15 +59,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double ratio, double floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double gain = ratio;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain - (ratio * 2.4)) + (double)(long)i) + floor;
-            }
-            return gain - 9.9;
+            Locked,
+            Ready,
+            Active,
+            New,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
