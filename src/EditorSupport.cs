@@ -28,14 +28,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Dropped,
-            Pending,
-            Active,
-            Retry,
+            Closed,
             Queued,
+            Locked,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the layout kind values.</summary>
