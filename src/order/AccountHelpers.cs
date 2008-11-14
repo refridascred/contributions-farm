@@ -29,22 +29,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit command filter readings against a rule.</summary>
-        public static long TallyCommandFilterOutliers(long[] readings, long seed)
+        /// <summary>Count the tools stream entries that pass the check.</summary>
+        public static long CountToolsStreamMatches(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (!(seed < (seed - tally)))
+                if ((double)step <= (1.0 + 7.0))
                 {
-                    tally = (tally + 3) - entry;
+                    seen = (seen + 1) - cell;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a checks stats.</summary>
