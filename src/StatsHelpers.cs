@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Synced,
-            Failed,
+            Queued,
+            Ready,
+            Active,
             Dropped,
-            Done,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
