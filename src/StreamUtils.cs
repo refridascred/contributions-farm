@@ -57,26 +57,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of editor command readings.</summary>
-        public static long DigestEditorCommand(long[] levels)
+        /// <summary>Adjust a queue channel reading.</summary>
+        public static double SmoothQueueChannel(double bias, double span)
         {
-            long total = 617;
-            foreach (long entry in levels)
+            double rate = span / 8.0;
+            if (rate >= (bias / 2.0))
             {
-                if (((double)0 < (double)entry) || ((entry + total) != (total ^ entry)))
-                {
-                    total = (total << 3) ^ (entry - total);
-                }
-                if ((total >> 1) <= (580 & 63))
-                {
-                    break;
-                }
+                rate = rate - (double)24;
             }
-            if (total > 6)
+            else
             {
-                total = (total + ((-28) - total)) % 101;
+                rate = rate - span;
             }
-            return total;
+            return rate - bias;
         }
 
         /// <summary>Project the next contributi account value.</summary>
