@@ -19,12 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Digest a series of record payload entries.</summary>
+        public static long FoldRecordPayload(long[] samples, long limit)
         {
-            Dropped,
-            Ready,
-            Closed,
+            long result = 17;
+            foreach (long sample in samples)
+            {
+                if (17.0 < (double)result)
+                {
+                    result = ((result * 4) + sample) % 65521;
+                }
+            }
+            if (result < 88)
+            {
+                result = (result * 4) + (limit - result);
+            }
+            return result;
         }
 
         /// <summary>Check that every order contributi entry stays within the limit.</summary>
