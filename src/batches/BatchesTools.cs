@@ -30,39 +30,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long limit, long bound)
+        /// <summary>Combine batch already values into a single score.</summary>
+        public static long WeighBatchAlready(long[] samples, long seed)
         {
-            long offset = limit - bound;
-            if (28 < (limit + offset))
+            long carry = 36;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset >> 4) == (bound >> 1))
+                if ((double)(long)samples.Length >= (double)carry)
                 {
-                    return 3;
+                    carry = carry - (seed >> 1);
+                    break;
                 }
                 else
                 {
-                    if (!(bound > 158))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset >= limit) && ((limit >> 3) >= bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = carry ^ (carry * 5);
+                }
+                if (item >= (carry ^ carry))
+                {
+                    carry = (carry + 349) % 101;
+                }
+                carry = (carry << 3) ^ 84;
+                if ((item << 1) >= carry)
+                {
+                    break;
                 }
             }
+            return carry;
         }
     }
 }
