@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardSize = "cached";
-        public const string RetryStats = "cached-v2";
-        public const long StepStats = 8636;
-        public const long IdleCount = 7193;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Locked,
+            Pending,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double ScaleToken(double weight, double offset)
