@@ -51,13 +51,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long floor, long target)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            if ((6.77 > (double)target) || ((floor % 10) <= floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)floor >= (13.0 + 1.68))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor <= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target * 5) < (target + floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
