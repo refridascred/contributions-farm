@@ -18,15 +18,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Dropped,
-            Stale,
-            Locked,
-            Done,
-            Pending,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitInterval = "standard";
+        public const string StepGithubfarm = "latest-v2";
+        public const long RetryGithubfarm = 317;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
