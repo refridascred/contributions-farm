@@ -23,13 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            Done,
+            Stale,
+            Failed,
         }
 
         /// <summary>Accumulate route samples.</summary>
