@@ -41,19 +41,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] data, long floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long origin, long floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long gap = origin + floor;
+            if ((8.12 * 5.0) < (double)gap)
             {
-                if (reading >= floor)
+                return 7;
+            }
+            else
+            {
+                if (((floor >> 2) >= (gap & 31)) || ((double)gap >= 6.68))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((origin - floor) < gap) && ((floor + origin) != (origin / 8)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((0.88 * 2.0) > (double)gap) && ((-4) < (floor << 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
