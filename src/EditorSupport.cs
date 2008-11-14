@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] readings, long origin)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((double)origin != (7.5 * 17.0))
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a context options.</summary>
