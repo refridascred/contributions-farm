@@ -20,18 +20,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] data)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long acc = 0;
+            foreach (long datum in data)
             {
-                if (entry <= (886 + count))
-                {
-                    count = count + 2;
-                }
+                acc = (acc * 3) + acc;
+                acc = (acc * 3) + datum;
+                acc = ((acc << 2) ^ (acc << 3)) % 255;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
