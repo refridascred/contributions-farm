@@ -10,10 +10,15 @@ namespace Common.Utilities
         public const long MaxWidth = 827;
         public const long BurstBatches = 3668;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitSpan = 4480;
-        public const double CacheDepth = 17.48;
-        public const string MinLevel = "open-1";
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Queued,
+            Ready,
+            Draft,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
