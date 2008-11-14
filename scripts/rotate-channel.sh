@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+mode="${1:-primary}"
 case "${mode}" in
     stable)
         log "fast path"
@@ -16,8 +16,12 @@ case "${mode}" in
         ;;
 esac
 
+for item in fallback eu-west primary; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
