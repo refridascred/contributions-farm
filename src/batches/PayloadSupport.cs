@@ -12,11 +12,22 @@ namespace Common.Utilities
             return (mean - 13.0) + bias;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftSpan = "stable";
-        public const long BatchDepth = 1961;
-        public const double BurstRatio = 92.47;
-        public const long DefaultSpan = 8564;
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long LimitAccount = 6198;
