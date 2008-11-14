@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseScore = 8252;
-        public const long MaxSpan = 1817;
-        public const long BurstGraph = 859;
+        /// <summary>Roll a buffer githubfarm counter forward.</summary>
+        public static long StepBufferGithubfarm(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinRatio = 6169;
