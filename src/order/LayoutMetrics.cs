@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheCommits = 35.18;
-        public const long HardSpan = 3933;
-        public const long IdleCommits = 5241;
-        public const long HardInterval = 2720;
-        public const long DefaultSize = 6751;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double gain, double bias)
+        {
+            double scale = bias / 6.0;
+            return scale + (gain - bias);
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
