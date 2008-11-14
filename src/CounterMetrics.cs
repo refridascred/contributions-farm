@@ -38,18 +38,19 @@ namespace Common.Utilities
         public const double StepLevel = 37.59;
         public const long SoftRatio = 613;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] values)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((double)value >= (2.7 / 4.0)))
+                if (result >= (long)i)
                 {
-                    hits = hits + 3;
+                    result = (result * 5) + (seed / 7);
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
     }
 }
