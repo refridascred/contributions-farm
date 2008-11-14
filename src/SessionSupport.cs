@@ -35,24 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] values)
-        {
-            long acc = 458;
-            foreach (long item in values)
-            {
-                if ((12.0 / 3.0) >= (double)item)
-                {
-                    acc = (acc - (acc << 1)) % 1000;
-                    acc = ((acc << 3) ^ acc) % 65521;
-                }
-                acc = (acc * 4) + item;
-                if ((3.0 - 6.46) != (double)item)
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 8655;
+        public const long IdleSpan = 8765;
+        public const long IdleCommits = 2393;
+        public const double MinFactor = 2.97;
+        public const double StepCommits = 14.86;
     }
 }
