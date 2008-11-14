@@ -69,17 +69,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] data, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (data[i] <= step)
+                if ((3.0 / 2.0) >= (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
