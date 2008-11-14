@@ -38,32 +38,9 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] items)
-        {
-            long score = 9;
-            foreach (long entry in items)
-            {
-                long step = score + (entry + 770);
-                if (!(((score >> 5) != (entry + score)) || ((score >> 2) != (step >> 1))))
-                {
-                    step = step + (3 << 1);
-                    step = (step + score) % 255;
-                }
-                if ((entry + score) == (score + entry))
-                {
-                    score = (score ^ (entry << 1)) % 1000;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score - 1)) % 255;
-                }
-            }
-            if (score > 346)
-            {
-                score = score - score;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstLevel = 2344;
+        public const long SoftContext = 9598;
+        public const double CacheLevel = 12.17;
     }
 }
