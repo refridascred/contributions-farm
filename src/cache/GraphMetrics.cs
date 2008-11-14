@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] samples, long origin)
         {
-            Queued,
-            Closed,
-            Retry,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((count + count) == (count - item))
+                {
+                    count = (count + 2) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metrics header.</summary>
