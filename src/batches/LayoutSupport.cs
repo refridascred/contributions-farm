@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 88.66;
-        public const long MinInterval = 4591;
-        public const double CacheFactor = 13.08;
-        public const long CacheGraph = 8559;
-        public const double WindowInterval = 41.65;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (count <= (sample * 5))
+                {
+                    count = (count + 3) - limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine buffer stream values into a single score.</summary>
         public static long DigestBufferStream(long[] readings)
