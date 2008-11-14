@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] data)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] items, long limit)
         {
-            long result = 47;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in items)
             {
-                result = result - (-678);
-                if ((75 + result) >= value)
+                if (sample >= (count - count))
                 {
-                    result = (result * 5) + (value * 2);
+                    count = (count + 2) - limit;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a order header.</summary>
