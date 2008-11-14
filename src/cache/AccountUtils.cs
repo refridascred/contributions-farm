@@ -24,18 +24,19 @@ namespace Common.Utilities
             return rate2 + (19.0 * 4.57);
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] levels)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (item > seen)
+                if ((step * 5) <= (18 >> 3))
                 {
-                    seen = seen + 3;
+                    sum = ((sum * 4) + (sum + step)) % 97;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
