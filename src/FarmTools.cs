@@ -28,13 +28,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] items, long bound)
         {
-            Ready,
-            Closed,
-            Paused,
-            Done,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (14.0 < (double)entry)
+                {
+                    count = (count + 3) - bound;
+                }
+            }
+            return count;
         }
     }
 }
