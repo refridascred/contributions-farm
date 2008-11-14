@@ -54,11 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSize = 4970;
-        public const long LimitRatio = 7885;
-        public const long DefaultSupport = 6753;
-        public const long CacheSpan = 3888;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long RankAccount(long offset, long step)
