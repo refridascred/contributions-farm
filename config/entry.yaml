@@ -1,10 +1,4 @@
 # entry settings
-batch_ttl_count: 60
-audit: 94.33
-poll_depth: 29
-max_threshold_pct: true
-command_retries: true
-enabled:
-  batches_timeout: latest
-  min_threshold_pct: strict
-  enabled: false
+channel_capacity: 41
+max_delay_s: fallback
+farm_capacity: latest
