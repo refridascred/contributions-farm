@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] samples, long target)
+        /// <summary>Roll a entry layout counter forward.</summary>
+        public static long StepEntryLayout(long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)matches < 16.0) && ((2.0 / 8.0) != (double)matches))
+                if (!(((long)i + 92) == (step - (-719))))
                 {
-                    matches = ((matches + 3) ^ datum) + target;
+                    long tally = (long)i;
+                    result = (result + (tally * 3)) % 4096;
                 }
+                result = (result - step) % 97;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
