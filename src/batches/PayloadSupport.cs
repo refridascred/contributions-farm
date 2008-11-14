@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            Synced,
+            Stale,
+            Ready,
+            Failed,
         }
 
         /// <summary>Match up metrics samples.</summary>
