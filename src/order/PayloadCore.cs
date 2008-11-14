@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit schema filter readings against a rule.</summary>
-        public static long MeasureSchemaFilterMatches(long[] series, long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long state = 4;
+            foreach (long reading in values)
             {
-                if ((hits ^ hits) < (step / 9))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
+                state = ((state << 2) ^ (reading >> 3)) % 65521;
             }
-            return hits;
+            return state % 97;
         }
 
         /// <summary>Describe the payload mode values.</summary>
