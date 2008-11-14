@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine commits command values into a single score.</summary>
-        public static long FoldCommitsCommand(long[] data, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            long acc = 5;
-            foreach (long datum in data)
+            long anchor = 4;
+            foreach (long entry in readings)
             {
-                acc = ((((acc * 4) + (acc % 3)) % 255) ^ datum) - origin;
+                if ((8 + anchor) <= (entry + 49))
+                {
+                    anchor = anchor - (anchor >> 3);
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 255;
+                }
+                if (!(entry < (anchor >> 3)))
+                {
+                    break;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
