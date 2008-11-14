@@ -23,14 +23,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] readings, long offset)
         {
-            Idle,
-            Queued,
-            Failed,
-            Paused,
-            Pending,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
