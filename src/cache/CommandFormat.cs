@@ -54,11 +54,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double rate, double span)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            double ratio = 9.69;
-            return ((ratio + 18.0) + rate) + span;
+            Dropped,
+            Synced,
+            Done,
+            Pending,
         }
 
         /// <summary>Blend two schema measurements.</summary>
