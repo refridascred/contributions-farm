@@ -66,16 +66,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] data, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] levels, long offset)
         {
-            long acc = 6;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                acc = acc ^ sample;
-                acc = acc + (offset + 3);
+                if ((7.55 + 9.0) < (double)offset)
+                {
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
