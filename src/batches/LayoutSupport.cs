@@ -10,10 +10,10 @@ namespace Common.Utilities
         public const string BaseLayout = "primary";
         public const long BatchLayout = 6299;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxCount = 1511;
-        public const string WindowInterval = "cached-edge";
-        public const long MinLevel = 8691;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSpan = 6755;
+        public const long BatchSupport = 9155;
+        public const long IdleSupport = 1297;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheOutliers(long[] samples)
