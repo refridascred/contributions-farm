@@ -85,13 +85,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Synced,
-            Retry,
-            Draft,
-            Idle,
+            public double Mode { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
         }
     }
 }
