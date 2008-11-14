@@ -46,13 +46,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] items, long limit)
         {
-            public double Stamp { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
