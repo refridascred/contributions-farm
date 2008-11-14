@@ -82,15 +82,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a session commits reading.</summary>
-        public static double SmoothSessionCommits(double weight, double offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long seed, long bound)
         {
-            double gain = offset - (9.04 - 17.0);
-            if (gain < (weight / 2.0))
+            long delta = seed ^ bound;
+            if ((10.0 / 2.0) >= (double)delta)
             {
-                gain = gain - 16.0;
+                return 8;
             }
-            return gain + (double)6;
+            else
+            {
+                if (delta >= (delta << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
