@@ -12,12 +12,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 5161;
-        public const long CacheScore = 8760;
-        public const string DefaultInterval = "fallback-1";
-        public const long WindowEntry = 2006;
-        public const string LimitScore = "cached";
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitWidth = "stable-edge";
+        public const string DefaultAccount = "alpha";
+        public const long DefaultTimeout = 3777;
 
         /// <summary>Match up already samples.</summary>
         public static long CompareAlreadyCount(long[] values)
