@@ -39,19 +39,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double gain, double floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long origin, long step)
         {
-            double drift = (double)(6 + 5);
-            if (drift <= (gain * 2.79))
+            long cur = origin - step;
+            if (origin < (cur & 63))
             {
-                drift = (drift - (drift / 9.0)) + floor;
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                drift = (drift + 17.0) + (double)(long)i;
+                if (((-402) + origin) >= cur)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return drift - gain;
         }
     }
 }
