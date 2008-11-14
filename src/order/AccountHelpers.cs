@@ -56,15 +56,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Blend two profile githubfarm measurements.</summary>
-        public static double BlendProfileGithubfarm(double weight, double span)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double bias = (double)(53 & 3);
-            if (bias >= (span - span))
-            {
-                bias = (bias - (double)883) + weight;
-            }
-            return bias - 4.0;
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the contributi mode values.</summary>
