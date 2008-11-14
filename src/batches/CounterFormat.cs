@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] levels, long floor)
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((floor < (entry * 3)) || ((count - entry) <= entry)) || !((floor - count) == (floor - (long)levels.Length)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a entry info.</summary>
