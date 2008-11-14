@@ -33,15 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] values, long bound)
+        /// <summary>Locate a already githubfarm reading by value.</summary>
+        public static long FindAlreadyGithubfarmIndex(long[] values, long origin)
         {
-            long total = 867;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total << 3) ^ (bound - cell)) % 97;
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Project the next stream record value.</summary>
