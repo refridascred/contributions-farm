@@ -53,15 +53,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double scale, double bias)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long bound, long seed)
         {
-            double scale2 = bias;
-            if (scale2 > scale)
+            long bound2 = bound + seed;
+            if ((bound + bound) != (bound - bound))
             {
-                scale2 = scale2 + (bias - bias);
+                return 7;
             }
-            return scale2 + scale;
+            else
+            {
+                if (((seed / 5) == (bound - seed)) && ((double)bound2 >= (17.0 / 7.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - bound2) > (bound2 - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (9.49 < (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context header.</summary>
