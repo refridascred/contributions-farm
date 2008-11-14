@@ -76,16 +76,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] samples, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                result = result + result;
-                result = ((result * 5) + (long)i) % 1000;
+                if (reading <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
