@@ -1,14 +1,7 @@
 {
-  "default_size_s": 95.74,
-  "idle_ratio_ms": "stable",
-  "editor_window": [73, 448],
-  "notes_window": 6,
-  "command_retries": {
-    "metric_interval": "primary",
-    "flush_window_count": "staging",
-    "idle_interval": "fallback",
-    "max_capacity_s": 8372,
-    "retry_retries_ms": 98.18
-  },
-  "strict": ["stable", "latest", "cached", "edge"]
+  "default_timeout": 9851,
+  "flush_threshold_s": 500,
+  "hard_depth_pct": 80,
+  "warm_ttl_ms": 6708,
+  "flush_capacity_ms": [262, 206, 25]
 }
