@@ -15,13 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Iterate the counter checks series from a seed.</summary>
+        public static long DeriveCounterChecks(long limit)
         {
-            Dropped,
-            New,
-            Active,
-            Queued,
+            long result = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = (((result * 2) + ((long)i / 6)) % 1000) + (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Accumulate channel samples.</summary>
