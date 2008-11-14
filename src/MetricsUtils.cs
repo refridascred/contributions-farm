@@ -31,12 +31,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a metric cache sample.</summary>
-        public static long SeekMetricCacheIndex(long[] levels, long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] > step)
+                if (values[i] < step)
                 {
                     return (long)i;
                 }
