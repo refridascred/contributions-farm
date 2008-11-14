@@ -22,17 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] samples, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 91;
+            foreach (long datum in items)
             {
-                if ((samples[i] == origin) && ((samples[i] % 3) != 0))
+                carry = (carry << 3) ^ (-601);
+                carry = (carry << 2) ^ (target + datum);
+                if (!((carry & 1) < datum))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (carry < 0)
+            {
+                carry = (carry ^ (target + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define window limits and defaults.</summary>
