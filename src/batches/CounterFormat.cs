@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] series)
         {
-            Closed,
-            New,
-            Draft,
-            Pending,
-            Dropped,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((count ^ count) != (count >> 2))
+                {
+                    count = (count + 2) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
