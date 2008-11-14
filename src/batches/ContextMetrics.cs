@@ -14,11 +14,33 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepTimeout = 5540;
-        public const string BaseRatio = "cached-1";
-        public const double HardCluster = 75.32;
-        public const double LimitCluster = 91.48;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long limit, long step)
+        {
+            long span = limit ^ step;
+            if ((limit + span) < (limit << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (span < (3 >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((1.8 * 10.0) == (double)step) || ((step >> 1) >= 240))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long CombineContributi(long[] levels, long origin)
