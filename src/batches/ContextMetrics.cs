@@ -65,11 +65,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryRatio = 6409;
-        public const double HardWidth = 89.6;
-        public const string DefaultGithubfarm = "local-edge";
-        public const string LimitCount = "legacy-1";
-        public const long BatchGithubfarm = 6986;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
