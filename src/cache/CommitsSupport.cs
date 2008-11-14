@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= limit) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 9299;
+        public const long LimitSize = 7784;
+        public const string LimitFarm = "primary-1";
+        public const double RetryFarm = 94.25;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long BucketSupport(long limit, long step)
