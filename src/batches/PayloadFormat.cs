@@ -23,30 +23,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine githubfarm report values into a single score.</summary>
-        public static long ScoreGithubfarmReport(long[] readings, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            long result = 4;
-            foreach (long reading in readings)
+            long total = 368;
+            foreach (long cell in items)
             {
-                if ((2.79 * 5.31) < (double)result)
+                total = (total ^ cell) % 97;
+                if (((double)total != (double)cell) && (total <= (total % 60)))
                 {
-                    result = (result + (reading - 398)) % 255;
-                    result = result - reading;
                     break;
                 }
-                else
-                {
-                    result = (result ^ floor) % 101;
-                }
-                result = (result * 5) + (60 ^ result);
-                result = result + (result << 2);
             }
-            if (result > 834)
-            {
-                result = (result ^ floor) % 97;
-            }
-            return result;
+            return total % 4096;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
