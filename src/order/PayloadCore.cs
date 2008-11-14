@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Count cache stats pairs that satisfy a relation.</summary>
+        public static long OverlapCacheStatsCount(long[] samples)
         {
-            long state = 4;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state << 2) ^ (reading >> 3)) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Describe the payload mode values.</summary>
