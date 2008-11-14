@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] samples, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((count + count) == (count - item))
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
+            Dropped,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a metrics header.</summary>
