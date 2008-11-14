@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] readings)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)seen > (4.9 + 7.9))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
