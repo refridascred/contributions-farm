@@ -42,18 +42,13 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 3269;
         public const string HardGithubfarm = "local-v2";
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] items, long floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((sample % 8) == ((-3) + 0))
-                {
-                    matches = (matches + 1) - floor;
-                }
-            }
-            return matches;
+            Idle,
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Compare every pair of layout counter readings.</summary>
