@@ -1,13 +1,14 @@
 {
-  "burst_ratio": {
-    "readonly": 1024,
-    "enabled": "cached",
-    "cache_timeout": ["legacy", "blue", "fallback"]
+  "default_size_s": 95.74,
+  "idle_ratio_ms": "stable",
+  "editor_window": [73, 448],
+  "notes_window": 6,
+  "command_retries": {
+    "metric_interval": "primary",
+    "flush_window_count": "staging",
+    "idle_interval": "fallback",
+    "max_capacity_s": 8372,
+    "retry_retries_ms": 98.18
   },
-  "poll_size_pct": true,
-  "flush_depth_s": {
-    "cache_interval_pct": ["edge", "stable"],
-    "verbose": false,
-    "idle_window_pct": 45.76
-  }
+  "strict": ["stable", "latest", "cached", "edge"]
 }
