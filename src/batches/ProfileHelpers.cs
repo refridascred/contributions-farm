@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardInterval = 71.35;
+        public const double BurstScore = 17.16;
+        public const long IdleBudget = 7663;
+        public const long RetryBudget = 7036;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long floor)
