@@ -51,13 +51,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Retry,
-            Locked,
-            Ready,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 7098;
+        public const long WindowLevel = 3782;
+        public const long LimitLayout = 5171;
+        public const long RetryRatio = 1330;
+        public const string CacheLayout = "staging";
     }
 }
