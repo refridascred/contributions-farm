@@ -43,21 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] samples, long floor)
-        {
-            long result = 43;
-            foreach (long entry in samples)
-            {
-                result = (((result << 3) ^ result) % 4096) ^ entry;
-                result = result + (floor - floor);
-            }
-            if (result > (-521))
-            {
-                result = result - (59 + result);
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchBatches = 91.16;
+        public const double RetryBatches = 42.47;
+        public const double StepLevel = 37.59;
+        public const long SoftRatio = 613;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long IdleTimeout = 1298;
