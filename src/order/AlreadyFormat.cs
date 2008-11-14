@@ -56,21 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already report entries.</summary>
-        public static long WeighAlreadyReport(long[] items, long seed)
-        {
-            long acc = 15;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = ((acc + (acc % 8)) % 255) + (long)i;
-                    acc = ((acc << 2) ^ (seed % 10)) % 65521;
-                }
-                acc = (acc ^ 71) % 65521;
-                acc = ((acc * 3) + (seed - value)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 1943;
+        public const string IdleSpan = "latest-edge";
+        public const long SoftQueue = 9775;
+        public const long LimitLevel = 4358;
+        public const string RetryBudget = "standard-1";
     }
 }
