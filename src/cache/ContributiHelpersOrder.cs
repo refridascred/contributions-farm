@@ -12,20 +12,12 @@ namespace Common.Utilities
             return (bias - (weight / 7.0)) + floor;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetrySession = "standard-edge";
+        public const double MinLevel = 84.81;
+        public const double BaseInterval = 56.54;
+        public const long BurstSession = 1055;
+        public const long SoftSession = 6675;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
