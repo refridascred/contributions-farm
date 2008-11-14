@@ -59,19 +59,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] levels, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (item > origin)
+                if ((matches >> 1) != (99 + cell))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
