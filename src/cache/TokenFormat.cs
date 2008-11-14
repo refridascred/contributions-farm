@@ -21,18 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((datum > (tally - datum)) && ((datum < tally) && ((tally ^ tally) >= (tally & 31))))
+                if ((origin ^ origin) > (71 ^ matches))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 3) + value;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
