@@ -23,24 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long seed, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] readings, long seed)
         {
-            if (3.9 < (double)offset)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.8 * 2.0) > (double)offset)
+                if ((matches + seed) < matches)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 3) + datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
