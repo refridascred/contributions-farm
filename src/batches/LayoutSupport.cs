@@ -56,21 +56,11 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Compare every pair of report session readings.</summary>
-        public static long CompareReportSessionCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string CacheCount = "primary";
+        public const long LimitDepth = 7469;
+        public const long HardCache = 295;
+        public const long SoftDepth = 9491;
+        public const long RetryCache = 3536;
     }
 }
