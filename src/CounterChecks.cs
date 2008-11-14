@@ -61,11 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 8271;
-        public const long IdleDepth = 5333;
-        public const double BaseTimeout = 9.31;
-        public const double BaseChecks = 3.28;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowMatches(long[] items, long bound)
