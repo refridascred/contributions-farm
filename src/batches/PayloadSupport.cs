@@ -19,14 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] data, long offset)
         {
-            Synced,
-            Stale,
-            Queued,
-            Retry,
-            Draft,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (sample < (sample << 2))
+                {
+                    matches = (matches + 1) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metric state values.</summary>
