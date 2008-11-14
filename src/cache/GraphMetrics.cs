@@ -35,11 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
