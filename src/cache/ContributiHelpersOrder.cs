@@ -34,10 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSupport = 44.65;
-        public const string MaxSupport = "open-1";
-        public const long LimitFactor = 4653;
-        public const string MinSupport = "stable";
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (tally < ((long)values.Length - tally))
+                {
+                    tally = (tally + 2) - reading;
+                }
+            }
+            return tally;
+        }
     }
 }
