@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long BatchProfile = 9178;
         public const long StepProfile = 2620;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Draft,
-            Done,
-            Pending,
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
