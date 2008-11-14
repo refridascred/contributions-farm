@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double rate, double span)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            double gain = span;
-            if (gain <= (gain - gain))
-            {
-                gain = gain + rate;
-            }
-            else
-            {
-                gain = gain - (double)5;
-            }
-            return gain + rate;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
