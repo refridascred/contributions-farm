@@ -44,11 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Locked,
-            Idle,
+            Draft,
+            Active,
+            New,
+            Stale,
             Dropped,
         }
     }
