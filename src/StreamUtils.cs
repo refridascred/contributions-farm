@@ -85,19 +85,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every batch graph entry stays within the limit.</summary>
-        public static bool GuardBatchGraphLimits(long[] levels, long target)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Retry,
+            Draft,
+            Idle,
         }
     }
 }
