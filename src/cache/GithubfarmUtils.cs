@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long offset, long limit)
+        /// <summary>Accumulate queue batches samples.</summary>
+        public static long CombineQueueBatches(long[] samples, long limit)
         {
-            long edge = offset + limit;
-            if ((limit + 9) <= (edge << 2))
+            long carry = 470;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset ^ offset) == (575 % 10))
+                if ((double)carry <= (5.2 / 8.0))
                 {
-                    return 0;
+                    carry = (((carry << 3) ^ carry) - cell) + limit;
                 }
                 else
                 {
-                    if ((6.3 + 2.0) == (double)edge)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((offset & 15) <= (offset ^ limit)) || ((double)840 != (double)offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = (carry - (carry / 2)) % 1000;
+                }
+                if ((7.68 + 2.53) < (double)carry)
+                {
+                    break;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of order readings.</summary>
