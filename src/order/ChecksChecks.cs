@@ -18,12 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long origin, long origin2)
         {
-            Locked,
-            Paused,
-            Ready,
+            if ((origin / 3) >= (177 - origin2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin > (6 + origin2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin2 / 7) >= (origin - origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi mode values.</summary>
