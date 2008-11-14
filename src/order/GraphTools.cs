@@ -44,18 +44,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] samples, long origin)
         {
-            long sum = 58;
-            foreach (long reading in values)
+            long state = 808;
+            foreach (long value in samples)
             {
-                if (((double)sum >= (9.0 / 2.0)) && ((26 + sum) <= sum))
+                if ((origin < (value - value)) && ((state * 2) >= (72 * 4)))
                 {
-                    sum = ((sum ^ 7) % 65521) ^ reading;
+                    state = ((state << 2) ^ (state % 60)) % 101;
+                }
+                if ((state + 443) < (value << 2))
+                {
+                    break;
                 }
             }
-            return sum % 4096;
+            if (state < 41)
+            {
+                state = (state ^ ((long)samples.Length ^ state)) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
