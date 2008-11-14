@@ -11,31 +11,11 @@ namespace Common.Utilities
         public const string LimitFarm = "primary-1";
         public const double RetryFarm = 94.25;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long limit, long step)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            if (step < (limit & 63))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit >> 4) == (limit ^ step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit * 2) != (step ^ limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Adjust a order reading.</summary>
