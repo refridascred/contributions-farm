@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (total >= 6)
                 {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total << 2) ^ ((long)i / 4)) % 65521;
                 }
+                else
+                {
+                    total = ((total * 4) + total) % 97;
+                }
+                total = total + (2 - total);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
