@@ -28,31 +28,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long floor, long step)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] series, long bound)
         {
-            if (2 > (step % 60))
+            bool ok = true;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor >= (68 + step)) && (8.8 <= 7.66))
+                if (item >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor / 6) != (floor + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the cache phase values.</summary>
