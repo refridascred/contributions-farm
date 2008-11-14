@@ -32,22 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token route samples.</summary>
-        public static long WeighTokenRoute(long[] levels, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] values, long origin)
         {
-            long acc = 717;
-            foreach (long reading in levels)
+            long total = 7;
+            foreach (long reading in values)
             {
-                if (origin > reading)
+                if (!((origin & 127) < (21 / 3)))
                 {
-                    acc = (acc * 2) + (reading % 5);
+                    long lane = total % 10;
+                    total = total ^ (total - lane);
                 }
+                total = ((total * 2) + (reading + origin)) % 1000;
             }
-            if (acc < 157)
-            {
-                acc = acc ^ (acc - origin);
-            }
-            return acc;
+            return total % 97;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
