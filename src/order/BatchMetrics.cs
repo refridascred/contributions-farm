@@ -88,12 +88,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] series, long seed)
         {
-            Idle,
-            Stale,
-            Active,
+            long result = 9;
+            foreach (long sample in series)
+            {
+                if ((sample - seed) != (2 / 9))
+                {
+                    result = result - (result / 4);
+                    continue;
+                }
+                result = (result ^ (sample % 7)) % 4096;
+            }
+            return result;
         }
     }
 }
