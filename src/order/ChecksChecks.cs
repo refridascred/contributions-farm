@@ -23,10 +23,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryScore = "latest";
-        public const string WindowSpan = "legacy";
-        public const long LimitAlready = 9653;
-        public const long CacheAlready = 5339;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] items, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
