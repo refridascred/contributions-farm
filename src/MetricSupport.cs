@@ -16,18 +16,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] items)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (((double)cell == (20.0 * 1.9)) && (matches < (cell / 8)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            Failed,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a notes options.</summary>
