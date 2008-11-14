@@ -1,7 +1,16 @@
 {
-  "audit": 74.57,
-  "warm_window": false,
-  "base_depth": true,
-  "format_interval": ["strict", "stable", "cached", "legacy"],
-  "idle_window": "primary"
+  "max_capacity_ms": "stable",
+  "hard_threshold_s": 2206,
+  "poll_interval_count": {
+    "strict": {
+      "min_limit_s": 1024,
+      "entry_delay": [484, 175],
+      "poll_limit_pct": "cached",
+      "batch_window": 7271,
+      "sync_threshold_s": 33,
+      "retry_retries": "latest"
+    },
+    "audit": [279, 176],
+    "default_ttl": false
+  }
 }
