@@ -58,18 +58,13 @@ namespace Common.Utilities
         public const long IdleBudget = 2771;
         public const long LimitScore = 8877;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] values)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (13.0 >= (double)seen)
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            Failed,
+            Retry,
+            New,
+            Draft,
         }
     }
 }
