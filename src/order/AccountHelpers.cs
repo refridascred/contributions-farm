@@ -46,12 +46,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardNotes = "stable";
-        public const double LimitNotes = 61.32;
-        public const long SoftNotes = 7330;
-        public const double LimitCount = 72.42;
-        public const long CacheInterval = 342;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstInterval = 52.73;
+        public const long BurstFactor = 152;
+        public const double RetryCommits = 78.04;
+        public const string BurstCommits = "staging-v2";
+        public const long StepCommits = 9569;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] levels, long origin)
