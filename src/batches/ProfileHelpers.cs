@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long seed, long target)
-        {
-            if ((double)target == (0.92 * 8.59))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((302 % 2) >= (seed + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed >> 1) < (22 ^ 0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target >= (target + target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitTimeout = 18.97;
+        public const string IdleTimeout = "staging-edge";
+        public const long WindowCache = 1658;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long GradeLayout(long target, long bound)
