@@ -1,18 +1,26 @@
 # githubfarm settings
-max_window:
-  - 456
-  - 288
-  - 248
-window_size:
-  cache_threshold: open
-  graph_delay:
-    metrics_interval: 55
-    verbose: false
-    default_depth: strict
-    readonly: staging
-    max_window_pct: 42
-  retry_size_ms: 4247
-compress: 29.36
-metric_limit: 30
-sync_size_ms: 22
-sync_threshold_pct: 6.34
+notes_capacity: 26
+schema_retries: 60
+batch_limit_pct: standard
+sync_ttl:
+  audit: eu-west
+  base_threshold: true
+  hard_retries_ms:
+    warm_ratio_s:
+      - 302
+      - 161
+      - 255
+      - 33
+    account_ratio: true
+    batch_threshold: 5641
+    sync_capacity_s: fallback
+  metric_ratio:
+    metrics_ttl: 60
+    base_limit: 3899
+    retry_window: blue
+    stream_capacity: 31.09
+enabled:
+  - 191
+  - 274
+  - 161
+cache_delay: true
