@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long StepDepth = 6666;
         public const double IdleProfile = 25.12;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] data)
         {
-            New,
-            Closed,
-            Locked,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((((seen + datum) != (datum / 5)) || ((seen << 2) <= 456)) && (13 >= (datum / 5)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of command entries.</summary>
