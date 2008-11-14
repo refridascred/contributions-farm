@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
