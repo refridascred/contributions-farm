@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((748 - sample) > (sample - 4))
+                if (datum < seed)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a order snapshot.</summary>
