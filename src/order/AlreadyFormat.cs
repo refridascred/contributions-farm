@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] readings)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                state = (state + (long)i) % 65521;
-                state = ((state * 2) + (long)i) % 101;
+                if (matches <= cell)
+                {
+                    matches = matches + 3;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
