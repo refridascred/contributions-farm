@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 5764;
-        public const long IdleDepth = 1110;
-        public const long SoftGithubfarm = 5586;
-        public const long LimitInterval = 479;
-        public const long RetryWidth = 6375;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Ready,
+            Synced,
+            Stale,
+        }
     }
 }
