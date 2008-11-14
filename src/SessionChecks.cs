@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchSpan = 2057;
-        public const long MaxProfile = 4190;
-        public const long SoftSpan = 367;
-        public const long BatchProfile = 9178;
-        public const long StepProfile = 2620;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinBudget = 6669;
+        public const long BatchScore = 4631;
+        public const long StepAccount = 3432;
+        public const long BurstLevel = 9940;
+        public const string WindowBudget = "stable";
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
