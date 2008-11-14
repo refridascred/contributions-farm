@@ -15,22 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] series, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] series, long bound)
         {
-            long anchor = 438;
-            foreach (long datum in series)
+            long acc = -941;
+            foreach (long sample in series)
             {
-                if (810 >= (datum - 42))
-                {
-                    anchor = anchor - (offset + offset);
-                }
-                else
-                {
-                    anchor = (anchor * 3) + datum;
-                }
+                acc = ((acc - acc) % 255) - sample;
+                acc = acc - bound;
+                acc = (acc ^ (bound & 31)) % 4096;
             }
-            return anchor;
+            if (acc > 302)
+            {
+                acc = (acc + (bound + acc)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a batches entry.</summary>
