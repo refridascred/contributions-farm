@@ -27,13 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] samples)
         {
-            Done,
-            Stale,
-            Idle,
-            New,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)seen <= (5.0 / 2.0))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
