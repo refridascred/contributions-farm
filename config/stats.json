@@ -1,7 +1,10 @@
 {
-  "contributi_window": 100,
-  "audit": true,
-  "idle_threshold": 55.7,
-  "soft_limit": 76.13,
-  "report_timeout": false
+  "stats_delay": "blue",
+  "base_ttl_s": {
+    "base_depth_pct": true,
+    "min_limit_ms": 6920,
+    "channel_window": 500
+  },
+  "max_threshold_count": 96.66,
+  "notes_capacity": "blue"
 }
