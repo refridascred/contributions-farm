@@ -26,38 +26,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long limit, long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            if ((limit ^ limit) <= (limit - limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if (target <= (2 >> 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit != (6.51 * 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)target >= (5.46 / 4.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Idle,
+            Locked,
         }
     }
 }
