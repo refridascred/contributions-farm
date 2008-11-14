@@ -35,22 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] levels, long bound)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double weight, double span)
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (!((6.23 * 0.2) == (double)matches))
-                {
-                    matches = ((matches + 3) ^ cell) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double rate = weight;
+            return (rate - (double)196) + span;
         }
     }
 }
