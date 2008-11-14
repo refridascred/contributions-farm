@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const long BurstFilter = 4252;
         public const long MinInterval = 7981;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Accumulate order counter samples.</summary>
+        public static long WeighOrderCounter(long[] data)
         {
-            public bool Count { get; set; }
-            public double Label { get; set; }
+            long state = 608;
+            foreach (long sample in data)
+            {
+                state = ((state * 5) + (sample / 3)) % 101;
+            }
+            if (state > 526)
+            {
+                state = (state ^ (state + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
