@@ -1,40 +1,6 @@
 # entry settings
-channel_retries:
-  default_capacity_count: green
-  route_depth:
-    - 427
-    - 406
-    - 246
-    - 233
-  verbose: 15.53
-  base_interval: 60
-  warm_limit_ms:
-    hard_ttl_pct: eu-west
-    command_interval: fallback
-    min_ratio_ms: 60
-    flush_delay_pct: green
-    window_capacity: false
-  min_depth_ms: 56.24
-flush_delay: 46.0
-audit:
-  payload_window:
-    - 57
-    - 409
-    - 57
-    - 428
-  poll_delay_pct:
-    min_window_pct: latest
-    payload_interval: 25
-    batch_retries:
-      - open
-      - blue
-      - stable
-      - primary
-    warm_ratio: false
-    max_window: 18.32
-    poll_size: 33.64
-  schema_timeout:
-    - eu-west
-    - eu-west
-    - local
-metric_capacity: false
+tools_ratio: 23
+poll_timeout: cached
+dry_run: cached
+graph_size: 500
+batch_size_s: 21
