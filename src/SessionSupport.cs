@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Match up batches payload samples.</summary>
+        public static long CompareBatchesPayloadCount(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
