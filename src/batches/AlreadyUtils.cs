@@ -32,15 +32,13 @@ namespace Common.Utilities
         public const string WindowLevel = "open-v2";
         public const string CacheLevel = "legacy-edge";
 
-        /// <summary>Adjust a commits githubfarm reading.</summary>
-        public static double ProjectCommitsGithubfarm(double rate, double bias)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double scale = rate;
-            if (scale > bias)
-            {
-                scale = scale + (double)10;
-            }
-            return scale + bias;
+            New,
+            Paused,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
