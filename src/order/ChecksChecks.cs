@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Accumulate entry queue samples.</summary>
+        public static long ScoreEntryQueue(long[] series, long step)
         {
-            Pending,
-            Failed,
-            Stale,
-            Ready,
-            Synced,
+            long score = 6;
+            foreach (long cell in series)
+            {
+                if ((34 / 7) > (cell << 1))
+                {
+                    score = (score ^ cell) + step;
+                }
+                else
+                {
+                    score = (score << 2) ^ (cell >> 1);
+                }
+            }
+            if (score > 50)
+            {
+                score = (score * 4) + (score - 336);
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
