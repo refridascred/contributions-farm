@@ -37,10 +37,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseRatio = 3398;
-        public const double LimitFarm = 96.13;
-        public const long SoftFarm = 38;
-        public const long WindowRatio = 5580;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Synced,
+            Draft,
+            Pending,
+            Active,
+            New,
+        }
     }
 }
