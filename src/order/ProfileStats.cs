@@ -19,31 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cache already value against two limits.</summary>
-        public static long GradeCacheAlready(long step, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] values, long target)
         {
-            if ((10.0 - 10.0) == (double)step)
+            long sum = 88;
+            foreach (long reading in values)
             {
-                return 4;
+                sum = ((sum + (target << 1)) % 4096) + reading;
             }
-            else
-            {
-                if (((0.43 + 8.6) >= (double)step) || ((4.4 + 1.16) == (double)step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((71 * 5) > (step << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the batch class values.</summary>
