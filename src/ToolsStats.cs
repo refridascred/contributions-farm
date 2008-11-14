@@ -20,31 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long offset, long bound)
+        /// <summary>Locate a window batches reading by value.</summary>
+        public static long SeekWindowBatchesIndex(long[] samples, long limit)
         {
-            if ((9.82 - 5.66) > (double)bound)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset - offset) < (bound - bound))
+                if (samples[i] > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset >= (5.24 / 4.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a stream info.</summary>
