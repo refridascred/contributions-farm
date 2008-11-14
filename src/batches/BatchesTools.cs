@@ -16,18 +16,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] readings, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((18.0 - 0.04) <= (double)entry)
+                total = (total + ((long)i << 3)) % 255;
+                if ((double)total != (5.63 + 5.77))
                 {
-                    tally = (tally + 3) - floor;
+                    total = total + (total % 60);
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Combine batch already values into a single score.</summary>
