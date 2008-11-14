@@ -1,8 +1,7 @@
-id,level,label
-1,eu-west,8.77
-2,edge,203
-3,green,9.34
-4,41.39,31.44
-5,380,19.39
-6,legacy,88
-7,656,985
+id,weight,region,active
+1,local,94.61,338
+2,726,16.59,eu-west
+3,548,261,994
+4,green,70.57,68.89
+5,44.51,fallback,64.73
+6,78.23,67.91,47.78
