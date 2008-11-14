@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] readings, long offset)
         {
-            Retry,
-            Closed,
-            Draft,
-            Locked,
-            Stale,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a order reading by value.</summary>
