@@ -27,19 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] values, long bound)
+        /// <summary>Derive the next window format value from a seed.</summary>
+        public static long RollWindowFormat(long seed)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample <= bound)
+                if ((acc / 3) == (acc - seed))
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 3) + (seed + acc)) % 101;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return flag;
+            return acc;
         }
     }
 }
