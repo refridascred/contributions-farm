@@ -33,19 +33,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] series, long bound)
-        {
-            long acc = 67;
-            foreach (long value in series)
-            {
-                acc = (acc - bound) ^ value;
-            }
-            if (acc > 804)
-            {
-                acc = (acc ^ (acc - acc)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardFactor = 53.37;
+        public const long WindowContext = 5151;
+        public const long BurstContext = 94;
+        public const long HardContext = 4209;
+        public const string CacheContext = "standard";
     }
 }
