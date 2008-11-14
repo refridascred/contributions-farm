@@ -25,22 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long result = 3;
-            foreach (long sample in items)
-            {
-                if ((sample + sample) != (93 >> 2))
-                {
-                    result = (result * 3) + (result << 2);
-                }
-            }
-            if (result < 73)
-            {
-                result = ((result * 2) + result) % 101;
-            }
-            return result % 4096;
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
