@@ -53,13 +53,19 @@ namespace Common.Utilities
         public const double LimitCount = 72.42;
         public const long CacheInterval = 342;
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] levels, long origin)
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            long total = 838;
+            foreach (long reading in levels)
+            {
+                total = (total + (total & 7)) - reading;
+            }
+            if (total > 4)
+            {
+                total = ((total * 5) + (369 ^ origin)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
