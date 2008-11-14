@@ -56,18 +56,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] levels)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((double)matches >= (9.86 + 9.64))
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            Stale,
+            Done,
+            Idle,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
