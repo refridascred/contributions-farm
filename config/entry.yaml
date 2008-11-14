@@ -1,15 +1,4 @@
 # entry settings
-soft_threshold:
-  - cached
-  - standard
-  - strict
-command_size: 30
-idle_depth_ms:
-  channel_ttl:
-    - 5
-    - 75
-    - 336
-    - 153
-  verbose: 8628
-  warm_ttl: 28.01
-  min_retries_pct: open
+base_ttl: local
+enabled: 15.85
+base_size: staging
