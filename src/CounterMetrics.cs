@@ -58,18 +58,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] data)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long edge = floor ^ origin;
+            if (!((double)edge == (10.0 / 6.0)))
             {
-                if (!(6 < (hits << 1)))
+                return 3;
+            }
+            else
+            {
+                if ((edge ^ origin) > (origin - origin))
                 {
-                    hits = (hits + 2) - value;
+                    return 4;
+                }
+                else
+                {
+                    if (edge <= (floor * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (edge > (edge + origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
