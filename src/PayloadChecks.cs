@@ -28,19 +28,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] series, long bound)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Pending,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the cache phase values.</summary>
