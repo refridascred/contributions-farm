@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            New,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 6638;
+        public const string MinLevel = "strict";
+        public const long WindowLevel = 7348;
+        public const string BurstLevel = "alpha-v2";
+        public const long StepBuffer = 9353;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool VerifyStreamLimits(long[] series, long offset)
