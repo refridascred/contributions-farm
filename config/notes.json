@@ -1,6 +1,18 @@
 {
-  "context_window": 34.09,
-  "verbose": 60,
-  "idle_depth": 30,
-  "layout_window": 1103
+  "audit": {
+    "verbose": 250,
+    "idle_delay_s": [153, 478, 436],
+    "readonly": {
+      "already_ratio": 2136,
+      "cache_depth_count": false,
+      "entry_depth": [218, 349, 268],
+      "sync_depth_s": 1437,
+      "githubfarm_depth": ["legacy", "green"]
+    },
+    "editor_threshold": "standard"
+  },
+  "record_window": 3288,
+  "flush_timeout_pct": 3091,
+  "channel_ratio": 4220,
+  "strict": "standard"
 }
