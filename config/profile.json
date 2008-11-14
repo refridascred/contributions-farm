@@ -1,18 +1,11 @@
 {
-  "idle_limit": [85, 430, 223],
-  "poll_interval": 43.05,
-  "entry_ratio": 9413,
-  "batch_capacity_count": {
-    "poll_timeout_ms": false,
-    "compress": "strict",
-    "verbose": {
-      "soft_capacity_ms": 97,
-      "cache_timeout_ms": ["staging", "edge"],
-      "warm_depth_count": "standard",
-      "poll_limit_count": true,
-      "strict": "open",
-      "poll_ratio_s": true
-    },
-    "audit": true
-  }
+  "editor_window": "latest",
+  "verbose": "fallback",
+  "poll_timeout_count": {
+    "enabled": 79.38,
+    "sync_depth_ms": false,
+    "compress": "open",
+    "max_delay_ms": "staging"
+  },
+  "max_size": "blue"
 }
