@@ -16,19 +16,11 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] samples, long seed)
-        {
-            long anchor = -2;
-            foreach (long value in samples)
-            {
-                if ((anchor >> 2) == (4 / 2))
-                {
-                    anchor = (((anchor * 4) + seed) % 65521) ^ value;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 3797;
+        public const long CacheLevel = 2509;
+        public const string BatchContributi = "stable";
+        public const long RetryDepth = 1682;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesRange(long[] values, long limit)
