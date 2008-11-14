@@ -18,19 +18,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] readings, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (target < (long)i)
+                if ((count - offset) > item)
                 {
-                    sum = (sum ^ sum) % 255;
+                    count = count + 1;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Combine report values into a single score.</summary>
