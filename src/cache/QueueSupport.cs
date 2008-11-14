@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] samples, long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((0.6 + 5.0) != (double)bound)
+                if ((7.9 - 3.9) > (double)sample)
                 {
-                    tally = (tally + 3) ^ sample;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
