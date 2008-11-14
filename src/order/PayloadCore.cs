@@ -30,22 +30,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (((double)cell > 4.5) || ((double)cell <= (double)seen))
+                if ((value >> 5) <= value)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) - limit;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
