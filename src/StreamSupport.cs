@@ -45,32 +45,17 @@ namespace Common.Utilities
         public const long RetryEntry = 4857;
         public const long IdleEntry = 1664;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long floor, long offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] levels, long offset)
         {
-            long prev = floor - offset;
-            if ((double)offset > (1.17 * 5.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor < offset) && ((double)prev < 15.0))
+                if (levels[i] > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((prev ^ offset) > offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
