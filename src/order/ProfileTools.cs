@@ -23,15 +23,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double bias, double offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] levels, long step)
         {
-            double ratio = bias - (offset + offset);
-            for (int i = 0; i < 4; i++)
+            long total = 2;
+            foreach (long datum in levels)
             {
-                ratio = (ratio + ratio) + (double)(long)i;
+                total = ((total ^ (68 + total)) - datum) + step;
             }
-            return ratio - offset;
+            return total % 1000;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
