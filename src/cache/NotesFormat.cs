@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] data, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] levels)
         {
-            long carry = -320;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                carry = ((carry ^ 70) + sample) + origin;
+                if ((748 - sample) > (sample - 4))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (carry < 293)
-            {
-                carry = ((carry * 3) + (carry % 8)) % 1000;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a order snapshot.</summary>
