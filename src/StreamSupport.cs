@@ -34,18 +34,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] levels, long floor)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((floor ^ tally) > tally)
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
