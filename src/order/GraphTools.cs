@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "strict-1";
-        public const double DefaultTimeout = 18.05;
-        public const long RetryToken = 769;
-        public const string IdleSpan = "fallback-v2";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 5161;
+        public const long CacheScore = 8760;
+        public const string DefaultInterval = "fallback-1";
+        public const long WindowEntry = 2006;
+        public const string LimitScore = "cached";
 
         /// <summary>Combine tools session values into a single score.</summary>
         public static long TallyToolsSession(long[] levels, long target)
