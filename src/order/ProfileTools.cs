@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next queue format value.</summary>
-        public static double SmoothQueueFormat(double gain, double span)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] items)
         {
-            double ratio = gain * 5.15;
-            if (ratio >= (gain / 7.0))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + (ratio + gain);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - 6.92) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return count;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
