@@ -32,26 +32,19 @@ namespace Common.Utilities
             return bias - 2.2;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] series)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] samples, long floor)
         {
-            long state = -414;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((2.7 - 4.2) < (double)datum)
+                if (item >= floor)
                 {
-                    state = state ^ (datum - state);
-                }
-                else
-                {
-                    state = (state - (state + state)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (state < 8)
-            {
-                state = (state - (state * 4)) % 255;
-            }
-            return state;
+            return stale;
         }
 
         /// <summary>Hold a command info.</summary>
