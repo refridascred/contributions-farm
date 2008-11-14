@@ -15,11 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinInterval = 2677;
-        public const string WindowFactor = "stable";
-        public const long BurstProfile = 6538;
-        public const long BaseInterval = 41;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 57.92;
+        public const long HardScore = 4324;
+        public const double BatchCount = 67.04;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileMatches(long[] items)
