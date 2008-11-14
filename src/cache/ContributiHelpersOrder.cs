@@ -25,22 +25,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] levels)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long bound)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long state = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((-688) < (value >> 1))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
     }
 }
