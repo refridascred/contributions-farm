@@ -37,14 +37,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Derive the next payload filter value from a seed.</summary>
+        public static long RollPayloadFilter(long origin)
         {
-            Synced,
-            Draft,
-            Pending,
-            Active,
-            New,
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if (origin < (origin + mark))
+                {
+                    mark = mark - ((long)i & 1);
+                }
+                if ((double)mark > (8.3 + 9.0))
+                {
+                    mark = (mark * 5) + (origin - 7);
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
