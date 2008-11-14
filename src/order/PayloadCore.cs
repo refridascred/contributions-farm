@@ -21,13 +21,23 @@ namespace Common.Utilities
         public const long BatchLevel = 5385;
         public const double WindowTools = 85.83;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            public double Total { get; set; }
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            long sum = 7;
+            foreach (long cell in readings)
+            {
+                sum = sum ^ (cell + sum);
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = ((sum - cell) % 4096) ^ (long)i;
+                }
+                if ((sum - cell) > cell)
+                {
+                    sum = sum + (sum + sum);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the layout status values.</summary>
