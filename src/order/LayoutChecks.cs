@@ -27,14 +27,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            Paused,
-            Pending,
-            Failed,
-            Done,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
