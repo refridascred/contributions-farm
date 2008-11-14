@@ -45,25 +45,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long floor, long target)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] values, long limit)
         {
-            long bound = floor - target;
-            if (((floor << 3) < (bound ^ 94)) || ((577 - bound) > (109 % 24)))
+            bool ok = true;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor / 2) >= (bound + bound)) || ((floor & 63) == (floor & 7)))
+                if (value >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
