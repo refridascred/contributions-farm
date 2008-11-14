@@ -34,19 +34,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double weight, double bias)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            double rate = weight / 7.0;
-            if (rate >= (bias * 8.05))
-            {
-                rate = rate - (weight - bias);
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate + (rate * 2.3);
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the layout kind values.</summary>
