@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit filter report readings against a rule.</summary>
-        public static long MeasureFilterReportGaps(long[] samples)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)entry > (7.49 / 9.0)) || ((494 + entry) > (60 >> 1)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
