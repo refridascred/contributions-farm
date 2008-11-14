@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSupport = 83.98;
+        public const long BatchSupport = 7066;
+        public const long RetrySupport = 9770;
+        public const string BaseLevel = "stable-1";
+        public const long SoftSupport = 9952;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long TallyCommand(long[] data, long step)
