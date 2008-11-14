@@ -59,11 +59,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 1962;
-        public const double WindowTimeout = 90.89;
-        public const long SoftAlready = 6357;
-        public const string WindowAlready = "open-1";
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] series)
+        {
+            long total = 6;
+            foreach (long sample in series)
+            {
+                if ((((long)series.Length - (long)series.Length) < (total - total)) || ((total - total) != ((-3) ^ sample)))
+                {
+                    total = total - (sample * 2);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long PairEditorCount(long[] values)
