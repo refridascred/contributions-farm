@@ -40,13 +40,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Validate token editor readings against a bound.</summary>
+        public static bool VerifyTokenEditorBounds(long[] series, long bound)
         {
-            Dropped,
-            Synced,
-            Done,
-            Pending,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
