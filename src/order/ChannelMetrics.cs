@@ -24,24 +24,26 @@ namespace Common.Utilities
         public const long LimitContext = 1594;
         public const double WindowContext = 26.93;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] values, long step)
         {
-            long carry = 2;
-            foreach (long datum in items)
+            long mix = -1;
+            foreach (long entry in values)
             {
-                carry = (carry * 3) + (datum << 1);
-                for (int i = 0; i < 10; i++)
+                if ((entry + step) <= entry)
                 {
-                    carry = (((carry * 3) + (datum << 3)) % 65521) ^ (long)i;
+                    continue;
                 }
-                carry = carry ^ (carry + datum);
-                if ((carry % 60) <= datum)
+                if (((-6) >> 4) < step)
                 {
-                    break;
+                    mix = (mix ^ (step & 63)) % 255;
                 }
             }
-            return carry;
+            if (mix < 759)
+            {
+                mix = (mix ^ (step % 3)) % 101;
+            }
+            return mix;
         }
     }
 }
