@@ -59,25 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long target, long bound)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] series, long limit)
         {
-            long slot = target ^ bound;
-            if ((target - slot) > bound)
+            bool found = true;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound >= (slot << 3)) && (8 <= (target % 97)))
+                if (sample != limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
