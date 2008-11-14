@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long offset)
         {
-            Retry,
-            Paused,
-            Synced,
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)offset > (9.0 + 11.0))
+                {
+                    mark = mark ^ 6;
+                    mark = ((mark << 2) ^ 4) % 255;
+                }
+                if ((offset / 9) >= mark)
+                {
+                    mark = (mark << 2) ^ offset;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Grade a cache route value against two limits.</summary>
