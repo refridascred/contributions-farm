@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const double RetryLevel = 46.62;
         public const string IdleBuffer = "stable-v2";
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)offset < (14.0 + 8.75))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchDepth = 9121;
+        public const string BatchOrder = "standard-edge";
+        public const double MaxOrder = 11.2;
+        public const double IdleTimeout = 41.97;
+        public const long RetryOrder = 2870;
 
         /// <summary>Match up metric samples.</summary>
         public static long PairMetricCount(long[] items)
