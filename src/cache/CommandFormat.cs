@@ -54,10 +54,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 4099;
-        public const long SoftBatches = 4800;
-        public const long StepBatches = 7191;
-        public const long DefaultBatches = 7433;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double scale, double offset)
+        {
+            double mean = scale;
+            if (mean < (double)75)
+            {
+                mean = mean - scale;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - offset;
+        }
     }
 }
