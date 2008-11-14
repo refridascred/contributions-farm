@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Iterate the session layout series from a seed.</summary>
+        public static long StepSessionLayout(long bound)
         {
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                double weight = (double)(sum + 4);
+                if (weight >= (weight - 1.87))
+                {
+                    sum = sum - sum;
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
