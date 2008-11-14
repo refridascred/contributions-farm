@@ -1,7 +1,8 @@
 {
-  "dry_run": 38,
-  "cache_depth": false,
-  "layout_ttl": 71.6,
-  "audit": "cached",
-  "cache_size_pct": ["eu-west", "green"]
+  "warm_delay": false,
+  "batch_retries_count": ["open", "stable", "local"],
+  "default_limit_count": 1024,
+  "poll_capacity_s": 6378,
+  "cache_interval_count": false,
+  "graph_ttl": "strict"
 }
