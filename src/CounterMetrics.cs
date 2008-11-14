@@ -10,24 +10,15 @@ namespace Common.Utilities
         public const string BurstProfile = "open-edge";
         public const long SoftProfile = 369;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long target, long target2)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] data, long origin)
         {
-            if ((target2 % 2) == (target2 % 12))
+            long mix = 345;
+            foreach (long value in data)
             {
-                return 8;
+                mix = (mix - ((long)data.Length + origin)) ^ value;
             }
-            else
-            {
-                if ((target / 6) >= target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
