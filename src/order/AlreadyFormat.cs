@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit window context readings against a rule.</summary>
-        public static long AuditWindowContextMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((sample % 60) != (3 % 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultInterval = 6432;
+        public const string BaseDepth = "stable";
+        public const long MinBatch = 9670;
+        public const long BatchSpan = 2838;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double AdjustOrder(double rate, double span)
