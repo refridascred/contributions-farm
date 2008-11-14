@@ -1,16 +1,13 @@
 # Command notes
 
-Run the counter check before changing any cache limits.
-Each queue is validated before it reaches the farm queue.
-A cluster that stays idle for too long is moved to the batches list.
+Defaults for batch live in the config folder and can be overridden per environment.
+Run the batch check before changing any metrics limits.
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-Keep payload and channel names short and lowercase.
-The cache report groups every batches by stream.
+Each entry is validated before it reaches the layout queue.
+Each record is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Review command limits each release
-- Log every counter change
-- Prefer checks defaults
-- Document new token fields
+- Log every tools change
+- Validate session input early
+- Keep layout values small
