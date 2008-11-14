@@ -45,24 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long floor, long step)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if ((3.0 * 13.0) <= (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor - step) > step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the layout mode values.</summary>
