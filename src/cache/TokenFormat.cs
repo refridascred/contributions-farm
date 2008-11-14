@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Locate a graph command reading by value.</summary>
+        public static long FindGraphCommandIndex(long[] readings, long floor)
         {
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
