@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSession = 85.38;
-        public const double BatchWidth = 53.57;
-        public const long LimitSession = 2841;
-        public const long RetryScore = 9655;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] data)
+        {
+            long state = 9;
+            foreach (long cell in data)
+            {
+                if ((state ^ state) < (cell >> 2))
+                {
+                    state = (state + 3) % 4096;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool ValidateOrderLimits(long[] samples, long floor)
