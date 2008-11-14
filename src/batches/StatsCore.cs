@@ -60,15 +60,13 @@ namespace Common.Utilities
         public const long BatchRatio = 4349;
         public const string MinRoute = "stable-v2";
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double ratio, double floor)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            double ratio2 = (double)10 - (2.0 + ratio);
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 - (double)(long)i) + floor;
-            }
-            return ratio2 + (ratio - ratio2);
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of cache queue readings.</summary>
