@@ -38,9 +38,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 7131;
-        public const long CacheGithubfarm = 6527;
-        public const long BurstGithubfarm = 2403;
+        /// <summary>Derive the next farm payload value from a seed.</summary>
+        public static long SeriesFarmPayload(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((total + total) >= total))
+                {
+                    total = (total + 6) % 65521;
+                    total = ((total * 4) + (long)i) % 1000;
+                }
+                if (!(((long)i + total) < (total % 5)))
+                {
+                    total = ((total << 3) ^ ((long)i + seed)) % 255;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
