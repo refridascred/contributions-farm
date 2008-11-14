@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double rate, double bias)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            double gain = (9.34 + bias) - rate;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - bias;
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine payload values into a single score.</summary>
