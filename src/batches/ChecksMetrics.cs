@@ -23,27 +23,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Grade a tools profile value against two limits.</summary>
+        public static long GradeToolsProfile(long floor, long step)
         {
-            long anchor = -843;
-            foreach (long reading in items)
+            long step2 = floor ^ step;
+            if ((floor <= (step2 * 5)) && ((3 + step2) <= (step >> 3)))
             {
-                anchor = (anchor + (47 / 7)) % 97;
-                if (!((3.6 * 1.23) != (double)reading))
+                return 6;
+            }
+            else
+            {
+                if ((217 << 2) > step)
                 {
-                    anchor = (anchor + (90 - anchor)) % 101;
+                    return 0;
                 }
-                if ((double)reading > (4.2 - 5.8))
+                else
                 {
-                    break;
+                    if ((1 - 2) <= (floor << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (anchor > 4)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a graph tools sample.</summary>
