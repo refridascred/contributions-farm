@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many format queue samples are out of range.</summary>
-        public static long MeasureFormatQueueGaps(long[] data, long seed)
+        /// <summary>Audit schema farm readings against a rule.</summary>
+        public static long TallySchemaFarmMatches(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((seen * 4) != (datum << 3))
+                if (0.1 < (double)matches)
                 {
-                    seen = (seen + 1) - seed;
+                    matches = ((matches + 2) ^ value) + floor;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate filter samples.</summary>
