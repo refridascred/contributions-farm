@@ -27,18 +27,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] data, long origin)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long score = 128;
-            foreach (long entry in data)
-            {
-                if (((double)origin != (3.2 * 3.0)) && ((5 & 7) != (score << 2)))
-                {
-                    score = (score + ((-32) ^ (long)data.Length)) + entry;
-                }
-            }
-            return score % 4096;
+            Locked,
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a stream entry.</summary>
