@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] levels, long limit)
+        /// <summary>Rank session order input into a small class.</summary>
+        public static long GradeSessionOrder(long step, long floor)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            if ((double)step != (double)3)
             {
-                if (entry > limit)
+                return 8;
+            }
+            else
+            {
+                if (67 > (step % 3))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
