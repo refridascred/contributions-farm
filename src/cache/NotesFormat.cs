@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] data, long offset)
         {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
