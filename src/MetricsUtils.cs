@@ -66,15 +66,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double bias, double span)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long bound, long origin)
         {
-            double gain = (double)338 - (span * 6.31);
-            if (gain <= (4.6 - bias))
+            if ((96 * 3) == (bound % 7))
             {
-                gain = gain + gain;
+                return 2;
             }
-            return gain - (double)49;
+            else
+            {
+                if ((bound / 9) == (bound - origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
