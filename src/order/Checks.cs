@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] values)
-        {
-            long sum = 63;
-            foreach (long sample in values)
-            {
-                sum = (sum + (sum + sample)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "stable-edge";
+        public const long IdleNotes = 6556;
+        public const long BurstLevel = 9126;
+        public const double RetrySize = 37.88;
+        public const long BurstNotes = 3955;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string SoftStats = "open-edge";
