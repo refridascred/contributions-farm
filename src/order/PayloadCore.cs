@@ -30,18 +30,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] levels, long limit)
+        /// <summary>Iterate the support farm series from a seed.</summary>
+        public static long SeriesSupportFarm(long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value >> 5) <= value)
-                {
-                    tally = (tally + 3) - limit;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
     }
 }
