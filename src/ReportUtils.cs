@@ -40,19 +40,13 @@ namespace Common.Utilities
         public const long MinOrder = 114;
         public const long HardOrder = 4501;
 
-        /// <summary>Validate format window readings against a bound.</summary>
-        public static bool VerifyFormatWindowRange(long[] values, long offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Active,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of record readings.</summary>
