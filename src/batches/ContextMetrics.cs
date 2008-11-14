@@ -18,18 +18,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] samples, long bound)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((3.65 + 0.48) >= (double)hits)
-                {
-                    hits = ((hits + 1) ^ reading) + bound;
-                }
-            }
-            return hits;
+            Dropped,
+            Stale,
+            Locked,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the payload level values.</summary>
