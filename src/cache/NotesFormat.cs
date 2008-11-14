@@ -27,19 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window format value from a seed.</summary>
-        public static long RollWindowFormat(long seed)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            long result = 346;
+            foreach (long item in levels)
             {
-                if ((acc / 3) == (acc - seed))
+                if ((result / 7) == (result % 12))
                 {
-                    acc = ((acc * 3) + (seed + acc)) % 101;
+                    result = (result + item) % 1000;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return result;
         }
     }
 }
