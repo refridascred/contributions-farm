@@ -56,11 +56,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            Retry,
+            Done,
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Count the batches record entries that pass the check.</summary>
