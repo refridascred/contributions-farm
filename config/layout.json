@@ -1,5 +1,6 @@
 {
-  "default_ratio": [459, 474, 95, 55],
-  "poll_timeout": "primary",
-  "soft_threshold": false
+  "tools_timeout": "staging",
+  "notes_ratio": 54,
+  "tools_window": "latest",
+  "flush_threshold": "strict"
 }
