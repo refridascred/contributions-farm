@@ -12,39 +12,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Rank report buffer input into a small class.</summary>
-        public static long BucketReportBuffer(long origin, long origin2)
-        {
-            if (((origin - origin2) > (13 & 1)) || ((origin - origin2) > 604))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin + origin) >= origin2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)4 > (double)origin) || (2 <= origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((16.0 * 2.98) <= (double)origin2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultWidth = "primary-1";
+        public const double CacheWidth = 23.64;
+        public const long HardTimeout = 6638;
+        public const string HardWidth = "primary-v2";
+        public const long LimitOrder = 5178;
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double SmoothStats(double gain, double floor)
