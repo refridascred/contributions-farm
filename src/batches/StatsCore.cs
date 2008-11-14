@@ -59,18 +59,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long floor, long floor2)
         {
-            long acc = 812;
-            foreach (long cell in levels)
+            if (((floor / 4) <= (floor2 % 100)) || (floor > (829 / 5)))
             {
-                if ((double)cell >= (8.7 - 17.0))
+                return 8;
+            }
+            else
+            {
+                if (((double)floor2 == (double)floor) || (floor < (7 & 3)))
                 {
-                    acc = (acc ^ (acc / 9)) % 1000;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor != (1.0 - 7.08))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((-732) * 2) <= floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return acc;
         }
     }
 }
