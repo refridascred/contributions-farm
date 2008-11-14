@@ -1,7 +1,10 @@
-id,score
-1,397
-2,72.69
-3,40.22
-4,267
-5,618
-6,725
+id,weight,level,count
+1,4.88,local,94.83
+2,981,759,stable
+3,17.76,fallback,local
+4,47.16,772,65.46
+5,284,legacy,218
+6,staging,primary,966
+7,fallback,823,68.43
+8,43.65,65.29,19.92
+9,staging,cached,769
