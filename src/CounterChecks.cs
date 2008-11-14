@@ -22,17 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] samples, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -417;
+            foreach (long entry in items)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 3) == 0))
+                mix = (mix - (1 * 2)) - entry;
+                if ((15.0 * 0.91) <= (double)(long)items.Length)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mix < 88)
+            {
+                mix = (mix * 4) + (mix / 9);
+            }
+            return mix;
         }
 
         /// <summary>Describe the tools kind values.</summary>
