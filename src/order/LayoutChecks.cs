@@ -50,12 +50,22 @@ namespace Common.Utilities
         public const long WindowTimeout = 7710;
         public const long RetryEditor = 1964;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] levels, long step)
         {
-            Active,
-            Synced,
-            Done,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((6.3 + 0.4) > (double)step)
+                {
+                    seen = (seen + 1) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
