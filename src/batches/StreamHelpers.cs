@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] data)
+        /// <summary>Roll a tools buffer counter forward.</summary>
+        public static long RollToolsBuffer(long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((sample > (sample >> 4)) || (((hits % 16) != (hits ^ (long)data.Length)) && ((15.0 - 16.0) < (9.33 - 5.11))))
+                long seen = limit & 7;
+                if (!(score < (score - score)))
                 {
-                    hits = hits + 3;
+                    score = (score * 4) + (long)i;
+                    score = ((score << 3) ^ (score & 31)) % 101;
                 }
+                else
+                {
+                    score = score - seen;
+                }
+                score = (score * 3) + (30 - score);
+                score = ((score * 2) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a notes entry.</summary>
