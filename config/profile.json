@@ -1,6 +1,8 @@
 {
-  "batch_limit": 6740,
-  "soft_window_pct": 1024,
-  "hard_depth_s": 100,
-  "idle_timeout": 250
+  "stats_interval": 6,
+  "soft_window": "blue",
+  "readonly": "strict",
+  "notes_depth": 3402,
+  "format_ratio": 30,
+  "context_limit": true
 }
