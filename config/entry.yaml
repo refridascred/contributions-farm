@@ -1,17 +1,11 @@
 # entry settings
-contributi_limit:
-  channel_ratio: 51.51
-  commits_timeout: 30
-  compress: 4370
-  cache_ttl: 8753
-  batch_capacity_s: 59.42
-  strict:
-    - open
-    - standard
-    - primary
-    - green
-burst_ratio_count: 6695
-counter_ttl:
-  - 19
-  - 466
-  - 393
+strict:
+  - standard
+  - eu-west
+default_delay_ms: true
+route_retries:
+  soft_depth_pct: false
+  sync_delay_s: 13.36
+  sync_ratio: 13.13
+  soft_timeout_s: 9958
+entry_size: 1375
